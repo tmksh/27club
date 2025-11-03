@@ -1,0 +1,1 @@
+export { TalentPc } from "./TalentPc";

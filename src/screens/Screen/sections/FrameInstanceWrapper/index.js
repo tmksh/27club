@@ -1,0 +1,1 @@
+export { FrameInstanceWrapper } from "./FrameInstanceWrapper";

@@ -1,0 +1,82 @@
+/*
+We're constantly improving the code you see. 
+Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
+*/
+
+import PropTypes from "prop-types";
+import React from "react";
+import { ConcreteComponentNode } from "../ConcreteComponentNode";
+
+export const Footer5 = ({
+  className,
+  concreteComponentNodeVector = "/img/vector-2.svg",
+  concreteComponentNodeImg = "/img/vector-3.svg",
+  concreteComponentNodeVector1 = "/img/vector.svg",
+  concreteComponentNodeVector2 = "/img/vector-4.svg",
+  concreteComponentNodeVector3 = "/img/vector-1.svg",
+  concreteComponentNodeFooterClassName,
+  concreteComponentNodeSocialIcons = "/img/social-icons.svg",
+  to,
+  to1,
+  to2,
+  to3,
+  to4,
+  to5,
+}) => {
+  return (
+    <div className={`h-[584px] w-[1440px] flex ${className}`}>
+      <ConcreteComponentNode
+        className={concreteComponentNodeFooterClassName}
+        divClassName="![white-space:unset]"
+        elementClassName="!h-[unset] !flex-1 !grow !w-[unset]"
+        img={concreteComponentNodeVector3}
+        imgClassName="!left-[4.16%]"
+        leftSectionClassName="!h-[227.1px]"
+        logoClassName="!flex-[unset] !flex !w-[159.41px]"
+        socialIcons={concreteComponentNodeSocialIcons}
+        text={
+          <>
+            〒160-0022
+            <br />
+            東京都新宿区歌舞伎町2-36-3
+            <br />
+            Acb会館ビル 3F
+          </>
+        }
+        text1="キャスト"
+        text2="求人募集"
+        text3="パーティープラン"
+        text4="ゲストの流れ"
+        text5="チップについて"
+        text6="お問い合わせ"
+        to={to3}
+        to1={to4}
+        to2={to2}
+        to3={to1}
+        to4={to}
+        to5={to5}
+        vector={concreteComponentNodeVector1}
+        vector1={concreteComponentNodeVector}
+        vector2={concreteComponentNodeImg}
+        vector3={concreteComponentNodeVector2}
+        vectorClassName="!left-[4.16%]"
+        vectorClassNameOverride="!left-[4.16%]"
+      />
+    </div>
+  );
+};
+
+Footer5.propTypes = {
+  concreteComponentNodeVector: PropTypes.string,
+  concreteComponentNodeImg: PropTypes.string,
+  concreteComponentNodeVector1: PropTypes.string,
+  concreteComponentNodeVector2: PropTypes.string,
+  concreteComponentNodeVector3: PropTypes.string,
+  concreteComponentNodeSocialIcons: PropTypes.string,
+  to: PropTypes.string,
+  to1: PropTypes.string,
+  to2: PropTypes.string,
+  to3: PropTypes.string,
+  to4: PropTypes.string,
+  to5: PropTypes.string,
+};
