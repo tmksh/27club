@@ -8,7 +8,7 @@ import { Frame19 } from "./sections/Frame19";
 export const Screen7 = () => {
   return (
     <div
-      className="flex flex-col items-center gap-[94px] relative overflow-hidden bg-[url(/img/image-3.png)] bg-cover bg-[50%_50%]"
+      className="flex flex-col items-center gap-[94px] relative overflow-hidden bg-[url(/img/27-background.png)] bg-repeat-y bg-[50%_0%]"
       data-model-id="411:1123"
     >
       <Frame16 />

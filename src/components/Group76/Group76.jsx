@@ -13,7 +13,7 @@ export const Group76 = ({
 }) => {
   return (
     <div
-      className={`relative top-[1139px] left-[1441px] w-[1060px] h-[349px] ${className}`}
+      className={`relative w-[1060px] h-[349px] ${className}`}
     >
       <div className="inline-flex items-center gap-[18px] absolute top-[calc(50.00%_-_174px)] left-[calc(50.00%_-_530px)]">
         <div className="flex w-[186px] items-center gap-[18px] relative">

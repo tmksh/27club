@@ -35,6 +35,38 @@
   animation: var(--animate-spin);
 }
 
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Swiper 3Dカルーセル用のカスタムスタイル */
+.swiper-3d {
+  perspective: 1000px;
+}
+
+.swiper-slide {
+  transition-property: transform, opacity, z-index;
+}
+
+.swiper-slide-active {
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
+
+.swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.7 !important;
+  z-index: 1 !important;
+}
+
 @keyframes spin {
   to {
     transform: rotate(1turn);
@@ -111,5 +143,26 @@
 
   to {
     transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-fall {
+  animation: fall var(--fall-duration, 8s) var(--fall-delay, 0s) infinite linear;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-200px) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(1000px) rotate(360deg);
+    opacity: 0;
   }
 }

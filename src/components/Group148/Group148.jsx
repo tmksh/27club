@@ -13,7 +13,7 @@ export const Group148 = ({
 }) => {
   return (
     <div
-      className={`relative top-[1313px] left-[725px] w-[255px] h-[253px] flex ${className}`}
+      className={`relative w-[255px] h-[253px] flex ${className}`}
     >
       <img
         className={`mt-[-14.5px] w-[283.66px] h-[282px] ml-[-5.69%] mr-[5.69%] flex-1 aspect-[1.01] object-cover ${elementClassName}`}

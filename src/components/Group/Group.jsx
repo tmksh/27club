@@ -12,7 +12,7 @@ export const Group = ({
 }) => {
   return (
     <div
-      className={`relative top-[1341px] left-[1022px] w-[196px] h-[196px] ${className}`}
+      className={`relative w-[196px] h-[196px] ${className}`}
     >
       <img
         className="absolute w-[100.00%] top-[-11px] left-[-5.69%] h-[217px] aspect-[1.01] object-cover"

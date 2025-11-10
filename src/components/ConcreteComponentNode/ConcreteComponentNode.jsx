@@ -39,14 +39,15 @@ export const ConcreteComponentNode = ({
 }) => {
   return (
     <div
-      className={`relative top-[-5654px] left-[3326px] w-[1440px] h-[584px] flex flex-col gap-12 bg-black ${className}`}
+      className={`relative w-[1440px] h-[584px] flex flex-col gap-12 bg-black ${className}`}
     >
       <div className="ml-20 w-[1280px] mt-[145px] flex gap-[150px]">
         <div
           className={`flex w-[400px] h-[193.1px] relative flex-col items-start gap-8 ${leftSectionClassName}`}
         >
           <div className="inline-flex items-center gap-[25.19px] relative flex-[0_0_auto]">
-            <div
+            <Link
+              to="/"
               className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}
             >
               <img
@@ -54,7 +55,7 @@ export const ConcreteComponentNode = ({
                 alt="Element"
                 src="/img/27logo-1-1.png"
               />
-            </div>
+            </Link>
           </div>
 
           <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">

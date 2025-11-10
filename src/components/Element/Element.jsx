@@ -13,7 +13,7 @@ export const Element = ({
 }) => {
   return (
     <div
-      className={`relative top-[814px] left-[78px] w-[300px] h-[350px] ${className}`}
+      className={`relative w-[300px] h-[350px] ${className}`}
     >
       <img
         className={`absolute w-full h-full top-0 left-[-2.05%] object-cover ${elementClassName}`}

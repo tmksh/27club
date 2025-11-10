@@ -17,7 +17,7 @@ export const Group66 = ({
 }) => {
   return (
     <div
-      className={`relative top-[502px] left-[54px] w-[1138px] h-[164px] flex ${className}`}
+      className={`relative w-[1138px] h-[164px] flex ${className}`}
     >
       <div className={`flex-1 w-[1142px] relative ${groupClassName}`}>
         {hasDiv && (

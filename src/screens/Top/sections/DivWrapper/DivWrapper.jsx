@@ -13,10 +13,13 @@ export const DivWrapper = () => {
           ACCESS
         </div>
 
-        <img
-          className="absolute top-[291px] left-[126px] w-[1192px] h-[498px] aspect-[2.42]"
-          alt="Element"
-          src="/img/2025-08-18-1-14-57-1.png"
+        <iframe
+          className="absolute top-[291px] left-[126px] w-[1192px] h-[498px] border-0"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.5!2d139.702!3d35.693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQxJzM0LjgiTiAxMznCsDQyJzA3LjIiRQ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="店舗へのアクセス"
         />
 
         <p className="absolute top-[839px] left-[451px] w-[542px] [text-shadow:0px_4px_4px_#000000cc] [font-family:'Inter',Helvetica] font-normal text-white text-2xl text-center tracking-[0] leading-7">
@@ -27,11 +30,11 @@ export const DivWrapper = () => {
           東京メトロ丸ノ内線・副都心線「新宿三丁目駅」
           <br />
           <br />
-          〒160-0022
+          〒160-0021
           <br />
-          東京都新宿区歌舞伎町2-36-3
+          東京都新宿区歌舞伎町２丁目３６−３
           <br />
-          Acb会館ビル 3F
+          新宿Acb会館 3階
           <br />
           <br />
           ※入り口は大きな赤い階段が目印

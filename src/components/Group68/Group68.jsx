@@ -17,7 +17,7 @@ export const Group68 = ({
 }) => {
   return (
     <div
-      className={`relative top-[848px] left-[1414px] w-[1060px] flex ${className}`}
+      className={`relative w-[1060px] flex ${className}`}
     >
       {hasFrame && (
         <div

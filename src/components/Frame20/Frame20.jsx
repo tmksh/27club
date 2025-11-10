@@ -5,6 +5,7 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 
 import PropTypes from "prop-types";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Frame20 = ({
   className,
@@ -13,18 +14,18 @@ export const Frame20 = ({
 }) => {
   return (
     <div
-      className={`relative top-[-6401px] left-[-4329px] w-[1440px] h-[60px] flex bg-black ${className}`}
+      className={`relative w-[1440px] h-[60px] flex bg-black ${className}`}
     >
       <div
         className={`flex mt-2.5 w-[1344px] h-10 ml-12 relative items-center justify-between ${navigationClassName}`}
       >
-        <div className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
+        <Link to="/" className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
           <img
             className="relative w-[101px] h-[37px] aspect-[2.74] object-cover"
             alt="Element"
             src="/img/27logo-1-2.png"
           />
-        </div>
+        </Link>
 
         <div className="inline-flex items-center gap-4 relative flex-[0_0_auto]">
           <div className="relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">

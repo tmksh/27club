@@ -9,7 +9,7 @@ import { NavigationWrapper } from "./sections/NavigationWrapper";
 export const Screen = () => {
   return (
     <div
-      className="overflow-hidden bg-[url(/img/image.png)] bg-cover bg-[50%_50%] w-full min-w-[1440px] min-h-[2838px] flex flex-col"
+      className="overflow-hidden bg-[url(/img/27-background.png)] bg-repeat-y bg-[50%_0%] w-full min-w-[1440px] min-h-[2838px] flex flex-col"
       data-model-id="487:1261"
     >
       <NavigationWrapper />

@@ -17,7 +17,7 @@ export const MenuLink = ({
 }) => {
   return (
     <div
-      className={`flex w-[280px] h-[50px] items-center justify-center gap-2 relative top-[-2881px] left-[8434px] rounded-[25px] bg-[linear-gradient(225deg,rgba(184,134,11,1)_0%,rgba(218,165,32,1)_100%)] ${className}`}
+      className={`flex w-[280px] h-[50px] items-center justify-center gap-2 relative rounded-[25px] bg-[linear-gradient(225deg,rgba(184,134,11,1)_0%,rgba(218,165,32,1)_100%)] ${className}`}
     >
       <div className="relative w-5 h-5 border-0 border-none">
         <img

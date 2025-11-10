@@ -36,11 +36,11 @@ export const Footer5 = ({
         socialIcons={concreteComponentNodeSocialIcons}
         text={
           <>
-            〒160-0022
+            〒160-0021
             <br />
-            東京都新宿区歌舞伎町2-36-3
+            東京都新宿区歌舞伎町２丁目３６−３
             <br />
-            Acb会館ビル 3F
+            新宿Acb会館 3階
           </>
         }
         text1="キャスト"

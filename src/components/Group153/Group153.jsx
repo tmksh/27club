@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export const Group153 = ({ className, text = "キャスト一覧はこちら", to }) => {
   return (
     <Link
-      className={`relative top-[1886px] left-[1775px] w-[352px] h-[98px] flex ${className}`}
+      className={`relative w-[352px] h-[98px] flex ${className}`}
       to={to}
     >
       <div className="flex flex-1 w-[351.95px] relative h-[97.76px] items-center justify-center bg-[#025b51] rounded-[60px]">

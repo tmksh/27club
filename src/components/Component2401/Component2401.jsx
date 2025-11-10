@@ -8,7 +8,7 @@ import React from "react";
 export const Component2401 = ({ className, divClassName }) => {
   return (
     <div
-      className={`relative top-[3314px] left-[3728px] w-[65px] h-[70px] flex bg-[#fffbfb] ${className}`}
+      className={`relative w-[65px] h-[70px] flex bg-[#fffbfb] ${className}`}
     >
       <div
         className={`mt-[4.4px] w-[7px] h-[18px] ml-[7.9px] [font-family:'Inter',Helvetica] font-normal text-black text-[14.9px] tracking-[0] leading-[normal] ${divClassName}`}

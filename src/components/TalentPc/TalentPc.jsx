@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export const TalentPc = ({ className, s = "/img/s-16646146-0-2.png", to }) => {
   return (
     <Link
-      className={`relative top-[3259px] left-[187px] w-[292px] h-[367px] rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)] block ${className}`}
+      className={`relative w-[292px] h-[367px] rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)] block ${className}`}
       to={to}
     >
       <img

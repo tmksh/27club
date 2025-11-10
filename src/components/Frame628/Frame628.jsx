@@ -13,7 +13,7 @@ export const Frame628 = ({
 }) => {
   return (
     <div
-      className={`relative top-[2840px] left-[2868px] w-[530px] flex ${className}`}
+      className={`relative w-[530px] flex ${className}`}
     >
       <div
         className={`w-[530.0px] h-[195px] relative bg-[linear-gradient(180deg,rgba(34,48,47,1)_35%,rgba(0,214,189,1)_100%)] ${groupClassName}`}

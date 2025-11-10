@@ -13,14 +13,10 @@ export const Frame650 = ({
 }) => {
   return (
     <div
-      className={`inline-flex items-center gap-[5px] relative top-[2020px] left-[52px] ${className}`}
+      className={`relative w-full ${className}`}
     >
       <Group170
         className={group170GroupClassName}
-        frameClassName="!h-full !flex-[unset] !w-full"
-      />
-      <Group170
-        className={group170GroupClassNameOverride}
         frameClassName="!h-full !flex-[unset] !w-full"
       />
     </div>

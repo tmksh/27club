@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Carousel</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 基本的なリセットとスタイル */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #0a0a0a;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .carousel-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 2000px;
+      perspective-origin: center center;
+    }
+    
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+    
+    .carousel {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 600px;
+      transform-style: preserve-3d;
+      transform: translate(-50%, -50%);
+      cursor: grab;
+    }
+    
+    .carousel:active {
+      cursor: grabbing;
+    }
+    
+    .carousel-item {
+      position: absolute;
+      width: 400px;
+      height: 600px;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+    
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      user-select: none;
+      pointer-events: none;
+    }
+    
+    /* 中央のカードを大きく、明るく表示 */
+    .carousel-item.center {
+      transform: scale(1.1) !important;
+      opacity: 1 !important;
+      z-index: 10;
+    }
+    
+    /* 左右のカードを小さく、暗く */
+    .carousel-item.side {
+      opacity: 0.6;
+    }
+    
+    /* 奥のカードをさらに小さく、暗く */
+    .carousel-item.back {
+      opacity: 0.3;
+    }
+    
+    /* ローディング表示 */
+    .loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 18px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading" id="loading">読み込み中...</div>
+  <div class="carousel-container">
+    <div class="carousel-wrapper">
+      <div class="carousel" id="carousel">
+        <!-- 画像はJavaScriptで自動生成 -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/gsap.min.js"></script>
+  <script>
+    // GSAPが読み込まれるまで待つ
+    function waitForGSAP() {
+      return new Promise((resolve) => {
+        if (typeof gsap !== 'undefined') {
+          console.log('GSAPが読み込まれています');
+          resolve();
+        } else {
+          console.log('GSAPの読み込みを待っています...');
+          const checkInterval = setInterval(() => {
+            if (typeof gsap !== 'undefined') {
+              clearInterval(checkInterval);
+              console.log('GSAPが読み込まれました');
+              resolve();
+            }
+          }, 50);
+          
+          // タイムアウト（10秒）
+          setTimeout(() => {
+            clearInterval(checkInterval);
+            console.error('GSAPの読み込みがタイムアウトしました');
+            alert('GSAPライブラリの読み込みに失敗しました。js/gsap.min.jsが存在するか確認してください。');
+          }, 10000);
+        }
+      });
+    }
+
+    // assetsフォルダの画像を自動で読み込む
+    const imageCount = 72; // img1.webp から img72.webp まで
+    const images = [];
+
+    // 画像パスを生成
+    for (let i = 1; i <= imageCount; i++) {
+      images.push(`assets/img${i}.webp`);
+    }
+
+    console.log('画像パスを生成しました:', images.length, '枚');
+
+    // DOM要素の取得
+    let carousel;
+    let rotation = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startRotation = 0;
+
+    // ローディング表示を非表示にする
+    function hideLoading() {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        loading.style.display = 'none';
+      }
+    }
+
+    // カルーセルアイテムを作成
+    function createCarouselItems() {
+      console.log('カルーセルアイテムを作成中...');
+      const totalImages = images.length;
+      const angleStep = 360 / totalImages;
+      const radius = 600; // 円の半径（奥行き）
+
+      images.forEach((imageSrc, index) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item';
+        
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        img.alt = `Image ${index + 1}`;
+        img.loading = 'lazy';
+        img.onerror = function() {
+          console.warn('画像の読み込みに失敗しました:', imageSrc);
+        };
+        
+        item.appendChild(img);
+        carousel.appendChild(item);
+        
+        // 初期位置を円周上に配置
+        const angle = index * angleStep;
+        const angleRad = (angle * Math.PI) / 180;
+        const x = Math.sin(angleRad) * radius;
+        const z = Math.cos(angleRad) * radius;
+        
+        // GSAPで初期位置を設定
+        if (typeof gsap !== 'undefined') {
+          gsap.set(item, {
+            x: x,
+            z: z,
+            rotationY: angle,
+            transformOrigin: 'center center',
+          });
+        } else {
+          // GSAPがない場合のフォールバック
+          item.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${angle}deg)`;
+        }
+      });
+      
+      console.log('カルーセルアイテムの作成が完了しました');
+    }
+
+    // カルーセルを回転させる関数
+    function updateCarousel() {
+      if (!carousel) {
+        console.error('カルーセル要素が見つかりません');
+        return;
+      }
+      
+      const totalImages = images.length;
+      const angleStep = 360 / totalImages;
+      const radius = 600;
+      
+      const items = carousel.querySelectorAll('.carousel-item');
+      
+      if (items.length === 0) {
+        console.warn('カルーセルアイテムがありません');
+        return;
+      }
+      
+      items.forEach((item, index) => {
+        const baseAngle = index * angleStep;
+        const currentAngle = (baseAngle + rotation) % 360;
+        const angleRad = (currentAngle * Math.PI) / 180;
+        
+        // 3D位置を計算
+        const x = Math.sin(angleRad) * radius;
+        const z = Math.cos(angleRad) * radius;
+        
+        // 中央からの角度距離を計算（0-180度）
+        let normalizedAngle = Math.abs(currentAngle);
+        if (normalizedAngle > 180) {
+          normalizedAngle = 360 - normalizedAngle;
+        }
+        
+        // 中央に近いほど大きく、明るく
+        const distanceFromCenter = normalizedAngle / 180;
+        const scale = 1.0 - (distanceFromCenter * 0.4); // 1.0 (中央) to 0.6 (端)
+        const opacity = 1.0 - (distanceFromCenter * 0.7); // 1.0 (中央) to 0.3 (端)
+        
+        // クラスを更新
+        item.classList.remove('center', 'side', 'back');
+        if (normalizedAngle < 30) {
+          item.classList.add('center');
+        } else if (normalizedAngle < 90) {
+          item.classList.add('side');
+        } else {
+          item.classList.add('back');
+        }
+        
+        // GSAPでアニメーション
+        if (typeof gsap !== 'undefined') {
+          gsap.to(item, {
+            x: x,
+            z: z,
+            rotationY: currentAngle,
+            scale: scale,
+            opacity: Math.max(opacity, 0.3),
+            duration: 0.6,
+            ease: 'power2.out',
+          });
+        } else {
+          // GSAPがない場合のフォールバック
+          item.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${currentAngle}deg) scale(${scale})`;
+          item.style.opacity = Math.max(opacity, 0.3);
+        }
+      });
+    }
+
+    // マウスドラッグイベント
+    function setupDragEvents() {
+      if (!carousel) {
+        console.error('カルーセル要素が見つかりません（ドラッグイベント）');
+        return;
+      }
+      
+      console.log('ドラッグイベントを設定中...');
+      
+      carousel.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startRotation = rotation;
+        carousel.style.cursor = 'grabbing';
+        e.preventDefault();
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        
+        const deltaX = e.clientX - startX;
+        const sensitivity = 0.5; // 回転の感度
+        rotation = startRotation + deltaX * sensitivity;
+        
+        updateCarousel();
+      });
+
+      document.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          if (carousel) {
+            carousel.style.cursor = 'grab';
+          }
+        }
+      });
+
+      // タッチイベント（モバイル対応）
+      carousel.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        startRotation = rotation;
+        e.preventDefault();
+      });
+
+      document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        const deltaX = e.touches[0].clientX - startX;
+        const sensitivity = 0.5;
+        rotation = startRotation + deltaX * sensitivity;
+        
+        updateCarousel();
+        e.preventDefault();
+      });
+
+      document.addEventListener('touchend', () => {
+        isDragging = false;
+      });
+      
+      console.log('ドラッグイベントの設定が完了しました');
+    }
+
+    // 画像の読み込み完了を待つ
+    function initCarousel() {
+      console.log('カルーセルの初期化を開始...');
+      
+      carousel = document.getElementById('carousel');
+      
+      if (!carousel) {
+        console.error('カルーセル要素が見つかりません。ID="carousel"の要素が存在するか確認してください。');
+        hideLoading();
+        return;
+      }
+      
+      console.log('カルーセル要素が見つかりました');
+      
+      const imagePromises = images.map((src) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            resolve();
+          };
+          img.onerror = () => {
+            console.warn('画像の読み込みに失敗:', src);
+            resolve(); // エラーでも続行
+          };
+          img.src = src;
+        });
+      });
+      
+      Promise.all(imagePromises).then(() => {
+        console.log('画像の読み込みが完了しました');
+        createCarouselItems();
+        setupDragEvents();
+        updateCarousel();
+        
+        // 初期表示で中央のカードを前面に
+        const totalImages = images.length;
+        const targetIndex = 0; // 最初の画像を中央に
+        rotation = -targetIndex * (360 / totalImages);
+        updateCarousel();
+        
+        hideLoading();
+        console.log('カルーセルの初期化が完了しました');
+      });
+    }
+
+    // 初期化
+    console.log('初期化処理を開始...');
+
+    waitForGSAP().then(() => {
+      console.log('GSAPの読み込み完了、DOMの準備を待っています...');
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          console.log('DOMContentLoadedイベントが発火しました');
+          initCarousel();
+        });
+      } else {
+        console.log('DOMは既に読み込まれています');
+        initCarousel();
+      }
+    }).catch((error) => {
+      console.error('初期化エラー:', error);
+      hideLoading();
+      alert('初期化中にエラーが発生しました。ブラウザのコンソールを確認してください。');
+    });
+
+    // ウィンドウリサイズ時の処理
+    window.addEventListener('resize', () => {
+      updateCarousel();
+    });
+  </script>
+</body>
+</html>

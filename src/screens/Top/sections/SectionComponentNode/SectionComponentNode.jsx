@@ -3,9 +3,9 @@ import { Element } from "../../../../components/Element";
 
 export const SectionComponentNode = () => {
   return (
-    <div className="relative self-stretch w-full h-[1475px]">
-      <div className="relative left-[-326px] w-[3195px] h-[1475px]">
-        <div className="flex w-[2831px] items-start gap-[60px] absolute top-[297px] left-[356px]">
+    <div className="relative self-stretch w-full h-[1475px] overflow-hidden">
+      <div className="relative w-full h-[1475px] flex flex-col items-center">
+        <div className="flex w-full max-w-[1440px] items-start gap-[60px] justify-center px-4 absolute top-[297px] left-0 right-0">
           <div className="flex items-center gap-[60px] relative flex-1 grow">
             <div className="flex items-start gap-2.5 relative flex-1 grow">
               <div className="flex items-center gap-[60px] relative flex-1 grow">
@@ -55,7 +55,7 @@ export const SectionComponentNode = () => {
           </div>
         </div>
 
-        <div className="flex w-[2831px] items-start gap-[60px] absolute top-[711px] left-0">
+        <div className="flex w-full max-w-[1440px] items-start gap-[60px] justify-center px-4 absolute top-[711px] left-0 right-0">
           <div className="flex items-center gap-[60px] relative flex-1 grow">
             <div className="inline-flex items-center gap-[60px] relative flex-[0_0_auto]">
               <Element
@@ -101,7 +101,7 @@ export const SectionComponentNode = () => {
           </div>
         </div>
 
-        <div className="flex w-[2831px] items-start justify-center gap-[60px] absolute top-[1125px] left-[360px]">
+        <div className="flex w-full max-w-[1440px] items-start justify-center gap-[60px] px-4 absolute top-[1125px] left-0 right-0">
           <div className="flex items-center gap-[60px] relative flex-1 grow">
             <div className="flex items-center gap-[60px] relative flex-1 grow">
               <Element
@@ -147,11 +147,11 @@ export const SectionComponentNode = () => {
           </div>
         </div>
 
-        <div className="absolute top-[116px] left-[910px] [text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
+        <div className="absolute top-[116px] left-1/2 -translate-x-1/2 [text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
           GALLERY
         </div>
 
-        <div className="absolute top-0 left-[326px] w-[1440px] [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal]">
+        <div className="absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-center">
           ギャラリー
         </div>
       </div>
