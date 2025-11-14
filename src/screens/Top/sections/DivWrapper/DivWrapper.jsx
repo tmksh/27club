@@ -2,15 +2,62 @@ import React from "react";
 import { Group153 } from "../../../../components/Group153";
 
 export const DivWrapper = () => {
+  // チップ装飾用のデータ
+  const chips = [
+    { img: '/img/3-1.png', w: 244, h: 142 },
+    { img: '/img/1.png', w: 303, h: 73 },
+    { img: '/img/1-2.png', w: 279, h: 95 },
+    { img: '/img/3-2.png', w: 220, h: 90 },
+    { img: '/img/5-1.png', w: 99, h: 171 },
+    { img: '/img/4-1.png', w: 118, h: 145 },
+    { img: '/img/4-2.png', w: 82, h: 142 },
+    { img: '/img/2.png', w: 220, h: 114 },
+    { img: '/img/2-2.png', w: 105, h: 106 },
+  ];
+
   return (
     <div className="relative self-stretch w-full h-[1245.76px]">
       <div className="relative w-[1444px] h-[1246px]">
-        <div className="absolute top-0 left-0 w-[1438px] [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-right tracking-[0] leading-[normal]">
+        {/* チップの模様（カタカナテキストの方に向けて右側に集約） */}
+        {Array.from({ length: 25 }, (_, i) => {
+          const chip = chips[i % chips.length];
+          // 右側に集約するため、左側の位置を右寄せに調整
+          // 1440pxの幅のうち、右側の60%に集中させる
+          const baseLeft = 1440 * 0.4; // 左側40%から開始
+          const randomOffset = Math.random() * (1440 * 0.6 - chip.w * 0.6); // 右側60%の範囲内でランダム
+          const left = baseLeft + randomOffset;
+          const top = (Math.floor(i / 8) * 200) + (i % 6) * 100;
+          
+          return (
+            <div
+              key={`chip-pattern-${i}`}
+              className="absolute pointer-events-none"
+              style={{
+                left: `${left}px`,
+                top: `${top}px`,
+                width: `${chip.w * 0.6}px`,
+                height: `${chip.h * 0.6}px`,
+                backgroundImage: `url(${chip.img})`,
+                backgroundSize: 'cover',
+                backgroundPosition: '50% 50%',
+                opacity: 0.08,
+                transform: `rotate(${(i % 3) * 15 - 15}deg)`,
+                zIndex: 1,
+              }}
+            />
+          );
+        })}
+        <div className="absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-right tracking-[0] leading-[normal]">
           店舗へのアクセス
         </div>
 
-        <div className="top-[116px] left-[594px] [text-shadow:0px_4px_15px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] text-white text-[64px] text-center absolute font-normal tracking-[0] leading-[normal]">
-          ACCESS
+        <div className="absolute top-[116px] left-0 right-0 flex flex-col items-center gap-3">
+          <div className="[text-shadow:0px_4px_15px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] text-white text-[64px] text-center font-normal tracking-[0] leading-[normal]">
+            ACCESS
+          </div>
+          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
+            新宿駅・新宿三丁目駅から徒歩圏内。大きな赤い階段が目印です。お気軽にお越しください。
+          </div>
         </div>
 
         <iframe

@@ -8,15 +8,25 @@ import { Screen7 } from "./screens/Screen7";
 import { ScreenScreen } from "./screens/ScreenScreen";
 import { ScreenWrapper } from "./screens/ScreenWrapper";
 import { Top } from "./screens/Top";
+import { AdminLogin } from "./screens/Admin/AdminLogin";
+import { AdminDashboard } from "./screens/Admin/AdminDashboard";
 
 const router = createBrowserRouter([
   {
-    path: "/*",
+    path: "/",
     element: <Top />,
   },
   {
     path: "/top",
     element: <Top />,
+  },
+  {
+    path: "/admin/login",
+    element: <AdminLogin />,
+  },
+  {
+    path: "/admin/dashboard",
+    element: <AdminDashboard />,
   },
   {
     path: "/frame-695",

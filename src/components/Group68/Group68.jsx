@@ -14,6 +14,9 @@ export const Group68 = ({
   divClassName,
   text1 = "高橋 進",
   hasFrame = true,
+  value,
+  onChange,
+  placeholder,
 }) => {
   return (
     <div
@@ -44,11 +47,13 @@ export const Group68 = ({
 
             <div className="w-[99.81%] h-full top-0 bg-white border border-solid border-[#414141] absolute left-0 rounded-[3px]" />
 
-            <div
-              className={`absolute w-[5.56%] h-[80.00%] top-[10.00%] left-0 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#727272] text-lg tracking-[0] leading-10 whitespace-nowrap ${divClassName}`}
-            >
-              {text1}
-            </div>
+            <input
+              type="text"
+              value={value !== undefined ? value : text1}
+              onChange={onChange}
+              placeholder={placeholder}
+              className={`absolute w-[99.81%] h-[80.00%] top-[10.00%] left-[1.00%] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#727272] text-lg tracking-[0] leading-10 bg-transparent border-0 outline-none px-2 ${divClassName}`}
+            />
           </div>
         </div>
       )}

@@ -10,7 +10,15 @@ export const Group81 = ({
   className,
   text = "お問合せ内容",
   groupClassName,
+  value,
+  onChange,
 }) => {
+  const options = [
+    { id: "work", label: "撮影・取材・コラボなどのお仕事に関するお問い合わせ" },
+    { id: "reservation", label: "ご利用・ご予約に関するお問い合わせ" },
+    { id: "other", label: "その他のお問い合わせ" },
+  ];
+
   return (
     <div className={`relative w-[1060px] h-20 ${className}`}>
       <div className="inline-flex items-center gap-[18px] absolute top-[calc(50.00%_-_40px)] left-[calc(50.00%_-_530px)]">
@@ -34,31 +42,95 @@ export const Group81 = ({
       </div>
 
       <div className="inline-flex flex-col items-start justify-center gap-1.5 absolute h-[175.39%] top-[46.46%] left-[calc(50.00%_-_530px)]">
-        <div className="relative w-[487.58px] h-[42.51px] mr-[-2.00px]">
-          <div className="absolute w-[92.21%] h-[100.00%] top-0 left-[7.38%] text-white leading-[65.4px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap">
-            撮影・取材・コラボなどのお仕事に関するお問い合わせ
+        <label 
+          className="relative w-[487.58px] h-[42.51px] mr-[-2.00px] cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            if (onChange) onChange("work");
+          }}
+        >
+          <input
+            type="radio"
+            name="inquiryType"
+            value="work"
+            checked={value === "work"}
+            onChange={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (onChange) onChange("work");
+            }}
+            className="absolute w-full h-full top-0 left-0 opacity-0 cursor-pointer z-10"
+          />
+          <div className="absolute w-[92.21%] h-[100.00%] top-0 left-[7.38%] text-white leading-[65.4px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap pointer-events-none">
+            {options[0].label}
           </div>
+          <div
+            className={`absolute w-[5.37%] h-[61.54%] top-[42.31%] left-0 rounded-[13.08px] border-[1.63px] border-solid border-[#06baa5] pointer-events-none ${
+              value === "work" ? "bg-[#06baa5]" : "bg-white"
+            }`}
+          />
+          {value === "work" && (
+            <div className="absolute w-[2.01%] h-[23.08%] top-[61.54%] left-0 rounded-[4.9px] bg-[#06baa5] pointer-events-none" />
+          )}
+        </label>
 
-          <div className="absolute w-[5.37%] h-[61.54%] top-[42.31%] left-0 rounded-[13.08px] border-[1.63px] border-solid border-[#06baa5] bg-[linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]" />
-
-          <div className="absolute w-[2.01%] h-[23.08%] top-[61.54%] left-0 rounded-[4.9px] bg-[linear-gradient(0deg,rgba(6,186,165,1)_0%,rgba(6,186,165,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]" />
-        </div>
-
-        <div className="relative w-[346.98px] h-[42.51px]">
-          <div className="absolute w-[89.06%] h-[100.00%] top-0 left-[10.37%] text-white leading-[65.4px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap">
-            ご利用・ご予約に関するお問い合わせ
+        <label 
+          className="relative w-[346.98px] h-[42.51px] cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            if (onChange) onChange("reservation");
+          }}
+        >
+          <input
+            type="radio"
+            name="inquiryType"
+            value="reservation"
+            checked={value === "reservation"}
+            onChange={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (onChange) onChange("reservation");
+            }}
+            className="absolute w-full h-full top-0 left-0 opacity-0 cursor-pointer z-10"
+          />
+          <div className="absolute w-[89.06%] h-[100.00%] top-0 left-[10.37%] text-white leading-[65.4px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap pointer-events-none">
+            {options[1].label}
           </div>
+          <div
+            className={`absolute w-[6.60%] h-[53.85%] top-[46.15%] left-0 rounded-[11.44px] border-[1.63px] border-solid border-[#06baa5] pointer-events-none ${
+              value === "reservation" ? "bg-[#06baa5]" : "bg-white"
+            }`}
+          />
+        </label>
 
-          <div className="absolute w-[6.60%] h-[53.85%] top-[46.15%] left-0 rounded-[11.44px] bg-[linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]" />
-        </div>
-
-        <div className="relative w-[219.45px] h-[42.51px]">
-          <div className="absolute w-[82.70%] h-[100.00%] top-0 left-[16.39%] text-white leading-[65.4px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap">
-            その他のお問い合わせ
+        <label 
+          className="relative w-[219.45px] h-[42.51px] cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            if (onChange) onChange("other");
+          }}
+        >
+          <input
+            type="radio"
+            name="inquiryType"
+            value="other"
+            checked={value === "other"}
+            onChange={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (onChange) onChange("other");
+            }}
+            className="absolute w-full h-full top-0 left-0 opacity-0 cursor-pointer z-10"
+          />
+          <div className="absolute w-[82.70%] h-[100.00%] top-0 left-[16.39%] text-white leading-[65.4px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap pointer-events-none">
+            {options[2].label}
           </div>
-
-          <div className="absolute w-[10.43%] h-[53.85%] top-[46.15%] left-0 rounded-[11.44px] bg-[linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]" />
-        </div>
+          <div
+            className={`absolute w-[10.43%] h-[53.85%] top-[46.15%] left-0 rounded-[11.44px] border-[1.63px] border-solid border-[#06baa5] pointer-events-none ${
+              value === "other" ? "bg-[#06baa5]" : "bg-white"
+            }`}
+          />
+        </label>
       </div>
     </div>
   );

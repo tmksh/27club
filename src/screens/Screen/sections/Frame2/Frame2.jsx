@@ -178,25 +178,9 @@ export const Frame2 = () => {
                 </div>
               </div>
 
-              <div className="inline-flex gap-[15.63px] flex-[0_0_auto] items-center relative">
-                <div className="flex w-[130.26px] gap-[5.21px] items-center relative">
-                  <div className="relative w-fit mr-[-99.74px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px] whitespace-nowrap">
-                    ◽初めての方も、まずは
-                  </div>
-
-                  <div className="relative w-fit mr-[-314.95px] [font-family:'Noto_Serif_JP',Helvetica] font-medium text-[#f1fda2] text-[20.8px] tracking-[0] leading-[25.0px] whitespace-nowrap">
-                    10枚セットから気軽に
-                  </div>
-
-                  <p className="relative w-fit mr-[-529.16px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px] whitespace-nowrap">
-                    <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px]">
-                      お試しいただけます
-                    </span>
-
-                    <span className="[font-family:'Noto_Sans_JP',Helvetica]">
-                      ✨
-                    </span>
-                  </p>
+              <div className="inline-flex items-start gap-[15.63px] relative flex-[0_0_auto]">
+                <div className="relative w-fit [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px]">
+                  ◽初めての方は、まずは<span className="text-[#f1fda2]">こちら✨から気軽に</span>
                 </div>
               </div>
             </div>

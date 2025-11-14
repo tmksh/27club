@@ -20,13 +20,97 @@ export const Top = () => {
   }, [location.pathname]);
   return (
     <div
-      className="flex flex-col items-center relative overflow-hidden bg-[url(/img/27-background.png)] bg-repeat-y bg-[50%_0%]"
+      className="flex flex-col items-center relative overflow-hidden"
       data-model-id="385:1682"
+      style={{
+        backgroundImage: 'url(/img/27-background.png)',
+        backgroundRepeat: 'repeat-y',
+        backgroundPosition: '50% 0%',
+        backgroundSize: 'auto',
+      }}
     >
+      {/* 暗いグラデーションオーバーレイ（ナイトクラブの雰囲気） */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(5, 10, 15, 0.50) 25%, rgba(0, 5, 10, 0.48) 50%, rgba(5, 10, 15, 0.50) 75%, rgba(0, 0, 0, 0.45) 100%)',
+          zIndex: 0,
+        }}
+      />
+      
+      {/* 黒いぼかしエフェクト（ところどころに配置） */}
+      {Array.from({ length: 15 }, (_, i) => {
+        const left = (i * 95 + (i % 4) * 120) % (1440 - 250);
+        const top = (Math.floor(i / 5) * 400 + (i % 6) * 180);
+        const size = 180 + (i % 4) * 120;
+        const opacity = 0.2 + (i % 3) * 0.1;
+        
+        return (
+          <div
+            key={`blur-shadow-${i}`}
+            className="absolute pointer-events-none"
+            style={{
+              left: `${left}px`,
+              top: `${top}px`,
+              width: `${size}px`,
+              height: `${size}px`,
+              background: `radial-gradient(circle, rgba(0, 0, 0, ${opacity}) 0%, rgba(0, 0, 0, ${opacity * 0.6}) 40%, transparent 70%)`,
+              filter: 'blur(25px)',
+              borderRadius: '50%',
+              zIndex: 1,
+            }}
+          />
+        );
+      })}
+      
+      {/* 微細な光の粒子エフェクト（ティール/シアン系 - ナイトクラブの雰囲気） */}
+      {Array.from({ length: 20 }, (_, i) => {
+        const left = (i * 72 + (i % 7) * 95) % (1440 - 8);
+        const top = (Math.floor(i / 8) * 350 + (i % 9) * 120);
+        const size = 3 + (i % 3) * 2;
+        const opacity = 0.15 + (i % 4) * 0.1;
+        const glowSize = size * 8;
+        
+        return (
+          <div
+            key={`light-particle-${i}`}
+            className="absolute pointer-events-none"
+            style={{
+              left: `${left}px`,
+              top: `${top}px`,
+              width: `${size}px`,
+              height: `${size}px`,
+              background: `radial-gradient(circle, rgba(0, 214, 189, ${opacity}) 0%, rgba(0, 214, 189, ${opacity * 0.5}) 50%, transparent 100%)`,
+              boxShadow: `0 0 ${glowSize}px rgba(0, 214, 189, ${opacity * 0.6})`,
+              borderRadius: '50%',
+              zIndex: 1,
+            }}
+          />
+        );
+      })}
+      
+      {/* 微細なティールのグロー（全体に控えめに） */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 80% 50% at 50% 30%, rgba(0, 214, 189, 0.08) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 50% 70%, rgba(0, 150, 200, 0.06) 0%, transparent 50%)',
+          zIndex: 1,
+        }}
+      />
+      
             {/* FVセクション */}
-            <div className="relative w-[1440px] h-[856px] bg-[url(/img/rectangle-214.png)] bg-[100%_100%] overflow-hidden">
+            <div className="relative w-[1440px] h-[672px] overflow-hidden z-10">
+              {/* 背景画像 */}
+              <div 
+                className="absolute top-0 left-0 w-full h-full bg-[url(/img/rectangle-214.png)] bg-cover bg-center"
+                style={{
+                  backgroundPosition: 'center top',
+                  backgroundSize: 'cover',
+                  zIndex: 0,
+                }}
+              />
         {/* ナビゲーション */}
-        <div className="absolute top-0 left-px w-[1439px] h-[60px] flex">
+        <div className="absolute top-0 left-px w-[1439px] h-[60px] flex z-20">
           <div className="flex mt-2.5 w-[1344px] h-10 ml-12 relative items-center justify-between">
             <Link to="/" className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
               <img
@@ -99,7 +183,7 @@ export const Top = () => {
             return (
               <div
                 key={`${animationKey}-${i}`}
-                className="absolute top-0 animate-fall pointer-events-none"
+                className="absolute top-0 animate-fall pointer-events-none z-10"
                 style={{
                   left: `${left}px`,
                   width: `${chip.w}px`,
@@ -107,6 +191,7 @@ export const Top = () => {
                   backgroundImage: `url(${chip.img})`,
                   backgroundSize: 'cover',
                   backgroundPosition: '50% 50%',
+                  filter: 'hue-rotate(140deg) saturate(1.2) brightness(0.9)',
                   '--fall-duration': `${duration}s`,
                   '--fall-delay': `${delay}s`,
                 }}
@@ -116,7 +201,7 @@ export const Top = () => {
         })()}
 
         {/* メインテキスト */}
-        <div className="absolute top-[217px] left-[111px] w-[1212px] h-[422px] flex flex-col">
+        <div className="absolute top-[100px] left-[111px] w-[1212px] h-[422px] flex flex-col z-20">
           <div className="ml-[217px] w-[776px] h-[92px] -mt-px [text-shadow:0px_0px_4px_#1f697b] [-webkit-text-stroke:1px_#1f697b80] [font-family:'Freehand',Helvetica] font-normal text-white text-[64.3px] text-center tracking-[0] leading-[91.8px] whitespace-nowrap">
             Welcome to Tonight's SHOWTIME
           </div>
@@ -133,25 +218,27 @@ export const Top = () => {
         </div>
 
         {/* フッターナビゲーション */}
-        <div className="absolute w-[1440px] h-[72px] left-px top-[792px]">
-          <div className="absolute w-full h-[83.33%] top-[8.33%] left-0 bg-black" />
-          <div className="inline-flex items-center gap-[18px] absolute top-0 left-[366px]">
-            <Link to="/u12465u12441u12473u12488u27969u12428" className="w-[106px] ml-[-1.00px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+        <div className="absolute w-[1440px] h-[72px] left-0 top-[600px] z-20 flex items-center justify-center">
+          {/* 背景 - 黒で上下に背景画像が見えるように */}
+          <div className="absolute inset-0 bg-black" />
+          {/* メニュー項目 - 中央揃え */}
+          <div className="relative inline-flex items-center gap-[18px]">
+            <Link to="/u12465u12441u12473u12488u27969u12428" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               ゲストの流れ
             </Link>
-            <Link to="/u12481u12483u12501u12442u12395u12388u12356u12390" className="w-[122px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u12481u12483u12501u12442u12395u12388u12356u12390" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               チップについて
             </Link>
-            <Link to="/u12461u12515u12473u12488" className="w-[69px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u12461u12515u12473u12488" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               キャスト
             </Link>
-            <Link to="/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531" className="w-[142px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               パーティープラン
             </Link>
-            <Link to="/u27714u20154" className="w-[72px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u27714u20154" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               求人募集
             </Link>
-            <Link to="/u12467u12531u12479u12463u12488" className="w-[107px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u12467u12531u12479u12463u12488" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               お問い合わせ
             </Link>
           </div>
@@ -159,7 +246,7 @@ export const Top = () => {
       </div>
 
       {/* 既存のセクション */}
-      <div className="flex flex-col items-center gap-[175px] w-full">
+      <div className="flex flex-col items-center gap-[80px] w-full relative z-10">
         <HeroSection />
         <Frame />
         <GroupWrapper />

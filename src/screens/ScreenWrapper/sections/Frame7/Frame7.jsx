@@ -2,18 +2,18 @@ import React from "react";
 
 export const Frame7 = () => {
   return (
-    <div className="relative w-[1257px] h-[2067px]">
-      <div className="h-[2067px] flex flex-col gap-[109px]">
-        <div className="w-[1257px] h-[39px] flex-col gap-12 flex relative items-start">
+    <div className="relative w-full max-w-[1440px] h-[2067px] mx-auto">
+      <div className="h-[2067px] flex flex-col gap-[60px]">
+        <div className="w-full h-[39px] flex-col gap-12 flex relative items-center">
           <div className="self-stretch [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-5xl text-center leading-[38.4px] relative tracking-[0]">
             料金プラン
           </div>
         </div>
 
-        <div className="flex ml-[55.5px] w-[1146px] h-[1919px] relative flex-col items-start gap-[85px]">
-          <div className="flex flex-col items-start gap-[106px] relative self-stretch w-full flex-[0_0_auto]">
-            <div className="justify-center gap-8 self-stretch w-full flex-[0_0_auto] flex relative items-start">
-              <div className="flex flex-col w-[360px] items-start relative bg-[#1a1a1a] rounded-2xl border border-solid border-[#333333]">
+        <div className="flex w-full max-w-[1200px] h-[1919px] relative flex-col items-center gap-[60px] mx-auto px-4">
+          <div className="flex flex-col items-center gap-[60px] relative self-stretch w-full flex-[0_0_auto]">
+            <div className="justify-center gap-6 self-stretch w-full flex-[0_0_auto] flex relative items-start flex-wrap">
+              <div className="flex flex-col w-full max-w-[360px] flex-1 items-start relative bg-[#1a1a1a] rounded-2xl border border-solid border-[#333333] overflow-hidden">
                 <div className="h-[100px] items-center justify-center p-6 bg-[linear-gradient(90deg,rgba(51,51,51,1)_0%,rgba(153,153,153,1)_100%)] flex flex-col relative self-stretch w-full">
                   <div className="w-fit [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl leading-6 whitespace-nowrap relative tracking-[0]">
                     ベーシックプラン
@@ -93,14 +93,14 @@ export const Frame7 = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col w-[360px] items-start relative bg-[#1a1a1a] rounded-2xl border border-solid border-white">
+              <div className="flex flex-col w-full max-w-[360px] flex-1 items-start relative bg-[#1a1a1a] rounded-2xl border border-solid border-white overflow-hidden">
                 <div className="bg-[linear-gradient(270deg,rgba(255,255,255,1)_4%,rgba(204,204,204,1)_70%,rgba(153,153,153,1)_100%)] flex flex-col h-[100px] items-center justify-center p-6 relative self-stretch w-full">
                   <div className="w-fit [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#182321] text-xl leading-6 whitespace-nowrap relative tracking-[0]">
                     スタンダードプラン
                   </div>
                 </div>
 
-                <div className="inline-flex items-center justify-center px-3 py-1 absolute top-6 left-[280px] bg-[#ff6b6b] rounded-xl">
+                <div className="inline-flex items-center justify-center px-3 py-1 absolute top-6 right-4 bg-[#ff6b6b] rounded-xl">
                   <div className="w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-xs leading-[14.4px] whitespace-nowrap relative tracking-[0]">
                     人気
                   </div>
@@ -179,7 +179,7 @@ export const Frame7 = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col w-[360px] items-start relative bg-[#1a1a1a] rounded-2xl border border-solid border-[#faf9b0]">
+              <div className="flex flex-col w-full max-w-[360px] flex-1 items-start relative bg-[#1a1a1a] rounded-2xl border border-solid border-[#faf9b0] overflow-hidden">
                 <div className="bg-[linear-gradient(270deg,rgba(255,255,252,1)_0%,rgba(234,241,185,1)_31%,rgba(255,252,174,1)_100%)] flex flex-col h-[100px] items-center justify-center p-6 relative self-stretch w-full">
                   <div className="w-fit [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#182321] text-xl leading-6 whitespace-nowrap relative tracking-[0]">
                     プレミアムプラン

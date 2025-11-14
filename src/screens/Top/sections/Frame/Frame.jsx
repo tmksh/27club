@@ -1,266 +1,198 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Component2401 } from "../../../../components/Component2401";
 import { Frame628 } from "../../../../components/Frame628";
+import { eventsAPI } from "../../../../lib/supabase";
 
 export const Frame = () => {
+  const [hoveredDate, setHoveredDate] = useState(null);
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadEvents = async () => {
+      try {
+        const data = await eventsAPI.getAll();
+        setEvents(data);
+      } catch (error) {
+        console.error('イベントの取得に失敗しました:', error);
+        // エラー時は空配列を設定
+        setEvents([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadEvents();
+  }, []);
+
+  // チップ装飾用のデータ
+  const chips = [
+    { img: '/img/3-1.png', w: 244, h: 142 },
+    { img: '/img/1.png', w: 303, h: 73 },
+    { img: '/img/1-2.png', w: 279, h: 95 },
+    { img: '/img/3-2.png', w: 220, h: 90 },
+    { img: '/img/5-1.png', w: 99, h: 171 },
+    { img: '/img/4-1.png', w: 118, h: 145 },
+    { img: '/img/4-2.png', w: 82, h: 142 },
+    { img: '/img/2.png', w: 220, h: 114 },
+    { img: '/img/2-2.png', w: 105, h: 106 },
+  ];
+
+  // 8月2025年のカレンダー生成
+  const generateCalendarDates = () => {
+    const dates = [];
+    // 8月1日2025年の実際の曜日を計算
+    const firstDay = new Date(2025, 7, 1); // 月は0から始まるので7=8月
+    const firstDayOfWeek = firstDay.getDay(); // 0=日曜日, 1=月曜日, ..., 6=土曜日
+    const daysInMonth = 31;
+    
+    // 最初の週の空白セル
+    for (let i = 0; i < firstDayOfWeek; i++) {
+      dates.push(null);
+    }
+    
+    // 日付を追加
+    for (let day = 1; day <= daysInMonth; day++) {
+      dates.push(day);
+    }
+    
+    return dates;
+  };
+
+  const calendarDates = generateCalendarDates();
+
   return (
-    <div className="relative self-stretch w-full h-[994px]">
-      <div className="absolute top-0 left-0 w-[1437px] [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal]">
+    <div className="relative self-stretch w-full h-[994px] overflow-hidden">
+      {/* チップの模様（フッターと同様） */}
+      {Array.from({ length: 20 }, (_, i) => {
+        const chip = chips[i % chips.length];
+        const left = (i * 72) % (1440 - chip.w * 0.6);
+        const top = (Math.floor(i / 8) * 200) + (i % 5) * 80;
+        
+        return (
+          <div
+            key={`chip-pattern-${i}`}
+            className="absolute pointer-events-none"
+            style={{
+              left: `${left}px`,
+              top: `${top}px`,
+              width: `${chip.w * 0.6}px`,
+              height: `${chip.h * 0.6}px`,
+              backgroundImage: `url(${chip.img})`,
+              backgroundSize: 'cover',
+              backgroundPosition: '50% 50%',
+              opacity: 0.08,
+              transform: `rotate(${(i % 3) * 15 - 15}deg)`,
+              zIndex: 0,
+            }}
+          />
+        );
+      })}
+      
+      <div className="absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-left z-10">
         イベントスケジュール
       </div>
 
-      <div className="absolute top-[116px] left-[473px] [text-shadow:0px_4.28px_10.69px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-[64px] tracking-[6.40px] leading-[77px] whitespace-nowrap">
-        Event Schedule
+      <div className="absolute top-[116px] left-0 right-0 flex flex-col items-center gap-3">
+        <div className="[text-shadow:0px_4.28px_10.69px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-[64px] tracking-[6.40px] leading-[77px] whitespace-nowrap">
+          Event Schedule
+        </div>
+        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4 whitespace-nowrap">
+          毎週開催される多彩なイベントをご確認いただけます。お気に入りのイベントを見つけて、予約してください。
+        </div>
       </div>
 
-      <img
-        className="absolute top-[329px] left-[1352px] w-[11px] h-[637px]"
-        alt="Line"
-        src="/img/line-35.svg"
-      />
 
-      <div className="absolute w-[525px] h-[700px] top-[294px] left-[147px]">
-        <div className="absolute w-[525px] h-[700px] top-0 left-0 flex">
-          <div className="w-[525px] flex">
-            <div className="w-[525px] h-[700px] relative bg-white border border-solid shadow-[0px_0px_4px_5px_#ffffff80]">
-              <img
-                className="absolute top-0 left-0 w-[525px] h-[700px] aspect-[1]"
-                alt="S"
-                src="/img/s-18710556-1.png"
-              />
-
-              <div className="inline-flex items-center gap-[2.62px] absolute top-[177px] left-7">
-                <div className="relative w-[64.69px] h-[14.38px] bg-[#fffdfd]">
-                  <div className="top-px left-[23px] [font-family:'Inter',Helvetica] text-[#ff0707] text-[8.6px] whitespace-nowrap absolute font-normal tracking-[0] leading-[normal]">
-                    SUN
-                  </div>
-                </div>
-
-                <div className="relative w-[64.69px] h-[14.38px] bg-[#fffdfd]">
-                  <div className="absolute top-px left-[23px] [font-family:'Inter',Helvetica] font-normal text-black text-[8.6px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    MON
-                  </div>
-                </div>
-
-                <div className="relative w-[64.69px] h-[14.38px] bg-[#fffdfd]">
-                  <div className="absolute top-px left-[23px] [font-family:'Inter',Helvetica] font-normal text-black text-[8.6px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    TUE
-                  </div>
-                </div>
-
-                <div className="relative w-[64.69px] h-[14.38px] bg-[#fffdfd]">
-                  <div className="absolute top-px left-[23px] [font-family:'Inter',Helvetica] font-normal text-black text-[8.6px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    WED
-                  </div>
-                </div>
-
-                <div className="relative w-[64.69px] h-[14.38px] bg-[#fffdfd]">
-                  <div className="absolute top-px left-[23px] [font-family:'Inter',Helvetica] font-normal text-black text-[8.6px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    THU
-                  </div>
-                </div>
-
-                <div className="relative w-[64.69px] h-[14.38px] bg-[#fffdfd]">
-                  <div className="absolute top-px left-[23px] [font-family:'Inter',Helvetica] font-normal text-black text-[8.6px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    FRI
-                  </div>
-                </div>
-
-                <div className="relative w-[64.69px] h-[14.38px] bg-[#fffdfd]">
-                  <div className="absolute top-px left-[23px] [font-family:'Inter',Helvetica] font-normal text-[#ff0505] text-[8.6px] tracking-[0] leading-[normal] whitespace-nowrap">
-                    STA
-                  </div>
-                </div>
-              </div>
-
-              <div className="top-[-9px] left-[226px] [text-shadow:0px_3.5px_3.5px_#a5f1b4cc] [-webkit-text-stroke:1.75px_#628e89] [font-family:'Playfair_Display',Helvetica] text-[#2b4740] text-[131.2px] absolute font-normal tracking-[0] leading-[normal]">
-                8
-              </div>
-
-              <div className="absolute top-[33px] left-[27px] [text-shadow:0px_3.5px_3.5px_#a5f1b4cc] [-webkit-text-stroke:1.75px_#628e89] [font-family:'Princess_Sofia',Helvetica] text-[#2b4740] text-[70px] font-normal tracking-[0] leading-[normal]">
-                August
-              </div>
-
-              <div className="top-[33px] left-[339px] [text-shadow:0px_3.5px_3.5px_#a5f1b4cc] [-webkit-text-stroke:1.75px_#628e89] [font-family:'Princess_Sofia',Helvetica] text-[#2b4740] text-[70px] absolute font-normal tracking-[0] leading-[normal]">
+      <div className="absolute w-[525px] h-[629px] top-[329px] left-[147px]">
+        <div className="w-[525px] h-[629px] relative bg-[#1a1a1a] rounded-lg shadow-xl overflow-hidden">
+          {/* ヘッダー部分 */}
+          <div className="relative w-full pt-8 pb-4 px-8">
+            <div className="flex items-baseline justify-between mb-8">
+              <div className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase">
                 2025
               </div>
-
-              <img
-                className="absolute w-[525px] h-[118px] top-[582px] left-0"
-                alt="Mask group"
-                src="/img/mask-group.png"
-              />
+              <div className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase">
+                CALENDAR
+              </div>
+            </div>
+            <div className="[font-family:'Playfair_Display',Helvetica] text-[#f5f5f0] text-[72px] font-normal leading-[1] mb-6">
+              August
             </div>
           </div>
-        </div>
 
-        <div className="absolute h-[361px] top-[207px] left-7 flex items-start min-w-[469px]">
-          <div className="w-[469px] h-[361px] flex">
-            <div className="w-[469.03px] flex">
-              <div className="grid w-[469.03px] h-[360.52px] relative grid-cols-7 grid-rows-5 gap-[2.63px]">
-                <Component2401
-                  className="!row-[1_/_2] ![display:unset] !left-[unset] !col-[1_/_2] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[1_/_2] ![display:unset] !left-[unset] !col-[2_/_3] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[1_/_2] ![display:unset] !left-[unset] !col-[3_/_4] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[1_/_2] ![display:unset] !left-[unset] !col-[4_/_5] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[1_/_2] ![display:unset] !left-[unset] !col-[5_/_6] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[1_/_2] ![display:unset] !left-[unset] !col-[6_/_7] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[1_/_2] ![display:unset] !left-[unset] !col-[7_/_8] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[2_/_3] ![display:unset] !left-[unset] !col-[1_/_2] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[2_/_3] ![display:unset] !left-[unset] !col-[2_/_3] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[2_/_3] ![display:unset] !left-[unset] !col-[3_/_4] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[2_/_3] ![display:unset] !left-[unset] !col-[4_/_5] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[2_/_3] ![display:unset] !left-[unset] !col-[5_/_6] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[2_/_3] ![display:unset] !left-[unset] !col-[6_/_7] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[2_/_3] ![display:unset] !left-[unset] !col-[7_/_8] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[3_/_4] ![display:unset] !left-[unset] !col-[1_/_2] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[3_/_4] ![display:unset] !left-[unset] !col-[2_/_3] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[3_/_4] ![display:unset] !left-[unset] !col-[3_/_4] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[3_/_4] ![display:unset] !left-[unset] !col-[4_/_5] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[3_/_4] ![display:unset] !left-[unset] !col-[5_/_6] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[3_/_4] ![display:unset] !left-[unset] !col-[6_/_7] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[3_/_4] ![display:unset] !left-[unset] !col-[7_/_8] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[4_/_5] ![display:unset] !left-[unset] !col-[1_/_2] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[4_/_5] ![display:unset] !left-[unset] !col-[2_/_3] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[4_/_5] ![display:unset] !left-[unset] !col-[3_/_4] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[4_/_5] ![display:unset] !left-[unset] !col-[4_/_5] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[4_/_5] ![display:unset] !left-[unset] !col-[5_/_6] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[4_/_5] ![display:unset] !left-[unset] !col-[6_/_7] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[4_/_5] ![display:unset] !left-[unset] !col-[7_/_8] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[5_/_6] ![display:unset] !left-[unset] !col-[1_/_2] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[5_/_6] ![display:unset] !left-[unset] !col-[2_/_3] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[5_/_6] ![display:unset] !left-[unset] !col-[3_/_4] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[5_/_6] ![display:unset] !left-[unset] !col-[4_/_5] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[5_/_6] ![display:unset] !left-[unset] !col-[5_/_6] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[5_/_6] ![display:unset] !left-[unset] !col-[6_/_7] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
-                <Component2401
-                  className="!row-[5_/_6] ![display:unset] !left-[unset] !col-[7_/_8] !w-[64.75px] !top-[unset]"
-                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !absolute !left-2 !w-[unset] !top-1"
-                />
+          {/* 曜日ヘッダー */}
+          <div className="grid grid-cols-7 gap-0 px-8 py-3 border-t border-b border-[#444444]">
+            {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, index) => (
+              <div
+                key={day + index}
+                className="text-center [font-family:'Inter',Helvetica] font-medium text-[13px] tracking-[1px]"
+                style={{
+                  color: '#cccccc',
+                }}
+              >
+                {day}
               </div>
+            ))}
+          </div>
+
+          {/* カレンダーグリッド */}
+          <div className="px-8 py-4">
+            <div className="grid grid-cols-7 gap-0">
+              {calendarDates.map((date, index) => (
+                <Component2401
+                  key={index}
+                  className="!w-full"
+                  divClassName="!h-[unset] !mt-[unset] !ml-[unset] !relative !left-[unset] !w-[unset] !top-[unset] !translate-x-0 !translate-y-0"
+                  date={date}
+                  isHighlighted={hoveredDate !== null && date === hoveredDate}
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute top-[329px] left-[760px] w-[530px] h-[629px] flex">
-        <div className="flex w-[530.25px] h-[629px] relative flex-col items-start gap-[22px]">
-          <Frame628
-            className="!self-stretch !h-[195px] ![display:unset] !left-[unset] !w-full !top-[unset]"
-            groupClassName="!w-[530px]"
-            rectangle="/img/rectangle-3.png"
-          />
-          <Frame628
-            className="!self-stretch !h-[195px] ![display:unset] !left-[unset] !w-full !top-[unset]"
-            groupClassName="!w-[530px]"
-            rectangle="/img/rectangle-3.png"
-          />
-          <Frame628
-            className="!self-stretch !h-[195px] ![display:unset] !left-[unset] !w-full !top-[unset]"
-            groupClassName="!w-[530px]"
-            rectangle="/img/rectangle-3.png"
-          />
+      <div className="absolute top-[329px] left-[760px] w-[560px] h-[629px]">
+        <div className="w-full h-full relative bg-[#1a2a2880] rounded-lg shadow-xl border border-[#00d6bd20] p-6 backdrop-blur-sm">
+          {/* セクション見出し */}
+          <div className="mb-4 pb-3 border-b border-[#00d6bd30]">
+            <div className="[font-family:'Playfair_Display',Helvetica] text-white text-[24px] font-normal tracking-[2px] mb-1">
+              EVENTS
+            </div>
+            <div className="[font-family:'Noto_Serif_JP',Helvetica] text-[#00d6bd] text-[12px] font-normal opacity-80">
+              イベント一覧
+            </div>
+          </div>
+          
+          {/* イベントカード一覧 */}
+          <div className="flex w-full h-[calc(100%-80px)] relative flex-col items-start gap-[18px] overflow-y-auto overflow-x-hidden pr-2">
+            {loading ? (
+              <div className="text-white text-center w-full py-10">読み込み中...</div>
+            ) : events.length > 0 ? (
+              events.map((event, index) => {
+                const gradients = ["red", "pink", "purple", "blue", "green", "orange", "gold", "teal", "indigo", "yellow", "magenta", "lime", "violet"];
+                const eventDay = new Date(event.date_time_start).getDate();
+                
+                return (
+                  <Frame628
+                    key={event.id}
+                    className="flex-shrink-0"
+                    groupClassName=""
+                    rectangle="/img/rectangle-3.png"
+                    hoverGradient={gradients[index % gradients.length]}
+                    eventDate={eventDay}
+                    eventData={event}
+                    onMouseEnter={() => setHoveredDate(eventDay)}
+                    onMouseLeave={() => setHoveredDate(null)}
+                  />
+                );
+              })
+            ) : (
+              <div className="text-white/50 text-center w-full py-10">
+                イベント情報がありません
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

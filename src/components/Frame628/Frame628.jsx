@@ -10,22 +10,52 @@ export const Frame628 = ({
   className,
   groupClassName,
   rectangle = "/img/rectangle.png",
+  hoverGradient = "cyan",
+  eventDate,
+  onMouseEnter,
+  onMouseLeave,
+  eventData,
 }) => {
+  // 通常時は常にエメラルドグリーン（cyan）
+  const defaultGradient = "bg-[linear-gradient(180deg,rgba(34,48,47,1)_35%,rgba(0,214,189,1)_100%)]";
+  
+  // ホバー時のグラデーション
+  const hoverGradients = {
+    cyan: "group-hover:bg-[linear-gradient(180deg,rgba(34,48,47,1)_35%,rgba(0,214,189,1)_100%)]",
+    pink: "group-hover:bg-[linear-gradient(180deg,rgba(34,34,48,1)_35%,rgba(214,0,189,1)_100%)]",
+    purple: "group-hover:bg-[linear-gradient(180deg,rgba(48,34,48,1)_35%,rgba(138,43,226,1)_100%)]",
+    blue: "group-hover:bg-[linear-gradient(180deg,rgba(34,34,48,1)_35%,rgba(0,123,255,1)_100%)]",
+    green: "group-hover:bg-[linear-gradient(180deg,rgba(34,48,34,1)_35%,rgba(0,214,100,1)_100%)]",
+    orange: "group-hover:bg-[linear-gradient(180deg,rgba(48,34,34,1)_35%,rgba(255,140,0,1)_100%)]",
+    gold: "group-hover:bg-[linear-gradient(180deg,rgba(48,48,34,1)_35%,rgba(255,215,0,1)_100%)]",
+    red: "group-hover:bg-[linear-gradient(180deg,rgba(48,34,34,1)_35%,rgba(255,50,50,1)_100%)]",
+    teal: "group-hover:bg-[linear-gradient(180deg,rgba(34,48,48,1)_35%,rgba(0,180,180,1)_100%)]",
+    indigo: "group-hover:bg-[linear-gradient(180deg,rgba(34,34,48,1)_35%,rgba(75,0,130,1)_100%)]",
+    yellow: "group-hover:bg-[linear-gradient(180deg,rgba(48,48,34,1)_35%,rgba(255,255,0,1)_100%)]",
+    magenta: "group-hover:bg-[linear-gradient(180deg,rgba(48,34,48,1)_35%,rgba(255,0,255,1)_100%)]",
+    lime: "group-hover:bg-[linear-gradient(180deg,rgba(34,48,34,1)_35%,rgba(191,255,0,1)_100%)]",
+    violet: "group-hover:bg-[linear-gradient(180deg,rgba(48,34,48,1)_35%,rgba(148,0,211,1)_100%)]",
+  };
+
+  const hoverGradientClass = hoverGradients[hoverGradient] || hoverGradients.cyan;
+
   return (
     <div
-      className={`relative w-[530px] flex ${className}`}
+      className={`relative w-full flex group cursor-pointer transition-all duration-300 ${className}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <div
-        className={`w-[530.0px] h-[195px] relative bg-[linear-gradient(180deg,rgba(34,48,47,1)_35%,rgba(0,214,189,1)_100%)] ${groupClassName}`}
+        className={`w-full h-[195px] relative ${defaultGradient} ${hoverGradientClass} transition-all duration-300 rounded-lg shadow-lg overflow-hidden ${groupClassName}`}
       >
         <div className="inline-flex items-center gap-[15px] absolute top-[25px] left-[9px]">
           <div className="relative w-[113.41px] h-[148.7px]">
             <div className="w-[113px] h-[149px]">
               <div className="relative h-[100.00%]">
                 <img
-                  className="absolute w-full h-full top-0 left-0"
+                  className="absolute w-full h-full top-0 left-0 object-cover"
                   alt="Rectangle"
-                  src={rectangle}
+                  src={eventData?.image_url || rectangle}
                 />
               </div>
             </div>
@@ -41,17 +71,43 @@ export const Frame628 = ({
 
           <div className="relative w-72 h-[117px]">
             <div className="absolute top-[42px] left-0 w-[284px] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[12.5px] tracking-[0] leading-[normal]">
-              日付・時間帯：8/02（土） 19:00～22:00
-              <br />
-              タイトル：レトロ・ヴァイナル・レイヴ
-              <br />
-              キャッチコピー：70年代ミュージックで踊る夜
-              <br />
-              参加料：¥2,500／要予約
+              {eventData ? (
+                <>
+                  日付・時間帯：{new Date(eventData.date_time_start).toLocaleDateString('ja-JP', { month: 'numeric', day: 'numeric', weekday: 'short' })} {new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
+                  <br />
+                  {eventData.description && (
+                    <>
+                      タイトル：{eventData.description}
+                      <br />
+                    </>
+                  )}
+                  {eventData.catchphrase && (
+                    <>
+                      キャッチコピー：{eventData.catchphrase}
+                      <br />
+                    </>
+                  )}
+                  {eventData.price && (
+                    <>
+                      参加料：¥{eventData.price.toLocaleString()}{eventData.price_note && `／${eventData.price_note}`}
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                  日付・時間帯：8/02（土） 19:00～22:00
+                  <br />
+                  タイトル：レトロ・ヴァイナル・レイヴ
+                  <br />
+                  キャッチコピー：70年代ミュージックで踊る夜
+                  <br />
+                  参加料：¥2,500／要予約
+                </>
+              )}
             </div>
 
             <div className="absolute top-0 left-1.5 w-[259px] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffbfb] text-[28.2px] tracking-[0] leading-[normal] whitespace-nowrap">
-              Summer Neon Night
+              {eventData?.title_en || eventData?.title || 'Summer Neon Night'}
             </div>
           </div>
 
@@ -76,4 +132,20 @@ export const Frame628 = ({
 
 Frame628.propTypes = {
   rectangle: PropTypes.string,
+  hoverGradient: PropTypes.oneOf(["cyan", "pink", "purple", "blue", "green", "orange", "gold", "red", "teal", "indigo", "yellow", "magenta", "lime", "violet"]),
+  eventDate: PropTypes.number,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  eventData: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    title_en: PropTypes.string,
+    date_time_start: PropTypes.string,
+    date_time_end: PropTypes.string,
+    description: PropTypes.string,
+    catchphrase: PropTypes.string,
+    price: PropTypes.number,
+    price_note: PropTypes.string,
+    image_url: PropTypes.string,
+  }),
 };

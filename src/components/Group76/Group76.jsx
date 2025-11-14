@@ -10,6 +10,8 @@ export const Group76 = ({
   className,
   text = "お問合せ内容",
   groupClassName,
+  value,
+  onChange,
 }) => {
   return (
     <div
@@ -33,7 +35,14 @@ export const Group76 = ({
         </div>
       </div>
 
-      <div className="absolute w-full h-[85.96%] top-[14.04%] left-0 bg-white rounded-[3px] border border-solid border-[#414141]" />
+      <div className="absolute w-full h-[85.96%] top-[14.04%] left-0 bg-white rounded-[3px] border border-solid border-[#414141]">
+        <textarea
+          value={value || ""}
+          onChange={onChange}
+          placeholder="お問い合わせ内容をご記入ください"
+          className="w-full h-full p-4 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#727272] text-lg tracking-[0] bg-transparent border-0 outline-none resize-none"
+        />
+      </div>
     </div>
   );
 };

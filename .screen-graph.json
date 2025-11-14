@@ -65,19 +65,33 @@
         "/u12461u12515u12473u12488"
       ],
       "dataModelId": "411:1123"
+    },
+    {
+      "id": "src/screens/Admin/AdminLogin.jsx",
+      "label": "AdminLogin",
+      "routes": [
+        "/admin/login"
+      ]
+    },
+    {
+      "id": "src/screens/Admin/AdminDashboard.jsx",
+      "label": "AdminDashboard",
+      "routes": [
+        "/admin/dashboard"
+      ]
     }
   ],
   "edges": [
     {
-      "id": "src/screens/Top/Top.jsx:43:14-to-src/screens/Screen6/Screen6.jsx",
+      "id": "src/screens/Top/Top.jsx:127:14-to-src/screens/Screen6/Screen6.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen6/Screen6.jsx",
       "data": {
         "viaRoute": "/u12465u12441u12473u12488u27969u12428",
         "trigger": {
           "element": "<Link to=\"/u12465u12441u12473u12488u27969u12428\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                GEST FLOW\n              </Link>",
-          "line": 43,
-          "endLine": 45,
+          "line": 127,
+          "endLine": 129,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -85,15 +99,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:46:14-to-src/screens/Screen/Screen.jsx",
+      "id": "src/screens/Top/Top.jsx:130:14-to-src/screens/Screen/Screen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen/Screen.jsx",
       "data": {
         "viaRoute": "/u12481u12483u12501u12442u12395u12388u12356u12390",
         "trigger": {
           "element": "<Link to=\"/u12481u12483u12501u12442u12395u12388u12356u12390\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                TIP\n              </Link>",
-          "line": 46,
-          "endLine": 48,
+          "line": 130,
+          "endLine": 132,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -101,15 +115,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:49:14-to-src/screens/Screen7/Screen7.jsx",
+      "id": "src/screens/Top/Top.jsx:133:14-to-src/screens/Screen7/Screen7.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen7/Screen7.jsx",
       "data": {
         "viaRoute": "/u12461u12515u12473u12488",
         "trigger": {
           "element": "<Link to=\"/u12461u12515u12473u12488\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                CAST\n              </Link>",
-          "line": 49,
-          "endLine": 51,
+          "line": 133,
+          "endLine": 135,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -117,15 +131,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:52:14-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
+      "id": "src/screens/Top/Top.jsx:136:14-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenWrapper/ScreenWrapper.jsx",
       "data": {
         "viaRoute": "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531",
         "trigger": {
           "element": "<Link to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                PARTY PLANS\n              </Link>",
-          "line": 52,
-          "endLine": 54,
+          "line": 136,
+          "endLine": 138,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -133,15 +147,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:55:14-to-src/screens/Screen5/Screen5.jsx",
+      "id": "src/screens/Top/Top.jsx:139:14-to-src/screens/Screen5/Screen5.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen5/Screen5.jsx",
       "data": {
         "viaRoute": "/u27714u20154",
         "trigger": {
           "element": "<Link to=\"/u27714u20154\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                RECRUIT\n              </Link>",
-          "line": 55,
-          "endLine": 57,
+          "line": 139,
+          "endLine": 141,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -149,15 +163,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:139:12-to-src/screens/Screen6/Screen6.jsx",
+      "id": "src/screens/Top/Top.jsx:226:12-to-src/screens/Screen6/Screen6.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen6/Screen6.jsx",
       "data": {
         "viaRoute": "/u12465u12441u12473u12488u27969u12428",
         "trigger": {
-          "element": "<Link to=\"/u12465u12441u12473u12488u27969u12428\" className=\"w-[106px] ml-[-1.00px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              ゲストの流れ\n            </Link>",
-          "line": 139,
-          "endLine": 141,
+          "element": "<Link to=\"/u12465u12441u12473u12488u27969u12428\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              ゲストの流れ\n            </Link>",
+          "line": 226,
+          "endLine": 228,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -165,15 +179,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:142:12-to-src/screens/Screen/Screen.jsx",
+      "id": "src/screens/Top/Top.jsx:229:12-to-src/screens/Screen/Screen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen/Screen.jsx",
       "data": {
         "viaRoute": "/u12481u12483u12501u12442u12395u12388u12356u12390",
         "trigger": {
-          "element": "<Link to=\"/u12481u12483u12501u12442u12395u12388u12356u12390\" className=\"w-[122px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              チップについて\n            </Link>",
-          "line": 142,
-          "endLine": 144,
+          "element": "<Link to=\"/u12481u12483u12501u12442u12395u12388u12356u12390\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              チップについて\n            </Link>",
+          "line": 229,
+          "endLine": 231,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -181,15 +195,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:145:12-to-src/screens/Screen7/Screen7.jsx",
+      "id": "src/screens/Top/Top.jsx:232:12-to-src/screens/Screen7/Screen7.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen7/Screen7.jsx",
       "data": {
         "viaRoute": "/u12461u12515u12473u12488",
         "trigger": {
-          "element": "<Link to=\"/u12461u12515u12473u12488\" className=\"w-[69px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              キャスト\n            </Link>",
-          "line": 145,
-          "endLine": 147,
+          "element": "<Link to=\"/u12461u12515u12473u12488\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              キャスト\n            </Link>",
+          "line": 232,
+          "endLine": 234,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -197,15 +211,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:148:12-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
+      "id": "src/screens/Top/Top.jsx:235:12-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenWrapper/ScreenWrapper.jsx",
       "data": {
         "viaRoute": "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531",
         "trigger": {
-          "element": "<Link to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\" className=\"w-[142px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              パーティープラン\n            </Link>",
-          "line": 148,
-          "endLine": 150,
+          "element": "<Link to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              パーティープラン\n            </Link>",
+          "line": 235,
+          "endLine": 237,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -213,15 +227,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:151:12-to-src/screens/Screen5/Screen5.jsx",
+      "id": "src/screens/Top/Top.jsx:238:12-to-src/screens/Screen5/Screen5.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen5/Screen5.jsx",
       "data": {
         "viaRoute": "/u27714u20154",
         "trigger": {
-          "element": "<Link to=\"/u27714u20154\" className=\"w-[72px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              求人募集\n            </Link>",
-          "line": 151,
-          "endLine": 153,
+          "element": "<Link to=\"/u27714u20154\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              求人募集\n            </Link>",
+          "line": 238,
+          "endLine": 240,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -229,15 +243,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:154:12-to-src/screens/ScreenScreen/ScreenScreen.jsx",
+      "id": "src/screens/Top/Top.jsx:241:12-to-src/screens/ScreenScreen/ScreenScreen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
       "data": {
         "viaRoute": "/u12467u12531u12479u12463u12488",
         "trigger": {
-          "element": "<Link to=\"/u12467u12531u12479u12463u12488\" className=\"w-[107px] relative h-[72px] mt-[-2.00px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              お問い合わせ\n            </Link>",
-          "line": 154,
-          "endLine": 156,
+          "element": "<Link to=\"/u12467u12531u12479u12463u12488\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              お問い合わせ\n            </Link>",
+          "line": 241,
+          "endLine": 243,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -261,15 +275,15 @@
       }
     },
     {
-      "id": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx:273:10-to-src/screens/Screen7/Screen7.jsx",
+      "id": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx:443:10-to-src/screens/Screen7/Screen7.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen7/Screen7.jsx",
       "data": {
         "viaRoute": "/u12461u12515u12473u12488",
         "trigger": {
           "element": "<Link\n            className=\"w-[351.95px] flex\"\n            to=\"/u12461u12515u12473u12488\"\n          >\n            <div className=\"w-[351.95px] flex\">\n              <Group153 className=\"!h-[unset] ![position:unset] !left-[unset] !w-[351.95px] !top-[unset]\" />\n            </div>\n          </Link>",
-          "line": 273,
-          "endLine": 280,
+          "line": 443,
+          "endLine": 450,
           "column": 10,
           "endColumn": 17,
           "sourceFile": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx"
@@ -277,15 +291,15 @@
       }
     },
     {
-      "id": "src/screens/Top/sections/DivWrapper/DivWrapper.jsx:77:8-to-src/screens/ScreenScreen/ScreenScreen.jsx",
+      "id": "src/screens/Top/sections/DivWrapper/DivWrapper.jsx:124:8-to-src/screens/ScreenScreen/ScreenScreen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
       "data": {
         "viaRoute": "/u12467u12531u12479u12463u12488",
         "trigger": {
           "element": "<Group153\n          className=\"!absolute !left-[733px] !top-[1148px]\"\n          text=\"お問い合わせ\"\n          to=\"/u12467u12531u12479u12463u12488\"\n        />",
-          "line": 77,
-          "endLine": 81,
+          "line": 124,
+          "endLine": 128,
           "column": 8,
           "endColumn": 10,
           "sourceFile": "src/screens/Top/sections/DivWrapper/DivWrapper.jsx"
@@ -293,15 +307,15 @@
       }
     },
     {
-      "id": "src/screens/Top/sections/Div/Div.jsx:47:10-to-src/screens/ScreenScreen/ScreenScreen.jsx",
+      "id": "src/screens/Top/sections/Div/Div.jsx:142:10-to-src/screens/ScreenScreen/ScreenScreen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
       "data": {
         "viaRoute": "/u12467u12531u12479u12463u12488",
         "trigger": {
-          "element": "<Link\n            className=\"flex ml-[385.5px] w-[167.82px] h-[46.62px] relative items-center justify-center bg-white rounded-[1.42px] hover:bg-gray-100 transition-colors\"\n            to=\"/u12467u12531u12479u12463u12488\"\n          >\n            <div className=\"relative w-fit [font-family:'Inter',Helvetica] font-semibold text-black text-[9.3px] tracking-[0] leading-[11.1px] whitespace-nowrap\">\n              お問い合わせ\n            </div>\n          </Link>",
-          "line": 47,
-          "endLine": 54,
+          "element": "<Link\n            className=\"flex ml-[385.5px] w-[167.82px] h-[46.62px] relative items-center justify-center bg-black rounded-[1.42px] hover:bg-gray-800 transition-colors\"\n            to=\"/u12467u12531u12479u12463u12488\"\n          >\n            <div className=\"relative w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-[9.3px] tracking-[0] leading-[11.1px] whitespace-nowrap\">\n              お問い合わせ\n            </div>\n          </Link>",
+          "line": 142,
+          "endLine": 149,
           "column": 10,
           "endColumn": 17,
           "sourceFile": "src/screens/Top/sections/Div/Div.jsx"
@@ -405,18 +419,66 @@
       }
     },
     {
-      "id": "src/screens/Screen7/sections/Frame18/Frame18.jsx:8:8-to-src/screens/FrameScreen/FrameScreen.jsx",
-      "source": "src/screens/Screen7/Screen7.jsx",
-      "target": "src/screens/FrameScreen/FrameScreen.jsx",
+      "id": "src/screens/Admin/AdminLogin.jsx:26:6-to-src/screens/Admin/AdminDashboard.jsx",
+      "source": "src/screens/Admin/AdminLogin.jsx",
+      "target": "src/screens/Admin/AdminDashboard.jsx",
       "data": {
-        "viaRoute": "/frame-695",
+        "viaRoute": "/admin/dashboard",
         "trigger": {
-          "element": "<TalentPc\n          className=\"!h-[366.67px] !row-[1_/_2] !left-[unset] !col-[1_/_2] !top-[unset]\"\n          s=\"/img/s-16646146-0-1-9.png\"\n          to=\"/frame-695\"\n        />",
-          "line": 8,
-          "endLine": 12,
+          "element": "navigate('/admin/dashboard')",
+          "line": 26,
+          "endLine": 26,
+          "column": 6,
+          "endColumn": 34,
+          "sourceFile": "src/screens/Admin/AdminLogin.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Admin/AdminDashboard.jsx:17:8-to-src/screens/Admin/AdminLogin.jsx",
+      "source": "src/screens/Admin/AdminDashboard.jsx",
+      "target": "src/screens/Admin/AdminLogin.jsx",
+      "data": {
+        "viaRoute": "/admin/login",
+        "trigger": {
+          "element": "navigate('/admin/login')",
+          "line": 17,
+          "endLine": 17,
           "column": 8,
-          "endColumn": 10,
-          "sourceFile": "src/screens/Screen7/sections/Frame18/Frame18.jsx"
+          "endColumn": 32,
+          "sourceFile": "src/screens/Admin/AdminDashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Admin/AdminDashboard.jsx:28:8-to-src/screens/Admin/AdminLogin.jsx",
+      "source": "src/screens/Admin/AdminDashboard.jsx",
+      "target": "src/screens/Admin/AdminLogin.jsx",
+      "data": {
+        "viaRoute": "/admin/login",
+        "trigger": {
+          "element": "navigate('/admin/login')",
+          "line": 28,
+          "endLine": 28,
+          "column": 8,
+          "endColumn": 32,
+          "sourceFile": "src/screens/Admin/AdminDashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Admin/AdminDashboard.jsx:41:4-to-src/screens/Admin/AdminLogin.jsx",
+      "source": "src/screens/Admin/AdminDashboard.jsx",
+      "target": "src/screens/Admin/AdminLogin.jsx",
+      "data": {
+        "viaRoute": "/admin/login",
+        "trigger": {
+          "element": "navigate('/admin/login')",
+          "line": 41,
+          "endLine": 41,
+          "column": 4,
+          "endColumn": 28,
+          "sourceFile": "src/screens/Admin/AdminDashboard.jsx"
         }
       }
     }

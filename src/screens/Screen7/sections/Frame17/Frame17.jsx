@@ -4,14 +4,14 @@ import { Group66 } from "../../../../components/Group66";
 
 export const Frame17 = () => {
   return (
-    <div className="relative w-[1440px] h-[608.29px]">
+    <div className="relative w-[1440px] h-[608.29px] mx-auto">
       <div className="relative h-[446px]">
         <Group63
           className="!absolute !left-0 !w-[1440px] !top-0"
           text="Cast"
           text1="キャスト一覧"
         />
-        <div className="absolute top-[283px] left-[151px] w-[1138px] h-[164px] flex">
+        <div className="absolute top-[283px] left-0 right-0 w-[1138px] h-[164px] flex justify-center mx-auto">
           <Group66
             className="!h-[163.73px] ![position:unset] !left-[unset] !top-[unset]"
             divClassName="!h-[15.15%] !left-[22.60%] !w-[54.49%]"
