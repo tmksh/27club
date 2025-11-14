@@ -53,7 +53,7 @@ export const ConcreteComponentNode = ({
     <div
       className={`relative w-[1440px] h-[584px] flex flex-col gap-12 overflow-hidden ${className}`}
       style={{
-        background: 'linear-gradient(to bottom, #0a1612 0%, #0f1f1c 50%, #1a4a4a 100%)'
+        background: 'linear-gradient(to bottom, #040a08 0%, #050f0d 50%, #0a1a1a 100%)'
       }}
     >
       {/* チップの模様（透明度低め） */}
@@ -90,7 +90,7 @@ export const ConcreteComponentNode = ({
               className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}
             >
               <img
-                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}
+                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}
                 alt="Element"
                 src="/img/27logo-1-1.png"
               />

@@ -38,7 +38,8 @@ export const FrameWrapper = () => {
     const loadCasts = async () => {
       try {
         const data = await castsAPI.getAll();
-        // データがない場合はデフォルトデータを使用
+        console.log('取得したキャスト数:', data?.length || 0, data);
+        // データがある場合は使用
         if (data && data.length > 0) {
           setCastData(data.map(cast => ({
             id: cast.id,
@@ -48,7 +49,8 @@ export const FrameWrapper = () => {
             show: cast.show_description || "ショー情報なし",
           })));
         } else {
-          // デフォルトデータ
+          // データがない場合のデフォルトデータ（5枚）
+          console.log('デフォルトデータを使用します');
           setCastData([
             {
               id: 1,
@@ -61,21 +63,35 @@ export const FrameWrapper = () => {
               id: 2,
               image: "/img/2025-07-21-15-39-19-5.png",
               name: "Cast 2",
-              description: "特徴・好きなお酒：柔軟な体捌きが持ち味。",
-              show: "写真のショー：「Starlight Dream」のポールダンスシーン",
+              description: "特徴・好きなお酒：エネルギッシュなパフォーマンス。",
+              show: "写真のショー：「Midnight Fantasy」のダンスシーン",
             },
             {
               id: 3,
               image: "/img/2025-07-21-15-39-19-4.png",
               name: "Aurora",
-              description: "特徴・好きなお酒：柔軟な体捌きが持ち味。",
-              show: "写真のショー：「Starlight Dream」のポールダンスシーン",
+              description: "特徴・好きなお酒：華麗な動きが魅力。",
+              show: "写真のショー：「Crystal Night」のアクロバットシーン",
+            },
+            {
+              id: 4,
+              image: "/img/2025-07-21-15-39-19-2.png",
+              name: "Cast 4",
+              description: "特徴・好きなお酒：情熱的なステージング。",
+              show: "写真のショー：「Fire Dance」のファイアーパフォーマンス",
+            },
+            {
+              id: 5,
+              image: "/img/2025-07-21-15-39-19-5.png",
+              name: "Cast 5",
+              description: "特徴・好きなお酒：繊細な表現力。",
+              show: "写真のショー：「Moonlight Serenade」のバレエシーン",
             },
           ]);
         }
       } catch (error) {
         console.error('キャストの取得に失敗しました:', error);
-        // エラー時はデフォルトデータ
+        // エラー時はデフォルトデータ（5枚）
         setCastData([
           {
             id: 1,
@@ -83,6 +99,34 @@ export const FrameWrapper = () => {
             name: "Cast 1",
             description: "特徴・好きなお酒：柔軟な体捌きが持ち味。",
             show: "写真のショー：「Starlight Dream」のポールダンスシーン",
+          },
+          {
+            id: 2,
+            image: "/img/2025-07-21-15-39-19-5.png",
+            name: "Cast 2",
+            description: "特徴・好きなお酒：エネルギッシュなパフォーマンス。",
+            show: "写真のショー：「Midnight Fantasy」のダンスシーン",
+          },
+          {
+            id: 3,
+            image: "/img/2025-07-21-15-39-19-4.png",
+            name: "Aurora",
+            description: "特徴・好きなお酒：華麗な動きが魅力。",
+            show: "写真のショー：「Crystal Night」のアクロバットシーン",
+          },
+          {
+            id: 4,
+            image: "/img/2025-07-21-15-39-19-2.png",
+            name: "Cast 4",
+            description: "特徴・好きなお酒：情熱的なステージング。",
+            show: "写真のショー：「Fire Dance」のファイアーパフォーマンス",
+          },
+          {
+            id: 5,
+            image: "/img/2025-07-21-15-39-19-5.png",
+            name: "Cast 5",
+            description: "特徴・好きなお酒：繊細な表現力。",
+            show: "写真のショー：「Moonlight Serenade」のバレエシーン",
           },
         ]);
       } finally {
@@ -129,14 +173,14 @@ export const FrameWrapper = () => {
         normalizedAngle = 360 - normalizedAngle;
       }
       
-      // 中央に近いほど大きく、明るく
+      // すべてのカードを常に大きいサイズで表示
+      const scale = 1.0; // 常に最大サイズ
       const distanceFromCenter = normalizedAngle / 180;
-      const scale = 1.0 - (distanceFromCenter * 0.4); // 1.0 (中央) to 0.6 (端)
-      const opacity = 1.0 - (distanceFromCenter * 0.4); // 1.0 (中央) to 0.6 (端)
+      const opacity = 1.0 - (distanceFromCenter * 0.15); // 1.0 (中央) to 0.85 (端) - 透明度を抑える
       
-      // 中央のカード（Z座標が正で最大）のみ明るく、それ以外は暗く
+      // 中央のカード（Z座標が正で最大）のみ明るく、それ以外も明るめに
       const isCenterCard = z > 0 && z === maxZ;
-      const brightness = isCenterCard ? 100 : 60;
+      const brightness = isCenterCard ? 100 : 85; // 60から85に変更
       
       // GSAPでアニメーション
       gsap.to(cell, {
@@ -144,7 +188,7 @@ export const FrameWrapper = () => {
         z: z,
         rotationY: currentAngle,
         scale: scale,
-        opacity: Math.max(opacity, 0.6),
+        opacity: Math.max(opacity, 0.85), // 最小透明度を0.6から0.85に変更
         filter: `brightness(${brightness}%)`,
         duration: 0.3,
         ease: 'power2.out',
@@ -323,7 +367,7 @@ export const FrameWrapper = () => {
         }
       });
     };
-  }, []);
+  }, [castData.length]);
 
   return (
     <div className="relative self-stretch w-full min-h-[900px] overflow-hidden">

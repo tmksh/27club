@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Element } from "../../../../components/Element";
 
 export const SectionComponentNode = () => {
@@ -16,39 +16,39 @@ export const SectionComponentNode = () => {
   ];
 
   return (
-    <div className="relative self-stretch w-full h-[1475px] overflow-hidden">
-      <div className="relative w-full h-[1475px] flex flex-col items-center">
+    <div className="relative self-stretch w-full h-[1250px] overflow-hidden">
+      <div className="relative w-full h-[1250px] flex flex-col items-center">
         {/* チップの模様（カタカナテキストの方に向けて右側に集約） */}
-        {Array.from({ length: 30 }, (_, i) => {
-          const chip = chips[i % chips.length];
-          // 右側に集約するため、左側の位置を右寄せに調整
-          // 1440pxの幅のうち、右側の60%に集中させる
-          const baseLeft = 1440 * 0.4; // 左側40%から開始
-          const randomOffset = Math.random() * (1440 * 0.6 - chip.w * 0.6); // 右側60%の範囲内でランダム
-          const left = baseLeft + randomOffset;
-          const top = (Math.floor(i / 10) * 200) + (i % 7) * 80;
-          
-          return (
-            <div
-              key={`chip-pattern-${i}`}
-              className="absolute pointer-events-none"
-              style={{
-                left: `${left}px`,
-                top: `${top}px`,
-                width: `${chip.w * 0.6}px`,
-                height: `${chip.h * 0.6}px`,
-                backgroundImage: `url(${chip.img})`,
-                backgroundSize: 'cover',
-                backgroundPosition: '50% 50%',
-                opacity: 0.08,
-                transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-                zIndex: 0,
-              }}
-            />
-          );
-        })}
+        {useMemo(() => {
+          return Array.from({ length: 30 }, (_, i) => {
+            const chip = chips[i % chips.length];
+            const baseLeft = 1440 * 0.4;
+            const fixedOffset = ((i * 137) % 500) + (i % 3) * 50;
+            const left = baseLeft + fixedOffset;
+            const top = (Math.floor(i / 10) * 200) + (i % 7) * 80;
+            
+            return (
+              <div
+                key={`chip-pattern-${i}`}
+                className="absolute pointer-events-none"
+                style={{
+                  left: `${left}px`,
+                  top: `${top}px`,
+                  width: `${chip.w * 0.6}px`,
+                  height: `${chip.h * 0.6}px`,
+                  backgroundImage: `url(${chip.img})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: '50% 50%',
+                  opacity: 0.08,
+                  transform: `rotate(${(i % 3) * 15 - 15}deg)`,
+                  zIndex: 0,
+                }}
+              />
+            );
+          });
+        }, [chips])}
         
-        <div className="absolute top-[116px] left-0 right-0 flex flex-col items-center gap-3 z-10">
+        <div className="absolute top-[80px] left-0 right-0 flex flex-col items-center gap-3 z-10">
           <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
             GALLERY
           </div>
@@ -62,7 +62,7 @@ export const SectionComponentNode = () => {
         </div>
 
         {/* 1行目 */}
-        <div className="flex w-full max-w-[1440px] items-start gap-[60px] justify-center px-4 absolute top-[297px] left-0 right-0">
+        <div className="flex w-full max-w-[1440px] items-start gap-[60px] justify-center px-4 absolute top-[240px] left-0 right-0 z-10">
           <div className="flex items-center gap-[60px] relative flex-1 grow">
             <div className="flex items-start gap-2.5 relative flex-1 grow">
               <div className="flex items-center gap-[60px] relative flex-1 grow">
@@ -109,7 +109,7 @@ export const SectionComponentNode = () => {
         </div>
 
         {/* 2行目 */}
-        <div className="flex w-full max-w-[1440px] items-start gap-[60px] justify-center px-4 absolute top-[617px] left-0 right-0">
+        <div className="flex w-full max-w-[1440px] items-start gap-[60px] justify-center px-4 absolute top-[580px] left-0 right-0 z-10">
           <div className="flex items-center gap-[60px] relative flex-1 grow">
             <div className="inline-flex items-center gap-[60px] relative flex-[0_0_auto]">
               <Element
@@ -152,7 +152,7 @@ export const SectionComponentNode = () => {
         </div>
 
         {/* 3行目 */}
-        <div className="flex w-full max-w-[1440px] items-start justify-center gap-[60px] px-4 absolute top-[937px] left-0 right-0">
+        <div className="flex w-full max-w-[1440px] items-start justify-center gap-[60px] px-4 absolute top-[920px] left-0 right-0 z-10">
           <div className="flex items-center gap-[60px] relative flex-1 grow">
             <div className="flex items-center gap-[60px] relative flex-1 grow">
               <Element

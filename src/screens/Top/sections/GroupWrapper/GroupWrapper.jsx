@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import "./GroupWrapper.css";
 
 export const GroupWrapper = () => {
@@ -34,40 +34,46 @@ export const GroupWrapper = () => {
     v6: "/img/s-18710559-2.png",
     backbar: "/img/s-18710559-2.png",
     entrance: "/img/s-18710559-2.png",
+    stage: "/img/s-18710559-2.png",
   };
+
+  // チップの位置を固定（useMemoで一度だけ計算）
+  const chipPositions = React.useMemo(() => {
+    return Array.from({ length: 25 }, (_, i) => {
+      const chip = chips[i % chips.length];
+      const baseLeft = 1440 * 0.4;
+      const fixedOffset = ((i * 137) % 500) + (i % 3) * 50;
+      return {
+        left: baseLeft + fixedOffset,
+        top: (Math.floor(i / 8) * 200) + (i % 6) * 100,
+        chip,
+        rotation: (i % 3) * 15 - 15,
+      };
+    });
+  }, []);
 
   return (
     <div className="relative self-stretch w-full h-[1000px] flex flex-col items-center">
       <div className="relative w-[1440px] h-[1000px]">
         {/* チップの模様（カタカナテキストの方に向けて右側に集約） */}
-        {Array.from({ length: 25 }, (_, i) => {
-          const chip = chips[i % chips.length];
-          // 右側に集約するため、左側の位置を右寄せに調整
-          // 1440pxの幅のうち、右側の60%に集中させる
-          const baseLeft = 1440 * 0.4; // 左側40%から開始
-          const randomOffset = Math.random() * (1440 * 0.6 - chip.w * 0.6); // 右側60%の範囲内でランダム
-          const left = baseLeft + randomOffset;
-          const top = (Math.floor(i / 8) * 200) + (i % 6) * 100;
-          
-          return (
-            <div
-              key={`chip-pattern-${i}`}
-              className="absolute pointer-events-none"
-              style={{
-                left: `${left}px`,
-                top: `${top}px`,
-                width: `${chip.w * 0.6}px`,
-                height: `${chip.h * 0.6}px`,
-                backgroundImage: `url(${chip.img})`,
-                backgroundSize: 'cover',
-                backgroundPosition: '50% 50%',
-                opacity: 0.08,
-                transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-                zIndex: 1,
-              }}
-            />
-          );
-        })}
+        {chipPositions.map((pos, i) => (
+          <div
+            key={`chip-pattern-${i}`}
+            className="absolute pointer-events-none"
+            style={{
+              left: `${pos.left}px`,
+              top: `${pos.top}px`,
+              width: `${pos.chip.w * 0.6}px`,
+              height: `${pos.chip.h * 0.6}px`,
+              backgroundImage: `url(${pos.chip.img})`,
+              backgroundSize: 'cover',
+              backgroundPosition: '50% 50%',
+              opacity: 0.08,
+              transform: `rotate(${pos.rotation}deg)`,
+              zIndex: 0,
+            }}
+          />
+        ))}
 
         <div className="absolute top-[82px] left-0 right-0 flex flex-col items-center gap-3">
           <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-[64px] text-center tracking-[6.40px] leading-[72px]">
@@ -83,7 +89,7 @@ export const GroupWrapper = () => {
         </div>
 
         {/* フロアマップ - インタラクティブ版 */}
-        <div className="absolute top-[280px] left-[63px] w-[850px] h-[500px] bg-gradient-to-br from-[#0a1612] via-[#0f1f1c] to-[#000000] border-2 border-[#d4af37] shadow-[0_0_30px_rgba(212,175,55,0.3)] overflow-hidden">
+        <div className="absolute top-[280px] left-[63px] w-[850px] h-[500px] bg-gradient-to-br from-[#0a1612] via-[#0f1f1c] to-[#000000] border-2 border-[#d4af37] shadow-[0_0_30px_rgba(212,175,55,0.3)] overflow-hidden" style={{ zIndex: 10 }}>
           {/* 背景の黒エリア（右側） */}
           <div className="absolute top-0 right-0 w-[350px] h-full bg-black opacity-80" style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 60%)' }}></div>
           
@@ -92,7 +98,11 @@ export const GroupWrapper = () => {
           <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent opacity-50"></div>
 
           {/* STAGE（上部中央） */}
-          <div className="absolute top-[16px] left-[60px] w-[420px] h-[55px] bg-black rounded-full flex items-center justify-center border-2 border-[#333] shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+          <div 
+            className="absolute top-[16px] left-[60px] w-[420px] h-[55px] bg-black rounded-full flex items-center justify-center border-2 border-[#333] shadow-[0_4px_20px_rgba(0,0,0,0.5)] cursor-pointer hover:shadow-[0_4px_30px_rgba(212,175,55,0.5)] transition-all"
+            onMouseEnter={() => setHoveredSeat('stage')}
+            onMouseLeave={() => setHoveredSeat(null)}
+          >
             <span className="text-white text-[32px] font-bold [font-family:'Inter',Helvetica] tracking-[4px] [text-shadow:0_2px_10px_rgba(255,255,255,0.3)]">STAGE</span>
           </div>
 
@@ -293,7 +303,7 @@ export const GroupWrapper = () => {
         </div>
 
         {/* 座席写真表示エリア */}
-        <div className="absolute top-[280px] left-[950px] w-[450px] h-[500px] flex bg-gray-300 shadow-[0px_0px_6px_8px_#ffffff80] overflow-hidden">
+        <div className="absolute top-[280px] left-[950px] w-[450px] h-[500px] flex bg-gray-300 shadow-[0px_0px_6px_8px_#ffffff80] overflow-hidden" style={{ zIndex: 20 }}>
           {hoveredSeat ? (
             <img
               key={hoveredSeat}
@@ -313,7 +323,7 @@ export const GroupWrapper = () => {
           )}
         </div>
 
-        <div className="flex items-center gap-[40px] absolute top-[820px] left-0 right-0 justify-center">
+        <div className="flex items-center gap-[40px] absolute top-[820px] left-0 right-0 justify-center" style={{ zIndex: 20 }}>
           <div 
             className="relative w-[220px] h-[190px] group cursor-pointer transition-all duration-300"
             onMouseEnter={() => setHoveredSeat('standing')}
@@ -322,7 +332,7 @@ export const GroupWrapper = () => {
             <div className="relative w-[220px] h-[190px]">
               <div className="absolute w-[220px] h-[190px] top-0 left-0 flex">
                 <div className="relative w-[220px] h-[190px]">
-                  <div className="absolute -top-px -left-px w-[222px] h-[192px] bg-[#00000080] border-[0.88px] border-solid border-[#fffbfb] shadow-[0px_3.53px_70.67px_#fffbfb40] group-hover:bg-[#1a1a1a] group-hover:border-[#fffbfb] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
+                  <div className="absolute -top-px -left-px w-[222px] h-[192px] bg-[#000000] border-[0.88px] border-solid border-[#fffbfb] group-hover:bg-[#1a1a1a] group-hover:border-[#fffbfb] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
 
                   <div className="absolute top-[8px] left-[20px] w-[190px] h-[170px] flex flex-col">
                     <div className="ml-[16px] w-[134px] h-[36px] mt-[-0.9px] [text-shadow:0px_3.53px_8.83px_#faffb5cc] [-webkit-text-stroke:0.88px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[27px] text-center tracking-[0] leading-[normal] group-hover:[text-shadow:0px_6px_16px_#faffb5ff] group-hover:text-[#fffad4] transition-all duration-300">
@@ -348,7 +358,7 @@ export const GroupWrapper = () => {
 
               <div className="absolute w-[220px] h-[190px] top-0 left-0 flex">
                 <div className="w-[220px] h-[190px] flex">
-                  <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#00000080] border-[0.88px] border-solid border-[#fffbfb] shadow-[0px_3.53px_70.67px_#fffbfb40]" />
+                  <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#00000080] border-[0.88px] border-solid border-[#fffbfb]" />
                 </div>
               </div>
             </div>
@@ -363,11 +373,11 @@ export const GroupWrapper = () => {
               <div className="absolute w-[220px] h-[190px] top-0 left-0">
                 <div className="absolute w-[220px] h-[190px] top-0 left-0 flex">
                   <div className="w-[220px] h-[190px] flex">
-                    <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#00000080] border-[0.88px] border-solid border-[#fffbfb] shadow-[0px_3.53px_70.67px_#fffbfb40] group-hover:bg-[#1a1a1a] group-hover:border-[#fffbfb] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
+                    <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#000000] border-[0.88px] border-solid border-[#fffbfb] group-hover:bg-[#1a1a1a] group-hover:border-[#fffbfb] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
                   </div>
                 </div>
 
-                <div className="absolute top-[8px] left-[30px] w-[160px] h-[172px]">
+                <div className="absolute top-[8px] left-[30px] w-[160px] h-[172px] z-10">
                   <div className="absolute -top-px left-[8px] [text-shadow:0px_3.53px_8.83px_#faffb5cc] [-webkit-text-stroke:0.88px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[27px] text-center tracking-[0] leading-[normal] group-hover:[text-shadow:0px_6px_16px_#faffb5ff] group-hover:text-[#fffad4] transition-all duration-300">
                     SIDE SEAT
                   </div>
@@ -394,10 +404,10 @@ export const GroupWrapper = () => {
                 </div>
               </div>
 
-              <div className="absolute h-[190px] top-0 left-0 flex items-start min-w-[220px]">
+              <div className="absolute h-[190px] top-0 left-0 flex items-start min-w-[220px]" style={{ zIndex: 0 }}>
                 <div className="w-[220px] flex">
                   <div className="w-[220px] h-[190px] flex">
-                    <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#00000080] border-[0.88px] border-solid border-[#fffbfb] shadow-[0px_3.53px_70.67px_#fffbfb40]" />
+                    <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#000000] border-[0.88px] border-solid border-[#fffbfb]" />
                   </div>
                 </div>
               </div>
@@ -414,12 +424,12 @@ export const GroupWrapper = () => {
                 <div className="absolute h-[190px] top-0 left-0 flex items-start min-w-[220px]">
                   <div className="w-[220px] flex">
                     <div className="w-[220px] h-[190px] flex">
-                      <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#00000080] border-[0.88px] border-solid border-[#fffbfb] shadow-[0px_3.53px_70.67px_#fffbfb40] group-hover:bg-[#1a1a1a] group-hover:border-[#fffbfb] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
+                      <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#000000] border-[0.88px] border-solid border-[#fffbfb] group-hover:bg-[#1a1a1a] group-hover:border-[#fffbfb] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute top-[5px] left-7 w-[160px] h-[175px] flex flex-col">
+                <div className="absolute top-[5px] left-7 w-[160px] h-[175px] flex flex-col z-10">
                   <div className="ml-[10px] w-[132px] h-[36px] mt-[-0.9px] [text-shadow:0px_3.53px_8.83px_#faffb5cc] [-webkit-text-stroke:0.88px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[27px] text-center tracking-[0] leading-[normal] group-hover:[text-shadow:0px_6px_16px_#faffb5ff] group-hover:text-[#fffad4] transition-all duration-300">
                     SIDE SEAT
                   </div>
@@ -446,11 +456,11 @@ export const GroupWrapper = () => {
                 </div>
               </div>
 
-              <div className="absolute h-[190px] top-0 left-0 flex items-start min-w-[220px]">
+              <div className="absolute h-[190px] top-0 left-0 flex items-start min-w-[220px]" style={{ zIndex: 0 }}>
                 <div className="flex items-start min-w-[220px]">
                   <div className="w-[220px] flex">
                     <div className="w-[220px] h-[190px] flex">
-                      <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#00000080] border-[0.88px] border-solid border-[#fffbfb] shadow-[0px_3.53px_70.67px_#fffbfb40]" />
+                      <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#000000] border-[0.88px] border-solid border-[#fffbfb]" />
                     </div>
                   </div>
                 </div>
@@ -468,12 +478,12 @@ export const GroupWrapper = () => {
                 <div className="absolute h-[190px] top-0 left-0 flex items-start min-w-[220px]">
                   <div className="w-[220px] flex">
                     <div className="w-[220px] h-[190px] flex">
-                      <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#00000080] border-[0.88px] border-solid border-[#fffbfb] shadow-[0px_3.53px_70.67px_#fffbfb40] group-hover:bg-[#1a1a1a] group-hover:border-[#fffbfb] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
+                      <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#000000] border-[0.88px] border-solid border-[#fffbfb] group-hover:bg-[#1a1a1a] group-hover:border-[#fffbfb] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute top-[17px] left-[15px] w-[197px] h-[163px] flex flex-col">
+                <div className="absolute top-[17px] left-[15px] w-[197px] h-[163px] flex flex-col z-10">
                   <div className="ml-[29px] w-[131px] h-[36px] mt-[-0.9px] [text-shadow:0px_3.53px_8.83px_#faffb5cc] [-webkit-text-stroke:0.88px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[27px] text-center tracking-[0] leading-[normal] group-hover:[text-shadow:0px_6px_16px_#faffb5ff] group-hover:text-[#fffad4] transition-all duration-300">
                     V.I.P. SEAT
                   </div>
@@ -492,11 +502,11 @@ export const GroupWrapper = () => {
                 </div>
               </div>
 
-              <div className="absolute h-[190px] top-0 left-0 flex items-start min-w-[220px]">
+              <div className="absolute h-[190px] top-0 left-0 flex items-start min-w-[220px]" style={{ zIndex: 0 }}>
                 <div className="flex items-start min-w-[220px]">
                   <div className="w-[220px] flex">
                     <div className="w-[220px] h-[190px] flex">
-                      <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#00000080] border-[0.88px] border-solid border-[#fffbfb] shadow-[0px_3.53px_70.67px_#fffbfb40]" />
+                      <div className="mt-[-0.9px] w-[222px] h-[192px] ml-[-0.9px] bg-[#000000] border-[0.88px] border-solid border-[#fffbfb]" />
                     </div>
                   </div>
                 </div>

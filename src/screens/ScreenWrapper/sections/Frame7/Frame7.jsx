@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Frame7 = () => {
   return (
@@ -488,7 +489,7 @@ export const Frame7 = () => {
               </div>
 
               <div className="inline-flex gap-5 items-center relative flex-[0_0_auto]">
-                <div className="flex w-[200px] h-14 items-center justify-center gap-3 relative bg-white rounded-[28px]">
+                <a href="tel:03-6205-5567" className="flex w-[200px] h-14 items-center justify-center gap-3 relative bg-white rounded-[28px] hover:bg-gray-100 transition-colors cursor-pointer">
                   <div className="relative w-5 h-5 border-0 border-none">
                     <img
                       className="absolute w-[83.33%] h-[83.33%] top-[4.17%] left-[4.17%]"
@@ -500,9 +501,9 @@ export const Frame7 = () => {
                   <div className="w-fit [font-family:'Inter',Helvetica] font-bold text-[#182321] text-base leading-[19.2px] whitespace-nowrap relative tracking-[0]">
                     お電話で相談
                   </div>
-                </div>
+                </a>
 
-                <div className="flex w-[200px] h-14 items-center justify-center gap-3 relative bg-[#333333] rounded-[28px] border border-solid border-white">
+                <Link to="/u12467u12531u12479u12463u12488" className="flex w-[200px] h-14 items-center justify-center gap-3 relative bg-[#333333] rounded-[28px] border border-solid border-white hover:bg-[#444444] transition-colors cursor-pointer">
                   <div className="w-5 h-5 relative border-0 border-none">
                     <img
                       className="absolute w-[83.33%] h-[24.99%] top-[25.00%] left-[4.17%]"
@@ -520,7 +521,7 @@ export const Frame7 = () => {
                   <div className="w-fit [font-family:'Inter',Helvetica] font-bold text-white text-base leading-[19.2px] whitespace-nowrap relative tracking-[0]">
                     お問い合わせ
                   </div>
-                </div>
+                </Link>
               </div>
 
               <div className="inline-flex flex-col items-center gap-3 relative flex-[0_0_auto]">

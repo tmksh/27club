@@ -12,6 +12,8 @@ import { SectionComponentNode } from "./sections/SectionComponentNode";
 
 export const Top = () => {
   const [animationKey, setAnimationKey] = useState(0);
+  const [language, setLanguage] = useState('日本語');
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -140,13 +142,49 @@ export const Top = () => {
                 RECRUIT
               </Link>
               
-              <div className="relative w-[90px] h-[27.14px] border border-solid border-white cursor-pointer">
-                <div className="inline-flex items-start gap-[5px] relative top-2 left-3.5">
-                  <div className="relative w-fit mt-[-1.00px] [font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px] whitespace-nowrap">
-                    language
+              <div className="relative">
+                <div 
+                  className="relative w-[90px] h-[27.14px] border border-solid border-white cursor-pointer hover:bg-white/10 transition-colors"
+                  onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                >
+                  <div className="inline-flex items-start gap-[5px] relative top-2 left-3.5">
+                    <div className="relative w-fit mt-[-1.00px] [font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px] whitespace-nowrap">
+                      {language}
+                    </div>
+                    <img 
+                      className={`relative w-[9.53px] h-[6.75px] transition-transform ${isLanguageOpen ? 'rotate-180' : ''}`} 
+                      alt="Polygon" 
+                      src="/img/polygon-2.svg" 
+                    />
                   </div>
-                  <img className="relative w-[9.53px] h-[6.75px]" alt="Polygon" src="/img/polygon-2.svg" />
                 </div>
+                
+                {isLanguageOpen && (
+                  <div className="absolute top-[30px] left-0 w-[90px] bg-[#1a1a2e] border border-solid border-white shadow-lg z-30">
+                    <div 
+                      className="px-3 py-2 cursor-pointer hover:bg-white/10 transition-colors"
+                      onClick={() => {
+                        setLanguage('日本語');
+                        setIsLanguageOpen(false);
+                      }}
+                    >
+                      <div className="[font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px]">
+                        日本語
+                      </div>
+                    </div>
+                    <div 
+                      className="px-3 py-2 cursor-pointer hover:bg-white/10 transition-colors"
+                      onClick={() => {
+                        setLanguage('English');
+                        setIsLanguageOpen(false);
+                      }}
+                    >
+                      <div className="[font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px]">
+                        English
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <button className="flex w-[140px] h-10 items-center justify-center relative bg-white rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
@@ -223,22 +261,22 @@ export const Top = () => {
           <div className="absolute inset-0 bg-black" />
           {/* メニュー項目 - 中央揃え */}
           <div className="relative inline-flex items-center gap-[18px]">
-            <Link to="/u12465u12441u12473u12488u27969u12428" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u12465u12441u12473u12488u27969u12428" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               ゲストの流れ
             </Link>
-            <Link to="/u12481u12483u12501u12442u12395u12388u12356u12390" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u12481u12483u12501u12442u12395u12388u12356u12390" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               チップについて
             </Link>
-            <Link to="/u12461u12515u12473u12488" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u12461u12515u12473u12488" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               キャスト
             </Link>
-            <Link to="/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               パーティープラン
             </Link>
-            <Link to="/u27714u20154" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u27714u20154" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               求人募集
             </Link>
-            <Link to="/u12467u12531u12479u12463u12488" className="relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
+            <Link to="/u12467u12531u12479u12463u12488" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
               お問い合わせ
             </Link>
           </div>
@@ -246,7 +284,7 @@ export const Top = () => {
       </div>
 
       {/* 既存のセクション */}
-      <div className="flex flex-col items-center gap-[80px] w-full relative z-10">
+      <div className="flex flex-col items-center gap-[40px] w-full relative z-10">
         <HeroSection />
         <Frame />
         <GroupWrapper />

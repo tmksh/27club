@@ -14,13 +14,161 @@ export const supabase = hasSupabaseConfig
   ? createClient(supabaseUrl, supabaseAnonKey)
   : null;
 
+// モックデータ（Supabaseが設定されていない場合に使用）
+const mockEvents = [
+  {
+    id: 'mock-1',
+    title: 'Summer Neon Night',
+    title_en: 'Summer Neon Night',
+    date_time_start: '2024-08-02T19:00:00+09:00',
+    date_time_end: '2024-08-02T22:00:00+09:00',
+    description: 'レトロ・ヴァイナル・レイヴ',
+    catchphrase: '70年代ミュージックで踊る夜',
+    price: 2500,
+    price_note: '要予約',
+    image_url: '/img/rectangle-3.png',
+    display_order: 1,
+    is_published: true,
+  },
+  {
+    id: 'mock-2',
+    title: 'Neon Dreams',
+    title_en: 'Neon Dreams',
+    date_time_start: '2024-08-09T20:00:00+09:00',
+    date_time_end: '2024-08-09T23:00:00+09:00',
+    description: 'エレクトロニック・ダンス・ナイト',
+    catchphrase: '最新のEDMで盛り上がる夜',
+    price: 3000,
+    price_note: '要予約',
+    image_url: '/img/rectangle-3.png',
+    display_order: 2,
+    is_published: true,
+  },
+  {
+    id: 'mock-3',
+    title: 'Jazz & Cocktails',
+    title_en: 'Jazz & Cocktails',
+    date_time_start: '2024-08-16T19:30:00+09:00',
+    date_time_end: '2024-08-16T22:30:00+09:00',
+    description: '上質なジャズとカクテルの時間',
+    catchphrase: '大人の夜を楽しむ',
+    price: 3500,
+    price_note: '要予約',
+    image_url: '/img/rectangle-3.png',
+    display_order: 3,
+    is_published: true,
+  },
+  {
+    id: 'mock-4',
+    title: 'Latin Night',
+    title_en: 'Latin Night',
+    date_time_start: '2024-08-23T20:00:00+09:00',
+    date_time_end: '2024-08-23T23:00:00+09:00',
+    description: 'ラテン音楽で踊る熱い夜',
+    catchphrase: '情熱的なリズムに包まれて',
+    price: 2800,
+    price_note: '要予約',
+    image_url: '/img/rectangle-3.png',
+    display_order: 4,
+    is_published: true,
+  },
+  {
+    id: 'mock-5',
+    title: 'VIP Night',
+    title_en: 'VIP Night',
+    date_time_start: '2024-08-30T21:00:00+09:00',
+    date_time_end: '2024-08-30T24:00:00+09:00',
+    description: '特別な夜を過ごす',
+    catchphrase: 'プレミアムな体験を',
+    price: 5000,
+    price_note: 'VIP限定',
+    image_url: '/img/rectangle-3.png',
+    display_order: 5,
+    is_published: true,
+  },
+];
+
+const mockCasts = [
+  {
+    id: 'mock-cast-1',
+    name: 'Cast 1',
+    name_en: 'Cast 1',
+    profile_image_url: '/img/2025-07-21-15-39-19-2.png',
+    description: 'ダンサー・シンガー・エンターテイナーとして活躍中。柔軟な体捌きと華麗なパフォーマンスが魅力。',
+    features: '柔軟な体捌きが持ち味。',
+    favorite_drink: 'カクテル',
+    show_description: '「Starlight Dream」のポールダンスシーン',
+    instagram_url: 'https://www.instagram.com/the27club_official/',
+    twitter_url: '',
+    display_order: 1,
+    is_active: true,
+  },
+  {
+    id: 'mock-cast-2',
+    name: 'Cast 2',
+    name_en: 'Cast 2',
+    profile_image_url: '/img/2025-07-21-15-39-19-5.png',
+    description: 'ダンサー・シンガー・エンターテイナーとして活躍中。柔軟な体捌きと華麗なパフォーマンスが魅力。',
+    features: '柔軟な体捌きが持ち味。',
+    favorite_drink: 'ワイン',
+    show_description: '「Starlight Dream」のポールダンスシーン',
+    instagram_url: 'https://www.instagram.com/the27club_official/',
+    twitter_url: '',
+    display_order: 2,
+    is_active: true,
+  },
+  {
+    id: 'mock-cast-3',
+    name: 'Aurora',
+    name_en: 'Aurora',
+    profile_image_url: '/img/2025-07-21-15-39-19-4.png',
+    description: 'ダンサー・シンガー・エンターテイナーとして活躍中。柔軟な体捌きと華麗なパフォーマンスが魅力。',
+    features: '柔軟な体捌きが持ち味。',
+    favorite_drink: 'シャンパン',
+    show_description: '「Starlight Dream」のポールダンスシーン',
+    instagram_url: 'https://www.instagram.com/the27club_official/',
+    twitter_url: '',
+    display_order: 3,
+    is_active: true,
+  },
+  {
+    id: 'mock-cast-4',
+    name: 'Cast 4',
+    name_en: 'Cast 4',
+    profile_image_url: '/img/2025-07-21-15-39-19-5.png',
+    description: 'ダンサー・シンガー・エンターテイナーとして活躍中。',
+    features: 'エレガントなパフォーマンス',
+    favorite_drink: 'モヒート',
+    show_description: '「Moonlight Serenade」のパフォーマンス',
+    instagram_url: 'https://www.instagram.com/the27club_official/',
+    twitter_url: '',
+    display_order: 4,
+    is_active: true,
+  },
+  {
+    id: 'mock-cast-5',
+    name: 'Cast 5',
+    name_en: 'Cast 5',
+    profile_image_url: '/img/2025-07-21-15-39-19-6.png',
+    description: 'ダンサー・シンガー・エンターテイナーとして活躍中。',
+    features: 'エネルギッシュなステージング',
+    favorite_drink: 'ウイスキー',
+    show_description: '「Electric Dreams」のパフォーマンス',
+    instagram_url: 'https://www.instagram.com/the27club_official/',
+    twitter_url: '',
+    display_order: 5,
+    is_active: true,
+  },
+];
+
 // イベント関連のAPI
 export const eventsAPI = {
   // 全イベント取得（公開済みのみ、日時順）
   async getAll() {
     if (!supabase) {
-      // デモモード：空の配列を返す
-      return [];
+      // デモモード：モックデータを返す
+      console.log('Using mock event data');
+      return mockEvents;
     }
     
     const { data, error } = await supabase
@@ -110,8 +258,9 @@ export const castsAPI = {
   // 全キャスト取得（アクティブのみ、表示順）
   async getAll() {
     if (!supabase) {
-      // デモモード：空の配列を返す
-      return [];
+      // デモモード：モックデータを返す
+      console.log('Using mock cast data');
+      return mockCasts;
     }
     
     const { data, error } = await supabase

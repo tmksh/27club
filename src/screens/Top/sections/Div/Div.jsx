@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Group66 } from "../../../../components/Group66";
 
@@ -25,6 +25,21 @@ export const Div = () => {
     { img: '/img/2-2.png', w: 105, h: 106 },
   ];
 
+  // チップの位置を固定（useMemoで一度だけ計算）
+  const chipPositions = React.useMemo(() => {
+    return Array.from({ length: 25 }, (_, i) => {
+      const chip = chips[i % chips.length];
+      const baseLeft = 0;
+      const fixedOffset = ((i * 137) % 500) + (i % 3) * 50;
+      return {
+        left: baseLeft + fixedOffset,
+        top: (Math.floor(i / 8) * 200) + (i % 6) * 100,
+        chip,
+        rotation: (i % 3) * 15 - 15,
+      };
+    });
+  }, [chips]);
+
   useEffect(() => {
     // 初回マウント時にも動作確認
     console.log('Background image slider initialized with', backgroundImages.length, 'images');
@@ -46,36 +61,27 @@ export const Div = () => {
   return (
     <div className="relative self-stretch w-full h-[1000px]">
       {/* チップの模様（背景装飾） */}
-      {Array.from({ length: 25 }, (_, i) => {
-        const chip = chips[i % chips.length];
-        // カタカナテキストが左寄せなので、左側に集約
-        const baseLeft = 0;
-        const randomOffset = Math.random() * (1440 * 0.6 - chip.w * 0.6);
-        const left = baseLeft + randomOffset;
-        const top = (Math.floor(i / 8) * 200) + (i % 6) * 100;
-        
-        return (
-          <div
-            key={`chip-pattern-${i}`}
-            className="absolute pointer-events-none"
-            style={{
-              left: `${left}px`,
-              top: `${top}px`,
-              width: `${chip.w * 0.6}px`,
-              height: `${chip.h * 0.6}px`,
-              backgroundImage: `url(${chip.img})`,
-              backgroundSize: 'cover',
-              backgroundPosition: '50% 50%',
-              opacity: 0.08,
-              transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-              zIndex: 1,
-            }}
-          />
-        );
-      })}
+      {chipPositions.map((pos, i) => (
+        <div
+          key={`chip-pattern-${i}`}
+          className="absolute pointer-events-none"
+          style={{
+            left: `${pos.left}px`,
+            top: `${pos.top}px`,
+            width: `${pos.chip.w * 0.6}px`,
+            height: `${pos.chip.h * 0.6}px`,
+            backgroundImage: `url(${pos.chip.img})`,
+            backgroundSize: 'cover',
+            backgroundPosition: '50% 50%',
+            opacity: 0.08,
+            transform: `rotate(${pos.rotation}deg)`,
+            zIndex: 0,
+          }}
+        />
+      ))}
 
       {/* 背景画像（フェードアニメーション付き） */}
-      <div className="absolute top-[280px] left-0 w-[1440px] h-[650px] overflow-hidden" style={{ zIndex: 0 }}>
+      <div className="absolute top-[280px] left-0 w-[1440px] h-[650px] overflow-hidden" style={{ zIndex: 1 }}>
         {backgroundImages.map((img, index) => {
           const isActive = index === currentImageIndex;
           return (

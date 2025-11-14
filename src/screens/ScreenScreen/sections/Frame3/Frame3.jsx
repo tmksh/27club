@@ -33,7 +33,7 @@ export const Frame3 = () => {
   return (
     <div className="relative w-[1440px] h-[1980px]">
       <div className="absolute top-[1808px] left-[535px] w-[370px] h-[172px] flex">
-        <div className="w-[370px] h-[172px] flex flex-col gap-[30px]">
+        <div className="w-[370px] h-[172px] flex flex-col gap-[15px]">
           <div className="flex w-[370px] h-[66px] relative flex-col items-center gap-[15px]">
             <div className="flex items-center gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
               <label className="inline-flex items-center gap-2.5 relative flex-[0_0_auto] rounded-sm cursor-pointer">

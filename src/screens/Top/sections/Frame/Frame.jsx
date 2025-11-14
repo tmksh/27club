@@ -12,7 +12,8 @@ export const Frame = () => {
     const loadEvents = async () => {
       try {
         const data = await eventsAPI.getAll();
-        setEvents(data);
+        console.log('取得したイベント数:', data?.length || 0, data);
+        setEvents(data || []);
       } catch (error) {
         console.error('イベントの取得に失敗しました:', error);
         // エラー時は空配列を設定
@@ -165,28 +166,28 @@ export const Frame = () => {
           </div>
           
           {/* イベントカード一覧 */}
-          <div className="flex w-full h-[calc(100%-80px)] relative flex-col items-start gap-[18px] overflow-y-auto overflow-x-hidden pr-2">
+          <div className="flex w-full h-[calc(100%-100px)] relative flex-col items-start gap-[18px] overflow-y-auto overflow-x-hidden pr-2" style={{ maxHeight: '500px' }}>
             {loading ? (
               <div className="text-white text-center w-full py-10">読み込み中...</div>
             ) : events.length > 0 ? (
               events.map((event, index) => {
-                const gradients = ["red", "pink", "purple", "blue", "green", "orange", "gold", "teal", "indigo", "yellow", "magenta", "lime", "violet"];
-                const eventDay = new Date(event.date_time_start).getDate();
-                
-                return (
-                  <Frame628
-                    key={event.id}
-                    className="flex-shrink-0"
-                    groupClassName=""
-                    rectangle="/img/rectangle-3.png"
-                    hoverGradient={gradients[index % gradients.length]}
-                    eventDate={eventDay}
-                    eventData={event}
-                    onMouseEnter={() => setHoveredDate(eventDay)}
-                    onMouseLeave={() => setHoveredDate(null)}
-                  />
-                );
-              })
+                  const gradients = ["red", "pink", "purple", "blue", "green", "orange", "gold", "teal", "indigo", "yellow", "magenta", "lime", "violet"];
+                  const eventDay = new Date(event.date_time_start).getDate();
+                  
+                  return (
+                    <Frame628
+                      key={event.id || `event-${index}`}
+                      className="flex-shrink-0 w-full"
+                      groupClassName=""
+                      rectangle="/img/rectangle-3.png"
+                      hoverGradient={gradients[index % gradients.length]}
+                      eventDate={eventDay}
+                      eventData={event}
+                      onMouseEnter={() => setHoveredDate(eventDay)}
+                      onMouseLeave={() => setHoveredDate(null)}
+                    />
+                  );
+                })
             ) : (
               <div className="text-white/50 text-center w-full py-10">
                 イベント情報がありません
