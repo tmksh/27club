@@ -210,8 +210,8 @@ export const Top = () => {
             { img: '/img/2-2.png', w: 105, h: 106 },
           ];
           
-          // 40個のお札をFV全体にランダム配置（常に降り続けるように）
-          return Array.from({ length: 40 }, (_, i) => {
+          // 20個のお札をFV全体にランダム配置（常に降り続けるように）
+          return Array.from({ length: 20 }, (_, i) => {
             const chip = chips[i % chips.length];
             const left = Math.random() * (1440 - chip.w); // 0から(1440-幅)の間でランダム
             const duration = 8 + Math.random() * 4; // 8-12秒
@@ -229,7 +229,8 @@ export const Top = () => {
                   backgroundImage: `url(${chip.img})`,
                   backgroundSize: 'cover',
                   backgroundPosition: '50% 50%',
-                  filter: 'hue-rotate(140deg) saturate(1.2) brightness(0.9)',
+                  filter: 'hue-rotate(140deg) saturate(1.2) brightness(0.9) blur(0.5px)',
+                  opacity: 0.75,
                   '--fall-duration': `${duration}s`,
                   '--fall-delay': `${delay}s`,
                 }}
