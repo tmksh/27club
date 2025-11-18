@@ -119,9 +119,9 @@ export const Frame628 = ({
         </div>
 
         <div className="absolute top-[148px] left-[436px] w-24 h-[19px]">
-          <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#e2eae3]" />
+          <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
 
-          <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [text-shadow:0px_1.24px_1.24px_#00000040] [-webkit-text-stroke:0.62px_#faffdb] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#143721] text-[12.4px] text-center tracking-[0] leading-[normal]">
+          <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
             予約はこちら
           </div>
         </div>

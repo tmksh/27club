@@ -457,7 +457,7 @@
       "data": {
         "viaRoute": "/",
         "trigger": {
-          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
           "line": 88,
           "endLine": 97,
           "column": 12,
@@ -569,7 +569,7 @@
       "data": {
         "viaRoute": "/",
         "trigger": {
-          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
           "line": 88,
           "endLine": 97,
           "column": 12,
@@ -601,7 +601,7 @@
       "data": {
         "viaRoute": "/",
         "trigger": {
-          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
           "line": 88,
           "endLine": 97,
           "column": 12,
@@ -649,7 +649,7 @@
       "data": {
         "viaRoute": "/",
         "trigger": {
-          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
           "line": 88,
           "endLine": 97,
           "column": 12,
@@ -681,7 +681,7 @@
       "data": {
         "viaRoute": "/",
         "trigger": {
-          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
           "line": 88,
           "endLine": 97,
           "column": 12,
@@ -713,7 +713,7 @@
       "data": {
         "viaRoute": "/",
         "trigger": {
-          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
           "line": 88,
           "endLine": 97,
           "column": 12,
@@ -745,7 +745,7 @@
       "data": {
         "viaRoute": "/",
         "trigger": {
-          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
           "line": 88,
           "endLine": 97,
           "column": 12,

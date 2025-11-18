@@ -101,7 +101,7 @@ export const Top = () => {
       />
       
             {/* FVセクション */}
-            <div className="relative w-[1440px] h-[672px] overflow-hidden z-10">
+            <div className="relative w-[1440px] h-screen overflow-hidden z-10">
               {/* 背景画像 */}
               <div 
                 className="absolute top-0 left-0 w-full h-full bg-[url(/img/rectangle-214.png)] bg-cover bg-center"
@@ -240,24 +240,24 @@ export const Top = () => {
         })()}
 
         {/* メインテキスト */}
-        <div className="absolute top-[100px] left-[111px] w-[1212px] h-[422px] flex flex-col z-20">
-          <div className="ml-[217px] w-[776px] h-[92px] -mt-px [text-shadow:0px_0px_4px_#1f697b] [-webkit-text-stroke:1px_#1f697b80] [font-family:'Freehand',Helvetica] font-normal text-white text-[64.3px] text-center tracking-[0] leading-[91.8px] whitespace-nowrap">
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 gap-6">
+          <div className="[text-shadow:0px_0px_4px_#1f697b] [-webkit-text-stroke:1px_#1f697b80] [font-family:'Freehand',Helvetica] font-normal text-white text-[64.3px] text-center tracking-[0] leading-[91.8px] whitespace-nowrap">
             Welcome to Tonight's SHOWTIME
           </div>
 
-          <div className="ml-[-0.9px] h-[226px] mt-[15.1px] [text-shadow:0px_4px_10px_#1f697bb2] [-webkit-text-stroke:0.87px_#1f697b] [font-family:'Abhaya_Libre_ExtraBold-Regular',Helvetica] font-normal text-white text-[220.2px] text-center tracking-[0] leading-[240.3px] whitespace-nowrap">
+          <div className="[text-shadow:0px_0px_4px_#1f697b] [-webkit-text-stroke:1px_#1f697b80] [font-family:'Freehand',Helvetica] font-normal text-white text-[220.2px] text-center tracking-[0] leading-[240.3px] whitespace-nowrap">
             THE 27 CLUB
           </div>
 
-          <button className="flex ml-[473px] w-[266.4px] h-[74px] relative mt-[15.9px] items-center justify-center bg-[#e4eef0cc] rounded-[2.26px] border-[3px] border-solid border-[#1f697b] hover:bg-[#e4eef0] transition-colors cursor-pointer">
-            <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-[#1f697b] text-base tracking-[0] leading-[17.6px] whitespace-nowrap">
+          <button className="flex w-[266.4px] h-[74px] relative items-center justify-center bg-black/80 backdrop-blur-sm rounded-[2.26px] border-[3px] border-solid border-white/20 hover:bg-black hover:border-white/40 transition-all duration-300 cursor-pointer">
+            <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-base tracking-[0] leading-[17.6px] whitespace-nowrap">
               WEB予約はこちら
             </div>
           </button>
         </div>
 
         {/* フッターナビゲーション */}
-        <div className="absolute w-[1440px] h-[72px] left-0 top-[600px] z-20 flex items-center justify-center">
+        <div className="absolute w-[1440px] h-[72px] left-0 bottom-0 z-20 flex items-center justify-center">
           {/* 背景 - 黒で上下に背景画像が見えるように */}
           <div className="absolute inset-0 bg-black" />
           {/* メニュー項目 - 中央揃え */}

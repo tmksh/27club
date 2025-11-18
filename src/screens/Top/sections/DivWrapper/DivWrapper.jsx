@@ -69,23 +69,62 @@ export const DivWrapper = () => {
           title="店舗へのアクセス"
         />
 
-        <p className="absolute top-[839px] left-[451px] w-[542px] [text-shadow:0px_4px_4px_#000000cc] [font-family:'Inter',Helvetica] font-normal text-white text-2xl text-center tracking-[0] leading-7">
-          電車JR線「新宿駅」
-          <br />
-          JR Line Shinjuku Sta.
-          <br />
-          東京メトロ丸ノ内線・副都心線「新宿三丁目駅」
-          <br />
-          <br />
-          〒160-0021
-          <br />
-          東京都新宿区歌舞伎町２丁目３６−３
-          <br />
-          新宿Acb会館 3階
-          <br />
-          <br />
-          ※入り口は大きな赤い階段が目印
-        </p>
+        <div className="absolute top-[839px] left-[126px] w-[1192px] flex flex-col items-center gap-6">
+          <div className="flex flex-col md:flex-row gap-8 w-full max-w-[1000px] px-8">
+            {/* 交通アクセス */}
+            <div className="flex-1 flex flex-col gap-4">
+              <div className="flex items-center gap-3 mb-2">
+                <svg className="w-6 h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
+                <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-lg tracking-[0.5px] uppercase">
+                  交通アクセス
+                </h3>
+              </div>
+              <div className="flex flex-col gap-3 [font-family:'Noto_Serif_JP',Helvetica] text-white">
+                <div className="flex flex-col gap-1">
+                  <div className="font-semibold text-lg">電車JR線「新宿駅」</div>
+                  <div className="text-sm opacity-80">JR Line Shinjuku Sta.</div>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <div className="font-semibold text-lg">東京メトロ丸ノ内線・副都心線「新宿三丁目駅」</div>
+                </div>
+              </div>
+            </div>
+
+            {/* 住所 */}
+            <div className="flex-1 flex flex-col gap-4">
+              <div className="flex items-center gap-3 mb-2">
+                <svg className="w-6 h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-lg tracking-[0.5px] uppercase">
+                  住所
+                </h3>
+              </div>
+              <div className="flex flex-col gap-2 [font-family:'Noto_Serif_JP',Helvetica] text-white">
+                <div className="text-sm opacity-80">〒160-0021</div>
+                <div className="font-semibold text-lg leading-relaxed">
+                  東京都新宿区歌舞伎町２丁目３６−３
+                </div>
+                <div className="text-base">新宿Acb会館 3階</div>
+              </div>
+            </div>
+          </div>
+
+          {/* 注意書き */}
+          <div className="w-full max-w-[1000px] px-8">
+            <div className="flex items-start gap-3 p-4 bg-[#00d6bd20] border border-[#00d6bd40] rounded-lg">
+              <svg className="w-5 h-5 text-[#00d6bd] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white text-base leading-relaxed">
+                ※入り口は大きな赤い階段が目印
+              </p>
+            </div>
+          </div>
+        </div>
 
         <div className="flex flex-col w-[352px] items-start gap-2.5 absolute top-[1148px] left-[351px]">
           <div className="relative self-stretch w-full h-[97.76px] rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)]">
