@@ -32,7 +32,7 @@ export const Frame3 = () => {
 
   return (
     <div className="relative w-[1440px] h-[1980px]">
-      <div className="absolute top-[1808px] left-[535px] w-[370px] h-[172px] flex">
+      <div className="absolute top-[1520px] left-[535px] w-[370px] h-[172px] flex">
         <div className="w-[370px] h-[172px] flex flex-col gap-[15px]">
           <div className="flex w-[370px] h-[66px] relative flex-col items-center gap-[15px]">
             <div className="flex items-center gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
@@ -124,19 +124,11 @@ export const Frame3 = () => {
                                 value={formData.inquiryType}
                                 onChange={(value) => handleInputChange("inquiryType", value)}
                               />
-                              <Group68
-                                className="!self-stretch !h-[99px] ![display:unset] !left-[unset] !w-full !top-[unset]"
-                                hasFrame={false}
-                              />
-                              <Group68
-                                className="!self-stretch !h-[99px] ![display:unset] !left-[unset] !w-full !top-[unset]"
-                                hasFrame={false}
-                              />
                             </div>
                           </div>
 
                           <Group76
-                            className="!self-stretch !mt-[-125px] !left-[unset] !w-full !top-[unset]"
+                            className="!self-stretch !mt-[-20px] !mb-[40px] !left-[unset] !w-full !top-[unset]"
                             groupClassName="!mr-[-20.00px]"
                             text="お問い合せ内容"
                             value={formData.content}

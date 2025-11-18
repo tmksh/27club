@@ -80,9 +80,9 @@ export const ConcreteComponentNode = ({
           />
         );
       })}
-      <div className="ml-20 w-[1280px] mt-[80px] flex gap-[80px]">
+      <div className="ml-20 w-[1280px] mt-[60px] flex gap-[50px]">
         <div
-          className={`flex w-[280px] h-[250px] relative flex-col items-start gap-6 ${leftSectionClassName}`}
+          className={`flex w-[200px] h-[250px] relative flex-col items-start gap-4 ${leftSectionClassName}`}
         >
           <div className="inline-flex items-center gap-[25.19px] relative flex-[0_0_auto]">
             <Link
@@ -90,14 +90,14 @@ export const ConcreteComponentNode = ({
               className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}
             >
               <img
-                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}
+                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}
                 alt="Element"
                 src="/img/27logo-1-1.png"
               />
             </Link>
           </div>
 
-          <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
+          <div className="flex flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
             <a href="https://www.instagram.com/the27club_official/" target="_blank" rel="noopener noreferrer">
               <img
                 className="relative flex-[0_0_auto] w-[40px] h-[40px] cursor-pointer hover:opacity-80 transition-opacity"
@@ -108,7 +108,7 @@ export const ConcreteComponentNode = ({
           </div>
         </div>
 
-        <div className="flex w-[220px] h-[250px] relative flex-col items-start gap-6">
+        <div className="flex w-[200px] h-[250px] relative flex-col items-start gap-5">
           <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
             <div className="font-bold text-white text-sm leading-[19.2px] relative w-fit [font-family:'Inter',Helvetica] tracking-[1px] uppercase whitespace-nowrap">
               予約
@@ -122,19 +122,19 @@ export const ConcreteComponentNode = ({
             </div>
 
             <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
-              <button className="flex items-center justify-center gap-2 px-4 py-2 bg-[#2a3a3a] border border-[#00d6bd] rounded text-white text-xs hover:bg-[#00d6bd30] transition-colors [font-family:'Inter',Helvetica]">
+              <button className="flex items-center justify-center gap-2 px-3 py-2 bg-[#2a3a3a] border border-[#00d6bd] rounded text-white text-xs hover:bg-[#00d6bd30] transition-colors [font-family:'Inter',Helvetica]">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 電話をかける
               </button>
-              <button className="flex items-center justify-center gap-2 px-4 py-2 bg-[#2a3a3a] border border-[#00d6bd] rounded text-white text-xs hover:bg-[#00d6bd30] transition-colors [font-family:'Inter',Helvetica]">
+              <button className="flex items-center justify-center gap-2 px-3 py-2 bg-[#2a3a3a] border border-[#00d6bd] rounded text-white text-xs hover:bg-[#00d6bd30] transition-colors [font-family:'Inter',Helvetica]">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
                 メッセージを送る
               </button>
-              <button className="flex items-center justify-center gap-2 px-4 py-2 bg-[#2a3a3a] border border-[#00d6bd] rounded text-white text-xs hover:bg-[#00d6bd30] transition-colors [font-family:'Inter',Helvetica]">
+              <button className="flex items-center justify-center gap-2 px-3 py-2 bg-[#2a3a3a] border border-[#00d6bd] rounded text-white text-xs hover:bg-[#00d6bd30] transition-colors [font-family:'Inter',Helvetica]">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -144,7 +144,7 @@ export const ConcreteComponentNode = ({
           </div>
         </div>
 
-        <div className="flex w-[280px] h-[250px] relative flex-col items-start gap-6">
+        <div className="flex w-[240px] h-[250px] relative flex-col items-start gap-5">
           <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
             <div className="font-bold text-white text-sm leading-[19.2px] relative w-fit [font-family:'Inter',Helvetica] tracking-[1px] uppercase whitespace-nowrap">
               場所
@@ -159,7 +159,7 @@ export const ConcreteComponentNode = ({
               {text}
             </div>
 
-            <button className="flex items-center justify-center gap-2 px-4 py-2 bg-[#2a3a3a] border border-[#00d6bd] rounded text-white text-xs hover:bg-[#00d6bd30] transition-colors [font-family:'Inter',Helvetica]">
+            <button className="flex items-center justify-center gap-2 px-3 py-2 bg-[#2a3a3a] border border-[#00d6bd] rounded text-white text-xs hover:bg-[#00d6bd30] transition-colors [font-family:'Inter',Helvetica]">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -169,7 +169,7 @@ export const ConcreteComponentNode = ({
           </div>
         </div>
 
-        <div className="flex w-[220px] h-[250px] relative flex-col items-start gap-6">
+        <div className="flex w-[200px] h-[250px] relative flex-col items-start gap-5">
           <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
             <div className="font-bold text-white text-sm leading-[19.2px] relative w-fit [font-family:'Inter',Helvetica] tracking-[1px] uppercase whitespace-nowrap">
               営業時間
@@ -177,7 +177,7 @@ export const ConcreteComponentNode = ({
             <div className="w-full h-[1px] bg-[#00d6bd]"></div>
           </div>
 
-          <div className="flex flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
+          <div className="flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
             <div className="relative w-fit [font-family:'Inter',Helvetica] font-normal text-white text-sm tracking-[0] leading-[20px] whitespace-nowrap">
               月曜日 - 木曜日：19:00-02:00
             </div>
@@ -190,13 +190,13 @@ export const ConcreteComponentNode = ({
               日曜日：19:00-01:00
             </div>
 
-            <div className="relative w-fit [font-family:'Inter',Helvetica] font-normal text-white text-xs italic tracking-[0] leading-[16px] mt-2">
+            <div className="relative w-fit [font-family:'Inter',Helvetica] font-normal text-white text-xs italic tracking-[0] leading-[16px] mt-1">
               営業時間は変更になる場合があります。
             </div>
           </div>
         </div>
 
-        <div className="flex w-[220px] h-[250px] relative flex-col items-start gap-6">
+        <div className="flex w-[200px] h-[250px] relative flex-col items-start gap-5">
           <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
             <div className="font-bold text-white text-sm leading-[19.2px] relative w-fit [font-family:'Inter',Helvetica] tracking-[1px] uppercase whitespace-nowrap">
               リンク

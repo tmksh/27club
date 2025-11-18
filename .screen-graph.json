@@ -4,11 +4,25 @@
       "id": "src/screens/Top/Top.jsx",
       "label": "Top",
       "routes": [
-        "/*",
+        "/",
         "/top"
       ],
       "dataModelId": "385:1682",
       "isRoot": true
+    },
+    {
+      "id": "src/screens/Admin/AdminLogin.jsx",
+      "label": "AdminLogin",
+      "routes": [
+        "/admin/login"
+      ]
+    },
+    {
+      "id": "src/screens/Admin/AdminDashboard.jsx",
+      "label": "AdminDashboard",
+      "routes": [
+        "/admin/dashboard"
+      ]
     },
     {
       "id": "src/screens/FrameScreen/FrameScreen.jsx",
@@ -65,33 +79,51 @@
         "/u12461u12515u12473u12488"
       ],
       "dataModelId": "411:1123"
-    },
-    {
-      "id": "src/screens/Admin/AdminLogin.jsx",
-      "label": "AdminLogin",
-      "routes": [
-        "/admin/login"
-      ]
-    },
-    {
-      "id": "src/screens/Admin/AdminDashboard.jsx",
-      "label": "AdminDashboard",
-      "routes": [
-        "/admin/dashboard"
-      ]
     }
   ],
   "edges": [
     {
-      "id": "src/screens/Top/Top.jsx:127:14-to-src/screens/Screen6/Screen6.jsx",
+      "id": "src/screens/Top/Top.jsx:117:12-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Top/Top.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link to=\"/\" className=\"inline-flex items-center gap-3 relative flex-[0_0_auto]\">\n              <img\n                className=\"relative w-[101px] h-[37px] aspect-[2.74] object-cover\"\n                alt=\"27 CLUB Logo\"\n                src=\"/img/27logo-1.png\"\n              />\n            </Link>",
+          "line": 117,
+          "endLine": 123,
+          "column": 12,
+          "endColumn": 19,
+          "sourceFile": "src/screens/Top/Top.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Top/Top.jsx:126:14-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Top/Top.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link to=\"/\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                HOME\n              </Link>",
+          "line": 126,
+          "endLine": 128,
+          "column": 14,
+          "endColumn": 21,
+          "sourceFile": "src/screens/Top/Top.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Top/Top.jsx:129:14-to-src/screens/Screen6/Screen6.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen6/Screen6.jsx",
       "data": {
         "viaRoute": "/u12465u12441u12473u12488u27969u12428",
         "trigger": {
           "element": "<Link to=\"/u12465u12441u12473u12488u27969u12428\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                GEST FLOW\n              </Link>",
-          "line": 127,
-          "endLine": 129,
+          "line": 129,
+          "endLine": 131,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -99,15 +131,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:130:14-to-src/screens/Screen/Screen.jsx",
+      "id": "src/screens/Top/Top.jsx:132:14-to-src/screens/Screen/Screen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen/Screen.jsx",
       "data": {
         "viaRoute": "/u12481u12483u12501u12442u12395u12388u12356u12390",
         "trigger": {
           "element": "<Link to=\"/u12481u12483u12501u12442u12395u12388u12356u12390\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                TIP\n              </Link>",
-          "line": 130,
-          "endLine": 132,
+          "line": 132,
+          "endLine": 134,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -115,15 +147,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:133:14-to-src/screens/Screen7/Screen7.jsx",
+      "id": "src/screens/Top/Top.jsx:135:14-to-src/screens/Screen7/Screen7.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen7/Screen7.jsx",
       "data": {
         "viaRoute": "/u12461u12515u12473u12488",
         "trigger": {
           "element": "<Link to=\"/u12461u12515u12473u12488\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                CAST\n              </Link>",
-          "line": 133,
-          "endLine": 135,
+          "line": 135,
+          "endLine": 137,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -131,15 +163,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:136:14-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
+      "id": "src/screens/Top/Top.jsx:138:14-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenWrapper/ScreenWrapper.jsx",
       "data": {
         "viaRoute": "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531",
         "trigger": {
           "element": "<Link to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                PARTY PLANS\n              </Link>",
-          "line": 136,
-          "endLine": 138,
+          "line": 138,
+          "endLine": 140,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -147,15 +179,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:139:14-to-src/screens/Screen5/Screen5.jsx",
+      "id": "src/screens/Top/Top.jsx:141:14-to-src/screens/Screen5/Screen5.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen5/Screen5.jsx",
       "data": {
         "viaRoute": "/u27714u20154",
         "trigger": {
           "element": "<Link to=\"/u27714u20154\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                RECRUIT\n              </Link>",
-          "line": 139,
-          "endLine": 141,
+          "line": 141,
+          "endLine": 143,
           "column": 14,
           "endColumn": 21,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -163,15 +195,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:226:12-to-src/screens/Screen6/Screen6.jsx",
+      "id": "src/screens/Top/Top.jsx:265:12-to-src/screens/Screen6/Screen6.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen6/Screen6.jsx",
       "data": {
         "viaRoute": "/u12465u12441u12473u12488u27969u12428",
         "trigger": {
-          "element": "<Link to=\"/u12465u12441u12473u12488u27969u12428\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              ゲストの流れ\n            </Link>",
-          "line": 226,
-          "endLine": 228,
+          "element": "<Link to=\"/u12465u12441u12473u12488u27969u12428\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              ゲストの流れ\n            </Link>",
+          "line": 265,
+          "endLine": 267,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -179,15 +211,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:229:12-to-src/screens/Screen/Screen.jsx",
+      "id": "src/screens/Top/Top.jsx:268:12-to-src/screens/Screen/Screen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen/Screen.jsx",
       "data": {
         "viaRoute": "/u12481u12483u12501u12442u12395u12388u12356u12390",
         "trigger": {
-          "element": "<Link to=\"/u12481u12483u12501u12442u12395u12388u12356u12390\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              チップについて\n            </Link>",
-          "line": 229,
-          "endLine": 231,
+          "element": "<Link to=\"/u12481u12483u12501u12442u12395u12388u12356u12390\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              チップについて\n            </Link>",
+          "line": 268,
+          "endLine": 270,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -195,15 +227,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:232:12-to-src/screens/Screen7/Screen7.jsx",
+      "id": "src/screens/Top/Top.jsx:271:12-to-src/screens/Screen7/Screen7.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen7/Screen7.jsx",
       "data": {
         "viaRoute": "/u12461u12515u12473u12488",
         "trigger": {
-          "element": "<Link to=\"/u12461u12515u12473u12488\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              キャスト\n            </Link>",
-          "line": 232,
-          "endLine": 234,
+          "element": "<Link to=\"/u12461u12515u12473u12488\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              キャスト\n            </Link>",
+          "line": 271,
+          "endLine": 273,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -211,15 +243,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:235:12-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
+      "id": "src/screens/Top/Top.jsx:274:12-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenWrapper/ScreenWrapper.jsx",
       "data": {
         "viaRoute": "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531",
         "trigger": {
-          "element": "<Link to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              パーティープラン\n            </Link>",
-          "line": 235,
-          "endLine": 237,
+          "element": "<Link to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              パーティープラン\n            </Link>",
+          "line": 274,
+          "endLine": 276,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -227,15 +259,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:238:12-to-src/screens/Screen5/Screen5.jsx",
+      "id": "src/screens/Top/Top.jsx:277:12-to-src/screens/Screen5/Screen5.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen5/Screen5.jsx",
       "data": {
         "viaRoute": "/u27714u20154",
         "trigger": {
-          "element": "<Link to=\"/u27714u20154\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              求人募集\n            </Link>",
-          "line": 238,
-          "endLine": 240,
+          "element": "<Link to=\"/u27714u20154\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              求人募集\n            </Link>",
+          "line": 277,
+          "endLine": 279,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -243,15 +275,15 @@
       }
     },
     {
-      "id": "src/screens/Top/Top.jsx:241:12-to-src/screens/ScreenScreen/ScreenScreen.jsx",
+      "id": "src/screens/Top/Top.jsx:280:12-to-src/screens/ScreenScreen/ScreenScreen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
       "data": {
         "viaRoute": "/u12467u12531u12479u12463u12488",
         "trigger": {
-          "element": "<Link to=\"/u12467u12531u12479u12463u12488\" className=\"relative h-[72px] [font-family:'Inter',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              お問い合わせ\n            </Link>",
-          "line": 241,
-          "endLine": 243,
+          "element": "<Link to=\"/u12467u12531u12479u12463u12488\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              お問い合わせ\n            </Link>",
+          "line": 280,
+          "endLine": 282,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -275,15 +307,15 @@
       }
     },
     {
-      "id": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx:443:10-to-src/screens/Screen7/Screen7.jsx",
+      "id": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx:487:10-to-src/screens/Screen7/Screen7.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen7/Screen7.jsx",
       "data": {
         "viaRoute": "/u12461u12515u12473u12488",
         "trigger": {
           "element": "<Link\n            className=\"w-[351.95px] flex\"\n            to=\"/u12461u12515u12473u12488\"\n          >\n            <div className=\"w-[351.95px] flex\">\n              <Group153 className=\"!h-[unset] ![position:unset] !left-[unset] !w-[351.95px] !top-[unset]\" />\n            </div>\n          </Link>",
-          "line": 443,
-          "endLine": 450,
+          "line": 487,
+          "endLine": 494,
           "column": 10,
           "endColumn": 17,
           "sourceFile": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx"
@@ -307,15 +339,15 @@
       }
     },
     {
-      "id": "src/screens/Top/sections/Div/Div.jsx:142:10-to-src/screens/ScreenScreen/ScreenScreen.jsx",
+      "id": "src/screens/Top/sections/Div/Div.jsx:148:10-to-src/screens/ScreenScreen/ScreenScreen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
       "data": {
         "viaRoute": "/u12467u12531u12479u12463u12488",
         "trigger": {
           "element": "<Link\n            className=\"flex ml-[385.5px] w-[167.82px] h-[46.62px] relative items-center justify-center bg-black rounded-[1.42px] hover:bg-gray-800 transition-colors\"\n            to=\"/u12467u12531u12479u12463u12488\"\n          >\n            <div className=\"relative w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-[9.3px] tracking-[0] leading-[11.1px] whitespace-nowrap\">\n              お問い合わせ\n            </div>\n          </Link>",
-          "line": 142,
-          "endLine": 149,
+          "line": 148,
+          "endLine": 155,
           "column": 10,
           "endColumn": 17,
           "sourceFile": "src/screens/Top/sections/Div/Div.jsx"
@@ -419,6 +451,22 @@
       }
     },
     {
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Top/Top.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "line": 88,
+          "endLine": 97,
+          "column": 12,
+          "endColumn": 19,
+          "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
+        }
+      }
+    },
+    {
       "id": "src/screens/Admin/AdminLogin.jsx:26:6-to-src/screens/Admin/AdminDashboard.jsx",
       "source": "src/screens/Admin/AdminLogin.jsx",
       "target": "src/screens/Admin/AdminDashboard.jsx",
@@ -479,6 +527,230 @@
           "column": 4,
           "endColumn": 28,
           "sourceFile": "src/screens/Admin/AdminDashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Admin/AdminDashboard.jsx:62:12-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Admin/AdminDashboard.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link \n              to=\"/\" \n              className=\"text-white hover:text-[#00d6bd] transition\"\n            >\n              サイトを見る\n            </Link>",
+          "line": 62,
+          "endLine": 67,
+          "column": 12,
+          "endColumn": 19,
+          "sourceFile": "src/screens/Admin/AdminDashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/Frame20/Frame20.jsx:22:8-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Screen/Screen.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link to=\"/\" className=\"inline-flex items-center gap-3 relative flex-[0_0_auto]\">\n          <img\n            className=\"relative w-[101px] h-[37px] aspect-[2.74] object-cover\"\n            alt=\"Element\"\n            src=\"/img/27logo-1-2.png\"\n          />\n        </Link>",
+          "line": 22,
+          "endLine": 28,
+          "column": 8,
+          "endColumn": 15,
+          "sourceFile": "src/components/Frame20/Frame20.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Top/Top.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "line": 88,
+          "endLine": 97,
+          "column": 12,
+          "endColumn": 19,
+          "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/Frame20/Frame20.jsx:22:8-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Screen/Screen.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link to=\"/\" className=\"inline-flex items-center gap-3 relative flex-[0_0_auto]\">\n          <img\n            className=\"relative w-[101px] h-[37px] aspect-[2.74] object-cover\"\n            alt=\"Element\"\n            src=\"/img/27logo-1-2.png\"\n          />\n        </Link>",
+          "line": 22,
+          "endLine": 28,
+          "column": 8,
+          "endColumn": 15,
+          "sourceFile": "src/components/Frame20/Frame20.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Top/Top.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "line": 88,
+          "endLine": 97,
+          "column": 12,
+          "endColumn": 19,
+          "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/Frame20/Frame20.jsx:22:8-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Screen/Screen.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link to=\"/\" className=\"inline-flex items-center gap-3 relative flex-[0_0_auto]\">\n          <img\n            className=\"relative w-[101px] h-[37px] aspect-[2.74] object-cover\"\n            alt=\"Element\"\n            src=\"/img/27logo-1-2.png\"\n          />\n        </Link>",
+          "line": 22,
+          "endLine": 28,
+          "column": 8,
+          "endColumn": 15,
+          "sourceFile": "src/components/Frame20/Frame20.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/ScreenWrapper/sections/Frame7/Frame7.jsx:506:16-to-src/screens/ScreenScreen/ScreenScreen.jsx",
+      "source": "src/screens/ScreenWrapper/ScreenWrapper.jsx",
+      "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
+      "data": {
+        "viaRoute": "/u12467u12531u12479u12463u12488",
+        "trigger": {
+          "element": "<Link to=\"/u12467u12531u12479u12463u12488\" className=\"flex w-[200px] h-14 items-center justify-center gap-3 relative bg-[#333333] rounded-[28px] border border-solid border-white hover:bg-[#444444] transition-colors cursor-pointer\">\n                  <div className=\"w-5 h-5 relative border-0 border-none\">\n                    <img\n                      className=\"absolute w-[83.33%] h-[24.99%] top-[25.00%] left-[4.17%]\"\n                      alt=\"Vector\"\n                      src=\"/img/vector-69.svg\"\n                    />\n\n                    <img\n                      className=\"absolute w-[83.33%] h-[66.67%] top-[12.50%] left-[4.17%]\"\n                      alt=\"Vector\"\n                      src=\"/img/vector-70.svg\"\n                    />\n                  </div>\n\n                  <div className=\"w-fit [font-family:'Inter',Helvetica] font-bold text-white text-base leading-[19.2px] whitespace-nowrap relative tracking-[0]\">\n                    お問い合わせ\n                  </div>\n                </Link>",
+          "line": 506,
+          "endLine": 524,
+          "column": 16,
+          "endColumn": 23,
+          "sourceFile": "src/screens/ScreenWrapper/sections/Frame7/Frame7.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Top/Top.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "line": 88,
+          "endLine": 97,
+          "column": 12,
+          "endColumn": 19,
+          "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/Frame20/Frame20.jsx:22:8-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Screen/Screen.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link to=\"/\" className=\"inline-flex items-center gap-3 relative flex-[0_0_auto]\">\n          <img\n            className=\"relative w-[101px] h-[37px] aspect-[2.74] object-cover\"\n            alt=\"Element\"\n            src=\"/img/27logo-1-2.png\"\n          />\n        </Link>",
+          "line": 22,
+          "endLine": 28,
+          "column": 8,
+          "endColumn": 15,
+          "sourceFile": "src/components/Frame20/Frame20.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Top/Top.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "line": 88,
+          "endLine": 97,
+          "column": 12,
+          "endColumn": 19,
+          "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/Frame20/Frame20.jsx:22:8-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Screen/Screen.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link to=\"/\" className=\"inline-flex items-center gap-3 relative flex-[0_0_auto]\">\n          <img\n            className=\"relative w-[101px] h-[37px] aspect-[2.74] object-cover\"\n            alt=\"Element\"\n            src=\"/img/27logo-1-2.png\"\n          />\n        </Link>",
+          "line": 22,
+          "endLine": 28,
+          "column": 8,
+          "endColumn": 15,
+          "sourceFile": "src/components/Frame20/Frame20.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Top/Top.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "line": 88,
+          "endLine": 97,
+          "column": 12,
+          "endColumn": 19,
+          "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/Frame20/Frame20.jsx:22:8-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Screen/Screen.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link to=\"/\" className=\"inline-flex items-center gap-3 relative flex-[0_0_auto]\">\n          <img\n            className=\"relative w-[101px] h-[37px] aspect-[2.74] object-cover\"\n            alt=\"Element\"\n            src=\"/img/27logo-1-2.png\"\n          />\n        </Link>",
+          "line": 22,
+          "endLine": 28,
+          "column": 8,
+          "endColumn": 15,
+          "sourceFile": "src/components/Frame20/Frame20.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "source": "src/screens/Top/Top.jsx",
+      "target": "src/screens/Top/Top.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[150px] !h-[56px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
+          "line": 88,
+          "endLine": 97,
+          "column": 12,
+          "endColumn": 19,
+          "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
         }
       }
     }
