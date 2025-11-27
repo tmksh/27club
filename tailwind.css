@@ -5,6 +5,99 @@
   .all-\[unset\] {
     all: unset;
   }
+  
+  /* レスポンシブコンテナ */
+  .responsive-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .responsive-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .responsive-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  
+  /* モバイルメニュー */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .mobile-menu-link {
+    font-family: 'Noto_Serif_JP', Helvetica;
+    font-size: 1.25rem;
+    color: white;
+    transition: color 0.3s;
+  }
+  
+  .mobile-menu-link:hover {
+    color: #00d6bd;
+  }
+  
+  /* ハンバーガーメニューボタン */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 110;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger.open span:first-child {
+    transform: rotate(45deg) translateY(5.5px);
+  }
+  
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.open span:last-child {
+    transform: rotate(-45deg) translateY(-5.5px);
+  }
+  
+  /* スクロールバーを隠す */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 :root {

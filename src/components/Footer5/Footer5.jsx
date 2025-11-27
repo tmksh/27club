@@ -24,7 +24,7 @@ export const Footer5 = ({
   to5,
 }) => {
   return (
-    <div className={`h-[584px] w-[1440px] flex ${className}`}>
+    <div className={`min-h-[584px] w-full flex ${className}`}>
       <ConcreteComponentNode
         className={concreteComponentNodeFooterClassName}
         divClassName="![white-space:unset]"

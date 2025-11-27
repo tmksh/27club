@@ -15,183 +15,80 @@ export const SectionComponentNode = () => {
     { img: '/img/2-2.png', w: 105, h: 106 },
   ];
 
+  const galleryImages = [
+    '/img/2025-09-16-17-49-20-1.png',
+    '/img/2025-09-16-17-49-20-2.png',
+    '/img/2025-09-16-17-49-20-3.png',
+    '/img/2025-09-16-17-49-20-4.png',
+    '/img/2025-09-16-17-49-20-10.png',
+    '/img/2025-09-16-17-49-20-11.png',
+    '/img/2025-09-16-17-49-20-12.png',
+    '/img/2025-09-16-17-49-20-13.png',
+    '/img/2025-09-16-17-49-20-17.png',
+    '/img/2025-09-16-17-49-20-18.png',
+    '/img/2025-09-16-17-49-20-19.png',
+    '/img/2025-09-16-17-49-20-20.png',
+  ];
+
   return (
-    <div className="relative self-stretch w-full h-[1250px] overflow-hidden">
-      <div className="relative w-full h-[1250px] flex flex-col items-center">
-        {/* チップの模様（カタカナテキストの方に向けて右側に集約） */}
-        {useMemo(() => {
-          return Array.from({ length: 30 }, (_, i) => {
-            const chip = chips[i % chips.length];
-            const baseLeft = 1440 * 0.4;
-            const fixedOffset = ((i * 137) % 500) + (i % 3) * 50;
-            const left = baseLeft + fixedOffset;
-            const top = (Math.floor(i / 10) * 200) + (i % 7) * 80;
-            
-            return (
-              <div
-                key={`chip-pattern-${i}`}
-                className="absolute pointer-events-none"
-                style={{
-                  left: `${left}px`,
-                  top: `${top}px`,
-                  width: `${chip.w * 0.6}px`,
-                  height: `${chip.h * 0.6}px`,
-                  backgroundImage: `url(${chip.img})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: '50% 50%',
-                  opacity: 0.08,
-                  transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-                  zIndex: 0,
-                }}
-              />
-            );
-          });
-        }, [chips])}
+    <div className="relative self-stretch w-full min-h-[600px] md:min-h-[1250px] overflow-hidden px-4 md:px-8">
+      <div className="relative w-full max-w-[1440px] mx-auto flex flex-col items-center">
+        {/* チップの模様（デスクトップのみ表示） */}
+        <div className="hidden lg:block">
+          {useMemo(() => {
+            return Array.from({ length: 30 }, (_, i) => {
+              const chip = chips[i % chips.length];
+              const baseLeft = 1440 * 0.4;
+              const fixedOffset = ((i * 137) % 500) + (i % 3) * 50;
+              const left = baseLeft + fixedOffset;
+              const top = (Math.floor(i / 10) * 200) + (i % 7) * 80;
+              
+              return (
+                <div
+                  key={`chip-pattern-${i}`}
+                  className="absolute pointer-events-none"
+                  style={{
+                    left: `${left}px`,
+                    top: `${top}px`,
+                    width: `${chip.w * 0.6}px`,
+                    height: `${chip.h * 0.6}px`,
+                    backgroundImage: `url(${chip.img})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: '50% 50%',
+                    opacity: 0.08,
+                    transform: `rotate(${(i % 3) * 15 - 15}deg)`,
+                    zIndex: 0,
+                  }}
+                />
+              );
+            });
+          }, [chips])}
+        </div>
         
-        <div className="absolute top-[80px] left-0 right-0 flex flex-col items-center gap-3 z-10">
-          <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
+        {/* セクションタイトル */}
+        <div className="pt-8 md:pt-[80px] flex flex-col items-center gap-3 z-10">
+          <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
             GALLERY
           </div>
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4 whitespace-nowrap">
+          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
             当店の空間と雰囲気を写真でご覧いただけます。プロ仕様のステージと照明が創り出す、特別な空間をお楽しみください。
           </div>
         </div>
 
-        <div className="absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-right z-10">
+        {/* カタカナテキスト（デスクトップのみ） */}
+        <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-right z-10">
           ギャラリー
         </div>
 
-        {/* 1行目 */}
-        <div className="flex w-full max-w-[1440px] items-start gap-[60px] justify-center px-4 absolute top-[240px] left-0 right-0 z-10">
-          <div className="flex items-center gap-[60px] relative flex-1 grow">
-            <div className="flex items-start gap-2.5 relative flex-1 grow">
-              <div className="flex items-center gap-[60px] relative flex-1 grow">
-                <Element
-                  className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                  element="/img/2025-09-16-17-49-20-1.png"
-                />
-                <Element
-                  className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                  element="/img/2025-09-16-17-49-20-2.png"
-                />
-                <Element
-                  className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                  element="/img/2025-09-16-17-49-20-3.png"
-                />
-                <Element
-                  className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                  element="/img/2025-09-16-17-49-20-4.png"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2.5 relative flex-1 grow">
-              <div className="flex items-center gap-[60px] relative flex-1 grow">
-                <Element
-                  className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                  element="/img/2025-09-16-17-49-20-10.png"
-                />
-                <Element
-                  className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                  element="/img/2025-09-16-17-49-20-11.png"
-                />
-                <Element
-                  className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                  element="/img/2025-09-16-17-49-20-12.png"
-                />
-                <Element
-                  className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                  element="/img/2025-09-16-17-49-20-13.png"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 2行目 */}
-        <div className="flex w-full max-w-[1440px] items-start gap-[60px] justify-center px-4 absolute top-[580px] left-0 right-0 z-10">
-          <div className="flex items-center gap-[60px] relative flex-1 grow">
-            <div className="inline-flex items-center gap-[60px] relative flex-[0_0_auto]">
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-17.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-18.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-19.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-20.png"
-              />
-            </div>
-
-            <div className="flex items-center gap-[60px] relative flex-1 grow">
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-1.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-2.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-3.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-4.png"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* 3行目 */}
-        <div className="flex w-full max-w-[1440px] items-start justify-center gap-[60px] px-4 absolute top-[920px] left-0 right-0 z-10">
-          <div className="flex items-center gap-[60px] relative flex-1 grow">
-            <div className="flex items-center gap-[60px] relative flex-1 grow">
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-17.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-18.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-19.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-20.png"
-              />
-            </div>
-
-            <div className="flex items-center gap-[60px] relative flex-1 grow">
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-10.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-11.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-12.png"
-              />
-              <Element
-                className="!left-[unset] !top-[unset] !w-[220px] !h-[260px]"
-                element="/img/2025-09-16-17-49-20-13.png"
-              />
-            </div>
-          </div>
+        {/* ギャラリーグリッド - レスポンシブ */}
+        <div className="mt-8 md:mt-16 w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-[60px] z-10">
+          {galleryImages.map((image, index) => (
+            <Element
+              key={`gallery-${index}`}
+              className="!left-[unset] !top-[unset] !w-full !h-auto !aspect-[220/260]"
+              element={image}
+            />
+          ))}
         </div>
       </div>
     </div>

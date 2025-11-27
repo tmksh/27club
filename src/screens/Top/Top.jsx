@@ -14,12 +14,44 @@ export const Top = () => {
   const [animationKey, setAnimationKey] = useState(0);
   const [language, setLanguage] = useState('日本語');
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     // ページが表示された時、またはTOPページに戻ってきた時にアニメーションをリセット
     setAnimationKey(prev => prev + 1);
   }, [location.pathname]);
+
+  // モバイルメニューが開いているときはスクロールを無効化
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
+  const navLinks = [
+    { path: "/", label: "HOME" },
+    { path: "/u12465u12441u12473u12488u27969u12428", label: "GEST FLOW" },
+    { path: "/u12481u12483u12501u12442u12395u12388u12356u12390", label: "TIP" },
+    { path: "/u12461u12515u12473u12488", label: "CAST" },
+    { path: "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531", label: "PARTY PLANS" },
+    { path: "/u27714u20154", label: "RECRUIT" },
+  ];
+
+  const footerNavLinks = [
+    { path: "/u12465u12441u12473u12488u27969u12428", label: "ゲストの流れ" },
+    { path: "/u12481u12483u12501u12442u12395u12388u12356u12390", label: "チップについて" },
+    { path: "/u12461u12515u12473u12488", label: "キャスト" },
+    { path: "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531", label: "パーティープラン" },
+    { path: "/u27714u20154", label: "求人募集" },
+    { path: "/u12467u12531u12479u12463u12488", label: "お問い合わせ" },
+  ];
+
   return (
     <div
       className="flex flex-col items-center relative overflow-hidden"
@@ -40,33 +72,35 @@ export const Top = () => {
         }}
       />
       
-      {/* 黒いぼかしエフェクト（ところどころに配置） */}
-      {Array.from({ length: 15 }, (_, i) => {
-        const left = (i * 95 + (i % 4) * 120) % (1440 - 250);
-        const top = (Math.floor(i / 5) * 400 + (i % 6) * 180);
-        const size = 180 + (i % 4) * 120;
-        const opacity = 0.2 + (i % 3) * 0.1;
-        
-        return (
-          <div
-            key={`blur-shadow-${i}`}
-            className="absolute pointer-events-none"
-            style={{
-              left: `${left}px`,
-              top: `${top}px`,
-              width: `${size}px`,
-              height: `${size}px`,
-              background: `radial-gradient(circle, rgba(0, 0, 0, ${opacity}) 0%, rgba(0, 0, 0, ${opacity * 0.6}) 40%, transparent 70%)`,
-              filter: 'blur(25px)',
-              borderRadius: '50%',
-              zIndex: 1,
-            }}
-          />
-        );
-      })}
+      {/* 黒いぼかしエフェクト（ところどころに配置）- モバイルでは非表示 */}
+      <div className="hidden md:block">
+        {Array.from({ length: 15 }, (_, i) => {
+          const left = (i * 95 + (i % 4) * 120) % (1440 - 250);
+          const top = (Math.floor(i / 5) * 400 + (i % 6) * 180);
+          const size = 180 + (i % 4) * 120;
+          const opacity = 0.2 + (i % 3) * 0.1;
+          
+          return (
+            <div
+              key={`blur-shadow-${i}`}
+              className="absolute pointer-events-none"
+              style={{
+                left: `${left}px`,
+                top: `${top}px`,
+                width: `${size}px`,
+                height: `${size}px`,
+                background: `radial-gradient(circle, rgba(0, 0, 0, ${opacity}) 0%, rgba(0, 0, 0, ${opacity * 0.6}) 40%, transparent 70%)`,
+                filter: 'blur(25px)',
+                borderRadius: '50%',
+                zIndex: 1,
+              }}
+            />
+          );
+        })}
+      </div>
       
-      {/* 微細な光の粒子エフェクト（ティール/シアン系 - ナイトクラブの雰囲気） */}
-      {Array.from({ length: 20 }, (_, i) => {
+      {/* 微細な光の粒子エフェクト - モバイルでは数を減らす */}
+      {Array.from({ length: typeof window !== 'undefined' && window.innerWidth < 768 ? 8 : 20 }, (_, i) => {
         const left = (i * 72 + (i % 7) * 95) % (1440 - 8);
         const top = (Math.floor(i / 8) * 350 + (i % 9) * 120);
         const size = 3 + (i % 3) * 2;
@@ -99,48 +133,65 @@ export const Top = () => {
           zIndex: 1,
         }}
       />
+
+      {/* モバイルメニュー */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu lg:hidden">
+          <nav className="flex flex-col items-center gap-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="mobile-menu-link"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <button 
+              className="mt-4 px-8 py-3 bg-white rounded-lg text-[#1a1a2e] font-semibold"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              RESERVE
+            </button>
+          </nav>
+        </div>
+      )}
       
-            {/* FVセクション */}
-            <div className="relative w-[1440px] h-screen overflow-hidden z-10">
-              {/* 背景画像 */}
-              <div 
-                className="absolute top-0 left-0 w-full h-full bg-[url(/img/rectangle-214.png)] bg-cover bg-center"
-                style={{
-                  backgroundPosition: 'center top',
-                  backgroundSize: 'cover',
-                  zIndex: 0,
-                }}
-              />
+      {/* FVセクション */}
+      <div className="relative w-full max-w-[1440px] h-screen min-h-[600px] overflow-hidden z-10">
+        {/* 背景画像 */}
+        <div 
+          className="absolute top-0 left-0 w-full h-full bg-[url(/img/rectangle-214.png)] bg-cover bg-center"
+          style={{
+            backgroundPosition: 'center top',
+            backgroundSize: 'cover',
+            zIndex: 0,
+          }}
+        />
+        
         {/* ナビゲーション */}
-        <div className="absolute top-0 left-px w-[1439px] h-[60px] flex z-20">
-          <div className="flex mt-2.5 w-[1344px] h-10 ml-12 relative items-center justify-between">
+        <div className="absolute top-0 left-0 w-full h-[60px] flex z-20">
+          <div className="flex w-full h-10 mt-2.5 mx-4 md:mx-8 lg:mx-12 relative items-center justify-between">
             <Link to="/" className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
               <img
-                className="relative w-[101px] h-[37px] aspect-[2.74] object-cover"
+                className="relative w-[80px] md:w-[101px] h-auto aspect-[2.74] object-cover"
                 alt="27 CLUB Logo"
                 src="/img/27logo-1.png"
               />
             </Link>
 
-            <div className="inline-flex items-center gap-4 relative flex-[0_0_auto]">
-              <Link to="/" className="relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white">
-                HOME
-              </Link>
-              <Link to="/u12465u12441u12473u12488u27969u12428" className="relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white">
-                GEST FLOW
-              </Link>
-              <Link to="/u12481u12483u12501u12442u12395u12388u12356u12390" className="relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white">
-                TIP
-              </Link>
-              <Link to="/u12461u12515u12473u12488" className="relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white">
-                CAST
-              </Link>
-              <Link to="/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531" className="relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white">
-                PARTY PLANS
-              </Link>
-              <Link to="/u27714u20154" className="relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white">
-                RECRUIT
-              </Link>
+            {/* デスクトップナビゲーション */}
+            <div className="hidden lg:inline-flex items-center gap-4 relative flex-[0_0_auto]">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-sm xl:text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
               
               <div className="relative">
                 <div 
@@ -193,10 +244,20 @@ export const Top = () => {
                 </div>
               </button>
             </div>
+
+            {/* モバイルハンバーガーメニュー */}
+            <div 
+              className={`hamburger lg:hidden ${isMobileMenuOpen ? 'open' : ''}`}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
         </div>
 
-        {/* 舞うお札の画像 - 落下アニメーション付き（FV全体にランダム配置） */}
+        {/* 舞うお札の画像 - 落下アニメーション付き（レスポンシブ対応） */}
         {(() => {
           const chips = [
             { img: '/img/3-1.png', w: 244, h: 142 },
@@ -210,13 +271,16 @@ export const Top = () => {
             { img: '/img/2-2.png', w: 105, h: 106 },
           ];
           
-          // 20個のお札をFV全体にランダム配置（常に降り続けるように）
-          return Array.from({ length: 20 }, (_, i) => {
+          // モバイルでは数を減らす
+          const count = typeof window !== 'undefined' && window.innerWidth < 768 ? 8 : 20;
+          const maxWidth = typeof window !== 'undefined' ? Math.min(window.innerWidth, 1440) : 1440;
+          
+          return Array.from({ length: count }, (_, i) => {
             const chip = chips[i % chips.length];
-            const left = Math.random() * (1440 - chip.w); // 0から(1440-幅)の間でランダム
-            const duration = 8 + Math.random() * 4; // 8-12秒
-            // 遅延を分散させて、常に新しいお札が降り始めるようにする
-            const delay = (i * 0.3) + Math.random() * 0.5; // 順次遅延 + ランダム
+            const scale = typeof window !== 'undefined' && window.innerWidth < 768 ? 0.5 : 1;
+            const left = Math.random() * (maxWidth - chip.w * scale);
+            const duration = 8 + Math.random() * 4;
+            const delay = (i * 0.3) + Math.random() * 0.5;
             
             return (
               <div
@@ -224,8 +288,8 @@ export const Top = () => {
                 className="absolute top-0 animate-fall pointer-events-none z-10"
                 style={{
                   left: `${left}px`,
-                  width: `${chip.w}px`,
-                  height: `${chip.h}px`,
+                  width: `${chip.w * scale}px`,
+                  height: `${chip.h * scale}px`,
                   backgroundImage: `url(${chip.img})`,
                   backgroundSize: 'cover',
                   backgroundPosition: '50% 50%',
@@ -240,52 +304,43 @@ export const Top = () => {
         })()}
 
         {/* メインテキスト */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 gap-6">
-          <div className="[text-shadow:0px_0px_4px_#1f697b] [-webkit-text-stroke:1px_#1f697b80] [font-family:'Freehand',Helvetica] font-normal text-white text-[64.3px] text-center tracking-[0] leading-[91.8px] whitespace-nowrap">
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 gap-4 md:gap-6 px-4">
+          <div className="[text-shadow:0px_0px_4px_#1f697b] [-webkit-text-stroke:1px_#1f697b80] [font-family:'Freehand',Helvetica] font-normal text-white text-[clamp(1.5rem,5vw,4rem)] text-center tracking-[0] leading-[1.4] whitespace-nowrap">
             Welcome to Tonight's SHOWTIME
           </div>
 
-          <div className="[text-shadow:0px_0px_4px_#1f697b] [-webkit-text-stroke:1px_#1f697b80] [font-family:'Freehand',Helvetica] font-normal text-white text-[220.2px] text-center tracking-[0] leading-[240.3px] whitespace-nowrap">
+          <div className="[text-shadow:0px_0px_4px_#1f697b] [-webkit-text-stroke:1px_#1f697b80] [font-family:'Freehand',Helvetica] font-normal text-white text-[clamp(3rem,15vw,13.8rem)] text-center tracking-[0] leading-[1.1] whitespace-nowrap">
             THE 27 CLUB
           </div>
 
-          <button className="flex w-[266.4px] h-[74px] relative items-center justify-center bg-black/80 backdrop-blur-sm rounded-[2.26px] border-[3px] border-solid border-white/20 hover:bg-black hover:border-white/40 transition-all duration-300 cursor-pointer">
-            <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-base tracking-[0] leading-[17.6px] whitespace-nowrap">
+          <button className="flex w-[200px] md:w-[266.4px] h-[56px] md:h-[74px] relative items-center justify-center bg-black/80 backdrop-blur-sm rounded-[2.26px] border-[3px] border-solid border-white/20 hover:bg-black hover:border-white/40 transition-all duration-300 cursor-pointer">
+            <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-sm md:text-base tracking-[0] leading-[17.6px] whitespace-nowrap">
               WEB予約はこちら
             </div>
           </button>
         </div>
 
-        {/* フッターナビゲーション */}
-        <div className="absolute w-[1440px] h-[72px] left-0 bottom-0 z-20 flex items-center justify-center">
-          {/* 背景 - 黒で上下に背景画像が見えるように */}
+        {/* フッターナビゲーション - レスポンシブ */}
+        <div className="absolute w-full h-auto min-h-[72px] left-0 bottom-0 z-20 flex items-center justify-center py-4">
+          {/* 背景 */}
           <div className="absolute inset-0 bg-black" />
-          {/* メニュー項目 - 中央揃え */}
-          <div className="relative inline-flex items-center gap-[18px]">
-            <Link to="/u12465u12441u12473u12488u27969u12428" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
-              ゲストの流れ
-            </Link>
-            <Link to="/u12481u12483u12501u12442u12395u12388u12356u12390" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
-              チップについて
-            </Link>
-            <Link to="/u12461u12515u12473u12488" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
-              キャスト
-            </Link>
-            <Link to="/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
-              パーティープラン
-            </Link>
-            <Link to="/u27714u20154" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
-              求人募集
-            </Link>
-            <Link to="/u12467u12531u12479u12463u12488" className="relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300">
-              お問い合わせ
-            </Link>
+          {/* メニュー項目 */}
+          <div className="relative flex flex-wrap items-center justify-center gap-x-4 gap-y-2 md:gap-x-[18px] px-4">
+            {footerNavLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-base tracking-[1.60px] leading-[1.5] whitespace-nowrap hover:text-gray-300"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
 
       {/* 既存のセクション */}
-      <div className="flex flex-col items-center gap-[40px] w-full relative z-10">
+      <div className="flex flex-col items-center gap-[20px] md:gap-[40px] w-full relative z-10">
         <HeroSection />
         <Frame />
         <GroupWrapper />

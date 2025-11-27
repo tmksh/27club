@@ -11,6 +11,7 @@ export const FrameWrapper = () => {
   const wrapperRef = useRef(null);
   const [castData, setCastData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   
   // チップ装飾用のデータ
   const chips = [
@@ -32,6 +33,16 @@ export const FrameWrapper = () => {
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
   const currentRotationRef = useRef(0);
+
+  // レスポンシブチェック
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // キャストデータの読み込み
   useEffect(() => {
@@ -139,13 +150,13 @@ export const FrameWrapper = () => {
 
   // カードのスケールと位置を更新する関数
   const updateCardScale = () => {
-    if (!carouselRef.current) return;
+    if (!carouselRef.current || isMobile) return;
 
     const cells = carouselRef.current.querySelectorAll('.carousel-cell');
     // スクロール回転 + 手動回転を合算
     const scrollRotation = gsap.getProperty(carouselRef.current, 'rotationY') || 0;
     const carouselRotation = scrollRotation + manualRotationRef.current;
-    const radius = 500;
+    const radius = window.innerWidth < 1024 ? 300 : 500;
     
     // 中央に最も近いカードのインデックスを検出（Z座標が最も大きい=カメラに最も近い）
     let centerCardIndex = -1;
@@ -222,7 +233,7 @@ export const FrameWrapper = () => {
 
   // スクロール連動アニメーションの初期化
   useEffect(() => {
-    if (!wrapperRef.current || !carouselRef.current) return;
+    if (!wrapperRef.current || !carouselRef.current || isMobile) return;
 
     const wrapper = wrapperRef.current;
     const carousel = carouselRef.current;
@@ -231,7 +242,7 @@ export const FrameWrapper = () => {
     // カルーセルセルを円周上に配置（元のデモと同じ方式）
     const totalCards = castData.length;
     const angleStep = 360 / totalCards;
-    const radius = 500; // 半径を大きくして画面幅を広く使う
+    const radius = window.innerWidth < 1024 ? 300 : 500; // 半径をレスポンシブに
 
     cards.forEach((cell, index) => {
       const angle = index * angleStep;
@@ -367,130 +378,187 @@ export const FrameWrapper = () => {
         }
       });
     };
-  }, [castData.length]);
+  }, [castData.length, isMobile]);
 
   return (
-    <div className="relative self-stretch w-full min-h-[900px] overflow-hidden">
+    <div className="relative self-stretch w-full min-h-[500px] md:min-h-[900px] overflow-hidden px-4 md:px-8">
       <div className="w-full flex flex-col gap-[40px]">
         <div 
           ref={wrapperRef}
-          className="w-full h-[850px] relative"
+          className="w-full h-[400px] md:h-[850px] relative"
         >
-          {/* チップの模様（フッターと同様） */}
-          {Array.from({ length: 20 }, (_, i) => {
-            const chip = chips[i % chips.length];
-            const left = (i * 72) % (1440 - chip.w * 0.6);
-            const top = (Math.floor(i / 8) * 200) + (i % 5) * 80;
-            
-            return (
-              <div
-                key={`chip-pattern-${i}`}
-                className="absolute pointer-events-none"
-                style={{
-                  left: `${left}px`,
-                  top: `${top}px`,
-                  width: `${chip.w * 0.6}px`,
-                  height: `${chip.h * 0.6}px`,
-                  backgroundImage: `url(${chip.img})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: '50% 50%',
-                  opacity: 0.08,
-                  transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-                  zIndex: 0,
-                }}
-              />
-            );
-          })}
+          {/* チップの模様（デスクトップのみ表示） */}
+          <div className="hidden lg:block">
+            {Array.from({ length: 20 }, (_, i) => {
+              const chip = chips[i % chips.length];
+              const left = (i * 72) % (1440 - chip.w * 0.6);
+              const top = (Math.floor(i / 8) * 200) + (i % 5) * 80;
+              
+              return (
+                <div
+                  key={`chip-pattern-${i}`}
+                  className="absolute pointer-events-none"
+                  style={{
+                    left: `${left}px`,
+                    top: `${top}px`,
+                    width: `${chip.w * 0.6}px`,
+                    height: `${chip.h * 0.6}px`,
+                    backgroundImage: `url(${chip.img})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: '50% 50%',
+                    opacity: 0.08,
+                    transform: `rotate(${(i % 3) * 15 - 15}deg)`,
+                    zIndex: 0,
+                  }}
+                />
+              );
+            })}
+          </div>
           
-          <div className="absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-left z-10">
+          {/* カタカナテキスト（デスクトップのみ） */}
+          <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-left z-10">
             パフォーマンス
           </div>
 
-          <div className="absolute top-[116px] left-0 right-0 flex flex-col items-center gap-3">
-            <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
+          {/* セクションタイトル */}
+          <div className="pt-8 md:pt-[116px] flex flex-col items-center gap-3 relative z-10">
+            <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-2xl md:text-4xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
               EVENTS / PERFORMERS
             </div>
-            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4 whitespace-nowrap">
+            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
               多彩なパフォーマンスとイベントをお楽しみいただけます。毎週異なるテーマで、特別な夜をお届けします。
             </div>
           </div>
 
-          {/* 3Dカルーセル - スクロール連動 + 手動操作対応版 */}
-          <div 
-            className="absolute top-[280px] left-0 w-full h-[650px] flex items-center justify-center overflow-visible cursor-grab active:cursor-grabbing"
-            style={{ perspective: '2000px' }}
-          >
-            {/* 3D円形カルーセル */}
-            <div 
-              ref={carouselRef}
-              className="relative w-full h-full flex items-center justify-center"
-              style={{ 
-                transformStyle: "preserve-3d",
-                transform: "translateZ(-600px) rotateY(0deg)"
-              }}
-            >
-              {castData.map((cast, index) => {
-                // 各カードの背面テキスト用のrefを初期化
-                if (!cardTextRefs.current[index]) {
-                  cardTextRefs.current[index] = null;
-                }
-                
-                return (
-                  <div
-                    key={cast.id}
-                    className="carousel-cell absolute"
-                    style={{
-                      width: '450px',
-                      height: '540px',
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center center",
-                    }}
-                  >
-                    {/* カードの前面に配置する円状テキスト */}
-                    <div
-                      ref={el => cardTextRefs.current[index] = el}
-                      className="absolute w-[600px] h-[600px] bg-[url(/img/ckub-1.png)] bg-cover bg-[50%_50%] pointer-events-none"
-                      style={{
-                        left: '50%',
-                        top: '50%',
-                        transform: 'translate(-50%, -50%) translateZ(10px)',
-                        transformStyle: "preserve-3d",
-                        zIndex: 1,
-                        filter: 'brightness(0) invert(1)',
-                        opacity: 0.8,
-                      }}
+          {/* SP版: 横スクロールカルーセル */}
+          <div className="md:hidden mt-8 overflow-x-auto pb-4 -mx-4 px-4 hide-scrollbar">
+            <div className="flex gap-4" style={{ width: 'max-content' }}>
+              {castData.map((cast) => (
+                <div
+                  key={cast.id}
+                  className="flex-shrink-0 w-[200px]"
+                >
+                  <div className="relative w-full rounded-lg overflow-hidden">
+                    {/* 画像 */}
+                    <img
+                      className="w-full aspect-square object-cover"
+                      alt={cast.name}
+                      src={cast.image}
                     />
-                    
-                    <div className="relative w-[450px] h-[540px]">
-                      <img
-                        className="top-[-20px] left-[-20px] w-[490px] h-[490px] absolute aspect-[1.01] object-cover rounded-lg"
-                        alt={cast.name}
-                        src={cast.image}
-                      />
-                      <div className="absolute top-[350px] left-0 w-[450px] h-[150px] bg-[#0c0c0ce6] rounded-b-lg" />
-                      <div className="absolute top-[370px] left-[15px] w-[420px] [text-shadow:0px_2.79px_2.79px_#e8efa899] [font-family:'Inter',Helvetica] font-normal text-white text-[16px] text-center tracking-[0] leading-[22px]">
+                    {/* テキストオーバーレイ - PC版と同じスタイル */}
+                    <div className="w-full bg-[#0c0c0ce6] p-3">
+                      <div className="[text-shadow:0px_2.79px_2.79px_#e8efa899] [font-family:'Inter',Helvetica] font-normal text-white text-xs text-center tracking-[0] leading-[16px]">
                         {cast.name}
                         <br />
-                        {cast.description}
+                        <span className="text-[10px] opacity-80">{cast.description}</span>
                         <br />
-                        {cast.show}
+                        <span className="text-[10px] opacity-60">{cast.show}</span>
                       </div>
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
+
+          {/* PC版: 3Dカルーセル */}
+          {!isMobile && (
+            <div 
+              className="hidden md:flex absolute top-[280px] left-0 w-full h-[650px] items-center justify-center overflow-visible cursor-grab active:cursor-grabbing"
+              style={{ perspective: '2000px' }}
+            >
+              {/* 3D円形カルーセル */}
+              <div 
+                ref={carouselRef}
+                className="relative w-full h-full flex items-center justify-center"
+                style={{ 
+                  transformStyle: "preserve-3d",
+                  transform: "translateZ(-600px) rotateY(0deg)"
+                }}
+              >
+                {castData.map((cast, index) => {
+                  // 各カードの背面テキスト用のrefを初期化
+                  if (!cardTextRefs.current[index]) {
+                    cardTextRefs.current[index] = null;
+                  }
+                  
+                  const cardWidth = window.innerWidth < 1024 ? 280 : 450;
+                  const cardHeight = window.innerWidth < 1024 ? 340 : 540;
+                  
+                  return (
+                    <div
+                      key={cast.id}
+                      className="carousel-cell absolute"
+                      style={{
+                        width: `${cardWidth}px`,
+                        height: `${cardHeight}px`,
+                        transformStyle: "preserve-3d",
+                        transformOrigin: "center center",
+                      }}
+                    >
+                      {/* カードの前面に配置する円状テキスト */}
+                      <div
+                        ref={el => cardTextRefs.current[index] = el}
+                        className="absolute bg-[url(/img/ckub-1.png)] bg-cover bg-[50%_50%] pointer-events-none"
+                        style={{
+                          width: window.innerWidth < 1024 ? '380px' : '600px',
+                          height: window.innerWidth < 1024 ? '380px' : '600px',
+                          left: '50%',
+                          top: '50%',
+                          transform: 'translate(-50%, -50%) translateZ(10px)',
+                          transformStyle: "preserve-3d",
+                          zIndex: 1,
+                          filter: 'brightness(0) invert(1)',
+                          opacity: 0.8,
+                        }}
+                      />
+                      
+                      <div className="relative w-full h-full">
+                        <img
+                          className="absolute object-cover rounded-lg"
+                          style={{
+                            top: '-20px',
+                            left: '-20px',
+                            width: `${cardWidth + 40}px`,
+                            height: `${cardWidth + 40}px`,
+                          }}
+                          alt={cast.name}
+                          src={cast.image}
+                        />
+                        <div 
+                          className="absolute left-0 w-full bg-[#0c0c0ce6] rounded-b-lg"
+                          style={{
+                            top: `${cardHeight * 0.65}px`,
+                            height: `${cardHeight * 0.28}px`,
+                          }}
+                        />
+                        <div 
+                          className="absolute left-[15px] w-[calc(100%-30px)] [text-shadow:0px_2.79px_2.79px_#e8efa899] [font-family:'Inter',Helvetica] font-normal text-white text-sm md:text-[16px] text-center tracking-[0] leading-[20px] md:leading-[22px]"
+                          style={{
+                            top: `${cardHeight * 0.69}px`,
+                          }}
+                        >
+                          {cast.name}
+                          <br />
+                          {cast.description}
+                          <br />
+                          {cast.show}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
-        <div className="flex justify-center w-full">
+        <div className="flex justify-center w-full pb-8">
           <Link
-            className="w-[351.95px] flex"
+            className="w-full max-w-[351.95px] flex justify-center"
             to="/u12461u12515u12473u12488"
           >
-            <div className="w-[351.95px] flex">
-              <Group153 className="!h-[unset] ![position:unset] !left-[unset] !w-[351.95px] !top-[unset]" />
-            </div>
+            <Group153 className="!h-[unset] ![position:unset] !left-[unset] !w-full !max-w-[351.95px] !top-[unset]" />
           </Link>
         </div>
       </div>
