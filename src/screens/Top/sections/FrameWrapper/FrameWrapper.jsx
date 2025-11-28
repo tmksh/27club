@@ -33,6 +33,12 @@ export const FrameWrapper = () => {
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
   const currentRotationRef = useRef(0);
+  
+  const mobileCarouselRef = useRef(null);
+  const [mobileManualRotation, setMobileManualRotation] = useState(0);
+  const [isTouching, setIsTouching] = useState(false);
+  const touchStartXRef = useRef(0);
+  const lastRotationRef = useRef(0);
 
   // レスポンシブチェック
   useEffect(() => {
@@ -43,6 +49,7 @@ export const FrameWrapper = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
 
   // キャストデータの読み込み
   useEffect(() => {
@@ -430,34 +437,110 @@ export const FrameWrapper = () => {
             </div>
           </div>
 
-          {/* SP版: 横スクロールカルーセル */}
-          <div className="md:hidden mt-8 overflow-x-auto pb-4 -mx-4 px-4 hide-scrollbar">
-            <div className="flex gap-4" style={{ width: 'max-content' }}>
-              {castData.map((cast) => (
-                <div
-                  key={cast.id}
-                  className="flex-shrink-0 w-[200px]"
-                >
-                  <div className="relative w-full rounded-lg overflow-hidden">
-                    {/* 画像 */}
-                    <img
-                      className="w-full aspect-square object-cover"
-                      alt={cast.name}
-                      src={cast.image}
-                    />
-                    {/* テキストオーバーレイ - PC版と同じスタイル */}
-                    <div className="w-full bg-[#0c0c0ce6] p-3">
-                      <div className="[text-shadow:0px_2.79px_2.79px_#e8efa899] [font-family:'Inter',Helvetica] font-normal text-white text-xs text-center tracking-[0] leading-[16px]">
-                        {cast.name}
-                        <br />
-                        <span className="text-[10px] opacity-80">{cast.description}</span>
-                        <br />
-                        <span className="text-[10px] opacity-60">{cast.show}</span>
+          {/* SP版: 円周カルーセル */}
+          <div 
+            className="md:hidden mt-6 relative h-[320px] cursor-grab active:cursor-grabbing"
+            onTouchStart={(e) => {
+              setIsTouching(true);
+              touchStartXRef.current = e.touches[0].clientX;
+              lastRotationRef.current = mobileManualRotation;
+            }}
+            onTouchMove={(e) => {
+              if (!isTouching) return;
+              const deltaX = e.touches[0].clientX - touchStartXRef.current;
+              const newRotation = lastRotationRef.current + deltaX * 0.5;
+              setMobileManualRotation(newRotation);
+            }}
+            onTouchEnd={() => {
+              setIsTouching(false);
+            }}
+            onMouseDown={(e) => {
+              setIsTouching(true);
+              touchStartXRef.current = e.clientX;
+              lastRotationRef.current = mobileManualRotation;
+            }}
+            onMouseMove={(e) => {
+              if (!isTouching) return;
+              const deltaX = e.clientX - touchStartXRef.current;
+              const newRotation = lastRotationRef.current + deltaX * 0.5;
+              setMobileManualRotation(newRotation);
+            }}
+            onMouseUp={() => {
+              setIsTouching(false);
+            }}
+            onMouseLeave={() => {
+              setIsTouching(false);
+            }}
+          >
+            <div 
+              className="absolute top-1/2 left-1/2"
+              style={{
+                transform: 'translate(-50%, -50%)',
+                perspective: '1000px',
+              }}
+            >
+              <div 
+                ref={mobileCarouselRef}
+                className={`relative w-[140px] h-[200px] ${!isTouching ? 'animate-carousel-3d' : ''}`}
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transform: isTouching ? `rotateY(${mobileManualRotation}deg)` : undefined,
+                }}
+              >
+                {castData.slice(0, 5).map((cast, index) => {
+                  const totalCards = Math.min(castData.length, 5);
+                  const angle = (360 / totalCards) * index;
+                  const radius = 140;
+                  
+                  return (
+                    <div
+                      key={cast.id}
+                      className="absolute top-0 left-0 w-[140px] h-[200px] rounded-xl overflow-hidden"
+                      style={{
+                        transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
+                        transformStyle: 'preserve-3d',
+                        background: 'linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%)',
+                        boxShadow: '0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)',
+                      }}
+                    >
+                      {/* 画像 */}
+                      <div className="relative w-full h-[120px] overflow-hidden">
+                        <img
+                          className="w-full h-full object-cover"
+                          alt={cast.name}
+                          src={cast.image}
+                        />
+                        {/* 画像下部のグラデーション */}
+                        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
                       </div>
+                      
+                      {/* テキストエリア */}
+                      <div className="w-full h-[80px] px-3 py-2 flex flex-col justify-center">
+                        <div className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-sm text-center leading-tight tracking-wide">
+                          {cast.name}
+                        </div>
+                        <div className="[font-family:'Noto_Serif_JP',Helvetica] text-white/50 text-[8px] text-center mt-1.5 line-clamp-2 leading-relaxed">
+                          {cast.description}
+                        </div>
+                      </div>
+                      
+                      {/* 装飾ライン */}
+                      <div className="absolute top-[120px] left-3 right-3 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                     </div>
-                  </div>
-                </div>
-              ))}
+                  );
+                })}
+              </div>
+            </div>
+            
+            {/* 左右のフェード */}
+            <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-black to-transparent pointer-events-none z-10" />
+            <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-black to-transparent pointer-events-none z-10" />
+            
+            {/* 操作ヒント */}
+            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-white/30 text-[10px] flex items-center gap-1">
+              <span>←</span>
+              <span>スワイプで回転</span>
+              <span>→</span>
             </div>
           </div>
 

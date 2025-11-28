@@ -134,10 +134,24 @@
 
 @keyframes spin-slow {
   from {
-    transform: rotate(0deg);
+    transform: rotateY(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotateY(360deg);
+  }
+}
+
+/* SP版円周カルーセル用 */
+.animate-carousel-3d {
+  animation: carousel-3d 15s linear infinite;
+}
+
+@keyframes carousel-3d {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-360deg);
   }
 }
 
