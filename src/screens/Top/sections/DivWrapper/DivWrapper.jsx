@@ -143,15 +143,14 @@ export const DivWrapper = () => {
         </div>
 
         {/* CTAボタン */}
-        <div className="mt-8 md:mt-12 flex flex-col md:flex-row gap-4 justify-center items-center pb-8 relative z-10">
-          <div className="w-full max-w-[352px]">
-            <div className="relative w-full h-[80px] md:h-[97.76px] rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)] cursor-pointer hover:scale-105 transition-transform">
-              <div className="inline-flex flex-col items-center gap-[6px] md:gap-[9.73px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div className="relative w-fit [font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-lg md:text-[22.7px] tracking-[0] leading-[27.2px] whitespace-nowrap">
+        <div className="mt-6 md:mt-12 flex flex-row gap-3 md:gap-4 justify-center items-center pb-6 md:pb-8 relative z-10 px-4 md:px-0">
+          <div className="w-full max-w-[160px] md:max-w-[352px]">
+            <div className="relative w-full h-[56px] md:h-[97.76px] rounded-[40px] md:rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)] cursor-pointer hover:scale-105 transition-transform flex items-center justify-center">
+              <div className="flex flex-col items-center justify-center gap-0 md:gap-[9.73px] text-center">
+                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[12px] md:text-[22.7px] tracking-[0] leading-[1.3] md:leading-[27.2px]">
                   動画で確認
                 </div>
-
-                <div className="relative w-fit opacity-90 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-[17.8px] tracking-[0] leading-[21.4px] whitespace-nowrap">
+                <div className="opacity-90 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[9px] md:text-[17.8px] tracking-[0] leading-[1.3] md:leading-[21.4px]">
                   雰囲気をチェック
                 </div>
               </div>
@@ -173,7 +172,7 @@ export const DivWrapper = () => {
           </div>
 
           <Group153
-            className="!w-full !max-w-[352px]"
+            className="w-full max-w-[160px] md:max-w-[352px] h-[56px] md:h-[98px]"
             text="お問い合わせ"
             to="/u12467u12531u12479u12463u12488"
           />

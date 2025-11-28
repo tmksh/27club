@@ -53,7 +53,7 @@ export const Frame628 = ({
           {/* ヘッダー: タイトルと画像 */}
           <div className="flex gap-3">
             {/* サムネイル画像 */}
-            <div className="w-[80px] h-[100px] flex-shrink-0">
+            <div className="w-[90px] h-[110px] flex-shrink-0">
               <img
                 className="w-full h-full object-cover rounded"
                 alt="Event"
@@ -63,24 +63,24 @@ export const Frame628 = ({
             
             {/* コンテンツ */}
             <div className="flex-1 min-w-0">
-              <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-[#fffbfb] text-base md:text-lg leading-tight truncate">
+              <div className="[font-family:'Playfair_Display',Helvetica] font-semibold text-[#fffbfb] text-lg leading-tight">
                 {eventData?.title_en || eventData?.title || 'Summer Neon Night'}
               </div>
               
-              <div className="mt-2 [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[10px] leading-[1.4] space-y-0.5">
+              <div className="mt-2 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm leading-[1.6] space-y-1">
                 {eventData ? (
                   <>
                     <div>日付：{new Date(eventData.date_time_start).toLocaleDateString('ja-JP', { month: 'numeric', day: 'numeric', weekday: 'short' })}</div>
                     <div>時間：{new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</div>
                     {eventData.price && (
-                      <div>参加料：¥{eventData.price.toLocaleString()}</div>
+                      <div className="font-medium">参加料：¥{eventData.price.toLocaleString()}</div>
                     )}
                   </>
                 ) : (
                   <>
                     <div>日付：8/02（土）</div>
                     <div>時間：19:00～22:00</div>
-                    <div>参加料：¥2,500</div>
+                    <div className="font-medium">参加料：¥2,500</div>
                   </>
                 )}
               </div>
@@ -88,9 +88,9 @@ export const Frame628 = ({
           </div>
           
           {/* 予約ボタン */}
-          <div className="mt-2 flex justify-end">
-            <div className="px-3 py-1 bg-[#00d6bd] rounded">
-              <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[10px]">
+          <div className="mt-3 flex justify-end">
+            <div className="px-4 py-1.5 bg-[#00d6bd] rounded">
+              <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
                 予約はこちら
               </span>
             </div>

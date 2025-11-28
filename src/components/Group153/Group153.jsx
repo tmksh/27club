@@ -10,11 +10,11 @@ import { Link } from "react-router-dom";
 export const Group153 = ({ className, text = "キャスト一覧はこちら", to }) => {
   return (
     <Link
-      className={`relative w-[352px] h-[98px] flex ${className}`}
+      className={`relative flex ${className}`}
       to={to}
     >
-      <div className="flex flex-1 w-[351.95px] relative h-[97.76px] items-center justify-center bg-[#025b51] rounded-[60px]">
-        <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-[#fffefb] text-2xl tracking-[0] leading-[23.3px] whitespace-nowrap">
+      <div className="flex flex-1 w-full h-full items-center justify-center bg-[#025b51] rounded-[40px] md:rounded-[60px]">
+        <div className="[font-family:'Inter',Helvetica] font-semibold text-[#fffefb] text-sm md:text-2xl tracking-[0] leading-[1.2] md:leading-[23.3px] whitespace-nowrap text-center px-4">
           {text}
         </div>
       </div>

@@ -83,207 +83,15 @@
   ],
   "edges": [
     {
-      "id": "src/screens/Top/Top.jsx:117:12-to-src/screens/Top/Top.jsx",
+      "id": "src/screens/Top/Top.jsx:176:12-to-src/screens/Top/Top.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Top/Top.jsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
-          "element": "<Link to=\"/\" className=\"inline-flex items-center gap-3 relative flex-[0_0_auto]\">\n              <img\n                className=\"relative w-[101px] h-[37px] aspect-[2.74] object-cover\"\n                alt=\"27 CLUB Logo\"\n                src=\"/img/27logo-1.png\"\n              />\n            </Link>",
-          "line": 117,
-          "endLine": 123,
-          "column": 12,
-          "endColumn": 19,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:126:14-to-src/screens/Top/Top.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/Top/Top.jsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<Link to=\"/\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                HOME\n              </Link>",
-          "line": 126,
-          "endLine": 128,
-          "column": 14,
-          "endColumn": 21,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:129:14-to-src/screens/Screen6/Screen6.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/Screen6/Screen6.jsx",
-      "data": {
-        "viaRoute": "/u12465u12441u12473u12488u27969u12428",
-        "trigger": {
-          "element": "<Link to=\"/u12465u12441u12473u12488u27969u12428\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                GEST FLOW\n              </Link>",
-          "line": 129,
-          "endLine": 131,
-          "column": 14,
-          "endColumn": 21,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:132:14-to-src/screens/Screen/Screen.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/Screen/Screen.jsx",
-      "data": {
-        "viaRoute": "/u12481u12483u12501u12442u12395u12388u12356u12390",
-        "trigger": {
-          "element": "<Link to=\"/u12481u12483u12501u12442u12395u12388u12356u12390\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                TIP\n              </Link>",
-          "line": 132,
-          "endLine": 134,
-          "column": 14,
-          "endColumn": 21,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:135:14-to-src/screens/Screen7/Screen7.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/Screen7/Screen7.jsx",
-      "data": {
-        "viaRoute": "/u12461u12515u12473u12488",
-        "trigger": {
-          "element": "<Link to=\"/u12461u12515u12473u12488\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                CAST\n              </Link>",
-          "line": 135,
-          "endLine": 137,
-          "column": 14,
-          "endColumn": 21,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:138:14-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/ScreenWrapper/ScreenWrapper.jsx",
-      "data": {
-        "viaRoute": "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531",
-        "trigger": {
-          "element": "<Link to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                PARTY PLANS\n              </Link>",
-          "line": 138,
-          "endLine": 140,
-          "column": 14,
-          "endColumn": 21,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:141:14-to-src/screens/Screen5/Screen5.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/Screen5/Screen5.jsx",
-      "data": {
-        "viaRoute": "/u27714u20154",
-        "trigger": {
-          "element": "<Link to=\"/u27714u20154\" className=\"relative w-fit [font-family:'Inter',Helvetica] font-medium text-[#cccccc] text-base tracking-[0] leading-[19.2px] whitespace-nowrap hover:text-white\">\n                RECRUIT\n              </Link>",
-          "line": 141,
-          "endLine": 143,
-          "column": 14,
-          "endColumn": 21,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:265:12-to-src/screens/Screen6/Screen6.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/Screen6/Screen6.jsx",
-      "data": {
-        "viaRoute": "/u12465u12441u12473u12488u27969u12428",
-        "trigger": {
-          "element": "<Link to=\"/u12465u12441u12473u12488u27969u12428\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              ゲストの流れ\n            </Link>",
-          "line": 265,
-          "endLine": 267,
-          "column": 12,
-          "endColumn": 19,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:268:12-to-src/screens/Screen/Screen.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/Screen/Screen.jsx",
-      "data": {
-        "viaRoute": "/u12481u12483u12501u12442u12395u12388u12356u12390",
-        "trigger": {
-          "element": "<Link to=\"/u12481u12483u12501u12442u12395u12388u12356u12390\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              チップについて\n            </Link>",
-          "line": 268,
-          "endLine": 270,
-          "column": 12,
-          "endColumn": 19,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:271:12-to-src/screens/Screen7/Screen7.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/Screen7/Screen7.jsx",
-      "data": {
-        "viaRoute": "/u12461u12515u12473u12488",
-        "trigger": {
-          "element": "<Link to=\"/u12461u12515u12473u12488\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              キャスト\n            </Link>",
-          "line": 271,
-          "endLine": 273,
-          "column": 12,
-          "endColumn": 19,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:274:12-to-src/screens/ScreenWrapper/ScreenWrapper.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/ScreenWrapper/ScreenWrapper.jsx",
-      "data": {
-        "viaRoute": "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531",
-        "trigger": {
-          "element": "<Link to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              パーティープラン\n            </Link>",
-          "line": 274,
-          "endLine": 276,
-          "column": 12,
-          "endColumn": 19,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:277:12-to-src/screens/Screen5/Screen5.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/Screen5/Screen5.jsx",
-      "data": {
-        "viaRoute": "/u27714u20154",
-        "trigger": {
-          "element": "<Link to=\"/u27714u20154\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              求人募集\n            </Link>",
-          "line": 277,
-          "endLine": 279,
-          "column": 12,
-          "endColumn": 19,
-          "sourceFile": "src/screens/Top/Top.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Top/Top.jsx:280:12-to-src/screens/ScreenScreen/ScreenScreen.jsx",
-      "source": "src/screens/Top/Top.jsx",
-      "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
-      "data": {
-        "viaRoute": "/u12467u12531u12479u12463u12488",
-        "trigger": {
-          "element": "<Link to=\"/u12467u12531u12479u12463u12488\" className=\"relative h-[72px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[1.60px] leading-[72px] whitespace-nowrap hover:text-gray-300\">\n              お問い合わせ\n            </Link>",
-          "line": 280,
-          "endLine": 282,
+          "element": "<Link to=\"/\" className=\"inline-flex items-center gap-3 relative flex-[0_0_auto]\">\n              <img\n                className=\"relative w-[80px] md:w-[101px] h-auto aspect-[2.74] object-cover\"\n                alt=\"27 CLUB Logo\"\n                src=\"/img/27logo-1.png\"\n              />\n            </Link>",
+          "line": 176,
+          "endLine": 182,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/screens/Top/Top.jsx"
@@ -297,7 +105,7 @@
       "data": {
         "viaRoute": "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531",
         "trigger": {
-          "element": "<Link\n      className=\"relative self-stretch w-full h-[300px] border border-solid border-[#fffcbb] bg-[url(/img/hero-section.png)] bg-cover bg-[50%_50%] block\"\n      to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\"\n    >\n      <div className=\"absolute top-[124px] left-80 w-[800px] h-[98px] flex\">\n        <div className=\"w-[800px] h-[58px] [font-family:'Playfair_Display',Helvetica] font-bold text-white text-8xl text-center tracking-[0] leading-[57.6px]\">\n          PARTY PLANS\n        </div>\n      </div>\n\n      <div className=\"absolute top-[222px] left-80 w-[800px] [font-family:'Inter',Helvetica] font-normal text-white text-2xl text-center tracking-[0] leading-[19.2px]\">\n        大切な夜を、少し特別に。コース料理とフリードリンクを上質な空間で。\n      </div>\n\n      <div className=\"absolute top-[55px] left-[692px] [-webkit-text-stroke:1px_#4e4e4e] bg-[linear-gradient(180deg,rgba(232,219,37,1)_0%,rgba(243,237,146,1)_50%,rgba(255,255,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Noto_Sans_JP',Helvetica] font-bold text-transparent text-[32px] tracking-[0] leading-[24.7px] whitespace-nowrap\">\n        NEW\n      </div>\n    </Link>",
+          "element": "<Link\n      className=\"relative self-stretch w-full max-w-[1440px] h-[200px] md:h-[300px] border border-solid border-[#fffcbb] bg-[url(/img/hero-section.png)] bg-cover bg-[50%_50%] block mx-auto\"\n      to=\"/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531\"\n    >\n      <div className=\"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full px-4 md:px-8 flex flex-col items-center\">\n        <div className=\"w-full max-w-[800px] [font-family:'Playfair_Display',Helvetica] font-bold text-white text-4xl md:text-6xl lg:text-8xl text-center tracking-[0] leading-tight\">\n          PARTY PLANS\n        </div>\n        \n        <div className=\"mt-4 md:mt-6 w-full max-w-[800px] [font-family:'Inter',Helvetica] font-normal text-white text-sm md:text-xl lg:text-2xl text-center tracking-[0] leading-[1.6]\">\n          大切な夜を、少し特別に。コース料理とフリードリンクを上質な空間で。\n        </div>\n      </div>\n\n      <div className=\"absolute top-4 md:top-[55px] right-4 md:left-[692px] md:right-auto [-webkit-text-stroke:1px_#4e4e4e] bg-[linear-gradient(180deg,rgba(232,219,37,1)_0%,rgba(243,237,146,1)_50%,rgba(255,255,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Noto_Sans_JP',Helvetica] font-bold text-transparent text-xl md:text-[32px] tracking-[0] leading-[24.7px] whitespace-nowrap\">\n        NEW\n      </div>\n    </Link>",
           "line": 6,
           "endLine": 23,
           "column": 4,
@@ -307,15 +115,15 @@
       }
     },
     {
-      "id": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx:487:10-to-src/screens/Screen7/Screen7.jsx",
+      "id": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx:557:10-to-src/screens/Screen7/Screen7.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen7/Screen7.jsx",
       "data": {
         "viaRoute": "/u12461u12515u12473u12488",
         "trigger": {
-          "element": "<Link\n            className=\"w-[351.95px] flex\"\n            to=\"/u12461u12515u12473u12488\"\n          >\n            <div className=\"w-[351.95px] flex\">\n              <Group153 className=\"!h-[unset] ![position:unset] !left-[unset] !w-[351.95px] !top-[unset]\" />\n            </div>\n          </Link>",
-          "line": 487,
-          "endLine": 494,
+          "element": "<Link\n            className=\"w-full max-w-[351.95px] flex justify-center\"\n            to=\"/u12461u12515u12473u12488\"\n          >\n            <Group153 className=\"!h-[unset] ![position:unset] !left-[unset] !w-full !max-w-[351.95px] !top-[unset]\" />\n          </Link>",
+          "line": 557,
+          "endLine": 562,
           "column": 10,
           "endColumn": 17,
           "sourceFile": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx"
@@ -323,33 +131,33 @@
       }
     },
     {
-      "id": "src/screens/Top/sections/DivWrapper/DivWrapper.jsx:163:8-to-src/screens/ScreenScreen/ScreenScreen.jsx",
+      "id": "src/screens/Top/sections/DivWrapper/DivWrapper.jsx:175:10-to-src/screens/ScreenScreen/ScreenScreen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
       "data": {
         "viaRoute": "/u12467u12531u12479u12463u12488",
         "trigger": {
-          "element": "<Group153\n          className=\"!absolute !left-[733px] !top-[1148px]\"\n          text=\"お問い合わせ\"\n          to=\"/u12467u12531u12479u12463u12488\"\n        />",
-          "line": 163,
-          "endLine": 167,
-          "column": 8,
-          "endColumn": 10,
+          "element": "<Group153\n            className=\"!w-full !max-w-[352px]\"\n            text=\"お問い合わせ\"\n            to=\"/u12467u12531u12479u12463u12488\"\n          />",
+          "line": 175,
+          "endLine": 179,
+          "column": 10,
+          "endColumn": 12,
           "sourceFile": "src/screens/Top/sections/DivWrapper/DivWrapper.jsx"
         }
       }
     },
     {
-      "id": "src/screens/Top/sections/Div/Div.jsx:148:10-to-src/screens/ScreenScreen/ScreenScreen.jsx",
+      "id": "src/screens/Top/sections/Div/Div.jsx:137:12-to-src/screens/ScreenScreen/ScreenScreen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
       "data": {
         "viaRoute": "/u12467u12531u12479u12463u12488",
         "trigger": {
-          "element": "<Link\n            className=\"flex ml-[385.5px] w-[167.82px] h-[46.62px] relative items-center justify-center bg-black rounded-[1.42px] hover:bg-gray-800 transition-colors\"\n            to=\"/u12467u12531u12479u12463u12488\"\n          >\n            <div className=\"relative w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-[9.3px] tracking-[0] leading-[11.1px] whitespace-nowrap\">\n              お問い合わせ\n            </div>\n          </Link>",
-          "line": 148,
-          "endLine": 155,
-          "column": 10,
-          "endColumn": 17,
+          "element": "<Link\n              className=\"flex w-[140px] md:w-[167.82px] h-[40px] md:h-[46.62px] relative items-center justify-center bg-black rounded-[1.42px] hover:bg-gray-800 transition-colors\"\n              to=\"/u12467u12531u12479u12463u12488\"\n            >\n              <div className=\"relative w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-xs md:text-[9.3px] tracking-[0] leading-[11.1px] whitespace-nowrap\">\n                お問い合わせ\n              </div>\n            </Link>",
+          "line": 137,
+          "endLine": 144,
+          "column": 12,
+          "endColumn": 19,
           "sourceFile": "src/screens/Top/sections/Div/Div.jsx"
         }
       }
@@ -451,15 +259,15 @@
       }
     },
     {
-      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:91:12-to-src/screens/Top/Top.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Top/Top.jsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
-          "line": 88,
-          "endLine": 97,
+          "line": 91,
+          "endLine": 100,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
@@ -563,15 +371,15 @@
       }
     },
     {
-      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:91:12-to-src/screens/Top/Top.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Top/Top.jsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
-          "line": 88,
-          "endLine": 97,
+          "line": 91,
+          "endLine": 100,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
@@ -595,15 +403,15 @@
       }
     },
     {
-      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:91:12-to-src/screens/Top/Top.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Top/Top.jsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
-          "line": 88,
-          "endLine": 97,
+          "line": 91,
+          "endLine": 100,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
@@ -643,15 +451,15 @@
       }
     },
     {
-      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:91:12-to-src/screens/Top/Top.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Top/Top.jsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
-          "line": 88,
-          "endLine": 97,
+          "line": 91,
+          "endLine": 100,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
@@ -675,15 +483,15 @@
       }
     },
     {
-      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:91:12-to-src/screens/Top/Top.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Top/Top.jsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
-          "line": 88,
-          "endLine": 97,
+          "line": 91,
+          "endLine": 100,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
@@ -707,15 +515,15 @@
       }
     },
     {
-      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:91:12-to-src/screens/Top/Top.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Top/Top.jsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
-          "line": 88,
-          "endLine": 97,
+          "line": 91,
+          "endLine": 100,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"
@@ -739,15 +547,15 @@
       }
     },
     {
-      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:88:12-to-src/screens/Top/Top.jsx",
+      "id": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx:91:12-to-src/screens/Top/Top.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Top/Top.jsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "<Link\n              to=\"/\"\n              className={`inline-flex items-center gap-[18.89px] relative flex-[0_0_auto] ${logoClassName}`}\n            >\n              <img\n                className={`relative !w-[75px] !h-[28px] aspect-[2.74] object-cover ${elementClassName}`}\n                alt=\"Element\"\n                src=\"/img/27logo-1-1.png\"\n              />\n            </Link>",
-          "line": 88,
-          "endLine": 97,
+          "line": 91,
+          "endLine": 100,
           "column": 12,
           "endColumn": 19,
           "sourceFile": "src/components/ConcreteComponentNode/ConcreteComponentNode.jsx"

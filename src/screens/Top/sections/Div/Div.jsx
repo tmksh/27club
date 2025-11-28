@@ -54,7 +54,7 @@ export const Div = () => {
   }, [backgroundImages.length]);
 
   return (
-    <div className="relative self-stretch w-full min-h-[700px] md:min-h-[1000px] px-4 md:px-8">
+    <div className="relative self-stretch w-full min-h-[500px] md:min-h-[1000px] md:px-8">
       {/* チップの模様（デスクトップのみ表示） */}
       <div className="hidden lg:block">
         {chipPositions.map((pos, i) => (
@@ -83,17 +83,17 @@ export const Div = () => {
       </div>
 
       {/* セクションタイトル */}
-      <div className="pt-8 md:pt-[116px] flex flex-col items-center gap-2 z-10 relative">
-        <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
+      <div className="flex pt-8 md:pt-[116px] flex-col items-center gap-2 z-10 relative px-4 md:px-0">
+        <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-2xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
           About This Venue
         </div>
-        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
+        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-[16px] tracking-[0] leading-[20px] md:leading-[24px] text-center opacity-90 max-w-[800px]">
           歌舞伎町最大級のショー空間。映像美と臨場感を追求する、プロ仕様のステージ空間をご体験ください。
         </div>
       </div>
 
-      {/* 背景画像（フェードアニメーション付き） */}
-      <div className="relative mt-8 md:mt-16 w-full max-w-[1440px] mx-auto aspect-[1440/650] overflow-hidden rounded-lg" style={{ zIndex: 1 }}>
+      {/* 背景画像（フェードアニメーション付き） - SP版: フル幅・縦長 / PC版: max-w制限 */}
+      <div className="relative mt-6 md:mt-16 w-full md:max-w-[1440px] mx-auto min-h-[420px] md:min-h-0 md:aspect-[1440/650] overflow-hidden md:rounded-lg" style={{ zIndex: 1 }}>
         {backgroundImages.map((img, index) => {
           const isActive = index === currentImageIndex;
           return (
@@ -113,16 +113,16 @@ export const Div = () => {
         })}
         
         {/* オーバーレイコンテンツ */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/30 px-4">
-          <div className="w-full max-w-[971px] [text-shadow:0px_4.27px_32.03px_#faffb5cc] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-2xl md:text-4xl lg:text-[64px] text-center tracking-[0] leading-[1.2] mb-4 md:mb-8">
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/50 md:bg-black/30 px-4 md:px-4 py-8 md:py-0">
+          <div className="w-full max-w-[971px] [text-shadow:0px_4.27px_32.03px_#faffb5cc] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-2xl md:text-4xl lg:text-[64px] text-center tracking-[0] leading-[1.4] mb-4 md:mb-8">
             歌舞伎町最大級のショー空間
           </div>
 
-          <div className="w-full max-w-[982px] flex flex-col items-center gap-6 md:gap-[70px]">
+          <div className="w-full max-w-[982px] flex flex-col items-center gap-5 md:gap-[70px]">
             <Group66
               className="!h-auto !mt-0 ![position:unset] !left-[unset] !w-full !max-w-[982px] !top-[unset]"
-              divClassName="!h-auto !text-base md:!text-[24px] !left-0 !leading-[1.3] !w-full !relative !text-center"
-              elementClassName="!h-auto !text-sm md:!text-[20px] !font-normal !leading-[1.6] !w-full !relative !top-0"
+              divClassName="!h-auto !text-base md:!text-[24px] !left-0 !leading-[1.5] !w-full !relative !text-center"
+              elementClassName="!h-auto !text-sm md:!text-[20px] !font-normal !leading-[1.8] !w-full !relative !top-0"
               groupClassName="!mr-0 !ml-0 !shadow-[0px_3.8px_3.8px_#00000080] !w-full"
               text="映像美と臨場感を追求する、プロ仕様のステージ空間。"
               text1={

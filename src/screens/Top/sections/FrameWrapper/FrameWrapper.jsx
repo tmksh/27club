@@ -553,13 +553,11 @@ export const FrameWrapper = () => {
           )}
         </div>
 
-        <div className="flex justify-center w-full pb-8">
-          <Link
-            className="w-full max-w-[351.95px] flex justify-center"
+        <div className="flex justify-center w-full mt-8 md:mt-0 pb-8 px-4 md:px-0">
+          <Group153 
+            className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"
-          >
-            <Group153 className="!h-[unset] ![position:unset] !left-[unset] !w-full !max-w-[351.95px] !top-[unset]" />
-          </Link>
+          />
         </div>
       </div>
     </div>

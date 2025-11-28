@@ -31,7 +31,7 @@ export const SectionComponentNode = () => {
   ];
 
   return (
-    <div className="relative self-stretch w-full min-h-[600px] md:min-h-[1250px] overflow-hidden px-4 md:px-8">
+    <div className="relative self-stretch w-full min-h-[400px] md:min-h-[1250px] overflow-hidden px-2 md:px-8">
       <div className="relative w-full max-w-[1440px] mx-auto flex flex-col items-center">
         {/* チップの模様（デスクトップのみ表示） */}
         <div className="hidden lg:block">
@@ -80,8 +80,8 @@ export const SectionComponentNode = () => {
           ギャラリー
         </div>
 
-        {/* ギャラリーグリッド - レスポンシブ */}
-        <div className="mt-8 md:mt-16 w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-[60px] z-10">
+        {/* ギャラリーグリッド - レスポンシブ (SP: 4列3段, タブレット: 3列, PC: 4列) */}
+        <div className="mt-6 md:mt-16 w-full grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-1.5 md:gap-6 lg:gap-[60px] z-10">
           {galleryImages.map((image, index) => (
             <Element
               key={`gallery-${index}`}
