@@ -122,7 +122,7 @@ export const GroupWrapper = () => {
         {/* フロアマップとプレビューのコンテナ */}
         <div className="mt-4 md:mt-16 flex flex-col lg:flex-row gap-4 lg:gap-8 items-center lg:items-start justify-center">
           {/* フロアマップ - レスポンシブスケール */}
-          <div className="w-full max-w-[400px] md:max-w-[850px] aspect-[850/500] relative" style={{ zIndex: 10 }}>
+          <div className="w-full max-w-[400px] md:max-w-[1000px] aspect-[850/500] relative" style={{ zIndex: 10 }}>
             {/* 背景レイヤー - ポインターイベント無効 */}
             <div 
               className="absolute inset-0 bg-gradient-to-br from-[#0a1612] via-[#0f1f1c] to-[#000000] border-2 border-[#d4af37] shadow-[0_0_30px_rgba(212,175,55,0.3)] pointer-events-none"
@@ -389,257 +389,116 @@ export const GroupWrapper = () => {
             {/* インタラクティブレイヤー終了 */}
           </div>
 
-          {/* 座席写真表示エリア（デスクトップのみ） */}
-          <div 
-            className="hidden lg:block w-full max-w-[450px] bg-gray-300 shadow-[0px_0px_6px_8px_#ffffff80] overflow-hidden"
-            style={{ zIndex: 20, minHeight: '500px' }}
-          >
-            {hoveredSeat && seatImages[hoveredSeat] ? (
-              <img
-                key={hoveredSeat}
-                className="w-full h-full object-cover"
-                alt={hoveredSeat}
-                src={seatImages[hoveredSeat]}
-                onError={(e) => console.error('Image load error:', e.target.src)}
-                onLoad={() => console.log('Image loaded:', seatImages[hoveredSeat])}
-                style={{
-                  animation: 'fadeInScale 0.5s ease-out forwards',
-                  minHeight: '500px',
-                }}
-              />
-            ) : (
-              <div className="w-full flex items-center justify-center bg-gray-300" style={{ minHeight: '500px' }}>
-                <div className="text-gray-600 text-sm md:text-[18px] font-normal opacity-60 text-center [font-family:'Noto_Serif_JP',Helvetica]">
-                  座席をホバーすると<br />写真が表示されます
-                </div>
-              </div>
-            )}
-          </div>
         </div>
 
         {/* 座席カード */}
         <div className="mt-6 md:mt-16 px-0 md:px-0" style={{ zIndex: 20 }}>
-          {/* SP版: 2x2グリッド（PC版と同じテキスト・フォント） */}
-          <div className="lg:hidden grid grid-cols-2 gap-1.5">
+          {/* グリッド */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 md:gap-6 max-w-[400px] md:max-w-[1000px] mx-auto">
             {/* STANDING カード */}
             <div 
-              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 group cursor-pointer transition-all duration-300 active:bg-[#1a1a1a]"
+              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#fffbfb40]"
               onMouseEnter={() => handleSeatEnter('standing')}
               onMouseLeave={handleSeatLeave}
               onTouchStart={() => handleSeatEnter('standing')}
               onTouchEnd={handleSeatLeave}
             >
-              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs text-center tracking-[0] leading-[normal]">
+              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs md:text-xl text-center tracking-[0] leading-[normal]">
                 STANDING
               </div>
-              <p className="mt-0.5 [font-family:'Playfair_Display',Helvetica] text-white text-[8px] font-normal tracking-[0] leading-[1.2]">
+              <p className="mt-1 md:mt-2 [font-family:'Playfair_Display',Helvetica] text-white text-[8px] md:text-sm font-normal tracking-[0] leading-[1.2] text-center">
                 Cash on Delivery / Free area
               </p>
-              <div className="mt-1 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal]">
+              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-3xl tracking-[0] leading-[normal] text-center">
                 ￥3,600
               </div>
-              <div className="[font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] tracking-[0] leading-[normal]">
+              <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
                 ※飲み放題メニュー参照
               </div>
             </div>
 
             {/* SIDE SEAT BLUE カード */}
             <div 
-              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 group cursor-pointer transition-all duration-300 active:bg-[#1a1a1a]"
+              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#3204ff40]"
               onMouseEnter={() => handleSeatEnter('blueSeat')}
               onMouseLeave={handleSeatLeave}
               onTouchStart={() => handleSeatEnter('blueSeat')}
               onTouchEnd={handleSeatLeave}
             >
-              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs text-center tracking-[0] leading-[normal]">
+              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs md:text-xl text-center tracking-[0] leading-[normal]">
                 SIDE SEAT
               </div>
-              <div className="mt-0.5 flex justify-center">
-                <div className="relative px-1.5 py-0.5">
+              <div className="mt-1 md:mt-2 flex justify-center">
+                <div className="relative px-2 md:px-4 py-0.5 md:py-1">
                   <div className="absolute inset-0 bg-[#3204ff]" />
-                  <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[8px] tracking-[0] leading-[normal]">BLUE</span>
+                  <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[8px] md:text-base tracking-[0] leading-[normal]">BLUE</span>
                 </div>
               </div>
-              <div className="mt-1 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal]">
+              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-3xl tracking-[0] leading-[normal] text-center">
                 ￥4,800
               </div>
-              <div className="[font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] tracking-[0] leading-[normal]">
+              <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
                 ※飲み放題メニュー参照
               </div>
             </div>
 
             {/* SIDE SEAT PINK カード */}
             <div 
-              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 group cursor-pointer transition-all duration-300 active:bg-[#1a1a1a]"
+              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#ff04c440]"
               onMouseEnter={() => handleSeatEnter('pinkSeat')}
               onMouseLeave={handleSeatLeave}
               onTouchStart={() => handleSeatEnter('pinkSeat')}
               onTouchEnd={handleSeatLeave}
             >
-              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs text-center tracking-[0] leading-[normal]">
+              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs md:text-xl text-center tracking-[0] leading-[normal]">
                 SIDE SEAT
               </div>
-              <div className="mt-0.5 flex justify-center">
-                <div className="relative px-1.5 py-0.5">
+              <div className="mt-1 md:mt-2 flex justify-center">
+                <div className="relative px-2 md:px-4 py-0.5 md:py-1">
                   <div className="absolute inset-0 bg-[#ff04c4]" />
-                  <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[8px] tracking-[0] leading-[normal]">PINK</span>
+                  <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[8px] md:text-base tracking-[0] leading-[normal]">PINK</span>
                 </div>
               </div>
-              <div className="mt-1 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal]">
+              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-3xl tracking-[0] leading-[normal] text-center">
                 ￥6,000
               </div>
-              <div className="[font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] tracking-[0] leading-[normal]">
+              <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
                 ※飲み放題メニュー参照
               </div>
             </div>
 
             {/* V.I.P. SEAT カード */}
             <div 
-              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 group cursor-pointer transition-all duration-300 active:bg-[#1a1a1a]"
+              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#00d6bd40]"
               onMouseEnter={() => handleSeatEnter('vipSeat')}
               onMouseLeave={handleSeatLeave}
               onTouchStart={() => handleSeatEnter('vipSeat')}
               onTouchEnd={handleSeatLeave}
             >
-              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs text-center tracking-[0] leading-[normal]">
+              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs md:text-xl text-center tracking-[0] leading-[normal]">
                 V.I.P. SEAT
               </div>
-              <div className="mt-1 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal]">
+              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-3xl tracking-[0] leading-[normal] text-center">
                 ￥8,400
               </div>
-              <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white/70 text-[7px] tracking-[0] leading-[normal]">
+              <div className="mt-1 [font-family:'Playfair_Display',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
                 パート入れ替え制
               </div>
-              <div className="[font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] tracking-[0] leading-[normal]">
+              <div className="mt-0.5 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
                 ※飲み放題メニュー参照
-              </div>
-            </div>
-          </div>
-
-          {/* PC版: グリッド表示 */}
-          <div className="hidden lg:grid grid-cols-4 gap-[40px] justify-items-center">
-            {/* STANDING カード */}
-            <div 
-              className="relative w-full max-w-[220px] aspect-[220/190] group cursor-pointer transition-all duration-300"
-              onMouseEnter={() => handleSeatEnter('standing')}
-              onMouseLeave={handleSeatLeave}
-            >
-              <div className="relative w-full h-full">
-                <div className="absolute inset-0 bg-[#000000] border border-solid border-[#fffbfb] group-hover:bg-[#1a1a1a] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
-                <div className="absolute inset-0 flex flex-col p-4">
-                  <div className="[text-shadow:0px_3.53px_8.83px_#faffb5cc] [-webkit-text-stroke:0.88px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[27px] text-center tracking-[0] leading-[normal] group-hover:[text-shadow:0px_6px_16px_#faffb5ff] group-hover:text-[#fffad4] transition-all duration-300">
-                    STANDING
-                  </div>
-                  <p className="mt-2 [font-family:'Playfair_Display',Helvetica] text-white text-[21px] font-normal tracking-[0] leading-[1.3] group-hover:text-[#fffad4] transition-all duration-300">
-                    Cash on Delivery<br />Free area Standing
-                  </p>
-                  <div className="mt-2 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[43px] tracking-[0] leading-[normal] group-hover:text-[#fffad4] transition-all duration-300">
-                    ￥3,600
-                  </div>
-                  <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[normal]">
-                    ※飲み放題メニュー参照
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* SIDE SEAT BLUE カード */}
-            <div 
-              className="relative w-full max-w-[220px] aspect-[220/190] group cursor-pointer transition-all duration-300"
-              onMouseEnter={() => handleSeatEnter('blueSeat')}
-              onMouseLeave={handleSeatLeave}
-            >
-              <div className="relative w-full h-full">
-                <div className="absolute inset-0 bg-[#000000] border border-solid border-[#fffbfb] group-hover:bg-[#1a1a1a] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
-                <div className="absolute inset-0 flex flex-col p-4">
-                  <div className="[text-shadow:0px_3.53px_8.83px_#faffb5cc] [-webkit-text-stroke:0.88px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[27px] text-center tracking-[0] leading-[normal] group-hover:[text-shadow:0px_6px_16px_#faffb5ff] group-hover:text-[#fffad4] transition-all duration-300">
-                    SIDE SEAT
-                  </div>
-                  <div className="mt-2 flex justify-center">
-                    <div className="relative px-2 py-1">
-                      <div className="absolute inset-0 bg-[#3204ff]" />
-                      <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[21px] tracking-[0] leading-[normal]">BLUE</span>
-                    </div>
-                  </div>
-                  <div className="mt-2 [font-family:'Playfair_Display',Helvetica] text-white text-[21px] font-normal tracking-[0] leading-[normal] group-hover:text-[#fffad4] transition-all duration-300">
-                    Cash on Delivery
-                  </div>
-                  <div className="mt-2 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[32px] tracking-[0] leading-[normal] group-hover:text-[#fffad4] transition-all duration-300">
-                    ￥4,800
-                  </div>
-                  <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[normal]">
-                    ※飲み放題メニュー参照
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* SIDE SEAT PINK カード */}
-            <div 
-              className="relative w-full max-w-[220px] aspect-[220/190] group cursor-pointer transition-all duration-300"
-              onMouseEnter={() => handleSeatEnter('pinkSeat')}
-              onMouseLeave={handleSeatLeave}
-            >
-              <div className="relative w-full h-full">
-                <div className="absolute inset-0 bg-[#000000] border border-solid border-[#fffbfb] group-hover:bg-[#1a1a1a] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
-                <div className="absolute inset-0 flex flex-col p-4">
-                  <div className="[text-shadow:0px_3.53px_8.83px_#faffb5cc] [-webkit-text-stroke:0.88px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[27px] text-center tracking-[0] leading-[normal] group-hover:[text-shadow:0px_6px_16px_#faffb5ff] group-hover:text-[#fffad4] transition-all duration-300">
-                    SIDE SEAT
-                  </div>
-                  <div className="mt-2 flex justify-center">
-                    <div className="relative px-2 py-1">
-                      <div className="absolute inset-0 bg-[#ff04c4]" />
-                      <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[21px] tracking-[0] leading-[normal]">PINK</span>
-                    </div>
-                  </div>
-                  <div className="mt-2 [font-family:'Playfair_Display',Helvetica] text-white text-[21px] font-normal tracking-[0] leading-[normal] group-hover:text-[#fffad4] transition-all duration-300">
-                    Cash on Delivery
-                  </div>
-                  <div className="mt-2 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[32px] tracking-[0] leading-[normal] group-hover:text-[#fffad4] transition-all duration-300">
-                    ￥6,000
-                  </div>
-                  <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[normal]">
-                    ※飲み放題メニュー参照
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* V.I.P. SEAT カード */}
-            <div 
-              className="relative w-full max-w-[220px] aspect-[220/190] group cursor-pointer transition-all duration-300"
-              onMouseEnter={() => handleSeatEnter('vipSeat')}
-              onMouseLeave={handleSeatLeave}
-            >
-              <div className="relative w-full h-full">
-                <div className="absolute inset-0 bg-[#000000] border border-solid border-[#fffbfb] group-hover:bg-[#1a1a1a] group-hover:shadow-[0px_6px_100px_#fffbfb80] transition-all duration-300" />
-                <div className="absolute inset-0 flex flex-col p-4">
-                  <div className="[text-shadow:0px_3.53px_8.83px_#faffb5cc] [-webkit-text-stroke:0.88px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[27px] text-center tracking-[0] leading-[normal] group-hover:[text-shadow:0px_6px_16px_#faffb5ff] group-hover:text-[#fffad4] transition-all duration-300">
-                    V.I.P. SEAT
-                  </div>
-                  <div className="mt-2 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[43px] tracking-[0] leading-[normal] group-hover:text-[#fffad4] transition-all duration-300">
-                    ￥8,400
-                  </div>
-                  <div className="mt-2 [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[normal]">
-                    パート入れ替え制になります。
-                  </div>
-                  <div className="mt-2 [font-family:'Inder',Helvetica] font-normal text-white text-[13px] tracking-[0] leading-[normal]">
-                    ※飲み放題メニュー参照
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* モバイル用オーバーレイ画像表示 - ホバーで表示 */}
+      {/* オーバーレイ画像表示 - ホバーで表示 */}
       {hoveredSeat && seatImages[hoveredSeat] && (
         <div 
-          className="lg:hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center animate-[fadeIn_0.15s_ease-out] pointer-events-none"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center animate-[fadeIn_0.15s_ease-out] pointer-events-none"
           style={{ zIndex: 9999 }}
         >
-          <div className="relative w-[70%] max-w-[280px] animate-[fadeInScale_0.15s_ease-out]">
+          <div className="relative w-[70%] max-w-[400px] animate-[fadeInScale_0.15s_ease-out]">
             {/* 座席名 */}
             <div className="absolute -top-8 left-0 right-0 text-center">
               <span className="text-white text-sm font-bold [font-family:'Inter',Helvetica] bg-black/50 px-3 py-1 rounded">

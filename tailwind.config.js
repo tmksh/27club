@@ -7,9 +7,10 @@ module.exports = {
         'xs': '375px',
         'sm': '640px',
         'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
-        '2xl': '1440px',
+        // SP版以外はPC版レイアウトを表示するため、lg以上を768pxに統一
+        'lg': '768px',
+        'xl': '768px',
+        '2xl': '768px',
       },
       fontSize: {
         'responsive-hero': ['clamp(2.5rem, 8vw, 13.8rem)', { lineHeight: '1.1' }],

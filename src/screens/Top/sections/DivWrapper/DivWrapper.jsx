@@ -76,7 +76,7 @@ export const DivWrapper = () => {
           
           <iframe
             className="w-full aspect-[2.4/1] md:aspect-[1192/498] border-0 rounded-lg"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.5!2d139.702!3d35.693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQxJzM0LjgiTiAxMznCsDQyJzA3LjIiRQ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp"
+            src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA2%E4%B8%81%E7%9B%AE36-3+%E6%96%B0%E5%AE%BFAcb%E4%BC%9A%E9%A4%A8&t=&z=17&ie=UTF8&iwloc=&output=embed"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

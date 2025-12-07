@@ -54,7 +54,7 @@ export const Top = () => {
 
   return (
     <div
-      className="flex flex-col items-center relative overflow-hidden"
+      className="flex flex-col items-center relative overflow-hidden md:min-w-[1440px]"
       data-model-id="385:1682"
       style={{
         backgroundImage: 'url(/img/27-background.png)',

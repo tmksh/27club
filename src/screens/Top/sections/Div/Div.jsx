@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Group66 } from "../../../../components/Group66";
 
 export const Div = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -113,36 +112,38 @@ export const Div = () => {
         })}
         
         {/* オーバーレイコンテンツ */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/50 md:bg-black/30 px-4 md:px-4 py-8 md:py-0">
-          <div className="w-full max-w-[971px] [text-shadow:0px_4.27px_32.03px_#faffb5cc] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-2xl md:text-4xl lg:text-[64px] text-center tracking-[0] leading-[1.4] mb-4 md:mb-8">
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-gradient-to-t from-black/70 via-black/40 to-black/20 px-6 md:px-8 py-10 md:py-12">
+          {/* メインタイトル */}
+          <div className="w-full max-w-[900px] [text-shadow:0px_4px_20px_rgba(0,0,0,0.8)] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-2xl md:text-4xl lg:text-[56px] text-center tracking-[0.02em] leading-[1.3] mb-6 md:mb-10">
             歌舞伎町最大級のショー空間
           </div>
 
-          <div className="w-full max-w-[982px] flex flex-col items-center gap-5 md:gap-[70px]">
-            <Group66
-              className="!h-auto !mt-0 ![position:unset] !left-[unset] !w-full !max-w-[982px] !top-[unset]"
-              divClassName="!h-auto !text-base md:!text-[24px] !left-0 !leading-[1.5] !w-full !relative !text-center"
-              elementClassName="!h-auto !text-sm md:!text-[20px] !font-normal !leading-[1.8] !w-full !relative !top-0"
-              groupClassName="!mr-0 !ml-0 !shadow-[0px_3.8px_3.8px_#00000080] !w-full"
-              text="映像美と臨場感を追求する、プロ仕様のステージ空間。"
-              text1={
-                <>
-                  MV・CMなど、数多くの撮影現場で実際に使用されているステージです。
-                  <br className="hidden md:inline" />{" "}
-                  照明・音響・空間演出のすべてがプロフェッショナル仕様で、作品の世界観を一層引き立てます。
-                  <br className="hidden md:inline" /> スタジオとしてのご利用も随時受け付けております。
-                </>
-              }
-            />
-            <Link
-              className="flex w-[140px] md:w-[167.82px] h-[40px] md:h-[46.62px] relative items-center justify-center bg-black rounded-[1.42px] hover:bg-gray-800 transition-colors"
-              to="/u12467u12531u12479u12463u12488"
-            >
-              <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-xs md:text-[9.3px] tracking-[0] leading-[11.1px] whitespace-nowrap">
-                お問い合わせ
-              </div>
-            </Link>
+          {/* サブタイトル */}
+          <div className="w-full max-w-[800px] [font-family:'Noto_Serif_JP',Helvetica] font-medium text-white/95 text-base md:text-xl lg:text-2xl text-center tracking-[0.02em] leading-[1.6] mb-4 md:mb-6">
+            映像美と臨場感を追求する、プロ仕様のステージ空間。
           </div>
+
+          {/* 説明文 */}
+          <div className="w-full max-w-[720px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/80 text-sm md:text-base lg:text-lg text-center tracking-[0.01em] leading-[1.9] mb-8 md:mb-12">
+            MV・CMなど、数多くの撮影現場で実際に使用されているステージです。
+            <br className="hidden md:inline" />
+            照明・音響・空間演出のすべてがプロフェッショナル仕様で、作品の世界観を一層引き立てます。
+            <br className="hidden md:inline" />
+            スタジオとしてのご利用も随時受け付けております。
+          </div>
+
+          {/* CTAボタン */}
+          <Link
+            className="flex items-center justify-center px-8 md:px-12 py-3 md:py-4 bg-[#00d6bd] hover:bg-[#00bfa8] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            to="/u12467u12531u12479u12463u12488"
+          >
+            <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-sm md:text-base tracking-[0.05em]">
+              お問い合わせ
+            </span>
+            <svg className="w-4 h-4 md:w-5 md:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
       </div>
     </div>

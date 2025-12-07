@@ -1,94 +1,105 @@
-import React, { useMemo } from "react";
-import { Element } from "../../../../components/Element";
+import React from "react";
 
 export const SectionComponentNode = () => {
-  // チップ装飾用のデータ
-  const chips = [
-    { img: '/img/3-1.png', w: 244, h: 142 },
-    { img: '/img/1.png', w: 303, h: 73 },
-    { img: '/img/1-2.png', w: 279, h: 95 },
-    { img: '/img/3-2.png', w: 220, h: 90 },
-    { img: '/img/5-1.png', w: 99, h: 171 },
-    { img: '/img/4-1.png', w: 118, h: 145 },
-    { img: '/img/4-2.png', w: 82, h: 142 },
-    { img: '/img/2.png', w: 220, h: 114 },
-    { img: '/img/2-2.png', w: 105, h: 106 },
-  ];
-
-  const galleryImages = [
-    '/img/2025-09-16-17-49-20-1.png',
-    '/img/2025-09-16-17-49-20-2.png',
-    '/img/2025-09-16-17-49-20-3.png',
-    '/img/2025-09-16-17-49-20-4.png',
-    '/img/2025-09-16-17-49-20-10.png',
-    '/img/2025-09-16-17-49-20-11.png',
-    '/img/2025-09-16-17-49-20-12.png',
-    '/img/2025-09-16-17-49-20-13.png',
-    '/img/2025-09-16-17-49-20-17.png',
-    '/img/2025-09-16-17-49-20-18.png',
-    '/img/2025-09-16-17-49-20-19.png',
-    '/img/2025-09-16-17-49-20-20.png',
-  ];
+  // プレースホルダー用のデータ
+  const placeholderItems = Array(8).fill(null);
 
   return (
-    <div className="relative self-stretch w-full min-h-[400px] md:min-h-[1250px] overflow-hidden px-2 md:px-8">
-      <div className="relative w-full max-w-[1440px] mx-auto flex flex-col items-center">
-        {/* チップの模様（デスクトップのみ表示） */}
-        <div className="hidden lg:block">
-          {useMemo(() => {
-            return Array.from({ length: 30 }, (_, i) => {
-              const chip = chips[i % chips.length];
-              const baseLeft = 1440 * 0.4;
-              const fixedOffset = ((i * 137) % 500) + (i % 3) * 50;
-              const left = baseLeft + fixedOffset;
-              const top = (Math.floor(i / 10) * 200) + (i % 7) * 80;
-              
-              return (
-                <div
-                  key={`chip-pattern-${i}`}
-                  className="absolute pointer-events-none"
-                  style={{
-                    left: `${left}px`,
-                    top: `${top}px`,
-                    width: `${chip.w * 0.6}px`,
-                    height: `${chip.h * 0.6}px`,
-                    backgroundImage: `url(${chip.img})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: '50% 50%',
-                    opacity: 0.08,
-                    transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-                    zIndex: 0,
-                  }}
-                />
-              );
-            });
-          }, [chips])}
-        </div>
-        
-        {/* セクションタイトル */}
-        <div className="pt-8 md:pt-[80px] flex flex-col items-center gap-3 z-10">
-          <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
-            GALLERY
-          </div>
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
-            当店の空間と雰囲気を写真でご覧いただけます。プロ仕様のステージと照明が創り出す、特別な空間をお楽しみください。
-          </div>
-        </div>
-
+    <div className="relative self-stretch w-full overflow-hidden py-16 md:py-24">
+      <div className="relative w-full mx-auto">
         {/* カタカナテキスト（デスクトップのみ） */}
-        <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-right z-10">
+        <div className="hidden lg:block absolute -top-4 right-0 [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff15] text-[120px] tracking-[0] leading-[normal] select-none pointer-events-none pr-8">
           ギャラリー
         </div>
 
-        {/* ギャラリーグリッド - レスポンシブ (SP: 4列3段, タブレット: 3列, PC: 4列) */}
-        <div className="mt-6 md:mt-16 w-full grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-1.5 md:gap-6 lg:gap-[60px] z-10">
-          {galleryImages.map((image, index) => (
-            <Element
-              key={`gallery-${index}`}
-              className="!left-[unset] !top-[unset] !w-full !h-auto !aspect-[220/260]"
-              element={image}
+        {/* セクションタイトル */}
+        <div className="flex flex-col items-center gap-4 mb-10 md:mb-16 relative z-10 px-4">
+          <div className="[text-shadow:0px_4px_20px_#faffb580] [-webkit-text-stroke:1px_#d4af3780] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-4xl md:text-6xl lg:text-7xl text-center tracking-[0.02em]">
+            GALLERY
+          </div>
+          <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
+          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-light text-white/70 text-sm md:text-base tracking-[0.05em] text-center max-w-[600px]">
+            当店の空間と雰囲気を写真でご覧いただけます
+          </div>
+        </div>
+
+        {/* カスタムBento Gridレイアウト - プレースホルダー版 - フルワイド */}
+        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[150px] md:auto-rows-[240px] gap-1 relative z-10 w-full">
+          
+          {/* 共通のプレースホルダーコンポーネント */}
+          {/* 1. 左上の大きな画像エリア - ロゴ */}
+          <div className="col-span-2 row-span-2 relative group overflow-hidden bg-white flex items-center justify-center">
+            <img 
+              src="/img/27logo-1-1.png" 
+              alt="27 CLUB Logo" 
+              className="w-[180px] md:w-[240px] h-auto object-contain opacity-90"
             />
-          ))}
+          </div>
+
+          {/* 2. 右上の縦に並んだ2枚エリア */}
+          <div className="col-span-1 row-span-2 flex flex-col gap-1">
+            <div className="flex-1 relative group overflow-hidden bg-white flex items-center justify-center">
+               <img 
+                 src="/img/27logo-1-1.png" 
+                 alt="27 CLUB Logo" 
+                 className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
+               />
+            </div>
+            <div className="flex-1 relative group overflow-hidden bg-white flex items-center justify-center">
+               <img 
+                 src="/img/27logo-1-1.png" 
+                 alt="27 CLUB Logo" 
+                 className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
+               />
+            </div>
+          </div>
+
+          {/* 3. 中段エリア */}
+          <div className="col-span-1 row-span-1 relative group overflow-hidden bg-white flex items-center justify-center">
+             <img 
+               src="/img/27logo-1-1.png" 
+               alt="27 CLUB Logo" 
+               className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
+             />
+          </div>
+          <div className="col-span-2 row-span-2 relative group overflow-hidden bg-white flex items-center justify-center">
+            <img 
+              src="/img/27logo-1-1.png" 
+              alt="27 CLUB Logo" 
+              className="w-[180px] md:w-[240px] h-auto object-contain opacity-90"
+            />
+          </div>
+
+          {/* 4. 下段エリア */}
+          <div className="col-span-1 row-span-2 relative group overflow-hidden bg-white flex items-center justify-center">
+             <img 
+               src="/img/27logo-1-1.png" 
+               alt="27 CLUB Logo" 
+               className="w-[100px] md:w-[120px] h-auto object-contain opacity-90"
+             />
+          </div>
+          <div className="col-span-1 row-span-1 relative group overflow-hidden bg-white flex items-center justify-center">
+             <img 
+               src="/img/27logo-1-1.png" 
+               alt="27 CLUB Logo" 
+               className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
+             />
+          </div>
+           <div className="col-span-1 row-span-1 relative group overflow-hidden bg-white flex items-center justify-center">
+             <img 
+               src="/img/27logo-1-1.png" 
+               alt="27 CLUB Logo" 
+               className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
+             />
+          </div>
+          
+        </div>
+
+        {/* 装飾ライン */}
+        <div className="flex items-center justify-center gap-4 mt-12 md:mt-16">
+          <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-white/20" />
+          <div className="w-2 h-2 rotate-45 border border-[#d4af37]/50" />
+          <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-white/20" />
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ export const Group153 = ({ className, text = "キャスト一覧はこちら", t
       className={`relative flex ${className}`}
       to={to}
     >
-      <div className="flex flex-1 w-full h-full items-center justify-center bg-[#025b51] rounded-[40px] md:rounded-[60px]">
+      <div className="flex flex-1 w-full h-full items-center justify-center bg-[#013d36] rounded-[40px] md:rounded-[60px]">
         <div className="[font-family:'Inter',Helvetica] font-semibold text-[#fffefb] text-sm md:text-2xl tracking-[0] leading-[1.2] md:leading-[23.3px] whitespace-nowrap text-center px-4">
           {text}
         </div>

@@ -7,7 +7,7 @@ import { Frame11 } from "./sections/Frame11";
 export const Screen5 = () => {
   return (
     <div
-      className="flex flex-col items-center justify-center gap-[94px] relative bg-[url(/img/27-background.png)] bg-repeat-y bg-[50%_0%]"
+      className="flex flex-col items-center justify-center gap-[94px] relative bg-[url(/img/27-background.png)] bg-repeat-y bg-[50%_0%] md:min-w-[1440px]"
       data-model-id="411:1117"
     >
       <Frame9 />

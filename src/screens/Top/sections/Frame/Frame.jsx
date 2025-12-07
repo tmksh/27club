@@ -292,7 +292,7 @@ export const Frame = () => {
       </div>
 
       {/* タブレット・デスクトップ用レイアウト - 横並び */}
-      <div className="hidden md:flex mt-16 flex-row gap-8 max-w-[1440px] mx-auto relative z-10">
+      <div className="hidden md:flex mt-16 flex-row gap-8 max-w-[1440px] mx-auto relative z-10 justify-center">
         {/* カレンダー */}
         <div className="w-[525px] flex-shrink-0">
           <div className="w-full bg-[#1a1a1a] rounded-lg shadow-xl overflow-hidden">
@@ -344,7 +344,7 @@ export const Frame = () => {
         </div>
 
         {/* イベントリスト */}
-        <div className="flex-1">
+        <div className="w-[600px] flex-shrink-0">
           <div className="w-full h-full min-h-[629px] relative bg-[#1a2a2880] rounded-lg shadow-xl border border-[#00d6bd20] p-6 backdrop-blur-sm">
             {/* セクション見出し */}
             <div className="mb-4 pb-3 border-b border-[#00d6bd30]">

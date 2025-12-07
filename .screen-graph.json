@@ -115,31 +115,31 @@
       }
     },
     {
-      "id": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx:557:10-to-src/screens/Screen7/Screen7.jsx",
+      "id": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx:640:10-to-src/screens/Screen7/Screen7.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/Screen7/Screen7.jsx",
       "data": {
         "viaRoute": "/u12461u12515u12473u12488",
         "trigger": {
-          "element": "<Link\n            className=\"w-full max-w-[351.95px] flex justify-center\"\n            to=\"/u12461u12515u12473u12488\"\n          >\n            <Group153 className=\"!h-[unset] ![position:unset] !left-[unset] !w-full !max-w-[351.95px] !top-[unset]\" />\n          </Link>",
-          "line": 557,
-          "endLine": 562,
+          "element": "<Group153 \n            className=\"w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]\" \n            to=\"/u12461u12515u12473u12488\"\n          />",
+          "line": 640,
+          "endLine": 643,
           "column": 10,
-          "endColumn": 17,
+          "endColumn": 12,
           "sourceFile": "src/screens/Top/sections/FrameWrapper/FrameWrapper.jsx"
         }
       }
     },
     {
-      "id": "src/screens/Top/sections/DivWrapper/DivWrapper.jsx:175:10-to-src/screens/ScreenScreen/ScreenScreen.jsx",
+      "id": "src/screens/Top/sections/DivWrapper/DivWrapper.jsx:174:10-to-src/screens/ScreenScreen/ScreenScreen.jsx",
       "source": "src/screens/Top/Top.jsx",
       "target": "src/screens/ScreenScreen/ScreenScreen.jsx",
       "data": {
         "viaRoute": "/u12467u12531u12479u12463u12488",
         "trigger": {
-          "element": "<Group153\n            className=\"!w-full !max-w-[352px]\"\n            text=\"お問い合わせ\"\n            to=\"/u12467u12531u12479u12463u12488\"\n          />",
-          "line": 175,
-          "endLine": 179,
+          "element": "<Group153\n            className=\"w-full max-w-[160px] md:max-w-[352px] h-[56px] md:h-[98px]\"\n            text=\"お問い合わせ\"\n            to=\"/u12467u12531u12479u12463u12488\"\n          />",
+          "line": 174,
+          "endLine": 178,
           "column": 10,
           "endColumn": 12,
           "sourceFile": "src/screens/Top/sections/DivWrapper/DivWrapper.jsx"

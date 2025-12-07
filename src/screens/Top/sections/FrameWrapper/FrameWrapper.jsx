@@ -388,11 +388,11 @@ export const FrameWrapper = () => {
   }, [castData.length, isMobile]);
 
   return (
-    <div className="relative self-stretch w-full min-h-[500px] md:min-h-[900px] overflow-hidden px-4 md:px-8">
+    <div className="relative self-stretch w-full min-h-[500px] md:min-h-[700px] overflow-hidden px-4 md:px-8">
       <div className="w-full flex flex-col gap-[40px]">
         <div 
           ref={wrapperRef}
-          className="w-full h-[400px] md:h-[850px] relative"
+          className="w-full h-[400px] md:h-[650px] relative"
         >
           {/* チップの模様（デスクトップのみ表示） */}
           <div className="hidden lg:block">
@@ -437,9 +437,9 @@ export const FrameWrapper = () => {
             </div>
           </div>
 
-          {/* SP版: 円周カルーセル */}
+          {/* 円周カルーセル（SP版・PC版共通） */}
           <div 
-            className="md:hidden mt-6 relative h-[320px] cursor-grab active:cursor-grabbing"
+            className="mt-6 md:mt-16 relative h-[320px] md:h-[450px] cursor-grab active:cursor-grabbing"
             onTouchStart={(e) => {
               setIsTouching(true);
               touchStartXRef.current = e.touches[0].clientX;
@@ -481,7 +481,7 @@ export const FrameWrapper = () => {
             >
               <div 
                 ref={mobileCarouselRef}
-                className={`relative w-[140px] h-[200px] ${!isTouching ? 'animate-carousel-3d' : ''}`}
+                className={`relative w-[140px] h-[200px] md:w-[220px] md:h-[320px] ${!isTouching ? 'animate-carousel-3d' : ''}`}
                 style={{
                   transformStyle: 'preserve-3d',
                   transform: isTouching ? `rotateY(${mobileManualRotation}deg)` : undefined,
@@ -490,42 +490,41 @@ export const FrameWrapper = () => {
                 {castData.slice(0, 5).map((cast, index) => {
                   const totalCards = Math.min(castData.length, 5);
                   const angle = (360 / totalCards) * index;
-                  const radius = 140;
                   
                   return (
                     <div
                       key={cast.id}
-                      className="absolute top-0 left-0 w-[140px] h-[200px] rounded-xl overflow-hidden"
+                      className="absolute top-0 left-0 w-[140px] h-[200px] md:w-[220px] md:h-[320px] rounded-xl overflow-hidden"
                       style={{
-                        transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
+                        transform: `rotateY(${angle}deg) translateZ(${isMobile ? 140 : 280}px)`,
                         transformStyle: 'preserve-3d',
                         background: 'linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%)',
                         boxShadow: '0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)',
                       }}
                     >
                       {/* 画像 */}
-                      <div className="relative w-full h-[120px] overflow-hidden">
+                      <div className="relative w-full h-[120px] md:h-[200px] overflow-hidden">
                         <img
                           className="w-full h-full object-cover"
                           alt={cast.name}
                           src={cast.image}
                         />
                         {/* 画像下部のグラデーション */}
-                        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 h-8 md:h-12 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
                       </div>
                       
                       {/* テキストエリア */}
-                      <div className="w-full h-[80px] px-3 py-2 flex flex-col justify-center">
-                        <div className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-sm text-center leading-tight tracking-wide">
+                      <div className="w-full h-[80px] md:h-[120px] px-3 md:px-4 py-2 md:py-3 flex flex-col justify-center">
+                        <div className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-sm md:text-xl text-center leading-tight tracking-wide">
                           {cast.name}
                         </div>
-                        <div className="[font-family:'Noto_Serif_JP',Helvetica] text-white/50 text-[8px] text-center mt-1.5 line-clamp-2 leading-relaxed">
+                        <div className="[font-family:'Noto_Serif_JP',Helvetica] text-white/50 text-[8px] md:text-xs text-center mt-1.5 md:mt-2 line-clamp-2 md:line-clamp-3 leading-relaxed">
                           {cast.description}
                         </div>
                       </div>
                       
                       {/* 装飾ライン */}
-                      <div className="absolute top-[120px] left-3 right-3 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                      <div className="absolute top-[120px] md:top-[200px] left-3 right-3 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                     </div>
                   );
                 })}
@@ -544,99 +543,9 @@ export const FrameWrapper = () => {
             </div>
           </div>
 
-          {/* PC版: 3Dカルーセル */}
-          {!isMobile && (
-            <div 
-              className="hidden md:flex absolute top-[280px] left-0 w-full h-[650px] items-center justify-center overflow-visible cursor-grab active:cursor-grabbing"
-              style={{ perspective: '2000px' }}
-            >
-              {/* 3D円形カルーセル */}
-              <div 
-                ref={carouselRef}
-                className="relative w-full h-full flex items-center justify-center"
-                style={{ 
-                  transformStyle: "preserve-3d",
-                  transform: "translateZ(-600px) rotateY(0deg)"
-                }}
-              >
-                {castData.map((cast, index) => {
-                  // 各カードの背面テキスト用のrefを初期化
-                  if (!cardTextRefs.current[index]) {
-                    cardTextRefs.current[index] = null;
-                  }
-                  
-                  const cardWidth = window.innerWidth < 1024 ? 280 : 450;
-                  const cardHeight = window.innerWidth < 1024 ? 340 : 540;
-                  
-                  return (
-                    <div
-                      key={cast.id}
-                      className="carousel-cell absolute"
-                      style={{
-                        width: `${cardWidth}px`,
-                        height: `${cardHeight}px`,
-                        transformStyle: "preserve-3d",
-                        transformOrigin: "center center",
-                      }}
-                    >
-                      {/* カードの前面に配置する円状テキスト */}
-                      <div
-                        ref={el => cardTextRefs.current[index] = el}
-                        className="absolute bg-[url(/img/ckub-1.png)] bg-cover bg-[50%_50%] pointer-events-none"
-                        style={{
-                          width: window.innerWidth < 1024 ? '380px' : '600px',
-                          height: window.innerWidth < 1024 ? '380px' : '600px',
-                          left: '50%',
-                          top: '50%',
-                          transform: 'translate(-50%, -50%) translateZ(10px)',
-                          transformStyle: "preserve-3d",
-                          zIndex: 1,
-                          filter: 'brightness(0) invert(1)',
-                          opacity: 0.8,
-                        }}
-                      />
-                      
-                      <div className="relative w-full h-full">
-                        <img
-                          className="absolute object-cover rounded-lg"
-                          style={{
-                            top: '-20px',
-                            left: '-20px',
-                            width: `${cardWidth + 40}px`,
-                            height: `${cardWidth + 40}px`,
-                          }}
-                          alt={cast.name}
-                          src={cast.image}
-                        />
-                        <div 
-                          className="absolute left-0 w-full bg-[#0c0c0ce6] rounded-b-lg"
-                          style={{
-                            top: `${cardHeight * 0.65}px`,
-                            height: `${cardHeight * 0.28}px`,
-                          }}
-                        />
-                        <div 
-                          className="absolute left-[15px] w-[calc(100%-30px)] [text-shadow:0px_2.79px_2.79px_#e8efa899] [font-family:'Inter',Helvetica] font-normal text-white text-sm md:text-[16px] text-center tracking-[0] leading-[20px] md:leading-[22px]"
-                          style={{
-                            top: `${cardHeight * 0.69}px`,
-                          }}
-                        >
-                          {cast.name}
-                          <br />
-                          {cast.description}
-                          <br />
-                          {cast.show}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
         </div>
 
-        <div className="flex justify-center w-full mt-8 md:mt-0 pb-8 px-4 md:px-0">
+        <div className="flex justify-center w-full mt-16 md:mt-24 pb-8 px-4 md:px-0">
           <Group153 
             className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"

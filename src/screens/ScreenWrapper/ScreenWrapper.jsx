@@ -8,7 +8,7 @@ import { Frame8 } from "./sections/Frame8";
 export const ScreenWrapper = () => {
   return (
     <div
-      className="flex flex-col items-center justify-center gap-[40px] relative overflow-hidden bg-[url(/img/27-background.png)] bg-repeat-y bg-[50%_0%]"
+      className="flex flex-col items-center justify-center gap-[40px] relative overflow-hidden bg-[url(/img/27-background.png)] bg-repeat-y bg-[50%_0%] md:min-w-[1440px]"
       data-model-id="411:1115"
     >
       <Frame5 />
