@@ -105,7 +105,7 @@ export const GroupWrapper = () => {
         </div>
 
         {/* セクションタイトル */}
-        <div className="pt-6 md:pt-[82px] flex flex-col items-center gap-2 md:gap-3">
+        <div className="pt-6 md:pt-[82px] flex flex-col items-center gap-2 md:gap-3" data-scroll="fade-up">
           <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-2xl md:text-5xl lg:text-[64px] text-center tracking-[4px] md:tracking-[6.40px] leading-[1.2]">
             Floor map
           </div>
@@ -120,7 +120,7 @@ export const GroupWrapper = () => {
         </div>
 
         {/* フロアマップとプレビューのコンテナ */}
-        <div className="mt-4 md:mt-16 flex flex-col lg:flex-row gap-4 lg:gap-8 items-center lg:items-start justify-center">
+        <div className="mt-4 md:mt-16 flex flex-col lg:flex-row gap-4 lg:gap-8 items-center lg:items-start justify-center" data-scroll="scale-up">
           {/* フロアマップ - レスポンシブスケール */}
           <div className="w-full max-w-[400px] md:max-w-[1000px] aspect-[850/500] relative" style={{ zIndex: 10 }}>
             {/* 背景レイヤー - ポインターイベント無効 */}
@@ -392,7 +392,7 @@ export const GroupWrapper = () => {
         </div>
 
         {/* 座席カード */}
-        <div className="mt-6 md:mt-16 px-0 md:px-0" style={{ zIndex: 20 }}>
+        <div className="mt-6 md:mt-16 px-0 md:px-0" style={{ zIndex: 20 }} data-scroll="fade-up">
           {/* グリッド */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 md:gap-6 max-w-[400px] md:max-w-[1000px] mx-auto">
             {/* STANDING カード */}

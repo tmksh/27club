@@ -1,24 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Header } from "../../components/Header";
 
 export const DrinkMenu = () => {
   return (
     <div className="flex flex-col items-center min-h-screen bg-black">
-      {/* ヘッダー */}
-      <div className="w-full max-w-[1440px] px-6 py-8">
-        <Link 
-          to="/"
-          className="inline-flex items-center gap-2 text-white hover:text-[#00c9a7] transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-lg">戻る</span>
-        </Link>
-      </div>
+      <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
 
       {/* タイトル */}
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 pt-12">
         <h1 className="[font-family:'Playfair_Display',Helvetica] font-bold text-white text-5xl md:text-6xl tracking-wider mb-4">
           DRINK MENU
         </h1>

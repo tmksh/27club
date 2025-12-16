@@ -82,7 +82,7 @@ export const Div = () => {
       </div>
 
       {/* セクションタイトル */}
-      <div className="flex pt-8 md:pt-[116px] flex-col items-center gap-2 z-10 relative px-4 md:px-0">
+      <div className="flex pt-8 md:pt-[116px] flex-col items-center gap-2 z-10 relative px-4 md:px-0" data-scroll="fade-up">
         <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-2xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
           About This Venue
         </div>
@@ -92,7 +92,7 @@ export const Div = () => {
       </div>
 
       {/* 背景画像（フェードアニメーション付き） - SP版: フル幅・縦長 / PC版: max-w制限 */}
-      <div className="relative mt-6 md:mt-16 w-full md:max-w-[1440px] mx-auto min-h-[420px] md:min-h-0 md:aspect-[1440/650] overflow-hidden md:rounded-lg" style={{ zIndex: 1 }}>
+      <div className="relative mt-6 md:mt-16 w-full md:max-w-[1440px] mx-auto min-h-[420px] md:min-h-0 md:aspect-[1440/650] overflow-hidden md:rounded-lg" style={{ zIndex: 1 }} data-scroll="zoom-in">
         {backgroundImages.map((img, index) => {
           const isActive = index === currentImageIndex;
           return (

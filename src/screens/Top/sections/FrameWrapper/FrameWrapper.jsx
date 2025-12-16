@@ -428,7 +428,7 @@ export const FrameWrapper = () => {
           </div>
 
           {/* セクションタイトル */}
-          <div className="pt-8 md:pt-[116px] flex flex-col items-center gap-3 relative z-10">
+          <div className="pt-8 md:pt-[116px] flex flex-col items-center gap-3 relative z-10" data-scroll="fade-up">
             <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-2xl md:text-4xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
               EVENTS / PERFORMERS
             </div>
@@ -440,6 +440,7 @@ export const FrameWrapper = () => {
           {/* 円周カルーセル（SP版・PC版共通） */}
           <div 
             className="mt-6 md:mt-16 relative h-[320px] md:h-[450px] cursor-grab active:cursor-grabbing"
+            data-scroll="scale-up"
             onTouchStart={(e) => {
               setIsTouching(true);
               touchStartXRef.current = e.touches[0].clientX;
@@ -545,7 +546,7 @@ export const FrameWrapper = () => {
 
         </div>
 
-        <div className="flex justify-center w-full mt-16 md:mt-24 pb-8 px-4 md:px-0">
+        <div className="flex justify-center w-full mt-16 md:mt-24 pb-8 px-4 md:px-0" data-scroll="fade-up">
           <Group153 
             className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"

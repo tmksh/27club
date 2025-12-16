@@ -13,7 +13,7 @@ export const SectionComponentNode = () => {
         </div>
 
         {/* セクションタイトル */}
-        <div className="flex flex-col items-center gap-4 mb-10 md:mb-16 relative z-10 px-4">
+        <div className="flex flex-col items-center gap-4 mb-10 md:mb-16 relative z-10 px-4" data-scroll="fade-up">
           <div className="[text-shadow:0px_4px_20px_#faffb580] [-webkit-text-stroke:1px_#d4af3780] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-4xl md:text-6xl lg:text-7xl text-center tracking-[0.02em]">
             GALLERY
           </div>
@@ -24,7 +24,7 @@ export const SectionComponentNode = () => {
         </div>
 
         {/* カスタムBento Gridレイアウト - プレースホルダー版 - フルワイド */}
-        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[150px] md:auto-rows-[240px] gap-1 relative z-10 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[150px] md:auto-rows-[240px] gap-1 relative z-10 w-full" data-scroll="fade-up">
           
           {/* 共通のプレースホルダーコンポーネント */}
           {/* 1. 左上の大きな画像エリア - ロゴ */}

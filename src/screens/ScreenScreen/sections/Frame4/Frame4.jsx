@@ -3,7 +3,7 @@ import { Frame650 } from "../../../../components/Frame650";
 
 export const Frame4 = () => {
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden mt-[20px] md:mt-[40px]">
       <Frame650
         className="!self-stretch !justify-center !flex-[0_0_auto] !flex !left-[unset] !w-full !top-[unset]"
         group170GroupClassName="![display:unset] !left-[unset] !top-[unset]"

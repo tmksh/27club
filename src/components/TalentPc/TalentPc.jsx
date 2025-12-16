@@ -5,7 +5,6 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 export const TalentPc = ({ 
   className, 
@@ -24,7 +23,7 @@ export const TalentPc = ({
 
   return (
     <div
-      className={`relative w-[292px] h-[367px] [perspective:1000px] ${className}`}
+      className={`relative w-full aspect-[292/367] [perspective:1000px] ${className}`}
       onClick={handleClick}
     >
       <div
@@ -33,24 +32,22 @@ export const TalentPc = ({
         }`}
       >
         {/* 表面 */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)]">
-          <img
-            className="absolute top-[7px] left-[7px] w-[279px] h-[272px] object-cover"
-            alt="S"
-            src={s}
-          />
+        <div className="absolute inset-0 [backface-visibility:hidden] rounded-xl md:rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)] overflow-hidden">
+          {/* メイン画像 */}
+          <div className="absolute top-[2%] left-[2%] w-[96%] h-[74%]">
+            <img
+              className="w-full h-full object-cover rounded-lg"
+              alt={name}
+              src={s}
+            />
+          </div>
 
-          <img
-            className="absolute top-[7px] left-[7px] w-[279px] h-[272px] object-cover"
-            alt="S"
-            src="/img/s-16646146-0-2.png"
-          />
-
+          {/* Instagramアイコン */}
           <a 
             href="https://www.instagram.com/the27club_official/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="absolute top-[285px] left-[220px] w-[50px] h-[50px] hover:opacity-80 transition-opacity z-10"
+            className="absolute bottom-[8%] right-[5%] w-[15%] max-w-[50px] aspect-square hover:opacity-80 transition-opacity z-10"
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -60,38 +57,38 @@ export const TalentPc = ({
             />
           </a>
 
-          <div className="inline-flex flex-col items-center gap-[2.67px] absolute top-[297px] left-[93px]">
-            <div className="relative w-fit mt-[-1.33px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[21.3px] tracking-[0] leading-[normal]">
+          {/* 名前 */}
+          <div className="absolute bottom-[6%] left-0 right-0 flex flex-col items-center gap-0.5">
+            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-lg lg:text-[21.3px] tracking-[0] leading-normal">
               {name}
             </div>
-
-            <div className="relative w-fit [font-family:'Ubuntu',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap">
+            <div className="[font-family:'Ubuntu',Helvetica] font-normal text-white text-xs md:text-sm lg:text-base tracking-[0] leading-normal whitespace-nowrap">
               {nameEn}
             </div>
           </div>
         </div>
 
         {/* 裏面 */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)] flex flex-col items-center justify-center p-6">
-          <div className="text-center text-white space-y-4">
-            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[24px] mb-6">
+        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl md:rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)] flex flex-col items-center justify-center p-4 md:p-6 overflow-hidden">
+          <div className="text-center text-white space-y-2 md:space-y-4 w-full">
+            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-base md:text-xl lg:text-[24px] mb-2 md:mb-6">
               {name}
             </div>
             
-            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[16px] leading-[28px] whitespace-pre-line">
+            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-xs md:text-sm lg:text-[16px] leading-relaxed md:leading-[28px] whitespace-pre-line line-clamp-4 md:line-clamp-none">
               {description}
             </div>
 
-            <div className="mt-6 pt-4 border-t border-white/30">
+            <div className="mt-2 md:mt-6 pt-2 md:pt-4 border-t border-white/30">
               <a 
                 href="https://www.instagram.com/the27club_official/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[14px] hover:opacity-80 transition-opacity"
+                className="inline-flex items-center gap-1 md:gap-2 text-xs md:text-[14px] hover:opacity-80 transition-opacity"
                 onClick={(e) => e.stopPropagation()}
               >
                 <img
-                  className="w-[30px] h-[30px] object-contain"
+                  className="w-5 h-5 md:w-[30px] md:h-[30px] object-contain"
                   alt="Instagram"
                   src="/img/insta.svg"
                 />
@@ -99,8 +96,8 @@ export const TalentPc = ({
               </a>
             </div>
 
-            <div className="mt-4 text-[12px] opacity-70">
-              クリックで戻る
+            <div className="mt-2 md:mt-4 text-[10px] md:text-[12px] opacity-70">
+              タップで戻る
             </div>
           </div>
         </div>

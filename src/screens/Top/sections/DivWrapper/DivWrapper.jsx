@@ -54,7 +54,7 @@ export const DivWrapper = () => {
         </div>
 
         {/* セクションタイトル */}
-        <div className="pt-8 md:pt-[116px] flex flex-col items-center gap-3 relative z-10">
+        <div className="pt-8 md:pt-[116px] flex flex-col items-center gap-3 relative z-10" data-scroll="fade-up">
           <div className="[text-shadow:0px_4px_15px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] text-white text-3xl md:text-5xl lg:text-[64px] text-center font-normal tracking-[0] leading-[normal]">
             ACCESS
           </div>
@@ -64,7 +64,7 @@ export const DivWrapper = () => {
         </div>
 
         {/* マップコンテナ */}
-        <div className="mt-8 md:mt-16 relative z-10">
+        <div className="mt-8 md:mt-16 relative z-10" data-scroll="scale-up">
           {/* 店舗画像オーバーレイ（マップ上） */}
           <div className="absolute top-2 md:top-8 left-2 md:left-8 z-20">
             <img
@@ -85,7 +85,7 @@ export const DivWrapper = () => {
         </div>
 
         {/* アクセス情報 */}
-        <div className="mt-8 md:mt-12 w-full flex flex-col items-center gap-6 relative z-10">
+        <div className="mt-8 md:mt-12 w-full flex flex-col items-center gap-6 relative z-10" data-scroll="fade-up">
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full max-w-[1000px] px-4 md:px-8">
             {/* 交通アクセス */}
             <div className="flex-1 flex flex-col gap-4">
@@ -143,7 +143,7 @@ export const DivWrapper = () => {
         </div>
 
         {/* CTAボタン */}
-        <div className="mt-6 md:mt-12 flex flex-row gap-3 md:gap-4 justify-center items-center pb-6 md:pb-8 relative z-10 px-4 md:px-0">
+        <div className="mt-6 md:mt-12 flex flex-row gap-3 md:gap-4 justify-center items-center pb-6 md:pb-8 relative z-10 px-4 md:px-0" data-scroll="fade-up">
           <div className="w-full max-w-[160px] md:max-w-[352px]">
             <div className="relative w-full h-[56px] md:h-[97.76px] rounded-[40px] md:rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)] cursor-pointer hover:scale-105 transition-transform flex items-center justify-center">
               <div className="flex flex-col items-center justify-center gap-0 md:gap-[9.73px] text-center">

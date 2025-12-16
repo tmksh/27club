@@ -150,7 +150,7 @@ export const Frame = () => {
       </div>
 
       {/* セクションタイトル - SP版 */}
-      <div className="md:hidden pt-8 flex flex-col items-center gap-3 relative z-10">
+      <div className="md:hidden pt-8 flex flex-col items-center gap-3 relative z-10" data-scroll="fade-up">
         <div className="[text-shadow:0px_4.28px_10.69px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-2xl tracking-[3.2px] leading-[1.2]">
           Event Schedule
         </div>
@@ -160,7 +160,7 @@ export const Frame = () => {
       </div>
 
       {/* セクションタイトル - PC版 */}
-      <div className="hidden md:flex pt-[116px] flex-col items-center gap-3 relative z-10">
+      <div className="hidden md:flex pt-[116px] flex-col items-center gap-3 relative z-10" data-scroll="fade-up">
         <div className="[text-shadow:0px_4.28px_10.69px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-[64px] tracking-[6.40px] leading-[1.2]">
           Event Schedule
         </div>
@@ -170,7 +170,7 @@ export const Frame = () => {
       </div>
 
       {/* モバイル用週表示カレンダー */}
-      <div className="md:hidden mt-6 relative z-10 px-2">
+      <div className="md:hidden mt-6 relative z-10 px-2" data-scroll="fade-up">
         <div className="bg-black rounded-lg overflow-hidden border border-white/10">
           {/* 月表示ヘッダー */}
           <div className="flex items-center justify-between px-2 py-2 border-b border-white/10">
@@ -292,7 +292,7 @@ export const Frame = () => {
       </div>
 
       {/* タブレット・デスクトップ用レイアウト - 横並び */}
-      <div className="hidden md:flex mt-16 flex-row gap-8 max-w-[1440px] mx-auto relative z-10 justify-center">
+      <div className="hidden md:flex mt-16 flex-row gap-8 max-w-[1440px] mx-auto relative z-10 justify-center" data-scroll="fade-up">
         {/* カレンダー */}
         <div className="w-[525px] flex-shrink-0">
           <div className="w-full bg-[#1a1a1a] rounded-lg shadow-xl overflow-hidden">

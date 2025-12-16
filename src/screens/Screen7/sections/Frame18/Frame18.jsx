@@ -4,7 +4,6 @@ import { TalentPc } from "../../../../components/TalentPc";
 export const Frame18 = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 3;
-  const cardsPerPage = 12;
 
   // 全カードデータ（36枚分）
   const allCards = [
@@ -48,6 +47,9 @@ export const Frame18 = () => {
     { id: 36, s: "/img/s-16646146-0-2.png" },
   ];
 
+  // ページあたりのカード数（モバイルでは6枚、PCでは12枚）
+  const cardsPerPage = 12;
+
   // 現在のページに表示するカードを取得
   const startIndex = (currentPage - 1) * cardsPerPage;
   const endIndex = startIndex + cardsPerPage;
@@ -56,95 +58,96 @@ export const Frame18 = () => {
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
+      // ページ変更時にトップにスクロール
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      handlePageChange(currentPage - 1);
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
+      handlePageChange(currentPage + 1);
     }
   };
 
   return (
-    <div className="flex flex-col w-[1440px] h-[1406.42px] items-center gap-[84px] relative mx-auto">
-      <div className="grid grid-cols-4 grid-rows-3 h-[1199px] gap-[49px_35px] absolute top-0 left-0 right-0 w-[1273px] mx-auto">
-        {currentCards.map((card, index) => {
-          const row = Math.floor(index / 4) + 1;
-          const col = (index % 4) + 1;
-          const rowClass = row === 1 ? '!row-[1_/_2]' : row === 2 ? '!row-[2_/_3]' : '!row-[3_/_4]';
-          const colClass = col === 1 ? '!col-[1_/_2]' : col === 2 ? '!col-[2_/_3]' : col === 3 ? '!col-[3_/_4]' : '!col-[4_/_5]';
-          return (
-            <TalentPc
-              key={card.id}
-              className={`!h-[366.67px] ${rowClass} !left-[unset] ${colClass} !top-[unset]`}
-              s={card.s}
-              to={card.to}
-            />
-          );
-        })}
-      </div>
-
-      <div className="absolute top-[1250px] left-0 right-0 flex items-center justify-center gap-5">
-        <button
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-          className={`ml-[-1.00px] relative w-[54px] h-[14.73px] border-none bg-transparent p-0 cursor-pointer ${
-            currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-80'
-          }`}
-        >
-          <img
-            className="w-full h-full"
-            alt="Previous"
-            src="/img/arrow-2.svg"
-          />
-        </button>
-
-        <div className="inline-flex items-center gap-5 relative flex-[0_0_auto]">
-          {[1, 2, 3].map((page) => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={`relative w-[52px] h-[50px] border-none bg-transparent p-0 cursor-pointer ${
-                currentPage === page ? '' : 'hover:opacity-80'
-              }`}
-            >
-              <div
-                className={`absolute top-0 left-0 w-[50px] h-[50px] rounded-[5px] border-2 border-solid ${
-                  currentPage === page
-                    ? 'bg-[#1e4a46] border-[#1e4a46]'
-                    : 'bg-white border-[#1e4a46]'
-                }`}
+    <div className="w-full px-4 md:px-8 lg:px-16 py-8 md:py-16">
+      <div className="max-w-[1300px] mx-auto">
+        {/* カードグリッド */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8 mb-12 md:mb-16">
+          {currentCards.map((card) => (
+            <div key={card.id} className="w-full">
+              <TalentPc
+                s={card.s}
+                to={card.to}
               />
-              <div
-                className={`absolute top-[13px] left-5 [font-family:'Noto_Serif_JP',Helvetica] font-bold text-xl tracking-[0] leading-[normal] whitespace-nowrap ${
-                  currentPage === page ? 'text-white' : 'text-black'
-                }`}
-              >
-                {page}
-              </div>
-            </button>
+            </div>
           ))}
         </div>
 
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          className={`mr-[-1.00px] relative w-[54px] h-[14.73px] border-none bg-transparent p-0 cursor-pointer ${
-            currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-80'
-          }`}
-        >
-          <img
-            className="w-full h-full"
-            alt="Next"
-            src="/img/arrow-1.svg"
-          />
-        </button>
+        {/* ページネーション */}
+        <div className="flex items-center justify-center gap-3 md:gap-5">
+          <button
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+            className={`relative w-8 md:w-14 h-3 md:h-4 border-none bg-transparent p-0 cursor-pointer transition-opacity ${
+              currentPage === 1 ? 'opacity-30 cursor-not-allowed' : 'hover:opacity-70'
+            }`}
+          >
+            <img
+              className="w-full h-full object-contain"
+              alt="Previous"
+              src="/img/arrow-2.svg"
+            />
+          </button>
+
+          <div className="inline-flex items-center gap-2 md:gap-5">
+            {[1, 2, 3].map((page) => (
+              <button
+                key={page}
+                onClick={() => handlePageChange(page)}
+                className={`relative w-8 h-8 md:w-12 md:h-12 border-none bg-transparent p-0 cursor-pointer transition-all ${
+                  currentPage === page ? '' : 'hover:opacity-80'
+                }`}
+              >
+                <div
+                  className={`w-full h-full rounded-md border-2 border-solid flex items-center justify-center ${
+                    currentPage === page
+                      ? 'bg-[#1e4a46] border-[#1e4a46]'
+                      : 'bg-white border-[#1e4a46]'
+                  }`}
+                >
+                  <span
+                    className={`[font-family:'Noto_Serif_JP',Helvetica] font-bold text-sm md:text-xl ${
+                      currentPage === page ? 'text-white' : 'text-black'
+                    }`}
+                  >
+                    {page}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+            className={`relative w-8 md:w-14 h-3 md:h-4 border-none bg-transparent p-0 cursor-pointer transition-opacity ${
+              currentPage === totalPages ? 'opacity-30 cursor-not-allowed' : 'hover:opacity-70'
+            }`}
+          >
+            <img
+              className="w-full h-full object-contain"
+              alt="Next"
+              src="/img/arrow-1.svg"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );

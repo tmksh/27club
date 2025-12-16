@@ -1,27 +1,48 @@
 import React from "react";
-import { Group63 } from "../../../../components/Group63";
-import { Group66 } from "../../../../components/Group66";
 
 export const Frame6 = () => {
   return (
-    <div className="relative w-[1440px] h-[633.73px]">
-      <Group63
-        className="!absolute !left-0 !w-[1440px] !top-0"
-        text="Party Plans"
-        text1="パーティープラン"
-      />
-      <Group66
-        className="!absolute !left-[153px] !top-[351px]"
-        divClassName="!left-[16.61%] !w-[66.52%]"
-        elementClassName="!w-full"
-        groupClassName="!mr-[-1.41%] !ml-[-0.97%] !w-[1165px]"
-        text="NEW PLAN 登場。集まる理由が、もっと洗練される。"
-        text1={
-          <>
-            ベーシックからプレミアムまで、必要なものを過不足なくセット。予約も相談もスマートに完結。 歓送迎会・バースデー・企業貸切まで、すべてこのページからはじめられます。
-          </>
-        }
-      />
+    <div className="w-full px-4 md:px-8 lg:px-16 pt-8 md:pt-16 pb-8 md:pb-12">
+      <div className="max-w-[1200px] mx-auto">
+        {/* タイトル部分 */}
+        <div className="flex flex-col items-start gap-4 md:gap-6 mb-8 md:mb-12">
+          <h1 
+            data-scroll="fade-right"
+            className="[text-shadow:0px_5.98px_14.95px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] md:[-webkit-text-stroke:1.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-4xl md:text-7xl lg:text-[109.8px] tracking-[0] leading-tight"
+          >
+            Party Plans
+          </h1>
+
+          <p 
+            data-scroll="fade-right"
+            data-scroll-delay="200"
+            className="[font-family:'Inter',Helvetica] font-normal text-[#888888] text-lg md:text-2xl lg:text-[28.1px] tracking-[0] leading-relaxed"
+          >
+            パーティープラン
+          </p>
+        </div>
+
+        {/* キャッチコピー部分 */}
+        <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
+          <h2 
+            data-scroll="fade-up"
+            className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-base md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
+          >
+            NEW PLAN 登場。集まる理由が、もっと洗練される。
+          </h2>
+
+          <p 
+            data-scroll="fade-up"
+            data-scroll-delay="200"
+            className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
+          >
+            ベーシックからプレミアムまで、必要なものを過不足なくセット。予約も相談もスマートに完結。
+            <br className="hidden md:block" />
+            <span className="md:hidden"> </span>
+            歓送迎会・バースデー・企業貸切まで、すべてこのページからはじめられます。
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
