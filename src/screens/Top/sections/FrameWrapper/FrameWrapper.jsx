@@ -193,12 +193,10 @@ export const FrameWrapper = () => {
       
       // すべてのカードを常に大きいサイズで表示
       const scale = 1.0; // 常に最大サイズ
-      const distanceFromCenter = normalizedAngle / 180;
-      const opacity = 1.0 - (distanceFromCenter * 0.15); // 1.0 (中央) to 0.85 (端) - 透明度を抑える
       
-      // 中央のカード（Z座標が正で最大）のみ明るく、それ以外も明るめに
-      const isCenterCard = z > 0 && z === maxZ;
-      const brightness = isCenterCard ? 100 : 85; // 60から85に変更
+      // 全カードを同じ明るさ・透明度に統一
+      const opacity = 1.0;
+      const brightness = 100;
       
       // GSAPでアニメーション
       gsap.to(cell, {
@@ -206,7 +204,7 @@ export const FrameWrapper = () => {
         z: z,
         rotationY: currentAngle,
         scale: scale,
-        opacity: Math.max(opacity, 0.85), // 最小透明度を0.6から0.85に変更
+        opacity: opacity,
         filter: `brightness(${brightness}%)`,
         duration: 0.3,
         ease: 'power2.out',
@@ -395,7 +393,7 @@ export const FrameWrapper = () => {
           className="w-full h-[400px] md:h-[650px] relative"
         >
           {/* チップの模様（デスクトップのみ表示） */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
             {Array.from({ length: 20 }, (_, i) => {
               const chip = chips[i % chips.length];
               const left = (i * 72) % (1440 - chip.w * 0.6);
@@ -404,7 +402,7 @@ export const FrameWrapper = () => {
               return (
                 <div
                   key={`chip-pattern-${i}`}
-                  className="absolute pointer-events-none"
+                  className="absolute"
                   style={{
                     left: `${left}px`,
                     top: `${top}px`,
@@ -415,7 +413,6 @@ export const FrameWrapper = () => {
                     backgroundPosition: '50% 50%',
                     opacity: 0.08,
                     transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-                    zIndex: 0,
                   }}
                 />
               );
@@ -437,109 +434,106 @@ export const FrameWrapper = () => {
             </div>
           </div>
 
-          {/* 円周カルーセル（SP版・PC版共通） */}
+          {/* キャストカード 5枚 - 3Dカルーセル */}
           <div 
-            className="mt-6 md:mt-16 relative h-[320px] md:h-[450px] cursor-grab active:cursor-grabbing"
+            className="mt-6 md:mt-16 relative h-[320px] md:h-[450px] z-20"
             data-scroll="scale-up"
-            onTouchStart={(e) => {
-              setIsTouching(true);
-              touchStartXRef.current = e.touches[0].clientX;
-              lastRotationRef.current = mobileManualRotation;
-            }}
-            onTouchMove={(e) => {
-              if (!isTouching) return;
-              const deltaX = e.touches[0].clientX - touchStartXRef.current;
-              const newRotation = lastRotationRef.current + deltaX * 0.5;
-              setMobileManualRotation(newRotation);
-            }}
-            onTouchEnd={() => {
-              setIsTouching(false);
-            }}
-            onMouseDown={(e) => {
-              setIsTouching(true);
-              touchStartXRef.current = e.clientX;
-              lastRotationRef.current = mobileManualRotation;
-            }}
-            onMouseMove={(e) => {
-              if (!isTouching) return;
-              const deltaX = e.clientX - touchStartXRef.current;
-              const newRotation = lastRotationRef.current + deltaX * 0.5;
-              setMobileManualRotation(newRotation);
-            }}
-            onMouseUp={() => {
-              setIsTouching(false);
-            }}
-            onMouseLeave={() => {
-              setIsTouching(false);
-            }}
+            style={{ perspective: '1200px' }}
           >
             <div 
-              className="absolute top-1/2 left-1/2"
-              style={{
+              className="absolute top-1/2 left-1/2 w-0 h-0"
+              style={{ 
                 transform: 'translate(-50%, -50%)',
-                perspective: '1000px',
+                transformStyle: 'preserve-3d',
               }}
             >
               <div 
                 ref={mobileCarouselRef}
-                className={`relative w-[140px] h-[200px] md:w-[220px] md:h-[320px] ${!isTouching ? 'animate-carousel-3d' : ''}`}
+                className="relative"
                 style={{
                   transformStyle: 'preserve-3d',
+                  animation: !isTouching ? 'carousel-spin 25s linear infinite' : 'none',
                   transform: isTouching ? `rotateY(${mobileManualRotation}deg)` : undefined,
                 }}
+                onTouchStart={(e) => {
+                  setIsTouching(true);
+                  touchStartXRef.current = e.touches[0].clientX;
+                  lastRotationRef.current = mobileManualRotation;
+                }}
+                onTouchMove={(e) => {
+                  if (!isTouching) return;
+                  const deltaX = e.touches[0].clientX - touchStartXRef.current;
+                  setMobileManualRotation(lastRotationRef.current + deltaX * 0.4);
+                }}
+                onTouchEnd={() => setIsTouching(false)}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  setIsTouching(true);
+                  touchStartXRef.current = e.clientX;
+                  lastRotationRef.current = mobileManualRotation;
+                }}
+                onMouseMove={(e) => {
+                  if (!isTouching) return;
+                  const deltaX = e.clientX - touchStartXRef.current;
+                  setMobileManualRotation(lastRotationRef.current + deltaX * 0.4);
+                }}
+                onMouseUp={() => setIsTouching(false)}
+                onMouseLeave={() => setIsTouching(false)}
               >
                 {castData.slice(0, 5).map((cast, index) => {
-                  const totalCards = Math.min(castData.length, 5);
-                  const angle = (360 / totalCards) * index;
+                  const angle = (360 / 5) * index;
+                  const radius = isMobile ? 180 : 350;
                   
                   return (
                     <div
                       key={cast.id}
-                      className="absolute top-0 left-0 w-[140px] h-[200px] md:w-[220px] md:h-[320px] rounded-xl overflow-hidden"
+                      className="absolute cursor-grab active:cursor-grabbing"
                       style={{
-                        transform: `rotateY(${angle}deg) translateZ(${isMobile ? 140 : 280}px)`,
-                        transformStyle: 'preserve-3d',
-                        background: 'linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%)',
-                        boxShadow: '0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)',
+                        width: isMobile ? '150px' : '220px',
+                        height: isMobile ? '220px' : '320px',
+                        left: isMobile ? '-75px' : '-110px',
+                        top: isMobile ? '-110px' : '-160px',
+                        transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
                       }}
                     >
-                      {/* 画像 */}
-                      <div className="relative w-full h-[120px] md:h-[200px] overflow-hidden">
-                        <img
-                          className="w-full h-full object-cover"
-                          alt={cast.name}
-                          src={cast.image}
-                        />
-                        {/* 画像下部のグラデーション */}
-                        <div className="absolute bottom-0 left-0 right-0 h-8 md:h-12 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
-                      </div>
-                      
-                      {/* テキストエリア */}
-                      <div className="w-full h-[80px] md:h-[120px] px-3 md:px-4 py-2 md:py-3 flex flex-col justify-center">
-                        <div className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-sm md:text-xl text-center leading-tight tracking-wide">
-                          {cast.name}
+                      {/* カード本体 - 常に正面を向く */}
+                      <div 
+                        className="w-full h-full rounded-xl overflow-hidden"
+                        style={{
+                          background: 'linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 100%)',
+                          boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
+                          border: '1px solid rgba(255,255,255,0.12)',
+                        }}
+                      >
+                        {/* 画像エリア */}
+                        <div className="relative w-full h-[60%] overflow-hidden">
+                          <img
+                            className="w-full h-full object-cover"
+                            alt={cast.name}
+                            src={cast.image}
+                          />
                         </div>
-                        <div className="[font-family:'Noto_Serif_JP',Helvetica] text-white/50 text-[8px] md:text-xs text-center mt-1.5 md:mt-2 line-clamp-2 md:line-clamp-3 leading-relaxed">
-                          {cast.description}
+                        
+                        {/* テキストエリア */}
+                        <div className="w-full h-[40%] px-3 md:px-4 py-2 md:py-3 flex flex-col justify-center bg-gradient-to-b from-[#1a1a1a] to-[#141414]">
+                          <h3 className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-sm md:text-xl text-center tracking-wide">
+                            {cast.name}
+                          </h3>
+                          <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white/60 text-[9px] md:text-xs text-center mt-1 md:mt-2 line-clamp-2 leading-relaxed">
+                            {cast.description}
+                          </p>
                         </div>
                       </div>
-                      
-                      {/* 装飾ライン */}
-                      <div className="absolute top-[120px] md:top-[200px] left-3 right-3 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                     </div>
                   );
                 })}
               </div>
             </div>
             
-            {/* 左右のフェード */}
-            <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-black to-transparent pointer-events-none z-10" />
-            <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-black to-transparent pointer-events-none z-10" />
-            
             {/* 操作ヒント */}
-            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-white/30 text-[10px] flex items-center gap-1">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/40 text-xs flex items-center gap-2">
               <span>←</span>
-              <span>スワイプで回転</span>
+              <span>ドラッグで回転</span>
               <span>→</span>
             </div>
           </div>

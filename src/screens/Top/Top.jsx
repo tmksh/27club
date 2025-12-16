@@ -73,7 +73,7 @@ export const Top = () => {
       />
       
       {/* 黒いぼかしエフェクト（ところどころに配置）- モバイルでは非表示 */}
-      <div className="hidden md:block">
+      <div className="hidden md:block" style={{ zIndex: 0 }}>
         {Array.from({ length: 15 }, (_, i) => {
           const left = (i * 95 + (i % 4) * 120) % (1440 - 250);
           const top = (Math.floor(i / 5) * 400 + (i % 6) * 180);
@@ -92,7 +92,6 @@ export const Top = () => {
                 background: `radial-gradient(circle, rgba(0, 0, 0, ${opacity}) 0%, rgba(0, 0, 0, ${opacity * 0.6}) 40%, transparent 70%)`,
                 filter: 'blur(25px)',
                 borderRadius: '50%',
-                zIndex: 1,
               }}
             />
           );
@@ -100,37 +99,38 @@ export const Top = () => {
       </div>
       
       {/* 微細な光の粒子エフェクト - モバイルでは数を減らす */}
-      {Array.from({ length: typeof window !== 'undefined' && window.innerWidth < 768 ? 8 : 20 }, (_, i) => {
-        const left = (i * 72 + (i % 7) * 95) % (1440 - 8);
-        const top = (Math.floor(i / 8) * 350 + (i % 9) * 120);
-        const size = 3 + (i % 3) * 2;
-        const opacity = 0.15 + (i % 4) * 0.1;
-        const glowSize = size * 8;
-        
-        return (
-          <div
-            key={`light-particle-${i}`}
-            className="absolute pointer-events-none"
-            style={{
-              left: `${left}px`,
-              top: `${top}px`,
-              width: `${size}px`,
-              height: `${size}px`,
-              background: `radial-gradient(circle, rgba(0, 214, 189, ${opacity}) 0%, rgba(0, 214, 189, ${opacity * 0.5}) 50%, transparent 100%)`,
-              boxShadow: `0 0 ${glowSize}px rgba(0, 214, 189, ${opacity * 0.6})`,
-              borderRadius: '50%',
-              zIndex: 1,
-            }}
-          />
-        );
-      })}
+      <div style={{ zIndex: 0 }}>
+        {Array.from({ length: typeof window !== 'undefined' && window.innerWidth < 768 ? 8 : 20 }, (_, i) => {
+          const left = (i * 72 + (i % 7) * 95) % (1440 - 8);
+          const top = (Math.floor(i / 8) * 350 + (i % 9) * 120);
+          const size = 3 + (i % 3) * 2;
+          const opacity = 0.15 + (i % 4) * 0.1;
+          const glowSize = size * 8;
+          
+          return (
+            <div
+              key={`light-particle-${i}`}
+              className="absolute pointer-events-none"
+              style={{
+                left: `${left}px`,
+                top: `${top}px`,
+                width: `${size}px`,
+                height: `${size}px`,
+                background: `radial-gradient(circle, rgba(0, 214, 189, ${opacity}) 0%, rgba(0, 214, 189, ${opacity * 0.5}) 50%, transparent 100%)`,
+                boxShadow: `0 0 ${glowSize}px rgba(0, 214, 189, ${opacity * 0.6})`,
+                borderRadius: '50%',
+              }}
+            />
+          );
+        })}
+      </div>
       
       {/* 微細なティールのグロー（全体に控えめに） */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
           background: 'radial-gradient(ellipse 80% 50% at 50% 30%, rgba(0, 214, 189, 0.08) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 50% 70%, rgba(0, 150, 200, 0.06) 0%, transparent 50%)',
-          zIndex: 1,
+          zIndex: 0,
         }}
       />
 
@@ -247,80 +247,98 @@ export const Top = () => {
           </div>
         </div>
 
-        {/* モバイル版FV（PC版のデザインを適用） */}
-        <div className="md:hidden relative w-full h-[100svh] max-h-[750px] overflow-hidden">
-          {/* 3D背景レイヤー */}
+        {/* モバイル版FV（3D空間 + ネオン玉） */}
+        <div className="md:hidden relative w-full h-[100svh] max-h-[750px]" style={{ perspective: '1200px' }}>
+          {/* 背景 - 緑のネオングラデーション */}
           <div 
-            className="absolute top-0 left-0 w-full h-full"
+            className="absolute inset-0"
             style={{
               background: `
-                linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(0,0,0,0) 40%),
-                linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%),
-                radial-gradient(circle at 50% 35%, #244040 0%, #0a1414 50%, #000 85%)
+                radial-gradient(ellipse 120% 80% at 50% 30%, rgba(0,255,150,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 100% 60% at 20% 70%, rgba(0,200,100,0.12) 0%, transparent 40%),
+                radial-gradient(ellipse 80% 50% at 80% 60%, rgba(0,255,180,0.1) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 40%, #0a2020 0%, #051515 40%, #000 100%)
               `,
-              backgroundSize: 'cover',
-              zIndex: 0,
             }}
           />
-          
-          {/* 光のパーティクル（モバイル用） */}
-          {Array.from({ length: 12 }, (_, i) => (
+
+          {/* 中央のグロー */}
+          <div 
+            className="absolute top-1/2 left-1/2 w-[300px] h-[300px] pointer-events-none"
+            style={{
+              transform: 'translate(-50%, -50%)',
+              background: 'radial-gradient(circle, rgba(0,255,150,0.15) 0%, rgba(0,200,100,0.05) 40%, transparent 70%)',
+              filter: 'blur(40px)',
+            }}
+          />
+
+          {/* ネオン玉 - 中央からフワーッと広がりFV全体に散らばる（常時放出） */}
+          {Array.from({ length: 48 }, (_, i) => {
+            const colors = ['#ff4466', '#44aaff', '#ffcc00', '#44ff88', '#ff44aa', '#8844ff', '#00ccff', '#ff8844', '#66ff66', '#ff66ff', '#ffff44', '#44ffff', '#ffffff'];
+            const color = colors[i % colors.length];
+            const size = 10 + (i % 5) * 2;
+            const glow = 22 + (i % 5) * 6;
+            const dir = i % 8;
+            // 各玉で異なるアニメーション時間（5〜8秒）でバラつきを持たせる
+            const duration = 5 + (i % 7) * 0.5;
+            const delay = (i / 48) * duration;
+            return { color, size, glow, delay, dir, duration };
+          }).map((ball, i) => (
             <div
-              key={`mobile-particle-${i}`}
-              className="absolute rounded-full pointer-events-none"
+              key={`neon-ball-${i}`}
+              className="absolute rounded-full"
               style={{
-                left: `${8 + (i * 47) % 85}%`,
-                top: `${8 + (i * 37) % 75}%`,
-                width: `${2 + (i % 3) * 2}px`,
-                height: `${2 + (i % 3) * 2}px`,
-                background: `radial-gradient(circle, rgba(0,255,200,${0.25 + (i % 4) * 0.12}) 0%, transparent 70%)`,
-                boxShadow: `0 0 ${8 + (i % 3) * 4}px rgba(0,200,180,0.35)`,
-                animation: `twinkle ${2 + (i % 3)}s ease-in-out infinite`,
-                animationDelay: `${i * 0.15}s`,
-                zIndex: 1,
+                left: '50%',
+                top: '45%',
+                marginLeft: `-${ball.size / 2}px`,
+                marginTop: `-${ball.size / 2}px`,
+                width: `${ball.size}px`,
+                height: `${ball.size}px`,
+                background: `radial-gradient(circle, ${ball.color} 0%, ${ball.color}80 40%, transparent 70%)`,
+                boxShadow: `0 0 ${ball.glow}px ${ball.color}, 0 0 ${ball.glow * 2}px ${ball.color}40`,
+                animation: `neon-emit-${ball.dir} ${ball.duration}s linear ${ball.delay}s infinite`,
+                zIndex: 50,
               }}
             />
           ))}
 
-          {/* 3D空間チップ - 装飾的な配置（モバイル） */}
-          {[
-            { img: '/img/3-1.png', w: 100, h: 58, x: -15, y: '8%', rotateY: -20, rotateX: 8, opacity: 0.5, blur: 1 },
-            { img: '/img/1-2.png', w: 90, h: 30, x: 75, y: '5%', rotateY: 18, rotateX: -5, opacity: 0.45, blur: 1.5 },
-            { img: '/img/2.png', w: 80, h: 41, x: 50, y: '12%', rotateY: 5, rotateX: 6, opacity: 0.4, blur: 2 },
-            { img: '/img/5-1.png', w: 45, h: 78, x: 85, y: '20%', rotateY: 15, rotateX: -8, opacity: 0.5, blur: 1 },
-            { img: '/img/4-1.png', w: 55, h: 67, x: -10, y: '25%', rotateY: -18, rotateX: 10, opacity: 0.55, blur: 0.5 },
-            { img: '/img/3-2.png', w: 75, h: 31, x: 80, y: '75%', rotateY: 20, rotateX: 5, opacity: 0.5, blur: 1 },
-            { img: '/img/4-2.png', w: 40, h: 69, x: -5, y: '70%', rotateY: -25, rotateX: 12, opacity: 0.6, blur: 0 },
-            { img: '/img/2-2.png', w: 50, h: 50, x: 88, y: '62%', rotateY: 22, rotateX: -6, opacity: 0.45, blur: 1.5 },
-          ].map((chip, i) => (
+          {/* チップ - モバイル版 中央から螺旋状に放出（常時放出） */}
+          {Array.from({ length: 16 }, (_, i) => {
+            const chipImages = ['/img/3-1.png', '/img/1-2.png', '/img/2.png', '/img/3-2.png', '/img/4-1.png', '/img/5-1.png', '/img/4-2.png', '/img/2-2.png', '/img/1.png'];
+            const img = chipImages[i % chipImages.length];
+            const size = 25 + (i % 4) * 10;
+            const dir = i % 8;
+            const duration = 6 + (i % 5) * 0.5;
+            const delay = (i / 16) * duration;
+            return { img, size, dir, duration, delay };
+          }).map((chip, i) => (
             <div
-              key={`mobile-chip-${i}`}
+              key={`mobile-chip-emit-${i}`}
               className="absolute pointer-events-none"
               style={{
-                left: typeof chip.x === 'number' ? `${chip.x}%` : chip.x,
-                top: chip.y,
-                width: chip.w,
-                height: chip.h,
-                transform: `perspective(500px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg)`,
-                filter: `blur(${chip.blur}px) drop-shadow(4px 8px 15px rgba(0,0,0,0.6))`,
-                opacity: chip.opacity,
-                animation: `float-mid ${5 + i * 0.8}s ease-in-out infinite`,
-                animationDelay: `${i * 0.3}s`,
-                zIndex: 2,
+                left: '50%',
+                top: '45%',
+                marginLeft: `-${chip.size / 2}px`,
+                marginTop: `-${chip.size / 2}px`,
+                width: `${chip.size}px`,
+                height: `${chip.size}px`,
+                animation: `chip-emit-mobile-${chip.dir} ${chip.duration}s linear ${chip.delay}s infinite`,
+                zIndex: 45,
+                filter: 'drop-shadow(0 3px 10px rgba(0,0,0,0.5))',
               }}
             >
-              <img className="w-full h-full object-cover" alt="" src={chip.img} />
+              <img src={chip.img} alt="" className="w-full h-full object-contain" />
             </div>
           ))}
 
           {/* メインコンテンツエリア */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 pt-14 pb-16">
             {/* タイトルテキスト */}
-            <div className="flex flex-col items-center gap-1 mb-4">
+            <div className="flex flex-col items-center gap-1 mb-6">
               <div 
                 className="font-aguafina font-normal text-white text-[clamp(1.1rem,4.5vw,1.6rem)] text-center tracking-[0] leading-[1.5] whitespace-nowrap"
                 style={{ 
-                  textShadow: '0 3px 6px rgba(0,0,0,0.8), 0 6px 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,200,150,0.25)',
+                  textShadow: '0 0 30px rgba(0,200,150,0.5), 0 0 60px rgba(0,200,150,0.2), 0 2px 8px rgba(0,0,0,0.9)',
                 }}
               >
                 Welcome to Tonight's SHOWTIME
@@ -329,24 +347,23 @@ export const Top = () => {
               <div 
                 className="font-aguafina font-normal text-white text-[clamp(3rem,14vw,5rem)] text-center tracking-[0] leading-[1.1] whitespace-nowrap"
                 style={{ 
-                  textShadow: '0 4px 10px rgba(0,0,0,0.9), 0 10px 30px rgba(0,0,0,0.6), 0 0 60px rgba(0,200,150,0.2), 0 0 90px rgba(0,150,100,0.1)',
+                  textShadow: '0 0 40px rgba(0,200,150,0.4), 0 0 80px rgba(0,200,150,0.15), 0 4px 12px rgba(0,0,0,0.9)',
                 }}
               >
                 THE 27 CLUB
               </div>
             </div>
 
-            {/* キャストカード 4枚 - モバイル用3D配置 */}
-            <div className="relative w-full max-w-[380px] h-[220px] mb-4">
+            {/* キャストカード 4枚 - 3D配置 */}
+            <div className="relative w-full max-w-[380px] h-[220px] mb-6" style={{ perspective: '1000px' }}>
               {/* 左端のカード */}
               <div 
-                className="absolute left-0 top-[45px] w-[80px] h-[123px] rounded-lg overflow-hidden transition-transform duration-500"
+                className="absolute left-[5px] top-[40px] w-[78px] h-[120px] rounded-lg overflow-hidden"
                 style={{ 
-                  background: 'linear-gradient(145deg, rgba(35,35,35,1) 0%, rgba(12,12,12,1) 100%)',
-                  transform: 'perspective(800px) rotateY(20deg) rotateX(3deg)',
-                  boxShadow: '8px 12px 25px rgba(0,0,0,0.55), -2px -2px 10px rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                  zIndex: 1,
+                  background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)',
+                  transform: 'rotateY(22deg) translateZ(-30px)',
+                  boxShadow: '10px 15px 30px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,200,150,0.03)',
+                  border: '1px solid rgba(0,200,150,0.1)',
                 }}
               >
                 <img className="w-full h-full object-cover p-1 rounded-lg" alt="" src="/img/rectangle-23.png" />
@@ -354,12 +371,12 @@ export const Top = () => {
 
               {/* 中央左のカード */}
               <div 
-                className="absolute left-[75px] top-[15px] w-[95px] h-[146px] rounded-lg overflow-hidden transition-transform duration-500"
+                className="absolute left-[70px] top-[12px] w-[95px] h-[145px] rounded-lg overflow-hidden"
                 style={{ 
-                  background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
-                  transform: 'perspective(800px) rotateY(10deg) rotateX(2deg)',
-                  boxShadow: '10px 15px 30px rgba(0,0,0,0.6), -3px -3px 12px rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  background: 'linear-gradient(135deg, #1f1f1f 0%, #0c0c0c 100%)',
+                  transform: 'rotateY(10deg) translateZ(10px)',
+                  boxShadow: '12px 18px 35px rgba(0,0,0,0.65), inset 0 0 25px rgba(0,200,150,0.05)',
+                  border: '1px solid rgba(0,200,150,0.15)',
                   zIndex: 2,
                 }}
               >
@@ -368,12 +385,12 @@ export const Top = () => {
 
               {/* 中央右のカード */}
               <div 
-                className="absolute right-[75px] top-[15px] w-[95px] h-[146px] rounded-lg overflow-hidden transition-transform duration-500"
+                className="absolute right-[70px] top-[12px] w-[95px] h-[145px] rounded-lg overflow-hidden"
                 style={{ 
-                  background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
-                  transform: 'perspective(800px) rotateY(-10deg) rotateX(2deg)',
-                  boxShadow: '10px 15px 30px rgba(0,0,0,0.6), -3px -3px 12px rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  background: 'linear-gradient(135deg, #1f1f1f 0%, #0c0c0c 100%)',
+                  transform: 'rotateY(-10deg) translateZ(10px)',
+                  boxShadow: '12px 18px 35px rgba(0,0,0,0.65), inset 0 0 25px rgba(0,200,150,0.05)',
+                  border: '1px solid rgba(0,200,150,0.15)',
                   zIndex: 2,
                 }}
               >
@@ -382,13 +399,12 @@ export const Top = () => {
 
               {/* 右端のカード */}
               <div 
-                className="absolute right-0 top-[45px] w-[80px] h-[123px] rounded-lg overflow-hidden transition-transform duration-500"
+                className="absolute right-[5px] top-[40px] w-[78px] h-[120px] rounded-lg overflow-hidden"
                 style={{ 
-                  background: 'linear-gradient(145deg, rgba(35,35,35,1) 0%, rgba(12,12,12,1) 100%)',
-                  transform: 'perspective(800px) rotateY(-20deg) rotateX(3deg)',
-                  boxShadow: '8px 12px 25px rgba(0,0,0,0.55), -2px -2px 10px rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                  zIndex: 1,
+                  background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)',
+                  transform: 'rotateY(-22deg) translateZ(-30px)',
+                  boxShadow: '10px 15px 30px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,200,150,0.03)',
+                  border: '1px solid rgba(0,200,150,0.1)',
                 }}
               >
                 <img className="w-full h-full object-cover p-1 rounded-lg" alt="" src="/img/rectangle-23-3.png" />
@@ -397,168 +413,116 @@ export const Top = () => {
 
             {/* 予約ボタン */}
             <button 
-              className="flex w-[220px] h-[54px] items-center justify-center rounded-lg transition-all duration-300 cursor-pointer group"
+              className="flex w-[220px] h-[54px] items-center justify-center rounded-lg cursor-pointer transition-all duration-300 hover:scale-105"
               style={{
-                background: 'linear-gradient(135deg, rgba(0,200,150,0.15) 0%, rgba(0,150,100,0.08) 100%)',
-                boxShadow: '0 4px 20px rgba(0,200,150,0.2), inset 0 0 20px rgba(0,200,150,0.05)',
+                background: 'linear-gradient(135deg, rgba(0,180,140,0.2) 0%, rgba(0,120,100,0.1) 100%)',
+                boxShadow: '0 0 25px rgba(0,200,150,0.2), 0 5px 20px rgba(0,0,0,0.4)',
                 border: '2px solid rgba(0,200,150,0.4)',
               }}
             >
-              <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-base tracking-wider group-hover:text-[#00c9a7] transition-colors">
+              <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-base tracking-wider">
                 WEB予約はこちら
               </span>
             </button>
           </div>
+
+          {/* 下部の霧 */}
+          <div 
+            className="absolute bottom-0 left-0 w-full h-[20%] pointer-events-none z-20"
+            style={{
+              background: 'linear-gradient(to top, rgba(0,10,10,0.8) 0%, transparent 100%)',
+            }}
+          />
         </div>
 
-        {/* PC版FV（新しいデザイン） */}
+        {/* PC版FV（新しいデザイン + ネオン玉） */}
         <div 
           className="hidden md:block overflow-visible w-full min-w-[1440px] min-h-[932px] relative"
           style={{ perspective: '2000px' }}
         >
-          {/* 3D背景レイヤー */}
+          {/* 3D背景レイヤー - 緑のネオングラデーション */}
           <div 
             className="absolute top-0 left-0 w-full h-full min-h-[932px]"
             style={{
               background: `
-                linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0) 45%),
-                linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.45) 100%),
-                radial-gradient(circle at 50% 40%, #244040 0%, #0a1414 50%, #000 85%)
+                radial-gradient(ellipse 150% 100% at 50% 20%, rgba(0,255,150,0.18) 0%, transparent 45%),
+                radial-gradient(ellipse 120% 80% at 10% 50%, rgba(0,200,100,0.15) 0%, transparent 40%),
+                radial-gradient(ellipse 100% 70% at 90% 60%, rgba(0,255,180,0.12) 0%, transparent 35%),
+                radial-gradient(ellipse 80% 50% at 50% 80%, rgba(0,180,120,0.1) 0%, transparent 30%),
+                linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%),
+                radial-gradient(circle at 50% 40%, #0a2525 0%, #051212 50%, #000 85%)
               `,
               backgroundSize: 'cover',
               backgroundAttachment: 'fixed',
             }}
           />
 
-          {/* 3D空間チップ - 最奥レイヤー (Z: -600) */}
-          {[
-            { img: '/img/3-1.png', w: 120, h: 70, x: 100, y: 150, rotateY: -20, rotateX: 10 },
-            { img: '/img/1-2.png', w: 140, h: 48, x: 1200, y: 120, rotateY: 25, rotateX: -5 },
-            { img: '/img/2.png', w: 110, h: 57, x: 650, y: 80, rotateY: 5, rotateX: 8 },
-          ].map((chip, i) => (
+          {/* 中央のグロー - 緑のネオン */}
+          <div 
+            className="absolute top-[40%] left-1/2 w-[600px] h-[600px] pointer-events-none"
+            style={{
+              transform: 'translate(-50%, -50%)',
+              background: 'radial-gradient(circle, rgba(0,255,150,0.12) 0%, rgba(0,200,100,0.04) 40%, transparent 60%)',
+              filter: 'blur(60px)',
+            }}
+          />
+
+          {/* ネオン玉 - PC版 中央からフワーッと広がりFV全体に散らばる（常時放出） */}
+          {Array.from({ length: 64 }, (_, i) => {
+            const colors = ['#ff4466', '#44aaff', '#ffcc00', '#44ff88', '#ff44aa', '#8844ff', '#00ccff', '#ff8844', '#66ff66', '#ff66ff', '#ffff44', '#44ffff', '#ffffff', '#ff6666', '#66aaff', '#aaff66'];
+            const color = colors[i % colors.length];
+            const size = 14 + (i % 6) * 3;
+            const glow = 35 + (i % 6) * 8;
+            const dir = i % 8;
+            // 各玉で異なるアニメーション時間（6〜9秒）でバラつきを持たせる
+            const duration = 6 + (i % 8) * 0.4;
+            const delay = (i / 64) * duration;
+            return { color, size, glow, delay, dir, duration };
+          }).map((ball, i) => (
             <div
-              key={`far-${i}`}
-              className="absolute"
+              key={`pc-neon-ball-${i}`}
+              className="absolute rounded-full"
               style={{
-                left: chip.x,
-                top: chip.y,
-                width: chip.w,
-                height: chip.h,
-                transform: `translateZ(-600px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg) scale(0.4)`,
-                filter: 'blur(3px) drop-shadow(0 10px 30px rgba(0,0,0,0.8))',
-                opacity: 0.25,
-                animation: `float-deep ${8 + i * 2}s ease-in-out infinite`,
-                animationDelay: `${i * 0.5}s`,
+                left: '50%',
+                top: '45%',
+                marginLeft: `-${ball.size / 2}px`,
+                marginTop: `-${ball.size / 2}px`,
+                width: `${ball.size}px`,
+                height: `${ball.size}px`,
+                background: `radial-gradient(circle, ${ball.color} 0%, ${ball.color}80 40%, transparent 70%)`,
+                boxShadow: `0 0 ${ball.glow}px ${ball.color}, 0 0 ${ball.glow * 2}px ${ball.color}40`,
+                animation: `neon-emit-${ball.dir} ${ball.duration}s linear ${ball.delay}s infinite`,
+                zIndex: 50,
               }}
-            >
-              <img className="w-full h-full object-cover" alt="" src={chip.img} />
-            </div>
+            />
           ))}
 
-          {/* 3D空間チップ - 奥レイヤー (Z: -400) */}
-          {[
-            { img: '/img/3-2.png', w: 160, h: 65, x: 50, y: 350, rotateY: -25, rotateX: 8 },
-            { img: '/img/5-1.png', w: 70, h: 120, x: 1300, y: 200, rotateY: 20, rotateX: -10 },
-            { img: '/img/4-1.png', w: 90, h: 110, x: 400, y: 180, rotateY: -8, rotateX: 12 },
-            { img: '/img/1.png', w: 180, h: 43, x: 900, y: 100, rotateY: 15, rotateX: -6 },
-          ].map((chip, i) => (
+          {/* チップ - PC版 中央から螺旋状に放出（常時放出） */}
+          {Array.from({ length: 24 }, (_, i) => {
+            const chipImages = ['/img/3-1.png', '/img/1-2.png', '/img/2.png', '/img/3-2.png', '/img/4-1.png', '/img/5-1.png', '/img/4-2.png', '/img/2-2.png', '/img/1.png'];
+            const img = chipImages[i % chipImages.length];
+            const size = 40 + (i % 5) * 15;
+            const dir = i % 8;
+            const duration = 8 + (i % 6) * 0.5;
+            const delay = (i / 24) * duration;
+            return { img, size, dir, duration, delay };
+          }).map((chip, i) => (
             <div
-              key={`back-${i}`}
-              className="absolute"
-              style={{
-                left: chip.x,
-                top: chip.y,
-                width: chip.w,
-                height: chip.h,
-                transform: `translateZ(-400px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg) scale(0.55)`,
-                filter: 'blur(2px) drop-shadow(0 15px 35px rgba(0,0,0,0.7))',
-                opacity: 0.35,
-                animation: `float-back ${7 + i * 1.5}s ease-in-out infinite`,
-                animationDelay: `${i * 0.7}s`,
-              }}
-            >
-              <img className="w-full h-full object-cover" alt="" src={chip.img} />
-            </div>
-          ))}
-
-          {/* 3D空間チップ - 中間レイヤー (Z: -200) */}
-          {[
-            { img: '/img/3-1.png', w: 200, h: 116, x: -30, y: 500, rotateY: -30, rotateX: 15 },
-            { img: '/img/1-2.png', w: 220, h: 75, x: 1150, y: 450, rotateY: 22, rotateX: -8 },
-            { img: '/img/2-2.png', w: 85, h: 86, x: 1050, y: 180, rotateY: 12, rotateX: 5 },
-            { img: '/img/4-2.png', w: 80, h: 138, x: 350, y: 250, rotateY: -10, rotateX: -8 },
-            { img: '/img/5-1.png', w: 80, h: 138, x: 1320, y: 550, rotateY: 18, rotateX: 12 },
-          ].map((chip, i) => (
-            <div
-              key={`mid-${i}`}
-              className="absolute"
-              style={{
-                left: chip.x,
-                top: chip.y,
-                width: chip.w,
-                height: chip.h,
-                transform: `translateZ(-200px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg) scale(0.7)`,
-                filter: 'blur(1px) drop-shadow(0 12px 30px rgba(0,0,0,0.6))',
-                opacity: 0.5,
-                animation: `float-mid ${6 + i * 1.2}s ease-in-out infinite`,
-                animationDelay: `${i * 0.4}s`,
-              }}
-            >
-              <img className="w-full h-full object-cover" alt="" src={chip.img} />
-            </div>
-          ))}
-
-          {/* 3D空間チップ - 前景レイヤー (Z: 0 ~ 100) */}
-          {[
-            { img: '/img/3-1.png', w: 244, h: 142, x: 27, y: -10, z: 50, rotateY: -15, rotateX: 5 },
-            { img: '/img/1-2.png', w: 278, h: 95, x: 936, y: 21, z: 30, rotateY: 12, rotateX: -8 },
-            { img: '/img/2.png', w: 220, h: 114, x: 434, y: 102, z: 20, rotateY: -10, rotateX: -8 },
-            { img: '/img/3-2.png', w: 220, h: 90, x: 54, y: 409, z: 40, rotateY: -20, rotateX: 5 },
-            { img: '/img/5-1.png', w: 99, h: 171, x: -1, y: 680, z: 80, rotateY: -25, rotateX: 10 },
-            { img: '/img/4-1.png', w: 118, h: 145, x: 1211, y: 113, z: 30, rotateY: 18, rotateX: -5 },
-          ].map((chip, i) => (
-            <div
-              key={`front-${i}`}
-              className="absolute"
-              style={{
-                left: chip.x,
-                top: chip.y,
-                width: chip.w,
-                height: chip.h,
-                transform: `translateZ(${chip.z}px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg)`,
-                filter: 'drop-shadow(8px 12px 20px rgba(0,0,0,0.6))',
-                opacity: 0.7,
-                animation: `float-front ${5 + i * 0.8}s ease-in-out infinite`,
-                animationDelay: `${i * 0.3}s`,
-              }}
-            >
-              <img className="w-full h-full object-cover" alt="" src={chip.img} />
-            </div>
-          ))}
-
-          {/* 3D空間チップ - 最前面レイヤー (Z: 150 ~ 300) - 画面端から迫る */}
-          {[
-            { img: '/img/3-1.png', w: 280, h: 163, x: -100, y: 700, z: 200, rotateY: -35, rotateX: 20 },
-            { img: '/img/1.png', w: 350, h: 84, x: 1150, y: 600, z: 180, rotateY: 25, rotateX: 15 },
-            { img: '/img/4-2.png', w: 120, h: 207, x: 1350, y: 300, z: 250, rotateY: 30, rotateX: -5 },
-            { img: '/img/2-2.png', w: 130, h: 131, x: -50, y: 200, z: 220, rotateY: -40, rotateX: -10 },
-          ].map((chip, i) => (
-            <div
-              key={`closest-${i}`}
+              key={`pc-chip-emit-${i}`}
               className="absolute pointer-events-none"
               style={{
-                left: chip.x,
-                top: chip.y,
-                width: chip.w,
-                height: chip.h,
-                transform: `translateZ(${chip.z}px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg) scale(1.2)`,
-                filter: 'drop-shadow(15px 20px 40px rgba(0,0,0,0.8))',
-                opacity: 0.85,
-                animation: `float-closest ${4 + i * 0.6}s ease-in-out infinite`,
-                animationDelay: `${i * 0.2}s`,
+                left: '50%',
+                top: '45%',
+                marginLeft: `-${chip.size / 2}px`,
+                marginTop: `-${chip.size / 2}px`,
+                width: `${chip.size}px`,
+                height: `${chip.size}px`,
+                animation: `chip-emit-${chip.dir} ${chip.duration}s linear ${chip.delay}s infinite`,
+                zIndex: 45,
+                filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.6))',
               }}
             >
-              <img className="w-full h-full object-cover" alt="" src={chip.img} />
+              <img src={chip.img} alt="" className="w-full h-full object-contain" />
             </div>
           ))}
 
@@ -589,12 +553,13 @@ export const Top = () => {
               transform: 'perspective(1000px) rotateY(8deg) rotateX(2deg)',
               boxShadow: '15px 25px 50px rgba(0,0,0,0.7), -5px -5px 20px rgba(255,255,255,0.05), inset 0 0 30px rgba(0,0,0,0.3)',
               border: '1px solid rgba(255,255,255,0.1)',
+              zIndex: 60,
             }}
           >
             <img className="relative self-stretch w-full h-[360px] mt-[-5.31px] mb-[-5.31px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23.png" />
           </div>
 
-          <div className="inline-flex flex-col items-start gap-[27px] absolute top-[360px] left-[394px]">
+          <div className="inline-flex flex-col items-start gap-[27px] absolute top-[360px] left-[394px]" style={{ zIndex: 60 }}>
             <div className="relative w-[238.5px] h-[45px]" />
             <div 
               className="flex flex-col w-[243px] h-[371.7px] items-start justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] relative rounded-[12px] transition-transform duration-500 hover:scale-105"
@@ -616,12 +581,13 @@ export const Top = () => {
               transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg)',
               boxShadow: '10px 20px 40px rgba(0,0,0,0.6), -3px -3px 15px rgba(255,255,255,0.03), inset 0 0 20px rgba(0,0,0,0.2)',
               border: '1px solid rgba(255,255,255,0.1)',
+              zIndex: 60,
             }}
           >
             <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-2.png" />
           </div>
 
-          <div className="inline-flex flex-col items-start gap-[27px] absolute top-[360px] left-[802px]">
+          <div className="inline-flex flex-col items-start gap-[27px] absolute top-[360px] left-[802px]" style={{ zIndex: 60 }}>
             <div className="relative w-[238.5px] h-[45px]" />
             <div 
               className="flex flex-col w-[243px] h-[371.7px] items-start justify-around gap-[20.48px] pt-[9px] pb-[13.5px] px-[9px] relative rounded-[12px] transition-transform duration-500 hover:scale-105"
@@ -643,27 +609,47 @@ export const Top = () => {
               transform: 'perspective(1000px) rotateY(-8deg) rotateX(2deg)',
               boxShadow: '15px 25px 50px rgba(0,0,0,0.7), -5px -5px 20px rgba(255,255,255,0.05), inset 0 0 30px rgba(0,0,0,0.3)',
               border: '1px solid rgba(255,255,255,0.1)',
+              zIndex: 60,
             }}
           >
             <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-4.png" />
           </div>
 
-          {/* テキスト - 3D効果付き */}
+          {/* テキスト - ネオン効果付き */}
           <div 
-            className="absolute top-[124px] left-[465px] font-aguafina font-normal text-white text-[54.1px] text-center tracking-[0] leading-[77.3px] whitespace-nowrap"
+            className="absolute top-[124px] left-[465px] font-aguafina font-normal text-[54.1px] text-center tracking-[0] leading-[77.3px] whitespace-nowrap"
             style={{ 
-              textShadow: '0 4px 8px rgba(0,0,0,0.8), 0 8px 25px rgba(0,0,0,0.5), 0 0 60px rgba(0,200,150,0.3)',
+              color: '#ffffff',
+              textShadow: `
+                0 0 8px rgba(0,255,150,0.7),
+                0 0 15px rgba(0,255,150,0.5),
+                0 0 30px rgba(0,255,150,0.4),
+                0 0 60px rgba(0,255,150,0.3),
+                0 4px 8px rgba(0,0,0,0.8)
+              `,
               transform: 'perspective(500px) translateZ(30px)',
+              zIndex: 60,
+              animation: 'neon-text-glow-small 3s ease-in-out infinite alternate',
             }}
           >
             Welcome to Tonight's SHOWTIME
           </div>
 
           <div 
-            className="absolute top-[218px] left-[341px] w-[758px] font-aguafina font-normal text-white text-[137.7px] text-center tracking-[0] leading-[150.2px] whitespace-nowrap"
+            className="absolute top-[218px] left-[341px] w-[758px] font-aguafina font-normal text-[137.7px] text-center tracking-[0] leading-[150.2px] whitespace-nowrap"
             style={{ 
-              textShadow: '0 6px 12px rgba(0,0,0,0.9), 0 12px 40px rgba(0,0,0,0.6), 0 0 80px rgba(0,200,150,0.25), 0 0 120px rgba(0,150,100,0.15)',
+              color: '#ffffff',
+              textShadow: `
+                0 0 10px rgba(0,255,150,0.8),
+                0 0 20px rgba(0,255,150,0.6),
+                0 0 40px rgba(0,255,150,0.5),
+                0 0 80px rgba(0,255,150,0.4),
+                0 0 120px rgba(0,200,100,0.3),
+                0 6px 12px rgba(0,0,0,0.9)
+              `,
               transform: 'perspective(500px) translateZ(50px)',
+              zIndex: 60,
+              animation: 'neon-text-glow 3s ease-in-out infinite alternate',
             }}
           >
             THE 27 CLUB
