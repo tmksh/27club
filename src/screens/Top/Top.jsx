@@ -341,160 +341,156 @@ export const Top = () => {
             }}
           />
 
-          {/* チップ（お札）- 3D効果付き */}
-          <div 
-            className="absolute -top-px left-7 w-[269px] h-[206px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(-15deg) rotateX(5deg)',
-              filter: 'drop-shadow(8px 12px 20px rgba(0,0,0,0.6))',
-              opacity: 0.7,
-            }}
-          >
-            <img className="w-[244.5px] h-[141.93px] aspect-[1.72] object-cover" alt="Element" src="/img/3-1.png" />
-          </div>
+          {/* 3D空間チップ - 最奥レイヤー (Z: -600) */}
+          {[
+            { img: '/img/3-1.png', w: 120, h: 70, x: 100, y: 150, rotateY: -20, rotateX: 10 },
+            { img: '/img/1-2.png', w: 140, h: 48, x: 1200, y: 120, rotateY: 25, rotateX: -5 },
+            { img: '/img/2.png', w: 110, h: 57, x: 650, y: 80, rotateY: 5, rotateX: 8 },
+          ].map((chip, i) => (
+            <div
+              key={`far-${i}`}
+              className="absolute"
+              style={{
+                left: chip.x,
+                top: chip.y,
+                width: chip.w,
+                height: chip.h,
+                transform: `translateZ(-600px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg) scale(0.4)`,
+                filter: 'blur(3px) drop-shadow(0 10px 30px rgba(0,0,0,0.8))',
+                opacity: 0.25,
+                animation: `float-deep ${8 + i * 2}s ease-in-out infinite`,
+                animationDelay: `${i * 0.5}s`,
+              }}
+            >
+              <img className="w-full h-full object-cover" alt="" src={chip.img} />
+            </div>
+          ))}
 
-          <div 
-            className="absolute top-[458px] left-[691px] w-[269px] h-[206px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(10deg) rotateX(-5deg)',
-              filter: 'drop-shadow(6px 10px 18px rgba(0,0,0,0.5))',
-              opacity: 0.6,
-            }}
-          >
-            <img className="w-[244.5px] h-[141.93px] aspect-[1.72] object-cover" alt="Element" src="/img/3-1.png" />
-          </div>
+          {/* 3D空間チップ - 奥レイヤー (Z: -400) */}
+          {[
+            { img: '/img/3-2.png', w: 160, h: 65, x: 50, y: 350, rotateY: -25, rotateX: 8 },
+            { img: '/img/5-1.png', w: 70, h: 120, x: 1300, y: 200, rotateY: 20, rotateX: -10 },
+            { img: '/img/4-1.png', w: 90, h: 110, x: 400, y: 180, rotateY: -8, rotateX: 12 },
+            { img: '/img/1.png', w: 180, h: 43, x: 900, y: 100, rotateY: 15, rotateX: -6 },
+          ].map((chip, i) => (
+            <div
+              key={`back-${i}`}
+              className="absolute"
+              style={{
+                left: chip.x,
+                top: chip.y,
+                width: chip.w,
+                height: chip.h,
+                transform: `translateZ(-400px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg) scale(0.55)`,
+                filter: 'blur(2px) drop-shadow(0 15px 35px rgba(0,0,0,0.7))',
+                opacity: 0.35,
+                animation: `float-back ${7 + i * 1.5}s ease-in-out infinite`,
+                animationDelay: `${i * 0.7}s`,
+              }}
+            >
+              <img className="w-full h-full object-cover" alt="" src={chip.img} />
+            </div>
+          ))}
 
-          <div 
-            className="absolute top-[499px] left-[1129px] w-[303px] h-[105px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(20deg) rotateX(8deg)',
-              filter: 'drop-shadow(10px 8px 15px rgba(0,0,0,0.5))',
-              opacity: 0.65,
-            }}
-          >
-            <img className="w-[302.87px] h-[72.72px] aspect-[4.17] object-cover" alt="Element" src="/img/1.png" />
-          </div>
+          {/* 3D空間チップ - 中間レイヤー (Z: -200) */}
+          {[
+            { img: '/img/3-1.png', w: 200, h: 116, x: -30, y: 500, rotateY: -30, rotateX: 15 },
+            { img: '/img/1-2.png', w: 220, h: 75, x: 1150, y: 450, rotateY: 22, rotateX: -8 },
+            { img: '/img/2-2.png', w: 85, h: 86, x: 1050, y: 180, rotateY: 12, rotateX: 5 },
+            { img: '/img/4-2.png', w: 80, h: 138, x: 350, y: 250, rotateY: -10, rotateX: -8 },
+            { img: '/img/5-1.png', w: 80, h: 138, x: 1320, y: 550, rotateY: 18, rotateX: 12 },
+          ].map((chip, i) => (
+            <div
+              key={`mid-${i}`}
+              className="absolute"
+              style={{
+                left: chip.x,
+                top: chip.y,
+                width: chip.w,
+                height: chip.h,
+                transform: `translateZ(-200px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg) scale(0.7)`,
+                filter: 'blur(1px) drop-shadow(0 12px 30px rgba(0,0,0,0.6))',
+                opacity: 0.5,
+                animation: `float-mid ${6 + i * 1.2}s ease-in-out infinite`,
+                animationDelay: `${i * 0.4}s`,
+              }}
+            >
+              <img className="w-full h-full object-cover" alt="" src={chip.img} />
+            </div>
+          ))}
 
-          <div 
-            className="absolute top-[790px] left-[496px] w-[306px] h-[138px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(-8deg) rotateX(12deg)',
-              filter: 'drop-shadow(5px 15px 20px rgba(0,0,0,0.6))',
-              opacity: 0.55,
-            }}
-          >
-            <img className="w-[278.69px] h-[95.06px] aspect-[2.93] object-cover" alt="Element" src="/img/1-2.png" />
-          </div>
+          {/* 3D空間チップ - 前景レイヤー (Z: 0 ~ 100) */}
+          {[
+            { img: '/img/3-1.png', w: 244, h: 142, x: 27, y: -10, z: 50, rotateY: -15, rotateX: 5 },
+            { img: '/img/1-2.png', w: 278, h: 95, x: 936, y: 21, z: 30, rotateY: 12, rotateX: -8 },
+            { img: '/img/2.png', w: 220, h: 114, x: 434, y: 102, z: 20, rotateY: -10, rotateX: -8 },
+            { img: '/img/3-2.png', w: 220, h: 90, x: 54, y: 409, z: 40, rotateY: -20, rotateX: 5 },
+            { img: '/img/5-1.png', w: 99, h: 171, x: -1, y: 680, z: 80, rotateY: -25, rotateX: 10 },
+            { img: '/img/4-1.png', w: 118, h: 145, x: 1211, y: 113, z: 30, rotateY: 18, rotateX: -5 },
+          ].map((chip, i) => (
+            <div
+              key={`front-${i}`}
+              className="absolute"
+              style={{
+                left: chip.x,
+                top: chip.y,
+                width: chip.w,
+                height: chip.h,
+                transform: `translateZ(${chip.z}px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg)`,
+                filter: 'drop-shadow(8px 12px 20px rgba(0,0,0,0.6))',
+                opacity: 0.7,
+                animation: `float-front ${5 + i * 0.8}s ease-in-out infinite`,
+                animationDelay: `${i * 0.3}s`,
+              }}
+            >
+              <img className="w-full h-full object-cover" alt="" src={chip.img} />
+            </div>
+          ))}
 
-          <div 
-            className="absolute top-[21px] left-[936px] w-[306px] h-[138px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(12deg) rotateX(-8deg)',
-              filter: 'drop-shadow(8px 6px 15px rgba(0,0,0,0.5))',
-              opacity: 0.7,
-            }}
-          >
-            <img className="w-[278.69px] h-[95.06px] aspect-[2.93] object-cover" alt="Element" src="/img/1-2.png" />
-          </div>
+          {/* 3D空間チップ - 最前面レイヤー (Z: 150 ~ 300) - 画面端から迫る */}
+          {[
+            { img: '/img/3-1.png', w: 280, h: 163, x: -100, y: 700, z: 200, rotateY: -35, rotateX: 20 },
+            { img: '/img/1.png', w: 350, h: 84, x: 1150, y: 600, z: 180, rotateY: 25, rotateX: 15 },
+            { img: '/img/4-2.png', w: 120, h: 207, x: 1350, y: 300, z: 250, rotateY: 30, rotateX: -5 },
+            { img: '/img/2-2.png', w: 130, h: 131, x: -50, y: 200, z: 220, rotateY: -40, rotateX: -10 },
+          ].map((chip, i) => (
+            <div
+              key={`closest-${i}`}
+              className="absolute pointer-events-none"
+              style={{
+                left: chip.x,
+                top: chip.y,
+                width: chip.w,
+                height: chip.h,
+                transform: `translateZ(${chip.z}px) rotateY(${chip.rotateY}deg) rotateX(${chip.rotateX}deg) scale(1.2)`,
+                filter: 'drop-shadow(15px 20px 40px rgba(0,0,0,0.8))',
+                opacity: 0.85,
+                animation: `float-closest ${4 + i * 0.6}s ease-in-out infinite`,
+                animationDelay: `${i * 0.2}s`,
+              }}
+            >
+              <img className="w-full h-full object-cover" alt="" src={chip.img} />
+            </div>
+          ))}
 
-          <div 
-            className="absolute top-[409px] left-[54px] w-[241px] h-[131px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(-20deg) rotateX(5deg)',
-              filter: 'drop-shadow(12px 10px 18px rgba(0,0,0,0.55))',
-              opacity: 0.6,
-            }}
-          >
-            <img className="w-[219.81px] h-[90.06px] aspect-[2.44] object-cover" alt="Element" src="/img/3-2.png" />
-          </div>
-
-          <div 
-            className="absolute top-[680px] -left-px w-[109px] h-[248px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(-25deg) rotateX(10deg)',
-              filter: 'drop-shadow(15px 12px 22px rgba(0,0,0,0.6))',
-              opacity: 0.5,
-            }}
-          >
-            <img className="w-[99.31px] h-[171.07px] aspect-[0.58] object-cover" alt="Element" src="/img/5-1.png" />
-          </div>
-
-          <div 
-            className="absolute top-[300px] left-[401px] w-[109px] h-[248px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(-5deg) rotateX(-10deg)',
-              filter: 'drop-shadow(6px 14px 20px rgba(0,0,0,0.5))',
-              opacity: 0.55,
-            }}
-          >
-            <img className="w-[99.31px] h-[171.07px] aspect-[0.58] object-cover" alt="Element" src="/img/5-1.png" />
-          </div>
-
-          <div 
-            className="absolute top-[113px] left-[1211px] w-[129px] h-[210px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(18deg) rotateX(-5deg)',
-              filter: 'drop-shadow(10px 8px 16px rgba(0,0,0,0.5))',
-              opacity: 0.65,
-            }}
-          >
-            <img className="mt-[-28.5px] w-[117.6px] h-[144.74px] ml-[64.3px] aspect-[0.81] object-cover" alt="Element" src="/img/4-1.png" />
-          </div>
-
-          <div 
-            className="absolute top-[680px] left-[936px] w-[129px] h-[210px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(15deg) rotateX(8deg)',
-              filter: 'drop-shadow(8px 14px 20px rgba(0,0,0,0.55))',
-              opacity: 0.5,
-            }}
-          >
-            <img className="w-[117.6px] h-[144.74px] aspect-[0.81] object-cover" alt="Element" src="/img/4-1.png" />
-          </div>
-
-          <div 
-            className="absolute top-[664px] left-[1256px] w-[108px] h-[246px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(22deg) rotateX(12deg)',
-              filter: 'drop-shadow(12px 16px 24px rgba(0,0,0,0.6))',
-              opacity: 0.45,
-            }}
-          >
-            <img className="w-[98.47px] h-[169.5px] aspect-[0.58] object-cover" alt="Element" src="/img/4-2.png" />
-          </div>
-
-          <div 
-            className="absolute top-[102px] left-[434px] w-[241px] h-[165px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(-10deg) rotateX(-8deg)',
-              filter: 'drop-shadow(6px 8px 14px rgba(0,0,0,0.5))',
-              opacity: 0.6,
-            }}
-          >
-            <img className="w-[219.65px] h-[114.08px] aspect-[1.93] object-cover" alt="Element" src="/img/2.png" />
-          </div>
-
-          <div 
-            className="absolute top-[216px] left-[1065px] w-[116px] h-[154px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(8deg) rotateX(5deg)',
-              filter: 'drop-shadow(5px 10px 15px rgba(0,0,0,0.5))',
-              opacity: 0.6,
-            }}
-          >
-            <img className="w-[105.34px] h-[106.14px] aspect-[0.99] object-cover" alt="Element" src="/img/2-2.png" />
-          </div>
-
-          <div 
-            className="absolute top-[682px] left-[237px] w-[116px] h-[154px] flex"
-            style={{ 
-              transform: 'perspective(800px) rotateY(-12deg) rotateX(15deg)',
-              filter: 'drop-shadow(8px 18px 22px rgba(0,0,0,0.6))',
-              opacity: 0.5,
-            }}
-          >
-            <img className="w-[105.34px] h-[106.14px] aspect-[0.99] object-cover" alt="Element" src="/img/2-2.png" />
-          </div>
+          {/* 光のパーティクル */}
+          {Array.from({ length: 15 }, (_, i) => (
+            <div
+              key={`particle-${i}`}
+              className="absolute rounded-full"
+              style={{
+                left: `${10 + (i * 97) % 80}%`,
+                top: `${5 + (i * 73) % 70}%`,
+                width: `${3 + (i % 3) * 2}px`,
+                height: `${3 + (i % 3) * 2}px`,
+                background: `radial-gradient(circle, rgba(0,255,200,${0.3 + (i % 4) * 0.15}) 0%, transparent 70%)`,
+                boxShadow: `0 0 ${10 + (i % 3) * 5}px rgba(0,200,180,0.4)`,
+                transform: `translateZ(${-300 + (i % 5) * 150}px)`,
+                animation: `twinkle ${2 + (i % 3)}s ease-in-out infinite`,
+                animationDelay: `${i * 0.2}s`,
+              }}
+            />
+          ))}
 
           {/* カード - 3D効果付き */}
           <div 

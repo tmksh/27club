@@ -10,6 +10,7 @@ import { ScreenWrapper } from "./screens/ScreenWrapper";
 import { Top } from "./screens/Top";
 import { AdminLogin } from "./screens/Admin/AdminLogin";
 import { AdminDashboard } from "./screens/Admin/AdminDashboard";
+import { DrinkMenu } from "./screens/DrinkMenu";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: "/u12461u12515u12473u12488",
     element: <Screen7 />,
+  },
+  {
+    path: "/drink",
+    element: <DrinkMenu />,
   },
 ]);
 

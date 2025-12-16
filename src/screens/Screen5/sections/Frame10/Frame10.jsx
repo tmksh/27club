@@ -90,7 +90,12 @@ export const Frame10 = () => {
               </div>
 
               <div className="mt-[95.5px] w-[225.95px] flex">
-                <div className="flex mt-0 w-[225.95px] h-[62.76px] ml-0 relative items-center justify-center gap-[10.04px] bg-[#00c300] rounded-[31.38px]">
+                <a 
+                  href="https://lin.ee/GHLh75Z" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex mt-0 w-[225.95px] h-[62.76px] ml-0 relative items-center justify-center gap-[10.04px] bg-[#00c300] rounded-[31.38px] hover:bg-[#00b300] transition-colors cursor-pointer"
+                >
                   <div className="relative w-[25.11px] h-[25.11px] border-0 border-none">
                     <img
                       className="absolute w-[79.20%] h-[79.20%] top-[8.30%] left-[4.17%]"
@@ -110,7 +115,7 @@ export const Frame10 = () => {
                       src="/img/vector-79.svg"
                     />
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
@@ -200,7 +205,12 @@ export const Frame10 = () => {
           </div>
 
           <div className="absolute top-24 left-[809px] w-[226px] h-[63px] flex">
-            <div className="mt-0 w-[225.95px] h-[62.76px] ml-0 flex gap-2.5 bg-[#00c300] rounded-[31.38px]">
+            <a 
+              href="https://lin.ee/GHLh75Z" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mt-0 w-[225.95px] h-[62.76px] ml-0 flex gap-2.5 bg-[#00c300] rounded-[31.38px] hover:bg-[#00b300] transition-colors cursor-pointer"
+            >
               <div className="mt-[18.8px] w-[25.11px] h-[25.11px] relative ml-[41.8px] border-0 border-none">
                 <img
                   className="absolute w-[79.20%] h-[79.20%] top-[8.30%] left-[4.17%]"
@@ -220,7 +230,7 @@ export const Frame10 = () => {
                   src="/img/vector-79.svg"
                 />
               </div>
-            </div>
+            </a>
           </div>
         </div>
 

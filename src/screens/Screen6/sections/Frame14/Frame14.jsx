@@ -1,5 +1,4 @@
 import React from "react";
-import { MenuLink } from "../../../../components/MenuLink";
 
 export const Frame14 = () => {
   return (
@@ -11,9 +10,9 @@ export const Frame14 = () => {
               <div className="ml-[78.0px] w-[1124.02px] h-[399.22px] relative mt-[314.3px]">
                 <div className="absolute top-0 left-0 w-[590px] h-[300px] bg-[#fffee7b2] rounded-[10px]" />
 
-                <div className="absolute top-[25px] left-[25px] w-[590px] h-[300px] bg-[url(/img/rectangle-59.png)] bg-[100%_100%]" />
+                <div className="absolute top-[25px] left-[25px] w-[590px] h-[300px] bg-[url(/img/rectangle-59.png)] bg-cover bg-center rounded-[10px]" />
 
-                <div className="flex flex-col w-[590px] h-[350px] items-start gap-[15px] px-10 py-5 absolute top-[49px] left-[534px] bg-black rounded-[10px]">
+                <div className="flex flex-col w-[590px] h-[350px] items-start gap-[15px] px-10 py-5 absolute top-[49px] left-[484px] bg-black rounded-[10px]">
                   <div className="w-[73px] relative h-[74px] mt-[-1.00px] [font-family:'Shippori_Mincho',Helvetica] font-semibold text-[#025b51] text-[52px] tracking-[0] leading-[normal]">
                     01
                   </div>
@@ -28,18 +27,40 @@ export const Frame14 = () => {
                     まずはドリンクやフードをオーダーして、ゆったりとお過ごしください。当店ならではのオリジナルメニューもございます🍸
                   </div>
 
-                  <div className="relative w-[280px] h-[50px]">
-                    <div className="w-[280px] flex">
-                      <MenuLink
-                        className="!left-[unset] ![background:unset] !bg-[#025b51] !top-[unset]"
-                        img="/img/vector-86.svg"
-                        vector="/img/vector-85.svg"
-                        vector1="/img/vector-87.svg"
-                        vector2="/img/vector-88.svg"
-                        vector3="/img/vector-89.svg"
-                        vector4="/img/vector-90.svg"
-                      />
-                    </div>
+                  <div className="flex gap-3">
+                    {/* ドリンクメニューボタン */}
+                    <a
+                      href="/drink"
+                      className="flex w-[150px] h-[50px] items-center justify-center gap-2 rounded-[25px] cursor-pointer transition-all duration-300 hover:scale-105"
+                      style={{
+                        background: 'linear-gradient(135deg, #00c9a7 0%, #00d4aa 50%, #02e8b0 100%)',
+                        boxShadow: '0 4px 15px rgba(0,200,167,0.4)',
+                        border: '1px solid rgba(255,255,255,0.2)',
+                      }}
+                    >
+                      <span className="text-2xl">🍸</span>
+                      <span className="[font-family:'Noto_Sans_JP',Helvetica] font-black text-white text-sm whitespace-nowrap">
+                        ドリンク
+                      </span>
+                    </a>
+                    
+                    {/* フードメニューボタン */}
+                    <a
+                      href="https://www.instagram.com/stories/highlights/17906945853210365/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex w-[150px] h-[50px] items-center justify-center gap-2 rounded-[25px] cursor-pointer transition-all duration-300 hover:scale-105"
+                      style={{
+                        background: 'linear-gradient(135deg, #d4a574 0%, #c9956a 50%, #b8845f 100%)',
+                        boxShadow: '0 4px 15px rgba(200,150,100,0.4)',
+                        border: '1px solid rgba(255,255,255,0.2)',
+                      }}
+                    >
+                      <span className="text-2xl">🍽️</span>
+                      <span className="[font-family:'Noto_Sans_JP',Helvetica] font-black text-white text-sm whitespace-nowrap">
+                        フード
+                      </span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -47,7 +68,7 @@ export const Frame14 = () => {
               <div className="ml-[77.9px] w-[1124.18px] h-[388.32px] relative">
                 <div className="absolute top-0 left-[534px] w-[590px] h-[300px] bg-[#fffee7b2] rounded-[10px]" />
 
-                <div className="absolute top-[27px] left-[509px] w-[590px] h-[300px] bg-[url(/img/rectangle-59-1.png)] bg-[100%_100%]" />
+                <div className="absolute top-[27px] left-[509px] w-[590px] h-[300px] bg-[url(/img/rectangle-59-1.png)] bg-cover bg-center rounded-[10px]" />
 
                 <div className="top-[116px] left-0 flex flex-col w-[590px] items-start gap-[15px] px-10 py-5 absolute bg-black rounded-[10px]">
                   <div className="w-[61px] relative h-[74px] mt-[-1.00px] [font-family:'Shippori_Mincho',Helvetica] font-semibold text-[#025b51] text-[52px] tracking-[0] leading-[normal]">
@@ -71,7 +92,7 @@ export const Frame14 = () => {
               <div className="ml-[73.5px] w-[1133.06px] h-[441.81px] relative">
                 <div className="absolute top-0 left-0 w-[590px] h-[300px] bg-[#fffee7b2] rounded-[10px]" />
 
-                <div className="absolute top-[25px] left-[25px] w-[590px] h-[300px] bg-[url(/img/rectangle-59-2.png)] bg-[100%_100%]" />
+                <div className="absolute top-[25px] left-[25px] w-[590px] h-[300px] bg-[url(/img/rectangle-59-2.png)] bg-cover bg-center rounded-[10px]" />
 
                 <div className="min-h-[300px] top-[46px] left-[543px] flex flex-col w-[590px] items-start gap-[15px] px-10 py-5 absolute bg-black rounded-[10px]">
                   <div className="w-[73px] relative h-[74px] mt-[-1.00px] [font-family:'Shippori_Mincho',Helvetica] font-semibold text-[#025b51] text-[52px] tracking-[0] leading-[normal]">
@@ -101,7 +122,7 @@ export const Frame14 = () => {
               <div className="ml-[77.9px] w-[1124.18px] h-[379.25px] relative">
                 <div className="absolute top-0 left-[534px] w-[590px] h-[300px] bg-[#fffee7b2] rounded-[10px]" />
 
-                <div className="absolute top-[27px] left-[509px] w-[590px] h-[300px] bg-[url(/img/rectangle-59-3.png)] bg-[100%_100%]" />
+                <div className="absolute top-[27px] left-[509px] w-[590px] h-[300px] bg-[url(/img/rectangle-59-3.png)] bg-cover bg-center rounded-[10px]" />
 
                 <div className="top-[107px] left-0 flex flex-col w-[590px] items-start gap-[15px] px-10 py-5 absolute bg-black rounded-[10px]">
                   <div className="w-[61px] relative h-[74px] mt-[-1.00px] [font-family:'Shippori_Mincho',Helvetica] font-semibold text-[#025b51] text-[52px] tracking-[0] leading-[normal]">
@@ -150,15 +171,41 @@ export const Frame14 = () => {
                     おすすめです。
                   </div>
 
-                  <MenuLink
-                    className="!left-[unset] ![background:unset] !bg-[#025b51] !top-[unset]"
-                    img="/img/vector-92.svg"
-                    vector="/img/vector-91.svg"
-                    vector1="/img/vector-93.svg"
-                    vector2="/img/vector-94.svg"
-                    vector3="/img/vector-95.svg"
-                    vector4="/img/vector-96.svg"
-                  />
+                  <div className="flex gap-3">
+                    {/* ドリンクメニューボタン */}
+                    <a
+                      href="/drink"
+                      className="flex w-[150px] h-[50px] items-center justify-center gap-2 rounded-[25px] cursor-pointer transition-all duration-300 hover:scale-105"
+                      style={{
+                        background: 'linear-gradient(135deg, #00c9a7 0%, #00d4aa 50%, #02e8b0 100%)',
+                        boxShadow: '0 4px 15px rgba(0,200,167,0.4)',
+                        border: '1px solid rgba(255,255,255,0.2)',
+                      }}
+                    >
+                      <span className="text-2xl">🍸</span>
+                      <span className="[font-family:'Noto_Sans_JP',Helvetica] font-black text-white text-sm whitespace-nowrap">
+                        ドリンク
+                      </span>
+                    </a>
+                    
+                    {/* フードメニューボタン */}
+                    <a
+                      href="https://www.instagram.com/stories/highlights/17906945853210365/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex w-[150px] h-[50px] items-center justify-center gap-2 rounded-[25px] cursor-pointer transition-all duration-300 hover:scale-105"
+                      style={{
+                        background: 'linear-gradient(135deg, #d4a574 0%, #c9956a 50%, #b8845f 100%)',
+                        boxShadow: '0 4px 15px rgba(200,150,100,0.4)',
+                        border: '1px solid rgba(255,255,255,0.2)',
+                      }}
+                    >
+                      <span className="text-2xl">🍽️</span>
+                      <span className="[font-family:'Noto_Sans_JP',Helvetica] font-black text-white text-sm whitespace-nowrap">
+                        フード
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -192,19 +239,6 @@ export const Frame14 = () => {
             </div>
           </div>
 
-          <div className="inline-flex h-[61px] items-center justify-center gap-5 absolute top-[3015px] left-[430px]">
-            <div className="flex w-[200px] h-[60px] items-center justify-center relative bg-[#025b51] rounded-[30px] shadow-[0px_4px_15px_#00000030]">
-              <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-white text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
-                RESERVE NOW
-              </div>
-            </div>
-
-            <div className="flex w-[200px] h-[60px] items-center justify-center relative bg-white rounded-[30px] border-2 border-solid border-[#b8860b]">
-              <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-[#b8860b] text-base tracking-[0] leading-[19.2px] whitespace-nowrap">
-                MENU
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

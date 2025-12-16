@@ -7,27 +7,88 @@ import { Group81 } from "../../../../components/Group81";
 
 export const Frame3 = () => {
   const [formData, setFormData] = useState({
-    name: "高橋 進",
+    name: "",
     email: "",
     phone: "",
     inquiryType: "work",
     content: "",
     privacyAgreed: false,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const getInquiryTypeLabel = (type) => {
+    switch (type) {
+      case "work":
+        return "撮影・取材・コラボなどのお仕事に関するお問い合わせ";
+      case "reservation":
+        return "ご利用・ご予約に関するお問い合わせ";
+      case "other":
+        return "その他のお問い合わせ";
+      default:
+        return type;
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (!formData.privacyAgreed) {
       alert("プライバシーポリシーに同意してください");
       return;
     }
-    console.log("Form submitted:", formData);
-    // ここで実際の送信処理を実装
-    alert("お問い合わせを送信しました");
+    
+    if (!formData.name || !formData.email || !formData.phone || !formData.content) {
+      alert("必須項目をすべて入力してください");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "YOUR_ACCESS_KEY_HERE", // Web3Formsで取得したキーに置き換えてください
+          to: "the27club.shinjuku@gmail.com",
+          from_name: "THE 27 CLUB お問い合わせフォーム",
+          subject: `【お問い合わせ】${getInquiryTypeLabel(formData.inquiryType)}`,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          inquiry_type: getInquiryTypeLabel(formData.inquiryType),
+          message: formData.content,
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        alert("お問い合わせを送信しました。\n2〜3営業日以内にご返信いたします。");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          inquiryType: "work",
+          content: "",
+          privacyAgreed: false,
+        });
+      } else {
+        throw new Error("送信に失敗しました");
+      }
+    } catch (error) {
+      console.error("送信エラー:", error);
+      alert("送信に失敗しました。もう一度お試しください。");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -66,10 +127,15 @@ export const Frame3 = () => {
 
           <button
             onClick={handleSubmit}
-            className="inline-flex ml-[120px] w-[130px] h-14 relative items-center justify-center gap-2.5 px-[25px] py-3 bg-white rounded-[3px] cursor-pointer hover:bg-gray-100 transition-colors"
+            disabled={isSubmitting}
+            className={`inline-flex ml-[120px] w-[130px] h-14 relative items-center justify-center gap-2.5 px-[25px] py-3 rounded-[3px] transition-colors ${
+              isSubmitting 
+                ? 'bg-gray-400 cursor-not-allowed' 
+                : 'bg-white cursor-pointer hover:bg-gray-100'
+            }`}
           >
             <div className="relative w-fit mt-[-1.00px] [font-family:'Yu_Mincho-Demibold',Helvetica] font-normal text-[#081e15] text-xl tracking-[0] leading-[normal] whitespace-nowrap">
-              送信する
+              {isSubmitting ? '送信中...' : '送信する'}
             </div>
           </button>
         </div>

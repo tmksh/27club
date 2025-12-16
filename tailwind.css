@@ -362,3 +362,368 @@
 .card-3d:hover::after {
   opacity: 1;
 }
+
+/* 3D空間チップ浮遊アニメーション */
+@keyframes float-deep {
+  0%, 100% {
+    transform: translateZ(-600px) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) scale(0.4);
+  }
+  50% {
+    transform: translateZ(-600px) translateY(-15px) rotateY(calc(var(--rotateY, 0deg) + 5deg)) rotateX(calc(var(--rotateX, 0deg) + 3deg)) scale(0.4);
+  }
+}
+
+@keyframes float-back {
+  0%, 100% {
+    transform: translateZ(-400px) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) scale(0.55);
+  }
+  50% {
+    transform: translateZ(-400px) translateY(-20px) rotateY(calc(var(--rotateY, 0deg) + 8deg)) rotateX(calc(var(--rotateX, 0deg) + 4deg)) scale(0.55);
+  }
+}
+
+@keyframes float-mid {
+  0%, 100% {
+    transform: translateZ(-200px) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) scale(0.7);
+  }
+  50% {
+    transform: translateZ(-200px) translateY(-25px) rotateY(calc(var(--rotateY, 0deg) + 10deg)) rotateX(calc(var(--rotateX, 0deg) + 5deg)) scale(0.7);
+  }
+}
+
+@keyframes float-front {
+  0%, 100% {
+    transform: translateZ(var(--z, 0px)) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg));
+  }
+  50% {
+    transform: translateZ(var(--z, 0px)) translateY(-18px) rotateY(calc(var(--rotateY, 0deg) + 6deg)) rotateX(calc(var(--rotateX, 0deg) + 3deg));
+  }
+}
+
+@keyframes float-closest {
+  0%, 100% {
+    transform: translateZ(var(--z, 200px)) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) scale(1.2);
+  }
+  50% {
+    transform: translateZ(var(--z, 200px)) translateY(-12px) rotateY(calc(var(--rotateY, 0deg) + 4deg)) rotateX(calc(var(--rotateX, 0deg) + 2deg)) scale(1.2);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateZ(var(--z, 0px)) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateZ(var(--z, 0px)) scale(1.3);
+  }
+}
+
+/* ナイトクラブ レーザービームアニメーション */
+@keyframes laser-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: rotate(var(--rotate, 0deg)) scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(var(--rotate, 0deg)) scaleY(1.1);
+  }
+}
+
+/* レーザースイープ - ゆっくり左から右 */
+@keyframes laser-sweep-left {
+  0% {
+    transform: rotate(-25deg) translateZ(0px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: rotate(25deg) translateZ(50px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(-25deg) translateZ(0px);
+    opacity: 0.6;
+  }
+}
+
+/* レーザースイープ - ゆっくり右から左 */
+@keyframes laser-sweep-right {
+  0% {
+    transform: rotate(25deg) translateZ(0px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: rotate(-25deg) translateZ(50px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(25deg) translateZ(0px);
+    opacity: 0.6;
+  }
+}
+
+/* レーザーゆっくりパルス */
+@keyframes laser-slow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* レーザー色変化 - ゆっくり */
+@keyframes laser-color-shift {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  50% {
+    filter: hue-rotate(90deg) brightness(1.2);
+  }
+}
+
+/* 3D空間レーザー - 奥から手前へ */
+@keyframes laser-3d-depth {
+  0% {
+    transform: translateZ(-200px) rotateY(var(--rotateY, 0deg));
+    opacity: 0.3;
+    filter: blur(3px);
+  }
+  50% {
+    transform: translateZ(100px) rotateY(var(--rotateY, 0deg));
+    opacity: 0.9;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateZ(-200px) rotateY(var(--rotateY, 0deg));
+    opacity: 0.3;
+    filter: blur(3px);
+  }
+}
+
+/* レーザーが奥から手前に飛んでくる */
+@keyframes laser-fly-forward {
+  0% {
+    transform: translateZ(-800px) translateX(var(--startX, 0px)) scale(0.2);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  20% {
+    opacity: 0.6;
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(1px);
+  }
+  100% {
+    transform: translateZ(300px) translateX(var(--endX, 0px)) scale(2);
+    opacity: 0;
+    filter: blur(0px);
+  }
+}
+
+/* レーザーが奥から手前に飛んでくる - 左方向 */
+@keyframes laser-fly-forward-left {
+  0% {
+    transform: translateZ(-800px) translateX(100px) rotateZ(-5deg) scale(0.2);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  20% {
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+  70% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateZ(400px) translateX(-400px) rotateZ(-15deg) scale(2.5);
+    opacity: 0;
+    filter: blur(0px);
+  }
+}
+
+/* レーザーが奥から手前に飛んでくる - 右方向 */
+@keyframes laser-fly-forward-right {
+  0% {
+    transform: translateZ(-800px) translateX(-100px) rotateZ(5deg) scale(0.2);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  20% {
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+  70% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateZ(400px) translateX(400px) rotateZ(15deg) scale(2.5);
+    opacity: 0;
+    filter: blur(0px);
+  }
+}
+
+/* レーザーが奥から手前に飛んでくる - 中央 */
+@keyframes laser-fly-forward-center {
+  0% {
+    transform: translateZ(-1000px) scale(0.1);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  30% {
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  80% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateZ(500px) scale(3);
+    opacity: 0;
+    filter: blur(0px);
+  }
+}
+
+/* ソフトストロボ効果 */
+@keyframes soft-strobe {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.15; }
+}
+
+/* 流れ星アニメーション */
+@keyframes shooting-star {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--angle, 45deg)) translateX(0);
+  }
+  5% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle, 45deg)) translateX(500px);
+  }
+}
+
+/* 星雲ドリフト */
+@keyframes nebula-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(20px, 10px) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* 宇宙グリッドスクロール */
+@keyframes grid-scroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 80px;
+  }
+}
+
+/* 縦ラインパルス */
+@keyframes pulse-line {
+  0%, 100% {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* 高級カードスタイル */
+.card-luxury {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card-luxury:hover::before {
+  opacity: 1;
+}
+
+.card-luxury:hover {
+  box-shadow: 
+    20px 35px 60px rgba(0,0,0,0.8),
+    0 0 30px rgba(255,245,230,0.1),
+    inset 0 0 30px rgba(0,0,0,0.3) !important;
+  border-color: rgba(255,245,230,0.15) !important;
+}
+
+/* カードシマー効果 */
+.card-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255,255,255,0.03) 35%,
+    rgba(255,250,240,0.08) 50%,
+    rgba(255,255,255,0.03) 65%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: card-shimmer-move 6s ease-in-out infinite;
+  animation-delay: var(--shimmer-delay, 0s);
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes card-shimmer-move {
+  0% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
