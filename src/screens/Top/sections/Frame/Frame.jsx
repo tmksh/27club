@@ -214,12 +214,14 @@ export const Frame = () => {
                     key={index}
                     onClick={() => setHoveredDate(date.getDate())}
                     className={`h-10 flex flex-col items-center justify-center rounded transition-all ${
-                      isSaturday 
-                        ? 'bg-[#8b0000] text-white' 
-                        : isSunday 
-                          ? 'bg-[#cc0000] text-white' 
-                          : 'bg-[#1a1a1a] text-white/80'
-                    } ${isSelected ? 'ring-2 ring-white' : ''}`}
+                      isSelected 
+                        ? 'bg-[#00d6bd] text-white'
+                        : isSaturday 
+                          ? 'bg-[#1a3a35] text-[#00d6bd]' 
+                          : isSunday 
+                            ? 'bg-[#1a3a35] text-[#00d6bd]' 
+                            : 'bg-[#1a1a1a] text-white/80'
+                    }`}
                   >
                     <span className="text-[10px] font-medium leading-tight">
                       {date.getDate()}
@@ -250,7 +252,7 @@ export const Frame = () => {
                 <div className="[font-family:'Playfair_Display',Helvetica] text-white text-sm font-normal tracking-[1px]">
                   EVENTS
                 </div>
-                <div className="[font-family:'Noto_Serif_JP',Helvetica] text-[#cc0000] text-[9px] font-normal">
+                <div className="[font-family:'Noto_Serif_JP',Helvetica] text-[#00d6bd] text-[9px] font-normal">
                   イベント一覧
                 </div>
               </div>

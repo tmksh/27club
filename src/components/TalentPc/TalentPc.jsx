@@ -4,7 +4,7 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 */
 
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
 export const TalentPc = ({ 
   className, 
@@ -14,22 +14,12 @@ export const TalentPc = ({
   nameEn = "yamada tarou",
   description = "ダンサー・シンガー・エンターテイナーとして活躍中。\n柔軟な体捌きと華麗なパフォーマンスが魅力。\n毎週金曜日・土曜日のステージでお会いしましょう！"
 }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setIsFlipped(!isFlipped);
-  };
-
   return (
     <div
-      className={`relative w-full aspect-[292/367] [perspective:1000px] ${className}`}
-      onClick={handleClick}
+      className={`relative w-full aspect-[292/367] [perspective:1000px] group ${className}`}
     >
       <div
-        className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] cursor-pointer ${
-          isFlipped ? '[transform:rotateY(180deg)]' : ''
-        }`}
+        className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] cursor-pointer group-hover:[transform:rotateY(180deg)]"
       >
         {/* 表面 */}
         <div className="absolute inset-0 [backface-visibility:hidden] rounded-xl md:rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)] overflow-hidden">
@@ -94,10 +84,6 @@ export const TalentPc = ({
                 />
                 <span className="[font-family:'Ubuntu',Helvetica]">Follow on Instagram</span>
               </a>
-            </div>
-
-            <div className="mt-2 md:mt-4 text-[10px] md:text-[12px] opacity-70">
-              タップで戻る
             </div>
           </div>
         </div>

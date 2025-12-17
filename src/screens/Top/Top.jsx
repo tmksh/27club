@@ -678,19 +678,53 @@ export const Top = () => {
         </div>
 
         {/* フッターナビゲーション - レスポンシブ */}
-        <div className="absolute w-full h-auto left-0 bottom-0 z-20 flex items-center justify-center py-3 md:py-4">
-          {/* 背景 */}
-          <div className="absolute inset-0 bg-black/95" />
+        <div className="absolute w-full h-auto left-0 bottom-0 z-20 flex items-center justify-center py-4 md:py-5">
+          {/* 背景 - グラデーション＋上部ライン */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(180deg, rgba(0,25,20,0.97) 0%, rgba(0,10,8,0.99) 100%)',
+              borderTop: '1px solid rgba(0,214,189,0.25)',
+              boxShadow: '0 -15px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(0,214,189,0.15)',
+            }}
+          />
+          
+          {/* 上部のグローライン - アニメーション */}
+          <div 
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[250px] md:w-[500px] h-[2px]"
+            style={{
+              background: 'linear-gradient(90deg, transparent 0%, rgba(0,214,189,0.8) 50%, transparent 100%)',
+              boxShadow: '0 0 15px rgba(0,214,189,0.5), 0 0 30px rgba(0,214,189,0.3)',
+            }}
+          />
+          
+          {/* 左側の装飾 */}
+          <div className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#00d6bd]/60" style={{ boxShadow: '0 0 8px rgba(0,214,189,0.5)' }} />
+            <div className="w-8 h-[1px] bg-gradient-to-r from-[#00d6bd]/50 to-transparent" />
+          </div>
+          
+          {/* 右側の装飾 */}
+          <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-2">
+            <div className="w-8 h-[1px] bg-gradient-to-l from-[#00d6bd]/50 to-transparent" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#00d6bd]/60" style={{ boxShadow: '0 0 8px rgba(0,214,189,0.5)' }} />
+          </div>
+          
           {/* メニュー項目 - SP版は2行、PC版は1行 */}
-          <div className="relative grid grid-cols-3 md:flex md:flex-wrap items-center justify-center gap-x-2 gap-y-2 md:gap-x-[18px] md:gap-y-0 px-2 md:px-4 w-full max-w-[400px] md:max-w-none">
-            {footerNavLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[10px] md:text-base tracking-[0.8px] md:tracking-[1.60px] leading-[1.4] text-center whitespace-nowrap hover:text-[#00c9a7] transition-colors"
-              >
-                {link.label}
-              </Link>
+          <div className="relative grid grid-cols-3 md:flex md:flex-wrap items-center justify-center gap-x-2 gap-y-2 md:gap-x-0 px-2 md:px-4 w-full max-w-[400px] md:max-w-none">
+            {footerNavLinks.map((link, index) => (
+              <React.Fragment key={link.path}>
+                <Link
+                  to={link.path}
+                  className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/90 text-[10px] md:text-[15px] tracking-[0.8px] md:tracking-[1.60px] leading-[1.4] text-center whitespace-nowrap hover:text-[#00d6bd] transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(0,214,189,0.5)] px-1 md:px-3"
+                >
+                  {link.label}
+                </Link>
+                {/* セパレーター（PC版のみ、最後以外） */}
+                {index < footerNavLinks.length - 1 && (
+                  <span className="hidden md:inline-block text-[#00d6bd]/40 text-xs mx-1">◆</span>
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>
