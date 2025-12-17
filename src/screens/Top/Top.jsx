@@ -171,7 +171,7 @@ export const Top = () => {
       )}
       
       {/* FVセクション */}
-      <div className="relative w-full max-w-[1440px] md:min-h-[932px] overflow-visible z-10">
+      <div className="relative w-full max-w-[1440px] md:min-h-[750px] overflow-visible z-10">
         {/* ナビゲーション */}
         <div className="absolute top-0 left-0 w-full h-[60px] flex z-20">
           <div className="flex w-full h-10 mt-2.5 mx-4 md:mx-8 lg:mx-12 relative items-center justify-between">
@@ -470,12 +470,12 @@ export const Top = () => {
 
         {/* PC版FV（新しいデザイン + ネオン玉） */}
         <div 
-          className="hidden md:block overflow-visible w-full min-w-[1440px] min-h-[932px] relative"
+          className="hidden md:block overflow-visible w-full min-w-[1440px] min-h-[750px] relative"
           style={{ perspective: '2000px' }}
         >
           {/* 宇宙空間3D背景 */}
           <div 
-            className="absolute top-0 left-0 w-full h-full min-h-[932px]"
+            className="absolute top-0 left-0 w-full h-full min-h-[750px]"
             style={{
               background: `
                 radial-gradient(ellipse 200% 150% at 50% -20%, rgba(0,255,150,0.12) 0%, transparent 50%),
@@ -683,83 +683,83 @@ export const Top = () => {
             />
           ))}
 
-          {/* カード - 3D効果付き（最適化版） */}
+          {/* カード - 3D効果付き */}
           <div 
-            className="flex flex-col w-[243px] h-[372px] items-start justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[189px] rounded-[12px] aspect-[0.65] hover:scale-105"
+            className="flex flex-col w-[180px] h-[275px] items-start justify-around pt-[7px] pb-[10px] px-[7px] absolute top-[320px] left-[270px] rounded-[10px] hover:scale-105"
             style={{ 
               background: 'linear-gradient(145deg, rgba(40,40,40,1) 0%, rgba(15,15,15,1) 100%)',
-              boxShadow: '12px 20px 40px rgba(0,0,0,0.6)',
+              boxShadow: '10px 16px 32px rgba(0,0,0,0.6)',
               border: '1px solid rgba(255,255,255,0.1)',
               zIndex: 60,
               animation: 'card-float-1 4s ease-in-out infinite',
             }}
           >
-            <img className="relative self-stretch w-full h-[360px] mt-[-5.31px] mb-[-5.31px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23.png" />
+            <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23.png" />
           </div>
 
-          <div className="inline-flex flex-col items-start gap-[27px] absolute top-[360px] left-[394px]" style={{ zIndex: 60 }}>
-            <div className="relative w-[238.5px] h-[45px]" />
+          <div className="inline-flex flex-col items-start gap-[20px] absolute top-[320px] left-[435px]" style={{ zIndex: 60 }}>
+            <div className="relative w-[176px] h-[32px]" />
             <div 
-              className="flex flex-col w-[243px] h-[371.7px] items-start justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] relative rounded-[12px] hover:scale-105"
+              className="flex flex-col w-[180px] h-[275px] items-start justify-around pt-[7px] pb-[10px] px-[7px] relative rounded-[10px] hover:scale-105"
               style={{ 
                 background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
-                boxShadow: '10px 18px 35px rgba(0,0,0,0.55)',
+                boxShadow: '8px 14px 28px rgba(0,0,0,0.55)',
                 border: '1px solid rgba(255,255,255,0.08)',
                 animation: 'card-float-2 4.5s ease-in-out infinite',
                 animationDelay: '0.5s',
               }}
             >
-              <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-1.png" />
+              <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-1.png" />
             </div>
           </div>
 
           <div 
-            className="flex flex-col w-[242px] h-[372px] items-center justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[598px] rounded-[12px] hover:scale-105"
+            className="flex flex-col w-[180px] h-[275px] items-center justify-around pt-[7px] pb-[10px] px-[7px] absolute top-[320px] left-[600px] rounded-[10px] hover:scale-105"
             style={{ 
               background: 'linear-gradient(145deg, rgba(50,50,50,1) 0%, rgba(8,8,8,1) 100%)',
-              boxShadow: '10px 18px 35px rgba(0,0,0,0.55)',
+              boxShadow: '8px 14px 28px rgba(0,0,0,0.55)',
               border: '1px solid rgba(255,255,255,0.1)',
               zIndex: 60,
               animation: 'card-float-3 5s ease-in-out infinite',
               animationDelay: '0.2s',
             }}
           >
-            <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-2.png" />
+            <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-2.png" />
           </div>
 
-          <div className="inline-flex flex-col items-start gap-[27px] absolute top-[360px] left-[802px]" style={{ zIndex: 60 }}>
-            <div className="relative w-[238.5px] h-[45px]" />
+          <div className="inline-flex flex-col items-start gap-[20px] absolute top-[320px] left-[765px]" style={{ zIndex: 60 }}>
+            <div className="relative w-[176px] h-[32px]" />
             <div 
-              className="flex flex-col w-[243px] h-[371.7px] items-start justify-around gap-[20.48px] pt-[9px] pb-[13.5px] px-[9px] relative rounded-[12px] hover:scale-105"
+              className="flex flex-col w-[180px] h-[275px] items-start justify-around pt-[7px] pb-[10px] px-[7px] relative rounded-[10px] hover:scale-105"
               style={{ 
                 background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
-                boxShadow: '10px 18px 35px rgba(0,0,0,0.55)',
+                boxShadow: '8px 14px 28px rgba(0,0,0,0.55)',
                 border: '1px solid rgba(255,255,255,0.08)',
                 animation: 'card-float-4 4.5s ease-in-out infinite',
                 animationDelay: '0.7s',
               }}
             >
-              <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-3.png" />
+              <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-3.png" />
             </div>
           </div>
 
           <div 
-            className="flex flex-col w-[245px] h-[372px] items-center justify-around gap-[20.48px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[1006px] rounded-[12px] hover:scale-105"
+            className="flex flex-col w-[180px] h-[275px] items-center justify-around pt-[7px] pb-[10px] px-[7px] absolute top-[320px] left-[930px] rounded-[10px] hover:scale-105"
             style={{ 
               background: 'linear-gradient(145deg, rgba(40,40,40,1) 0%, rgba(15,15,15,1) 100%)',
-              boxShadow: '12px 20px 40px rgba(0,0,0,0.6)',
+              boxShadow: '10px 16px 32px rgba(0,0,0,0.6)',
               border: '1px solid rgba(255,255,255,0.1)',
               zIndex: 60,
               animation: 'card-float-5 4s ease-in-out infinite',
               animationDelay: '0.3s',
             }}
           >
-            <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-4.png" />
+            <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-4.png" />
           </div>
 
-          {/* テキスト - ネオン効果付き（最適化版） */}
+          {/* テキスト - ネオン効果付き */}
           <div 
-            className="absolute top-[124px] left-[465px] font-aguafina font-normal text-[54.1px] text-center tracking-[0] leading-[77.3px] whitespace-nowrap"
+            className="absolute top-[100px] left-0 right-0 font-aguafina font-normal text-[42px] text-center tracking-[0] leading-[60px] whitespace-nowrap"
             style={{ 
               color: '#ffffff',
               textShadow: `
@@ -775,7 +775,7 @@ export const Top = () => {
           </div>
 
           <div 
-            className="absolute top-[218px] left-[341px] w-[758px] font-aguafina font-normal text-[137.7px] text-center tracking-[0] leading-[150.2px] whitespace-nowrap"
+            className="absolute top-[180px] left-0 right-0 font-aguafina font-normal text-[100px] text-center tracking-[0] leading-[110px] whitespace-nowrap"
             style={{ 
               color: '#ffffff',
               zIndex: 60,
