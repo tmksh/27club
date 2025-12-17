@@ -28,11 +28,11 @@ export const Footer5 = ({
       <ConcreteComponentNode
         className={concreteComponentNodeFooterClassName}
         divClassName="![white-space:unset]"
-        elementClassName="!h-[unset] !flex-1 !grow !w-[unset]"
+        elementClassName="!h-auto !w-[45px]"
         img={concreteComponentNodeVector3}
         imgClassName="!left-[4.16%]"
-        leftSectionClassName="!h-[227.1px]"
-        logoClassName="!flex-[unset] !flex !w-[50px]"
+        leftSectionClassName="!h-auto"
+        logoClassName="!flex-[unset] !flex !w-[45px]"
         socialIcons={concreteComponentNodeSocialIcons}
         text={
           <>

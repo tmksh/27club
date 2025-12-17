@@ -57,11 +57,12 @@ export const FrameWrapper = () => {
       try {
         const data = await castsAPI.getAll();
         console.log('取得したキャスト数:', data?.length || 0, data);
-        // データがある場合は使用
+        // データがある場合は使用（新しい画像パスで上書き）
         if (data && data.length > 0) {
-          setCastData(data.map(cast => ({
+          const newImages = ["/img/cast-1.png", "/img/cast-2.png", "/img/cast-3.png", "/img/cast-4.png", "/img/cast-5.png"];
+          setCastData(data.map((cast, index) => ({
             id: cast.id,
-            image: cast.profile_image_url || "/img/2025-07-21-15-39-19-2.png",
+            image: newImages[index % newImages.length],
             name: cast.name || "Cast",
             description: `${cast.features || '特徴情報なし'}${cast.favorite_drink ? `・好きなお酒：${cast.favorite_drink}` : ''}`,
             show: cast.show_description || "ショー情報なし",
@@ -72,35 +73,35 @@ export const FrameWrapper = () => {
           setCastData([
             {
               id: 1,
-              image: "/img/2025-07-21-15-39-19-2.png",
+              image: "/img/cast-1.png",
               name: "Cast 1",
               description: "特徴・好きなお酒：柔軟な体捌きが持ち味。",
               show: "写真のショー：「Starlight Dream」のポールダンスシーン",
             },
             {
               id: 2,
-              image: "/img/2025-07-21-15-39-19-5.png",
+              image: "/img/cast-2.png",
               name: "Cast 2",
               description: "特徴・好きなお酒：エネルギッシュなパフォーマンス。",
               show: "写真のショー：「Midnight Fantasy」のダンスシーン",
             },
             {
               id: 3,
-              image: "/img/2025-07-21-15-39-19-4.png",
+              image: "/img/cast-3.png",
               name: "Aurora",
               description: "特徴・好きなお酒：華麗な動きが魅力。",
               show: "写真のショー：「Crystal Night」のアクロバットシーン",
             },
             {
               id: 4,
-              image: "/img/2025-07-21-15-39-19-2.png",
+              image: "/img/cast-4.png",
               name: "Cast 4",
               description: "特徴・好きなお酒：情熱的なステージング。",
               show: "写真のショー：「Fire Dance」のファイアーパフォーマンス",
             },
             {
               id: 5,
-              image: "/img/2025-07-21-15-39-19-5.png",
+              image: "/img/cast-5.png",
               name: "Cast 5",
               description: "特徴・好きなお酒：繊細な表現力。",
               show: "写真のショー：「Moonlight Serenade」のバレエシーン",
@@ -113,35 +114,35 @@ export const FrameWrapper = () => {
         setCastData([
           {
             id: 1,
-            image: "/img/2025-07-21-15-39-19-2.png",
+            image: "/img/cast-1.png",
             name: "Cast 1",
             description: "特徴・好きなお酒：柔軟な体捌きが持ち味。",
             show: "写真のショー：「Starlight Dream」のポールダンスシーン",
           },
           {
             id: 2,
-            image: "/img/2025-07-21-15-39-19-5.png",
+            image: "/img/cast-2.png",
             name: "Cast 2",
             description: "特徴・好きなお酒：エネルギッシュなパフォーマンス。",
             show: "写真のショー：「Midnight Fantasy」のダンスシーン",
           },
           {
             id: 3,
-            image: "/img/2025-07-21-15-39-19-4.png",
+            image: "/img/cast-3.png",
             name: "Aurora",
             description: "特徴・好きなお酒：華麗な動きが魅力。",
             show: "写真のショー：「Crystal Night」のアクロバットシーン",
           },
           {
             id: 4,
-            image: "/img/2025-07-21-15-39-19-2.png",
+            image: "/img/cast-4.png",
             name: "Cast 4",
             description: "特徴・好きなお酒：情熱的なステージング。",
             show: "写真のショー：「Fire Dance」のファイアーパフォーマンス",
           },
           {
             id: 5,
-            image: "/img/2025-07-21-15-39-19-5.png",
+            image: "/img/cast-5.png",
             name: "Cast 5",
             description: "特徴・好きなお酒：繊細な表現力。",
             show: "写真のショー：「Moonlight Serenade」のバレエシーン",
@@ -530,12 +531,6 @@ export const FrameWrapper = () => {
               </div>
             </div>
             
-            {/* 操作ヒント */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/40 text-xs flex items-center gap-2">
-              <span>←</span>
-              <span>ドラッグで回転</span>
-              <span>→</span>
-            </div>
           </div>
 
         </div>

@@ -806,6 +806,100 @@
   }
 }
 
+/* タイトル表示アニメーション */
+@keyframes title-reveal {
+  0% {
+    opacity: 0;
+    transform: perspective(500px) translateZ(100px) translateY(30px) scale(0.9);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 1;
+    transform: perspective(500px) translateZ(60px) translateY(-5px) scale(1.02);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(500px) translateZ(50px) translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes subtitle-reveal {
+  0% {
+    opacity: 0;
+    transform: perspective(500px) translateZ(50px) translateY(20px);
+    letter-spacing: 0.3em;
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(500px) translateZ(30px) translateY(0);
+    letter-spacing: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 15px rgba(0,255,150,0.7),
+      0 0 45px rgba(0,255,150,0.4),
+      0 5px 10px rgba(0,0,0,0.8);
+  }
+  50% {
+    text-shadow: 
+      0 0 25px rgba(0,255,150,0.9),
+      0 0 60px rgba(0,255,150,0.6),
+      0 0 100px rgba(0,255,150,0.3),
+      0 5px 10px rgba(0,0,0,0.8);
+  }
+}
+
+/* カードふわふわアニメーション */
+@keyframes card-float-1 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(8deg) rotateX(2deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(8deg) rotateX(2deg) translateY(-25px);
+  }
+}
+
+@keyframes card-float-2 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(4deg) rotateX(1deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(4deg) rotateX(1deg) translateY(-20px);
+  }
+}
+
+@keyframes card-float-3 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-30px);
+  }
+}
+
+@keyframes card-float-4 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(-4deg) rotateX(1deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-4deg) rotateX(1deg) translateY(-20px);
+  }
+}
+
+@keyframes card-float-5 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(-25px);
+  }
+}
+
 /* ナイトクラブ レーザービームアニメーション */
 @keyframes laser-pulse {
   0%, 100% {

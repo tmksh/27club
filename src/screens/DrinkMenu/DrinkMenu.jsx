@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 
 export const DrinkMenu = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center min-h-screen bg-black">
       <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
@@ -53,8 +54,8 @@ export const DrinkMenu = () => {
       {/* フッター */}
       <div className="w-full py-8 bg-gradient-to-t from-black to-transparent">
         <div className="text-center">
-          <Link 
-            to="/"
+          <button 
+            onClick={() => navigate(-1)}
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full cursor-pointer transition-all duration-300 hover:scale-105"
             style={{
               background: 'linear-gradient(135deg, #00c9a7 0%, #00d4aa 50%, #02e8b0 100%)',
@@ -63,9 +64,9 @@ export const DrinkMenu = () => {
             }}
           >
             <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-base">
-              TOPに戻る
+              戻る
             </span>
-          </Link>
+          </button>
         </div>
       </div>
     </div>

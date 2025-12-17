@@ -575,13 +575,13 @@ export const Top = () => {
 
           {/* カード - 3D効果付き（最適化版） */}
           <div 
-            className="flex flex-col w-[243px] h-[372px] items-start justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[189px] rounded-[12px] aspect-[0.65] transition-transform duration-500 hover:scale-105"
+            className="flex flex-col w-[243px] h-[372px] items-start justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[189px] rounded-[12px] aspect-[0.65] hover:scale-105"
             style={{ 
               background: 'linear-gradient(145deg, rgba(40,40,40,1) 0%, rgba(15,15,15,1) 100%)',
-              transform: 'perspective(1000px) rotateY(8deg) rotateX(2deg)',
               boxShadow: '12px 20px 40px rgba(0,0,0,0.6)',
               border: '1px solid rgba(255,255,255,0.1)',
               zIndex: 60,
+              animation: 'card-float-1 4s ease-in-out infinite',
             }}
           >
             <img className="relative self-stretch w-full h-[360px] mt-[-5.31px] mb-[-5.31px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23.png" />
@@ -590,12 +590,13 @@ export const Top = () => {
           <div className="inline-flex flex-col items-start gap-[27px] absolute top-[360px] left-[394px]" style={{ zIndex: 60 }}>
             <div className="relative w-[238.5px] h-[45px]" />
             <div 
-              className="flex flex-col w-[243px] h-[371.7px] items-start justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] relative rounded-[12px] transition-transform duration-500 hover:scale-105"
+              className="flex flex-col w-[243px] h-[371.7px] items-start justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] relative rounded-[12px] hover:scale-105"
               style={{ 
                 background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
-                transform: 'perspective(1000px) rotateY(4deg) rotateX(1deg)',
                 boxShadow: '10px 18px 35px rgba(0,0,0,0.55)',
                 border: '1px solid rgba(255,255,255,0.08)',
+                animation: 'card-float-2 4.5s ease-in-out infinite',
+                animationDelay: '0.5s',
               }}
             >
               <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-1.png" />
@@ -603,13 +604,14 @@ export const Top = () => {
           </div>
 
           <div 
-            className="flex flex-col w-[242px] h-[372px] items-center justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[598px] rounded-[12px] transition-transform duration-500 hover:scale-105"
+            className="flex flex-col w-[242px] h-[372px] items-center justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[598px] rounded-[12px] hover:scale-105"
             style={{ 
               background: 'linear-gradient(145deg, rgba(50,50,50,1) 0%, rgba(8,8,8,1) 100%)',
-              transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg)',
               boxShadow: '10px 18px 35px rgba(0,0,0,0.55)',
               border: '1px solid rgba(255,255,255,0.1)',
               zIndex: 60,
+              animation: 'card-float-3 5s ease-in-out infinite',
+              animationDelay: '0.2s',
             }}
           >
             <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-2.png" />
@@ -618,12 +620,13 @@ export const Top = () => {
           <div className="inline-flex flex-col items-start gap-[27px] absolute top-[360px] left-[802px]" style={{ zIndex: 60 }}>
             <div className="relative w-[238.5px] h-[45px]" />
             <div 
-              className="flex flex-col w-[243px] h-[371.7px] items-start justify-around gap-[20.48px] pt-[9px] pb-[13.5px] px-[9px] relative rounded-[12px] transition-transform duration-500 hover:scale-105"
+              className="flex flex-col w-[243px] h-[371.7px] items-start justify-around gap-[20.48px] pt-[9px] pb-[13.5px] px-[9px] relative rounded-[12px] hover:scale-105"
               style={{ 
                 background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
-                transform: 'perspective(1000px) rotateY(-4deg) rotateX(1deg)',
                 boxShadow: '10px 18px 35px rgba(0,0,0,0.55)',
                 border: '1px solid rgba(255,255,255,0.08)',
+                animation: 'card-float-4 4.5s ease-in-out infinite',
+                animationDelay: '0.7s',
               }}
             >
               <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-3.png" />
@@ -631,13 +634,14 @@ export const Top = () => {
           </div>
 
           <div 
-            className="flex flex-col w-[245px] h-[372px] items-center justify-around gap-[20.48px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[1006px] rounded-[12px] transition-transform duration-500 hover:scale-105"
+            className="flex flex-col w-[245px] h-[372px] items-center justify-around gap-[20.48px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[1006px] rounded-[12px] hover:scale-105"
             style={{ 
               background: 'linear-gradient(145deg, rgba(40,40,40,1) 0%, rgba(15,15,15,1) 100%)',
-              transform: 'perspective(1000px) rotateY(-8deg) rotateX(2deg)',
               boxShadow: '12px 20px 40px rgba(0,0,0,0.6)',
               border: '1px solid rgba(255,255,255,0.1)',
               zIndex: 60,
+              animation: 'card-float-5 4s ease-in-out infinite',
+              animationDelay: '0.3s',
             }}
           >
             <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-4.png" />
@@ -653,8 +657,8 @@ export const Top = () => {
                 0 0 30px rgba(0,255,150,0.35),
                 0 3px 6px rgba(0,0,0,0.7)
               `,
-              transform: 'perspective(500px) translateZ(30px)',
               zIndex: 60,
+              animation: 'subtitle-reveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both',
             }}
           >
             Welcome to Tonight's SHOWTIME
@@ -664,13 +668,8 @@ export const Top = () => {
             className="absolute top-[218px] left-[341px] w-[758px] font-aguafina font-normal text-[137.7px] text-center tracking-[0] leading-[150.2px] whitespace-nowrap"
             style={{ 
               color: '#ffffff',
-              textShadow: `
-                0 0 15px rgba(0,255,150,0.7),
-                0 0 45px rgba(0,255,150,0.4),
-                0 5px 10px rgba(0,0,0,0.8)
-              `,
-              transform: 'perspective(500px) translateZ(50px)',
               zIndex: 60,
+              animation: 'title-reveal 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both, glow-pulse 3s ease-in-out 2.5s infinite',
             }}
           >
             THE 27 CLUB

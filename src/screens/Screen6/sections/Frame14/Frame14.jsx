@@ -124,127 +124,38 @@ export const Frame14 = () => {
 
   return (
     <div className="w-full px-4 md:px-8 lg:px-16 py-8 md:py-16">
-      {/* ステップ一覧 - PC版はタイムライン風 */}
-      <div className="flex flex-col gap-8 md:gap-0 max-w-[1200px] mx-auto relative">
-        {/* PC版の中央ライン */}
-        <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#00c9a7]/50 to-transparent transform -translate-x-1/2" />
-        
+      {/* ステップ一覧 */}
+      <div className="flex flex-col gap-8 md:gap-12 lg:gap-16 max-w-[1200px] mx-auto">
         {steps.map((step, index) => (
           <div 
             key={step.number}
             data-scroll={step.imageFirst ? "fade-left" : "fade-right"}
-            className={`flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-0 items-center relative ${index !== steps.length - 1 ? 'lg:pb-16' : ''}`}
+            className={`flex flex-col ${step.imageFirst ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4 md:gap-6 lg:gap-8 items-center`}
           >
-            {/* PC版の番号バッジ（中央） */}
-            <div className="hidden lg:flex absolute left-1/2 top-8 transform -translate-x-1/2 z-10">
+            {/* 画像部分 */}
+            <div className="w-full md:w-1/2 relative">
+              <div className="absolute inset-0 translate-x-[-10px] translate-y-[-10px] md:translate-x-[-15px] md:translate-y-[-15px] bg-[#fffee7b2] rounded-[10px]" />
               <div 
-                className="w-16 h-16 rounded-full flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, #00c9a7 0%, #025b51 100%)',
-                  boxShadow: '0 0 30px rgba(0,200,167,0.5), inset 0 0 20px rgba(255,255,255,0.1)',
-                  border: '2px solid rgba(255,255,255,0.3)',
-                }}
-              >
-                <span className="[font-family:'Playfair_Display',Helvetica] font-bold text-white text-xl">{step.number}</span>
+                className="relative w-full aspect-[590/300] bg-cover bg-center rounded-[10px]"
+                style={{ backgroundImage: `url(${step.image})` }}
+              />
+            </div>
+
+            {/* テキスト部分 */}
+            <div className="w-full md:w-1/2 flex flex-col gap-3 md:gap-4 p-5 md:p-8 lg:p-10 bg-black rounded-[10px]">
+              <div className="[font-family:'Shippori_Mincho',Helvetica] font-semibold text-[#025b51] text-4xl md:text-5xl lg:text-[52px] leading-tight">
+                {step.number}
               </div>
-            </div>
 
-            {/* 左側コンテンツ */}
-            <div className={`w-full lg:w-[calc(50%-40px)] ${step.imageFirst ? 'lg:pr-8' : 'lg:order-2 lg:pl-8'}`}>
-              {step.imageFirst ? (
-                // 画像部分
-                <div className="relative group">
-                  <div 
-                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(0,200,167,0.2) 0%, transparent 50%)',
-                    }}
-                  />
-                  <div 
-                    className="relative w-full aspect-[16/10] bg-cover bg-center rounded-xl overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]"
-                    style={{ 
-                      backgroundImage: `url(${step.image})`,
-                      boxShadow: '0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0,200,167,0.1)',
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  </div>
-                </div>
-              ) : (
-                // テキスト部分
-                <div 
-                  className="flex flex-col gap-4 p-6 md:p-8 lg:p-10 rounded-xl h-full"
-                  style={{
-                    background: 'linear-gradient(145deg, rgba(20,20,20,0.95) 0%, rgba(5,5,5,0.98) 100%)',
-                    boxShadow: '0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.05)',
-                  }}
-                >
-                  {/* モバイル用番号 */}
-                  <div className="lg:hidden [font-family:'Playfair_Display',Helvetica] font-bold text-[#00c9a7] text-5xl">
-                    {step.number}
-                  </div>
+              <div className="[font-family:'Shippori_Mincho',Helvetica] font-bold text-white text-lg md:text-xl lg:text-2xl">
+                {step.title}
+              </div>
 
-                  <div className="[font-family:'Shippori_Mincho',Helvetica] font-bold text-white text-xl md:text-2xl lg:text-[26px]">
-                    {step.title}
-                  </div>
+              <div className="[font-family:'Shippori_Mincho',Helvetica] font-normal text-white text-sm md:text-base lg:text-lg leading-relaxed md:leading-[30.6px]">
+                {step.description}
+              </div>
 
-                  <div className="[font-family:'Shippori_Mincho',Helvetica] font-normal text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed md:leading-[32px]">
-                    {step.description}
-                  </div>
-
-                  {step.showButtons && <MenuButtons />}
-                </div>
-              )}
-            </div>
-
-            {/* 右側コンテンツ */}
-            <div className={`w-full lg:w-[calc(50%-40px)] ${step.imageFirst ? 'lg:order-2 lg:pl-8' : 'lg:pr-8'}`}>
-              {step.imageFirst ? (
-                // テキスト部分
-                <div 
-                  className="flex flex-col gap-4 p-6 md:p-8 lg:p-10 rounded-xl h-full"
-                  style={{
-                    background: 'linear-gradient(145deg, rgba(20,20,20,0.95) 0%, rgba(5,5,5,0.98) 100%)',
-                    boxShadow: '0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.05)',
-                  }}
-                >
-                  {/* モバイル用番号 */}
-                  <div className="lg:hidden [font-family:'Playfair_Display',Helvetica] font-bold text-[#00c9a7] text-5xl">
-                    {step.number}
-                  </div>
-
-                  <div className="[font-family:'Shippori_Mincho',Helvetica] font-bold text-white text-xl md:text-2xl lg:text-[26px]">
-                    {step.title}
-                  </div>
-
-                  <div className="[font-family:'Shippori_Mincho',Helvetica] font-normal text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed md:leading-[32px]">
-                    {step.description}
-                  </div>
-
-                  {step.showButtons && <MenuButtons />}
-                </div>
-              ) : (
-                // 画像部分
-                <div className="relative group">
-                  <div 
-                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(0,200,167,0.2) 0%, transparent 50%)',
-                    }}
-                  />
-                  <div 
-                    className="relative w-full aspect-[16/10] bg-cover bg-center rounded-xl overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]"
-                    style={{ 
-                      backgroundImage: `url(${step.image})`,
-                      boxShadow: '0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0,200,167,0.1)',
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  </div>
-                </div>
-              )}
+              {step.showButtons && <MenuButtons />}
             </div>
           </div>
         ))}
@@ -253,37 +164,30 @@ export const Frame14 = () => {
       {/* 締めのメッセージ */}
       <div 
         data-scroll="scale-up"
-        className="flex flex-col w-full max-w-[1000px] mx-auto items-center gap-4 md:gap-6 p-6 md:p-10 lg:p-12 mt-16 md:mt-24 rounded-2xl relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(145deg, rgba(0,40,35,0.9) 0%, rgba(5,15,13,0.95) 100%)',
-          boxShadow: '0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,200,167,0.1)',
-          border: '1px solid rgba(0,200,167,0.2)',
-        }}
+        className="flex flex-col w-full max-w-[1000px] mx-auto items-center gap-4 md:gap-6 p-6 md:p-10 mt-12 md:mt-16 bg-black rounded-[20px]"
       >
-        {/* デコレーション */}
-        <div className="absolute top-0 left-0 w-32 h-32 bg-[#00c9a7]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#00c9a7]/10 rounded-full blur-3xl" />
-        
-        <div className="relative z-10 inline-flex gap-3 items-center">
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl lg:text-3xl tracking-wide text-center">
+        <div className="inline-flex gap-3 items-center">
+          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-xl lg:text-2xl tracking-[0] leading-tight text-center">
             ポイントは「一緒に楽しむこと」
           </div>
         </div>
 
-        <div className="relative z-10 flex flex-col gap-3 md:gap-4 w-full items-center">
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-gray-300 text-sm md:text-base lg:text-lg text-center leading-relaxed">
+        <div className="flex flex-col gap-3 md:gap-4 w-full items-center">
+          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#cccccc] text-sm md:text-base text-center leading-relaxed">
             THE27CLUBのショーは、キャストとお客様が一体となって作り上げるもの。
           </div>
 
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-gray-300 text-sm md:text-base lg:text-lg text-center leading-relaxed">
+          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#cccccc] text-sm md:text-base text-center leading-relaxed">
             拍手も、声援も、チップも、撮影も、そしてフードやドリンクも——そのすべてがショーの一部です。
           </div>
         </div>
 
-        <div className="relative z-10 inline-flex flex-col md:flex-row items-center gap-2 text-center mt-2">
-          <div className="text-2xl">✨</div>
+        <div className="inline-flex flex-col md:flex-row items-center gap-2 text-center">
+          <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#b8860b] text-lg md:text-xl">
+            ✨
+          </div>
 
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-white text-base md:text-lg leading-relaxed">
+          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-white text-sm md:text-base leading-relaxed">
             初めての方も、どうぞ肩の力を抜いて「自分なりの楽しみ方」でご参加ください。
           </div>
         </div>

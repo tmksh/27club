@@ -1,8 +1,25 @@
 import React from "react";
 
 export const SectionComponentNode = () => {
-  // プレースホルダー用のデータ
-  const placeholderItems = Array(8).fill(null);
+  // ギャラリーアイテムコンポーネント（縦長画像928×1242対応）
+  const GalleryItem = ({ image, className }) => (
+    <div className={`relative group overflow-hidden bg-[#1a1a2e] ${className}`}>
+      {/* デフォルト：画像表示（縦長画像を見切れなく表示） */}
+      <img 
+        src={image} 
+        alt="Gallery" 
+        className="w-full h-full object-contain transition-opacity duration-500 group-hover:opacity-0"
+      />
+      {/* ホバー時：白い表紙 + ロゴ */}
+      <div className="absolute inset-0 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <img 
+          src="/img/27logo-1-1.png" 
+          alt="27 CLUB Logo" 
+          className="w-[40%] max-w-[200px] h-auto object-contain"
+        />
+      </div>
+    </div>
+  );
 
   return (
     <div className="relative self-stretch w-full overflow-hidden py-16 md:py-24">
@@ -23,75 +40,42 @@ export const SectionComponentNode = () => {
           </div>
         </div>
 
-        {/* カスタムBento Gridレイアウト - プレースホルダー版 - フルワイド */}
-        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[150px] md:auto-rows-[240px] gap-1 relative z-10 w-full" data-scroll="fade-up">
+        {/* カスタムギャラリーグリッド（縦長画像928×1242対応） */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 relative z-10 w-full px-4 md:px-8" data-scroll="fade-up">
           
-          {/* 共通のプレースホルダーコンポーネント */}
-          {/* 1. 左上の大きな画像エリア - ロゴ */}
-          <div className="col-span-2 row-span-2 relative group overflow-hidden bg-white flex items-center justify-center">
-            <img 
-              src="/img/27logo-1-1.png" 
-              alt="27 CLUB Logo" 
-              className="w-[180px] md:w-[240px] h-auto object-contain opacity-90"
-            />
-          </div>
-
-          {/* 2. 右上の縦に並んだ2枚エリア */}
-          <div className="col-span-1 row-span-2 flex flex-col gap-1">
-            <div className="flex-1 relative group overflow-hidden bg-white flex items-center justify-center">
-               <img 
-                 src="/img/27logo-1-1.png" 
-                 alt="27 CLUB Logo" 
-                 className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
-               />
-            </div>
-            <div className="flex-1 relative group overflow-hidden bg-white flex items-center justify-center">
-               <img 
-                 src="/img/27logo-1-1.png" 
-                 alt="27 CLUB Logo" 
-                 className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
-               />
-            </div>
-          </div>
-
-          {/* 3. 中段エリア */}
-          <div className="col-span-1 row-span-1 relative group overflow-hidden bg-white flex items-center justify-center">
-             <img 
-               src="/img/27logo-1-1.png" 
-               alt="27 CLUB Logo" 
-               className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
-             />
-          </div>
-          <div className="col-span-2 row-span-2 relative group overflow-hidden bg-white flex items-center justify-center">
-            <img 
-              src="/img/27logo-1-1.png" 
-              alt="27 CLUB Logo" 
-              className="w-[180px] md:w-[240px] h-auto object-contain opacity-90"
-            />
-          </div>
-
-          {/* 4. 下段エリア */}
-          <div className="col-span-1 row-span-2 relative group overflow-hidden bg-white flex items-center justify-center">
-             <img 
-               src="/img/27logo-1-1.png" 
-               alt="27 CLUB Logo" 
-               className="w-[100px] md:w-[120px] h-auto object-contain opacity-90"
-             />
-          </div>
-          <div className="col-span-1 row-span-1 relative group overflow-hidden bg-white flex items-center justify-center">
-             <img 
-               src="/img/27logo-1-1.png" 
-               alt="27 CLUB Logo" 
-               className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
-             />
-          </div>
-           <div className="col-span-1 row-span-1 relative group overflow-hidden bg-white flex items-center justify-center">
-             <img 
-               src="/img/27logo-1-1.png" 
-               alt="27 CLUB Logo" 
-               className="w-[80px] md:w-[100px] h-auto object-contain opacity-90"
-             />
-          </div>
+          {/* 縦長画像を均等に配置 */}
+          <GalleryItem 
+            image="/img/gallery-default.png" 
+            className="aspect-[3/4]"
+          />
+          <GalleryItem 
+            image="/img/gallery-default.png" 
+            className="aspect-[3/4]"
+          />
+          <GalleryItem 
+            image="/img/gallery-default.png" 
+            className="aspect-[3/4]"
+          />
+          <GalleryItem 
+            image="/img/gallery-default.png" 
+            className="aspect-[3/4]"
+          />
+          <GalleryItem 
+            image="/img/gallery-default.png" 
+            className="aspect-[3/4]"
+          />
+          <GalleryItem 
+            image="/img/gallery-default.png" 
+            className="aspect-[3/4]"
+          />
+          <GalleryItem 
+            image="/img/gallery-default.png" 
+            className="aspect-[3/4]"
+          />
+          <GalleryItem 
+            image="/img/gallery-default.png" 
+            className="aspect-[3/4]"
+          />
           
         </div>
 
