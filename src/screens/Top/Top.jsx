@@ -658,7 +658,7 @@ export const Top = () => {
           {Array.from({ length: 40 }, (_, i) => {
             const colors = ['#ff4466', '#44aaff', '#ffcc00', '#44ff88', '#ff44aa', '#8844ff', '#00ccff', '#ff8844'];
             const color = colors[i % colors.length];
-            const size = 16 + (i % 5) * 4;
+            const size = 24 + (i % 5) * 8;
             const dir = i % 8;
             const duration = 6 + (i % 8) * 0.5;
             const delay = (i / 40) * duration;
@@ -688,7 +688,7 @@ export const Top = () => {
           {Array.from({ length: 16 }, (_, i) => {
             const chipImages = ['/img/3-1.png', '/img/1-2.png', '/img/2.png', '/img/3-2.png', '/img/4-1.png', '/img/5-1.png'];
             const img = chipImages[i % chipImages.length];
-            const size = 45 + (i % 4) * 18;
+            const size = 65 + (i % 4) * 25;
             const dir = i % 8;
             const duration = 8 + (i % 5) * 0.6;
             const delay = (i / 16) * duration;
