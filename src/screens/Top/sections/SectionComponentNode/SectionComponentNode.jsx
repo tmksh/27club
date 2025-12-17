@@ -8,6 +8,7 @@ export const SectionComponentNode = () => {
       <img 
         src={image} 
         alt="Gallery" 
+        loading="lazy"
         className="w-full h-full object-contain transition-opacity duration-500 group-hover:opacity-0"
       />
       {/* ホバー時：白い表紙 + ロゴ */}
@@ -45,35 +46,35 @@ export const SectionComponentNode = () => {
           
           {/* 縦長画像を均等に配置 */}
           <GalleryItem 
-            image="/img/gallery-default.png" 
+            image="/img/gallery-default.jpg" 
             className="aspect-[3/4]"
           />
           <GalleryItem 
-            image="/img/gallery-default.png" 
+            image="/img/gallery-default.jpg" 
             className="aspect-[3/4]"
           />
           <GalleryItem 
-            image="/img/gallery-default.png" 
+            image="/img/gallery-default.jpg" 
             className="aspect-[3/4]"
           />
           <GalleryItem 
-            image="/img/gallery-default.png" 
+            image="/img/gallery-default.jpg" 
             className="aspect-[3/4]"
           />
           <GalleryItem 
-            image="/img/gallery-default.png" 
+            image="/img/gallery-default.jpg" 
             className="aspect-[3/4]"
           />
           <GalleryItem 
-            image="/img/gallery-default.png" 
+            image="/img/gallery-default.jpg" 
             className="aspect-[3/4]"
           />
           <GalleryItem 
-            image="/img/gallery-default.png" 
+            image="/img/gallery-default.jpg" 
             className="aspect-[3/4]"
           />
           <GalleryItem 
-            image="/img/gallery-default.png" 
+            image="/img/gallery-default.jpg" 
             className="aspect-[3/4]"
           />
           

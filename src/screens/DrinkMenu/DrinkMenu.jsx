@@ -43,7 +43,7 @@ export const DrinkMenu = () => {
             }}
           >
             <img 
-              src="/img/S__21356585.png" 
+              src="/img/S__21356585.jpg" loading="lazy" 
               alt="ドリンクメニュー 2" 
               className="w-full max-w-[500px] h-auto"
             />

@@ -261,24 +261,74 @@ export const Top = () => {
         </div>
 
         {/* モバイル版FV（3D空間 + ネオン玉） */}
-        <div className="md:hidden relative w-full h-[100svh] max-h-[750px]" style={{ perspective: '1200px' }}>
-          {/* 背景 - 緑のネオングラデーション（最適化版） */}
+        <div className="md:hidden relative w-full h-[100svh] max-h-[750px] overflow-hidden" style={{ perspective: '1200px' }}>
+          {/* 宇宙空間3D背景 - SP版 */}
           <div 
             className="absolute inset-0"
             style={{
               background: `
-                radial-gradient(ellipse 120% 80% at 50% 30%, rgba(0,255,150,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 40%, #0a2020 0%, #051515 40%, #000 100%)
+                radial-gradient(ellipse 200% 150% at 50% -20%, rgba(0,255,150,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,180,140,0.08) 0%, transparent 40%),
+                radial-gradient(ellipse 80% 60% at 85% 70%, rgba(0,200,160,0.06) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #061515 0%, #030a0a 40%, #000 100%)
               `,
             }}
           />
 
-          {/* 中央のグロー（最適化版：ブラーなし） */}
+          {/* 星のレイヤー - SP版 */}
+          <div className="absolute inset-0 overflow-hidden">
+            {Array.from({ length: 50 }, (_, i) => {
+              const x = (i * 17.3 + (i % 7) * 53) % 100;
+              const y = (i * 13.7 + (i % 11) * 41) % 100;
+              const size = 1 + (i % 3);
+              const opacity = 0.3 + (i % 5) * 0.15;
+              const twinkleDuration = 2 + (i % 4);
+              const delay = (i % 10) * 0.3;
+              return (
+                <div
+                  key={`star-sp-${i}`}
+                  className="absolute rounded-full"
+                  style={{
+                    left: `${x}%`,
+                    top: `${y}%`,
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    background: '#fff',
+                    opacity: opacity,
+                    boxShadow: `0 0 ${size * 2}px rgba(255,255,255,${opacity})`,
+                    animation: `twinkle ${twinkleDuration}s ease-in-out ${delay}s infinite`,
+                  }}
+                />
+              );
+            })}
+          </div>
+
+          {/* 星雲エフェクト - SP版 */}
           <div 
-            className="absolute top-1/2 left-1/2 w-[280px] h-[280px] pointer-events-none"
+            className="absolute top-[10%] left-[5%] w-[200px] h-[150px] pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse, rgba(0,255,180,0.05) 0%, transparent 60%)',
+              filter: 'blur(40px)',
+            }}
+          />
+          <div 
+            className="absolute top-[60%] right-[5%] w-[180px] h-[130px] pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse, rgba(0,200,150,0.06) 0%, transparent 60%)',
+              filter: 'blur(35px)',
+            }}
+          />
+
+          {/* 中央のグロー - 強化版 */}
+          <div 
+            className="absolute top-[40%] left-1/2 w-[300px] h-[300px] pointer-events-none"
             style={{
               transform: 'translate(-50%, -50%)',
-              background: 'radial-gradient(circle, rgba(0,255,150,0.18) 0%, rgba(0,200,100,0.08) 35%, transparent 65%)',
+              background: `
+                radial-gradient(circle, rgba(0,255,150,0.12) 0%, transparent 40%),
+                radial-gradient(circle, rgba(0,200,180,0.08) 20%, transparent 60%)
+              `,
+              filter: 'blur(30px)',
             }}
           />
 
@@ -379,7 +429,7 @@ export const Top = () => {
                   border: '1px solid rgba(255,255,255,0.1)',
                 }}
               >
-                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23.png" />
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23.jpg" />
               </div>
 
               {/* カード2 - 左寄り */}
@@ -394,7 +444,7 @@ export const Top = () => {
                   border: '1px solid rgba(255,255,255,0.08)',
                 }}
               >
-                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-1.png" />
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-1.jpg" />
               </div>
 
               {/* カード3 - 中央 */}
@@ -410,7 +460,7 @@ export const Top = () => {
                   border: '1px solid rgba(255,255,255,0.1)',
                 }}
               >
-                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-2.png" />
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-2.jpg" />
               </div>
 
               {/* カード4 - 右寄り */}
@@ -425,7 +475,7 @@ export const Top = () => {
                   border: '1px solid rgba(255,255,255,0.08)',
                 }}
               >
-                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-3.png" />
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-3.jpg" />
               </div>
 
               {/* カード5 - 右端 */}
@@ -440,7 +490,7 @@ export const Top = () => {
                   border: '1px solid rgba(255,255,255,0.1)',
                 }}
               >
-                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-4.png" />
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-4.jpg" />
               </div>
             </div>
 
@@ -470,7 +520,7 @@ export const Top = () => {
 
         {/* PC版FV（新しいデザイン + ネオン玉） */}
         <div 
-          className="hidden md:block overflow-visible w-full min-w-[1440px] min-h-[750px] relative"
+          className="hidden md:block overflow-hidden w-full min-w-[1440px] min-h-[750px] relative"
           style={{ perspective: '2000px' }}
         >
           {/* 宇宙空間3D背景 */}
@@ -694,7 +744,7 @@ export const Top = () => {
               animation: 'card-float-1 4s ease-in-out infinite',
             }}
           >
-            <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23.png" />
+            <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23.jpg" />
           </div>
 
           <div className="inline-flex flex-col items-start gap-[20px] absolute top-[320px] left-[435px]" style={{ zIndex: 60 }}>
@@ -709,7 +759,7 @@ export const Top = () => {
                 animationDelay: '0.5s',
               }}
             >
-              <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-1.png" />
+              <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-1.jpg" />
             </div>
           </div>
 
@@ -724,7 +774,7 @@ export const Top = () => {
               animationDelay: '0.2s',
             }}
           >
-            <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-2.png" />
+            <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-2.jpg" />
           </div>
 
           <div className="inline-flex flex-col items-start gap-[20px] absolute top-[320px] left-[765px]" style={{ zIndex: 60 }}>
@@ -739,7 +789,7 @@ export const Top = () => {
                 animationDelay: '0.7s',
               }}
             >
-              <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-3.png" />
+              <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-3.jpg" />
             </div>
           </div>
 
@@ -754,7 +804,7 @@ export const Top = () => {
               animationDelay: '0.3s',
             }}
           >
-            <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-4.png" />
+            <img className="relative self-stretch w-full h-full rounded-[6px] object-cover" alt="Rectangle" src="/img/rectangle-23-4.jpg" />
           </div>
 
           {/* テキスト - ネオン効果付き */}
