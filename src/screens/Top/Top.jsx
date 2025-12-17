@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Div } from "./sections/Div";
 import { DivWrapper } from "./sections/DivWrapper";
@@ -16,11 +16,23 @@ export const Top = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const languageDropdownRef = useRef(null);
 
   useEffect(() => {
     // ページが表示された時、またはTOPページに戻ってきた時にアニメーションをリセット
     setAnimationKey(prev => prev + 1);
   }, [location.pathname]);
+
+  // 言語ドロップダウンの外側クリックで閉じる
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (languageDropdownRef.current && !languageDropdownRef.current.contains(event.target)) {
+        setIsLanguageOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // モバイルメニューが開いているときはスクロールを無効化
   useEffect(() => {
@@ -183,47 +195,48 @@ export const Top = () => {
                 </Link>
               ))}
               
-              <div className="relative">
-                <div 
-                  className="relative w-[90px] h-[27.14px] border border-solid border-white cursor-pointer hover:bg-white/10 transition-colors"
+              <div className="relative" ref={languageDropdownRef}>
+                <button 
+                  className="flex items-center justify-center gap-2 px-3 py-1.5 bg-white/10 border border-white rounded hover:bg-white/20 transition-colors"
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                 >
-                  <div className="inline-flex items-start gap-[5px] relative top-2 left-3.5">
-                    <div className="relative w-fit mt-[-1.00px] [font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px] whitespace-nowrap">
-                      {language}
-                    </div>
-                    <img 
-                      className={`relative w-[9.53px] h-[6.75px] transition-transform ${isLanguageOpen ? 'rotate-180' : ''}`} 
-                      alt="Polygon" 
-                      src="/img/polygon-2.svg" 
-                    />
-                  </div>
-                </div>
+                  <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-xs tracking-wide">
+                    {language}
+                  </span>
+                  <svg 
+                    className={`w-3 h-3 text-white transition-transform duration-200 ${isLanguageOpen ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
                 
                 {isLanguageOpen && (
-                  <div className="absolute top-[30px] left-0 w-[90px] bg-[#1a1a2e] border border-solid border-white shadow-lg z-30">
-                    <div 
-                      className="px-3 py-2 cursor-pointer hover:bg-white/10 transition-colors"
+                  <div className="absolute top-full left-0 mt-1 w-full min-w-[100px] bg-black/95 border border-white/30 rounded shadow-lg z-50 overflow-hidden">
+                    <button 
+                      className="w-full px-3 py-2 text-left hover:bg-white/10 transition-colors"
                       onClick={() => {
                         setLanguage('日本語');
                         setIsLanguageOpen(false);
                       }}
                     >
-                      <div className="[font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px]">
+                      <span className="[font-family:'Inter',Helvetica] font-medium text-white text-xs">
                         日本語
-                      </div>
-                    </div>
-                    <div 
-                      className="px-3 py-2 cursor-pointer hover:bg-white/10 transition-colors"
+                      </span>
+                    </button>
+                    <button 
+                      className="w-full px-3 py-2 text-left hover:bg-white/10 transition-colors"
                       onClick={() => {
                         setLanguage('English');
                         setIsLanguageOpen(false);
                       }}
                     >
-                      <div className="[font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px]">
+                      <span className="[font-family:'Inter',Helvetica] font-medium text-white text-xs">
                         English
-                      </div>
-                    </div>
+                      </span>
+                    </button>
                   </div>
                 )}
               </div>
@@ -249,40 +262,35 @@ export const Top = () => {
 
         {/* モバイル版FV（3D空間 + ネオン玉） */}
         <div className="md:hidden relative w-full h-[100svh] max-h-[750px]" style={{ perspective: '1200px' }}>
-          {/* 背景 - 緑のネオングラデーション */}
+          {/* 背景 - 緑のネオングラデーション（最適化版） */}
           <div 
             className="absolute inset-0"
             style={{
               background: `
                 radial-gradient(ellipse 120% 80% at 50% 30%, rgba(0,255,150,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse 100% 60% at 20% 70%, rgba(0,200,100,0.12) 0%, transparent 40%),
-                radial-gradient(ellipse 80% 50% at 80% 60%, rgba(0,255,180,0.1) 0%, transparent 35%),
                 radial-gradient(ellipse at 50% 40%, #0a2020 0%, #051515 40%, #000 100%)
               `,
             }}
           />
 
-          {/* 中央のグロー */}
+          {/* 中央のグロー（最適化版：ブラーなし） */}
           <div 
-            className="absolute top-1/2 left-1/2 w-[300px] h-[300px] pointer-events-none"
+            className="absolute top-1/2 left-1/2 w-[280px] h-[280px] pointer-events-none"
             style={{
               transform: 'translate(-50%, -50%)',
-              background: 'radial-gradient(circle, rgba(0,255,150,0.15) 0%, rgba(0,200,100,0.05) 40%, transparent 70%)',
-              filter: 'blur(40px)',
+              background: 'radial-gradient(circle, rgba(0,255,150,0.18) 0%, rgba(0,200,100,0.08) 35%, transparent 65%)',
             }}
           />
 
-          {/* ネオン玉 - 中央からフワーッと広がりFV全体に散らばる（常時放出） */}
-          {Array.from({ length: 48 }, (_, i) => {
-            const colors = ['#ff4466', '#44aaff', '#ffcc00', '#44ff88', '#ff44aa', '#8844ff', '#00ccff', '#ff8844', '#66ff66', '#ff66ff', '#ffff44', '#44ffff', '#ffffff'];
+          {/* ネオン玉 - 中央からフワーッと広がりFV全体に散らばる（常時放出）- SP版 */}
+          {Array.from({ length: 36 }, (_, i) => {
+            const colors = ['#ff4466', '#44aaff', '#ffcc00', '#44ff88', '#ff44aa', '#8844ff', '#00ccff', '#ff8844'];
             const color = colors[i % colors.length];
-            const size = 10 + (i % 5) * 2;
-            const glow = 22 + (i % 5) * 6;
+            const size = 16 + (i % 5) * 4;
             const dir = i % 8;
-            // 各玉で異なるアニメーション時間（5〜8秒）でバラつきを持たせる
-            const duration = 5 + (i % 7) * 0.5;
-            const delay = (i / 48) * duration;
-            return { color, size, glow, delay, dir, duration };
+            const duration = 5 + (i % 6) * 0.5;
+            const delay = (i / 36) * duration;
+            return { color, size, delay, dir, duration };
           }).map((ball, i) => (
             <div
               key={`neon-ball-${i}`}
@@ -294,22 +302,24 @@ export const Top = () => {
                 marginTop: `-${ball.size / 2}px`,
                 width: `${ball.size}px`,
                 height: `${ball.size}px`,
-                background: `radial-gradient(circle, ${ball.color} 0%, ${ball.color}80 40%, transparent 70%)`,
-                boxShadow: `0 0 ${ball.glow}px ${ball.color}, 0 0 ${ball.glow * 2}px ${ball.color}40`,
-                animation: `neon-emit-${ball.dir} ${ball.duration}s linear ${ball.delay}s infinite`,
+                background: `radial-gradient(circle, ${ball.color} 0%, transparent 70%)`,
+                boxShadow: `0 0 22px ${ball.color}`,
+                animation: `neon-emit-mobile-${ball.dir} ${ball.duration}s linear ${ball.delay}s infinite`,
+                willChange: 'transform, opacity',
+                contain: 'layout style paint',
                 zIndex: 50,
               }}
             />
           ))}
 
           {/* チップ - モバイル版 中央から螺旋状に放出（常時放出） */}
-          {Array.from({ length: 16 }, (_, i) => {
-            const chipImages = ['/img/3-1.png', '/img/1-2.png', '/img/2.png', '/img/3-2.png', '/img/4-1.png', '/img/5-1.png', '/img/4-2.png', '/img/2-2.png', '/img/1.png'];
+          {Array.from({ length: 14 }, (_, i) => {
+            const chipImages = ['/img/3-1.png', '/img/1-2.png', '/img/2.png', '/img/3-2.png', '/img/4-1.png', '/img/5-1.png'];
             const img = chipImages[i % chipImages.length];
-            const size = 25 + (i % 4) * 10;
+            const size = 35 + (i % 4) * 15;
             const dir = i % 8;
-            const duration = 6 + (i % 5) * 0.5;
-            const delay = (i / 16) * duration;
+            const duration = 6 + (i % 4) * 0.6;
+            const delay = (i / 14) * duration;
             return { img, size, dir, duration, delay };
           }).map((chip, i) => (
             <div
@@ -323,8 +333,9 @@ export const Top = () => {
                 width: `${chip.size}px`,
                 height: `${chip.size}px`,
                 animation: `chip-emit-mobile-${chip.dir} ${chip.duration}s linear ${chip.delay}s infinite`,
+                willChange: 'transform, opacity',
+                contain: 'layout style paint',
                 zIndex: 45,
-                filter: 'drop-shadow(0 3px 10px rgba(0,0,0,0.5))',
               }}
             >
               <img src={chip.img} alt="" className="w-full h-full object-contain" />
@@ -332,9 +343,9 @@ export const Top = () => {
           ))}
 
           {/* メインコンテンツエリア */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 pt-14 pb-16">
+          <div className="relative flex flex-col items-center h-full px-4 pt-20 pb-16" style={{ zIndex: 60 }}>
             {/* タイトルテキスト */}
-            <div className="flex flex-col items-center gap-1 mb-6">
+            <div className="flex flex-col items-center gap-1 mb-4">
               <div 
                 className="font-aguafina font-normal text-white text-[clamp(1.1rem,4.5vw,1.6rem)] text-center tracking-[0] leading-[1.5] whitespace-nowrap"
                 style={{ 
@@ -354,60 +365,82 @@ export const Top = () => {
               </div>
             </div>
 
-            {/* キャストカード 4枚 - 3D配置 */}
-            <div className="relative w-full max-w-[380px] h-[220px] mb-6" style={{ perspective: '1000px' }}>
-              {/* 左端のカード */}
+            {/* キャストカード 5枚 - PC版と同じ扇状3D配置 */}
+            <div className="relative w-full max-w-[360px] h-[280px] mb-4" style={{ perspective: '1000px', zIndex: 60 }}>
+              {/* カード1 - 左端 */}
               <div 
-                className="absolute left-[5px] top-[40px] w-[78px] h-[120px] rounded-lg overflow-hidden"
+                className="absolute w-[85px] h-[130px] rounded-[8px] overflow-hidden transition-transform duration-500"
                 style={{ 
-                  background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)',
-                  transform: 'rotateY(22deg) translateZ(-30px)',
-                  boxShadow: '10px 15px 30px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,200,150,0.03)',
-                  border: '1px solid rgba(0,200,150,0.1)',
+                  left: '0px',
+                  top: '70px',
+                  background: 'linear-gradient(145deg, rgba(40,40,40,1) 0%, rgba(15,15,15,1) 100%)',
+                  transform: 'perspective(1000px) rotateY(8deg) rotateX(2deg)',
+                  boxShadow: '8px 12px 25px rgba(0,0,0,0.6)',
+                  border: '1px solid rgba(255,255,255,0.1)',
                 }}
               >
-                <img className="w-full h-full object-cover p-1 rounded-lg" alt="" src="/img/rectangle-23.png" />
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23.png" />
               </div>
 
-              {/* 中央左のカード */}
+              {/* カード2 - 左寄り */}
               <div 
-                className="absolute left-[70px] top-[12px] w-[95px] h-[145px] rounded-lg overflow-hidden"
+                className="absolute w-[85px] h-[130px] rounded-[8px] overflow-hidden transition-transform duration-500"
                 style={{ 
-                  background: 'linear-gradient(135deg, #1f1f1f 0%, #0c0c0c 100%)',
-                  transform: 'rotateY(10deg) translateZ(10px)',
-                  boxShadow: '12px 18px 35px rgba(0,0,0,0.65), inset 0 0 25px rgba(0,200,150,0.05)',
-                  border: '1px solid rgba(0,200,150,0.15)',
-                  zIndex: 2,
+                  left: '55px',
+                  top: '35px',
+                  background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
+                  transform: 'perspective(1000px) rotateY(4deg) rotateX(1deg)',
+                  boxShadow: '6px 10px 20px rgba(0,0,0,0.55)',
+                  border: '1px solid rgba(255,255,255,0.08)',
                 }}
               >
-                <img className="w-full h-full object-cover p-1 rounded-lg" alt="" src="/img/rectangle-23-1.png" />
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-1.png" />
               </div>
 
-              {/* 中央右のカード */}
+              {/* カード3 - 中央 */}
               <div 
-                className="absolute right-[70px] top-[12px] w-[95px] h-[145px] rounded-lg overflow-hidden"
+                className="absolute w-[90px] h-[138px] rounded-[8px] overflow-hidden transition-transform duration-500"
                 style={{ 
-                  background: 'linear-gradient(135deg, #1f1f1f 0%, #0c0c0c 100%)',
-                  transform: 'rotateY(-10deg) translateZ(10px)',
-                  boxShadow: '12px 18px 35px rgba(0,0,0,0.65), inset 0 0 25px rgba(0,200,150,0.05)',
-                  border: '1px solid rgba(0,200,150,0.15)',
-                  zIndex: 2,
+                  left: '50%',
+                  top: '10px',
+                  marginLeft: '-45px',
+                  background: 'linear-gradient(145deg, rgba(50,50,50,1) 0%, rgba(8,8,8,1) 100%)',
+                  transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg)',
+                  boxShadow: '6px 10px 20px rgba(0,0,0,0.55)',
+                  border: '1px solid rgba(255,255,255,0.1)',
                 }}
               >
-                <img className="w-full h-full object-cover p-1 rounded-lg" alt="" src="/img/rectangle-23-2.png" />
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-2.png" />
               </div>
 
-              {/* 右端のカード */}
+              {/* カード4 - 右寄り */}
               <div 
-                className="absolute right-[5px] top-[40px] w-[78px] h-[120px] rounded-lg overflow-hidden"
+                className="absolute w-[85px] h-[130px] rounded-[8px] overflow-hidden transition-transform duration-500"
                 style={{ 
-                  background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)',
-                  transform: 'rotateY(-22deg) translateZ(-30px)',
-                  boxShadow: '10px 15px 30px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,200,150,0.03)',
-                  border: '1px solid rgba(0,200,150,0.1)',
+                  right: '55px',
+                  top: '35px',
+                  background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
+                  transform: 'perspective(1000px) rotateY(-4deg) rotateX(1deg)',
+                  boxShadow: '6px 10px 20px rgba(0,0,0,0.55)',
+                  border: '1px solid rgba(255,255,255,0.08)',
                 }}
               >
-                <img className="w-full h-full object-cover p-1 rounded-lg" alt="" src="/img/rectangle-23-3.png" />
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-3.png" />
+              </div>
+
+              {/* カード5 - 右端 */}
+              <div 
+                className="absolute w-[85px] h-[130px] rounded-[8px] overflow-hidden transition-transform duration-500"
+                style={{ 
+                  right: '0px',
+                  top: '70px',
+                  background: 'linear-gradient(145deg, rgba(40,40,40,1) 0%, rgba(15,15,15,1) 100%)',
+                  transform: 'perspective(1000px) rotateY(-8deg) rotateX(2deg)',
+                  boxShadow: '8px 12px 25px rgba(0,0,0,0.6)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                }}
+              >
+                <img className="w-full h-full object-cover" alt="" src="/img/rectangle-23-4.png" />
               </div>
             </div>
 
@@ -440,44 +473,36 @@ export const Top = () => {
           className="hidden md:block overflow-visible w-full min-w-[1440px] min-h-[932px] relative"
           style={{ perspective: '2000px' }}
         >
-          {/* 3D背景レイヤー - 緑のネオングラデーション */}
+          {/* 3D背景レイヤー - 緑のネオングラデーション（最適化版） */}
           <div 
             className="absolute top-0 left-0 w-full h-full min-h-[932px]"
             style={{
               background: `
                 radial-gradient(ellipse 150% 100% at 50% 20%, rgba(0,255,150,0.18) 0%, transparent 45%),
-                radial-gradient(ellipse 120% 80% at 10% 50%, rgba(0,200,100,0.15) 0%, transparent 40%),
-                radial-gradient(ellipse 100% 70% at 90% 60%, rgba(0,255,180,0.12) 0%, transparent 35%),
-                radial-gradient(ellipse 80% 50% at 50% 80%, rgba(0,180,120,0.1) 0%, transparent 30%),
-                linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%),
+                radial-gradient(ellipse 100% 70% at 90% 60%, rgba(0,255,180,0.1) 0%, transparent 35%),
                 radial-gradient(circle at 50% 40%, #0a2525 0%, #051212 50%, #000 85%)
               `,
-              backgroundSize: 'cover',
-              backgroundAttachment: 'fixed',
             }}
           />
 
-          {/* 中央のグロー - 緑のネオン */}
+          {/* 中央のグロー - 緑のネオン（最適化版：ブラーなし） */}
           <div 
-            className="absolute top-[40%] left-1/2 w-[600px] h-[600px] pointer-events-none"
+            className="absolute top-[40%] left-1/2 w-[500px] h-[500px] pointer-events-none"
             style={{
               transform: 'translate(-50%, -50%)',
-              background: 'radial-gradient(circle, rgba(0,255,150,0.12) 0%, rgba(0,200,100,0.04) 40%, transparent 60%)',
-              filter: 'blur(60px)',
+              background: 'radial-gradient(circle, rgba(0,255,150,0.15) 0%, rgba(0,200,100,0.06) 30%, transparent 60%)',
             }}
           />
 
-          {/* ネオン玉 - PC版 中央からフワーッと広がりFV全体に散らばる（常時放出） */}
-          {Array.from({ length: 64 }, (_, i) => {
-            const colors = ['#ff4466', '#44aaff', '#ffcc00', '#44ff88', '#ff44aa', '#8844ff', '#00ccff', '#ff8844', '#66ff66', '#ff66ff', '#ffff44', '#44ffff', '#ffffff', '#ff6666', '#66aaff', '#aaff66'];
+          {/* ネオン玉 - PC版 中央からフワーッと広がりFV全体に散らばる（常時放出）- 最適化版 */}
+          {Array.from({ length: 40 }, (_, i) => {
+            const colors = ['#ff4466', '#44aaff', '#ffcc00', '#44ff88', '#ff44aa', '#8844ff', '#00ccff', '#ff8844'];
             const color = colors[i % colors.length];
-            const size = 14 + (i % 6) * 3;
-            const glow = 35 + (i % 6) * 8;
+            const size = 16 + (i % 5) * 4;
             const dir = i % 8;
-            // 各玉で異なるアニメーション時間（6〜9秒）でバラつきを持たせる
-            const duration = 6 + (i % 8) * 0.4;
-            const delay = (i / 64) * duration;
-            return { color, size, glow, delay, dir, duration };
+            const duration = 6 + (i % 8) * 0.5;
+            const delay = (i / 40) * duration;
+            return { color, size, delay, dir, duration };
           }).map((ball, i) => (
             <div
               key={`pc-neon-ball-${i}`}
@@ -489,22 +514,24 @@ export const Top = () => {
                 marginTop: `-${ball.size / 2}px`,
                 width: `${ball.size}px`,
                 height: `${ball.size}px`,
-                background: `radial-gradient(circle, ${ball.color} 0%, ${ball.color}80 40%, transparent 70%)`,
-                boxShadow: `0 0 ${ball.glow}px ${ball.color}, 0 0 ${ball.glow * 2}px ${ball.color}40`,
+                background: `radial-gradient(circle, ${ball.color} 0%, transparent 70%)`,
+                boxShadow: `0 0 25px ${ball.color}`,
                 animation: `neon-emit-${ball.dir} ${ball.duration}s linear ${ball.delay}s infinite`,
+                willChange: 'transform, opacity',
+                contain: 'layout style paint',
                 zIndex: 50,
               }}
             />
           ))}
 
-          {/* チップ - PC版 中央から螺旋状に放出（常時放出） */}
-          {Array.from({ length: 24 }, (_, i) => {
-            const chipImages = ['/img/3-1.png', '/img/1-2.png', '/img/2.png', '/img/3-2.png', '/img/4-1.png', '/img/5-1.png', '/img/4-2.png', '/img/2-2.png', '/img/1.png'];
+          {/* チップ - PC版 中央から螺旋状に放出（常時放出）- 最適化版 */}
+          {Array.from({ length: 16 }, (_, i) => {
+            const chipImages = ['/img/3-1.png', '/img/1-2.png', '/img/2.png', '/img/3-2.png', '/img/4-1.png', '/img/5-1.png'];
             const img = chipImages[i % chipImages.length];
-            const size = 40 + (i % 5) * 15;
+            const size = 45 + (i % 4) * 18;
             const dir = i % 8;
-            const duration = 8 + (i % 6) * 0.5;
-            const delay = (i / 24) * duration;
+            const duration = 8 + (i % 5) * 0.6;
+            const delay = (i / 16) * duration;
             return { img, size, dir, duration, delay };
           }).map((chip, i) => (
             <div
@@ -518,40 +545,41 @@ export const Top = () => {
                 width: `${chip.size}px`,
                 height: `${chip.size}px`,
                 animation: `chip-emit-${chip.dir} ${chip.duration}s linear ${chip.delay}s infinite`,
+                willChange: 'transform, opacity',
+                contain: 'layout style paint',
                 zIndex: 45,
-                filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.6))',
               }}
             >
               <img src={chip.img} alt="" className="w-full h-full object-contain" />
             </div>
           ))}
 
-          {/* 光のパーティクル */}
-          {Array.from({ length: 15 }, (_, i) => (
+          {/* 光のパーティクル - 最適化版 */}
+          {Array.from({ length: 8 }, (_, i) => (
             <div
               key={`particle-${i}`}
               className="absolute rounded-full"
               style={{
                 left: `${10 + (i * 97) % 80}%`,
                 top: `${5 + (i * 73) % 70}%`,
-                width: `${3 + (i % 3) * 2}px`,
-                height: `${3 + (i % 3) * 2}px`,
-                background: `radial-gradient(circle, rgba(0,255,200,${0.3 + (i % 4) * 0.15}) 0%, transparent 70%)`,
-                boxShadow: `0 0 ${10 + (i % 3) * 5}px rgba(0,200,180,0.4)`,
-                transform: `translateZ(${-300 + (i % 5) * 150}px)`,
-                animation: `twinkle ${2 + (i % 3)}s ease-in-out infinite`,
-                animationDelay: `${i * 0.2}s`,
+                width: `${4 + (i % 3) * 2}px`,
+                height: `${4 + (i % 3) * 2}px`,
+                background: `rgba(0,255,200,${0.4 + (i % 3) * 0.15})`,
+                boxShadow: `0 0 12px rgba(0,200,180,0.5)`,
+                animation: `twinkle ${2.5 + (i % 3)}s ease-in-out infinite`,
+                animationDelay: `${i * 0.3}s`,
+                willChange: 'opacity',
               }}
             />
           ))}
 
-          {/* カード - 3D効果付き */}
+          {/* カード - 3D効果付き（最適化版） */}
           <div 
             className="flex flex-col w-[243px] h-[372px] items-start justify-around gap-[30.72px] pt-[9px] pb-[13.5px] px-[9px] absolute top-[360px] left-[189px] rounded-[12px] aspect-[0.65] transition-transform duration-500 hover:scale-105"
             style={{ 
               background: 'linear-gradient(145deg, rgba(40,40,40,1) 0%, rgba(15,15,15,1) 100%)',
               transform: 'perspective(1000px) rotateY(8deg) rotateX(2deg)',
-              boxShadow: '15px 25px 50px rgba(0,0,0,0.7), -5px -5px 20px rgba(255,255,255,0.05), inset 0 0 30px rgba(0,0,0,0.3)',
+              boxShadow: '12px 20px 40px rgba(0,0,0,0.6)',
               border: '1px solid rgba(255,255,255,0.1)',
               zIndex: 60,
             }}
@@ -566,7 +594,7 @@ export const Top = () => {
               style={{ 
                 background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
                 transform: 'perspective(1000px) rotateY(4deg) rotateX(1deg)',
-                boxShadow: '12px 22px 45px rgba(0,0,0,0.65), -4px -4px 18px rgba(255,255,255,0.04), inset 0 0 25px rgba(0,0,0,0.25)',
+                boxShadow: '10px 18px 35px rgba(0,0,0,0.55)',
                 border: '1px solid rgba(255,255,255,0.08)',
               }}
             >
@@ -579,7 +607,7 @@ export const Top = () => {
             style={{ 
               background: 'linear-gradient(145deg, rgba(50,50,50,1) 0%, rgba(8,8,8,1) 100%)',
               transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg)',
-              boxShadow: '10px 20px 40px rgba(0,0,0,0.6), -3px -3px 15px rgba(255,255,255,0.03), inset 0 0 20px rgba(0,0,0,0.2)',
+              boxShadow: '10px 18px 35px rgba(0,0,0,0.55)',
               border: '1px solid rgba(255,255,255,0.1)',
               zIndex: 60,
             }}
@@ -594,7 +622,7 @@ export const Top = () => {
               style={{ 
                 background: 'linear-gradient(145deg, rgba(45,45,45,1) 0%, rgba(10,10,10,1) 100%)',
                 transform: 'perspective(1000px) rotateY(-4deg) rotateX(1deg)',
-                boxShadow: '12px 22px 45px rgba(0,0,0,0.65), -4px -4px 18px rgba(255,255,255,0.04), inset 0 0 25px rgba(0,0,0,0.25)',
+                boxShadow: '10px 18px 35px rgba(0,0,0,0.55)',
                 border: '1px solid rgba(255,255,255,0.08)',
               }}
             >
@@ -607,7 +635,7 @@ export const Top = () => {
             style={{ 
               background: 'linear-gradient(145deg, rgba(40,40,40,1) 0%, rgba(15,15,15,1) 100%)',
               transform: 'perspective(1000px) rotateY(-8deg) rotateX(2deg)',
-              boxShadow: '15px 25px 50px rgba(0,0,0,0.7), -5px -5px 20px rgba(255,255,255,0.05), inset 0 0 30px rgba(0,0,0,0.3)',
+              boxShadow: '12px 20px 40px rgba(0,0,0,0.6)',
               border: '1px solid rgba(255,255,255,0.1)',
               zIndex: 60,
             }}
@@ -615,21 +643,18 @@ export const Top = () => {
             <img className="relative self-stretch w-full h-[360px] mt-[-5.40px] mb-[-5.40px] rounded-[8px]" alt="Rectangle" src="/img/rectangle-23-4.png" />
           </div>
 
-          {/* テキスト - ネオン効果付き */}
+          {/* テキスト - ネオン効果付き（最適化版） */}
           <div 
             className="absolute top-[124px] left-[465px] font-aguafina font-normal text-[54.1px] text-center tracking-[0] leading-[77.3px] whitespace-nowrap"
             style={{ 
               color: '#ffffff',
               textShadow: `
-                0 0 8px rgba(0,255,150,0.7),
-                0 0 15px rgba(0,255,150,0.5),
-                0 0 30px rgba(0,255,150,0.4),
-                0 0 60px rgba(0,255,150,0.3),
-                0 4px 8px rgba(0,0,0,0.8)
+                0 0 10px rgba(0,255,150,0.6),
+                0 0 30px rgba(0,255,150,0.35),
+                0 3px 6px rgba(0,0,0,0.7)
               `,
               transform: 'perspective(500px) translateZ(30px)',
               zIndex: 60,
-              animation: 'neon-text-glow-small 3s ease-in-out infinite alternate',
             }}
           >
             Welcome to Tonight's SHOWTIME
@@ -640,16 +665,12 @@ export const Top = () => {
             style={{ 
               color: '#ffffff',
               textShadow: `
-                0 0 10px rgba(0,255,150,0.8),
-                0 0 20px rgba(0,255,150,0.6),
-                0 0 40px rgba(0,255,150,0.5),
-                0 0 80px rgba(0,255,150,0.4),
-                0 0 120px rgba(0,200,100,0.3),
-                0 6px 12px rgba(0,0,0,0.9)
+                0 0 15px rgba(0,255,150,0.7),
+                0 0 45px rgba(0,255,150,0.4),
+                0 5px 10px rgba(0,0,0,0.8)
               `,
               transform: 'perspective(500px) translateZ(50px)',
               zIndex: 60,
-              animation: 'neon-text-glow 3s ease-in-out infinite alternate',
             }}
           >
             THE 27 CLUB
@@ -659,7 +680,7 @@ export const Top = () => {
         {/* フッターナビゲーション - レスポンシブ */}
         <div className="absolute w-full h-auto left-0 bottom-0 z-20 flex items-center justify-center py-3 md:py-4">
           {/* 背景 */}
-          <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/95" />
           {/* メニュー項目 - SP版は2行、PC版は1行 */}
           <div className="relative grid grid-cols-3 md:flex md:flex-wrap items-center justify-center gap-x-2 gap-y-2 md:gap-x-[18px] md:gap-y-0 px-2 md:px-4 w-full max-w-[400px] md:max-w-none">
             {footerNavLinks.map((link) => (

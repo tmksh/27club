@@ -110,7 +110,7 @@ export const ConcreteComponentNode = ({
             className={`inline-flex items-center ${logoClassName}`}
           >
             <img
-              className={`w-[75px] h-auto object-cover ${elementClassName}`}
+              className={`w-[50px] h-auto object-cover ${elementClassName}`}
               alt="THE 27 CLUB"
               src="/img/27logo-1-1.png"
             />

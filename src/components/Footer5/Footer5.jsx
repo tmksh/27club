@@ -24,7 +24,7 @@ export const Footer5 = ({
   to5,
 }) => {
   return (
-    <div className={`min-h-[400px] md:min-h-[584px] w-full flex mt-auto ${className}`}>
+    <div className={`min-h-[400px] md:min-h-[584px] w-full flex mt-16 md:mt-24 ${className}`}>
       <ConcreteComponentNode
         className={concreteComponentNodeFooterClassName}
         divClassName="![white-space:unset]"
@@ -32,7 +32,7 @@ export const Footer5 = ({
         img={concreteComponentNodeVector3}
         imgClassName="!left-[4.16%]"
         leftSectionClassName="!h-[227.1px]"
-        logoClassName="!flex-[unset] !flex !w-[75px]"
+        logoClassName="!flex-[unset] !flex !w-[50px]"
         socialIcons={concreteComponentNodeSocialIcons}
         text={
           <>

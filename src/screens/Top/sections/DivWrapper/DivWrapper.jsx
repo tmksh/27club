@@ -145,28 +145,29 @@ export const DivWrapper = () => {
         {/* CTAボタン */}
         <div className="mt-6 md:mt-12 flex flex-row gap-3 md:gap-4 justify-center items-center pb-6 md:pb-8 relative z-10 px-4 md:px-0" data-scroll="fade-up">
           <div className="w-full max-w-[160px] md:max-w-[352px]">
-            <div className="relative w-full h-[56px] md:h-[97.76px] rounded-[40px] md:rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)] cursor-pointer hover:scale-105 transition-transform flex items-center justify-center">
-              <div className="flex flex-col items-center justify-center gap-0 md:gap-[9.73px] text-center">
-                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[12px] md:text-[22.7px] tracking-[0] leading-[1.3] md:leading-[27.2px]">
-                  動画で確認
-                </div>
-                <div className="opacity-90 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[9px] md:text-[17.8px] tracking-[0] leading-[1.3] md:leading-[21.4px]">
-                  雰囲気をチェック
-                </div>
-              </div>
-
-              <div className="absolute top-1/2 left-[66px] transform -translate-y-1/2 w-[42px] md:w-[52px] h-[42px] md:h-[52px] border-0 border-none hidden md:block">
+            <div className="relative w-full h-[56px] md:h-[97.76px] rounded-[40px] md:rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)] cursor-pointer hover:scale-105 transition-transform flex items-center justify-center gap-3 md:gap-5 px-4 md:px-8">
+              {/* アイコン */}
+              <div className="relative w-[32px] md:w-[48px] h-[32px] md:h-[48px] flex-shrink-0">
                 <img
                   className="absolute w-[83.33%] h-[83.33%] top-[4.17%] left-[4.17%]"
                   alt="Vector"
                   src="/img/vector-16.svg"
                 />
-
                 <img
                   className="absolute w-[25.00%] h-[33.33%] top-[29.17%] left-[37.50%]"
                   alt="Vector"
                   src="/img/vector-17.svg"
                 />
+              </div>
+
+              {/* テキスト */}
+              <div className="flex flex-col items-start justify-center gap-0 md:gap-1">
+                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[12px] md:text-[20px] tracking-[0] leading-[1.3]">
+                  動画で確認
+                </div>
+                <div className="opacity-90 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[9px] md:text-[14px] tracking-[0] leading-[1.3]">
+                  雰囲気をチェック
+                </div>
               </div>
             </div>
           </div>

@@ -53,7 +53,7 @@ export const Div = () => {
   }, [backgroundImages.length]);
 
   return (
-    <div className="relative self-stretch w-full min-h-[500px] md:min-h-[1000px] md:px-8">
+    <div className="relative self-stretch w-full min-h-[500px] md:min-h-[1000px]">
       {/* チップの模様（デスクトップのみ表示） */}
       <div className="hidden lg:block">
         {chipPositions.map((pos, i) => (
@@ -91,8 +91,8 @@ export const Div = () => {
         </div>
       </div>
 
-      {/* 背景画像（フェードアニメーション付き） - SP版: フル幅・縦長 / PC版: max-w制限 */}
-      <div className="relative mt-6 md:mt-16 w-full md:max-w-[1440px] mx-auto min-h-[420px] md:min-h-0 md:aspect-[1440/650] overflow-hidden md:rounded-lg" style={{ zIndex: 1 }} data-scroll="zoom-in">
+      {/* 背景画像（フェードアニメーション付き） - 画面幅いっぱい */}
+      <div className="relative mt-6 md:mt-16 w-full min-h-[500px] md:min-h-[800px] overflow-hidden" style={{ zIndex: 1 }} data-scroll="zoom-in">
         {backgroundImages.map((img, index) => {
           const isActive = index === currentImageIndex;
           return (
@@ -111,39 +111,94 @@ export const Div = () => {
           );
         })}
         
-        {/* オーバーレイコンテンツ */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-gradient-to-t from-black/70 via-black/40 to-black/20 px-6 md:px-8 py-10 md:py-12">
-          {/* メインタイトル */}
-          <div className="w-full max-w-[900px] [text-shadow:0px_4px_20px_rgba(0,0,0,0.8)] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-2xl md:text-4xl lg:text-[56px] text-center tracking-[0.02em] leading-[1.3] mb-6 md:mb-10">
-            歌舞伎町最大級のショー空間
-          </div>
+        {/* グラデーションオーバーレイ - 左から右へ */}
+        <div 
+          className="absolute inset-0 z-10"
+          style={{
+            background: `
+              linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 65%, transparent 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.4) 100%)
+            `,
+          }}
+        />
 
-          {/* サブタイトル */}
-          <div className="w-full max-w-[800px] [font-family:'Noto_Serif_JP',Helvetica] font-medium text-white/95 text-base md:text-xl lg:text-2xl text-center tracking-[0.02em] leading-[1.6] mb-4 md:mb-6">
-            映像美と臨場感を追求する、プロ仕様のステージ空間。
-          </div>
+        {/* コンテンツ - 左寄せ・画面幅いっぱい */}
+        <div className="absolute inset-0 z-20 flex items-center">
+          <div className="w-full px-8 md:px-16 lg:px-24">
+            <div className="max-w-[650px]">
+              
+              {/* サブタイトル（緑色）+ 横線 */}
+              <div className="flex items-center gap-4 mb-4 md:mb-6" data-scroll="fade-right">
+                <span 
+                  className="[font-family:'Playfair_Display',Helvetica] font-bold text-[#00d6bd] text-lg md:text-2xl lg:text-3xl tracking-[0.05em] uppercase"
+                  style={{ textShadow: '0 0 20px rgba(0,214,189,0.5)' }}
+                >
+                  Experience
+                </span>
+                <div className="flex-1 h-[2px] bg-gradient-to-r from-[#00d6bd] to-transparent max-w-[100px] md:max-w-[120px]" />
+              </div>
 
-          {/* 説明文 */}
-          <div className="w-full max-w-[720px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/80 text-sm md:text-base lg:text-lg text-center tracking-[0.01em] leading-[1.9] mb-8 md:mb-12">
-            MV・CMなど、数多くの撮影現場で実際に使用されているステージです。
-            <br className="hidden md:inline" />
-            照明・音響・空間演出のすべてがプロフェッショナル仕様で、作品の世界観を一層引き立てます。
-            <br className="hidden md:inline" />
-            スタジオとしてのご利用も随時受け付けております。
-          </div>
+              {/* メインタイトル */}
+              <h2 
+                className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-2xl md:text-4xl lg:text-[56px] leading-[1.4] md:leading-[1.5] mb-4 md:mb-6"
+                data-scroll="fade-right"
+                data-scroll-delay="100"
+                style={{ textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
+              >
+                歌舞伎町最大級の<br />
+                ショー空間
+              </h2>
 
-          {/* CTAボタン */}
-          <Link
-            className="flex items-center justify-center px-8 md:px-12 py-3 md:py-4 bg-[#00d6bd] hover:bg-[#00bfa8] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            to="/u12467u12531u12479u12463u12488"
-          >
-            <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-sm md:text-base tracking-[0.05em]">
-              お問い合わせ
-            </span>
-            <svg className="w-4 h-4 md:w-5 md:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
+              {/* 説明文 */}
+              <p 
+                className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/90 text-xs md:text-sm lg:text-base leading-[1.8] mb-4 md:mb-6"
+                data-scroll="fade-right"
+                data-scroll-delay="200"
+              >
+                映像美と臨場感を追求する、プロ仕様のステージ空間。MV・CMなど、数多くの撮影現場で実際に使用されているステージです。照明・音響・空間演出のすべてがプロフェッショナル仕様。
+              </p>
+
+              {/* 特徴リスト */}
+              <ul 
+                className="space-y-1.5 md:space-y-2 mb-6 md:mb-8"
+                data-scroll="fade-right"
+                data-scroll-delay="300"
+              >
+                {[
+                  "歌舞伎町最大級のステージ空間",
+                  "プロ仕様の照明・音響設備",
+                  "MV・CM撮影の実績多数",
+                  "スタジオ貸出OK",
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-center gap-2 md:gap-3">
+                    <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#00d6bd] flex-shrink-0" style={{ boxShadow: '0 0 8px rgba(0,214,189,0.6)' }} />
+                    <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-xs md:text-sm lg:text-base">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTAボタン */}
+              <Link
+                className="inline-flex items-center justify-center px-6 md:px-10 py-3 md:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                style={{
+                  background: 'linear-gradient(135deg, #00d6bd 0%, #00a896 100%)',
+                  boxShadow: '0 4px 20px rgba(0,214,189,0.4)',
+                }}
+                to="/u12467u12531u12479u12463u12488"
+                data-scroll="fade-right"
+                data-scroll-delay="400"
+              >
+                <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-sm md:text-base tracking-[0.05em]">
+                  お問い合わせ
+                </span>
+                <svg className="w-4 h-4 md:w-5 md:h-5 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

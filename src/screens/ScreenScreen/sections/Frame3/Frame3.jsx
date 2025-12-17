@@ -44,28 +44,25 @@ export const Frame3 = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // Netlify Forms用のデータを準備
+      const formBody = new URLSearchParams({
+        "form-name": "contact",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        inquiryType: getInquiryTypeLabel(formData.inquiryType),
+        message: formData.content,
+      }).toString();
+
+      const response = await fetch("/", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify({
-          access_key: "YOUR_ACCESS_KEY_HERE",
-          to: "the27club.shinjuku@gmail.com",
-          from_name: "THE 27 CLUB お問い合わせフォーム",
-          subject: `【お問い合わせ】${getInquiryTypeLabel(formData.inquiryType)}`,
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          inquiry_type: getInquiryTypeLabel(formData.inquiryType),
-          message: formData.content,
-        }),
+        body: formBody,
       });
 
-      const result = await response.json();
-      
-      if (result.success) {
+      if (response.ok) {
         alert("お問い合わせを送信しました。\n2〜3営業日以内にご返信いたします。");
         setFormData({
           name: "",

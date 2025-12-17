@@ -68,3 +68,4 @@ export const ScrollAnimationProvider = ({ children }) => {
   return children;
 };
 
+

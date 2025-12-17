@@ -140,7 +140,7 @@ export const Header = ({ className = "" }) => {
 
           {/* モバイルハンバーガーメニュー */}
           <button 
-            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 cursor-pointer z-[101]"
+            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 cursor-pointer z-[101] bg-transparent border-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="メニューを開く"
           >
