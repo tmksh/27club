@@ -473,26 +473,136 @@ export const Top = () => {
           className="hidden md:block overflow-visible w-full min-w-[1440px] min-h-[932px] relative"
           style={{ perspective: '2000px' }}
         >
-          {/* 3D背景レイヤー - 緑のネオングラデーション（最適化版） */}
+          {/* 宇宙空間3D背景 */}
           <div 
             className="absolute top-0 left-0 w-full h-full min-h-[932px]"
             style={{
               background: `
-                radial-gradient(ellipse 150% 100% at 50% 20%, rgba(0,255,150,0.18) 0%, transparent 45%),
-                radial-gradient(ellipse 100% 70% at 90% 60%, rgba(0,255,180,0.1) 0%, transparent 35%),
-                radial-gradient(circle at 50% 40%, #0a2525 0%, #051212 50%, #000 85%)
+                radial-gradient(ellipse 200% 150% at 50% -20%, rgba(0,255,150,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,180,140,0.08) 0%, transparent 40%),
+                radial-gradient(ellipse 80% 60% at 85% 70%, rgba(0,200,160,0.06) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #061515 0%, #030a0a 40%, #000 100%)
               `,
             }}
           />
 
-          {/* 中央のグロー - 緑のネオン（最適化版：ブラーなし） */}
+          {/* 星のレイヤー - 小さな星 */}
+          <div className="absolute inset-0 overflow-hidden">
+            {Array.from({ length: 80 }, (_, i) => {
+              const x = (i * 17.3 + (i % 7) * 53) % 100;
+              const y = (i * 13.7 + (i % 11) * 41) % 100;
+              const size = 1 + (i % 3);
+              const opacity = 0.3 + (i % 5) * 0.15;
+              const twinkleDuration = 2 + (i % 4);
+              const delay = (i % 10) * 0.3;
+              return (
+                <div
+                  key={`star-${i}`}
+                  className="absolute rounded-full"
+                  style={{
+                    left: `${x}%`,
+                    top: `${y}%`,
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    background: '#fff',
+                    opacity: opacity,
+                    boxShadow: `0 0 ${size * 2}px rgba(255,255,255,${opacity})`,
+                    animation: `twinkle ${twinkleDuration}s ease-in-out ${delay}s infinite`,
+                  }}
+                />
+              );
+            })}
+          </div>
+
+          {/* 星雲エフェクト - 奥行き感 */}
           <div 
-            className="absolute top-[40%] left-1/2 w-[500px] h-[500px] pointer-events-none"
+            className="absolute top-[10%] left-[5%] w-[600px] h-[400px] pointer-events-none"
             style={{
-              transform: 'translate(-50%, -50%)',
-              background: 'radial-gradient(circle, rgba(0,255,150,0.15) 0%, rgba(0,200,100,0.06) 30%, transparent 60%)',
+              background: 'radial-gradient(ellipse, rgba(0,255,180,0.04) 0%, transparent 60%)',
+              filter: 'blur(60px)',
+              transform: 'rotate(-15deg)',
             }}
           />
+          <div 
+            className="absolute top-[50%] right-[5%] w-[500px] h-[350px] pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse, rgba(0,200,150,0.05) 0%, transparent 60%)',
+              filter: 'blur(50px)',
+              transform: 'rotate(20deg)',
+            }}
+          />
+
+          {/* 3D遠近グリッド（宇宙空間の奥行き） */}
+          <div 
+            className="absolute bottom-0 left-0 w-full h-[60%] pointer-events-none overflow-hidden"
+            style={{
+              perspective: '800px',
+              perspectiveOrigin: '50% 0%',
+            }}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                width: '200%',
+                height: '100%',
+                left: '-50%',
+                background: `
+                  repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(0,214,189,0.03) 80px,
+                    rgba(0,214,189,0.03) 81px
+                  ),
+                  repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(0,214,189,0.03) 80px,
+                    rgba(0,214,189,0.03) 81px
+                  )
+                `,
+                transform: 'rotateX(75deg)',
+                transformOrigin: '50% 0%',
+                maskImage: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 80%)',
+                WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 80%)',
+              }}
+            />
+          </div>
+
+          {/* 中央のグロー - 緑のネオン（強化版） */}
+          <div 
+            className="absolute top-[35%] left-1/2 w-[700px] h-[700px] pointer-events-none"
+            style={{
+              transform: 'translate(-50%, -50%)',
+              background: `
+                radial-gradient(circle, rgba(0,255,150,0.12) 0%, transparent 40%),
+                radial-gradient(circle, rgba(0,200,180,0.08) 20%, transparent 60%)
+              `,
+              filter: 'blur(40px)',
+            }}
+          />
+
+          {/* 流れる光のライン（宇宙空間の動き） */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {Array.from({ length: 5 }, (_, i) => (
+              <div
+                key={`light-streak-${i}`}
+                className="absolute"
+                style={{
+                  left: `${10 + i * 20}%`,
+                  top: '-10%',
+                  width: '1px',
+                  height: '120%',
+                  background: `linear-gradient(to bottom, transparent 0%, rgba(0,214,189,0.15) 50%, transparent 100%)`,
+                  transform: `rotate(${-30 + i * 5}deg)`,
+                  opacity: 0.3 + (i % 3) * 0.1,
+                  animation: `light-flow ${8 + i * 2}s linear infinite`,
+                  animationDelay: `${i * 1.5}s`,
+                }}
+              />
+            ))}
+          </div>
 
           {/* ネオン玉 - PC版 中央からフワーッと広がりFV全体に散らばる（常時放出）- 最適化版 */}
           {Array.from({ length: 40 }, (_, i) => {

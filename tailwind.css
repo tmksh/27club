@@ -1259,3 +1259,21 @@
     filter: blur(0px);
   }
 }
+
+/* 宇宙空間 光の流れ */
+@keyframes light-flow {
+  0% {
+    transform: translateY(-100%) rotate(var(--rotate, -30deg));
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(100%) rotate(var(--rotate, -30deg));
+    opacity: 0;
+  }
+}
