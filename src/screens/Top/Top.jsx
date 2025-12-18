@@ -149,6 +149,16 @@ export const Top = () => {
       {/* モバイルメニュー */}
       {isMobileMenuOpen && (
         <div className="mobile-menu lg:hidden">
+          {/* 閉じるボタン */}
+          <button 
+            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center cursor-pointer z-10 bg-transparent border-none"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="メニューを閉じる"
+          >
+            <span className="block w-6 h-0.5 bg-white/70 rotate-45 absolute" />
+            <span className="block w-6 h-0.5 bg-white/70 -rotate-45 absolute" />
+          </button>
+
           <nav className="flex flex-col items-center gap-6">
             {navLinks.map((link) => (
               <Link
@@ -499,7 +509,8 @@ export const Top = () => {
             </div>
 
             {/* 予約ボタン */}
-            <button 
+            <Link 
+              to="/reserve"
               className="flex w-[220px] h-[54px] items-center justify-center rounded-lg cursor-pointer transition-all duration-300 hover:scale-105"
               style={{
                 background: 'linear-gradient(135deg, rgba(0,180,140,0.2) 0%, rgba(0,120,100,0.1) 100%)',
@@ -510,7 +521,7 @@ export const Top = () => {
               <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-base tracking-wider">
                 WEB予約はこちら
               </span>
-            </button>
+            </Link>
           </div>
 
           {/* 下部の霧 */}
