@@ -6,9 +6,11 @@ export const Div = () => {
   
   // 背景画像の配列（複数の画像を用意）
   const backgroundImages = [
-    '/img/rectangle-215.png',
-    '/img/rectangle-213.png', // 別の画像
-    '/img/rectangle-214.png', // 別の画像
+    '/img/S__18710559.jpg',
+    '/img/S__18710560.jpg',
+    '/img/_UZR4678_Original.jpg',
+    '/img/_UZR4679_Original.jpg',
+    '/img/_UZR4684_Original.jpg',
   ];
 
   // チップ装飾用のデータ

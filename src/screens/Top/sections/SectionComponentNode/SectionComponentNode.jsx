@@ -1,22 +1,22 @@
 import React from "react";
 
 export const SectionComponentNode = () => {
-  // ギャラリーアイテムコンポーネント（縦長画像928×1242対応）
-  const GalleryItem = ({ image, className }) => (
+  // ギャラリーアイテムコンポーネント
+  const GalleryItem = ({ image, hoverImage, className }) => (
     <div className={`relative group overflow-hidden bg-[#1a1a2e] ${className}`}>
-      {/* デフォルト：画像表示（縦長画像を見切れなく表示） */}
+      {/* デフォルト：画像表示 */}
       <img 
         src={image} 
         alt="Gallery" 
         loading="lazy"
-        className="w-full h-full object-contain transition-opacity duration-500 group-hover:opacity-0"
+        className="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
       />
-      {/* ホバー時：白い表紙 + ロゴ */}
+      {/* ホバー時：白背景 + 別の画像 */}
       <div className="absolute inset-0 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         <img 
-          src="/img/27logo-1-1.png" 
-          alt="27 CLUB Logo" 
-          className="w-[40%] max-w-[200px] h-auto object-contain"
+          src={hoverImage} 
+          alt="Gallery Hover" 
+          className="w-full h-full object-cover"
         />
       </div>
     </div>
@@ -41,40 +41,48 @@ export const SectionComponentNode = () => {
           </div>
         </div>
 
-        {/* カスタムギャラリーグリッド（縦長画像928×1242対応） */}
+        {/* カスタムギャラリーグリッド */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 relative z-10 w-full px-4 md:px-8" data-scroll="fade-up">
           
-          {/* 縦長画像を均等に配置 */}
+          {/* デフォルト画像 + ホバー時にInstagram画像 */}
           <GalleryItem 
             image="/img/gallery-default.jpg" 
+            hoverImage="/img/gallery-1.jpg"
             className="aspect-[3/4]"
           />
           <GalleryItem 
             image="/img/gallery-default.jpg" 
+            hoverImage="/img/gallery-2.jpg"
             className="aspect-[3/4]"
           />
           <GalleryItem 
             image="/img/gallery-default.jpg" 
+            hoverImage="/img/gallery-3.jpg"
             className="aspect-[3/4]"
           />
           <GalleryItem 
             image="/img/gallery-default.jpg" 
+            hoverImage="/img/gallery-4.jpg"
             className="aspect-[3/4]"
           />
           <GalleryItem 
             image="/img/gallery-default.jpg" 
+            hoverImage="/img/gallery-5.jpg"
             className="aspect-[3/4]"
           />
           <GalleryItem 
             image="/img/gallery-default.jpg" 
+            hoverImage="/img/gallery-6.jpg"
             className="aspect-[3/4]"
           />
           <GalleryItem 
             image="/img/gallery-default.jpg" 
+            hoverImage="/img/gallery-7.jpg"
             className="aspect-[3/4]"
           />
           <GalleryItem 
             image="/img/gallery-default.jpg" 
+            hoverImage="/img/gallery-8.jpg"
             className="aspect-[3/4]"
           />
           
