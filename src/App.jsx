@@ -12,6 +12,7 @@ import { Top } from "./screens/Top";
 import { AdminLogin } from "./screens/Admin/AdminLogin";
 import { AdminDashboard } from "./screens/Admin/AdminDashboard";
 import { DrinkMenu } from "./screens/DrinkMenu";
+import { Reserve } from "./screens/Reserve";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/drink",
         element: <DrinkMenu />,
+      },
+      {
+        path: "/reserve",
+        element: <Reserve />,
       },
     ],
   },

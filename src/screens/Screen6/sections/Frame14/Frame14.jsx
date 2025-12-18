@@ -37,15 +37,9 @@ export const Frame14 = () => {
       title: "盛り上がり方",
       description: (
         <>
-          拍手声援→感動したら素直に！
-          <br />
-          チップ→「もっと応援したい！」と思ったらキャストへ。
-          <br />
-          10枚（1,200円）から購入できます。
-          <br />
-          3,000円・5,000円の「チップレイ」、10,000円〜の「マネーガン演出」もおすすめ
-          <br />
-          盛り上がれば盛り上がるほど、会場全体が熱くなります🔥
+          拍手・声援→感動したら素直に！チップ→「もっと応援したい！」と思ったらキャストへ。10枚（1,200円）から購入できます。
+          <br /><br />
+          3,000円・5,000円の「チップレイ」、10,000円〜の「マネーガン演出」もおすすめ。盛り上がれば盛り上がるほど、会場全体が熱くなります🔥
         </>
       ),
       image: "/img/rectangle-59-2.png",
@@ -57,11 +51,9 @@ export const Frame14 = () => {
       title: "ショー中の撮影",
       description: (
         <>
-          THE27CLUBでは、写真・動画撮影がOK📷
+          THE27CLUBでは、写真・動画撮影がOK📷SNS映えするシーンもたくさん。
           <br />
-          SNS映えするシーンもたくさん。ぜひ思い出を残してください。
-          <br />
-          他のお客様へのご配慮だけお願いします。
+          ぜひ思い出を残してください。他のお客様へのご配慮だけお願いします。
         </>
       ),
       image: "/img/rectangle-59-3.png",
@@ -172,23 +164,23 @@ export const Frame14 = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 md:gap-4 w-full items-center">
+        <div className="flex flex-col gap-2 w-full items-center">
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#cccccc] text-sm md:text-base text-center leading-relaxed">
-            THE27CLUBのショーは、キャストとお客様が一体となって作り上げるもの。
-          </div>
-
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#cccccc] text-sm md:text-base text-center leading-relaxed">
-            拍手も、声援も、チップも、撮影も、そしてフードやドリンクも——そのすべてがショーの一部です。
+            THE27CLUBのショーは、<br />
+            キャストとお客様が一体となって作り上げるもの。<br />
+            拍手も、声援も、チップも、撮影も、そしてフードや<br />
+            ドリンクも——そのすべてがショーの一部です。
           </div>
         </div>
 
-        <div className="inline-flex flex-col md:flex-row items-center gap-2 text-center">
+        <div className="flex flex-col items-center gap-2 text-center">
           <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#b8860b] text-lg md:text-xl">
             ✨
           </div>
 
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-white text-sm md:text-base leading-relaxed">
-            初めての方も、どうぞ肩の力を抜いて「自分なりの楽しみ方」でご参加ください。
+            初めての方も、どうぞ肩の力を抜いて<br />
+            「自分なりの楽しみ方」でご参加ください。
           </div>
         </div>
       </div>

@@ -1,0 +1,30 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# フォーム送信時のメール通知設定
+# 以下のセクションで通知先メールアドレスを設定してください
+
+# お問い合わせフォームの通知
+[[plugins]]
+  package = "@netlify/plugin-emails"
+
+# ===============================================
+# メール通知の設定方法
+# ===============================================
+# 
+# 方法1: Netlifyダッシュボードで設定（推奨）
+#   1. Netlifyダッシュボードにログイン
+#   2. サイトを選択 → Site settings → Forms → Form notifications
+#   3. "Add notification" → "Email notification"
+#   4. 通知先メールアドレスを入力
+#   5. フォーム名を選択（contact または reserve）
+#
+# 方法2: 環境変数を使用
+#   Netlifyダッシュボード → Site settings → Environment variables
+#   で以下の変数を設定:
+#   - CONTACT_EMAIL: お問い合わせ通知先
+#   - RESERVE_EMAIL: 予約通知先
+#
+# ===============================================
+

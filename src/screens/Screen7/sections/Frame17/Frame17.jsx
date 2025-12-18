@@ -28,7 +28,8 @@ export const Frame17 = () => {
             data-scroll="fade-up"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-lg md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
           >
-            あなたを魅了するキャストたちを、ご紹介します。
+            あなたを魅了するキャストたちを、<br />
+            ご紹介します。
           </h2>
 
           <p 
@@ -36,13 +37,12 @@ export const Frame17 = () => {
             data-scroll-delay="200"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
-            それぞれがこの空間を彩る表現者。
-            <br className="hidden md:block" />
-            <span className="md:hidden"> </span>
-            ダンサー・シンガー・エンターテイナー──唯一無二のパフォーマンスで、今夜のステージを創り上げます。
-            <br className="hidden md:block" />
-            <span className="md:hidden"> </span>
-            お気に入りのキャストや出演スケジュールなど、最新情報はこちらからご覧ください。
+            それぞれがこの空間を彩る表現者。<br />
+            ダンサー・シンガー・エンターテイナー──<br />
+            唯一無二のパフォーマンスで、<br />
+            今夜のステージを創り上げます。<br />
+            お気に入りのキャストや出演スケジュールなど、<br />
+            最新情報はこちらからご覧ください。
           </p>
         </div>
       </div>

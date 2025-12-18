@@ -53,12 +53,13 @@ export const Header = ({ className = "" }) => {
                 {link.label}
               </Link>
             ))}
-            <button 
+            <Link 
+              to="/reserve"
               className="mt-4 px-8 py-3 bg-white rounded-lg text-[#1a1a2e] font-semibold"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               RESERVE
-            </button>
+            </Link>
           </nav>
         </div>
       )}
@@ -131,11 +132,14 @@ export const Header = ({ className = "" }) => {
               )}
             </div>
 
-            <button className="flex w-[140px] h-10 items-center justify-center relative bg-white rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+            <Link 
+              to="/reserve"
+              className="flex w-[140px] h-10 items-center justify-center relative bg-white rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+            >
               <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-[#1a1a2e] text-sm tracking-[0] leading-[16.8px] whitespace-nowrap">
                 RESERVE
               </div>
-            </button>
+            </Link>
           </div>
 
           {/* モバイルハンバーガーメニュー */}

@@ -36,9 +36,9 @@ export const Frame13 = () => {
             data-scroll-delay="200"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-base md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
-            入店からショー後の余韻まで、迷わず楽しめる5つのステップをご用意しました。まずは一杯、心をほどき、光と音の世界へ。
-            <br className="hidden md:block" />
-            <span className="md:hidden"> </span>
+            入店からショー後の余韻まで、<br />
+            迷わず楽しめる5つのステップをご用意しました。<br />
+            まずは一杯、心をほどき、光と音の世界へ。<br />
             最後の一瞬まで、美しい体験をナビゲートします。
           </p>
         </div>

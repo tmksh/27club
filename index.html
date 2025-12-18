@@ -222,6 +222,17 @@
       <textarea name="message"></textarea>
     </form>
     
+    <!-- 予約フォーム用（ビルド時に検出） -->
+    <form name="reserve" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="reserve" />
+      <input type="text" name="name" />
+      <input type="text" name="numberOfPeople" />
+      <input type="text" name="time" />
+      <input type="text" name="seatType" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+    </form>
+    
     <div id="app"></div>
     <script type="module" src="./src/index.jsx"></script>
   </body>

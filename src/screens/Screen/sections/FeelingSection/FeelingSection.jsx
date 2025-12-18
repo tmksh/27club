@@ -11,7 +11,7 @@ export const FeelingSection = () => {
           「楽しかった！」「感動した！」「ありがとう！」
         </div>
 
-        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-base text-center tracking-[0] leading-relaxed">
+        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-sm text-center tracking-[0] leading-relaxed whitespace-nowrap">
           そんなお気持ちを、気軽にチップで伝えていただけます。
         </div>
       </div>

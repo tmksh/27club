@@ -19,8 +19,10 @@ export const Frame1 = () => {
           </h1>
           
           {/* 説明テキスト */}
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-xl lg:text-[26.6px] text-center tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]">
-            THE27CLUBでは、ショーやキャストとの時間をもっと楽しんでいただけるように、「チップ」という応援のカタチ をご用意しています。
+          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-lg lg:text-[22px] text-center tracking-[0] leading-relaxed md:leading-[36px] max-w-[1000px]">
+            THE27CLUBでは、<br />
+            ショーやキャストとの時間をもっと楽しんでいただけるように、<br />
+            「チップ」という応援のカタチをご用意しています。
           </p>
         </div>
       </div>
