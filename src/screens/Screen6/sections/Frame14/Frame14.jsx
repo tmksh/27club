@@ -12,7 +12,7 @@ export const Frame14 = () => {
           まずはドリンクやフードをオーダーして、ゆったりとお過ごしください。当店ならではのオリジナルメニューもございます🍸
         </>
       ),
-      image: "/img/rectangle-59.png",
+      image: "/img/guest-flow-0.jpg",
       showButtons: true,
       imageFirst: true,
     },
@@ -28,7 +28,7 @@ export const Frame14 = () => {
           ドリンクを片手に、ショーの世界に浸ってください。
         </>
       ),
-      image: "/img/rectangle-59-1.png",
+      image: "/img/guest-flow-image.jpg",
       showButtons: false,
       imageFirst: false,
     },
@@ -42,7 +42,7 @@ export const Frame14 = () => {
           3,000円・5,000円の「チップレイ」、10,000円〜の「マネーガン演出」もおすすめ。盛り上がれば盛り上がるほど、会場全体が熱くなります🔥
         </>
       ),
-      image: "/img/rectangle-59-2.png",
+      image: "/img/guest-flow-image-2.jpg",
       showButtons: false,
       imageFirst: true,
     },
@@ -56,7 +56,7 @@ export const Frame14 = () => {
           ぜひ思い出を残してください。他のお客様へのご配慮だけお願いします。
         </>
       ),
-      image: "/img/rectangle-59-3.png",
+      image: "/img/guest-flow-image-4.jpg",
       showButtons: false,
       imageFirst: false,
     },
@@ -70,7 +70,7 @@ export const Frame14 = () => {
           フードやドリンクを追加オーダーして、余韻を楽しむのもおすすめです。
         </>
       ),
-      image: "/img/rectangle-60.png",
+      image: "/img/guest-flow-image-3.webp",
       showButtons: true,
       imageFirst: true,
     },
@@ -122,32 +122,44 @@ export const Frame14 = () => {
           <div 
             key={step.number}
             data-scroll={step.imageFirst ? "fade-left" : "fade-right"}
-            className={`flex flex-col ${step.imageFirst ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4 md:gap-6 lg:gap-8 items-center`}
+            className="relative"
+            style={{ marginBottom: '60px' }}
           >
             {/* 画像部分 */}
-            <div className="w-full md:w-1/2 relative">
-              <div className="absolute inset-0 translate-x-[-10px] translate-y-[-10px] md:translate-x-[-15px] md:translate-y-[-15px] bg-[#fffee7b2] rounded-[10px]" />
+            <div className={`w-full md:w-[55%] ${step.imageFirst ? '' : 'md:ml-auto'}`}>
               <div 
-                className="relative w-full aspect-[590/300] bg-cover bg-center rounded-[10px]"
+                className="w-full aspect-[4/3] bg-cover bg-center rounded-[10px] shadow-xl"
                 style={{ backgroundImage: `url(${step.image})` }}
               />
             </div>
 
-            {/* テキスト部分 */}
-            <div className="w-full md:w-1/2 flex flex-col gap-3 md:gap-4 p-5 md:p-8 lg:p-10 bg-black rounded-[10px]">
-              <div className="[font-family:'Shippori_Mincho',Helvetica] font-semibold text-[#025b51] text-4xl md:text-5xl lg:text-[52px] leading-tight">
-                {step.number}
-              </div>
+            {/* テキスト部分 - 画像にずらして重ねる */}
+            <div 
+              className={`w-[90%] md:w-[50%] md:absolute ${step.imageFirst ? 'md:right-0 md:top-[30%]' : 'md:left-0 md:top-[30%]'} z-20 mt-[-40px] md:mt-0 mx-auto md:mx-0`}
+            >
+              <div 
+                className="flex flex-col gap-3 md:gap-4 p-5 md:p-8 lg:p-10 rounded-[10px] border border-[#d4af37]/20"
+                style={{
+                  background: 'rgba(250, 248, 245, 0.98)',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+                }}
+              >
+                {/* ステップ番号 - 上部に配置 */}
+                <div className="flex items-center gap-4 border-b border-[#d4af37]/30 pb-3 md:pb-4">
+                  <div className="[font-family:'Playfair_Display',serif] font-semibold text-[#d4af37] text-4xl md:text-5xl lg:text-[56px] leading-none">
+                    {step.number}
+                  </div>
+                  <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-lg md:text-xl lg:text-2xl">
+                    {step.title}
+                  </div>
+                </div>
 
-              <div className="[font-family:'Shippori_Mincho',Helvetica] font-bold text-white text-lg md:text-xl lg:text-2xl">
-                {step.title}
-              </div>
+                <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#333] text-sm md:text-base lg:text-lg leading-relaxed md:leading-[30.6px]">
+                  {step.description}
+                </div>
 
-              <div className="[font-family:'Shippori_Mincho',Helvetica] font-normal text-white text-sm md:text-base lg:text-lg leading-relaxed md:leading-[30.6px]">
-                {step.description}
+                {step.showButtons && <MenuButtons />}
               </div>
-
-              {step.showButtons && <MenuButtons />}
             </div>
           </div>
         ))}

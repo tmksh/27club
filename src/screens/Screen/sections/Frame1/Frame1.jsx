@@ -4,11 +4,19 @@ export const Frame1 = () => {
   return (
     <div className="relative w-full" data-scroll="zoom-in">
       {/* 背景画像 */}
-      <div className="relative w-full aspect-[1440/560] md:aspect-[1440/560]">
+      <div className="relative w-full aspect-[1440/700] md:aspect-[1440/700]">
         <img
           className="w-full h-full object-cover"
           alt="チップについて"
-          src="/img/rectangle-213.png"
+          src="/img/tip-hero.jpg"
+        />
+        
+        {/* 下部グラデーションオーバーレイ（テキスト視認性向上） */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 50%, transparent 70%)'
+          }}
         />
         
         {/* オーバーレイコンテンツ */}

@@ -113,7 +113,7 @@ export const Reserve = () => {
   ];
 
   return (
-    <div className="overflow-hidden bg-[url(/img/27-background.png)] bg-repeat-y bg-[50%_0%] w-full min-h-screen flex flex-col">
+    <div className="overflow-hidden bg-transparent w-full min-h-screen flex flex-col relative z-0">
       <Header />
       
       <main className="flex-1 w-full px-4 md:px-8 lg:px-16 py-8 md:py-16">

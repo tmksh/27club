@@ -46,11 +46,11 @@ export const Frame7 = () => {
   ];
 
   const options = [
-    { name: "バースデーケーキ（一段）", price: "¥3,000" },
-    { name: "バルーン装飾", price: "¥1,500" },
-    { name: "クラッカー（10個セット）", price: "¥800" },
-    { name: "シャンパン持ち込み料", price: "¥2,000" },
-    { name: "プロジェクター使用料", price: "¥5,000" },
+    { name: "バースデーケーキ（一段）", nameEn: "BIRTHDAY CAKE", price: "¥3,000" },
+    { name: "バルーン装飾", nameEn: "BALLOON DECORATION", price: "¥1,500" },
+    { name: "クラッカー（10個セット）", nameEn: "CRACKERS (10 PCS)", price: "¥800" },
+    { name: "シャンパン持ち込み料", nameEn: "CHAMPAGNE CORKAGE", price: "¥2,000" },
+    { name: "プロジェクター使用料", nameEn: "PROJECTOR RENTAL", price: "¥5,000" },
   ];
 
   return (
@@ -116,90 +116,97 @@ export const Frame7 = () => {
           ))}
         </div>
 
-        {/* 画像 */}
-        <div className="w-full aspect-[1146/502] mb-8 md:mb-12">
-          <img
-            className="w-full h-full object-cover rounded-xl md:rounded-2xl"
-            alt="パーティーイメージ"
-            src="/img/rectangle-211.png"
-          />
+        {/* 料理写真ギャラリー */}
+        <div className="mb-8 md:mb-12">
+          <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl text-center mb-6 md:mb-8">
+            🍽️ お料理メニュー
+          </h3>
+          
+          {/* メインギャラリー - グリッドスタイル */}
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
+            {[...Array(24)].map((_, index) => (
+              <div 
+                key={index}
+                className={`relative overflow-hidden rounded-lg md:rounded-xl group ${
+                  // 大きい画像: 1, 8, 13, 20番目
+                  [0, 7, 12, 19].includes(index) ? 'col-span-2 row-span-2' : ''
+                }`}
+              >
+                <img
+                  className="w-full h-full object-cover aspect-square transition-transform duration-500 group-hover:scale-110"
+                  alt={`料理${index + 1}`}
+                  src={`/img/food-${index + 1}.jpg`}
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* 詳細情報 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
-          {/* 左カラム */}
-          <div className="flex flex-col gap-6 md:gap-8">
-            {/* 時間・延長について */}
-            <div className="flex flex-col gap-4 md:gap-6 p-6 md:p-8 bg-[#1a1a1a] rounded-xl md:rounded-2xl">
-              <div className="flex items-center gap-3 md:gap-4">
-                <span className="text-xl md:text-2xl">⏱️</span>
-                <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-xl">
-                  時間・延長について
+        <div className="flex flex-col gap-6 md:gap-8 mb-8 md:mb-12">
+          {/* オプション */}
+          <div 
+            className="relative p-2 md:p-3 w-full"
+            style={{
+              background: 'linear-gradient(135deg, #f5f3ef 0%, #eae6df 100%)',
+              borderRadius: '8px',
+            }}
+          >
+            {/* 外側ボーダー */}
+            <div 
+              className="absolute inset-2 md:inset-3 pointer-events-none"
+              style={{
+                border: '2px solid #1a1a1a',
+                borderRadius: '4px',
+              }}
+            />
+            {/* 内側ボーダー */}
+            <div 
+              className="absolute inset-3 md:inset-4 pointer-events-none"
+              style={{
+                border: '1px solid #1a1a1a',
+                borderRadius: '2px',
+              }}
+            />
+            {/* コーナー装飾 */}
+            <div className="absolute top-2 left-2 md:top-3 md:left-3 w-4 h-4 md:w-5 md:h-5 border-t-2 border-l-2 border-[#1a1a1a] rounded-tl-lg" />
+            <div className="absolute top-2 right-2 md:top-3 md:right-3 w-4 h-4 md:w-5 md:h-5 border-t-2 border-r-2 border-[#1a1a1a] rounded-tr-lg" />
+            <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3 w-4 h-4 md:w-5 md:h-5 border-b-2 border-l-2 border-[#1a1a1a] rounded-bl-lg" />
+            <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3 w-4 h-4 md:w-5 md:h-5 border-b-2 border-r-2 border-[#1a1a1a] rounded-br-lg" />
+            
+            {/* コンテンツ */}
+            <div className="relative z-10 flex flex-col gap-6 md:gap-8 p-8 md:p-12">
+              {/* タイトル */}
+              <div className="text-center">
+                <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-3xl md:text-5xl tracking-[0.15em]">
+                  オプション
                 </h3>
+                <div className="mt-4 md:mt-6 w-full h-[2px] bg-[#1a1a1a]" />
               </div>
-              <div className="flex flex-col gap-2 md:gap-3">
-                <div className="flex items-start gap-2 md:gap-3">
-                  <span className="text-white">◽</span>
-                  <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-xl">
-                    2.5時間でL.O（ラストオーダー）
-                  </span>
-                </div>
-                <div className="flex items-start gap-2 md:gap-3">
-                  <span className="text-white">◽</span>
-                  <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-xl">
-                    1時間延長あたり1人/1,000円の延長料金
-                  </span>
-                </div>
-                <div className="flex items-start gap-2 md:gap-3">
-                  <span className="text-white">◽</span>
-                  <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-xl">
-                    24時間受付可能
-                  </span>
-                </div>
+              
+              {/* メニューアイテム */}
+              <div className="flex flex-col gap-6 md:gap-8 mt-4 max-w-[700px] mx-auto w-full">
+                {options.map((option, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between"
+                  >
+                    <div className="flex flex-col gap-1">
+                      <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-lg md:text-2xl">
+                        {option.name}
+                      </span>
+                      <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#555] text-xs md:text-base tracking-wider">
+                        {option.nameEn}
+                      </span>
+                    </div>
+                    <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-xl md:text-3xl">
+                      {option.price}
+                    </span>
+                  </div>
+                ))}
               </div>
-            </div>
-
-            {/* 週末・祝日料金 */}
-            <div className="flex flex-col gap-4 md:gap-5 p-6 md:p-8 bg-[#333333] rounded-xl md:rounded-2xl">
-              <div className="flex items-center gap-3 md:gap-4">
-                <span className="text-xl md:text-2xl">📅</span>
-                <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-xl">
-                  週末・祝日料金
-                </h3>
-              </div>
-              <div className="flex items-center gap-3 md:gap-4">
-                <span className="text-[#00d6bd]">+</span>
-                <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-xl">
-                  金土日祝日・祝前日は1人につき500円追加
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* 右カラム - オプション */}
-          <div className="flex flex-col gap-4 md:gap-6 p-6 md:p-8 bg-[#1a1a1a] rounded-xl md:rounded-2xl">
-            <div className="flex items-center gap-3 md:gap-4">
-              <span className="text-xl md:text-2xl">🎁</span>
-              <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-xl">
-                オプション
-              </h3>
-            </div>
-            <div className="flex flex-col gap-3 md:gap-4">
-              {options.map((option, index) => (
-                <div
-                  key={index}
-                  className={`flex items-center justify-between py-3 ${
-                    index !== options.length - 1 ? "border-b border-[#333333]" : ""
-                  }`}
-                >
-                  <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-xl">
-                    {option.name}
-                  </span>
-                  <span className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm">
-                    {option.price}
-                  </span>
-                </div>
-              ))}
             </div>
           </div>
         </div>

@@ -32,9 +32,9 @@ export const GroupWrapper = () => {
     v4: "/img/s-18710559-2.png",
     v5: "/img/s-18710559-2.png",
     v6: "/img/s-18710559-2.png",
-    backbar: "/img/s-18710559-2.png",
+    backbar: "/img/backbar.jpg",
     entrance: "/img/s-18710559-2.png",
-    stage: "/img/s-18710559-2.png",
+    stage: "/img/stage.jpg",
   };
 
   // 座席名の日本語表記
@@ -498,7 +498,7 @@ export const GroupWrapper = () => {
           className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center animate-[fadeIn_0.15s_ease-out] pointer-events-none"
           style={{ zIndex: 9999 }}
         >
-          <div className="relative w-[70%] max-w-[400px] animate-[fadeInScale_0.15s_ease-out]">
+          <div className="relative w-[85%] max-w-[700px] animate-[fadeInScale_0.15s_ease-out]">
             {/* 座席名 */}
             <div className="absolute -top-8 left-0 right-0 text-center">
               <span className="text-white text-sm font-bold [font-family:'Inter',Helvetica] bg-black/50 px-3 py-1 rounded">
@@ -510,7 +510,7 @@ export const GroupWrapper = () => {
             <img
               src={seatImages[hoveredSeat]}
               alt={hoveredSeat}
-              className="w-full aspect-square object-cover rounded-lg shadow-[0_0_20px_rgba(0,214,189,0.4)] border border-[#00d6bd]/30"
+              className="w-full aspect-video object-cover rounded-lg shadow-[0_0_20px_rgba(0,214,189,0.4)] border border-[#00d6bd]/30"
             />
           </div>
         </div>

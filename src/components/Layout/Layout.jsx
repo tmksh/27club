@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { SpaceBackground } from '../SpaceBackground';
 
 export const Layout = () => {
   const location = useLocation();
@@ -57,8 +58,14 @@ export const Layout = () => {
     };
   };
 
-  return <Outlet />;
+  return (
+    <>
+      <SpaceBackground />
+      <Outlet />
+    </>
+  );
 };
+
 
 
 

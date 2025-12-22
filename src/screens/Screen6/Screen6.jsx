@@ -8,7 +8,7 @@ import { Frame15 } from "./sections/Frame15";
 export const Screen6 = () => {
   return (
     <div
-      className="flex flex-col items-center relative overflow-hidden bg-[url(/img/27-background.png)] bg-repeat-y bg-[50%_0%] w-full min-h-screen"
+      className="flex flex-col items-center relative overflow-hidden bg-transparent w-full min-h-screen"
       data-model-id="411:1121"
     >
       <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />

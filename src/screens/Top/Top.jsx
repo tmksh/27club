@@ -69,10 +69,7 @@ export const Top = () => {
       className="flex flex-col items-center relative overflow-hidden md:min-w-[1440px] min-h-screen"
       data-model-id="385:1682"
       style={{
-        backgroundImage: 'url(/img/27-background.png)',
-        backgroundRepeat: 'repeat-y',
-        backgroundPosition: '50% 0%',
-        backgroundSize: 'auto',
+        background: 'transparent',
       }}
     >
       {/* 暗いグラデーションオーバーレイ（ナイトクラブの雰囲気） */}
@@ -916,6 +913,20 @@ export const Top = () => {
         <Frame650Wrapper />
         <Footer />
       </div>
+
+      {/* SP版 追従予約ボタン */}
+      <Link 
+        to="/reserve"
+        className="md:hidden fixed bottom-6 right-4 z-50 flex flex-col items-center justify-center px-5 py-3 rounded-full"
+        style={{
+          background: 'linear-gradient(135deg, #00c9a7 0%, #00d4aa 50%, #02e8b0 100%)',
+          boxShadow: '0 4px 20px rgba(0,200,167,0.5), 0 0 30px rgba(0,200,167,0.3)',
+          border: '2px solid rgba(255,255,255,0.3)',
+        }}
+      >
+        <span className="text-[10px] font-bold text-white tracking-wide drop-shadow-md">予約はこちら</span>
+        <span className="text-base font-black text-white tracking-widest drop-shadow-md">RESERVE</span>
+      </Link>
     </div>
   );
 };
