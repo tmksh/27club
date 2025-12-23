@@ -179,7 +179,7 @@ export const Top = () => {
       )}
       
       {/* FVセクション */}
-      <div className="relative w-full max-w-[1440px] md:min-h-[750px] overflow-visible z-10">
+      <div className="relative w-full max-w-[1440px] md:h-screen overflow-visible z-10">
         {/* ナビゲーション */}
         <div className="absolute top-0 left-0 w-full h-[60px] flex z-20">
           <div className="flex w-full h-10 mt-2.5 mx-4 md:mx-8 lg:mx-12 relative items-center justify-between">
@@ -365,9 +365,8 @@ export const Top = () => {
                   width: `${size}px`,
                   height: `${size}px`,
                   background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
-                  boxShadow: `0 0 20px ${color}`,
+                  boxShadow: `0 0 12px ${color}`,
                   animation: `float-ball ${duration}s ease-in-out ${delay}s infinite`,
-                  willChange: 'transform',
                   zIndex: 40,
                 }}
               />
@@ -396,11 +395,10 @@ export const Top = () => {
                   width: `${size}px`,
                   height: `${size}px`,
                   animation: `float-chip${rotate > 0 ? '' : '-reverse'} ${duration}s ease-in-out ${delay}s infinite`,
-                  willChange: 'transform',
                   zIndex: 35,
                 }}
               >
-                <img src={img} alt="" className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]" />
+                <img src={img} alt="" className="w-full h-full object-contain" style={{ filter: 'sepia(0.3) saturate(0.7) brightness(0.85) contrast(0.95) drop-shadow(0 4px 6px rgba(0,0,0,0.4))', opacity: 0.8 }} />
               </div>
             );
           })}
@@ -455,7 +453,7 @@ export const Top = () => {
 
         {/* PC版FV（新しいデザイン + ネオン玉） */}
         <div 
-          className="hidden md:block overflow-hidden w-full min-w-[1440px] min-h-[750px] relative"
+          className="hidden md:block overflow-hidden w-full min-w-[1440px] h-screen relative"
           style={{ perspective: '2000px' }}
         >
           {/* 宇宙空間3D背景 */}
@@ -614,9 +612,8 @@ export const Top = () => {
                   width: `${size}px`,
                   height: `${size}px`,
                   background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
-                  boxShadow: `0 0 30px ${color}`,
+                  boxShadow: `0 0 15px ${color}`,
                   animation: `float-ball ${duration}s ease-in-out ${delay}s infinite`,
-                  willChange: 'transform',
                   zIndex: 40,
                 }}
               />
@@ -647,11 +644,10 @@ export const Top = () => {
                   width: `${size}px`,
                   height: `${size}px`,
                   animation: `float-chip${rotate > 0 ? '' : '-reverse'} ${duration}s ease-in-out ${delay}s infinite`,
-                  willChange: 'transform',
                   zIndex: 35,
                 }}
               >
-                <img src={img} alt="" className="w-full h-full object-contain drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]" />
+                <img src={img} alt="" className="w-full h-full object-contain" style={{ filter: 'sepia(0.3) saturate(0.7) brightness(0.85) contrast(0.95) drop-shadow(0 4px 8px rgba(0,0,0,0.4))', opacity: 0.8 }} />
               </div>
             );
           })}
@@ -670,7 +666,6 @@ export const Top = () => {
                 boxShadow: `0 0 12px rgba(0,200,180,0.5)`,
                 animation: `twinkle ${2.5 + (i % 3)}s ease-in-out infinite`,
                 animationDelay: `${i * 0.3}s`,
-                willChange: 'opacity',
               }}
             />
           ))}
