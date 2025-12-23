@@ -1,7 +1,10 @@
 import React from "react";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame14 = () => {
-  const steps = [
+  const { language } = useLanguage();
+  
+  const stepsJa = [
     {
       number: "01",
       title: "ご入店〜ショー開始まで",
@@ -76,6 +79,83 @@ export const Frame14 = () => {
     },
   ];
 
+  const stepsEn = [
+    {
+      number: "01",
+      title: "Entry to Show Start",
+      description: (
+        <>
+          After arrival, we'll guide you to your seat.
+          <br />
+          Start by ordering drinks or food and relax. We have original menu items unique to our venue 🍸
+        </>
+      ),
+      image: "/img/guest-flow-0.jpg",
+      showButtons: true,
+      imageFirst: true,
+    },
+    {
+      number: "02",
+      title: "Watch the Show",
+      description: (
+        <>
+          When the lights and music begin, enter an extraordinary stage.
+          <br />
+          Just watching is totally fine at first!
+          <br />
+          Enjoy the show world with a drink in hand.
+        </>
+      ),
+      image: "/img/guest-flow-image.jpg",
+      showButtons: false,
+      imageFirst: false,
+    },
+    {
+      number: "03",
+      title: "How to Get Involved",
+      description: (
+        <>
+          Applause & cheers → Express your excitement! Tips → Give to cast members when you want to show more support. Available from 10 chips (¥1,200).
+          <br /><br />
+          We also recommend "Chip Lei" (¥3,000/¥5,000) and "Money Gun" (¥10,000+). The more excited everyone gets, the hotter the venue becomes 🔥
+        </>
+      ),
+      image: "/img/guest-flow-image-2.jpg",
+      showButtons: false,
+      imageFirst: true,
+    },
+    {
+      number: "04",
+      title: "Photography During Show",
+      description: (
+        <>
+          At THE27CLUB, photos and videos are welcome 📷 Plenty of Instagram-worthy moments.
+          <br />
+          Please capture your memories. Just be considerate of other guests.
+        </>
+      ),
+      image: "/img/guest-flow-image-4.jpg",
+      showButtons: false,
+      imageFirst: false,
+    },
+    {
+      number: "05",
+      title: "After the Show",
+      description: (
+        <>
+          After the show, you can chat with cast members and take photos together.
+          <br />
+          We recommend ordering more food and drinks to savor the afterglow.
+        </>
+      ),
+      image: "/img/guest-flow-image-3.webp",
+      showButtons: true,
+      imageFirst: true,
+    },
+  ];
+
+  const steps = language === 'ja' ? stepsJa : stepsEn;
+
   const MenuButtons = () => (
     <div className="flex flex-wrap gap-3 mt-2">
       {/* ドリンクメニューボタン */}
@@ -90,7 +170,7 @@ export const Frame14 = () => {
       >
         <span className="text-xl md:text-2xl">🍸</span>
         <span className="[font-family:'Noto_Sans_JP',Helvetica] font-black text-white text-xs md:text-sm whitespace-nowrap">
-          ドリンク
+          {language === 'ja' ? 'ドリンク' : 'Drinks'}
         </span>
       </a>
       
@@ -108,7 +188,7 @@ export const Frame14 = () => {
       >
         <span className="text-xl md:text-2xl">🍽️</span>
         <span className="[font-family:'Noto_Sans_JP',Helvetica] font-black text-white text-xs md:text-sm whitespace-nowrap">
-          フード
+          {language === 'ja' ? 'フード' : 'Food'}
         </span>
       </a>
     </div>
@@ -172,16 +252,27 @@ export const Frame14 = () => {
       >
         <div className="inline-flex gap-3 items-center">
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-xl lg:text-2xl tracking-[0] leading-tight text-center">
-            ポイントは「一緒に楽しむこと」
+            {language === 'ja' ? 'ポイントは「一緒に楽しむこと」' : 'The Key is "Enjoying Together"'}
           </div>
         </div>
 
         <div className="flex flex-col gap-2 w-full items-center">
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#cccccc] text-sm md:text-base text-center leading-relaxed">
-            THE27CLUBのショーは、<br />
-            キャストとお客様が一体となって作り上げるもの。<br />
-            拍手も、声援も、チップも、撮影も、そしてフードや<br />
-            ドリンクも——そのすべてがショーの一部です。
+            {language === 'ja' ? (
+              <>
+                THE27CLUBのショーは、<br />
+                キャストとお客様が一体となって作り上げるもの。<br />
+                拍手も、声援も、チップも、撮影も、そしてフードや<br />
+                ドリンクも——そのすべてがショーの一部です。
+              </>
+            ) : (
+              <>
+                THE27CLUB's shows are created<br />
+                together by the cast and guests.<br />
+                Applause, cheers, tips, photos, food and<br />
+                drinks — everything is part of the show.
+              </>
+            )}
           </div>
         </div>
 
@@ -191,8 +282,17 @@ export const Frame14 = () => {
           </div>
 
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-white text-sm md:text-base leading-relaxed">
-            初めての方も、どうぞ肩の力を抜いて<br />
-            「自分なりの楽しみ方」でご参加ください。
+            {language === 'ja' ? (
+              <>
+                初めての方も、どうぞ肩の力を抜いて<br />
+                「自分なりの楽しみ方」でご参加ください。
+              </>
+            ) : (
+              <>
+                Even first-timers, please relax and<br />
+                enjoy in your own way.
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Div = () => {
+  const { language, t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   // 背景画像の配列（複数の画像を用意）
@@ -80,7 +82,7 @@ export const Div = () => {
 
       {/* カタカナテキスト（デスクトップのみ） */}
       <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-left">
-        この空間について
+        {language === 'ja' ? 'この空間について' : 'About This Space'}
       </div>
 
       {/* セクションタイトル */}
@@ -89,7 +91,9 @@ export const Div = () => {
           About This Venue
         </div>
         <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-[16px] tracking-[0] leading-[20px] md:leading-[24px] text-center opacity-90 max-w-[800px]">
-          歌舞伎町最大級のショー空間。映像美と臨場感を追求する、プロ仕様のステージ空間をご体験ください。
+          {language === 'ja' 
+            ? '歌舞伎町最大級のショー空間。映像美と臨場感を追求する、プロ仕様のステージ空間をご体験ください。'
+            : "Kabukicho's largest show space. Experience a professional-grade stage space pursuing visual beauty and immersion."}
         </div>
       </div>
 
@@ -147,8 +151,8 @@ export const Div = () => {
                 data-scroll-delay="100"
                 style={{ textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
               >
-                歌舞伎町最大級の<br />
-                ショー空間
+                {t('stage.title')}<br />
+                {t('stage.titleLine2')}
               </h2>
 
               {/* 説明文 */}
@@ -157,7 +161,7 @@ export const Div = () => {
                 data-scroll="fade-right"
                 data-scroll-delay="200"
               >
-                映像美と臨場感を追求する、プロ仕様のステージ空間。MV・CMなど、数多くの撮影現場で実際に使用されているステージです。照明・音響・空間演出のすべてがプロフェッショナル仕様。
+                {t('stage.description')}
               </p>
 
               {/* 特徴リスト */}
@@ -166,12 +170,7 @@ export const Div = () => {
                 data-scroll="fade-right"
                 data-scroll-delay="300"
               >
-                {[
-                  "歌舞伎町最大級のステージ空間",
-                  "プロ仕様の照明・音響設備",
-                  "MV・CM撮影の実績多数",
-                  "スタジオ貸出OK",
-                ].map((feature, index) => (
+                {t('stage.features').map((feature, index) => (
                   <li key={index} className="flex items-center gap-2 md:gap-3">
                     <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#00d6bd] flex-shrink-0" style={{ boxShadow: '0 0 8px rgba(0,214,189,0.6)' }} />
                     <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-xs md:text-sm lg:text-base">
@@ -193,7 +192,7 @@ export const Div = () => {
                 data-scroll-delay="400"
               >
                 <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-sm md:text-base tracking-[0.05em]">
-                  お問い合わせ
+                  {t('stage.contactButton')}
                 </span>
                 <svg className="w-4 h-4 md:w-5 md:h-5 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

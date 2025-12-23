@@ -1,7 +1,10 @@
 import React from "react";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame10 = () => {
-  const jobListings = [
+  const { t, language } = useLanguage();
+  
+  const jobListingsJa = [
     {
       titleEn: "Entertainer",
       titleJp: "ダンサー・シンガー・エンターテイナー",
@@ -28,6 +31,35 @@ export const Frame10 = () => {
     },
   ];
 
+  const jobListingsEn = [
+    {
+      titleEn: "Entertainer",
+      titleJp: "Dancer / Singer / Entertainer",
+      image: "/img/rectangle-191.png",
+      details: [
+        { label: "Salary", value: "Daily wage + Tips system, High income potential" },
+        { label: "Requirements", value: "18+ years old (no high school students) / Beginners welcome, experienced preferred" },
+        { label: "Job Description", value: "◽Dance, sing, and perform at the show club\n◽Greeting guests and participating in events\n◽Stage performer creating entertainment together", multiline: true },
+        { label: "Benefits", value: "◽Costume rental available ◽Meals provided ◽Private lessons available ◽Flexible shifts" },
+        { label: "Message", value: "Express your personality and charm freely.\nCaptivate the audience through your performance.\nA chance to shine at the trending show club \"THE27CLUB\".", multiline: true },
+      ],
+    },
+    {
+      titleEn: "Hall Staff",
+      titleJp: "Hall Staff",
+      image: "/img/rectangle-190.png",
+      details: [
+        { label: "Salary", value: "Hourly / Daily / Full-time employment available" },
+        { label: "Requirements", value: "◽18+ years old (no high school students) ◽Beginners welcome ◽English speakers and hospitality experience welcome" },
+        { label: "Job Description", value: "◽General hall operations ◽Reception, administrative tasks, cleaning\n◽Creating a comfortable environment for guests", multiline: true },
+        { label: "Benefits", value: "◽Uniform provided ◽Meals provided\n◽Flexible shifts ◽Hair color, nails, piercings OK", multiline: true },
+        { label: "Message", value: "A fun and bright work environment where you can express your individuality.\nA chance to work at a popular club in Kabukicho.", multiline: true },
+      ],
+    },
+  ];
+
+  const jobListings = language === 'en' ? jobListingsEn : jobListingsJa;
+
   const LineButton = () => (
     <a
       href="https://lin.ee/GHLh75Z"
@@ -41,7 +73,7 @@ export const Frame10 = () => {
         src="/img/vector-76.svg"
       />
       <span className="[font-family:'Noto_Sans_JP',Helvetica] font-black text-white text-sm md:text-lg whitespace-nowrap">
-        LINE応募
+        {t('recruitPage.lineApply')}
       </span>
       <img
         className="w-4 h-4 md:w-5 md:h-5"
@@ -68,7 +100,7 @@ export const Frame10 = () => {
             data-scroll-delay="200"
             className="[font-family:'Inter',Helvetica] font-normal text-[#888888] text-lg md:text-2xl lg:text-[28.1px] tracking-[0] leading-relaxed"
           >
-            スタッフ採用募集
+            {t('recruitPage.subtitle')}
           </p>
         </div>
 
@@ -78,20 +110,14 @@ export const Frame10 = () => {
             data-scroll="fade-up"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-xl md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
           >
-            光と音の中で、あなたの才能が輝く。
+            {t('recruitPage.headline')}
           </h2>
           <p 
             data-scroll="fade-up"
             data-scroll-delay="200"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
-            非日常のステージで、人を魅了し、自分を解き放つ。
-            <br className="hidden md:block" />
-            <span className="md:hidden"> </span>
-            ホールスタッフもパフォーマーも、ここではひとつのショーの一員です。
-            <br className="hidden md:block" />
-            <span className="md:hidden"> </span>
-            刺激と洗練が交差する空間で、あなたの"SHOWTIME"をはじめませんか？
+            {t('recruitPage.description')}
           </p>
         </div>
       </div>

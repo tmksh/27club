@@ -1,6 +1,8 @@
 import React from "react";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const SectionComponentNode = () => {
+  const { t } = useLanguage();
   // ギャラリーアイテムコンポーネント
   const GalleryItem = ({ image, hoverImage, className }) => (
     <div className={`relative group overflow-hidden bg-[#1a1a2e] ${className}`}>
@@ -27,7 +29,7 @@ export const SectionComponentNode = () => {
       <div className="relative w-full mx-auto">
         {/* カタカナテキスト（デスクトップのみ） */}
         <div className="hidden lg:block absolute -top-4 right-0 [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff15] text-[120px] tracking-[0] leading-[normal] select-none pointer-events-none pr-8">
-          ギャラリー
+          {t('gallery.backgroundText')}
         </div>
 
         {/* セクションタイトル */}
@@ -37,7 +39,7 @@ export const SectionComponentNode = () => {
           </div>
           <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-light text-white/70 text-sm md:text-base tracking-[0.05em] text-center max-w-[600px]">
-            当店の空間と雰囲気を写真でご覧いただけます
+            {t('gallery.subtitle')}
           </div>
         </div>
 

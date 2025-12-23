@@ -6,6 +6,7 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const ConcreteComponentNode = ({
   className,
@@ -37,6 +38,8 @@ export const ConcreteComponentNode = ({
   to4,
   to5,
 }) => {
+  const { language, t } = useLanguage();
+  
   const chips = [
     { img: '/img/3-1.png', w: 244, h: 142 },
     { img: '/img/1.png', w: 303, h: 73 },
@@ -129,7 +132,7 @@ export const ConcreteComponentNode = ({
         <div className="flex flex-col items-start gap-3 md:gap-5">
           <div className="flex flex-col items-start gap-1.5 md:gap-2 w-full">
             <div className="font-bold text-white text-[10px] md:text-sm leading-tight [font-family:'Inter',Helvetica] tracking-[1px] uppercase">
-              予約
+              {language === 'ja' ? '予約' : 'RESERVE'}
             </div>
             <div className="w-full h-[1px] bg-[#00d6bd]"></div>
           </div>
@@ -144,13 +147,13 @@ export const ConcreteComponentNode = ({
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                電話
+                {t('common.phone')}
               </a>
               <Link to="/u12467u12531u12479u12463u12488" className="flex items-center justify-center gap-1.5 px-2 md:px-3 py-1.5 md:py-2 bg-[#2a3a3a] border border-[#00d6bd] rounded text-white text-[9px] md:text-xs hover:bg-[#00d6bd30] transition-colors [font-family:'Inter',Helvetica]">
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                メール
+                {t('common.mail')}
               </Link>
             </div>
           </div>
@@ -160,7 +163,7 @@ export const ConcreteComponentNode = ({
         <div className="flex flex-col items-start gap-3 md:gap-5">
           <div className="flex flex-col items-start gap-1.5 md:gap-2 w-full">
             <div className="font-bold text-white text-[10px] md:text-sm leading-tight [font-family:'Inter',Helvetica] tracking-[1px] uppercase">
-              場所
+              {language === 'ja' ? '場所' : 'LOCATION'}
             </div>
             <div className="w-full h-[1px] bg-[#00d6bd]"></div>
           </div>
@@ -182,7 +185,7 @@ export const ConcreteComponentNode = ({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              道順
+              {t('common.directions')}
             </a>
           </div>
         </div>
@@ -191,23 +194,23 @@ export const ConcreteComponentNode = ({
         <div className="flex flex-col items-start gap-3 md:gap-5">
           <div className="flex flex-col items-start gap-1.5 md:gap-2 w-full">
             <div className="font-bold text-white text-[10px] md:text-sm leading-tight [font-family:'Inter',Helvetica] tracking-[1px] uppercase">
-              営業時間
+              {language === 'ja' ? '営業時間' : 'HOURS'}
             </div>
             <div className="w-full h-[1px] bg-[#00d6bd]"></div>
           </div>
 
           <div className="flex flex-col items-start gap-1 md:gap-2.5 w-full">
             <div className="[font-family:'Inter',Helvetica] font-normal text-white text-[10px] md:text-sm tracking-[0] leading-tight">
-              月-木：19:00-02:00
+              {language === 'ja' ? '月-木：19:00-02:00' : 'Mon-Thu: 19:00-02:00'}
             </div>
             <div className="[font-family:'Inter',Helvetica] font-normal text-white text-[10px] md:text-sm tracking-[0] leading-tight">
-              金-土：19:00-03:00
+              {language === 'ja' ? '金-土：19:00-03:00' : 'Fri-Sat: 19:00-03:00'}
             </div>
             <div className="[font-family:'Inter',Helvetica] font-normal text-white text-[10px] md:text-sm tracking-[0] leading-tight">
-              日：19:00-01:00
+              {language === 'ja' ? '日：19:00-01:00' : 'Sun: 19:00-01:00'}
             </div>
             <div className="[font-family:'Inter',Helvetica] font-normal text-white text-[8px] md:text-xs italic tracking-[0] leading-tight mt-0.5 opacity-80">
-              ※変更の場合あり
+              {language === 'ja' ? '※変更の場合あり' : '*Subject to change'}
             </div>
           </div>
         </div>
@@ -216,7 +219,7 @@ export const ConcreteComponentNode = ({
         <div className="flex flex-col items-start gap-3 md:gap-5">
           <div className="flex flex-col items-start gap-1.5 md:gap-2 w-full">
             <div className="font-bold text-white text-[10px] md:text-sm leading-tight [font-family:'Inter',Helvetica] tracking-[1px] uppercase">
-              リンク
+              {language === 'ja' ? 'リンク' : 'LINKS'}
             </div>
             <div className="w-full h-[1px] bg-[#00d6bd]"></div>
           </div>
@@ -267,25 +270,8 @@ export const ConcreteComponentNode = ({
 
       {/* フッターボトム */}
       <div className="flex flex-col w-full max-w-[1280px] mx-auto items-center gap-2 md:gap-3 py-2 md:py-6">
-        <div className="flex flex-col md:flex-row items-center justify-between w-full gap-1.5 md:gap-2">
-          <p className="[font-family:'Inter',Helvetica] font-normal text-white text-[8px] md:text-xs tracking-[0] leading-tight text-center md:text-left">
-            © 2025 THE 27 Club, The27Club.com. All Rights Reserved.
-          </p>
-
-          <Link
-            to="#"
-            className="[font-family:'Inter',Helvetica] font-normal text-white text-[8px] md:text-xs tracking-[0] leading-tight hover:text-[#00d6bd] transition-colors"
-          >
-            Privacy Policy
-          </Link>
-        </div>
-
-        <p className="[font-family:'Inter',Helvetica] font-normal text-white text-[7px] md:text-xs tracking-[0] leading-tight text-center opacity-70">
-          We use cookies to ensure that we give you the best experience on our website.
-        </p>
-
-        <p className="[font-family:'Inter',Helvetica] font-normal text-white text-[7px] md:text-xs tracking-[0] leading-tight text-center opacity-70 hidden md:block">
-          This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+        <p className="[font-family:'Inter',Helvetica] font-normal text-white text-[8px] md:text-xs tracking-[0] leading-tight text-center">
+          © 2025 THE 27 Club, The27Club.com. All Rights Reserved.
         </p>
       </div>
     </div>

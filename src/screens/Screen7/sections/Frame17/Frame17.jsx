@@ -1,6 +1,8 @@
 import React from "react";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame17 = () => {
+  const { t } = useLanguage();
   return (
     <div className="w-full px-4 md:px-8 lg:px-16 pt-8 md:pt-16 pb-8 md:pb-12">
       <div className="max-w-[1200px] mx-auto">
@@ -18,7 +20,7 @@ export const Frame17 = () => {
             data-scroll-delay="200"
             className="[font-family:'Inter',Helvetica] font-normal text-[#888888] text-lg md:text-2xl lg:text-[28.1px] tracking-[0] leading-relaxed"
           >
-            キャスト一覧
+            {t('castPage.subtitle')}
           </p>
         </div>
 
@@ -28,8 +30,7 @@ export const Frame17 = () => {
             data-scroll="fade-up"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-lg md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
           >
-            あなたを魅了するキャストたちを、<br />
-            ご紹介します。
+            {t('castPage.headline')}
           </h2>
 
           <p 
@@ -37,12 +38,7 @@ export const Frame17 = () => {
             data-scroll-delay="200"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
-            それぞれがこの空間を彩る表現者。<br />
-            ダンサー・シンガー・エンターテイナー──<br />
-            唯一無二のパフォーマンスで、<br />
-            今夜のステージを創り上げます。<br />
-            お気に入りのキャストや出演スケジュールなど、<br />
-            最新情報はこちらからご覧ください。
+            {t('castPage.description')}
           </p>
         </div>
       </div>

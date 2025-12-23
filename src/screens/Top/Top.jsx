@@ -9,10 +9,11 @@ import { FrameWrapper } from "./sections/FrameWrapper";
 import { GroupWrapper } from "./sections/GroupWrapper";
 import { HeroSection } from "./sections/HeroSection";
 import { SectionComponentNode } from "./sections/SectionComponentNode";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const Top = () => {
   const [animationKey, setAnimationKey] = useState(0);
-  const [language, setLanguage] = useState('日本語');
+  const { language, setLanguage, t } = useLanguage();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -56,12 +57,12 @@ export const Top = () => {
   ];
 
   const footerNavLinks = [
-    { path: "/u12465u12441u12473u12488u27969u12428", label: "ゲストの流れ" },
-    { path: "/u12481u12483u12501u12442u12395u12388u12356u12390", label: "チップについて" },
-    { path: "/u12461u12515u12473u12488", label: "キャスト" },
-    { path: "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531", label: "パーティープラン" },
-    { path: "/u27714u20154", label: "求人募集" },
-    { path: "/u12467u12531u12479u12463u12488", label: "お問い合わせ" },
+    { path: "/u12465u12441u12473u12488u27969u12428", labelKey: "footerNav.gestFlow" },
+    { path: "/u12481u12483u12501u12442u12395u12388u12356u12390", labelKey: "footerNav.tip" },
+    { path: "/u12461u12515u12473u12488", labelKey: "footerNav.cast" },
+    { path: "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531", labelKey: "footerNav.partyPlans" },
+    { path: "/u27714u20154", labelKey: "footerNav.recruit" },
+    { path: "/u12467u12531u12479u12463u12488", labelKey: "footerNav.contact" },
   ];
 
   return (
@@ -209,7 +210,7 @@ export const Top = () => {
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                 >
                   <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-xs tracking-wide">
-                    {language}
+                    {language === 'ja' ? '日本語' : 'English'}
                   </span>
                   <svg 
                     className={`w-3 h-3 text-white transition-transform duration-200 ${isLanguageOpen ? 'rotate-180' : ''}`}
@@ -222,26 +223,26 @@ export const Top = () => {
                 </button>
                 
                 {isLanguageOpen && (
-                  <div className="absolute top-full left-0 mt-1 w-full min-w-[100px] bg-black/95 border border-white/30 rounded shadow-lg z-50 overflow-hidden">
+                  <div className="absolute top-full left-0 mt-1 w-full min-w-[100px] bg-black border border-white/50 rounded shadow-lg z-50 overflow-hidden">
                     <button 
-                      className="w-full px-3 py-2 text-left hover:bg-white/10 transition-colors"
+                      className={`w-full px-3 py-2 text-left transition-colors ${language === 'ja' ? 'bg-[#00c9a7] text-black' : 'hover:bg-[#00c9a7] hover:text-black text-white'}`}
                       onClick={() => {
-                        setLanguage('日本語');
+                        setLanguage('ja');
                         setIsLanguageOpen(false);
                       }}
                     >
-                      <span className="[font-family:'Inter',Helvetica] font-medium text-white text-xs">
+                      <span className="[font-family:'Inter',Helvetica] font-medium text-xs">
                         日本語
                       </span>
                     </button>
                     <button 
-                      className="w-full px-3 py-2 text-left hover:bg-white/10 transition-colors"
+                      className={`w-full px-3 py-2 text-left transition-colors ${language === 'en' ? 'bg-[#00c9a7] text-black' : 'hover:bg-[#00c9a7] hover:text-black text-white'}`}
                       onClick={() => {
-                        setLanguage('English');
+                        setLanguage('en');
                         setIsLanguageOpen(false);
                       }}
                     >
-                      <span className="[font-family:'Inter',Helvetica] font-medium text-white text-xs">
+                      <span className="[font-family:'Inter',Helvetica] font-medium text-xs">
                         English
                       </span>
                     </button>
@@ -408,7 +409,9 @@ export const Top = () => {
             {/* タイトルテキスト */}
             <div className="flex flex-col items-center gap-1 mb-4">
               <div 
-                className="font-aguafina font-normal text-white text-[clamp(1.1rem,4.5vw,1.6rem)] text-center tracking-[0] leading-[1.5] whitespace-nowrap"
+                className="font-aguafina font-normal text-white text-[clamp(1.1rem,4.5vw,1.6rem)] text-center tracking-[0] leading-[1.5] whitespace-nowrap notranslate"
+                translate="no"
+                lang="en"
                 style={{ 
                   textShadow: '0 0 30px rgba(0,200,150,0.5), 0 0 60px rgba(0,200,150,0.2), 0 2px 8px rgba(0,0,0,0.9)',
                 }}
@@ -417,7 +420,9 @@ export const Top = () => {
               </div>
 
               <div 
-                className="font-aguafina font-normal text-white text-[clamp(3rem,14vw,5rem)] text-center tracking-[0] leading-[1.1] whitespace-nowrap"
+                className="font-aguafina font-normal text-white text-[clamp(3rem,14vw,5rem)] text-center tracking-[0] leading-[1.1] whitespace-nowrap notranslate"
+                translate="no"
+                lang="en"
                 style={{ 
                   textShadow: '0 0 40px rgba(0,200,150,0.4), 0 0 80px rgba(0,200,150,0.15), 0 4px 12px rgba(0,0,0,0.9)',
                 }}
@@ -437,7 +442,7 @@ export const Top = () => {
               }}
             >
               <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-base tracking-wider">
-                WEB予約はこちら
+                {t('fv.reserveButton')}
               </span>
             </Link>
           </div>
@@ -676,7 +681,9 @@ export const Top = () => {
             style={{ zIndex: 60 }}
           >
             <div 
-              className="font-aguafina font-normal text-[52px] text-center tracking-[0] leading-[70px] whitespace-nowrap"
+              className="font-aguafina font-normal text-[52px] text-center tracking-[0] leading-[70px] whitespace-nowrap notranslate"
+              translate="no"
+              lang="en"
               style={{ 
                 color: '#ffffff',
                 textShadow: `
@@ -691,7 +698,9 @@ export const Top = () => {
             </div>
 
             <div 
-              className="font-aguafina font-normal text-[130px] text-center tracking-[0] leading-[140px] whitespace-nowrap"
+              className="font-aguafina font-normal text-[130px] text-center tracking-[0] leading-[140px] whitespace-nowrap notranslate"
+              translate="no"
+              lang="en"
               style={{ 
                 color: '#ffffff',
                 animation: 'title-reveal 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both, glow-pulse 3s ease-in-out 2.5s infinite',
@@ -743,14 +752,14 @@ export const Top = () => {
                   to={link.path}
                   className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/90 text-[10px] md:text-[15px] tracking-[0.8px] md:tracking-[1.60px] leading-[1.4] text-center whitespace-nowrap hover:text-[#00d6bd] transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(0,214,189,0.5)] px-1 md:px-3"
                 >
-                  {link.label}
-                </Link>
-                {/* セパレーター（PC版のみ、最後以外） */}
-                {index < footerNavLinks.length - 1 && (
-                  <span className="hidden md:inline-block text-[#00d6bd]/40 text-xs mx-1">◆</span>
-                )}
-              </React.Fragment>
-            ))}
+                {t(link.labelKey)}
+              </Link>
+              {/* セパレーター（PC版のみ、最後以外） */}
+              {index < footerNavLinks.length - 1 && (
+                <span className="hidden md:inline-block text-[#00d6bd]/40 text-xs mx-1">◆</span>
+              )}
+            </React.Fragment>
+          ))}
           </div>
         </div>
       </div>
@@ -778,7 +787,7 @@ export const Top = () => {
           border: '2px solid rgba(255,255,255,0.3)',
         }}
       >
-        <span className="text-[10px] font-bold text-white tracking-wide drop-shadow-md">予約はこちら</span>
+        <span className="text-[10px] font-bold text-white tracking-wide drop-shadow-md">{language === 'ja' ? '予約はこちら' : 'Reserve'}</span>
         <span className="text-base font-black text-white tracking-widest drop-shadow-md">RESERVE</span>
       </Link>
     </div>

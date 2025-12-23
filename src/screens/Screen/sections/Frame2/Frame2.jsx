@@ -1,7 +1,10 @@
 import React from "react";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame2 = () => {
-  const sections = [
+  const { language } = useLanguage();
+  
+  const sectionsJa = [
     {
       icon: "💰",
       title: "チップの基本",
@@ -46,6 +49,54 @@ export const Frame2 = () => {
       highlightItem: "初めての方は、まずはこちら✨から気軽に",
     },
   ];
+
+  const sectionsEn = [
+    {
+      icon: "💰",
+      title: "Tip Basics",
+      items: [
+        "100 yen per chip (120 yen incl. tax)",
+        "Minimum purchase of 10 chips (from 1,200 yen)",
+        "Give tips to cast members and performers at your preferred timing",
+        "Amount and frequency are up to you. Enjoy freely within your comfort zone",
+      ],
+    },
+    {
+      icon: "✨",
+      title: "Special Tip Performances",
+      subsections: [
+        {
+          name: "Tip Lei",
+          emoji: "🌸",
+          highlight: true,
+          items: [
+            "3,000 yen / 5,000 yen sets in lei style worn around the neck",
+            "Glamorous and easy to understand, popular with first-time visitors",
+          ],
+        },
+        {
+          name: "Money Gun Show",
+          emoji: "🎉",
+          highlight: true,
+          items: [
+            "Available from 10,000 yen",
+            "Spray tips with a money gun to excite the entire venue with this powerful performance",
+          ],
+        },
+      ],
+    },
+    {
+      icon: "🛡️",
+      title: "Enjoy with Peace of Mind",
+      items: [
+        "Tips are NOT mandatory",
+        "Use them freely as a way to \"cheer\" or \"enjoy more\" - it's entirely up to you",
+      ],
+      highlightItem: "First-timers: start casually with this✨",
+    },
+  ];
+
+  const sections = language === 'en' ? sectionsEn : sectionsJa;
 
   return (
     <div className="w-full px-4 md:px-8 lg:px-16 py-8 md:py-12">

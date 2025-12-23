@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const HeroSection = () => {
+  const { t } = useLanguage();
   return (
     <div 
       className="relative self-stretch w-full max-w-[1440px] h-[200px] md:h-[300px] mx-auto overflow-hidden group cursor-pointer" 
@@ -151,7 +153,7 @@ export const HeroSection = () => {
         <div 
           className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-xs md:text-base tracking-[0.15em] mb-4 md:mb-6"
         >
-          忘れられない夜を、あなたに。
+          {t('partyPlans.description')}
         </div>
         
         {/* CTAボタン */}

@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Group153 } from "../../../../components/Group153";
 import { castsAPI } from "../../../../lib/supabase";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const FrameWrapper = () => {
+  const { t, language } = useLanguage();
   const [castData, setCastData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(2); // デフォルトで中央（3番目）を表示
@@ -23,25 +25,26 @@ export const FrameWrapper = () => {
             id: cast.id,
             image: newImages[index % newImages.length],
             name: cast.name || "Cast",
-            description: `${cast.features || '特徴情報なし'}${cast.favorite_drink ? `・好きなお酒：${cast.favorite_drink}` : ''}`,
+            descriptionJa: `${cast.features || '特徴情報なし'}${cast.favorite_drink ? `・好きなお酒：${cast.favorite_drink}` : ''}`,
+            descriptionEn: `${cast.features_en || 'No features available'}${cast.favorite_drink ? `・Favorite drink: ${cast.favorite_drink}` : ''}`,
           })));
         } else {
           setCastData([
-            { id: 1, image: "/img/cast-1.png", name: "Cast 1", description: "柔軟な体捌きが持ち味。・好きなお酒：カクテル" },
-            { id: 2, image: "/img/cast-2.png", name: "Cast 2", description: "柔軟な体捌きが持ち味。・好きなお酒：ワイン" },
-            { id: 3, image: "/img/cast-3.png", name: "Aurora", description: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン" },
-            { id: 4, image: "/img/cast-4.png", name: "Cast 4", description: "エレガントなパフォーマンス・好きなお酒：モヒート" },
-            { id: 5, image: "/img/cast-5.png", name: "Cast 5", description: "エネルギッシュなステージング・好きなお酒：ウイスキー" },
+            { id: 1, image: "/img/cast-1.png", name: "Cast 1", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：カクテル", descriptionEn: "Known for flexible movements. Favorite drink: Cocktail" },
+            { id: 2, image: "/img/cast-2.png", name: "Cast 2", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：ワイン", descriptionEn: "Known for flexible movements. Favorite drink: Wine" },
+            { id: 3, image: "/img/cast-3.png", name: "Aurora", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン", descriptionEn: "Known for flexible movements. Favorite drink: Champagne" },
+            { id: 4, image: "/img/cast-4.png", name: "Cast 4", descriptionJa: "エレガントなパフォーマンス・好きなお酒：モヒート", descriptionEn: "Elegant performance. Favorite drink: Mojito" },
+            { id: 5, image: "/img/cast-5.png", name: "Cast 5", descriptionJa: "エネルギッシュなステージング・好きなお酒：ウイスキー", descriptionEn: "Energetic staging. Favorite drink: Whiskey" },
           ]);
         }
       } catch (error) {
         console.error('キャストの取得に失敗しました:', error);
         setCastData([
-          { id: 1, image: "/img/cast-1.png", name: "Cast 1", description: "柔軟な体捌きが持ち味。・好きなお酒：カクテル" },
-          { id: 2, image: "/img/cast-2.png", name: "Cast 2", description: "柔軟な体捌きが持ち味。・好きなお酒：ワイン" },
-          { id: 3, image: "/img/cast-3.png", name: "Aurora", description: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン" },
-          { id: 4, image: "/img/cast-4.png", name: "Cast 4", description: "エレガントなパフォーマンス・好きなお酒：モヒート" },
-          { id: 5, image: "/img/cast-5.png", name: "Cast 5", description: "エネルギッシュなステージング・好きなお酒：ウイスキー" },
+          { id: 1, image: "/img/cast-1.png", name: "Cast 1", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：カクテル", descriptionEn: "Known for flexible movements. Favorite drink: Cocktail" },
+          { id: 2, image: "/img/cast-2.png", name: "Cast 2", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：ワイン", descriptionEn: "Known for flexible movements. Favorite drink: Wine" },
+          { id: 3, image: "/img/cast-3.png", name: "Aurora", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン", descriptionEn: "Known for flexible movements. Favorite drink: Champagne" },
+          { id: 4, image: "/img/cast-4.png", name: "Cast 4", descriptionJa: "エレガントなパフォーマンス・好きなお酒：モヒート", descriptionEn: "Elegant performance. Favorite drink: Mojito" },
+          { id: 5, image: "/img/cast-5.png", name: "Cast 5", descriptionJa: "エネルギッシュなステージング・好きなお酒：ウイスキー", descriptionEn: "Energetic staging. Favorite drink: Whiskey" },
         ]);
       } finally {
         setLoading(false);
@@ -169,7 +172,7 @@ export const FrameWrapper = () => {
               EVENTS / PERFORMERS
             </div>
             <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px]">
-              多彩なパフォーマンスとイベントをお楽しみいただけます。毎週異なるテーマで、特別な夜をお届けします。
+              {t('cast.subtitle')}
             </div>
           </div>
 
@@ -187,7 +190,9 @@ export const FrameWrapper = () => {
           >
             {/* 円形テキスト（中央カードの周り） */}
             <div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] md:w-[480px] md:h-[480px] pointer-events-none z-[100]"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] md:w-[480px] md:h-[480px] pointer-events-none z-[100] notranslate"
+              translate="no"
+              lang="en"
               style={{ animation: 'spin-slow 20s linear infinite' }}
             >
               <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -250,7 +255,7 @@ export const FrameWrapper = () => {
                 {castData[currentIndex].name}
               </h3>
               <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white/70 text-xs md:text-sm mt-2 max-w-[400px]">
-                {castData[currentIndex].description}
+                {language === 'en' ? castData[currentIndex].descriptionEn : castData[currentIndex].descriptionJa}
               </p>
             </div>
           )}
@@ -261,6 +266,7 @@ export const FrameWrapper = () => {
           <Group153 
             className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"
+            text={t('cast.viewAll')}
           />
         </div>
       </div>

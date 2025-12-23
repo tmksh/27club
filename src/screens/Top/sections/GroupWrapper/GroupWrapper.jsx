@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from "react";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 import "./GroupWrapper.css";
 
 export const GroupWrapper = () => {
+  const { language, t } = useLanguage();
   const [hoveredSeat, setHoveredSeat] = useState(null);
   const [hoveredPinkSeat, setHoveredPinkSeat] = useState(false);
   const [hoveredBlueSeat, setHoveredBlueSeat] = useState(false);
@@ -22,18 +24,18 @@ export const GroupWrapper = () => {
 
   // 座席と画像の紐づけ
   const seatImages = {
-    standing: "/img/s-18710559-2.png",
-    blueSeat: "/img/s-18710559-2.png",
-    pinkSeat: "/img/s-18710559-2.png",
-    vipSeat: "/img/s-18710559-2.png",
-    v1: "/img/s-18710559-2.png",
-    v2: "/img/s-18710559-2.png",
-    v3: "/img/s-18710559-2.png",
-    v4: "/img/s-18710559-2.png",
-    v5: "/img/s-18710559-2.png",
-    v6: "/img/s-18710559-2.png",
+    standing: "/img/standing-area.jpg",
+    blueSeat: "/img/blue-seat.jpg",
+    pinkSeat: "/img/pink-seat.jpg",
+    vipSeat: "/img/vip-seat.jpg",
+    v1: "/img/vip-seat.jpg",
+    v2: "/img/vip-seat.jpg",
+    v3: "/img/vip-seat.jpg",
+    v4: "/img/vip-seat.jpg",
+    v5: "/img/vip-seat.jpg",
+    v6: "/img/vip-seat.jpg",
     backbar: "/img/backbar.jpg",
-    entrance: "/img/s-18710559-2.png",
+    entrance: "/img/entrance.jpg",
     stage: "/img/stage.jpg",
   };
 
@@ -110,13 +112,13 @@ export const GroupWrapper = () => {
             Floor map
           </div>
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-[16px] tracking-[0] leading-[1.6] md:leading-[24px] text-center opacity-90 max-w-[800px] px-2 md:px-4">
-            お好みの席をお選びください
+            {t('floorMap.subtitle')}
           </div>
         </div>
 
         {/* カタカナテキスト（デスクトップのみ） */}
         <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-right tracking-[0] leading-[normal]">
-          フロアマップ
+          {language === 'ja' ? 'フロアマップ' : 'Floor Map'}
         </div>
 
         {/* フロアマップとプレビューのコンテナ */}
@@ -361,7 +363,7 @@ export const GroupWrapper = () => {
 
               {/* DJブース（左下） - 装飾なのでpointer-events-none */}
               <div className="absolute bottom-[4%] left-[2.4%] w-[10.6%] h-[15%] bg-[#4a4a4a] flex flex-col items-center justify-center pointer-events-none">
-                <span className="text-white text-[8px] md:text-[10px] lg:text-[12px] font-normal [font-family:'Noto_Serif_JP',Helvetica] mb-1">DJブース</span>
+                <span className="text-white text-[8px] md:text-[10px] lg:text-[12px] font-normal [font-family:'Noto_Serif_JP',Helvetica] mb-1">{language === 'ja' ? 'DJブース' : 'DJ Booth'}</span>
                 <div className="w-[40%] aspect-square bg-gray-200 rounded-full flex items-center justify-center">
                   <div className="w-[75%] aspect-square bg-gray-400 rounded-full"></div>
                 </div>
@@ -413,7 +415,7 @@ export const GroupWrapper = () => {
                 ￥3,600
               </div>
               <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
-                ※飲み放題メニュー参照
+                {t('floorMap.taxIncluded')}
               </div>
             </div>
 
@@ -438,7 +440,7 @@ export const GroupWrapper = () => {
                 ￥4,800
               </div>
               <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
-                ※飲み放題メニュー参照
+                {t('floorMap.taxIncluded')}
               </div>
             </div>
 
@@ -463,7 +465,7 @@ export const GroupWrapper = () => {
                 ￥6,000
               </div>
               <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
-                ※飲み放題メニュー参照
+                {t('floorMap.taxIncluded')}
               </div>
             </div>
 
@@ -482,10 +484,10 @@ export const GroupWrapper = () => {
                 ￥8,400
               </div>
               <div className="mt-1 [font-family:'Playfair_Display',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
-                パート入れ替え制
+                {language === 'ja' ? 'パート入れ替え制' : 'Part rotation system'}
               </div>
               <div className="mt-0.5 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
-                ※飲み放題メニュー参照
+                {t('floorMap.taxIncluded')}
               </div>
             </div>
           </div>

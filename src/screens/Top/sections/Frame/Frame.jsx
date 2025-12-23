@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Component2401 } from "../../../../components/Component2401";
 import { Frame628 } from "../../../../components/Frame628";
 import { eventsAPI } from "../../../../lib/supabase";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame = () => {
+  const { language, t } = useLanguage();
   const [hoveredDate, setHoveredDate] = useState(null);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -74,10 +76,11 @@ export const Frame = () => {
     return dates;
   };
 
-  // 曜日の日本語表記
+  // 曜日表記
   const getDayOfWeek = (date) => {
-    const days = ['日', '月', '火', '水', '木', '金', '土'];
-    return days[date.getDay()];
+    const daysJa = ['日', '月', '火', '水', '木', '金', '土'];
+    const daysEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    return language === 'ja' ? daysJa[date.getDay()] : daysEn[date.getDay()];
   };
 
   // 前の週へ
@@ -146,7 +149,7 @@ export const Frame = () => {
       
       {/* カタカナテキスト（デスクトップのみ） */}
       <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-left z-10">
-        イベントスケジュール
+        {language === 'ja' ? 'イベントスケジュール' : 'Event Schedule'}
       </div>
 
       {/* セクションタイトル - SP版 */}
@@ -155,7 +158,7 @@ export const Frame = () => {
           Event Schedule
         </div>
         <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs tracking-[0] leading-[20px] text-center opacity-90 max-w-[800px] px-2">
-          毎週開催される多彩なイベントをご確認いただけます。
+          {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}
         </div>
       </div>
 
@@ -165,7 +168,7 @@ export const Frame = () => {
           Event Schedule
         </div>
         <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
-          毎週開催される多彩なイベントをご確認いただけます。
+          {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}
         </div>
       </div>
 
@@ -178,16 +181,19 @@ export const Frame = () => {
               onClick={goToPrevMonth}
               className="px-3 py-1.5 bg-[#1a1a1a] rounded text-white/80 text-xs hover:bg-[#2a2a2a] hover:text-white transition-colors"
             >
-              &lt; 前月
+              {language === 'ja' ? '< 前月' : '< Prev'}
             </button>
             <div className="[font-family:'Playfair_Display',Helvetica] text-white text-base font-medium">
-              {currentMonth.getFullYear()}年 {currentMonth.getMonth() + 1}月
+              {language === 'ja' 
+                ? `${currentMonth.getFullYear()}年 ${currentMonth.getMonth() + 1}月`
+                : `${currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}`
+              }
             </div>
             <button 
               onClick={goToNextMonth}
               className="px-3 py-1.5 bg-[#1a1a1a] rounded text-white/80 text-xs hover:bg-[#2a2a2a] hover:text-white transition-colors"
             >
-              翌月 &gt;
+              {language === 'ja' ? '翌月 >' : 'Next >'}
             </button>
           </div>
 
@@ -253,17 +259,17 @@ export const Frame = () => {
                   EVENTS
                 </div>
                 <div className="[font-family:'Noto_Serif_JP',Helvetica] text-[#00d6bd] text-[9px] font-normal">
-                  イベント一覧
+                  {t('events.eventList')}
                 </div>
               </div>
               <div className="text-white/70 text-[10px]">
-                {events.length}件
+                {events.length} {t('events.eventsCount')}
               </div>
             </div>
             
             <div className="flex flex-col gap-2 overflow-y-auto max-h-[350px]">
               {loading ? (
-                <div className="text-white text-center w-full py-8 text-sm">読み込み中...</div>
+                <div className="text-white text-center w-full py-8 text-sm">{t('events.loading')}</div>
               ) : events.length > 0 ? (
                 events.map((event, index) => {
                   const gradients = ["red", "pink", "purple", "blue", "green", "orange", "gold", "teal", "indigo", "yellow", "magenta", "lime", "violet"];
@@ -285,7 +291,7 @@ export const Frame = () => {
                 })
               ) : (
                 <div className="text-white/50 text-center w-full py-8 text-sm">
-                  イベント情報がありません
+                  {t('events.noEvents')}
                 </div>
               )}
             </div>
@@ -354,14 +360,14 @@ export const Frame = () => {
                 EVENTS
               </div>
               <div className="[font-family:'Noto_Serif_JP',Helvetica] text-[#00d6bd] text-[12px] font-normal opacity-80">
-                イベント一覧
+                {t('events.eventList')}
               </div>
             </div>
             
             {/* イベントカード一覧 */}
             <div className="flex w-full h-[calc(100%-80px)] relative flex-col items-start gap-[18px] overflow-y-auto overflow-x-hidden pr-2" style={{ maxHeight: '500px' }}>
               {loading ? (
-                <div className="text-white text-center w-full py-10">読み込み中...</div>
+                <div className="text-white text-center w-full py-10">{t('events.loading')}</div>
               ) : events.length > 0 ? (
                 events.map((event, index) => {
                     const gradients = ["red", "pink", "purple", "blue", "green", "orange", "gold", "teal", "indigo", "yellow", "magenta", "lime", "violet"];
@@ -383,7 +389,7 @@ export const Frame = () => {
                   })
               ) : (
                 <div className="text-white/50 text-center w-full py-10">
-                  イベント情報がありません
+                  {t('events.noEvents')}
                 </div>
               )}
             </div>

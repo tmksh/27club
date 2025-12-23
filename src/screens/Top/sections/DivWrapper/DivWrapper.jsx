@@ -1,7 +1,9 @@
 import React from "react";
 import { Group153 } from "../../../../components/Group153";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const DivWrapper = () => {
+  const { t } = useLanguage();
   // チップ装飾用のデータ
   const chips = [
     { img: '/img/3-1.png', w: 244, h: 142 },
@@ -50,16 +52,16 @@ export const DivWrapper = () => {
         
         {/* カタカナテキスト（デスクトップのみ） */}
         <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-right tracking-[0] leading-[normal]">
-          店舗へのアクセス
+          {t('access.backgroundText')}
         </div>
 
         {/* セクションタイトル */}
         <div className="pt-8 md:pt-[116px] flex flex-col items-center gap-3 relative z-10" data-scroll="fade-up">
           <div className="[text-shadow:0px_4px_15px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] text-white text-3xl md:text-5xl lg:text-[64px] text-center font-normal tracking-[0] leading-[normal]">
-            ACCESS
+            {t('access.title')}
           </div>
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
-            新宿駅・新宿三丁目駅から徒歩圏内。大きな赤い階段が目印です。お気軽にお越しください。
+            {t('access.subtitle')}
           </div>
         </div>
 
@@ -94,16 +96,16 @@ export const DivWrapper = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                 </svg>
                 <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-base md:text-lg tracking-[0.5px] uppercase">
-                  交通アクセス
+                  {t('access.transport')}
                 </h3>
               </div>
               <div className="flex flex-col gap-3 [font-family:'Noto_Serif_JP',Helvetica] text-white">
                 <div className="flex flex-col gap-1">
-                  <div className="font-semibold text-base md:text-lg">電車JR線「新宿駅」</div>
-                  <div className="text-xs md:text-sm opacity-80">JR Line Shinjuku Sta.</div>
+                  <div className="font-semibold text-base md:text-lg">{t('access.shinjukuStation')}</div>
+                  <div className="text-xs md:text-sm opacity-80">{t('access.shinjukuStationEn')}</div>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <div className="font-semibold text-base md:text-lg">東京メトロ丸ノ内線・副都心線「新宿三丁目駅」</div>
+                  <div className="font-semibold text-base md:text-lg">{t('access.metroStation')}</div>
                 </div>
               </div>
             </div>
@@ -116,15 +118,15 @@ export const DivWrapper = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-base md:text-lg tracking-[0.5px] uppercase">
-                  住所
+                  {t('access.address')}
                 </h3>
               </div>
               <div className="flex flex-col gap-2 [font-family:'Noto_Serif_JP',Helvetica] text-white">
-                <div className="text-xs md:text-sm opacity-80">〒160-0021</div>
+                <div className="text-xs md:text-sm opacity-80">{t('access.postalCode')}</div>
                 <div className="font-semibold text-base md:text-lg leading-relaxed">
-                  東京都新宿区歌舞伎町２丁目３６−３
+                  {t('access.addressLine1')}
                 </div>
-                <div className="text-sm md:text-base">新宿Acb会館 3階</div>
+                <div className="text-sm md:text-base">{t('access.addressLine2')}</div>
               </div>
             </div>
           </div>
@@ -136,7 +138,7 @@ export const DivWrapper = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white text-sm md:text-base leading-relaxed">
-                ※入り口は大きな赤い階段が目印
+                {t('access.notice')}
               </p>
             </div>
           </div>
@@ -163,10 +165,10 @@ export const DivWrapper = () => {
               {/* テキスト */}
               <div className="flex flex-col items-start justify-center gap-0 md:gap-1">
                 <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[12px] md:text-[20px] tracking-[0] leading-[1.3]">
-                  動画で確認
+                  {t('access.videoCheck')}
                 </div>
                 <div className="opacity-90 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[9px] md:text-[14px] tracking-[0] leading-[1.3]">
-                  雰囲気をチェック
+                  {t('access.checkAtmosphere')}
                 </div>
               </div>
             </div>
@@ -174,7 +176,7 @@ export const DivWrapper = () => {
 
           <Group153
             className="w-full max-w-[160px] md:max-w-[352px] h-[56px] md:h-[98px]"
-            text="お問い合わせ"
+            text={t('access.contactButton')}
             to="/u12467u12531u12479u12463u12488"
           />
         </div>

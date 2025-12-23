@@ -1,6 +1,8 @@
 import React from "react";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame6 = () => {
+  const { t } = useLanguage();
   return (
     <div className="w-full px-4 md:px-8 lg:px-16 pt-8 md:pt-16 pb-8 md:pb-12">
       <div className="max-w-[1200px] mx-auto">
@@ -18,7 +20,7 @@ export const Frame6 = () => {
             data-scroll-delay="200"
             className="[font-family:'Inter',Helvetica] font-normal text-[#888888] text-lg md:text-2xl lg:text-[28.1px] tracking-[0] leading-relaxed"
           >
-            パーティープラン
+            {t('partyPlansPage.subtitle')}
           </p>
         </div>
 
@@ -28,7 +30,7 @@ export const Frame6 = () => {
             data-scroll="fade-up"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-base md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
           >
-            NEW PLAN 登場。集まる理由が、もっと洗練される。
+            {t('partyPlansPage.headline')}
           </h2>
 
           <p 
@@ -36,11 +38,7 @@ export const Frame6 = () => {
             data-scroll-delay="200"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
-            ベーシックからプレミアムまで、必要なものを過不足なくセット。
-            <br />
-            予約も相談もスマートに完結。
-            <br />
-            歓送迎会・バースデー・企業貸切まで、すべてこのページからはじめられます。
+            {t('partyPlansPage.description')}
           </p>
         </div>
       </div>

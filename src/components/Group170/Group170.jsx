@@ -15,7 +15,9 @@ export const Group170 = ({ className, frameClassName }) => {
 
   return (
     <div
-      className={`relative w-full h-[140px] md:h-[280px] lg:h-[423px] flex flex-col overflow-hidden ${className}`}
+      className={`relative w-full h-[140px] md:h-[280px] lg:h-[423px] flex flex-col overflow-hidden notranslate ${className}`}
+      translate="no"
+      lang="en"
     >
       {/* 上のマーキーテキスト */}
       <div className="relative w-full h-[20px] md:h-[36px] lg:h-[52px] overflow-hidden flex items-center">

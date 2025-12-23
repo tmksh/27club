@@ -1,10 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const Header = ({ className = "" }) => {
-  const [language, setLanguage] = useState('日本語');
+  const { language, setLanguage, t } = useLanguage();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const languageDropdownRef = useRef(null);
+
+  // 言語ドロップダウンの外側クリックで閉じる
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (languageDropdownRef.current && !languageDropdownRef.current.contains(event.target)) {
+        setIsLanguageOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // モバイルメニューが開いているときはスクロールを無効化
   useEffect(() => {
@@ -31,23 +44,23 @@ export const Header = ({ className = "" }) => {
     <>
       {/* モバイルメニュー */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black/95 z-[100] flex flex-col items-center justify-center backdrop-blur-lg">
+        <div className="mobile-menu lg:hidden">
           {/* 閉じるボタン */}
           <button 
-            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center cursor-pointer"
+            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center cursor-pointer z-10 bg-transparent border-none"
             onClick={() => setIsMobileMenuOpen(false)}
             aria-label="メニューを閉じる"
           >
-            <span className="block w-6 h-0.5 bg-white rotate-45 absolute" />
-            <span className="block w-6 h-0.5 bg-white -rotate-45 absolute" />
+            <span className="block w-6 h-0.5 bg-white/70 rotate-45 absolute" />
+            <span className="block w-6 h-0.5 bg-white/70 -rotate-45 absolute" />
           </button>
-          
+
           <nav className="flex flex-col items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="[font-family:'Noto_Serif_JP',Helvetica] text-xl text-white hover:text-[#00c9a7] transition-colors"
+                className="mobile-menu-link"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
@@ -66,7 +79,7 @@ export const Header = ({ className = "" }) => {
 
       {/* ナビゲーション */}
       <div className={`w-full h-[60px] flex z-20 ${className}`}>
-        <div className="flex w-full h-10 mt-2.5 mx-4 md:mx-8 lg:mx-12 relative items-center justify-between max-w-[1440px]">
+        <div className="flex w-full h-10 mt-2.5 mx-4 md:mx-8 lg:mx-12 relative items-center justify-between">
           <Link to="/" className="inline-flex items-center gap-3 relative flex-[0_0_auto]">
             <img
               className="relative w-[80px] md:w-[101px] h-auto aspect-[2.74] object-cover"
@@ -87,47 +100,48 @@ export const Header = ({ className = "" }) => {
               </Link>
             ))}
             
-            <div className="relative">
-              <div 
-                className="relative w-[90px] h-[27.14px] border border-solid border-white cursor-pointer hover:bg-white/10 transition-colors"
+            <div className="relative" ref={languageDropdownRef}>
+              <button 
+                className="flex items-center justify-center gap-2 px-3 py-1.5 bg-white/10 border border-white rounded hover:bg-white/20 transition-colors"
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
               >
-                <div className="inline-flex items-start gap-[5px] relative top-2 left-3.5">
-                  <div className="relative w-fit mt-[-1.00px] [font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px] whitespace-nowrap">
-                    {language}
-                  </div>
-                  <img 
-                    className={`relative w-[9.53px] h-[6.75px] transition-transform ${isLanguageOpen ? 'rotate-180' : ''}`} 
-                    alt="Polygon" 
-                    src="/img/polygon-2.svg" 
-                  />
-                </div>
-              </div>
+                <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-xs tracking-wide">
+                  {language === 'ja' ? '日本語' : 'English'}
+                </span>
+                <svg 
+                  className={`w-3 h-3 text-white transition-transform duration-200 ${isLanguageOpen ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
               
               {isLanguageOpen && (
-                <div className="absolute top-[30px] left-0 w-[90px] bg-[#1a1a2e] border border-solid border-white shadow-lg z-30">
-                  <div 
-                    className="px-3 py-2 cursor-pointer hover:bg-white/10 transition-colors"
+                <div className="absolute top-full left-0 mt-1 w-full min-w-[100px] bg-black border border-white/50 rounded shadow-lg z-50 overflow-hidden">
+                  <button 
+                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'ja' ? 'bg-[#00c9a7] text-black' : 'hover:bg-[#00c9a7] hover:text-black'}`}
                     onClick={() => {
-                      setLanguage('日本語');
+                      setLanguage('ja');
                       setIsLanguageOpen(false);
                     }}
                   >
-                    <div className="[font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px]">
+                    <span className="[font-family:'Inter',Helvetica] font-medium text-xs">
                       日本語
-                    </div>
-                  </div>
-                  <div 
-                    className="px-3 py-2 cursor-pointer hover:bg-white/10 transition-colors"
+                    </span>
+                  </button>
+                  <button 
+                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'en' ? 'bg-[#00c9a7] text-black' : 'hover:bg-[#00c9a7] hover:text-black text-white'}`}
                     onClick={() => {
-                      setLanguage('English');
+                      setLanguage('en');
                       setIsLanguageOpen(false);
                     }}
                   >
-                    <div className="[font-family:'Inter',Helvetica] font-semibold text-[#fcfcff] text-[10px] tracking-[0] leading-[10.6px]">
+                    <span className="[font-family:'Inter',Helvetica] font-medium text-xs">
                       English
-                    </div>
-                  </div>
+                    </span>
+                  </button>
                 </div>
               )}
             </div>
@@ -143,27 +157,14 @@ export const Header = ({ className = "" }) => {
           </div>
 
           {/* モバイルハンバーガーメニュー */}
-          <button 
-            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 cursor-pointer z-[101] bg-transparent border-none"
+          <div 
+            className={`hamburger lg:hidden ${isMobileMenuOpen ? 'open' : ''}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="メニューを開く"
           >
-            <span 
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-                isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}
-            />
-            <span 
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-                isMobileMenuOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span 
-              className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-                isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}
-            />
-          </button>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
     </>

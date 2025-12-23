@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame3 = () => {
+  const { language, t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    inquiryType: "work",
+    inquiryType: "",
     content: "",
     privacyAgreed: false,
   });
@@ -68,7 +70,7 @@ export const Frame3 = () => {
           name: "",
           email: "",
           phone: "",
-          inquiryType: "work",
+          inquiryType: "",
           content: "",
           privacyAgreed: false,
         });
@@ -83,10 +85,14 @@ export const Frame3 = () => {
     }
   };
 
-  const inquiryTypes = [
+  const inquiryTypes = language === 'ja' ? [
     { value: "work", label: "撮影・取材・コラボなどのお仕事" },
     { value: "reservation", label: "ご利用・ご予約" },
     { value: "other", label: "その他" },
+  ] : [
+    { value: "work", label: "Business (Filming, Press, Collaboration)" },
+    { value: "reservation", label: "Reservations" },
+    { value: "other", label: "Other" },
   ];
 
   return (
@@ -100,14 +106,14 @@ export const Frame3 = () => {
               data-scroll="fade-right"
               className="[text-shadow:0px_5.98px_14.95px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] md:[-webkit-text-stroke:1.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-5xl md:text-7xl lg:text-[109.8px] tracking-[0] leading-tight"
             >
-              Contact
+              {t('contact.title')}
             </h1>
             <p 
               data-scroll="fade-right"
               data-scroll-delay="200"
               className="[font-family:'Inter',Helvetica] font-normal text-[#888888] text-lg md:text-2xl lg:text-[28.1px] tracking-[0] leading-relaxed"
             >
-              お問い合わせ
+              {t('contact.subtitle')}
             </p>
           </div>
 
@@ -117,16 +123,16 @@ export const Frame3 = () => {
               data-scroll="fade-up"
               className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-xl md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
             >
-              あなたの声を、私たちに。
+              {t('contact.catchphrase')}
             </h2>
             <p 
               data-scroll="fade-up"
               data-scroll-delay="200"
               className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-[10px] md:text-base lg:text-lg tracking-[0] leading-relaxed md:leading-[32px]"
             >
-              ご予約・撮影・コラボのご相談など、どんな内容でもお気軽にお問い合わせください。
+              {t('contact.description')}
               <br />
-              2〜3営業日以内に、担当者よりメールにてご返信させていただきます。
+              {t('contact.responseTime')}
             </p>
           </div>
         </div>
@@ -136,14 +142,14 @@ export const Frame3 = () => {
           {/* お名前 */}
           <div className="flex flex-col gap-2">
             <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              お名前 <span className="text-[#06baa5]">*</span>
+              {t('contact.form.name')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
             </label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => handleInputChange("name", e.target.value)}
               className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
-              placeholder="山田 太郎"
+              placeholder={language === 'ja' ? "山田 太郎" : "John Smith"}
               required
             />
           </div>
@@ -151,7 +157,7 @@ export const Frame3 = () => {
           {/* メールアドレス */}
           <div className="flex flex-col gap-2">
             <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              メールアドレス <span className="text-[#06baa5]">*</span>
+              {t('contact.form.email')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
             </label>
             <input
               type="email"
@@ -166,7 +172,7 @@ export const Frame3 = () => {
           {/* 電話番号 */}
           <div className="flex flex-col gap-2">
             <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              電話番号 <span className="text-[#06baa5]">*</span>
+              {t('contact.form.phone')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
             </label>
             <input
               type="tel"
@@ -181,7 +187,7 @@ export const Frame3 = () => {
           {/* お問い合わせ種別 */}
           <div className="flex flex-col gap-2">
             <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              お問い合わせ種別 <span className="text-[#06baa5]">*</span>
+              {t('contact.form.inquiryType')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
             </label>
             <div className="flex flex-col md:flex-row gap-3 md:gap-6">
               {inquiryTypes.map((type) => (
@@ -219,14 +225,14 @@ export const Frame3 = () => {
           {/* お問い合わせ内容 */}
           <div className="flex flex-col gap-2">
             <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              お問い合わせ内容 <span className="text-[#06baa5]">*</span>
+              {t('contact.form.content')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
             </label>
             <textarea
               value={formData.content}
               onChange={(e) => handleInputChange("content", e.target.value)}
               rows={6}
               className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors resize-none"
-              placeholder="お問い合わせ内容をご記入ください"
+              placeholder={t('contact.form.contentPlaceholder')}
               required
             />
           </div>
@@ -254,7 +260,7 @@ export const Frame3 = () => {
                 className="sr-only"
               />
               <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-base">
-                「プライバシーポリシー」に同意する
+                {t('contact.form.privacyAgree')}
               </span>
             </label>
 
@@ -262,7 +268,7 @@ export const Frame3 = () => {
               href="#"
               className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#06baa5] text-xs md:text-sm underline hover:text-[#00d6bd] transition-colors"
             >
-              「プライバシーポリシー」はこちら
+              {t('contact.form.privacyLink')}
             </a>
           </div>
 
@@ -277,7 +283,7 @@ export const Frame3 = () => {
                   : 'bg-white text-[#081e15] hover:bg-[#00d6bd] hover:text-white cursor-pointer'
               }`}
             >
-              {isSubmitting ? '送信中...' : '送信する'}
+              {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
             </button>
           </div>
         </form>

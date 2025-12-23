@@ -6,6 +6,7 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 import PropTypes from "prop-types";
 import React from "react";
 import { ConcreteComponentNode } from "../ConcreteComponentNode";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const Footer5 = ({
   className,
@@ -23,6 +24,8 @@ export const Footer5 = ({
   to4,
   to5,
 }) => {
+  const { language, t } = useLanguage();
+  
   return (
     <div className={`min-h-[400px] md:min-h-[584px] w-full flex mt-16 md:mt-24 ${className}`}>
       <ConcreteComponentNode
@@ -38,17 +41,17 @@ export const Footer5 = ({
           <>
             〒160-0021
             <br />
-            東京都新宿区歌舞伎町２丁目３６−３
+            {language === 'ja' ? '東京都新宿区歌舞伎町２丁目３６−３' : '2-36-3 Kabukicho, Shinjuku-ku, Tokyo'}
             <br />
-            新宿Acb会館 3階
+            {language === 'ja' ? '新宿Acb会館 3階' : 'Shinjuku Acb Hall 3F'}
           </>
         }
-        text1="キャスト"
-        text2="求人募集"
-        text3="パーティープラン"
-        text4="ゲストの流れ"
-        text5="チップについて"
-        text6="お問い合わせ"
+        text1={t('footerNav.cast')}
+        text2={t('footerNav.recruit')}
+        text3={t('footerNav.partyPlans')}
+        text4={t('footerNav.gestFlow')}
+        text5={t('footerNav.tip')}
+        text6={t('footerNav.contact')}
         to={to3 || "/u12461u12515u12473u12488"}
         to1={to4 || "/u27714u20154"}
         to2={to2 || "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531"}

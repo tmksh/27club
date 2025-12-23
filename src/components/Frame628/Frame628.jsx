@@ -5,6 +5,7 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 
 import PropTypes from "prop-types";
 import React from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const Frame628 = ({
   className,
@@ -38,6 +39,7 @@ export const Frame628 = ({
   };
 
   const hoverGradientClass = hoverGradients[hoverGradient] || hoverGradients.cyan;
+  const { language } = useLanguage();
 
   return (
     <div
@@ -70,17 +72,17 @@ export const Frame628 = ({
               <div className="mt-2 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm leading-[1.6] space-y-1">
                 {eventData ? (
                   <>
-                    <div>日付：{new Date(eventData.date_time_start).toLocaleDateString('ja-JP', { month: 'numeric', day: 'numeric', weekday: 'short' })}</div>
-                    <div>時間：{new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</div>
+                    <div>{language === 'ja' ? '日付' : 'Date'}：{new Date(eventData.date_time_start).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', { month: 'numeric', day: 'numeric', weekday: 'short' })}</div>
+                    <div>{language === 'ja' ? '時間' : 'Time'}：{new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</div>
                     {eventData.price && (
-                      <div className="font-medium">参加料：¥{eventData.price.toLocaleString()}</div>
+                      <div className="font-medium">{language === 'ja' ? '参加料' : 'Fee'}：¥{eventData.price.toLocaleString()}</div>
                     )}
                   </>
                 ) : (
                   <>
-                    <div>日付：8/02（土）</div>
-                    <div>時間：19:00～22:00</div>
-                    <div className="font-medium">参加料：¥2,500</div>
+                    <div>{language === 'ja' ? '日付' : 'Date'}：8/02（{language === 'ja' ? '土' : 'Sat'}）</div>
+                    <div>{language === 'ja' ? '時間' : 'Time'}：19:00～22:00</div>
+                    <div className="font-medium">{language === 'ja' ? '参加料' : 'Fee'}：¥2,500</div>
                   </>
                 )}
               </div>
@@ -91,7 +93,7 @@ export const Frame628 = ({
           <div className="mt-3 flex justify-end">
             <div className="px-4 py-1.5 bg-[#00d6bd] rounded">
               <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
-                予約はこちら
+                {language === 'ja' ? '予約はこちら' : 'Reserve'}
               </span>
             </div>
           </div>
@@ -124,35 +126,35 @@ export const Frame628 = ({
               <div className="absolute top-[42px] left-0 w-[284px] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[12.5px] tracking-[0] leading-[normal]">
                 {eventData ? (
                   <>
-                    日付・時間帯：{new Date(eventData.date_time_start).toLocaleDateString('ja-JP', { month: 'numeric', day: 'numeric', weekday: 'short' })} {new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
+                    {language === 'ja' ? '日付・時間帯' : 'Date & Time'}：{new Date(eventData.date_time_start).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', { month: 'numeric', day: 'numeric', weekday: 'short' })} {new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
                     <br />
                     {eventData.description && (
                       <>
-                        タイトル：{eventData.description}
+                        {language === 'ja' ? 'タイトル' : 'Title'}：{eventData.description}
                         <br />
                       </>
                     )}
                     {eventData.catchphrase && (
                       <>
-                        キャッチコピー：{eventData.catchphrase}
+                        {language === 'ja' ? 'キャッチコピー' : 'Tagline'}：{eventData.catchphrase}
                         <br />
                       </>
                     )}
                     {eventData.price && (
                       <>
-                        参加料：¥{eventData.price.toLocaleString()}{eventData.price_note && `／${eventData.price_note}`}
+                        {language === 'ja' ? '参加料' : 'Fee'}：¥{eventData.price.toLocaleString()}{eventData.price_note && `／${language === 'ja' ? eventData.price_note : 'Reservation required'}`}
                       </>
                     )}
                   </>
                 ) : (
                   <>
-                    日付・時間帯：8/02（土） 19:00～22:00
+                    {language === 'ja' ? '日付・時間帯' : 'Date & Time'}：8/02（{language === 'ja' ? '土' : 'Sat'}） 19:00～22:00
                     <br />
-                    タイトル：レトロ・ヴァイナル・レイヴ
+                    {language === 'ja' ? 'タイトル' : 'Title'}：{language === 'ja' ? 'レトロ・ヴァイナル・レイヴ' : 'Retro Vinyl Rave'}
                     <br />
-                    キャッチコピー：70年代ミュージックで踊る夜
+                    {language === 'ja' ? 'キャッチコピー' : 'Tagline'}：{language === 'ja' ? '70年代ミュージックで踊る夜' : 'Dance to 70s music'}
                     <br />
-                    参加料：¥2,500／要予約
+                    {language === 'ja' ? '参加料' : 'Fee'}：¥2,500／{language === 'ja' ? '要予約' : 'Reservation required'}
                   </>
                 )}
               </div>
@@ -173,7 +175,7 @@ export const Frame628 = ({
             <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
 
             <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
-              予約はこちら
+              {language === 'ja' ? '予約はこちら' : 'Reserve'}
             </div>
           </div>
         </div>

@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame7 = () => {
-  const plans = [
+  const { t, language } = useLanguage();
+  
+  const plansJa = [
     {
       name: "ベーシックプラン",
       price: "¥5,500",
@@ -45,7 +48,52 @@ export const Frame7 = () => {
     },
   ];
 
-  const options = [
+  const plansEn = [
+    {
+      name: "Basic Plan",
+      price: "¥5,500",
+      gradient: "linear-gradient(90deg, rgba(51,51,51,1) 0%, rgba(153,153,153,1) 100%)",
+      borderColor: "border-[#333333]",
+      textColor: "text-white",
+      popular: false,
+      features: [
+        { text: "All-you-can-drink (incl. alcohol) 3 hours", included: true },
+        { text: "5 buffet dishes included", included: true },
+        { text: "40+ guests only", included: false },
+      ],
+    },
+    {
+      name: "Standard Plan",
+      price: "¥7,700",
+      gradient: "linear-gradient(270deg, rgba(255,255,255,1) 4%, rgba(204,204,204,1) 70%, rgba(153,153,153,1) 100%)",
+      borderColor: "border-white",
+      textColor: "text-[#182321]",
+      popular: true,
+      features: [
+        { text: "All-you-can-drink (incl. alcohol) 3 hours", included: true },
+        { text: "7 buffet dishes included", included: true },
+        { text: "35+ guests only", included: false },
+      ],
+    },
+    {
+      name: "Premium Plan",
+      price: "¥9,900",
+      gradient: "linear-gradient(270deg, rgba(255,255,252,1) 0%, rgba(234,241,185,1) 31%, rgba(255,252,174,1) 100%)",
+      borderColor: "border-[#faf9b0]",
+      textColor: "text-[#182321]",
+      popular: false,
+      features: [
+        { text: "All-you-can-drink (incl. alcohol) 3 hours", included: true },
+        { text: "8 buffet dishes + dessert", included: true },
+        { text: "Welcome sparkling wine", included: true },
+        { text: "25+ guests only", included: false },
+      ],
+    },
+  ];
+
+  const plans = language === 'en' ? plansEn : plansJa;
+
+  const optionsJa = [
     { name: "バースデーケーキ（一段）", nameEn: "BIRTHDAY CAKE", price: "¥3,000" },
     { name: "バルーン装飾", nameEn: "BALLOON DECORATION", price: "¥1,500" },
     { name: "クラッカー（10個セット）", nameEn: "CRACKERS (10 PCS)", price: "¥800" },
@@ -53,12 +101,22 @@ export const Frame7 = () => {
     { name: "プロジェクター使用料", nameEn: "PROJECTOR RENTAL", price: "¥5,000" },
   ];
 
+  const optionsEn = [
+    { name: "Birthday Cake (single tier)", nameEn: "BIRTHDAY CAKE", price: "¥3,000" },
+    { name: "Balloon Decoration", nameEn: "BALLOON DECORATION", price: "¥1,500" },
+    { name: "Crackers (10 pcs)", nameEn: "CRACKERS (10 PCS)", price: "¥800" },
+    { name: "Champagne Corkage", nameEn: "CHAMPAGNE CORKAGE", price: "¥2,000" },
+    { name: "Projector Rental", nameEn: "PROJECTOR RENTAL", price: "¥5,000" },
+  ];
+
+  const options = language === 'en' ? optionsEn : optionsJa;
+
   return (
     <div className="w-full px-4 md:px-8 lg:px-16 py-8 md:py-16">
       <div className="max-w-[1200px] mx-auto">
         {/* セクションタイトル */}
         <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-3xl md:text-4xl lg:text-5xl text-center mb-8 md:mb-12">
-          料金プラン
+          {t('pricingSection.title')}
         </h2>
 
         {/* プランカード */}
@@ -83,29 +141,29 @@ export const Frame7 = () => {
               {plan.popular && (
                 <div className="absolute top-4 md:top-6 right-4 bg-[#ff6b6b] rounded-xl px-3 py-1">
                   <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-xs">
-                    人気
+                    {t('pricingSection.popular')}
                   </span>
                 </div>
               )}
 
               {/* コンテンツ */}
               <div className="flex flex-col gap-4 md:gap-6 p-6 md:p-8">
-                <div className="text-center">
+                <div className="flex items-baseline justify-center gap-2">
                   <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-3xl md:text-4xl">
                     {plan.price}
                   </div>
-                  <div className="[font-family:'Inter',Helvetica] font-normal text-[#888888] text-sm mt-2">
-                    税込
+                  <div className="[font-family:'Inter',Helvetica] font-normal text-white text-sm">
+                    {t('pricingSection.taxIncluded')}
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-3">
                   {plan.features.map((feature, i) => (
                     <div key={i} className="flex items-start gap-2">
-                      <span className={feature.included ? "text-[#00d6bd]" : "text-[#888888]"}>
+                      <span className={feature.included ? "text-[#00d6bd]" : "text-white"}>
                         {feature.included ? "✓" : "•"}
                       </span>
-                      <span className={`[font-family:'Inter',Helvetica] font-normal text-sm ${feature.included ? "text-[#cccccc]" : "text-[#888888]"}`}>
+                      <span className="[font-family:'Inter',Helvetica] font-normal text-sm text-white">
                         {feature.text}
                       </span>
                     </div>
@@ -119,7 +177,7 @@ export const Frame7 = () => {
         {/* 料理写真ギャラリー */}
         <div className="mb-8 md:mb-12">
           <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl text-center mb-6 md:mb-8">
-            🍽️ お料理メニュー
+            🍽️ {t('pricingSection.foodMenu')}
           </h3>
           
           {/* メインギャラリー - グリッドスタイル */}
@@ -181,7 +239,7 @@ export const Frame7 = () => {
               {/* タイトル */}
               <div className="text-center">
                 <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-3xl md:text-5xl tracking-[0.15em]">
-                  オプション
+                  {t('pricingSection.options')}
                 </h3>
                 <div className="mt-4 md:mt-6 w-full h-[2px] bg-[#1a1a1a]" />
               </div>
@@ -214,11 +272,11 @@ export const Frame7 = () => {
         {/* お問い合わせセクション */}
         <div className="flex flex-col items-center gap-4 md:gap-6 p-8 md:p-[60px] bg-[#1a1a1a] rounded-xl md:rounded-2xl">
           <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl text-center">
-            パーティープランのご予約・お問い合わせ
+            {t('pricingSection.contactTitle')}
           </h3>
 
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#888888] text-sm md:text-base text-center">
-            詳細なお見積もりや空き状況の確認など、お気軽にお問い合わせください
+          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-base text-center">
+            {t('pricingSection.contactDescription')}
           </p>
 
           <div className="flex flex-row gap-3 md:gap-5 items-center justify-center flex-wrap">
@@ -228,7 +286,7 @@ export const Frame7 = () => {
             >
               <span className="text-base md:text-lg">📞</span>
               <span className="[font-family:'Inter',Helvetica] font-bold text-[#182321] text-xs md:text-base">
-                お電話で相談
+                {t('pricingSection.callButton')}
               </span>
             </a>
 
@@ -238,17 +296,17 @@ export const Frame7 = () => {
             >
               <span className="text-base md:text-lg">✉️</span>
               <span className="[font-family:'Inter',Helvetica] font-bold text-white text-xs md:text-base">
-                お問い合わせ
+                {t('pricingSection.contactButton')}
               </span>
             </Link>
           </div>
 
           <div className="flex flex-col items-center gap-2 md:gap-3 text-center">
-            <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#888888] text-xs md:text-sm">
-              お電話：03-6205-5567
+            <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-sm">
+              {t('pricingSection.phone')}
             </span>
-            <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#888888] text-[10px] md:text-xs">
-              営業時間：19:00-02:00（月-木）19:00-03:00（金・土）19:00-01:00（日）
+            <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[10px] md:text-xs">
+              {t('pricingSection.hours')}
             </span>
           </div>
         </div>

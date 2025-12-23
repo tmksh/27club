@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Header } from "../../components/Header";
 import { Footer5 } from "../../components/Footer5";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const Reserve = () => {
+  const { language, t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
-    numberOfPeople: "1",
+    numberOfPeople: "",
     time: "",
-    seatType: "standing",
+    seatType: "",
     phone: "",
     email: "",
     privacyAgreed: false,
@@ -72,9 +74,9 @@ export const Reserve = () => {
         alert("ご予約リクエストを送信しました。\n担当者より折り返しご連絡いたします。");
         setFormData({
           name: "",
-          numberOfPeople: "1",
+          numberOfPeople: "",
           time: "",
-          seatType: "standing",
+          seatType: "",
           phone: "",
           email: "",
           privacyAgreed: false,
@@ -126,14 +128,14 @@ export const Reserve = () => {
                 data-scroll="fade-right"
                 className="[text-shadow:0px_5.98px_14.95px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] md:[-webkit-text-stroke:1.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-5xl md:text-7xl lg:text-[109.8px] tracking-[0] leading-tight"
               >
-                Reserve
+                {t('reserve.title')}
               </h1>
               <p 
                 data-scroll="fade-right"
                 data-scroll-delay="200"
                 className="[font-family:'Inter',Helvetica] font-normal text-[#888888] text-lg md:text-2xl lg:text-[28.1px] tracking-[0] leading-relaxed"
               >
-                ご予約
+                {t('reserve.subtitle')}
               </p>
             </div>
 
@@ -143,15 +145,18 @@ export const Reserve = () => {
                 data-scroll="fade-up"
                 className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-xl md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
               >
-                特別な夜を、ご予約ください。
+                {language === 'ja' ? '特別な夜を、ご予約ください。' : 'Reserve your special night.'}
               </h2>
               <p 
                 data-scroll="fade-up"
                 data-scroll-delay="200"
                 className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px]"
               >
-                THE 27 CLUBで過ごす忘れられないひとときを。<br />
-                下記フォームよりご予約をお願いいたします。
+                {language === 'ja' ? (
+                  <>THE 27 CLUBで過ごす忘れられないひとときを。<br />下記フォームよりご予約をお願いいたします。</>
+                ) : (
+                  <>Experience an unforgettable time at THE 27 CLUB.<br />Please use the form below to make your reservation.</>
+                )}
               </p>
             </div>
           </div>
@@ -161,14 +166,14 @@ export const Reserve = () => {
             {/* お名前 */}
             <div className="flex flex-col gap-2">
               <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-                お名前 <span className="text-[#06baa5]">*</span>
+                {t('reserve.form.name')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('reserve.form.required')}</span>
               </label>
               <input
                 type="text"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
                 className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
-                placeholder="山田 太郎"
+                placeholder={language === 'ja' ? "山田 太郎" : "John Smith"}
                 required
               />
             </div>
@@ -176,7 +181,7 @@ export const Reserve = () => {
             {/* 人数 */}
             <div className="flex flex-col gap-2">
               <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-                人数 <span className="text-[#06baa5]">*</span>
+                {t('reserve.form.numberOfPeople')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('reserve.form.required')}</span>
               </label>
               <select
                 value={formData.numberOfPeople}
@@ -184,19 +189,20 @@ export const Reserve = () => {
                 className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors cursor-pointer"
                 required
               >
+                <option value="" disabled className="bg-[#081e15]">{t('reserve.form.selectPeople')}</option>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                   <option key={num} value={num} className="bg-[#081e15]">
-                    {num}名
+                    {num}{language === 'ja' ? '名' : ' guests'}
                   </option>
                 ))}
-                <option value="10+" className="bg-[#081e15]">10名以上</option>
+                <option value="10+" className="bg-[#081e15]">{language === 'ja' ? '10名以上' : '10+ guests'}</option>
               </select>
             </div>
 
             {/* 時間 */}
             <div className="flex flex-col gap-2">
               <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-                ご希望時間 <span className="text-[#06baa5]">*</span>
+                {t('reserve.form.time')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('reserve.form.required')}</span>
               </label>
               <select
                 value={formData.time}
@@ -204,7 +210,7 @@ export const Reserve = () => {
                 className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors cursor-pointer"
                 required
               >
-                <option value="" disabled className="bg-[#081e15]">時間を選択してください</option>
+                <option value="" disabled className="bg-[#081e15]">{t('reserve.form.selectTime')}</option>
                 {timeSlots.map((time) => (
                   <option key={time} value={time} className="bg-[#081e15]">
                     {time}
@@ -216,7 +222,7 @@ export const Reserve = () => {
             {/* 席種類 */}
             <div className="flex flex-col gap-2">
               <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-                席種類 <span className="text-[#06baa5]">*</span>
+                {t('reserve.form.seatType')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('reserve.form.required')}</span>
               </label>
               <div className="flex flex-col md:flex-row gap-3 md:gap-6">
                 {seatTypes.map((type) => (
@@ -254,7 +260,7 @@ export const Reserve = () => {
             {/* 電話番号 */}
             <div className="flex flex-col gap-2">
               <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-                電話番号 <span className="text-[#06baa5]">*</span>
+                {t('reserve.form.phone')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('reserve.form.required')}</span>
               </label>
               <input
                 type="tel"
@@ -269,7 +275,7 @@ export const Reserve = () => {
             {/* メールアドレス */}
             <div className="flex flex-col gap-2">
               <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-                メールアドレス <span className="text-[#06baa5]">*</span>
+                {t('reserve.form.email')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('reserve.form.required')}</span>
               </label>
               <input
                 type="email"
@@ -304,7 +310,7 @@ export const Reserve = () => {
                   className="sr-only"
                 />
                 <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-base">
-                  「プライバシーポリシー」に同意する
+                  {t('reserve.form.privacyAgree')}
                 </span>
               </label>
 
@@ -312,7 +318,7 @@ export const Reserve = () => {
                 href="#"
                 className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#06baa5] text-xs md:text-sm underline hover:text-[#00d6bd] transition-colors"
               >
-                「プライバシーポリシー」はこちら
+                {t('reserve.form.privacyLink')}
               </a>
             </div>
 
@@ -327,7 +333,7 @@ export const Reserve = () => {
                     : 'bg-white text-[#081e15] hover:bg-[#00d6bd] hover:text-white cursor-pointer'
                 }`}
               >
-                {isSubmitting ? '送信中...' : '予約リクエストを送信'}
+                {isSubmitting ? t('reserve.form.submitting') : (language === 'ja' ? '予約リクエストを送信' : 'Send Reservation Request')}
               </button>
             </div>
           </form>
@@ -335,13 +341,24 @@ export const Reserve = () => {
           {/* 注意事項 */}
           <div data-scroll="fade-up" className="mt-8 md:mt-12 p-4 md:p-6 bg-[#081e15] border border-[#06baa5] rounded-md">
             <h3 className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#06baa5] text-sm md:text-base mb-3">
-              ご予約について
+              {language === 'ja' ? 'ご予約について' : 'About Reservations'}
             </h3>
             <ul className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#cccccc] text-xs md:text-sm space-y-2 list-disc list-inside">
-              <li>ご予約リクエスト送信後、担当者より折り返しご連絡いたします。</li>
-              <li>混雑状況により、ご希望のお時間にお応えできない場合がございます。</li>
-              <li>キャンセルの場合は、前日までにご連絡をお願いいたします。</li>
-              <li>10名以上のご予約は、お電話にてご相談ください。</li>
+              {language === 'ja' ? (
+                <>
+                  <li>ご予約リクエスト送信後、担当者より折り返しご連絡いたします。</li>
+                  <li>混雑状況により、ご希望のお時間にお応えできない場合がございます。</li>
+                  <li>キャンセルの場合は、前日までにご連絡をお願いいたします。</li>
+                  <li>10名以上のご予約は、お電話にてご相談ください。</li>
+                </>
+              ) : (
+                <>
+                  <li>After sending your reservation request, our staff will contact you.</li>
+                  <li>Due to availability, we may not be able to accommodate your preferred time.</li>
+                  <li>For cancellations, please contact us by the day before.</li>
+                  <li>For parties of 10 or more, please contact us by phone.</li>
+                </>
+              )}
             </ul>
           </div>
         </div>
