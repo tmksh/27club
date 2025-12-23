@@ -89,6 +89,58 @@
   50% { transform: translateY(-15px); }
 }
 
+/* ネオン玉 - ゆっくり浮遊 */
+@keyframes float-ball {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) scale(1); 
+    opacity: 0.8;
+  }
+  25% { 
+    transform: translateY(-20px) translateX(10px) scale(1.1); 
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-8px) translateX(-15px) scale(0.95); 
+    opacity: 0.9;
+  }
+  75% { 
+    transform: translateY(-25px) translateX(5px) scale(1.05); 
+    opacity: 1;
+  }
+}
+
+/* チップ - ゆっくり浮遊（正回転） */
+@keyframes float-chip {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-30px) translateX(15px) rotate(8deg); 
+  }
+  50% { 
+    transform: translateY(-12px) translateX(-20px) rotate(-5deg); 
+  }
+  75% { 
+    transform: translateY(-35px) translateX(8px) rotate(10deg); 
+  }
+}
+
+/* チップ - ゆっくり浮遊（逆回転） */
+@keyframes float-chip-reverse {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-25px) translateX(-12px) rotate(-8deg); 
+  }
+  50% { 
+    transform: translateY(-10px) translateX(18px) rotate(5deg); 
+  }
+  75% { 
+    transform: translateY(-32px) translateX(-5px) rotate(-10deg); 
+  }
+}
+
 /* チップ - PC版 中央から螺旋状に放出（8方向・画面端まで届く） */
 @keyframes chip-emit-0 {
   0% { transform: rotate(0deg) translateX(0) scale(0.1); opacity: 0; }
