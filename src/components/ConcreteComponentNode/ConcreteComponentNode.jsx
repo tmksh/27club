@@ -90,7 +90,7 @@ export const ConcreteComponentNode = ({
       <div className="flex md:hidden flex-col items-center gap-3 w-full">
         <Link to="/">
           <img
-            className="w-[45px] h-auto object-contain"
+            className="w-[100px] h-auto object-contain"
             alt="THE 27 CLUB"
             src="/img/27logo-1-1.png"
           />
@@ -113,7 +113,7 @@ export const ConcreteComponentNode = ({
             className="inline-flex items-center"
           >
             <img
-              className="w-[45px] h-auto object-contain"
+              className="w-[100px] lg:w-[130px] h-auto object-contain"
               alt="THE 27 CLUB"
               src="/img/27logo-1-1.png"
             />
