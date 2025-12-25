@@ -6,6 +6,7 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 import PropTypes from "prop-types";
 import React from "react";
 import { ConcreteComponentNode } from "../ConcreteComponentNode";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const Footer5 = ({
   className,
@@ -23,38 +24,40 @@ export const Footer5 = ({
   to4,
   to5,
 }) => {
+  const { language, t } = useLanguage();
+  
   return (
-    <div className={`h-[584px] w-[1440px] flex ${className}`}>
+    <div className={`min-h-[400px] md:min-h-[584px] w-full flex mt-16 md:mt-24 ${className}`}>
       <ConcreteComponentNode
         className={concreteComponentNodeFooterClassName}
         divClassName="![white-space:unset]"
-        elementClassName="!h-[unset] !flex-1 !grow !w-[unset]"
+        elementClassName="!h-auto !w-[45px]"
         img={concreteComponentNodeVector3}
         imgClassName="!left-[4.16%]"
-        leftSectionClassName="!h-[227.1px]"
-        logoClassName="!flex-[unset] !flex !w-[159.41px]"
+        leftSectionClassName="!h-auto"
+        logoClassName="!flex-[unset] !flex !w-[45px]"
         socialIcons={concreteComponentNodeSocialIcons}
         text={
           <>
-            〒160-0022
+            〒160-0021
             <br />
-            東京都新宿区歌舞伎町2-36-3
+            {language === 'ja' ? '東京都新宿区歌舞伎町２丁目３６−３' : '2-36-3 Kabukicho, Shinjuku-ku, Tokyo'}
             <br />
-            Acb会館ビル 3F
+            {language === 'ja' ? '新宿Acb会館 3階' : 'Shinjuku Acb Hall 3F'}
           </>
         }
-        text1="キャスト"
-        text2="求人募集"
-        text3="パーティープラン"
-        text4="ゲストの流れ"
-        text5="チップについて"
-        text6="お問い合わせ"
-        to={to3}
-        to1={to4}
-        to2={to2}
-        to3={to1}
-        to4={to}
-        to5={to5}
+        text1={t('footerNav.cast')}
+        text2={t('footerNav.recruit')}
+        text3={t('footerNav.partyPlans')}
+        text4={t('footerNav.gestFlow')}
+        text5={t('footerNav.tip')}
+        text6={t('footerNav.contact')}
+        to={to3 || "/u12461u12515u12473u12488"}
+        to1={to4 || "/u27714u20154"}
+        to2={to2 || "/u12495u12442u12540u12486u12451u12540u12501u12442u12521u12531"}
+        to3={to1 || "/u12465u12441u12473u12488u27969u12428"}
+        to4={to || "/u12481u12483u12501u12442u12395u12388u12356u12390"}
+        to5={to5 || "/u12467u12531u12479u12463u12488"}
         vector={concreteComponentNodeVector1}
         vector1={concreteComponentNodeVector}
         vector2={concreteComponentNodeImg}

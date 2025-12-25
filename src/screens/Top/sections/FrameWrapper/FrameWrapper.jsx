@@ -1,499 +1,283 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Group153 } from "../../../../components/Group153";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { castsAPI } from "../../../../lib/supabase";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const FrameWrapper = () => {
-  const wrapperRef = useRef(null);
+  const { t, language } = useLanguage();
   const [castData, setCastData] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-  // チップ装飾用のデータ
-  const chips = [
-    { img: '/img/3-1.png', w: 244, h: 142 },
-    { img: '/img/1.png', w: 303, h: 73 },
-    { img: '/img/1-2.png', w: 279, h: 95 },
-    { img: '/img/3-2.png', w: 220, h: 90 },
-    { img: '/img/5-1.png', w: 99, h: 171 },
-    { img: '/img/4-1.png', w: 118, h: 145 },
-    { img: '/img/4-2.png', w: 82, h: 142 },
-    { img: '/img/2.png', w: 220, h: 114 },
-    { img: '/img/2-2.png', w: 105, h: 106 },
-  ];
-  const carouselRef = useRef(null);
-  const timelineRef = useRef(null);
-  const cardTextRefs = useRef([]);
-  const rotationAnimationsRef = useRef([]);
-  const manualRotationRef = useRef(0); // 手動回転の累積値
-  const isDraggingRef = useRef(false);
-  const startXRef = useRef(0);
-  const currentRotationRef = useRef(0);
+  const [currentIndex, setCurrentIndex] = useState(2); // デフォルトで中央（3番目）を表示
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const containerRef = useRef(null);
 
   // キャストデータの読み込み
   useEffect(() => {
     const loadCasts = async () => {
       try {
         const data = await castsAPI.getAll();
-        console.log('取得したキャスト数:', data?.length || 0, data);
-        // データがある場合は使用
         if (data && data.length > 0) {
-          setCastData(data.map(cast => ({
+          const newImages = ["/img/cast-1.png", "/img/cast-2.png", "/img/cast-3.png", "/img/cast-4.png", "/img/cast-5.png"];
+          setCastData(data.map((cast, index) => ({
             id: cast.id,
-            image: cast.profile_image_url || "/img/2025-07-21-15-39-19-2.png",
+            image: newImages[index % newImages.length],
             name: cast.name || "Cast",
-            description: `${cast.features || '特徴情報なし'}${cast.favorite_drink ? `・好きなお酒：${cast.favorite_drink}` : ''}`,
-            show: cast.show_description || "ショー情報なし",
+            descriptionJa: `${cast.features || '特徴情報なし'}${cast.favorite_drink ? `・好きなお酒：${cast.favorite_drink}` : ''}`,
+            descriptionEn: `${cast.features_en || 'No features available'}${cast.favorite_drink ? `・Favorite drink: ${cast.favorite_drink}` : ''}`,
           })));
         } else {
-          // データがない場合のデフォルトデータ（5枚）
-          console.log('デフォルトデータを使用します');
           setCastData([
-            {
-              id: 1,
-              image: "/img/2025-07-21-15-39-19-2.png",
-              name: "Cast 1",
-              description: "特徴・好きなお酒：柔軟な体捌きが持ち味。",
-              show: "写真のショー：「Starlight Dream」のポールダンスシーン",
-            },
-            {
-              id: 2,
-              image: "/img/2025-07-21-15-39-19-5.png",
-              name: "Cast 2",
-              description: "特徴・好きなお酒：エネルギッシュなパフォーマンス。",
-              show: "写真のショー：「Midnight Fantasy」のダンスシーン",
-            },
-            {
-              id: 3,
-              image: "/img/2025-07-21-15-39-19-4.png",
-              name: "Aurora",
-              description: "特徴・好きなお酒：華麗な動きが魅力。",
-              show: "写真のショー：「Crystal Night」のアクロバットシーン",
-            },
-            {
-              id: 4,
-              image: "/img/2025-07-21-15-39-19-2.png",
-              name: "Cast 4",
-              description: "特徴・好きなお酒：情熱的なステージング。",
-              show: "写真のショー：「Fire Dance」のファイアーパフォーマンス",
-            },
-            {
-              id: 5,
-              image: "/img/2025-07-21-15-39-19-5.png",
-              name: "Cast 5",
-              description: "特徴・好きなお酒：繊細な表現力。",
-              show: "写真のショー：「Moonlight Serenade」のバレエシーン",
-            },
+            { id: 1, image: "/img/cast-1.png", name: "Cast 1", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：カクテル", descriptionEn: "Known for flexible movements. Favorite drink: Cocktail" },
+            { id: 2, image: "/img/cast-2.png", name: "Cast 2", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：ワイン", descriptionEn: "Known for flexible movements. Favorite drink: Wine" },
+            { id: 3, image: "/img/cast-3.png", name: "Aurora", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン", descriptionEn: "Known for flexible movements. Favorite drink: Champagne" },
+            { id: 4, image: "/img/cast-4.png", name: "Cast 4", descriptionJa: "エレガントなパフォーマンス・好きなお酒：モヒート", descriptionEn: "Elegant performance. Favorite drink: Mojito" },
+            { id: 5, image: "/img/cast-5.png", name: "Cast 5", descriptionJa: "エネルギッシュなステージング・好きなお酒：ウイスキー", descriptionEn: "Energetic staging. Favorite drink: Whiskey" },
           ]);
         }
       } catch (error) {
         console.error('キャストの取得に失敗しました:', error);
-        // エラー時はデフォルトデータ（5枚）
         setCastData([
-          {
-            id: 1,
-            image: "/img/2025-07-21-15-39-19-2.png",
-            name: "Cast 1",
-            description: "特徴・好きなお酒：柔軟な体捌きが持ち味。",
-            show: "写真のショー：「Starlight Dream」のポールダンスシーン",
-          },
-          {
-            id: 2,
-            image: "/img/2025-07-21-15-39-19-5.png",
-            name: "Cast 2",
-            description: "特徴・好きなお酒：エネルギッシュなパフォーマンス。",
-            show: "写真のショー：「Midnight Fantasy」のダンスシーン",
-          },
-          {
-            id: 3,
-            image: "/img/2025-07-21-15-39-19-4.png",
-            name: "Aurora",
-            description: "特徴・好きなお酒：華麗な動きが魅力。",
-            show: "写真のショー：「Crystal Night」のアクロバットシーン",
-          },
-          {
-            id: 4,
-            image: "/img/2025-07-21-15-39-19-2.png",
-            name: "Cast 4",
-            description: "特徴・好きなお酒：情熱的なステージング。",
-            show: "写真のショー：「Fire Dance」のファイアーパフォーマンス",
-          },
-          {
-            id: 5,
-            image: "/img/2025-07-21-15-39-19-5.png",
-            name: "Cast 5",
-            description: "特徴・好きなお酒：繊細な表現力。",
-            show: "写真のショー：「Moonlight Serenade」のバレエシーン",
-          },
+          { id: 1, image: "/img/cast-1.png", name: "Cast 1", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：カクテル", descriptionEn: "Known for flexible movements. Favorite drink: Cocktail" },
+          { id: 2, image: "/img/cast-2.png", name: "Cast 2", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：ワイン", descriptionEn: "Known for flexible movements. Favorite drink: Wine" },
+          { id: 3, image: "/img/cast-3.png", name: "Aurora", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン", descriptionEn: "Known for flexible movements. Favorite drink: Champagne" },
+          { id: 4, image: "/img/cast-4.png", name: "Cast 4", descriptionJa: "エレガントなパフォーマンス・好きなお酒：モヒート", descriptionEn: "Elegant performance. Favorite drink: Mojito" },
+          { id: 5, image: "/img/cast-5.png", name: "Cast 5", descriptionJa: "エネルギッシュなステージング・好きなお酒：ウイスキー", descriptionEn: "Energetic staging. Favorite drink: Whiskey" },
         ]);
       } finally {
         setLoading(false);
       }
     };
-
     loadCasts();
   }, []);
 
-  // カードのスケールと位置を更新する関数
-  const updateCardScale = () => {
-    if (!carouselRef.current) return;
-
-    const cells = carouselRef.current.querySelectorAll('.carousel-cell');
-    // スクロール回転 + 手動回転を合算
-    const scrollRotation = gsap.getProperty(carouselRef.current, 'rotationY') || 0;
-    const carouselRotation = scrollRotation + manualRotationRef.current;
-    const radius = 500;
-    
-    // 中央に最も近いカードのインデックスを検出（Z座標が最も大きい=カメラに最も近い）
-    let centerCardIndex = -1;
-    let maxZ = -Infinity;
-    
-    cells.forEach((cell, index) => {
-      const totalCells = castData.length;
-      const baseAngle = (360 / totalCells) * index;
-      const currentAngle = (baseAngle - carouselRotation + 360) % 360;
-      const angleRad = (currentAngle * Math.PI) / 180;
-      
-      // 3D位置を計算
-      const x = Math.sin(angleRad) * radius;
-      const z = Math.cos(angleRad) * radius;
-      
-      // Z座標が最も大きいカードを中央と判定
-      if (z > maxZ) {
-        maxZ = z;
-        centerCardIndex = index;
-      }
-      
-      // 中央からの角度距離を計算（0-180度）
-      let normalizedAngle = Math.abs(currentAngle);
-      if (normalizedAngle > 180) {
-        normalizedAngle = 360 - normalizedAngle;
-      }
-      
-      // すべてのカードを常に大きいサイズで表示
-      const scale = 1.0; // 常に最大サイズ
-      const distanceFromCenter = normalizedAngle / 180;
-      const opacity = 1.0 - (distanceFromCenter * 0.15); // 1.0 (中央) to 0.85 (端) - 透明度を抑える
-      
-      // 中央のカード（Z座標が正で最大）のみ明るく、それ以外も明るめに
-      const isCenterCard = z > 0 && z === maxZ;
-      const brightness = isCenterCard ? 100 : 85; // 60から85に変更
-      
-      // GSAPでアニメーション
-      gsap.to(cell, {
-        x: x,
-        z: z,
-        rotationY: currentAngle,
-        scale: scale,
-        opacity: Math.max(opacity, 0.85), // 最小透明度を0.6から0.85に変更
-        filter: `brightness(${brightness}%)`,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-    });
-    
-    // 中央のカードの背面テキストを回転させる
-    cardTextRefs.current.forEach((textRef, index) => {
-      if (!textRef) return;
-      
-      if (index === centerCardIndex) {
-        // 中央のカードのテキストを回転
-        if (!rotationAnimationsRef.current[index]) {
-          rotationAnimationsRef.current[index] = gsap.to(textRef, {
-            rotation: 360,
-            duration: 10,
-            ease: 'none',
-            repeat: -1,
-          });
-        }
-      } else {
-        // 中央でないカードのテキスト回転を停止
-        if (rotationAnimationsRef.current[index]) {
-          rotationAnimationsRef.current[index].kill();
-          rotationAnimationsRef.current[index] = null;
-          gsap.set(textRef, { rotation: 0 });
-        }
-      }
-    });
+  const handleDragStart = (clientX) => {
+    setIsDragging(true);
+    setStartX(clientX);
   };
 
-  // スクロール連動アニメーションの初期化
-  useEffect(() => {
-    if (!wrapperRef.current || !carouselRef.current) return;
+  const handleDragMove = (clientX) => {
+    if (!isDragging) return;
+    const diff = clientX - startX;
+    setTranslateX(diff);
+  };
 
-    const wrapper = wrapperRef.current;
-    const carousel = carouselRef.current;
-    const cards = carousel.querySelectorAll('.carousel-cell');
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    const threshold = 80;
+    if (translateX > threshold) {
+      // 左にスライド → 前のカードへ（ループ）
+      setCurrentIndex((prev) => (prev - 1 + castData.length) % castData.length);
+    } else if (translateX < -threshold) {
+      // 右にスライド → 次のカードへ（ループ）
+      setCurrentIndex((prev) => (prev + 1) % castData.length);
+    }
+    setTranslateX(0);
+  };
 
-    // カルーセルセルを円周上に配置（元のデモと同じ方式）
-    const totalCards = castData.length;
-    const angleStep = 360 / totalCards;
-    const radius = 500; // 半径を大きくして画面幅を広く使う
-
-    cards.forEach((cell, index) => {
-      const angle = index * angleStep;
-      const angleRad = (angle * Math.PI) / 180;
-      const x = Math.sin(angleRad) * radius;
-      const z = Math.cos(angleRad) * radius;
-      
-      // GSAPで初期位置を設定
-      gsap.set(cell, {
-        x: x,
-        z: z,
-        rotationY: angle,
-        transformOrigin: 'center center',
-      });
-    });
-
-    // スクロール連動タイムラインを作成
-    const timeline = gsap.timeline({
-      defaults: { ease: 'sine.inOut' },
-      scrollTrigger: {
-        trigger: wrapper,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
-
-    timelineRef.current = timeline;
-
-    timeline
-      .fromTo(carousel, { rotationY: 0 }, { rotationY: -180 }, 0)
-      .fromTo(
-        carousel,
-        { rotationZ: 3, rotationX: 3 },
-        { rotationZ: -3, rotationX: -3 },
-        0
-      )
-      .fromTo(cards, { rotationZ: 10 }, { rotationZ: -10, ease: 'none' }, 0)
-      .call(() => {
-        // スクロール位置に応じてカードのスケールを更新
-        const scrollTrigger = timeline.scrollTrigger;
-        if (scrollTrigger) {
-          scrollTrigger.onUpdate = () => {
-            updateCardScale();
-          };
-          // 初期状態も更新
-          setTimeout(updateCardScale, 100);
-        }
-      });
-
-    // 手動回転操作の追加（ドラッグ/スワイプ）
-    const handleStart = (clientX) => {
-      isDraggingRef.current = true;
-      startXRef.current = clientX;
-      currentRotationRef.current = manualRotationRef.current;
+  // カードの位置とスタイルを計算（ループ対応）
+  const getCardStyle = (index) => {
+    const total = castData.length;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    
+    // 円形配置での最短距離を計算
+    let diff = index - currentIndex;
+    // 最短距離になるよう調整（-2, -1, 0, 1, 2 の範囲に）
+    if (diff > total / 2) diff -= total;
+    if (diff < -total / 2) diff += total;
+    
+    // 中央からの距離に基づく設定
+    let width = 0;
+    let height = 0;
+    let opacity = 1;
+    let zIndex = 10;
+    let blur = 0;
+    let xOffset = 0;
+    let yOffset = 0;
+    let scale = 1;
+    
+    const absDiff = Math.abs(diff);
+    const direction = diff > 0 ? 1 : -1;
+    
+    // 基本サイズ（正方形に近い）
+    const baseWidth = isMobile ? 200 : 320;
+    const baseHeight = isMobile ? 240 : 380;
+    
+    if (absDiff === 0) {
+      // 中央のカード（最大サイズ）
+      width = baseWidth;
+      height = baseHeight;
+      opacity = 1;
+      zIndex = 50;
+      blur = 0;
+      xOffset = 0;
+      scale = 1;
+    } else if (absDiff === 1) {
+      // 隣のカード（中サイズ、背面に重なる）
+      width = baseWidth;
+      height = baseHeight;
+      opacity = 0.9;
+      zIndex = 40;
+      blur = 1;
+      xOffset = direction * (isMobile ? 140 : 260);
+      scale = 0.85;
+    } else if (absDiff === 2) {
+      // 2つ隣のカード（小サイズ、さらに背面、上に配置）
+      width = baseWidth;
+      height = baseHeight;
+      opacity = 0.7;
+      zIndex = 30;
+      blur = 2;
+      xOffset = direction * (isMobile ? 240 : 480);
+      scale = 0.7;
+      yOffset = isMobile ? -30 : -50; // 上に移動
+    } else {
+      // それ以上離れたカード（非表示）
+      width = baseWidth;
+      height = baseHeight;
+      opacity = 0;
+      zIndex = 20;
+      blur = 3;
+      xOffset = direction * (isMobile ? 320 : 640);
+      scale = 0.6;
+      yOffset = isMobile ? -40 : -60;
+    }
+    
+    // ドラッグ中のオフセット
+    const dragOffset = isDragging ? translateX * 0.5 : 0;
+    
+    return {
+      width: `${width}px`,
+      height: `${height}px`,
+      transform: `translateX(${xOffset + dragOffset}px) translateY(${yOffset}px) scale(${scale})`,
+      opacity,
+      zIndex,
+      filter: blur > 0 ? `blur(${blur}px)` : 'none',
+      transition: isDragging ? 'none' : 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
     };
-
-    const handleMove = (clientX) => {
-      if (!isDraggingRef.current) return;
-      
-      const deltaX = clientX - startXRef.current;
-      const rotationDelta = deltaX * 0.5; // ドラッグ距離を回転角度に変換
-      manualRotationRef.current = currentRotationRef.current + rotationDelta;
-      
-      // カードのスケールと位置を更新
-      updateCardScale();
-    };
-
-    const handleEnd = () => {
-      isDraggingRef.current = false;
-    };
-
-    // マウスイベント
-    const handleMouseDown = (e) => {
-      e.preventDefault();
-      handleStart(e.clientX);
-    };
-
-    const handleMouseMove = (e) => {
-      handleMove(e.clientX);
-    };
-
-    const handleMouseUp = () => {
-      handleEnd();
-    };
-
-    // タッチイベント
-    const handleTouchStart = (e) => {
-      if (e.touches.length === 1) {
-        handleStart(e.touches[0].clientX);
-      }
-    };
-
-    const handleTouchMove = (e) => {
-      if (e.touches.length === 1) {
-        handleMove(e.touches[0].clientX);
-      }
-    };
-
-    const handleTouchEnd = () => {
-      handleEnd();
-    };
-
-    // イベントリスナーを追加
-    const carouselContainer = carousel.parentElement;
-    carouselContainer.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseup', handleMouseUp);
-    carouselContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
-    carouselContainer.addEventListener('touchmove', handleTouchMove, { passive: true });
-    carouselContainer.addEventListener('touchend', handleTouchEnd);
-
-    return () => {
-      // イベントリスナーを削除
-      if (carouselContainer) {
-        carouselContainer.removeEventListener('mousedown', handleMouseDown);
-        carouselContainer.removeEventListener('touchstart', handleTouchStart);
-        carouselContainer.removeEventListener('touchmove', handleTouchMove);
-        carouselContainer.removeEventListener('touchend', handleTouchEnd);
-      }
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      if (timelineRef.current) {
-        timelineRef.current.kill();
-      }
-      // すべての回転アニメーションを停止
-      rotationAnimationsRef.current.forEach(anim => {
-        if (anim) anim.kill();
-      });
-      ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.trigger === wrapper) {
-          trigger.kill();
-        }
-      });
-    };
-  }, [castData.length]);
+  };
 
   return (
-    <div className="relative self-stretch w-full min-h-[900px] overflow-hidden">
-      <div className="w-full flex flex-col gap-[40px]">
-        <div 
-          ref={wrapperRef}
-          className="w-full h-[850px] relative"
-        >
-          {/* チップの模様（フッターと同様） */}
-          {Array.from({ length: 20 }, (_, i) => {
-            const chip = chips[i % chips.length];
-            const left = (i * 72) % (1440 - chip.w * 0.6);
-            const top = (Math.floor(i / 8) * 200) + (i % 5) * 80;
-            
-            return (
-              <div
-                key={`chip-pattern-${i}`}
-                className="absolute pointer-events-none"
-                style={{
-                  left: `${left}px`,
-                  top: `${top}px`,
-                  width: `${chip.w * 0.6}px`,
-                  height: `${chip.h * 0.6}px`,
-                  backgroundImage: `url(${chip.img})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: '50% 50%',
-                  opacity: 0.08,
-                  transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-                  zIndex: 0,
-                }}
-              />
-            );
-          })}
+    <div className="relative self-stretch w-full min-h-[500px] md:min-h-[700px] overflow-hidden">
+      <div className="relative w-full flex flex-col gap-[40px] z-10">
+        <div className="w-full h-[450px] md:h-[650px] relative">
           
-          <div className="absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-left z-10">
-            パフォーマンス
-          </div>
-
-          <div className="absolute top-[116px] left-0 right-0 flex flex-col items-center gap-3">
-            <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
+          {/* セクションタイトル */}
+          <div className="pt-8 md:pt-16 flex flex-col items-center gap-3 relative z-10 px-4" data-scroll="fade-up">
+            <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-2xl md:text-4xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
               EVENTS / PERFORMERS
             </div>
-            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4 whitespace-nowrap">
-              多彩なパフォーマンスとイベントをお楽しみいただけます。毎週異なるテーマで、特別な夜をお届けします。
+            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px]">
+              {t('cast.subtitle')}
             </div>
           </div>
 
-          {/* 3Dカルーセル - スクロール連動 + 手動操作対応版 */}
+          {/* カルーセルコンテナ */}
           <div 
-            className="absolute top-[280px] left-0 w-full h-[650px] flex items-center justify-center overflow-visible cursor-grab active:cursor-grabbing"
-            style={{ perspective: '2000px' }}
+            ref={containerRef}
+            className="relative mt-8 md:mt-12 h-[280px] md:h-[420px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+            onMouseDown={(e) => handleDragStart(e.clientX)}
+            onMouseMove={(e) => handleDragMove(e.clientX)}
+            onMouseUp={handleDragEnd}
+            onMouseLeave={handleDragEnd}
+            onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+            onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
+            onTouchEnd={handleDragEnd}
           >
-            {/* 3D円形カルーセル */}
+            {/* 円形テキスト（中央カードの周り） */}
             <div 
-              ref={carouselRef}
-              className="relative w-full h-full flex items-center justify-center"
-              style={{ 
-                transformStyle: "preserve-3d",
-                transform: "translateZ(-600px) rotateY(0deg)"
-              }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] md:w-[480px] md:h-[480px] pointer-events-none z-[100] notranslate"
+              translate="no"
+              lang="en"
+              style={{ animation: 'spin-slow 20s linear infinite' }}
             >
-              {castData.map((cast, index) => {
-                // 各カードの背面テキスト用のrefを初期化
-                if (!cardTextRefs.current[index]) {
-                  cardTextRefs.current[index] = null;
-                }
-                
-                return (
-                  <div
-                    key={cast.id}
-                    className="carousel-cell absolute"
-                    style={{
-                      width: '450px',
-                      height: '540px',
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center center",
-                    }}
-                  >
-                    {/* カードの前面に配置する円状テキスト */}
-                    <div
-                      ref={el => cardTextRefs.current[index] = el}
-                      className="absolute w-[600px] h-[600px] bg-[url(/img/ckub-1.png)] bg-cover bg-[50%_50%] pointer-events-none"
+              <svg viewBox="0 0 200 200" className="w-full h-full">
+                <defs>
+                  <path
+                    id="circlePath"
+                    d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"
+                    fill="none"
+                  />
+                </defs>
+                <text className="fill-white text-[11px] tracking-[0.3em]" style={{ fontFamily: "'Noto Serif JP', 'Playfair Display', serif" }}>
+                  <textPath href="#circlePath" startOffset="0%">
+                    Welcome to THE 27 CLUB • Welcome to THE 27 CLUB • Welcome to THE 27 CLUB •
+                  </textPath>
+                </text>
+              </svg>
+            </div>
+
+            {/* キャストカード */}
+            {castData.map((cast, index) => (
+              <div
+                key={cast.id}
+                className="absolute rounded-2xl overflow-hidden shadow-2xl"
+                style={getCardStyle(index)}
+              >
+                {/* カード背景とボーダー */}
+                <div 
+                  className="w-full h-full relative"
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(45, 45, 45, 0.9) 0%, rgba(25, 25, 25, 0.95) 100%)',
+                    border: index === currentIndex ? '2px solid rgba(255, 255, 255, 0.25)' : '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '16px',
+                  }}
+                >
+                  {/* 画像エリア */}
+                  <div className="relative w-full h-full overflow-hidden rounded-2xl">
+                    <img
+                      className="w-full h-full object-cover"
+                      alt={cast.name}
+                      src={cast.image}
+                      draggable={false}
+                    />
+                    {/* 画像オーバーレイ（微妙なグラデーション） */}
+                    <div 
+                      className="absolute inset-0"
                       style={{
-                        left: '50%',
-                        top: '50%',
-                        transform: 'translate(-50%, -50%) translateZ(10px)',
-                        transformStyle: "preserve-3d",
-                        zIndex: 1,
-                        filter: 'brightness(0) invert(1)',
-                        opacity: 0.8,
+                        background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%)',
                       }}
                     />
-                    
-                    <div className="relative w-[450px] h-[540px]">
-                      <img
-                        className="top-[-20px] left-[-20px] w-[490px] h-[490px] absolute aspect-[1.01] object-cover rounded-lg"
-                        alt={cast.name}
-                        src={cast.image}
-                      />
-                      <div className="absolute top-[350px] left-0 w-[450px] h-[150px] bg-[#0c0c0ce6] rounded-b-lg" />
-                      <div className="absolute top-[370px] left-[15px] w-[420px] [text-shadow:0px_2.79px_2.79px_#e8efa899] [font-family:'Inter',Helvetica] font-normal text-white text-[16px] text-center tracking-[0] leading-[22px]">
-                        {cast.name}
-                        <br />
-                        {cast.description}
-                        <br />
-                        {cast.show}
-                      </div>
-                    </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              </div>
+            ))}
           </div>
+
+          {/* 現在のキャスト情報 */}
+          {castData[currentIndex] && (
+            <div className="flex flex-col items-center mt-6 px-4 text-center" data-scroll="fade-up">
+              <h3 className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-xl md:text-2xl tracking-wide">
+                {castData[currentIndex].name}
+              </h3>
+              <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white/70 text-xs md:text-sm mt-2 max-w-[400px]">
+                {language === 'en' ? castData[currentIndex].descriptionEn : castData[currentIndex].descriptionJa}
+              </p>
+            </div>
+          )}
+
         </div>
 
-        <div className="flex justify-center w-full">
-          <Link
-            className="w-[351.95px] flex"
+        <div className="flex justify-center w-full mt-8 md:mt-16 pb-8 px-4 md:px-0" data-scroll="fade-up">
+          <Group153 
+            className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"
-          >
-            <div className="w-[351.95px] flex">
-              <Group153 className="!h-[unset] ![position:unset] !left-[unset] !w-[351.95px] !top-[unset]" />
-            </div>
-          </Link>
+            text={t('cast.viewAll')}
+          />
         </div>
       </div>
+
+      {/* CSSアニメーション */}
+      <style>{`
+        @keyframes spin-slow {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 };

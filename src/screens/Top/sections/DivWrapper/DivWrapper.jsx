@@ -1,7 +1,9 @@
 import React from "react";
 import { Group153 } from "../../../../components/Group153";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const DivWrapper = () => {
+  const { t } = useLanguage();
   // チップ装飾用のデータ
   const chips = [
     { img: '/img/3-1.png', w: 244, h: 142 },
@@ -16,78 +18,94 @@ export const DivWrapper = () => {
   ];
 
   return (
-    <div className="relative self-stretch w-full h-[1245.76px]">
-      <div className="relative w-[1444px] h-[1246px]">
-        {/* チップの模様（カタカナテキストの方に向けて右側に集約） */}
-        {Array.from({ length: 25 }, (_, i) => {
-          const chip = chips[i % chips.length];
-          // 右側に集約するため、左側の位置を右寄せに調整
-          // 1440pxの幅のうち、右側の60%に集中させる
-          const baseLeft = 1440 * 0.4; // 左側40%から開始
-          const randomOffset = Math.random() * (1440 * 0.6 - chip.w * 0.6); // 右側60%の範囲内でランダム
-          const left = baseLeft + randomOffset;
-          const top = (Math.floor(i / 8) * 200) + (i % 6) * 100;
-          
-          return (
-            <div
-              key={`chip-pattern-${i}`}
-              className="absolute pointer-events-none"
-              style={{
-                left: `${left}px`,
-                top: `${top}px`,
-                width: `${chip.w * 0.6}px`,
-                height: `${chip.h * 0.6}px`,
-                backgroundImage: `url(${chip.img})`,
-                backgroundSize: 'cover',
-                backgroundPosition: '50% 50%',
-                opacity: 0.08,
-                transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-                zIndex: 1,
-              }}
+    <div className="relative self-stretch w-full min-h-[900px] lg:min-h-[1245.76px] px-4 md:px-8">
+      <div className="relative w-full max-w-[1444px] mx-auto">
+        {/* チップの模様（デスクトップのみ表示） */}
+        <div className="hidden lg:block">
+          {Array.from({ length: 25 }, (_, i) => {
+            const chip = chips[i % chips.length];
+            const baseLeft = 1440 * 0.4;
+            const randomOffset = Math.random() * (1440 * 0.6 - chip.w * 0.6);
+            const left = baseLeft + randomOffset;
+            const top = (Math.floor(i / 8) * 200) + (i % 6) * 100;
+            
+            return (
+              <div
+                key={`chip-pattern-${i}`}
+                className="absolute pointer-events-none"
+                style={{
+                  left: `${left}px`,
+                  top: `${top}px`,
+                  width: `${chip.w * 0.6}px`,
+                  height: `${chip.h * 0.6}px`,
+                  backgroundImage: `url(${chip.img})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: '50% 50%',
+                  opacity: 0.08,
+                  transform: `rotate(${(i % 3) * 15 - 15}deg)`,
+                  zIndex: 1,
+                }}
+              />
+            );
+          })}
+        </div>
+        
+        {/* カタカナテキスト（デスクトップのみ） */}
+        <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-right tracking-[0] leading-[normal]">
+          {t('access.backgroundText')}
+        </div>
+
+        {/* セクションタイトル */}
+        <div className="pt-8 md:pt-[116px] flex flex-col items-center gap-3 relative z-10" data-scroll="fade-up">
+          <div className="[text-shadow:0px_4px_15px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] text-white text-3xl md:text-5xl lg:text-[64px] text-center font-normal tracking-[0] leading-[normal]">
+            {t('access.title')}
+          </div>
+          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
+            {t('access.subtitle')}
+          </div>
+        </div>
+
+        {/* マップコンテナ */}
+        <div className="mt-8 md:mt-16 relative z-10" data-scroll="scale-up">
+          {/* 店舗画像オーバーレイ（マップ上） */}
+          <div className="absolute top-2 md:top-8 left-2 md:left-8 z-20">
+            <img
+              className="w-[180px] md:w-[280px] lg:w-[362px] h-auto aspect-[2.29] object-cover rounded-lg shadow-lg"
+              alt="Element"
+              src="/img/2025-08-18-1-45-17-1.png"
             />
-          );
-        })}
-        <div className="absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-right tracking-[0] leading-[normal]">
-          店舗へのアクセス
+          </div>
+          
+          <iframe
+            className="w-full aspect-[2.4/1] md:aspect-[1192/498] border-0 rounded-lg"
+            src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA2%E4%B8%81%E7%9B%AE36-3+%E6%96%B0%E5%AE%BFAcb%E4%BC%9A%E9%A4%A8&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="店舗へのアクセス"
+          />
         </div>
 
-        <div className="absolute top-[116px] left-0 right-0 flex flex-col items-center gap-3">
-          <div className="[text-shadow:0px_4px_15px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] text-white text-[64px] text-center font-normal tracking-[0] leading-[normal]">
-            ACCESS
-          </div>
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
-            新宿駅・新宿三丁目駅から徒歩圏内。大きな赤い階段が目印です。お気軽にお越しください。
-          </div>
-        </div>
-
-        <iframe
-          className="absolute top-[291px] left-[126px] w-[1192px] h-[498px] border-0"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.5!2d139.702!3d35.693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQxJzM0LjgiTiAxMznCsDQyJzA3LjIiRQ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp"
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="店舗へのアクセス"
-        />
-
-        <div className="absolute top-[839px] left-[126px] w-[1192px] flex flex-col items-center gap-6">
-          <div className="flex flex-col md:flex-row gap-8 w-full max-w-[1000px] px-8">
+        {/* アクセス情報 */}
+        <div className="mt-8 md:mt-12 w-full flex flex-col items-center gap-6 relative z-10" data-scroll="fade-up">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full max-w-[1000px] px-4 md:px-8">
             {/* 交通アクセス */}
             <div className="flex-1 flex flex-col gap-4">
               <div className="flex items-center gap-3 mb-2">
-                <svg className="w-6 h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 md:w-6 h-5 md:h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                 </svg>
-                <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-lg tracking-[0.5px] uppercase">
-                  交通アクセス
+                <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-base md:text-lg tracking-[0.5px] uppercase">
+                  {t('access.transport')}
                 </h3>
               </div>
               <div className="flex flex-col gap-3 [font-family:'Noto_Serif_JP',Helvetica] text-white">
                 <div className="flex flex-col gap-1">
-                  <div className="font-semibold text-lg">電車JR線「新宿駅」</div>
-                  <div className="text-sm opacity-80">JR Line Shinjuku Sta.</div>
+                  <div className="font-semibold text-base md:text-lg">{t('access.shinjukuStation')}</div>
+                  <div className="text-xs md:text-sm opacity-80">{t('access.shinjukuStationEn')}</div>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <div className="font-semibold text-lg">東京メトロ丸ノ内線・副都心線「新宿三丁目駅」</div>
+                  <div className="font-semibold text-base md:text-lg">{t('access.metroStation')}</div>
                 </div>
               </div>
             </div>
@@ -95,76 +113,73 @@ export const DivWrapper = () => {
             {/* 住所 */}
             <div className="flex-1 flex flex-col gap-4">
               <div className="flex items-center gap-3 mb-2">
-                <svg className="w-6 h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 md:w-6 h-5 md:h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-lg tracking-[0.5px] uppercase">
-                  住所
+                <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-base md:text-lg tracking-[0.5px] uppercase">
+                  {t('access.address')}
                 </h3>
               </div>
               <div className="flex flex-col gap-2 [font-family:'Noto_Serif_JP',Helvetica] text-white">
-                <div className="text-sm opacity-80">〒160-0021</div>
-                <div className="font-semibold text-lg leading-relaxed">
-                  東京都新宿区歌舞伎町２丁目３６−３
+                <div className="text-xs md:text-sm opacity-80">{t('access.postalCode')}</div>
+                <div className="font-semibold text-base md:text-lg leading-relaxed">
+                  {t('access.addressLine1')}
                 </div>
-                <div className="text-base">新宿Acb会館 3階</div>
+                <div className="text-sm md:text-base">{t('access.addressLine2')}</div>
               </div>
             </div>
           </div>
 
           {/* 注意書き */}
-          <div className="w-full max-w-[1000px] px-8">
-            <div className="flex items-start gap-3 p-4 bg-[#00d6bd20] border border-[#00d6bd40] rounded-lg">
-              <svg className="w-5 h-5 text-[#00d6bd] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-full max-w-[1000px] px-4 md:px-8">
+            <div className="flex items-start gap-3 p-3 md:p-4 bg-[#00d6bd20] border border-[#00d6bd40] rounded-lg">
+              <svg className="w-4 md:w-5 h-4 md:h-5 text-[#00d6bd] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white text-base leading-relaxed">
-                ※入り口は大きな赤い階段が目印
+              <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white text-sm md:text-base leading-relaxed">
+                {t('access.notice')}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col w-[352px] items-start gap-2.5 absolute top-[1148px] left-[351px]">
-          <div className="relative self-stretch w-full h-[97.76px] rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)]">
-            <div className="inline-flex flex-col items-center gap-[9.73px] absolute top-[19px] left-[136px]">
-              <div className="relative w-fit [font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[22.7px] tracking-[0] leading-[27.2px] whitespace-nowrap">
-                動画で確認
+        {/* CTAボタン */}
+        <div className="mt-6 md:mt-12 flex flex-row gap-3 md:gap-4 justify-center items-center pb-6 md:pb-8 relative z-10 px-4 md:px-0" data-scroll="fade-up">
+          <div className="w-full max-w-[160px] md:max-w-[352px]">
+            <div className="relative w-full h-[56px] md:h-[97.76px] rounded-[40px] md:rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)] cursor-pointer hover:scale-105 transition-transform flex items-center justify-center gap-3 md:gap-5 px-4 md:px-8">
+              {/* アイコン */}
+              <div className="relative w-[32px] md:w-[48px] h-[32px] md:h-[48px] flex-shrink-0">
+                <img
+                  className="absolute w-[83.33%] h-[83.33%] top-[4.17%] left-[4.17%]"
+                  alt="Vector"
+                  src="/img/vector-16.svg"
+                />
+                <img
+                  className="absolute w-[25.00%] h-[33.33%] top-[29.17%] left-[37.50%]"
+                  alt="Vector"
+                  src="/img/vector-17.svg"
+                />
               </div>
 
-              <div className="relative w-fit opacity-90 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[17.8px] tracking-[0] leading-[21.4px] whitespace-nowrap">
-                雰囲気をチェック
+              {/* テキスト */}
+              <div className="flex flex-col items-start justify-center gap-0 md:gap-1">
+                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[12px] md:text-[20px] tracking-[0] leading-[1.3]">
+                  {t('access.videoCheck')}
+                </div>
+                <div className="opacity-90 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[9px] md:text-[14px] tracking-[0] leading-[1.3]">
+                  {t('access.checkAtmosphere')}
+                </div>
               </div>
-            </div>
-
-            <div className="absolute top-[21px] left-[66px] w-[52px] h-[52px] border-0 border-none">
-              <img
-                className="absolute w-[83.33%] h-[83.33%] top-[4.17%] left-[4.17%]"
-                alt="Vector"
-                src="/img/vector-16.svg"
-              />
-
-              <img
-                className="absolute w-[25.00%] h-[33.33%] top-[29.17%] left-[37.50%]"
-                alt="Vector"
-                src="/img/vector-17.svg"
-              />
             </div>
           </div>
+
+          <Group153
+            className="w-full max-w-[160px] md:max-w-[352px] h-[56px] md:h-[98px]"
+            text={t('access.contactButton')}
+            to="/u12467u12531u12479u12463u12488"
+          />
         </div>
-
-        <img
-          className="absolute top-[323px] left-[159px] w-[362px] h-[158px] aspect-[2.29] object-cover"
-          alt="Element"
-          src="/img/2025-08-18-1-45-17-1.png"
-        />
-
-        <Group153
-          className="!absolute !left-[733px] !top-[1148px]"
-          text="お問い合わせ"
-          to="/u12467u12531u12479u12463u12488"
-        />
       </div>
     </div>
   );

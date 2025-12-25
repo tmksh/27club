@@ -1,28 +1,38 @@
 import React from "react";
-import { Group66 } from "../../../../components/Group66";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame1 = () => {
+  const { t } = useLanguage();
   return (
-    <div className="-ml-2 w-[1455px] h-[560px] relative">
-      <img
-        className="absolute top-0 left-2 w-[1440px] h-[560px]"
-        alt="Rectangle"
-        src="/img/rectangle-213.png"
-      />
-
-      <Group66
-        className="!h-40 !absolute ![display:unset] !left-[164px] !top-[346px]"
-        elementClassName="!h-full !font-normal !w-[99.80%] !top-0"
-        groupClassName="!h-[51.25%] !flex-[unset] !left-[5.71%] !w-[88.75%] !top-[50.45%]"
-        hasDiv={false}
-        text1={
-          <>
-            THE27CLUBでは、ショーやキャストとの時間をもっと楽しんでいただけるように、「チップ」という応援のカタチ をご用意しています。
-          </>
-        }
-      />
-      <div className="absolute top-[345px] left-[439px] [-webkit-text-stroke:1px_#d4af37] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-[64px] text-center tracking-[0] leading-[57.6px] whitespace-nowrap">
-        「チップとは…？」
+    <div className="relative w-full" data-scroll="zoom-in">
+      {/* 背景画像 */}
+      <div className="relative w-full aspect-[1440/700] md:aspect-[1440/700]">
+        <img
+          className="w-full h-full object-cover"
+          alt="チップについて"
+          src="/img/tip-hero.jpg"
+        />
+        
+        {/* 下部グラデーションオーバーレイ（テキスト視認性向上） */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 50%, transparent 70%)'
+          }}
+        />
+        
+        {/* オーバーレイコンテンツ */}
+        <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 md:pb-16 px-4 md:px-8">
+          {/* タイトル */}
+          <h1 className="[-webkit-text-stroke:0.5px_#d4af37] md:[-webkit-text-stroke:1px_#d4af37] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-3xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-tight whitespace-nowrap mb-4 md:mb-8">
+            {t('tip.heroTitle')}
+          </h1>
+          
+          {/* 説明テキスト */}
+          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-lg lg:text-[22px] text-center tracking-[0] leading-relaxed md:leading-[36px] max-w-[1000px]">
+            {t('tip.heroDescription')}
+          </p>
+        </div>
       </div>
     </div>
   );

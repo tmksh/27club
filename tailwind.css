@@ -1,9 +1,534 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ネオン玉 - 中央から螺旋状にフワーッと広がり、3D立体空間（画面端まで届く） */
+@keyframes neon-emit-0 {
+  0% { transform: rotate(0deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(25deg) translateX(90px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(63deg) translateX(225px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(100deg) translateX(360px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(138deg) translateX(495px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(175deg) translateX(630px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(213deg) translateX(765px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(250deg) translateX(900px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-1 {
+  0% { transform: rotate(45deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(70deg) translateX(80px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(108deg) translateX(200px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(145deg) translateX(320px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(183deg) translateX(440px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(220deg) translateX(560px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(258deg) translateX(680px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(295deg) translateX(800px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-2 {
+  0% { transform: rotate(90deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(115deg) translateX(95px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(153deg) translateX(240px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(190deg) translateX(385px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(228deg) translateX(530px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(265deg) translateX(675px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(303deg) translateX(820px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(340deg) translateX(950px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-3 {
+  0% { transform: rotate(135deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(160deg) translateX(75px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(198deg) translateX(190px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(235deg) translateX(305px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(273deg) translateX(420px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(310deg) translateX(535px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(348deg) translateX(650px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(385deg) translateX(760px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-4 {
+  0% { transform: rotate(180deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(205deg) translateX(85px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(243deg) translateX(215px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(280deg) translateX(345px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(318deg) translateX(475px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(355deg) translateX(605px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(393deg) translateX(735px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(430deg) translateX(860px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-5 {
+  0% { transform: rotate(225deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(250deg) translateX(82px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(288deg) translateX(205px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(325deg) translateX(328px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(363deg) translateX(450px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(400deg) translateX(575px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(438deg) translateX(700px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(475deg) translateX(820px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-6 {
+  0% { transform: rotate(270deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(295deg) translateX(100px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(333deg) translateX(250px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(370deg) translateX(400px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(408deg) translateX(550px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(445deg) translateX(700px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(483deg) translateX(850px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(520deg) translateX(1000px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-7 {
+  0% { transform: rotate(315deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(340deg) translateX(78px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(378deg) translateX(195px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(415deg) translateX(312px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(453deg) translateX(430px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(490deg) translateX(545px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(528deg) translateX(665px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(565deg) translateX(780px) scale(2.0); opacity: 0; }
+}
+
+/* ネオン玉のふわふわ浮遊アニメーション */
+@keyframes neon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ネオン玉 - ゆっくり浮遊 */
+@keyframes float-ball {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) scale(1); 
+    opacity: 0.8;
+  }
+  25% { 
+    transform: translateY(-20px) translateX(10px) scale(1.1); 
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-8px) translateX(-15px) scale(0.95); 
+    opacity: 0.9;
+  }
+  75% { 
+    transform: translateY(-25px) translateX(5px) scale(1.05); 
+    opacity: 1;
+  }
+}
+
+/* チップ - ゆっくり浮遊（正回転） */
+@keyframes float-chip {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-30px) translateX(15px) rotate(8deg); 
+  }
+  50% { 
+    transform: translateY(-12px) translateX(-20px) rotate(-5deg); 
+  }
+  75% { 
+    transform: translateY(-35px) translateX(8px) rotate(10deg); 
+  }
+}
+
+/* チップ - ゆっくり浮遊（逆回転） */
+@keyframes float-chip-reverse {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-25px) translateX(-12px) rotate(-8deg); 
+  }
+  50% { 
+    transform: translateY(-10px) translateX(18px) rotate(5deg); 
+  }
+  75% { 
+    transform: translateY(-32px) translateX(-5px) rotate(-10deg); 
+  }
+}
+
+/* チップ - PC版 中央から螺旋状に放出（8方向・画面端まで届く） */
+@keyframes chip-emit-0 {
+  0% { transform: rotate(0deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(20deg) translateX(110px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(50deg) translateX(275px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(80deg) translateX(440px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(110deg) translateX(605px) scale(0.9); opacity: 0.9; }
+  70% { transform: rotate(140deg) translateX(770px) scale(1.1); opacity: 0.7; }
+  85% { transform: rotate(170deg) translateX(935px) scale(1.3); opacity: 0.4; }
+  100% { transform: rotate(200deg) translateX(1100px) scale(1.5); opacity: 0; }
+}
+@keyframes chip-emit-1 {
+  0% { transform: rotate(45deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(65deg) translateX(95px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(95deg) translateX(240px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(125deg) translateX(385px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(155deg) translateX(530px) scale(0.9); opacity: 0.9; }
+  70% { transform: rotate(185deg) translateX(675px) scale(1.1); opacity: 0.7; }
+  85% { transform: rotate(215deg) translateX(820px) scale(1.3); opacity: 0.4; }
+  100% { transform: rotate(245deg) translateX(960px) scale(1.5); opacity: 0; }
+}
+@keyframes chip-emit-2 {
+  0% { transform: rotate(90deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(110deg) translateX(115px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(140deg) translateX(290px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(170deg) translateX(465px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(200deg) translateX(640px) scale(0.9); opacity: 0.9; }
+  70% { transform: rotate(230deg) translateX(815px) scale(1.1); opacity: 0.7; }
+  85% { transform: rotate(260deg) translateX(990px) scale(1.3); opacity: 0.4; }
+  100% { transform: rotate(290deg) translateX(1150px) scale(1.5); opacity: 0; }
+}
+@keyframes chip-emit-3 {
+  0% { transform: rotate(135deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(155deg) translateX(90px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(185deg) translateX(225px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(215deg) translateX(360px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(245deg) translateX(495px) scale(0.9); opacity: 0.9; }
+  70% { transform: rotate(275deg) translateX(630px) scale(1.1); opacity: 0.7; }
+  85% { transform: rotate(305deg) translateX(765px) scale(1.3); opacity: 0.4; }
+  100% { transform: rotate(335deg) translateX(900px) scale(1.5); opacity: 0; }
+}
+@keyframes chip-emit-4 {
+  0% { transform: rotate(180deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(200deg) translateX(105px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(230deg) translateX(260px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(260deg) translateX(415px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(290deg) translateX(570px) scale(0.9); opacity: 0.9; }
+  70% { transform: rotate(320deg) translateX(725px) scale(1.1); opacity: 0.7; }
+  85% { transform: rotate(350deg) translateX(880px) scale(1.3); opacity: 0.4; }
+  100% { transform: rotate(380deg) translateX(1030px) scale(1.5); opacity: 0; }
+}
+@keyframes chip-emit-5 {
+  0% { transform: rotate(225deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(245deg) translateX(100px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(275deg) translateX(250px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(305deg) translateX(400px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(335deg) translateX(550px) scale(0.9); opacity: 0.9; }
+  70% { transform: rotate(365deg) translateX(700px) scale(1.1); opacity: 0.7; }
+  85% { transform: rotate(395deg) translateX(850px) scale(1.3); opacity: 0.4; }
+  100% { transform: rotate(425deg) translateX(1000px) scale(1.5); opacity: 0; }
+}
+@keyframes chip-emit-6 {
+  0% { transform: rotate(270deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(290deg) translateX(120px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(320deg) translateX(300px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(350deg) translateX(480px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(380deg) translateX(660px) scale(0.9); opacity: 0.9; }
+  70% { transform: rotate(410deg) translateX(840px) scale(1.1); opacity: 0.7; }
+  85% { transform: rotate(440deg) translateX(1020px) scale(1.3); opacity: 0.4; }
+  100% { transform: rotate(470deg) translateX(1200px) scale(1.5); opacity: 0; }
+}
+@keyframes chip-emit-7 {
+  0% { transform: rotate(315deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(335deg) translateX(95px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(365deg) translateX(235px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(395deg) translateX(375px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(425deg) translateX(515px) scale(0.9); opacity: 0.9; }
+  70% { transform: rotate(455deg) translateX(655px) scale(1.1); opacity: 0.7; }
+  85% { transform: rotate(485deg) translateX(800px) scale(1.3); opacity: 0.4; }
+  100% { transform: rotate(515deg) translateX(940px) scale(1.5); opacity: 0; }
+}
+
+/* チップ - モバイル版 中央から螺旋状に放出（8方向・小さめの移動距離） */
+@keyframes chip-emit-mobile-0 {
+  0% { transform: rotate(0deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(20deg) translateX(40px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(50deg) translateX(100px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(80deg) translateX(160px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(110deg) translateX(220px) scale(0.85); opacity: 0.9; }
+  70% { transform: rotate(140deg) translateX(280px) scale(1.0); opacity: 0.6; }
+  85% { transform: rotate(170deg) translateX(340px) scale(1.15); opacity: 0.3; }
+  100% { transform: rotate(200deg) translateX(400px) scale(1.3); opacity: 0; }
+}
+@keyframes chip-emit-mobile-1 {
+  0% { transform: rotate(45deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(65deg) translateX(35px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(95deg) translateX(87px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(125deg) translateX(140px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(155deg) translateX(192px) scale(0.85); opacity: 0.9; }
+  70% { transform: rotate(185deg) translateX(245px) scale(1.0); opacity: 0.6; }
+  85% { transform: rotate(215deg) translateX(297px) scale(1.15); opacity: 0.3; }
+  100% { transform: rotate(245deg) translateX(350px) scale(1.3); opacity: 0; }
+}
+@keyframes chip-emit-mobile-2 {
+  0% { transform: rotate(90deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(110deg) translateX(42px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(140deg) translateX(106px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(170deg) translateX(170px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(200deg) translateX(233px) scale(0.85); opacity: 0.9; }
+  70% { transform: rotate(230deg) translateX(297px) scale(1.0); opacity: 0.6; }
+  85% { transform: rotate(260deg) translateX(361px) scale(1.15); opacity: 0.3; }
+  100% { transform: rotate(290deg) translateX(425px) scale(1.3); opacity: 0; }
+}
+@keyframes chip-emit-mobile-3 {
+  0% { transform: rotate(135deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(155deg) translateX(32px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(185deg) translateX(81px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(215deg) translateX(130px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(245deg) translateX(178px) scale(0.85); opacity: 0.9; }
+  70% { transform: rotate(275deg) translateX(227px) scale(1.0); opacity: 0.6; }
+  85% { transform: rotate(305deg) translateX(276px) scale(1.15); opacity: 0.3; }
+  100% { transform: rotate(335deg) translateX(325px) scale(1.3); opacity: 0; }
+}
+@keyframes chip-emit-mobile-4 {
+  0% { transform: rotate(180deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(200deg) translateX(37px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(230deg) translateX(93px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(260deg) translateX(150px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(290deg) translateX(206px) scale(0.85); opacity: 0.9; }
+  70% { transform: rotate(320deg) translateX(262px) scale(1.0); opacity: 0.6; }
+  85% { transform: rotate(350deg) translateX(318px) scale(1.15); opacity: 0.3; }
+  100% { transform: rotate(380deg) translateX(375px) scale(1.3); opacity: 0; }
+}
+@keyframes chip-emit-mobile-5 {
+  0% { transform: rotate(225deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(245deg) translateX(36px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(275deg) translateX(90px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(305deg) translateX(144px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(335deg) translateX(198px) scale(0.85); opacity: 0.9; }
+  70% { transform: rotate(365deg) translateX(252px) scale(1.0); opacity: 0.6; }
+  85% { transform: rotate(395deg) translateX(306px) scale(1.15); opacity: 0.3; }
+  100% { transform: rotate(425deg) translateX(360px) scale(1.3); opacity: 0; }
+}
+@keyframes chip-emit-mobile-6 {
+  0% { transform: rotate(270deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(290deg) translateX(44px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(320deg) translateX(110px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(350deg) translateX(176px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(380deg) translateX(242px) scale(0.85); opacity: 0.9; }
+  70% { transform: rotate(410deg) translateX(308px) scale(1.0); opacity: 0.6; }
+  85% { transform: rotate(440deg) translateX(374px) scale(1.15); opacity: 0.3; }
+  100% { transform: rotate(470deg) translateX(440px) scale(1.3); opacity: 0; }
+}
+@keyframes chip-emit-mobile-7 {
+  0% { transform: rotate(315deg) translateX(0) scale(0.1); opacity: 0; }
+  10% { transform: rotate(335deg) translateX(34px) scale(0.3); opacity: 0.8; }
+  25% { transform: rotate(365deg) translateX(85px) scale(0.5); opacity: 1; }
+  40% { transform: rotate(395deg) translateX(136px) scale(0.7); opacity: 1; }
+  55% { transform: rotate(425deg) translateX(187px) scale(0.85); opacity: 0.9; }
+  70% { transform: rotate(455deg) translateX(238px) scale(1.0); opacity: 0.6; }
+  85% { transform: rotate(485deg) translateX(289px) scale(1.15); opacity: 0.3; }
+  100% { transform: rotate(515deg) translateX(340px) scale(1.3); opacity: 0; }
+}
+
+/* ネオン玉 - モバイル版（画面端まで届く） */
+@keyframes neon-emit-mobile-0 {
+  0% { transform: rotate(0deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(25deg) translateX(50px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(63deg) translateX(125px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(100deg) translateX(200px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(138deg) translateX(275px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(175deg) translateX(350px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(213deg) translateX(425px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(250deg) translateX(500px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-mobile-1 {
+  0% { transform: rotate(45deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(70deg) translateX(45px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(108deg) translateX(112px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(145deg) translateX(180px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(183deg) translateX(248px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(220deg) translateX(315px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(258deg) translateX(382px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(295deg) translateX(450px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-mobile-2 {
+  0% { transform: rotate(90deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(115deg) translateX(52px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(153deg) translateX(130px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(190deg) translateX(210px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(228deg) translateX(290px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(265deg) translateX(370px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(303deg) translateX(450px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(340deg) translateX(520px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-mobile-3 {
+  0% { transform: rotate(135deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(160deg) translateX(42px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(198deg) translateX(105px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(235deg) translateX(170px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(273deg) translateX(235px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(310deg) translateX(300px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(348deg) translateX(365px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(385deg) translateX(430px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-mobile-4 {
+  0% { transform: rotate(180deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(205deg) translateX(48px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(243deg) translateX(120px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(280deg) translateX(195px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(318deg) translateX(270px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(355deg) translateX(345px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(393deg) translateX(420px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(430deg) translateX(490px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-mobile-5 {
+  0% { transform: rotate(225deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(250deg) translateX(46px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(288deg) translateX(115px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(325deg) translateX(185px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(363deg) translateX(255px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(400deg) translateX(325px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(438deg) translateX(395px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(475deg) translateX(460px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-mobile-6 {
+  0% { transform: rotate(270deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(295deg) translateX(55px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(333deg) translateX(138px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(370deg) translateX(220px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(408deg) translateX(305px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(445deg) translateX(390px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(483deg) translateX(475px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(520deg) translateX(550px) scale(2.0); opacity: 0; }
+}
+@keyframes neon-emit-mobile-7 {
+  0% { transform: rotate(315deg) translateX(0) scale(0.2); opacity: 0.4; }
+  10% { transform: rotate(340deg) translateX(44px) scale(0.4); opacity: 0.9; }
+  25% { transform: rotate(378deg) translateX(110px) scale(0.65); opacity: 1; }
+  40% { transform: rotate(415deg) translateX(175px) scale(0.9); opacity: 1; }
+  55% { transform: rotate(453deg) translateX(242px) scale(1.15); opacity: 0.95; }
+  70% { transform: rotate(490deg) translateX(310px) scale(1.4); opacity: 0.8; }
+  85% { transform: rotate(528deg) translateX(378px) scale(1.7); opacity: 0.5; }
+  100% { transform: rotate(565deg) translateX(440px) scale(2.0); opacity: 0; }
+}
+
+/* ネオンテキストのグローアニメーション（大きいテキスト用） */
+@keyframes neon-text-glow {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(0,255,150,0.8),
+      0 0 20px rgba(0,255,150,0.6),
+      0 0 40px rgba(0,255,150,0.5),
+      0 0 80px rgba(0,255,150,0.4),
+      0 0 120px rgba(0,200,100,0.3),
+      0 6px 12px rgba(0,0,0,0.9);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(0,255,150,1),
+      0 0 30px rgba(0,255,150,0.8),
+      0 0 60px rgba(0,255,150,0.7),
+      0 0 100px rgba(0,255,150,0.5),
+      0 0 150px rgba(0,200,100,0.4),
+      0 6px 12px rgba(0,0,0,0.9);
+  }
+}
+
+/* ネオンテキストのグローアニメーション（小さいテキスト用） */
+@keyframes neon-text-glow-small {
+  0% {
+    text-shadow: 
+      0 0 8px rgba(0,255,150,0.7),
+      0 0 15px rgba(0,255,150,0.5),
+      0 0 30px rgba(0,255,150,0.4),
+      0 0 60px rgba(0,255,150,0.3),
+      0 4px 8px rgba(0,0,0,0.8);
+  }
+  100% {
+    text-shadow: 
+      0 0 12px rgba(0,255,150,0.9),
+      0 0 25px rgba(0,255,150,0.7),
+      0 0 50px rgba(0,255,150,0.6),
+      0 0 80px rgba(0,255,150,0.4),
+      0 4px 8px rgba(0,0,0,0.8);
+  }
+}
+
 @layer components {
   .all-\[unset\] {
     all: unset;
+  }
+  
+  .font-aguafina {
+    font-family: 'Aguafina Script', cursive !important;
+  }
+  
+  /* レスポンシブコンテナ */
+  .responsive-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .responsive-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .responsive-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  
+  /* モバイルメニュー */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .mobile-menu-link {
+    font-family: 'Noto_Serif_JP', Helvetica;
+    font-size: 1.25rem;
+    color: white;
+    transition: color 0.3s;
+  }
+  
+  .mobile-menu-link:hover {
+    color: #00d6bd;
+  }
+  
+  /* ハンバーガーメニューボタン */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 110;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger.open span:first-child {
+    transform: rotate(45deg) translateY(5.5px);
+  }
+  
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.open span:last-child {
+    transform: rotate(-45deg) translateY(-5.5px);
+  }
+  
+  /* スクロールバーを隠す */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -33,6 +558,62 @@
 
 .animate-spin {
   animation: var(--animate-spin);
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* SP版円周カルーセル用 */
+.animate-carousel-3d {
+  animation: carousel-3d 15s linear infinite;
+}
+
+@keyframes carousel-3d {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-360deg);
+  }
+}
+
+/* 新カルーセル回転アニメーション */
+@keyframes carousel-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Swiper 3Dカルーセル用のカスタムスタイル */
+.swiper-3d {
+  perspective: 1000px;
+}
+
+.swiper-slide {
+  transition-property: transform, opacity, z-index;
+}
+
+.swiper-slide-active {
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
+
+.swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.7 !important;
+  z-index: 1 !important;
 }
 
 @keyframes spin {
@@ -111,5 +692,640 @@
 
   to {
     transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-fall {
+  animation: fall var(--fall-duration, 8s) var(--fall-delay, 0s) infinite linear;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-200px) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(1000px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* カードフローティングアニメーション */
+.animate-float-card {
+  animation: float-card var(--float-duration, 4s) var(--float-delay, 0s) ease-in-out infinite;
+}
+
+@keyframes float-card {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+/* カードグローアニメーション */
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 
+      15px 25px 50px rgba(0,0,0,0.7),
+      0 0 20px rgba(0,200,150,0),
+      inset 0 0 30px rgba(0,0,0,0.3);
+  }
+  50% {
+    box-shadow: 
+      15px 25px 50px rgba(0,0,0,0.7),
+      0 0 40px rgba(0,200,150,0.3),
+      inset 0 0 30px rgba(0,0,0,0.3);
+  }
+}
+
+/* カードシャイン効果 */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255,255,255,0.1) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%) rotate(45deg);
+  animation: shine 4s ease-in-out infinite;
+  animation-delay: var(--shine-delay, 0s);
+}
+
+@keyframes shine {
+  0%, 100% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  50% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* カードホバーエフェクト */
+.card-3d {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-3d:hover {
+  transform: translateY(-20px) scale(1.08) !important;
+  box-shadow: 
+    20px 35px 60px rgba(0,0,0,0.8),
+    0 0 50px rgba(0,200,150,0.4),
+    inset 0 0 30px rgba(0,0,0,0.3) !important;
+  border-color: rgba(0,200,150,0.5) !important;
+}
+
+.card-3d:hover::after {
+  opacity: 1;
+}
+
+/* 3D空間チップ浮遊アニメーション */
+@keyframes float-deep {
+  0%, 100% {
+    transform: translateZ(-600px) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) scale(0.4);
+  }
+  50% {
+    transform: translateZ(-600px) translateY(-15px) rotateY(calc(var(--rotateY, 0deg) + 5deg)) rotateX(calc(var(--rotateX, 0deg) + 3deg)) scale(0.4);
+  }
+}
+
+@keyframes float-back {
+  0%, 100% {
+    transform: translateZ(-400px) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) scale(0.55);
+  }
+  50% {
+    transform: translateZ(-400px) translateY(-20px) rotateY(calc(var(--rotateY, 0deg) + 8deg)) rotateX(calc(var(--rotateX, 0deg) + 4deg)) scale(0.55);
+  }
+}
+
+@keyframes float-mid {
+  0%, 100% {
+    transform: translateZ(-200px) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) scale(0.7);
+  }
+  50% {
+    transform: translateZ(-200px) translateY(-25px) rotateY(calc(var(--rotateY, 0deg) + 10deg)) rotateX(calc(var(--rotateX, 0deg) + 5deg)) scale(0.7);
+  }
+}
+
+@keyframes float-front {
+  0%, 100% {
+    transform: translateZ(var(--z, 0px)) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg));
+  }
+  50% {
+    transform: translateZ(var(--z, 0px)) translateY(-18px) rotateY(calc(var(--rotateY, 0deg) + 6deg)) rotateX(calc(var(--rotateX, 0deg) + 3deg));
+  }
+}
+
+@keyframes float-closest {
+  0%, 100% {
+    transform: translateZ(var(--z, 200px)) translateY(0) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) scale(1.2);
+  }
+  50% {
+    transform: translateZ(var(--z, 200px)) translateY(-12px) rotateY(calc(var(--rotateY, 0deg) + 4deg)) rotateX(calc(var(--rotateX, 0deg) + 2deg)) scale(1.2);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateZ(var(--z, 0px)) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateZ(var(--z, 0px)) scale(1.3);
+  }
+}
+
+/* タイトル表示アニメーション */
+@keyframes title-reveal {
+  0% {
+    opacity: 0;
+    transform: perspective(500px) translateZ(100px) translateY(30px) scale(0.9);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 1;
+    transform: perspective(500px) translateZ(60px) translateY(-5px) scale(1.02);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(500px) translateZ(50px) translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes subtitle-reveal {
+  0% {
+    opacity: 0;
+    transform: perspective(500px) translateZ(50px) translateY(20px);
+    letter-spacing: 0.3em;
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(500px) translateZ(30px) translateY(0);
+    letter-spacing: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 15px rgba(0,255,150,0.7),
+      0 0 45px rgba(0,255,150,0.4),
+      0 5px 10px rgba(0,0,0,0.8);
+  }
+  50% {
+    text-shadow: 
+      0 0 25px rgba(0,255,150,0.9),
+      0 0 60px rgba(0,255,150,0.6),
+      0 0 100px rgba(0,255,150,0.3),
+      0 5px 10px rgba(0,0,0,0.8);
+  }
+}
+
+/* カードふわふわアニメーション */
+@keyframes card-float-1 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(8deg) rotateX(2deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(8deg) rotateX(2deg) translateY(-25px);
+  }
+}
+
+@keyframes card-float-2 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(4deg) rotateX(1deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(4deg) rotateX(1deg) translateY(-20px);
+  }
+}
+
+@keyframes card-float-3 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-30px);
+  }
+}
+
+@keyframes card-float-4 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(-4deg) rotateX(1deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-4deg) rotateX(1deg) translateY(-20px);
+  }
+}
+
+@keyframes card-float-5 {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(-25px);
+  }
+}
+
+/* ナイトクラブ レーザービームアニメーション */
+@keyframes laser-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: rotate(var(--rotate, 0deg)) scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(var(--rotate, 0deg)) scaleY(1.1);
+  }
+}
+
+/* レーザースイープ - ゆっくり左から右 */
+@keyframes laser-sweep-left {
+  0% {
+    transform: rotate(-25deg) translateZ(0px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: rotate(25deg) translateZ(50px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(-25deg) translateZ(0px);
+    opacity: 0.6;
+  }
+}
+
+/* レーザースイープ - ゆっくり右から左 */
+@keyframes laser-sweep-right {
+  0% {
+    transform: rotate(25deg) translateZ(0px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: rotate(-25deg) translateZ(50px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(25deg) translateZ(0px);
+    opacity: 0.6;
+  }
+}
+
+/* レーザーゆっくりパルス */
+@keyframes laser-slow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* レーザー色変化 - ゆっくり */
+@keyframes laser-color-shift {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  50% {
+    filter: hue-rotate(90deg) brightness(1.2);
+  }
+}
+
+/* 3D空間レーザー - 奥から手前へ */
+@keyframes laser-3d-depth {
+  0% {
+    transform: translateZ(-200px) rotateY(var(--rotateY, 0deg));
+    opacity: 0.3;
+    filter: blur(3px);
+  }
+  50% {
+    transform: translateZ(100px) rotateY(var(--rotateY, 0deg));
+    opacity: 0.9;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateZ(-200px) rotateY(var(--rotateY, 0deg));
+    opacity: 0.3;
+    filter: blur(3px);
+  }
+}
+
+/* レーザーが奥から手前に飛んでくる */
+@keyframes laser-fly-forward {
+  0% {
+    transform: translateZ(-800px) translateX(var(--startX, 0px)) scale(0.2);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  20% {
+    opacity: 0.6;
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(1px);
+  }
+  100% {
+    transform: translateZ(300px) translateX(var(--endX, 0px)) scale(2);
+    opacity: 0;
+    filter: blur(0px);
+  }
+}
+
+/* レーザーが奥から手前に飛んでくる - 左方向 */
+@keyframes laser-fly-forward-left {
+  0% {
+    transform: translateZ(-800px) translateX(100px) rotateZ(-5deg) scale(0.2);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  20% {
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+  70% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateZ(400px) translateX(-400px) rotateZ(-15deg) scale(2.5);
+    opacity: 0;
+    filter: blur(0px);
+  }
+}
+
+/* レーザーが奥から手前に飛んでくる - 右方向 */
+@keyframes laser-fly-forward-right {
+  0% {
+    transform: translateZ(-800px) translateX(-100px) rotateZ(5deg) scale(0.2);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  20% {
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+  70% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateZ(400px) translateX(400px) rotateZ(15deg) scale(2.5);
+    opacity: 0;
+    filter: blur(0px);
+  }
+}
+
+/* レーザーが奥から手前に飛んでくる - 中央 */
+@keyframes laser-fly-forward-center {
+  0% {
+    transform: translateZ(-1000px) scale(0.1);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  30% {
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  80% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateZ(500px) scale(3);
+    opacity: 0;
+    filter: blur(0px);
+  }
+}
+
+/* ソフトストロボ効果 */
+@keyframes soft-strobe {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.15; }
+}
+
+/* ストロボ - 奥から手前に広がる */
+@keyframes strobe-depth {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateZ(-100px);
+  }
+  40% {
+    opacity: 0.8;
+    transform: scale(1) translateZ(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) translateZ(50px);
+  }
+}
+
+/* 流れ星アニメーション */
+@keyframes shooting-star {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--angle, 45deg)) translateX(0);
+  }
+  5% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle, 45deg)) translateX(500px);
+  }
+}
+
+/* 星雲ドリフト */
+@keyframes nebula-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(20px, 10px) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* 宇宙グリッドスクロール */
+@keyframes grid-scroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 80px;
+  }
+}
+
+/* 縦ラインパルス */
+@keyframes pulse-line {
+  0%, 100% {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* 高級カードスタイル */
+.card-luxury {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card-luxury:hover::before {
+  opacity: 1;
+}
+
+.card-luxury:hover {
+  box-shadow: 
+    20px 35px 60px rgba(0,0,0,0.8),
+    0 0 30px rgba(255,245,230,0.1),
+    inset 0 0 30px rgba(0,0,0,0.3) !important;
+  border-color: rgba(255,245,230,0.15) !important;
+}
+
+/* カードシマー効果 */
+.card-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255,255,255,0.03) 35%,
+    rgba(255,250,240,0.08) 50%,
+    rgba(255,255,255,0.03) 65%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: card-shimmer-move 6s ease-in-out infinite;
+  animation-delay: var(--shimmer-delay, 0s);
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes card-shimmer-move {
+  0% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ネオンテキストパルス */
+@keyframes neon-pulse {
+  0%, 100% {
+    filter: brightness(1);
+    text-shadow: 0 0 15px rgba(0,255,200,0.9), 0 0 30px rgba(0,255,200,0.6), 0 0 60px rgba(0,255,200,0.4), 0 0 100px rgba(0,200,150,0.3);
+  }
+  50% {
+    filter: brightness(1.1);
+    text-shadow: 0 0 20px rgba(0,255,200,1), 0 0 40px rgba(0,255,200,0.8), 0 0 80px rgba(0,255,200,0.5), 0 0 120px rgba(0,200,150,0.4);
+  }
+}
+
+/* ネオンボーダーパルス */
+@keyframes neon-border-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0,255,200,0.3), 0 0 40px rgba(0,255,200,0.15), inset 0 0 20px rgba(0,255,200,0.05);
+    border-color: rgba(0,255,200,0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0,255,200,0.5), 0 0 60px rgba(0,255,200,0.25), inset 0 0 25px rgba(0,255,200,0.1);
+    border-color: rgba(0,255,200,0.8);
+  }
+}
+
+/* レーザービームパルス強化 */
+@keyframes laser-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    filter: blur(0.5px);
+  }
+  50% {
+    opacity: 0.9;
+    filter: blur(0px);
+  }
+}
+
+/* 宇宙空間 光の流れ */
+@keyframes light-flow {
+  0% {
+    transform: translateY(-100%) rotate(var(--rotate, -30deg));
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(100%) rotate(var(--rotate, -30deg));
+    opacity: 0;
   }
 }
