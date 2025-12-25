@@ -65,12 +65,21 @@ export const EventForm = ({ event, onClose }) => {
 
       // 新しい画像がアップロードされた場合
       if (imageFile) {
-        const { publicUrl } = await storageAPI.uploadImage(imageFile, 'events', 'events');
+        const { publicUrl } = await storageAPI.uploadImage(imageFile, 'images', 'events');
         imageUrl = publicUrl;
       }
 
+      // datetime-localの値をISO 8601形式に変換
+      const formatDateTime = (dateTimeLocal) => {
+        if (!dateTimeLocal) return null;
+        // datetime-local (YYYY-MM-DDTHH:MM) をISO 8601形式に変換
+        return new Date(dateTimeLocal).toISOString();
+      };
+
       const eventData = {
         ...formData,
+        date_time_start: formatDateTime(formData.date_time_start),
+        date_time_end: formatDateTime(formData.date_time_end),
         price: formData.price ? parseInt(formData.price) : null,
         image_url: imageUrl,
       };

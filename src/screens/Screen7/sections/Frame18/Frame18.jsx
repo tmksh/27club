@@ -1,59 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TalentPc } from "../../../../components/TalentPc";
+import { castsAPI } from "../../../../lib/supabase";
 
 export const Frame18 = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 3;
+  const [castData, setCastData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // 全カードデータ（36枚分）
-  const allCards = [
-    { id: 1, s: "/img/s-16646146-0-1-9.png", to: "/frame-695" },
-    { id: 2, s: "/img/s-16646146-0-2.png" },
-    { id: 3, s: "/img/s-16646146-0-2.png" },
-    { id: 4, s: "/img/s-16646146-0-2.png" },
-    { id: 5, s: "/img/s-16646146-0-1-9.png" },
-    { id: 6, s: "/img/s-16646146-0-2.png" },
-    { id: 7, s: "/img/s-16646146-0-2.png" },
-    { id: 8, s: "/img/s-16646146-0-2.png" },
-    { id: 9, s: "/img/s-16646146-0-1-9.png" },
-    { id: 10, s: "/img/s-16646146-0-2.png" },
-    { id: 11, s: "/img/s-16646146-0-2.png" },
-    { id: 12, s: "/img/s-16646146-0-2.png" },
-    // ページ2
-    { id: 13, s: "/img/s-16646146-0-1-9.png" },
-    { id: 14, s: "/img/s-16646146-0-2.png" },
-    { id: 15, s: "/img/s-16646146-0-2.png" },
-    { id: 16, s: "/img/s-16646146-0-2.png" },
-    { id: 17, s: "/img/s-16646146-0-1-9.png" },
-    { id: 18, s: "/img/s-16646146-0-2.png" },
-    { id: 19, s: "/img/s-16646146-0-2.png" },
-    { id: 20, s: "/img/s-16646146-0-2.png" },
-    { id: 21, s: "/img/s-16646146-0-1-9.png" },
-    { id: 22, s: "/img/s-16646146-0-2.png" },
-    { id: 23, s: "/img/s-16646146-0-2.png" },
-    { id: 24, s: "/img/s-16646146-0-2.png" },
-    // ページ3
-    { id: 25, s: "/img/s-16646146-0-1-9.png" },
-    { id: 26, s: "/img/s-16646146-0-2.png" },
-    { id: 27, s: "/img/s-16646146-0-2.png" },
-    { id: 28, s: "/img/s-16646146-0-2.png" },
-    { id: 29, s: "/img/s-16646146-0-1-9.png" },
-    { id: 30, s: "/img/s-16646146-0-2.png" },
-    { id: 31, s: "/img/s-16646146-0-2.png" },
-    { id: 32, s: "/img/s-16646146-0-2.png" },
-    { id: 33, s: "/img/s-16646146-0-1-9.png" },
-    { id: 34, s: "/img/s-16646146-0-2.png" },
-    { id: 35, s: "/img/s-16646146-0-2.png" },
-    { id: 36, s: "/img/s-16646146-0-2.png" },
-  ];
+  // キャストデータの読み込み
+  useEffect(() => {
+    const loadCasts = async () => {
+      try {
+        const data = await castsAPI.getAll();
+        console.log('キャストページ - 取得したキャスト数:', data?.length, data);
+        if (data && data.length > 0) {
+          setCastData(data.map((cast) => ({
+            id: cast.id,
+            s: cast.profile_image_url || "/img/s-16646146-0-2.png",
+            name: cast.name || "Cast",
+            nameEn: cast.name_en || cast.name || "Cast",
+            description: cast.description || "情報準備中",
+            instagramUrl: cast.instagram_url || "https://www.instagram.com/the27club_official/",
+          })));
+        }
+      } catch (error) {
+        console.error('キャストの取得に失敗しました:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadCasts();
+  }, []);
 
   // ページあたりのカード数（モバイルでは6枚、PCでは12枚）
   const cardsPerPage = 12;
+  const totalPages = Math.max(1, Math.ceil(castData.length / cardsPerPage));
 
   // 現在のページに表示するカードを取得
   const startIndex = (currentPage - 1) * cardsPerPage;
   const endIndex = startIndex + cardsPerPage;
-  const currentCards = allCards.slice(startIndex, endIndex);
+  const currentCards = castData.slice(startIndex, endIndex);
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -79,16 +65,28 @@ export const Frame18 = () => {
     <div className="w-full px-4 md:px-8 lg:px-16 py-8 md:py-16">
       <div className="max-w-[1300px] mx-auto">
         {/* カードグリッド */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8 mb-12 md:mb-16">
-          {currentCards.map((card) => (
-            <div key={card.id} className="w-full">
-              <TalentPc
-                s={card.s}
-                to={card.to}
-              />
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="text-white text-lg">読み込み中...</div>
+          </div>
+        ) : castData.length === 0 ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="text-white text-lg">キャスト情報がありません</div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8 mb-12 md:mb-16">
+            {currentCards.map((card) => (
+              <div key={card.id} className="w-full">
+                <TalentPc
+                  s={card.s}
+                  name={card.name}
+                  nameEn={card.nameEn}
+                  description={card.description}
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* ページネーション */}
         <div className="flex items-center justify-center gap-3 md:gap-5">
@@ -107,7 +105,7 @@ export const Frame18 = () => {
           </button>
 
           <div className="inline-flex items-center gap-2 md:gap-5">
-            {[1, 2, 3].map((page) => (
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
                 onClick={() => handlePageChange(page)}

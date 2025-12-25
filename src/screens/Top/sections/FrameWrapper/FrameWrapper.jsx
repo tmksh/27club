@@ -8,7 +8,7 @@ export const FrameWrapper = () => {
   const { t, language } = useLanguage();
   const [castData, setCastData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(2); // デフォルトで中央（3番目）を表示
+  const [currentIndex, setCurrentIndex] = useState(0); // 最初のキャストを表示
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
@@ -19,11 +19,12 @@ export const FrameWrapper = () => {
     const loadCasts = async () => {
       try {
         const data = await castsAPI.getAll();
+        console.log('取得したキャスト数:', data?.length, data);
         if (data && data.length > 0) {
-          const newImages = ["/img/cast-1.png", "/img/cast-2.png", "/img/cast-3.png", "/img/cast-4.png", "/img/cast-5.png"];
+          const fallbackImages = ["/img/cast-1.png", "/img/cast-2.png", "/img/cast-3.png", "/img/cast-4.png", "/img/cast-5.png"];
           setCastData(data.map((cast, index) => ({
             id: cast.id,
-            image: newImages[index % newImages.length],
+            image: cast.profile_image_url || fallbackImages[index % fallbackImages.length],
             name: cast.name || "Cast",
             descriptionJa: `${cast.features || '特徴情報なし'}${cast.favorite_drink ? `・好きなお酒：${cast.favorite_drink}` : ''}`,
             descriptionEn: `${cast.features_en || 'No features available'}${cast.favorite_drink ? `・Favorite drink: ${cast.favorite_drink}` : ''}`,
@@ -164,7 +165,7 @@ export const FrameWrapper = () => {
   return (
     <div className="relative self-stretch w-full min-h-[500px] md:min-h-[700px] overflow-hidden">
       <div className="relative w-full flex flex-col gap-[40px] z-10">
-        <div className="w-full h-[450px] md:h-[650px] relative">
+        <div className="w-full h-[550px] md:h-[750px] relative">
           
           {/* セクションタイトル */}
           <div className="pt-8 md:pt-16 flex flex-col items-center gap-3 relative z-10 px-4" data-scroll="fade-up">
@@ -203,7 +204,7 @@ export const FrameWrapper = () => {
                     fill="none"
                   />
                 </defs>
-                <text className="fill-white text-[11px] tracking-[0.3em]" style={{ fontFamily: "'Noto Serif JP', 'Playfair Display', serif" }}>
+                <text className="fill-white text-[11px] tracking-[0.3em] font-bold" style={{ fontFamily: "'Noto Serif JP', 'Playfair Display', serif", fontWeight: 700 }}>
                   <textPath href="#circlePath" startOffset="0%">
                     Welcome to THE 27 CLUB • Welcome to THE 27 CLUB • Welcome to THE 27 CLUB •
                   </textPath>
@@ -249,8 +250,8 @@ export const FrameWrapper = () => {
           </div>
 
           {/* 現在のキャスト情報 */}
-          {castData[currentIndex] && (
-            <div className="flex flex-col items-center mt-6 px-4 text-center" data-scroll="fade-up">
+          {castData.length > 0 && castData[currentIndex] && (
+            <div className="flex flex-col items-center mt-12 md:mt-16 px-4 text-center">
               <h3 className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-xl md:text-2xl tracking-wide">
                 {castData[currentIndex].name}
               </h3>
@@ -262,7 +263,7 @@ export const FrameWrapper = () => {
 
         </div>
 
-        <div className="flex justify-center w-full mt-8 md:mt-16 pb-8 px-4 md:px-0" data-scroll="fade-up">
+        <div className="flex justify-center w-full mt-4 md:mt-8 pb-8 px-4 md:px-0" data-scroll="fade-up">
           <Group153 
             className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"

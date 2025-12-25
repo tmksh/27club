@@ -65,7 +65,7 @@ export const CastForm = ({ cast, onClose }) => {
 
       // 新しい画像がアップロードされた場合
       if (imageFile) {
-        const { publicUrl } = await storageAPI.uploadImage(imageFile, 'casts', 'casts');
+        const { publicUrl } = await storageAPI.uploadImage(imageFile, 'images', 'casts');
         profileImageUrl = publicUrl;
       }
 

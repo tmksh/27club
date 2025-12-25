@@ -9,10 +9,30 @@ export const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Supabaseが未設定かどうか
+  const isSupabaseConfigured = !!supabase;
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
+
+    console.log('Login attempt:', { email, password, isSupabaseConfigured });
+
+    // Supabaseが未設定の場合はデモモードでログイン
+    if (!isSupabaseConfigured) {
+      // デモ用の認証情報（大文字小文字を区別せずに比較）
+      if (email.toLowerCase().trim() === 'admin@27club.com' && password === 'admin123') {
+        console.log('Demo login successful');
+        localStorage.setItem('demoAuth', 'true');
+        navigate('/admin/dashboard');
+      } else {
+        console.log('Demo login failed:', { email, password });
+        setError(`デモモード: メール「admin@27club.com」パスワード「admin123」でログインしてください（入力: ${email}）`);
+      }
+      setLoading(false);
+      return;
+    }
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -38,6 +58,16 @@ export const AdminLogin = () => {
           <h1 className="text-3xl font-bold text-white mb-2">THE 27 CLUB</h1>
           <p className="text-[#00d6bd] text-sm">管理画面ログイン</p>
         </div>
+
+        {!isSupabaseConfigured && (
+          <div className="bg-yellow-500/10 border border-yellow-500/50 text-yellow-400 px-4 py-3 rounded mb-4 text-sm">
+            <strong>デモモード:</strong> Supabaseが未設定のため、デモモードで動作しています。
+            <br />
+            メール: <code className="bg-black/30 px-1 rounded">admin@27club.com</code>
+            <br />
+            パスワード: <code className="bg-black/30 px-1 rounded">admin123</code>
+          </div>
+        )}
 
         <form onSubmit={handleLogin} className="space-y-6">
           {error && (

@@ -7,9 +7,25 @@ import { CastsManager } from './components/CastsManager';
 export const AdminDashboard = () => {
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('events');
+  const [isDemo, setIsDemo] = useState(false);
   const navigate = useNavigate();
 
+  // Supabaseが未設定かどうか
+  const isSupabaseConfigured = !!supabase;
+
   useEffect(() => {
+    // Supabaseが未設定の場合はデモモードをチェック
+    if (!isSupabaseConfigured) {
+      const demoAuth = localStorage.getItem('demoAuth');
+      if (demoAuth === 'true') {
+        setUser({ email: 'admin@27club.com (デモ)' });
+        setIsDemo(true);
+      } else {
+        navigate('/admin/login');
+      }
+      return;
+    }
+
     // 認証状態チェック
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -34,9 +50,14 @@ export const AdminDashboard = () => {
     return () => {
       subscription?.unsubscribe();
     };
-  }, [navigate]);
+  }, [navigate, isSupabaseConfigured]);
 
   const handleLogout = async () => {
+    if (isDemo) {
+      localStorage.removeItem('demoAuth');
+      navigate('/admin/login');
+      return;
+    }
     await supabase.auth.signOut();
     navigate('/admin/login');
   };
@@ -75,6 +96,18 @@ export const AdminDashboard = () => {
           </div>
         </div>
       </header>
+
+        {/* デモモード通知 */}
+      {isDemo && (
+        <div className="bg-yellow-500/10 border-b border-yellow-500/50">
+          <div className="max-w-7xl mx-auto px-4 py-2">
+            <p className="text-yellow-400 text-sm">
+              <strong>デモモード:</strong> Supabaseが未設定のため、データはモックデータを使用しています。
+              実際のデータを管理するには、Supabaseプロジェクトを設定してください。
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* タブナビゲーション */}
       <div className="max-w-7xl mx-auto px-4 py-6">

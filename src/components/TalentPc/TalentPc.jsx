@@ -16,7 +16,7 @@ export const TalentPc = ({
 }) => {
   return (
     <div
-      className={`relative w-full aspect-[292/367] [perspective:1000px] group ${className}`}
+      className={`relative w-full aspect-[2/3] [perspective:1000px] group ${className}`}
     >
       <div
         className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] cursor-pointer group-hover:[transform:rotateY(180deg)]"
@@ -24,7 +24,7 @@ export const TalentPc = ({
         {/* 表面 */}
         <div className="absolute inset-0 [backface-visibility:hidden] rounded-xl md:rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)] overflow-hidden">
           {/* メイン画像 */}
-          <div className="absolute top-[2%] left-[2%] w-[96%] h-[74%]">
+          <div className="absolute top-[2%] left-[2%] w-[96%] h-[72%]">
             <img
               className="w-full h-full object-cover rounded-lg"
               alt={name}
