@@ -1,292 +1,170 @@
 import React, { useState } from "react";
-import { useLanguage } from "../../../../contexts/LanguageContext";
+import { Group63 } from "../../../../components/Group63";
+import { Group66 } from "../../../../components/Group66";
+import { Group68 } from "../../../../components/Group68";
+import { Group76 } from "../../../../components/Group76";
+import { Group81 } from "../../../../components/Group81";
 
 export const Frame3 = () => {
-  const { language, t } = useLanguage();
   const [formData, setFormData] = useState({
-    name: "",
+    name: "高橋 進",
     email: "",
     phone: "",
-    inquiryType: "",
+    inquiryType: "work",
     content: "",
     privacyAgreed: false,
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const getInquiryTypeLabel = (type) => {
-    switch (type) {
-      case "work":
-        return "撮影・取材・コラボなどのお仕事に関するお問い合わせ";
-      case "reservation":
-        return "ご利用・ご予約に関するお問い合わせ";
-      case "other":
-        return "その他のお問い合わせ";
-      default:
-        return type;
-    }
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
     if (!formData.privacyAgreed) {
       alert("プライバシーポリシーに同意してください");
       return;
     }
-    
-    if (!formData.name || !formData.email || !formData.phone || !formData.content) {
-      alert("必須項目をすべて入力してください");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      // Netlify Forms用のデータを準備
-      const formBody = new URLSearchParams({
-        "form-name": "contact",
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        inquiryType: getInquiryTypeLabel(formData.inquiryType),
-        message: formData.content,
-      }).toString();
-
-      const response = await fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formBody,
-      });
-
-      if (response.ok) {
-        alert("お問い合わせを送信しました。\n2〜3営業日以内にご返信いたします。");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          inquiryType: "",
-          content: "",
-          privacyAgreed: false,
-        });
-      } else {
-        throw new Error("送信に失敗しました");
-      }
-    } catch (error) {
-      console.error("送信エラー:", error);
-      alert("送信に失敗しました。もう一度お試しください。");
-    } finally {
-      setIsSubmitting(false);
-    }
+    console.log("Form submitted:", formData);
+    // ここで実際の送信処理を実装
+    alert("お問い合わせを送信しました");
   };
 
-  const inquiryTypes = language === 'ja' ? [
-    { value: "work", label: "撮影・取材・コラボなどのお仕事" },
-    { value: "reservation", label: "ご利用・ご予約" },
-    { value: "other", label: "その他" },
-  ] : [
-    { value: "work", label: "Business (Filming, Press, Collaboration)" },
-    { value: "reservation", label: "Reservations" },
-    { value: "other", label: "Other" },
-  ];
-
   return (
-    <div className="w-full px-4 md:px-8 lg:px-16 py-8 md:py-16">
-      <div className="max-w-[1000px] mx-auto">
-        {/* ヘッダーセクション */}
-        <div className="mb-8 md:mb-16">
-          {/* タイトル */}
-          <div className="flex flex-col items-start gap-4 md:gap-6 mb-8 md:mb-12">
-            <h1 
-              data-scroll="fade-right"
-              className="[text-shadow:0px_5.98px_14.95px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] md:[-webkit-text-stroke:1.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-5xl md:text-7xl lg:text-[109.8px] tracking-[0] leading-tight"
-            >
-              {t('contact.title')}
-            </h1>
-            <p 
-              data-scroll="fade-right"
-              data-scroll-delay="200"
-              className="[font-family:'Inter',Helvetica] font-normal text-[#888888] text-lg md:text-2xl lg:text-[28.1px] tracking-[0] leading-relaxed"
-            >
-              {t('contact.subtitle')}
-            </p>
-          </div>
+    <div className="relative w-[1440px] h-[1980px]">
+      <div className="absolute top-[1520px] left-[535px] w-[370px] h-[172px] flex">
+        <div className="w-[370px] h-[172px] flex flex-col gap-[15px]">
+          <div className="flex w-[370px] h-[66px] relative flex-col items-center gap-[15px]">
+            <div className="flex items-center gap-2.5 relative self-stretch w-full flex-[0_0_auto]">
+              <label className="inline-flex items-center gap-2.5 relative flex-[0_0_auto] rounded-sm cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={formData.privacyAgreed}
+                  onChange={(e) => handleInputChange("privacyAgreed", e.target.checked)}
+                  className="sr-only"
+                />
+                <div className={`relative w-5 h-5 border border-solid border-[#06baa5] ${formData.privacyAgreed ? 'bg-[#06baa5]' : 'bg-[#081e15]'}`}>
+                  {formData.privacyAgreed && (
+                    <img
+                      className="absolute top-px left-1 w-[19px] h-[15px]"
+                      alt="Icon"
+                      src="/img/icon.png"
+                    />
+                  )}
+                </div>
 
-          {/* キャッチコピー */}
-          <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
-            <h2 
-              data-scroll="fade-up"
-              className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-xl md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
-            >
-              {t('contact.catchphrase')}
-            </h2>
-            <p 
-              data-scroll="fade-up"
-              data-scroll-delay="200"
-              className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-[10px] md:text-base lg:text-lg tracking-[0] leading-relaxed md:leading-[32px]"
-            >
-              {t('contact.description')}
-              <br />
-              {t('contact.responseTime')}
-            </p>
-          </div>
-        </div>
+                <div className="relative w-fit mt-[-1.00px] [font-family:'Yu_Mincho-Demibold',Helvetica] font-normal text-white text-[17px] tracking-[0] leading-[normal]">
+                  「プライバシーポリシー」に同意する
+                </div>
+              </label>
+            </div>
 
-        {/* フォームセクション */}
-        <form onSubmit={handleSubmit} data-scroll="fade-up" className="flex flex-col gap-6 md:gap-8">
-          {/* お名前 */}
-          <div className="flex flex-col gap-2">
-            <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              {t('contact.form.name')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
-            </label>
-            <input
-              type="text"
-              value={formData.name}
-              onChange={(e) => handleInputChange("name", e.target.value)}
-              className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
-              placeholder={language === 'ja' ? "山田 太郎" : "John Smith"}
-              required
-            />
-          </div>
-
-          {/* メールアドレス */}
-          <div className="flex flex-col gap-2">
-            <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              {t('contact.form.email')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
-            </label>
-            <input
-              type="email"
-              value={formData.email}
-              onChange={(e) => handleInputChange("email", e.target.value)}
-              className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
-              placeholder="example@example.com"
-              required
-            />
-          </div>
-
-          {/* 電話番号 */}
-          <div className="flex flex-col gap-2">
-            <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              {t('contact.form.phone')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
-            </label>
-            <input
-              type="tel"
-              value={formData.phone}
-              onChange={(e) => handleInputChange("phone", e.target.value)}
-              className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
-              placeholder="000-0000-0000"
-              required
-            />
-          </div>
-
-          {/* お問い合わせ種別 */}
-          <div className="flex flex-col gap-2">
-            <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              {t('contact.form.inquiryType')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
-            </label>
-            <div className="flex flex-col md:flex-row gap-3 md:gap-6">
-              {inquiryTypes.map((type) => (
-                <label
-                  key={type.value}
-                  className="flex items-center gap-2 cursor-pointer group"
-                >
-                  <div
-                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
-                      formData.inquiryType === type.value
-                        ? 'border-[#06baa5] bg-[#06baa5]'
-                        : 'border-[#06baa5] bg-transparent group-hover:bg-[#06baa520]'
-                    }`}
-                  >
-                    {formData.inquiryType === type.value && (
-                      <div className="w-2 h-2 rounded-full bg-white" />
-                    )}
-                  </div>
-                  <input
-                    type="radio"
-                    name="inquiryType"
-                    value={type.value}
-                    checked={formData.inquiryType === type.value}
-                    onChange={(e) => handleInputChange("inquiryType", e.target.value)}
-                    className="sr-only"
-                  />
-                  <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs md:text-sm">
-                    {type.label}
-                  </span>
-                </label>
-              ))}
+            <div className="relative self-stretch [font-family:'Yu_Mincho-Regular',Helvetica] font-normal text-[#06baa5] text-[15px] text-center tracking-[0] leading-[normal] underline">
+              「プライバシーポリシー」はこちら
             </div>
           </div>
 
-          {/* お問い合わせ内容 */}
-          <div className="flex flex-col gap-2">
-            <label className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base">
-              {t('contact.form.content')} <span className="ml-2 px-2 py-0.5 bg-[#c17a7a] text-white text-xs rounded">{t('contact.form.required')}</span>
-            </label>
-            <textarea
-              value={formData.content}
-              onChange={(e) => handleInputChange("content", e.target.value)}
-              rows={6}
-              className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors resize-none"
-              placeholder={t('contact.form.contentPlaceholder')}
-              required
-            />
-          </div>
+          <button
+            onClick={handleSubmit}
+            className="inline-flex ml-[120px] w-[130px] h-14 relative items-center justify-center gap-2.5 px-[25px] py-3 bg-white rounded-[3px] cursor-pointer hover:bg-gray-100 transition-colors"
+          >
+            <div className="relative w-fit mt-[-1.00px] [font-family:'Yu_Mincho-Demibold',Helvetica] font-normal text-[#081e15] text-xl tracking-[0] leading-[normal] whitespace-nowrap">
+              送信する
+            </div>
+          </button>
+        </div>
+      </div>
 
-          {/* プライバシーポリシー同意 */}
-          <div className="flex flex-col items-center gap-4 mt-4">
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <div
-                className={`w-5 h-5 border rounded flex items-center justify-center transition-colors ${
-                  formData.privacyAgreed
-                    ? 'border-[#06baa5] bg-[#06baa5]'
-                    : 'border-[#06baa5] bg-[#081e15] group-hover:bg-[#06baa520]'
-                }`}
-              >
-                {formData.privacyAgreed && (
-                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                  </svg>
-                )}
+      <div className="absolute top-[600px] left-[190px] h-[929px] flex items-start min-w-[1060px]">
+        <div className="flex items-start min-w-[1060px]">
+          <div className="flex items-start min-w-[1060px]">
+            <div className="flex items-start min-w-[1060px]">
+              <div className="flex items-start min-w-[1060px]">
+                <div className="flex items-start min-w-[1060px]">
+                  <div className="flex items-start min-w-[1060px]">
+                    <div className="w-[1060px] h-[929px] flex">
+                      <div className="w-[1060px] flex">
+                        <div className="flex w-[1060px] h-[928.55px] relative flex-col items-start">
+                          <div className="relative w-[1060px] h-[704.55px]">
+                            <div className="flex flex-col w-[1060px] items-start gap-[26px] relative">
+                              <Group68
+                                className="!self-stretch !h-[99px] ![display:unset] !left-[unset] !w-full !top-[unset]"
+                                frameClassName="!h-[unset]"
+                                text="お名前"
+                                text1={formData.name}
+                                value={formData.name}
+                                onChange={(e) => handleInputChange("name", e.target.value)}
+                              />
+                              <Group68
+                                className="!self-stretch !h-[99px] ![display:unset] !left-[unset] !w-full !top-[unset]"
+                                divClassName="!w-[19.68%]"
+                                frameClassName="!h-[unset]"
+                                groupClassName="!w-[204px]"
+                                text="メールアドレス"
+                                text1={formData.email}
+                                value={formData.email}
+                                onChange={(e) => handleInputChange("email", e.target.value)}
+                                placeholder="example@example.com"
+                              />
+                              <Group68
+                                className="!self-stretch !h-[99px] ![display:unset] !left-[unset] !w-full !top-[unset]"
+                                divClassName="!w-[11.58%]"
+                                frameClassName="!h-[unset]"
+                                groupClassName="!w-[150px]"
+                                text="電話番号"
+                                text1={formData.phone}
+                                value={formData.phone}
+                                onChange={(e) => handleInputChange("phone", e.target.value)}
+                                placeholder="000-0000-0000"
+                              />
+                              <Group81
+                                className="!h-[79.55px]"
+                                groupClassName="!mr-[-20.00px]"
+                                text="お問い合せ種別"
+                                value={formData.inquiryType}
+                                onChange={(value) => handleInputChange("inquiryType", value)}
+                              />
+                            </div>
+                          </div>
+
+                          <Group76
+                            className="!self-stretch !mt-[-20px] !mb-[40px] !left-[unset] !w-full !top-[unset]"
+                            groupClassName="!mr-[-20.00px]"
+                            text="お問い合せ内容"
+                            value={formData.content}
+                            onChange={(e) => handleInputChange("content", e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <input
-                type="checkbox"
-                checked={formData.privacyAgreed}
-                onChange={(e) => handleInputChange("privacyAgreed", e.target.checked)}
-                className="sr-only"
-              />
-              <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-base">
-                {t('contact.form.privacyAgree')}
-              </span>
-            </label>
-
-            <a
-              href="#"
-              className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#06baa5] text-xs md:text-sm underline hover:text-[#00d6bd] transition-colors"
-            >
-              {t('contact.form.privacyLink')}
-            </a>
+            </div>
           </div>
+        </div>
+      </div>
 
-          {/* 送信ボタン */}
-          <div className="flex justify-center mt-4 md:mt-8">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`px-8 md:px-12 py-3 md:py-4 rounded-md text-base md:text-lg [font-family:'Noto_Sans_JP',Helvetica] font-bold transition-all ${
-                isSubmitting
-                  ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  : 'bg-white text-[#081e15] hover:bg-[#00d6bd] hover:text-white cursor-pointer'
-              }`}
-            >
-              {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
-            </button>
-          </div>
-        </form>
+      <div className="absolute top-0 left-0 w-[1440px] h-[516px] flex flex-col gap-[1.4px]">
+        <Group63
+          className="!h-[350.56px] !w-[1440px]"
+          text="Contact"
+          text1="お問い合わせ"
+        />
+        <div className="ml-[151px] w-[1138px] flex">
+          <Group66
+            className="!h-[163.73px] ![position:unset] !left-[unset] !top-[unset]"
+            divClassName="!left-[31.97%] !w-[35.77%]"
+            elementClassName="!w-[99.62%]"
+            groupClassName="!mr-[4.13%] !ml-[4.48%] !w-[1040px]"
+            text="あなたの声を、私たちに。"
+            text1={
+              <>
+                ご予約・撮影・コラボのご相談など、どんな内容でもお気軽にお問い合わせください。 2〜3営業日以内に、担当者よりメールにてご返信させていただきます。
+              </>
+            }
+          />
+        </div>
       </div>
     </div>
   );

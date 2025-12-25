@@ -1,177 +1,191 @@
 import React from "react";
-import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame2 = () => {
-  const { language } = useLanguage();
-  
-  const sectionsJa = [
-    {
-      icon: "💰",
-      title: "チップの基本",
-      items: [
-        "1枚 100円（税込120円）",
-        "10枚からご購入いただけます（1,200円〜）",
-        "お好きなタイミングでキャストやパフォーマーにお渡しください",
-        "金額や回数は自由。無理のない範囲で、気軽にお楽しみいただけます",
-      ],
-    },
-    {
-      icon: "✨",
-      title: "特別なチップ演出",
-      subsections: [
-        {
-          name: "チップレイ",
-          emoji: "🌸",
-          highlight: true,
-          items: [
-            "3,000円・5,000円のセットで、首にかけられるレイスタイル",
-            "華やかで分かりやすく、初めての方にも人気です",
-          ],
-        },
-        {
-          name: "マネーガン演出",
-          emoji: "🎉",
-          highlight: true,
-          items: [
-            "10,000円からご利用可能",
-            "マネーガンでチップをまき、会場全体を一気に盛り上げる迫力の演出です",
-          ],
-        },
-      ],
-    },
-    {
-      icon: "🛡️",
-      title: "安心して楽しめます",
-      items: [
-        "チップは 強制ではありません",
-        "あくまで「応援したい」「もっと楽しみたい」というお気持ちで、自由にご利用ください",
-      ],
-      highlightItem: "初めての方は、まずはこちら✨から気軽に",
-    },
-  ];
-
-  const sectionsEn = [
-    {
-      icon: "💰",
-      title: "Tip Basics",
-      items: [
-        "100 yen per chip (120 yen incl. tax)",
-        "Minimum purchase of 10 chips (from 1,200 yen)",
-        "Give tips to cast members and performers at your preferred timing",
-        "Amount and frequency are up to you. Enjoy freely within your comfort zone",
-      ],
-    },
-    {
-      icon: "✨",
-      title: "Special Tip Performances",
-      subsections: [
-        {
-          name: "Tip Lei",
-          emoji: "🌸",
-          highlight: true,
-          items: [
-            "3,000 yen / 5,000 yen sets in lei style worn around the neck",
-            "Glamorous and easy to understand, popular with first-time visitors",
-          ],
-        },
-        {
-          name: "Money Gun Show",
-          emoji: "🎉",
-          highlight: true,
-          items: [
-            "Available from 10,000 yen",
-            "Spray tips with a money gun to excite the entire venue with this powerful performance",
-          ],
-        },
-      ],
-    },
-    {
-      icon: "🛡️",
-      title: "Enjoy with Peace of Mind",
-      items: [
-        "Tips are NOT mandatory",
-        "Use them freely as a way to \"cheer\" or \"enjoy more\" - it's entirely up to you",
-      ],
-      highlightItem: "First-timers: start casually with this✨",
-    },
-  ];
-
-  const sections = language === 'en' ? sectionsEn : sectionsJa;
-
   return (
-    <div className="w-full px-4 md:px-8 lg:px-16 py-8 md:py-12">
-      <div className="max-w-[1134px] mx-auto flex flex-col">
-        {sections.map((section, index) => (
-          <div key={index} data-scroll="fade-up">
-            {/* 区切り線 - SP版でもはっきり見えるように */}
-            <div className="w-full h-[1px] bg-white/40 md:bg-gradient-to-r md:from-transparent md:via-white/60 md:to-transparent" />
+    <div className="ml-[152.5px] w-[1134px] mt-[94px] flex">
+      <div className="w-[1134px] flex">
+        <div className="w-[1134px] h-[732px] flex flex-col">
+          <img
+            className="-mt-px w-[1134px] h-px object-cover"
+            alt="Line"
+            src="/img/line-41.svg"
+          />
 
-            {/* セクション内容 */}
-            <div className="flex flex-col md:flex-row gap-4 md:gap-8 lg:gap-16 py-6 md:py-8">
-              {/* タイトル部分 */}
-              <div className="flex items-center gap-2 md:gap-3 md:w-64 lg:w-72 flex-shrink-0 pb-2 md:pb-0 border-b border-white/20 md:border-none">
-                <span className="text-xl md:text-2xl">{section.icon}</span>
-                <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-2xl lg:text-[28px] tracking-[0] leading-tight whitespace-nowrap">
-                  {section.title}
-                </h3>
-              </div>
+          <div className="ml-1 w-[1131.85px] mt-[46px] flex gap-[207px]">
+            <p className="w-[196px] h-[34px] [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[28px] tracking-[0] leading-[33.6px] whitespace-nowrap">
+              <span className="font-bold">💰</span>
 
-              {/* コンテンツ部分 */}
-              <div className="flex-1 flex flex-col gap-4 md:gap-6">
-                {/* 通常のアイテムリスト */}
-                {section.items && (
-                  <div className="flex flex-col gap-3 md:gap-4">
-                    {section.items.map((item, i) => (
-                      <div key={i} className="flex items-start gap-2 md:gap-3">
-                        <span className="text-white text-sm md:text-lg lg:text-xl">◽</span>
-                        <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-lg lg:text-xl tracking-[0] leading-relaxed">
-                          {item}
-                        </p>
-                      </div>
-                    ))}
-                    {section.highlightItem && (
-                      <div className="flex items-start gap-2 md:gap-3">
-                        <span className="text-white text-sm md:text-lg lg:text-xl">◽</span>
-                        <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#f1fda2] text-sm md:text-lg lg:text-xl tracking-[0] leading-relaxed">
-                          {section.highlightItem}
-                        </p>
-                      </div>
-                    )}
+              <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold">
+                チップの基本
+              </span>
+            </p>
+
+            <div className="inline-flex w-[726.85px] h-[162.52px] relative items-center gap-3">
+              <div className="flex flex-col w-[726.85px] items-start gap-[20.84px] relative self-stretch">
+                <div className="inline-flex items-center gap-[15.63px] relative flex-[0_0_auto]">
+                  <div className="relative w-[248px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px]">
+                    ◽1枚 100円（税込120円）
                   </div>
-                )}
+                </div>
 
-                {/* サブセクション */}
-                {section.subsections && (
-                  <div className="flex flex-col gap-6 md:gap-8">
-                    {section.subsections.map((sub, subIndex) => (
-                      <div key={subIndex} className="flex flex-col gap-3 md:gap-4">
-                        <div className="flex items-center gap-2 md:gap-3">
-                          <span className={`[font-family:'Noto_Serif_JP',Helvetica] font-black text-lg md:text-xl lg:text-[26px] tracking-[0] leading-tight ${sub.highlight ? 'text-[#f0fca2]' : 'text-white'}`}>
-                            {sub.name}
-                          </span>
-                          <span className="text-lg md:text-xl lg:text-[26px]">{sub.emoji}</span>
-                        </div>
-                        <div className="flex flex-col gap-2 md:gap-3 ml-0 md:ml-2">
-                          {sub.items.map((item, i) => (
-                            <div key={i} className="flex items-start gap-2 md:gap-3">
-                              <span className="text-white text-sm md:text-base lg:text-lg">◽</span>
-                              <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-base lg:text-lg tracking-[0] leading-relaxed">
-                                {item}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
+                <div className="inline-flex items-center gap-[15.63px] relative flex-[0_0_auto]">
+                  <div className="relative w-[437.67px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px]">
+                    ◽10枚からご購入いただけます（1,200円〜）
                   </div>
-                )}
+                </div>
+
+                <div className="inline-flex items-center gap-[15.63px] relative flex-[0_0_auto]">
+                  <div className="relative w-[624px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px]">
+                    ◽お好きなタイミングでキャストやパフォーマーにお渡しください
+                  </div>
+                </div>
+
+                <div className="inline-flex items-start gap-[15.63px] relative flex-[0_0_auto]">
+                  <div className="relative w-[674.75px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px]">
+                    ◽金額や回数は自由。無理のない範囲で、気軽に
+                    お楽しみいただけます
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        ))}
 
-        {/* 最後の区切り線 */}
-        <div className="w-full h-[1px] bg-white/40 md:bg-gradient-to-r md:from-transparent md:via-white/60 md:to-transparent" />
+          <img
+            className="mt-[32.5px] w-[1134px] h-px object-cover"
+            alt="Line"
+            src="/img/line-41.svg"
+          />
+
+          <div className="ml-1 w-[1129.85px] h-[256.79px] mt-[26.5px] flex gap-[139px]">
+            <div className="w-[264px] inline-flex h-[34px] relative items-center gap-3">
+              <div className="relative w-7 h-7 border-0 border-none">
+                <img
+                  className="absolute w-[83.34%] h-[83.34%] top-[4.17%] left-[4.17%]"
+                  alt="Vector"
+                  src="/img/vector-28.svg"
+                />
+
+                <img
+                  className="absolute w-0 h-[16.67%] top-[8.33%] left-[79.17%]"
+                  alt="Vector"
+                  src="/img/vector-29.svg"
+                />
+
+                <img
+                  className="absolute w-[16.67%] h-0 top-[16.67%] left-[70.83%]"
+                  alt="Vector"
+                  src="/img/vector-30.svg"
+                />
+
+                <img
+                  className="absolute w-0 h-[8.33%] top-[66.67%] left-[12.50%]"
+                  alt="Vector"
+                  src="/img/vector-31.svg"
+                />
+
+                <img
+                  className="absolute w-[8.33%] h-0 top-[70.83%] left-[8.33%]"
+                  alt="Vector"
+                  src="/img/vector-32.svg"
+                />
+              </div>
+
+              <div className="relative w-fit [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-[28px] tracking-[0] leading-[33.6px] whitespace-nowrap">
+                特別なチップ演出
+              </div>
+            </div>
+
+            <div className="flex mt-[3px] w-[726.85px] h-[253.79px] relative flex-col items-start gap-[31.26px]">
+              <div className="flex flex-col items-start gap-[20.84px] relative self-stretch w-full flex-[0_0_auto]">
+                <div className="inline-flex items-center gap-[15.63px] relative flex-[0_0_auto]">
+                  <div className="relative w-fit [font-family:'Noto_Serif_JP',Helvetica] font-black text-[#f0fca2] text-[26.1px] tracking-[0] leading-[31.3px] whitespace-nowrap">
+                    チップレイ
+                  </div>
+
+                  <div className="relative w-fit [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[26.1px] tracking-[0] leading-[31.3px] whitespace-nowrap">
+                    🌸
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-start gap-[10.42px] relative self-stretch w-full flex-[0_0_auto]">
+                  <div className="inline-flex items-center gap-[15.63px] relative flex-[0_0_auto]">
+                    <div className="relative w-[577.05px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[19.5px] tracking-[0] leading-[23.4px]">
+                      ◽3,000円・5,000円のセットで、首にかけられるレイスタイル
+                    </div>
+                  </div>
+
+                  <div className="inline-flex items-center gap-[15.63px] relative flex-[0_0_auto]">
+                    <div className="relative w-[452px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[19.5px] tracking-[0] leading-[23.4px]">
+                      ◽華やかで分かりやすく、初めての方にも人気です
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-start gap-[20.84px] relative self-stretch w-full flex-[0_0_auto]">
+                <div className="items-center inline-flex gap-[15.63px] relative flex-[0_0_auto]">
+                  <div className="relative w-fit [font-family:'Noto_Serif_JP',Helvetica] font-black text-[#f1fda2] text-[26.1px] tracking-[0] leading-[31.3px] whitespace-nowrap">
+                    マネーガン演出
+                  </div>
+
+                  <div className="relative w-fit [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[26.1px] tracking-[0] leading-[31.3px] whitespace-nowrap">
+                    🎉
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-start gap-[10.42px] relative self-stretch w-full flex-[0_0_auto]">
+                  <div className="items-center inline-flex gap-[15.63px] relative flex-[0_0_auto]">
+                    <div className="relative w-[246.19px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[19.5px] tracking-[0] leading-[23.4px]">
+                      ◽10,000円からご利用可能
+                    </div>
+                  </div>
+
+                  <div className="items-start inline-flex gap-[15.63px] relative flex-[0_0_auto]">
+                    <div className="relative flex-1 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[19.5px] tracking-[0] leading-[23.4px]">
+                      ◽マネーガンでチップをまき、会場全体を一気に盛り上げる迫力の演出です
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <img
+            className="mt-[32.7px] w-[1134px] h-px object-cover"
+            alt="Line"
+            src="/img/line-41.svg"
+          />
+
+          <div className="ml-1 w-[1043px] mt-[26.3px] flex gap-[145px]">
+            <div className="w-[252px] inline-flex h-[34px] relative items-center gap-3">
+              <div className="relative w-fit [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-[28px] tracking-[0] leading-[33.6px] whitespace-nowrap">
+                安心して楽しめます
+              </div>
+            </div>
+
+            <div className="inline-flex w-[646px] h-[146.68px] relative flex-col items-start gap-[20.84px]">
+              <div className="inline-flex items-center gap-[15.63px] relative flex-[0_0_auto]">
+                <div className="relative w-[303.51px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px]">
+                  ◽チップは 強制ではありません
+                </div>
+              </div>
+
+              <div className="inline-flex items-start gap-[15.63px] relative flex-[0_0_auto]">
+                <div className="relative w-fit [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[27.4px]">
+                  ◽あくまで「応援したい」「もっと楽しみたい」というお気持ちで、
+                  <br />
+                  　自由にご利用ください
+                </div>
+              </div>
+
+              <div className="inline-flex items-start gap-[15.63px] relative flex-[0_0_auto]">
+                <div className="relative w-fit [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[20.8px] tracking-[0] leading-[25.0px]">
+                  ◽初めての方は、まずは<span className="text-[#f1fda2]">こちら✨から気軽に</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 
 import PropTypes from "prop-types";
 import React from "react";
-import { useLanguage } from "../../contexts/LanguageContext";
 
 export const Frame628 = ({
   className,
@@ -39,7 +38,6 @@ export const Frame628 = ({
   };
 
   const hoverGradientClass = hoverGradients[hoverGradient] || hoverGradients.cyan;
-  const { language } = useLanguage();
 
   return (
     <div
@@ -48,135 +46,83 @@ export const Frame628 = ({
       onMouseLeave={onMouseLeave}
     >
       <div
-        className={`w-full relative ${defaultGradient} ${hoverGradientClass} transition-all duration-300 rounded-lg shadow-lg overflow-hidden ${groupClassName}`}
+        className={`w-full h-[195px] relative ${defaultGradient} ${hoverGradientClass} transition-all duration-300 rounded-lg shadow-lg overflow-hidden ${groupClassName}`}
       >
-        {/* SP版レイアウト */}
-        <div className="md:hidden flex flex-col p-3">
-          {/* ヘッダー: タイトルと画像 */}
-          <div className="flex gap-3">
-            {/* サムネイル画像 */}
-            <div className="w-[90px] h-[110px] flex-shrink-0">
-              <img
-                className="w-full h-full object-cover rounded"
-                alt="Event"
-                src={eventData?.image_url || rectangle}
-              />
-            </div>
-            
-            {/* コンテンツ */}
-            <div className="flex-1 min-w-0">
-              <div className="[font-family:'Playfair_Display',Helvetica] font-semibold text-[#fffbfb] text-lg leading-tight">
-                {eventData?.title_en || eventData?.title || 'Summer Neon Night'}
+        <div className="inline-flex items-center gap-[15px] absolute top-[25px] left-[9px]">
+          <div className="relative w-[113.41px] h-[148.7px]">
+            <div className="w-[113px] h-[149px]">
+              <div className="relative h-[100.00%]">
+                <img
+                  className="absolute w-full h-full top-0 left-0 object-cover"
+                  alt="Rectangle"
+                  src={eventData?.image_url || rectangle}
+                />
               </div>
-              
-              <div className="mt-2 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm leading-[1.6] space-y-1">
-                {eventData ? (
-                  <>
-                    <div>{language === 'ja' ? '日付' : 'Date'}：{new Date(eventData.date_time_start).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', { month: 'numeric', day: 'numeric', weekday: 'short' })}</div>
-                    <div>{language === 'ja' ? '時間' : 'Time'}：{new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</div>
-                    {eventData.price && (
-                      <div className="font-medium">{language === 'ja' ? '参加料' : 'Fee'}：¥{eventData.price.toLocaleString()}</div>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <div>{language === 'ja' ? '日付' : 'Date'}：8/02（{language === 'ja' ? '土' : 'Sat'}）</div>
-                    <div>{language === 'ja' ? '時間' : 'Time'}：19:00～22:00</div>
-                    <div className="font-medium">{language === 'ja' ? '参加料' : 'Fee'}：¥2,500</div>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-          
-          {/* 予約ボタン */}
-          <div className="mt-3 flex justify-end">
-            <div className="px-4 py-1.5 bg-[#00d6bd] rounded">
-              <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
-                {language === 'ja' ? '予約はこちら' : 'Reserve'}
-              </span>
             </div>
           </div>
         </div>
 
-        {/* PC版レイアウト */}
-        <div className="hidden md:block h-[195px]">
-          <div className="inline-flex items-center gap-[15px] absolute top-[25px] left-[9px]">
-            <div className="relative w-[113.41px] h-[148.7px]">
-              <div className="w-[113px] h-[149px]">
-                <div className="relative h-[100.00%]">
-                  <img
-                    className="absolute w-full h-full top-0 left-0 object-cover"
-                    alt="Rectangle"
-                    src={eventData?.image_url || rectangle}
-                  />
-                </div>
-              </div>
+        <div className="flex flex-col w-[393px] items-start gap-5 absolute top-[21px] left-[137px]">
+          <img
+            className="relative self-stretch w-full h-[1.57px] mt-[-1.57px]"
+            alt="Line"
+            src="/img/line-14.svg"
+          />
+
+          <div className="relative w-72 h-[117px]">
+            <div className="absolute top-[42px] left-0 w-[284px] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[12.5px] tracking-[0] leading-[normal]">
+              {eventData ? (
+                <>
+                  日付・時間帯：{new Date(eventData.date_time_start).toLocaleDateString('ja-JP', { month: 'numeric', day: 'numeric', weekday: 'short' })} {new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
+                  <br />
+                  {eventData.description && (
+                    <>
+                      タイトル：{eventData.description}
+                      <br />
+                    </>
+                  )}
+                  {eventData.catchphrase && (
+                    <>
+                      キャッチコピー：{eventData.catchphrase}
+                      <br />
+                    </>
+                  )}
+                  {eventData.price && (
+                    <>
+                      参加料：¥{eventData.price.toLocaleString()}{eventData.price_note && `／${eventData.price_note}`}
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                  日付・時間帯：8/02（土） 19:00～22:00
+                  <br />
+                  タイトル：レトロ・ヴァイナル・レイヴ
+                  <br />
+                  キャッチコピー：70年代ミュージックで踊る夜
+                  <br />
+                  参加料：¥2,500／要予約
+                </>
+              )}
+            </div>
+
+            <div className="absolute top-0 left-1.5 w-[259px] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffbfb] text-[28.2px] tracking-[0] leading-[normal] whitespace-nowrap">
+              {eventData?.title_en || eventData?.title || 'Summer Neon Night'}
             </div>
           </div>
 
-          <div className="flex flex-col w-[393px] items-start gap-5 absolute top-[21px] left-[137px]">
-            <img
-              className="relative self-stretch w-full h-[1.57px] mt-[-1.57px]"
-              alt="Line"
-              src="/img/line-14.svg"
-            />
+          <img
+            className="relative self-stretch w-full h-[1.57px]"
+            alt="Line"
+            src="/img/line-14.svg"
+          />
+        </div>
 
-            <div className="relative w-72 h-[117px]">
-              <div className="absolute top-[42px] left-0 w-[284px] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[12.5px] tracking-[0] leading-[normal]">
-                {eventData ? (
-                  <>
-                    {language === 'ja' ? '日付・時間帯' : 'Date & Time'}：{new Date(eventData.date_time_start).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', { month: 'numeric', day: 'numeric', weekday: 'short' })} {new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
-                    <br />
-                    {eventData.description && (
-                      <>
-                        {language === 'ja' ? 'タイトル' : 'Title'}：{eventData.description}
-                        <br />
-                      </>
-                    )}
-                    {eventData.catchphrase && (
-                      <>
-                        {language === 'ja' ? 'キャッチコピー' : 'Tagline'}：{eventData.catchphrase}
-                        <br />
-                      </>
-                    )}
-                    {eventData.price && (
-                      <>
-                        {language === 'ja' ? '参加料' : 'Fee'}：¥{eventData.price.toLocaleString()}{eventData.price_note && `／${language === 'ja' ? eventData.price_note : 'Reservation required'}`}
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    {language === 'ja' ? '日付・時間帯' : 'Date & Time'}：8/02（{language === 'ja' ? '土' : 'Sat'}） 19:00～22:00
-                    <br />
-                    {language === 'ja' ? 'タイトル' : 'Title'}：{language === 'ja' ? 'レトロ・ヴァイナル・レイヴ' : 'Retro Vinyl Rave'}
-                    <br />
-                    {language === 'ja' ? 'キャッチコピー' : 'Tagline'}：{language === 'ja' ? '70年代ミュージックで踊る夜' : 'Dance to 70s music'}
-                    <br />
-                    {language === 'ja' ? '参加料' : 'Fee'}：¥2,500／{language === 'ja' ? '要予約' : 'Reservation required'}
-                  </>
-                )}
-              </div>
+        <div className="absolute top-[148px] left-[436px] w-24 h-[19px]">
+          <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
 
-              <div className="absolute top-0 left-1.5 w-[259px] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffbfb] text-[28.2px] tracking-[0] leading-[normal] whitespace-nowrap">
-                {eventData?.title_en || eventData?.title || 'Summer Neon Night'}
-              </div>
-            </div>
-
-            <img
-              className="relative self-stretch w-full h-[1.57px]"
-              alt="Line"
-              src="/img/line-14.svg"
-            />
-          </div>
-
-          <div className="absolute top-[148px] left-[436px] w-24 h-[19px]">
-            <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
-
-            <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
-              {language === 'ja' ? '予約はこちら' : 'Reserve'}
-            </div>
+          <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
+            予約はこちら
           </div>
         </div>
       </div>
