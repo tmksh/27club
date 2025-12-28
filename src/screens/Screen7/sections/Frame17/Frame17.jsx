@@ -42,7 +42,11 @@ export const Frame17 = () => {
             data-scroll-delay="200"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
-            {t('castPage.description')}
+            {language === 'ja' ? (
+              <>それぞれがこの空間を彩る表現者。ダンサー・シンガー・エンターテイナー──唯一無二のパフォーマンスで、今夜のステージを創り上げます。お気に入りのキャストや出演スケジュールなど、最新情報は<br />こちらからご覧ください。</>
+            ) : (
+              t('castPage.description')
+            )}
           </p>
         </div>
       </div>
