@@ -13,7 +13,7 @@ export const TalentPc = ({
   name = "山田 太郎",
   nameEn = "yamada tarou",
   description = "ダンサー・シンガー・エンターテイナーとして活躍中。\n柔軟な体捌きと華麗なパフォーマンスが魅力。\n毎週金曜日・土曜日のステージでお会いしましょう！",
-  instagramUrl = "https://www.instagram.com/the27club_official/"
+  instagramUrl = "https://www.instagram.com/the27clubtokyo/"
 }) => {
   return (
     <div

@@ -95,7 +95,7 @@ export const ConcreteComponentNode = ({
             src="/img/27logo-1-1.png"
           />
         </Link>
-        <a href="https://www.instagram.com/the27club_official/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/the27clubtokyo/" target="_blank" rel="noopener noreferrer">
           <img
             className="w-[28px] h-[28px] cursor-pointer hover:opacity-80 transition-opacity"
             alt="Instagram"
@@ -119,7 +119,7 @@ export const ConcreteComponentNode = ({
             />
           </Link>
 
-          <a href="https://www.instagram.com/the27club_official/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/the27clubtokyo/" target="_blank" rel="noopener noreferrer">
             <img
               className="w-[40px] h-[40px] cursor-pointer hover:opacity-80 transition-opacity"
               alt="Instagram"

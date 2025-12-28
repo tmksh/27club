@@ -20,7 +20,7 @@ export const Frame18 = () => {
             name: cast.name || "Cast",
             nameEn: cast.name_en || cast.name || "Cast",
             description: cast.description || "情報準備中",
-            instagramUrl: cast.instagram_url || "https://www.instagram.com/the27club_official/",
+            instagramUrl: cast.instagram_url || "https://www.instagram.com/the27clubtokyo/",
           })));
         }
       } catch (error) {
