@@ -118,7 +118,7 @@ export const Frame = () => {
   const weekDates = getWeekDates(currentWeekStart);
 
   return (
-    <div className="relative self-stretch w-full min-h-0 lg:min-h-[994px] overflow-hidden px-4 md:px-8 pb-8 md:pb-0">
+    <div className="relative self-stretch w-full min-h-0 lg:min-h-[994px] overflow-hidden px-4 md:px-8 pb-4 md:pb-0">
       {/* チップの模様（デスクトップのみ表示） */}
       <div className="hidden lg:block">
         {Array.from({ length: 20 }, (_, i) => {
@@ -153,7 +153,7 @@ export const Frame = () => {
       </div>
 
       {/* セクションタイトル - SP版 */}
-      <div className="md:hidden pt-8 flex flex-col items-center gap-3 relative z-10" data-scroll="fade-up">
+      <div className="md:hidden pt-4 flex flex-col items-center gap-2 relative z-10" data-scroll="fade-up">
         <div className="[text-shadow:0px_4.28px_10.69px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-2xl tracking-[3.2px] leading-[1.2]">
           Event Schedule
         </div>

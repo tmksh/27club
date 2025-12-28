@@ -82,7 +82,7 @@ export const GroupWrapper = () => {
   };
 
   return (
-    <div className="relative self-stretch w-full min-h-[600px] lg:min-h-[1000px] flex flex-col items-center px-1 md:px-8">
+    <div className="relative self-stretch w-full min-h-0 lg:min-h-[1000px] flex flex-col items-center px-1 md:px-8 pb-4 md:pb-0">
       <div className="relative w-full max-w-[1440px]">
         {/* チップの模様（デスクトップのみ表示） - imgタグで最適化 */}
         <div className="hidden lg:block" style={{ contain: 'layout paint' }}>
@@ -109,7 +109,7 @@ export const GroupWrapper = () => {
         </div>
 
         {/* セクションタイトル */}
-        <div className="pt-6 md:pt-[82px] flex flex-col items-center gap-2 md:gap-3" data-scroll="fade-up">
+        <div className="pt-4 md:pt-[82px] flex flex-col items-center gap-2 md:gap-3" data-scroll="fade-up">
           <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-2xl md:text-5xl lg:text-[64px] text-center tracking-[4px] md:tracking-[6.40px] leading-[1.2]">
             Floor map
           </div>

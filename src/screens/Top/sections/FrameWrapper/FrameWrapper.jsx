@@ -163,9 +163,9 @@ export const FrameWrapper = () => {
   };
 
   return (
-    <div className="relative self-stretch w-full min-h-[500px] md:min-h-[700px] overflow-hidden">
-      <div className="relative w-full flex flex-col gap-[40px] z-10">
-        <div className="w-full h-[550px] md:h-[750px] relative">
+    <div className="relative self-stretch w-full min-h-[420px] md:min-h-[700px] overflow-hidden">
+      <div className="relative w-full flex flex-col gap-4 md:gap-[40px] z-10">
+        <div className="w-full h-[450px] md:h-[750px] relative">
           
           {/* カタカナテキスト（デスクトップのみ） */}
           <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-left tracking-[0] leading-[normal] pointer-events-none z-0">
@@ -173,7 +173,7 @@ export const FrameWrapper = () => {
           </div>
 
           {/* セクションタイトル */}
-          <div className="pt-8 lg:pt-[116px] flex flex-col items-center gap-3 relative z-10 px-4" data-scroll="fade-up">
+          <div className="pt-4 lg:pt-[116px] flex flex-col items-center gap-2 md:gap-3 relative z-10 px-4" data-scroll="fade-up">
             <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-2xl md:text-4xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
               EVENTS / PERFORMERS
             </div>

@@ -25,7 +25,7 @@ export const SectionComponentNode = () => {
   );
 
   return (
-    <div className="relative self-stretch w-full overflow-hidden py-16 md:py-24">
+    <div className="relative self-stretch w-full overflow-hidden py-8 md:py-24">
       <div className="relative w-full mx-auto">
         {/* カタカナテキスト（デスクトップのみ） */}
         <div className="hidden lg:block absolute -top-4 right-0 [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff15] text-[120px] tracking-[0] leading-[normal] select-none pointer-events-none pr-8">
@@ -33,7 +33,7 @@ export const SectionComponentNode = () => {
         </div>
 
         {/* セクションタイトル */}
-        <div className="flex flex-col items-center gap-4 mb-10 md:mb-16 relative z-10 px-4" data-scroll="fade-up">
+        <div className="flex flex-col items-center gap-3 md:gap-4 mb-6 md:mb-16 relative z-10 px-4" data-scroll="fade-up">
           <div className="[text-shadow:0px_4px_20px_#faffb580] [-webkit-text-stroke:1px_#d4af3780] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-4xl md:text-6xl lg:text-7xl text-center tracking-[0.02em]">
             GALLERY
           </div>

@@ -56,7 +56,7 @@ export const DivWrapper = () => {
         </div>
 
         {/* セクションタイトル */}
-        <div className="pt-8 md:pt-[116px] flex flex-col items-center gap-3 relative z-10" data-scroll="fade-up">
+        <div className="pt-4 md:pt-[116px] flex flex-col items-center gap-2 md:gap-3 relative z-10" data-scroll="fade-up">
           <div className="[text-shadow:0px_4px_15px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] text-white text-3xl md:text-5xl lg:text-[64px] text-center font-normal tracking-[0] leading-[normal]">
             {t('access.title')}
           </div>
@@ -66,7 +66,7 @@ export const DivWrapper = () => {
         </div>
 
         {/* マップコンテナ */}
-        <div className="mt-8 md:mt-16 relative z-10" data-scroll="scale-up">
+        <div className="mt-4 md:mt-16 relative z-10" data-scroll="scale-up">
           <iframe
             className="w-full aspect-[2.4/1] md:aspect-[1192/498] border-0 rounded-lg"
             src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA2%E4%B8%81%E7%9B%AE36-3+%E6%96%B0%E5%AE%BFAcb%E4%BC%9A%E9%A4%A8&t=&z=17&ie=UTF8&iwloc=&output=embed"
@@ -78,7 +78,7 @@ export const DivWrapper = () => {
         </div>
 
         {/* アクセス情報 */}
-        <div className="mt-8 md:mt-12 w-full flex flex-col items-center gap-6 relative z-10" data-scroll="fade-up">
+        <div className="mt-4 md:mt-12 w-full flex flex-col items-center gap-4 md:gap-6 relative z-10" data-scroll="fade-up">
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full max-w-[1000px] px-4 md:px-8">
             {/* 交通アクセス */}
             <div className="flex-1 flex flex-col gap-4">

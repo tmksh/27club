@@ -794,7 +794,7 @@ export const Top = () => {
       </div>
 
       {/* 既存のセクション */}
-      <div className="flex flex-col items-center gap-[20px] md:gap-[40px] w-full relative z-10">
+      <div className="flex flex-col items-center gap-2 md:gap-[40px] w-full relative z-10">
         <HeroSection />
         <Frame />
         <GroupWrapper />
