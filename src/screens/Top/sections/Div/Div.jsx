@@ -157,7 +157,7 @@ export const Div = () => {
 
               {/* 説明文 */}
               <p 
-                className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/90 text-xs md:text-sm lg:text-base leading-[1.8] mb-4 md:mb-6"
+                className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/90 text-[10px] md:text-sm lg:text-base leading-[1.8] mb-4 md:mb-6"
                 data-scroll="fade-right"
                 data-scroll-delay="200"
               >
