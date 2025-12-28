@@ -121,32 +121,36 @@ export const Header = ({ className = "" }) => {
               {isLanguageOpen && (
                 <div className="absolute top-full left-0 mt-1 w-full min-w-[100px] bg-black border border-white/50 rounded shadow-lg z-50 overflow-hidden">
                   <button 
-                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'ja' ? 'bg-[#00c9a7]' : 'bg-black hover:bg-[#00c9a7]'}`}
+                    className="w-full px-3 py-2 text-left"
+                    style={{ 
+                      backgroundColor: language === 'ja' ? '#00c9a7' : '#000000',
+                      color: language === 'ja' ? '#000000' : '#ffffff',
+                      fontFamily: "'Inter', Helvetica, sans-serif",
+                      fontSize: '12px',
+                      fontWeight: 500
+                    }}
                     onClick={() => {
                       setLanguage('ja');
                       setIsLanguageOpen(false);
                     }}
                   >
-                    <span 
-                      className="[font-family:'Inter',Helvetica] font-medium text-xs"
-                      style={{ color: language === 'ja' ? '#000' : '#fff' }}
-                    >
-                      日本語
-                    </span>
+                    日本語
                   </button>
                   <button 
-                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'en' ? 'bg-[#00c9a7]' : 'bg-black hover:bg-[#00c9a7]'}`}
+                    className="w-full px-3 py-2 text-left"
+                    style={{ 
+                      backgroundColor: language === 'en' ? '#00c9a7' : '#000000',
+                      color: language === 'en' ? '#000000' : '#ffffff',
+                      fontFamily: "'Inter', Helvetica, sans-serif",
+                      fontSize: '12px',
+                      fontWeight: 500
+                    }}
                     onClick={() => {
                       setLanguage('en');
                       setIsLanguageOpen(false);
                     }}
                   >
-                    <span 
-                      className="[font-family:'Inter',Helvetica] font-medium text-xs"
-                      style={{ color: language === 'en' ? '#000' : '#fff' }}
-                    >
-                      English
-                    </span>
+                    English
                   </button>
                 </div>
               )}
