@@ -11,6 +11,7 @@ export const Frame1 = () => {
           className="w-full h-full object-cover"
           alt="チップについて"
           src="/img/tip-hero.jpg"
+          loading="lazy"
         />
         
         {/* 下部グラデーションオーバーレイ（テキスト視認性向上） */}

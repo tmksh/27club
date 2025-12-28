@@ -512,6 +512,7 @@ export const GroupWrapper = () => {
             <img
               src={seatImages[hoveredSeat]}
               alt={hoveredSeat}
+              loading="lazy"
               className="w-full aspect-video object-cover rounded-lg shadow-[0_0_20px_rgba(0,214,189,0.4)] border border-[#00d6bd]/30"
             />
           </div>

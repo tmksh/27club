@@ -32,6 +32,7 @@ export const DrinkMenu = () => {
               src="/img/S__21356584.jpg" 
               alt="ドリンクメニュー 1" 
               className="w-full max-w-[500px] h-auto"
+              loading="lazy"
             />
           </div>
 
@@ -43,9 +44,10 @@ export const DrinkMenu = () => {
             }}
           >
             <img 
-              src="/img/S__21356585.jpg" loading="lazy" 
+              src="/img/S__21356585.jpg" 
               alt="ドリンクメニュー 2" 
               className="w-full max-w-[500px] h-auto"
+              loading="lazy"
             />
           </div>
         </div>

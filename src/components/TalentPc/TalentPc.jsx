@@ -29,6 +29,7 @@ export const TalentPc = ({
               className="w-full h-full object-cover rounded-lg"
               alt={name}
               src={s}
+              loading="lazy"
             />
           </div>
 
