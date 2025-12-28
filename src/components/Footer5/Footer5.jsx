@@ -41,7 +41,11 @@ export const Footer5 = ({
           <>
             〒160-0021
             <br />
-            {language === 'ja' ? '東京都新宿区歌舞伎町２丁目３６−３' : '2-36-3 Kabukicho, Shinjuku-ku, Tokyo'}
+            {language === 'ja' ? (
+              <>東京都新宿区歌舞伎町<br />２丁目３６−３</>
+            ) : (
+              <>2-36-3 Kabukicho,<br />Shinjuku-ku, Tokyo</>
+            )}
             <br />
             {language === 'ja' ? '新宿Acb会館 3階' : 'Shinjuku Acb Hall 3F'}
           </>

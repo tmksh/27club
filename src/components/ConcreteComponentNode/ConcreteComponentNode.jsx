@@ -170,7 +170,7 @@ export const ConcreteComponentNode = ({
 
           <div className="flex flex-col items-start gap-2 md:gap-3 w-full">
             <div
-              className={`[font-family:'Inter',Helvetica] font-normal text-white text-[10px] md:text-sm tracking-[0] leading-tight md:leading-[20px] ${divClassName}`}
+              className={`[font-family:'Inter',Helvetica] font-normal text-white text-[10px] md:text-sm tracking-[0] leading-relaxed md:leading-[22px] ${divClassName}`}
             >
               {text}
             </div>
