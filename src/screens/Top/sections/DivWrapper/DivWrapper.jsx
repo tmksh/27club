@@ -96,7 +96,7 @@ export const DivWrapper = () => {
                   <div className="text-xs md:text-sm opacity-80">{t('access.shinjukuStationEn')}</div>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <div className="font-semibold text-base md:text-lg">{t('access.metroStation')}</div>
+                  <div className="font-semibold text-base md:text-lg whitespace-nowrap">{t('access.metroStation')}</div>
                 </div>
               </div>
             </div>
