@@ -118,7 +118,7 @@ export const Frame = () => {
   const weekDates = getWeekDates(currentWeekStart);
 
   return (
-    <div className="relative self-stretch w-full min-h-[700px] lg:min-h-[994px] overflow-hidden px-4 md:px-8">
+    <div className="relative self-stretch w-full min-h-0 lg:min-h-[994px] overflow-hidden px-4 md:px-8 pb-8 md:pb-0">
       {/* チップの模様（デスクトップのみ表示） */}
       <div className="hidden lg:block">
         {Array.from({ length: 20 }, (_, i) => {
@@ -267,9 +267,9 @@ export const Frame = () => {
               </div>
             </div>
             
-            <div className="flex flex-col gap-2 overflow-y-auto max-h-[350px]">
+            <div className={`flex flex-col gap-2 ${events.length > 3 ? 'overflow-y-auto max-h-[430px]' : ''}`}>
               {loading ? (
-                <div className="text-white text-center w-full py-8 text-sm">{t('events.loading')}</div>
+                <div className="text-white text-center w-full py-4 text-sm">{t('events.loading')}</div>
               ) : events.length > 0 ? (
                 events.map((event, index) => {
                   const gradients = ["red", "pink", "purple", "blue", "green", "orange", "gold", "teal", "indigo", "yellow", "magenta", "lime", "violet"];
@@ -290,7 +290,7 @@ export const Frame = () => {
                   );
                 })
               ) : (
-                <div className="text-white/50 text-center w-full py-8 text-sm">
+                <div className="text-white/50 text-center w-full py-4 text-sm">
                   {t('events.noEvents')}
                 </div>
               )}
