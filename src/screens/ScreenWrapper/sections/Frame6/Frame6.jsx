@@ -28,7 +28,7 @@ export const Frame6 = () => {
         <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
           <h2 
             data-scroll="fade-up"
-            className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-base md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
+            className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-lg md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
           >
             {language === 'ja' ? (
               <>NEW PLAN 登場。<br />集まる理由が、もっと洗練される。</>
