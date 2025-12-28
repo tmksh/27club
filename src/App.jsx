@@ -13,6 +13,7 @@ import { AdminLogin } from "./screens/Admin/AdminLogin";
 import { AdminDashboard } from "./screens/Admin/AdminDashboard";
 import { DrinkMenu } from "./screens/DrinkMenu";
 import { Reserve } from "./screens/Reserve";
+import { PrivacyPolicy } from "./screens/PrivacyPolicy";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "/reserve",
         element: <Reserve />,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPolicy />,
       },
     ],
   },

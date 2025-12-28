@@ -267,7 +267,7 @@ export const Frame3 = () => {
             </label>
 
             <a
-              href="#"
+              href="/privacy"
               className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#06baa5] text-xs md:text-sm underline hover:text-[#00d6bd] transition-colors"
             >
               {t('contact.form.privacyLink')}
