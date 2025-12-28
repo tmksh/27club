@@ -196,28 +196,36 @@ export const FrameWrapper = () => {
           >
             {/* 左矢印ナビゲーション */}
             <button
-              className="absolute left-4 md:left-16 lg:left-32 top-1/2 -translate-y-1/2 z-[200] w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#00d6bd] flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:scale-110 hover:bg-[#00e8cc] shadow-lg cursor-pointer"
+              className="absolute left-[calc(50%-140px)] md:left-[calc(50%-220px)] top-1/2 -translate-y-1/2 z-[200] w-12 h-12 md:w-14 md:h-14 rounded-full backdrop-blur-md flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
+              style={{ 
+                background: 'rgba(80, 80, 80, 0.6)',
+                border: '1px solid rgba(255, 255, 255, 0.2)'
+              }}
               onClick={(e) => {
                 e.stopPropagation();
                 setCurrentIndex((prev) => (prev - 1 + castData.length) % castData.length);
               }}
               aria-label="前へ"
             >
-              <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
 
             {/* 右矢印ナビゲーション */}
             <button
-              className="absolute right-4 md:right-16 lg:right-32 top-1/2 -translate-y-1/2 z-[200] w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#00d6bd] flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:scale-110 hover:bg-[#00e8cc] shadow-lg cursor-pointer"
+              className="absolute right-[calc(50%-140px)] md:right-[calc(50%-220px)] top-1/2 -translate-y-1/2 z-[200] w-12 h-12 md:w-14 md:h-14 rounded-full backdrop-blur-md flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
+              style={{ 
+                background: 'rgba(80, 80, 80, 0.6)',
+                border: '1px solid rgba(255, 255, 255, 0.2)'
+              }}
               onClick={(e) => {
                 e.stopPropagation();
                 setCurrentIndex((prev) => (prev + 1) % castData.length);
               }}
               aria-label="次へ"
             >
-              <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
               </svg>
             </button>
