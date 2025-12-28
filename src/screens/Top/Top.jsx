@@ -418,7 +418,7 @@ export const Top = () => {
           })}
 
           {/* メインコンテンツエリア */}
-          <div className="absolute inset-0 flex flex-col items-center justify-start pt-20 pb-16 px-4" style={{ zIndex: 60 }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-4" style={{ zIndex: 60 }}>
             {/* タイトルテキスト */}
             <div className="flex flex-col items-center gap-1 mb-4 w-full">
               <div 
