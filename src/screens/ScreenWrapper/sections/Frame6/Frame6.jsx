@@ -42,7 +42,11 @@ export const Frame6 = () => {
             data-scroll-delay="200"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
-            {t('partyPlansPage.description')}
+            {language === 'ja' ? (
+              <>ベーシックからプレミアムまで、必要なものを過不足なくセット。予約も相談もスマートに完結。<br />歓送迎会・バースデー・企業貸切まで、<br />すべてこのページからはじめられます。</>
+            ) : (
+              t('partyPlansPage.description')
+            )}
           </p>
         </div>
       </div>
