@@ -57,7 +57,7 @@ export const Div = () => {
   }, [backgroundImages.length]);
 
   return (
-    <div className="relative self-stretch w-full min-h-[500px] md:min-h-[1000px]">
+    <div className="relative self-stretch w-full min-h-0 md:min-h-[1000px]">
       {/* チップの模様（デスクトップのみ表示） */}
       <div className="hidden lg:block">
         {chipPositions.map((pos, i) => (

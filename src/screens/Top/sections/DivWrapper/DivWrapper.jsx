@@ -18,7 +18,7 @@ export const DivWrapper = () => {
   ];
 
   return (
-    <div className="relative self-stretch w-full min-h-[900px] lg:min-h-[1245.76px] px-4 md:px-8">
+    <div className="relative self-stretch w-full min-h-0 lg:min-h-[1245.76px] px-4 md:px-8 pb-4 md:pb-0">
       <div className="relative w-full max-w-[1444px] mx-auto">
         {/* チップの模様（デスクトップのみ表示） */}
         <div className="hidden lg:block">
@@ -136,7 +136,7 @@ export const DivWrapper = () => {
         </div>
 
         {/* CTAボタン */}
-        <div className="mt-6 md:mt-12 flex flex-row gap-3 md:gap-4 justify-center items-center pb-6 md:pb-8 relative z-10 px-4 md:px-0" data-scroll="fade-up">
+        <div className="mt-4 md:mt-12 flex flex-row gap-3 md:gap-4 justify-center items-center pb-2 md:pb-8 relative z-10 px-4 md:px-0" data-scroll="fade-up">
           <div className="w-full max-w-[160px] md:max-w-[352px]">
             <div className="relative w-full h-[56px] md:h-[97.76px] rounded-[40px] md:rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)] cursor-pointer hover:scale-105 transition-transform flex items-center justify-center gap-3 md:gap-5 px-4 md:px-8">
               {/* アイコン */}
