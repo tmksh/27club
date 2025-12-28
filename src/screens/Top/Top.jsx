@@ -721,6 +721,22 @@ export const Top = () => {
             >
               THE 27 CLUB
             </div>
+
+            {/* 予約ボタン - PC版 */}
+            <Link 
+              to="/reserve"
+              className="flex w-[280px] h-[64px] items-center justify-center rounded-lg cursor-pointer transition-all duration-300 hover:scale-105 mt-8"
+              style={{
+                background: 'linear-gradient(135deg, rgba(0,180,140,0.2) 0%, rgba(0,120,100,0.1) 100%)',
+                boxShadow: '0 0 30px rgba(0,200,150,0.25), 0 5px 25px rgba(0,0,0,0.4)',
+                border: '2px solid rgba(0,200,150,0.4)',
+                animation: 'fade-in 1s ease-out 1.5s both',
+              }}
+            >
+              <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-lg tracking-wider">
+                {t('fv.reserveButton')}
+              </span>
+            </Link>
           </div>
         </div>
 
