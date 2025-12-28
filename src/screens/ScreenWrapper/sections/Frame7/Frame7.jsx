@@ -314,7 +314,11 @@ export const Frame7 = () => {
               {t('pricingSection.phone')}
             </span>
             <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[10px] md:text-xs">
-              {t('pricingSection.hours')}
+              {language === 'ja' ? (
+                <>営業時間：19:00-02:00（月-木）<br />19:00-03:00（金・土）19:00-01:00（日）</>
+              ) : (
+                t('pricingSection.hours')
+              )}
             </span>
           </div>
         </div>
