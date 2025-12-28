@@ -268,7 +268,7 @@ export const FrameWrapper = () => {
 
         </div>
 
-        <div className="flex justify-center w-full mt-4 md:mt-8 pb-8 px-4 md:px-0" data-scroll="fade-up">
+        <div className="flex justify-center w-full mt-10 md:mt-8 pb-8 px-4 md:px-0" data-scroll="fade-up">
           <Group153 
             className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"
