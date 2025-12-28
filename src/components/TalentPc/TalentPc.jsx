@@ -26,7 +26,7 @@ export const TalentPc = ({
           {/* メイン画像 */}
           <div className="absolute top-[2%] left-[2%] w-[96%] h-[72%]">
             <img
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover object-top rounded-lg"
               alt={name}
               src={s}
               loading="lazy"
