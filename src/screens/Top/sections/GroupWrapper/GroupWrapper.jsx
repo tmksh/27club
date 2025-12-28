@@ -396,99 +396,99 @@ export const GroupWrapper = () => {
         </div>
 
         {/* 座席カード */}
-        <div className="mt-6 md:mt-16 px-0 md:px-0" style={{ zIndex: 20 }} data-scroll="fade-up">
+        <div className="mt-6 md:mt-16 px-2 md:px-0" style={{ zIndex: 20 }} data-scroll="fade-up">
           {/* グリッド */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 md:gap-6 max-w-[400px] md:max-w-[1000px] mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 max-w-[500px] md:max-w-[1000px] mx-auto">
             {/* STANDING カード */}
             <div 
-              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#fffbfb40]"
+              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-3 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#fffbfb40]"
               onMouseEnter={() => handleSeatEnter('standing')}
               onMouseLeave={handleSeatLeave}
               onTouchStart={() => handleSeatEnter('standing')}
               onTouchEnd={handleSeatLeave}
             >
-              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs md:text-xl text-center tracking-[0] leading-[normal]">
+              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-sm md:text-xl text-center tracking-[0] leading-[normal]">
                 STANDING
               </div>
-              <p className="mt-1 md:mt-2 [font-family:'Playfair_Display',Helvetica] text-white text-[8px] md:text-sm font-normal tracking-[0] leading-[1.2] text-center">
+              <p className="mt-1 md:mt-2 [font-family:'Playfair_Display',Helvetica] text-white text-[10px] md:text-sm font-normal tracking-[0] leading-[1.2] text-center">
                 Cash on Delivery / Free area
               </p>
-              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-3xl tracking-[0] leading-[normal] text-center">
+              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-lg md:text-3xl tracking-[0] leading-[normal] text-center">
                 ￥3,600
               </div>
-              <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
+              <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[9px] md:text-xs tracking-[0] leading-[normal] text-center">
                 {t('floorMap.taxIncluded')}
               </div>
             </div>
 
             {/* SIDE SEAT BLUE カード */}
             <div 
-              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#3204ff40]"
+              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-3 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#3204ff40]"
               onMouseEnter={() => handleSeatEnter('blueSeat')}
               onMouseLeave={handleSeatLeave}
               onTouchStart={() => handleSeatEnter('blueSeat')}
               onTouchEnd={handleSeatLeave}
             >
-              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs md:text-xl text-center tracking-[0] leading-[normal]">
+              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-sm md:text-xl text-center tracking-[0] leading-[normal]">
                 SIDE SEAT
               </div>
               <div className="mt-1 md:mt-2 flex justify-center">
-                <div className="relative px-2 md:px-4 py-0.5 md:py-1">
+                <div className="relative px-3 md:px-4 py-0.5 md:py-1">
                   <div className="absolute inset-0 bg-[#3204ff]" />
-                  <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[8px] md:text-base tracking-[0] leading-[normal]">BLUE</span>
+                  <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[10px] md:text-base tracking-[0] leading-[normal]">BLUE</span>
                 </div>
               </div>
-              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-3xl tracking-[0] leading-[normal] text-center">
+              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-lg md:text-3xl tracking-[0] leading-[normal] text-center">
                 ￥4,800
               </div>
-              <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
+              <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[9px] md:text-xs tracking-[0] leading-[normal] text-center">
                 {t('floorMap.taxIncluded')}
               </div>
             </div>
 
             {/* SIDE SEAT PINK カード */}
             <div 
-              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#ff04c440]"
+              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-3 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#ff04c440]"
               onMouseEnter={() => handleSeatEnter('pinkSeat')}
               onMouseLeave={handleSeatLeave}
               onTouchStart={() => handleSeatEnter('pinkSeat')}
               onTouchEnd={handleSeatLeave}
             >
-              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs md:text-xl text-center tracking-[0] leading-[normal]">
+              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-sm md:text-xl text-center tracking-[0] leading-[normal]">
                 SIDE SEAT
               </div>
               <div className="mt-1 md:mt-2 flex justify-center">
-                <div className="relative px-2 md:px-4 py-0.5 md:py-1">
+                <div className="relative px-3 md:px-4 py-0.5 md:py-1">
                   <div className="absolute inset-0 bg-[#ff04c4]" />
-                  <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[8px] md:text-base tracking-[0] leading-[normal]">PINK</span>
+                  <span className="relative [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[10px] md:text-base tracking-[0] leading-[normal]">PINK</span>
                 </div>
               </div>
-              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-3xl tracking-[0] leading-[normal] text-center">
+              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-lg md:text-3xl tracking-[0] leading-[normal] text-center">
                 ￥6,000
               </div>
-              <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
+              <div className="mt-1 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[9px] md:text-xs tracking-[0] leading-[normal] text-center">
                 {t('floorMap.taxIncluded')}
               </div>
             </div>
 
             {/* V.I.P. SEAT カード */}
             <div 
-              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-2 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#00d6bd40]"
+              className="relative w-full bg-[#000000] border border-solid border-[#fffbfb] p-3 md:p-4 group cursor-pointer transition-all duration-300 hover:bg-[#1a1a1a] hover:shadow-[0px_6px_60px_#00d6bd40]"
               onMouseEnter={() => handleSeatEnter('vipSeat')}
               onMouseLeave={handleSeatLeave}
               onTouchStart={() => handleSeatEnter('vipSeat')}
               onTouchEnd={handleSeatLeave}
             >
-              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-xs md:text-xl text-center tracking-[0] leading-[normal]">
+              <div className="[text-shadow:0px_2px_6px_#faffb5cc] [-webkit-text-stroke:0.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-sm md:text-xl text-center tracking-[0] leading-[normal]">
                 V.I.P. SEAT
               </div>
-              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-base md:text-3xl tracking-[0] leading-[normal] text-center">
+              <div className="mt-1 md:mt-3 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-lg md:text-3xl tracking-[0] leading-[normal] text-center">
                 ￥8,400
               </div>
-              <div className="mt-1 [font-family:'Playfair_Display',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
+              <div className="mt-1 [font-family:'Playfair_Display',Helvetica] font-normal text-white/70 text-[9px] md:text-xs tracking-[0] leading-[normal] text-center">
                 {language === 'ja' ? 'パート入れ替え制' : 'Part rotation system'}
               </div>
-              <div className="mt-0.5 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[7px] md:text-xs tracking-[0] leading-[normal] text-center">
+              <div className="mt-0.5 [font-family:'Inder',Helvetica] font-normal text-white/70 text-[9px] md:text-xs tracking-[0] leading-[normal] text-center">
                 {t('floorMap.taxIncluded')}
               </div>
             </div>
