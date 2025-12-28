@@ -82,7 +82,7 @@ export const GroupWrapper = () => {
   };
 
   return (
-    <div className="relative self-stretch w-full min-h-[600px] lg:min-h-[1000px] flex flex-col items-center px-3 md:px-8">
+    <div className="relative self-stretch w-full min-h-[600px] lg:min-h-[1000px] flex flex-col items-center px-1 md:px-8">
       <div className="relative w-full max-w-[1440px]">
         {/* チップの模様（デスクトップのみ表示） - imgタグで最適化 */}
         <div className="hidden lg:block" style={{ contain: 'layout paint' }}>
@@ -126,7 +126,7 @@ export const GroupWrapper = () => {
         {/* フロアマップとプレビューのコンテナ */}
         <div className="mt-4 md:mt-16 flex flex-col lg:flex-row gap-4 lg:gap-8 items-center lg:items-start justify-center" data-scroll="scale-up">
           {/* フロアマップ - レスポンシブスケール */}
-          <div className="w-full max-w-[400px] md:max-w-[1000px] aspect-[850/500] relative" style={{ zIndex: 10 }}>
+          <div className="w-full max-w-[98%] md:max-w-[1000px] aspect-[850/500] relative" style={{ zIndex: 10 }}>
             {/* 背景レイヤー - ポインターイベント無効 */}
             <div 
               className="absolute inset-0 bg-gradient-to-br from-[#0a1612] via-[#0f1f1c] to-[#000000] border-2 border-[#d4af37] shadow-[0_0_30px_rgba(212,175,55,0.3)] pointer-events-none"
