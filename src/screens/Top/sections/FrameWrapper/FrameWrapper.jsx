@@ -164,6 +164,11 @@ export const FrameWrapper = () => {
 
   return (
     <div className="relative self-stretch w-full min-h-[500px] md:min-h-[700px] overflow-hidden">
+      {/* カタカナテキスト（デスクトップのみ） */}
+      <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-right tracking-[0] leading-[normal] pointer-events-none" style={{ zIndex: 1 }}>
+        {language === 'ja' ? 'パフォーマンス' : 'Performance'}
+      </div>
+
       <div className="relative w-full flex flex-col gap-[40px] z-10">
         <div className="w-full h-[550px] md:h-[750px] relative">
           
