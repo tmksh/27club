@@ -119,9 +119,12 @@ export const Header = ({ className = "" }) => {
               </button>
               
               {isLanguageOpen && (
-                <div className="absolute top-full left-0 mt-1 w-full min-w-[100px] bg-black border border-white/50 rounded shadow-lg z-50 overflow-hidden">
+                <div 
+                  className="absolute top-full left-0 mt-1 w-full min-w-[100px] rounded shadow-lg z-50 overflow-hidden"
+                  style={{ backgroundColor: '#000000', border: '1px solid rgba(255,255,255,0.5)' }}
+                >
                   <button 
-                    className="w-full px-3 py-2 text-left"
+                    className="w-full px-3 py-2 text-left transition-colors hover:bg-[#00c9a7] hover:text-black"
                     style={{ 
                       backgroundColor: language === 'ja' ? '#00c9a7' : '#000000',
                       color: language === 'ja' ? '#000000' : '#ffffff',
@@ -137,7 +140,7 @@ export const Header = ({ className = "" }) => {
                     日本語
                   </button>
                   <button 
-                    className="w-full px-3 py-2 text-left"
+                    className="w-full px-3 py-2 text-left transition-colors hover:bg-[#00c9a7] hover:text-black"
                     style={{ 
                       backgroundColor: language === 'en' ? '#00c9a7' : '#000000',
                       color: language === 'en' ? '#000000' : '#ffffff',
