@@ -121,24 +121,30 @@ export const Header = ({ className = "" }) => {
               {isLanguageOpen && (
                 <div className="absolute top-full left-0 mt-1 w-full min-w-[100px] bg-black border border-white/50 rounded shadow-lg z-50 overflow-hidden">
                   <button 
-                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'ja' ? 'bg-[#00c9a7] text-black' : 'bg-black text-white hover:bg-[#00c9a7] hover:text-black'}`}
+                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'ja' ? 'bg-[#00c9a7]' : 'bg-black hover:bg-[#00c9a7]'}`}
                     onClick={() => {
                       setLanguage('ja');
                       setIsLanguageOpen(false);
                     }}
                   >
-                    <span className="[font-family:'Inter',Helvetica] font-medium text-xs">
+                    <span 
+                      className="[font-family:'Inter',Helvetica] font-medium text-xs"
+                      style={{ color: language === 'ja' ? '#000' : '#fff' }}
+                    >
                       日本語
                     </span>
                   </button>
                   <button 
-                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'en' ? 'bg-[#00c9a7] text-black' : 'bg-black text-white hover:bg-[#00c9a7] hover:text-black'}`}
+                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'en' ? 'bg-[#00c9a7]' : 'bg-black hover:bg-[#00c9a7]'}`}
                     onClick={() => {
                       setLanguage('en');
                       setIsLanguageOpen(false);
                     }}
                   >
-                    <span className="[font-family:'Inter',Helvetica] font-medium text-xs">
+                    <span 
+                      className="[font-family:'Inter',Helvetica] font-medium text-xs"
+                      style={{ color: language === 'en' ? '#000' : '#fff' }}
+                    >
                       English
                     </span>
                   </button>
