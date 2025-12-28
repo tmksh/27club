@@ -204,9 +204,9 @@ export const Frame3 = () => {
                         : 'border-[#06baa5] bg-transparent group-hover:bg-[#06baa520]'
                     }`}
                   >
-                    {formData.inquiryType === type.value && (
-                      <div className="w-2 h-2 rounded-full bg-white" />
-                    )}
+                    <div className={`w-2 h-2 rounded-full transition-colors ${
+                      formData.inquiryType === type.value ? 'bg-white' : 'bg-[#06baa5]'
+                    }`} />
                   </div>
                   <input
                     type="radio"
