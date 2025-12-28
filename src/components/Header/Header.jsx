@@ -121,7 +121,7 @@ export const Header = ({ className = "" }) => {
               {isLanguageOpen && (
                 <div className="absolute top-full left-0 mt-1 w-full min-w-[100px] bg-black border border-white/50 rounded shadow-lg z-50 overflow-hidden">
                   <button 
-                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'ja' ? 'bg-[#00c9a7] text-black' : 'hover:bg-[#00c9a7] hover:text-black'}`}
+                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'ja' ? 'bg-[#00c9a7] text-black' : 'bg-black text-white hover:bg-[#00c9a7] hover:text-black'}`}
                     onClick={() => {
                       setLanguage('ja');
                       setIsLanguageOpen(false);
@@ -132,7 +132,7 @@ export const Header = ({ className = "" }) => {
                     </span>
                   </button>
                   <button 
-                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'en' ? 'bg-[#00c9a7] text-black' : 'hover:bg-[#00c9a7] hover:text-black text-white'}`}
+                    className={`w-full px-3 py-2 text-left transition-colors ${language === 'en' ? 'bg-[#00c9a7] text-black' : 'bg-black text-white hover:bg-[#00c9a7] hover:text-black'}`}
                     onClick={() => {
                       setLanguage('en');
                       setIsLanguageOpen(false);
