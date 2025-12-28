@@ -56,15 +56,15 @@ export const GroupWrapper = () => {
     stage: "STAGE",
   };
 
-  // チップの位置を固定（useMemoで一度だけ計算）
+  // チップの位置を固定（useMemoで一度だけ計算）- パフォーマンス向上のため数を削減
   const chipPositions = React.useMemo(() => {
-    return Array.from({ length: 25 }, (_, i) => {
+    return Array.from({ length: 12 }, (_, i) => {
       const chip = chips[i % chips.length];
-      const baseLeft = 1440 * 0.4;
-      const fixedOffset = ((i * 137) % 500) + (i % 3) * 50;
+      const baseLeft = 1440 * 0.45;
+      const fixedOffset = ((i * 180) % 450) + (i % 3) * 60;
       return {
         left: baseLeft + fixedOffset,
-        top: (Math.floor(i / 8) * 200) + (i % 6) * 100,
+        top: (Math.floor(i / 4) * 280) + (i % 4) * 80,
         chip,
         rotation: (i % 3) * 15 - 15,
       };
@@ -84,20 +84,22 @@ export const GroupWrapper = () => {
   return (
     <div className="relative self-stretch w-full min-h-[600px] lg:min-h-[1000px] flex flex-col items-center px-3 md:px-8">
       <div className="relative w-full max-w-[1440px]">
-        {/* チップの模様（デスクトップのみ表示） */}
-        <div className="hidden lg:block">
+        {/* チップの模様（デスクトップのみ表示） - imgタグで最適化 */}
+        <div className="hidden lg:block" style={{ contain: 'layout paint' }}>
           {chipPositions.map((pos, i) => (
-            <div
+            <img
               key={`chip-pattern-${i}`}
+              src={pos.chip.img}
+              alt=""
+              loading="lazy"
+              decoding="async"
               className="absolute pointer-events-none"
               style={{
                 left: `${pos.left}px`,
                 top: `${pos.top}px`,
                 width: `${pos.chip.w * 0.6}px`,
                 height: `${pos.chip.h * 0.6}px`,
-                backgroundImage: `url(${pos.chip.img})`,
-                backgroundSize: 'cover',
-                backgroundPosition: '50% 50%',
+                objectFit: 'cover',
                 opacity: 0.08,
                 transform: `rotate(${pos.rotation}deg)`,
                 zIndex: 0,
