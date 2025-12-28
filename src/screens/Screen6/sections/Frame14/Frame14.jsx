@@ -257,7 +257,7 @@ export const Frame14 = () => {
         </div>
 
         <div className="flex flex-col gap-2 w-full items-center">
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#cccccc] text-sm md:text-base text-center leading-relaxed">
+          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#cccccc] text-xs md:text-base text-center leading-relaxed">
             {language === 'ja' ? (
               <>
                 THE27CLUBのショーは、<br />
