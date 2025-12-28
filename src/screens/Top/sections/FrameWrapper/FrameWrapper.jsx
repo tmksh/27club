@@ -185,7 +185,7 @@ export const FrameWrapper = () => {
           {/* カルーセルコンテナ */}
           <div 
             ref={containerRef}
-            className="relative mt-8 md:mt-12 h-[280px] md:h-[420px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+            className="relative mt-8 md:mt-12 h-[280px] md:h-[420px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none group/carousel"
             onMouseDown={(e) => handleDragStart(e.clientX)}
             onMouseMove={(e) => handleDragMove(e.clientX)}
             onMouseUp={handleDragEnd}
@@ -194,6 +194,33 @@ export const FrameWrapper = () => {
             onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
             onTouchEnd={handleDragEnd}
           >
+            {/* 左矢印ナビゲーション */}
+            <button
+              className="absolute left-4 md:left-16 lg:left-32 top-1/2 -translate-y-1/2 z-[200] w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#00d6bd] flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:scale-110 hover:bg-[#00e8cc] shadow-lg cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentIndex((prev) => (prev - 1 + castData.length) % castData.length);
+              }}
+              aria-label="前へ"
+            >
+              <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* 右矢印ナビゲーション */}
+            <button
+              className="absolute right-4 md:right-16 lg:right-32 top-1/2 -translate-y-1/2 z-[200] w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#00d6bd] flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:scale-110 hover:bg-[#00e8cc] shadow-lg cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentIndex((prev) => (prev + 1) % castData.length);
+              }}
+              aria-label="次へ"
+            >
+              <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
             {/* 円形テキスト（中央カードの周り） */}
             <div 
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] md:w-[480px] md:h-[480px] pointer-events-none z-[100] notranslate"
