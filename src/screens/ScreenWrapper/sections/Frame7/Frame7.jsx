@@ -272,7 +272,11 @@ export const Frame7 = () => {
         {/* お問い合わせセクション */}
         <div className="flex flex-col items-center gap-4 md:gap-6 p-8 md:p-[60px] bg-[#1a1a1a] rounded-xl md:rounded-2xl">
           <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl text-center">
-            {t('pricingSection.contactTitle')}
+            {language === 'ja' ? (
+              <>パーティープランの<br />ご予約・お問い合わせ</>
+            ) : (
+              t('pricingSection.contactTitle')
+            )}
           </h3>
 
           <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-base text-center">
