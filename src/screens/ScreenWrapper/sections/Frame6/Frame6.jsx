@@ -2,7 +2,7 @@ import React from "react";
 import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame6 = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <div className="w-full px-4 md:px-8 lg:px-16 pt-8 md:pt-16 pb-8 md:pb-12">
       <div className="max-w-[1200px] mx-auto">
@@ -30,7 +30,11 @@ export const Frame6 = () => {
             data-scroll="fade-up"
             className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-base md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
           >
-            {t('partyPlansPage.headline')}
+            {language === 'ja' ? (
+              <>NEW PLAN 登場。<br />集まる理由が、もっと洗練される。</>
+            ) : (
+              t('partyPlansPage.headline')
+            )}
           </h2>
 
           <p 
