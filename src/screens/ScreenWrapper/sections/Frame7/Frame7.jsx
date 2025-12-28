@@ -280,7 +280,11 @@ export const Frame7 = () => {
           </h3>
 
           <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-base text-center">
-            {t('pricingSection.contactDescription')}
+            {language === 'ja' ? (
+              <>詳細なお見積もりや空き状況の確認など、<br />お気軽にお問い合わせください</>
+            ) : (
+              t('pricingSection.contactDescription')
+            )}
           </p>
 
           <div className="flex flex-row gap-3 md:gap-5 items-center justify-center flex-wrap">
