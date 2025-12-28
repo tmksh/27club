@@ -130,9 +130,11 @@ export const Frame3 = () => {
               data-scroll-delay="200"
               className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-[10px] md:text-base lg:text-lg tracking-[0] leading-relaxed md:leading-[32px]"
             >
-              {t('contact.description')}
-              <br />
-              {t('contact.responseTime')}
+              {language === 'ja' ? (
+                <>ご予約・撮影・コラボのご相談など、<br />どんな内容でもお気軽にお問い合わせください。<br />{t('contact.responseTime')}</>
+              ) : (
+                <>{t('contact.description')}<br />{t('contact.responseTime')}</>
+              )}
             </p>
           </div>
         </div>
