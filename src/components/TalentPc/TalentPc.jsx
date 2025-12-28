@@ -12,7 +12,8 @@ export const TalentPc = ({
   to,
   name = "山田 太郎",
   nameEn = "yamada tarou",
-  description = "ダンサー・シンガー・エンターテイナーとして活躍中。\n柔軟な体捌きと華麗なパフォーマンスが魅力。\n毎週金曜日・土曜日のステージでお会いしましょう！"
+  description = "ダンサー・シンガー・エンターテイナーとして活躍中。\n柔軟な体捌きと華麗なパフォーマンスが魅力。\n毎週金曜日・土曜日のステージでお会いしましょう！",
+  instagramUrl = "https://www.instagram.com/the27club_official/"
 }) => {
   return (
     <div
@@ -35,7 +36,7 @@ export const TalentPc = ({
 
           {/* Instagramアイコン */}
           <a 
-            href="https://www.instagram.com/the27club_official/" 
+            href={instagramUrl} 
             target="_blank" 
             rel="noopener noreferrer"
             className="absolute bottom-[8%] right-[5%] w-[15%] max-w-[50px] aspect-square hover:opacity-80 transition-opacity z-10"
@@ -72,7 +73,7 @@ export const TalentPc = ({
 
             <div className="mt-2 md:mt-6 pt-2 md:pt-4 border-t border-white/30">
               <a 
-                href="https://www.instagram.com/the27club_official/" 
+                href={instagramUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 md:gap-2 text-xs md:text-[14px] hover:opacity-80 transition-opacity"
@@ -99,4 +100,5 @@ TalentPc.propTypes = {
   name: PropTypes.string,
   nameEn: PropTypes.string,
   description: PropTypes.string,
+  instagramUrl: PropTypes.string,
 };

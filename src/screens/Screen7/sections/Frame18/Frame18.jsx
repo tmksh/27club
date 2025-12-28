@@ -82,6 +82,7 @@ export const Frame18 = () => {
                   name={card.name}
                   nameEn={card.nameEn}
                   description={card.description}
+                  instagramUrl={card.instagramUrl}
                 />
               </div>
             ))}
