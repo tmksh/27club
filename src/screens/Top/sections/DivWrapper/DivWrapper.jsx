@@ -67,15 +67,6 @@ export const DivWrapper = () => {
 
         {/* マップコンテナ */}
         <div className="mt-8 md:mt-16 relative z-10" data-scroll="scale-up">
-          {/* 店舗画像オーバーレイ（マップ上） */}
-          <div className="absolute top-2 md:top-8 left-2 md:left-8 z-20">
-            <img
-              className="w-[180px] md:w-[280px] lg:w-[362px] h-auto aspect-[2.29] object-cover rounded-lg shadow-lg"
-              alt="Element"
-              src="/img/2025-08-18-1-45-17-1.png"
-            />
-          </div>
-          
           <iframe
             className="w-full aspect-[2.4/1] md:aspect-[1192/498] border-0 rounded-lg"
             src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA2%E4%B8%81%E7%9B%AE36-3+%E6%96%B0%E5%AE%BFAcb%E4%BC%9A%E9%A4%A8&t=&z=17&ie=UTF8&iwloc=&output=embed"
