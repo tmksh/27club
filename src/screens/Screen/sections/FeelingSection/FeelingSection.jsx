@@ -9,7 +9,7 @@ export const FeelingSection = () => {
         data-scroll="scale-up"
         className="max-w-[600px] mx-auto flex flex-col items-center gap-3 md:gap-5 p-6 md:p-8 bg-[#a1a1a1] rounded-xl md:rounded-2xl"
       >
-        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-base md:text-xl text-center tracking-[0] leading-relaxed">
+        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-sm md:text-xl text-center tracking-[0] leading-relaxed whitespace-nowrap">
           {t('tipFeeling.title')}
         </div>
 
