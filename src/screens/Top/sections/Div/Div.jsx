@@ -92,7 +92,7 @@ export const Div = () => {
         </div>
         <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-[16px] tracking-[0] leading-[20px] md:leading-[24px] text-center opacity-90 max-w-[800px]">
           {language === 'ja' 
-            ? '歌舞伎町最大級のショー空間。映像美と臨場感を追求する、プロ仕様のステージ空間をご体験ください。'
+            ? <>歌舞伎町最大級のショー空間。映像美と臨場感を追求する、<br />プロ仕様のステージ空間をご体験ください。</>
             : "Kabukicho's largest show space. Experience a professional-grade stage space pursuing visual beauty and immersion."}
         </div>
       </div>
