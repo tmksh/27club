@@ -179,7 +179,7 @@ export const Frame10 = () => {
                       >
                         {detail.label}
                       </div>
-                      <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-sm leading-relaxed whitespace-pre-line">
+                      <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-xs leading-relaxed whitespace-pre-line">
                         {detail.value}
                       </div>
                     </div>
