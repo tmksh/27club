@@ -89,8 +89,8 @@ export const CastForm = ({ cast, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-      <div className="bg-[#1a2a28] rounded-lg max-w-2xl w-full my-8 shadow-2xl border border-[#00d6bd20]">
+    <div className="fixed inset-0 bg-black/50 flex items-start justify-center z-50 p-4 overflow-y-auto">
+      <div className="bg-[#1a2a28] rounded-lg max-w-2xl w-full my-8 shadow-2xl border border-[#00d6bd20] max-h-[calc(100vh-64px)] overflow-y-auto">
         <div className="p-6 border-b border-[#00d6bd20]">
           <h2 className="text-2xl font-bold text-white">
             {cast ? 'キャスト編集' : '新規キャスト作成'}
