@@ -1,5 +1,5 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { FrameScreen } from "./screens/FrameScreen";
 import { Screen } from "./screens/Screen";
@@ -26,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/top",
         element: <Top />,
+      },
+      {
+        path: "/admin",
+        element: <Navigate to="/admin/login" replace />,
       },
       {
         path: "/admin/login",
