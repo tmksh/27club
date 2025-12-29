@@ -96,7 +96,7 @@ export const Frame628 = ({
                 href={eventData.reservation_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-1.5 bg-[#00d6bd] rounded hover:bg-[#00e8cc] transition-colors"
+                className="px-4 py-1.5 bg-[#00d6bd] rounded transition-all duration-200 hover:-translate-y-1 hover:bg-[#00e8cc] hover:shadow-lg hover:shadow-[#00d6bd40]"
                 onClick={(e) => e.stopPropagation()}
               >
                 <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
@@ -104,7 +104,7 @@ export const Frame628 = ({
                 </span>
               </a>
             ) : (
-              <div className="px-4 py-1.5 bg-[#00d6bd] rounded">
+              <div className="px-4 py-1.5 bg-[#00d6bd] rounded transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#00d6bd40] cursor-pointer">
                 <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
                   {language === 'ja' ? '予約はこちら' : 'Reserve'}
                 </span>
@@ -190,16 +190,16 @@ export const Frame628 = ({
               href={eventData.reservation_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute top-[148px] left-[436px] w-24 h-[19px] hover:scale-105 transition-transform"
+              className="absolute top-[148px] left-[436px] w-24 h-[19px] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#00d6bd40]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
+              <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd] transition-colors duration-200 hover:bg-[#00e8cc]" />
               <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
                 {language === 'ja' ? '予約はこちら' : 'Reserve'}
               </div>
             </a>
           ) : (
-            <div className="absolute top-[148px] left-[436px] w-24 h-[19px]">
+            <div className="absolute top-[148px] left-[436px] w-24 h-[19px] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#00d6bd40] cursor-pointer">
               <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
               <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
                 {language === 'ja' ? '予約はこちら' : 'Reserve'}
