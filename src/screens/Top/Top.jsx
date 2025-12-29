@@ -169,11 +169,11 @@ export const Top = () => {
               </Link>
             ))}
             <Link 
-              to="/reserve"
+              to="/u12467u12531u12479u12463u12488"
               className="mt-4 px-8 py-3 bg-white rounded-lg text-[#1a1a2e] font-semibold"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              RESERVE
+              CONTACT
             </Link>
           </nav>
         </div>
@@ -264,11 +264,11 @@ export const Top = () => {
               </div>
 
               <Link 
-                to="/reserve"
+                to="/u12467u12531u12479u12463u12488"
                 className="flex w-[140px] h-10 items-center justify-center relative bg-white rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
               >
                 <div className="relative w-fit [font-family:'Inter',Helvetica] font-semibold text-[#1a1a2e] text-sm tracking-[0] leading-[16.8px] whitespace-nowrap">
-                  RESERVE
+                  CONTACT
                 </div>
               </Link>
             </div>
