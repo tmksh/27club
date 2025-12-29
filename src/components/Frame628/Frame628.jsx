@@ -91,11 +91,25 @@ export const Frame628 = ({
           
           {/* 予約ボタン */}
           <div className="mt-3 flex justify-end">
-            <div className="px-4 py-1.5 bg-[#00d6bd] rounded">
-              <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
-                {language === 'ja' ? '予約はこちら' : 'Reserve'}
-              </span>
-            </div>
+            {eventData?.reservation_url ? (
+              <a
+                href={eventData.reservation_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-1.5 bg-[#00d6bd] rounded hover:bg-[#00e8cc] transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
+                  {language === 'ja' ? '予約はこちら' : 'Reserve'}
+                </span>
+              </a>
+            ) : (
+              <div className="px-4 py-1.5 bg-[#00d6bd] rounded">
+                <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
+                  {language === 'ja' ? '予約はこちら' : 'Reserve'}
+                </span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -171,13 +185,27 @@ export const Frame628 = ({
             />
           </div>
 
-          <div className="absolute top-[148px] left-[436px] w-24 h-[19px]">
-            <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
-
-            <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
-              {language === 'ja' ? '予約はこちら' : 'Reserve'}
+          {eventData?.reservation_url ? (
+            <a
+              href={eventData.reservation_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute top-[148px] left-[436px] w-24 h-[19px] hover:scale-105 transition-transform"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
+              <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
+                {language === 'ja' ? '予約はこちら' : 'Reserve'}
+              </div>
+            </a>
+          ) : (
+            <div className="absolute top-[148px] left-[436px] w-24 h-[19px]">
+              <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
+              <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
+                {language === 'ja' ? '予約はこちら' : 'Reserve'}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
@@ -201,5 +229,6 @@ Frame628.propTypes = {
     price: PropTypes.number,
     price_note: PropTypes.string,
     image_url: PropTypes.string,
+    reservation_url: PropTypes.string,
   }),
 };

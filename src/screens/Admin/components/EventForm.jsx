@@ -11,6 +11,7 @@ export const EventForm = ({ event, onClose }) => {
     catchphrase: '',
     price: '',
     price_note: '',
+    reservation_url: '',
     is_published: true,
   });
   const [imageFile, setImageFile] = useState(null);
@@ -29,6 +30,7 @@ export const EventForm = ({ event, onClose }) => {
         catchphrase: event.catchphrase || '',
         price: event.price || '',
         price_note: event.price_note || '',
+        reservation_url: event.reservation_url || '',
         is_published: event.is_published ?? true,
       });
       setImagePreview(event.image_url || '');
@@ -99,8 +101,8 @@ export const EventForm = ({ event, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-      <div className="bg-[#1a2a28] rounded-lg max-w-2xl w-full my-8 shadow-2xl border border-[#00d6bd20]">
+    <div className="fixed inset-0 bg-black/50 flex items-start justify-center z-50 p-4 overflow-y-auto">
+      <div className="bg-[#1a2a28] rounded-lg max-w-2xl w-full my-8 shadow-2xl border border-[#00d6bd20] max-h-[calc(100vh-64px)] overflow-y-auto">
         <div className="p-6 border-b border-[#00d6bd20]">
           <h2 className="text-2xl font-bold text-white">
             {event ? 'イベント編集' : '新規イベント作成'}
@@ -243,6 +245,21 @@ export const EventForm = ({ event, onClose }) => {
               onChange={handleImageChange}
               className="w-full px-4 py-2 bg-[#0c1e1a] border border-[#00d6bd30] rounded text-white focus:outline-none focus:border-[#00d6bd] transition"
             />
+          </div>
+
+          <div>
+            <label className="block text-white text-sm font-medium mb-2">
+              予約URL
+            </label>
+            <input
+              type="url"
+              name="reservation_url"
+              value={formData.reservation_url}
+              onChange={handleChange}
+              placeholder="https://example.com/reserve"
+              className="w-full px-4 py-2 bg-[#0c1e1a] border border-[#00d6bd30] rounded text-white focus:outline-none focus:border-[#00d6bd] transition"
+            />
+            <p className="text-white/50 text-xs mt-1">「予約はこちら」ボタンのリンク先URL</p>
           </div>
 
           <div className="flex items-center">

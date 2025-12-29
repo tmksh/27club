@@ -146,6 +146,7 @@ export const EventsManager = () => {
                             {event.catchphrase && <p>キャッチフレーズ: {event.catchphrase}</p>}
                             {event.description && <p>説明: {event.description}</p>}
                             {event.price && <p>料金: ¥{event.price.toLocaleString()}{event.price_note && ` (${event.price_note})`}</p>}
+                            {event.reservation_url && <p>予約URL: <a href={event.reservation_url} target="_blank" rel="noopener noreferrer" className="text-[#00d6bd] hover:underline">{event.reservation_url}</a></p>}
                           </div>
                         </div>
                         <div className="flex flex-col gap-2">
