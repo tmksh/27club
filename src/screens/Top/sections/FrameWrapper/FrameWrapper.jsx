@@ -162,8 +162,49 @@ export const FrameWrapper = () => {
     };
   };
 
+  // チップ装飾用のデータ
+  const chips = [
+    { img: '/img/3-1.png', w: 244, h: 142 },
+    { img: '/img/1.png', w: 303, h: 73 },
+    { img: '/img/1-2.png', w: 279, h: 95 },
+    { img: '/img/3-2.png', w: 220, h: 90 },
+    { img: '/img/5-1.png', w: 99, h: 171 },
+    { img: '/img/4-1.png', w: 118, h: 145 },
+    { img: '/img/4-2.png', w: 82, h: 142 },
+    { img: '/img/2.png', w: 220, h: 114 },
+    { img: '/img/2-2.png', w: 105, h: 106 },
+  ];
+
   return (
     <div className="relative self-stretch w-full min-h-[520px] md:min-h-[700px] overflow-hidden">
+      {/* チップの模様（デスクトップのみ表示） */}
+      <div className="hidden lg:block">
+        {Array.from({ length: 15 }, (_, i) => {
+          const chip = chips[i % chips.length];
+          const left = (i * 90) % (1440 - chip.w * 0.6);
+          const top = (Math.floor(i / 5) * 200) + (i % 4) * 100;
+          
+          return (
+            <div
+              key={`chip-performers-${i}`}
+              className="absolute pointer-events-none"
+              style={{
+                left: `${left}px`,
+                top: `${top}px`,
+                width: `${chip.w * 0.6}px`,
+                height: `${chip.h * 0.6}px`,
+                backgroundImage: `url(${chip.img})`,
+                backgroundSize: 'cover',
+                backgroundPosition: '50% 50%',
+                opacity: 0.08,
+                transform: `rotate(${(i % 3) * 15 - 15}deg)`,
+                zIndex: 0,
+              }}
+            />
+          );
+        })}
+      </div>
+
       <div className="relative w-full flex flex-col gap-4 md:gap-[40px] z-10">
         <div className="w-full h-[520px] md:h-[750px] relative">
           

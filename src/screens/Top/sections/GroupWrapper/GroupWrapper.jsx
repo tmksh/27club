@@ -56,15 +56,15 @@ export const GroupWrapper = () => {
     stage: "STAGE",
   };
 
-  // チップの位置を固定（useMemoで一度だけ計算）- パフォーマンス向上のため数を削減
+  // チップの位置を固定（useMemoで一度だけ計算）- 全体に分散
   const chipPositions = React.useMemo(() => {
-    return Array.from({ length: 12 }, (_, i) => {
+    return Array.from({ length: 20 }, (_, i) => {
       const chip = chips[i % chips.length];
-      const baseLeft = 1440 * 0.45;
-      const fixedOffset = ((i * 180) % 450) + (i % 3) * 60;
+      const left = (i * 72) % (1440 - chip.w * 0.6);
+      const top = (Math.floor(i / 8) * 200) + (i % 5) * 80;
       return {
-        left: baseLeft + fixedOffset,
-        top: (Math.floor(i / 4) * 280) + (i % 4) * 80,
+        left,
+        top,
         chip,
         rotation: (i % 3) * 15 - 15,
       };
