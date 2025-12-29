@@ -83,31 +83,29 @@ export const GroupWrapper = () => {
 
   return (
     <div className="relative self-stretch w-full min-h-0 lg:min-h-[1000px] flex flex-col items-center px-1 md:px-8 pb-4 md:pb-0">
-      <div className="relative w-full max-w-[1440px]">
-        {/* チップの模様（デスクトップのみ表示） - imgタグで最適化 */}
-        <div className="hidden lg:block" style={{ contain: 'layout paint' }}>
-          {chipPositions.map((pos, i) => (
-            <img
-              key={`chip-pattern-${i}`}
-              src={pos.chip.img}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="absolute pointer-events-none"
-              style={{
-                left: `${pos.left}px`,
-                top: `${pos.top}px`,
-                width: `${pos.chip.w * 0.6}px`,
-                height: `${pos.chip.h * 0.6}px`,
-                objectFit: 'cover',
-                opacity: 0.08,
-                transform: `rotate(${pos.rotation}deg)`,
-                zIndex: 0,
-              }}
-            />
-          ))}
-        </div>
+      {/* チップの模様（デスクトップのみ表示） */}
+      <div className="hidden lg:block absolute inset-0 overflow-hidden pointer-events-none">
+        {chipPositions.map((pos, i) => (
+          <div
+            key={`chip-floormap-${i}`}
+            className="absolute"
+            style={{
+              left: `${pos.left}px`,
+              top: `${pos.top}px`,
+              width: `${pos.chip.w * 0.6}px`,
+              height: `${pos.chip.h * 0.6}px`,
+              backgroundImage: `url(${pos.chip.img})`,
+              backgroundSize: 'cover',
+              backgroundPosition: '50% 50%',
+              opacity: 0.08,
+              transform: `rotate(${pos.rotation}deg)`,
+              zIndex: 0,
+            }}
+          />
+        ))}
+      </div>
 
+      <div className="relative w-full max-w-[1440px]">
         {/* セクションタイトル */}
         <div className="pt-4 md:pt-[82px] flex flex-col items-center gap-2 md:gap-3" data-scroll="fade-up">
           <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-2xl md:text-5xl lg:text-[64px] text-center tracking-[4px] md:tracking-[6.40px] leading-[1.2]">
