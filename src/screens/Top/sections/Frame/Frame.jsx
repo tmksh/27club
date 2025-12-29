@@ -312,21 +312,21 @@ export const Frame = () => {
             {/* ヘッダー部分 */}
             <div className="relative w-full pt-8 pb-4 px-8">
               <div className="flex items-baseline justify-between mb-8">
-                <button 
+                <span 
                   onClick={goToPrevMonth}
-                  className="text-white text-[14px] tracking-[2px] hover:opacity-70 transition-opacity"
+                  className="text-white text-[14px] tracking-[2px] hover:opacity-70 transition-opacity cursor-pointer"
                 >
                   ← {language === 'ja' ? '前月' : 'Prev'}
-                </button>
+                </span>
                 <div className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase">
                   {currentMonth.getFullYear()} CALENDAR
                 </div>
-                <button 
+                <span 
                   onClick={goToNextMonth}
-                  className="text-white text-[14px] tracking-[2px] hover:opacity-70 transition-opacity"
+                  className="text-white text-[14px] tracking-[2px] hover:opacity-70 transition-opacity cursor-pointer"
                 >
                   {language === 'ja' ? '翌月' : 'Next'} →
-                </button>
+                </span>
               </div>
               <div className="[font-family:'Playfair_Display',Helvetica] text-[#f5f5f0] text-[72px] font-normal leading-[1] mb-6">
                 {currentMonth.toLocaleDateString('en-US', { month: 'long' })}
