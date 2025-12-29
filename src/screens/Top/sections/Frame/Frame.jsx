@@ -9,8 +9,10 @@ export const Frame = () => {
   const [hoveredDate, setHoveredDate] = useState(null);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentWeekStart, setCurrentWeekStart] = useState(new Date(2025, 7, 1)); // 8月1日から開始
-  const [currentMonth, setCurrentMonth] = useState(new Date(2025, 7, 1)); // 8月
+  // 現在の日付を基準に初期化
+  const now = new Date();
+  const [currentWeekStart, setCurrentWeekStart] = useState(new Date(now.getFullYear(), now.getMonth(), 1));
+  const [currentMonth, setCurrentMonth] = useState(new Date(now.getFullYear(), now.getMonth(), 1));
 
   useEffect(() => {
     const loadEvents = async () => {
@@ -42,12 +44,15 @@ export const Frame = () => {
     { img: '/img/2-2.png', w: 105, h: 106 },
   ];
 
-  // 8月2025年のカレンダー生成
+  // 現在の月のカレンダー生成
   const generateCalendarDates = () => {
     const dates = [];
-    const firstDay = new Date(2025, 7, 1);
-    const firstDayOfWeek = firstDay.getDay();
-    const daysInMonth = 31;
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth();
+    const firstDay = new Date(year, month, 1);
+    // 月曜始まりに調整（日曜=0を6に、他は-1）
+    const firstDayOfWeek = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
     
     for (let i = 0; i < firstDayOfWeek; i++) {
       dates.push(null);
@@ -307,15 +312,24 @@ export const Frame = () => {
             {/* ヘッダー部分 */}
             <div className="relative w-full pt-8 pb-4 px-8">
               <div className="flex items-baseline justify-between mb-8">
+                <button 
+                  onClick={goToPrevMonth}
+                  className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase hover:text-white transition-colors"
+                >
+                  &lt; {language === 'ja' ? '前月' : 'Prev'}
+                </button>
                 <div className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase">
-                  2025
+                  {currentMonth.getFullYear()} CALENDAR
                 </div>
-                <div className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase">
-                  CALENDAR
-                </div>
+                <button 
+                  onClick={goToNextMonth}
+                  className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase hover:text-white transition-colors"
+                >
+                  {language === 'ja' ? '翌月' : 'Next'} &gt;
+                </button>
               </div>
               <div className="[font-family:'Playfair_Display',Helvetica] text-[#f5f5f0] text-[72px] font-normal leading-[1] mb-6">
-                August
+                {currentMonth.toLocaleDateString('en-US', { month: 'long' })}
               </div>
             </div>
 
