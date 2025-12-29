@@ -314,18 +314,18 @@ export const Frame = () => {
               <div className="flex items-baseline justify-between mb-8">
                 <button 
                   onClick={goToPrevMonth}
-                  className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase hover:text-white transition-colors"
+                  className="text-white text-[14px] tracking-[2px] hover:opacity-70 transition-opacity"
                 >
-                  &lt; {language === 'ja' ? '前月' : 'Prev'}
+                  ← {language === 'ja' ? '前月' : 'Prev'}
                 </button>
                 <div className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase">
                   {currentMonth.getFullYear()} CALENDAR
                 </div>
                 <button 
                   onClick={goToNextMonth}
-                  className="[font-family:'Inter',Helvetica] text-[#cccccc] text-[14px] font-medium tracking-[3px] uppercase hover:text-white transition-colors"
+                  className="text-white text-[14px] tracking-[2px] hover:opacity-70 transition-opacity"
                 >
-                  {language === 'ja' ? '翌月' : 'Next'} &gt;
+                  {language === 'ja' ? '翌月' : 'Next'} →
                 </button>
               </div>
               <div className="[font-family:'Playfair_Display',Helvetica] text-[#f5f5f0] text-[72px] font-normal leading-[1] mb-6">
