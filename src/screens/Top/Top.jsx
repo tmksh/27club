@@ -287,15 +287,23 @@ export const Top = () => {
 
         {/* モバイル版FV（3D空間 + ネオン玉） */}
         <div className="md:hidden relative w-full h-[100svh] max-h-[750px] overflow-hidden" style={{ perspective: '1200px' }}>
-          {/* 宇宙空間3D背景 - SP版 */}
+          {/* 背景画像 - SP版 */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: 'url(/img/hero-bg.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center 30%',
+              filter: 'blur(2px)',
+            }}
+          />
+          {/* ダークオーバーレイ */}
           <div 
             className="absolute inset-0"
             style={{
               background: `
-                radial-gradient(ellipse 200% 150% at 50% -20%, rgba(0,255,150,0.12) 0%, transparent 50%),
-                radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,180,140,0.08) 0%, transparent 40%),
-                radial-gradient(ellipse 80% 60% at 85% 70%, rgba(0,200,160,0.06) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, #061515 0%, #030a0a 40%, #000 100%)
+                linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.75) 100%),
+                radial-gradient(ellipse 80% 60% at 50% 50%, transparent 0%, rgba(0,0,0,0.45) 100%)
               `,
             }}
           />
@@ -364,7 +372,7 @@ export const Top = () => {
             { left: 10, top: 80 }, { left: 45, top: 35 }, { left: 75, top: 85 },
             { left: 90, top: 30 }, { left: 25, top: 90 }, { left: 60, top: 5 },
           ].map((pos, i) => {
-            const colors = ['#ff4466', '#44aaff', '#ffcc00', '#44ff88', '#ff44aa', '#8844ff', '#00ccff', '#ff8844'];
+            const colors = ['#aa3344', '#3377aa', '#aa8833', '#33aa66', '#aa3377', '#6633aa', '#0099aa', '#aa6633'];
             const color = colors[i % colors.length];
             const size = 18 + (i % 4) * 10;
             const duration = 5 + (i % 4) * 2;
@@ -379,7 +387,8 @@ export const Top = () => {
                   width: `${size}px`,
                   height: `${size}px`,
                   background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
-                  boxShadow: `0 0 12px ${color}`,
+                  boxShadow: `0 0 8px ${color}`,
+                  opacity: 0.8,
                   animation: `float-ball ${duration}s ease-in-out ${delay}s infinite`,
                   zIndex: 40,
                 }}
@@ -412,7 +421,7 @@ export const Top = () => {
                   zIndex: 35,
                 }}
               >
-                <img src={img} alt="" className="w-full h-full object-contain" style={{ filter: 'sepia(0.3) saturate(0.7) brightness(0.85) contrast(0.95) drop-shadow(0 4px 6px rgba(0,0,0,0.4))', opacity: 0.8 }} />
+                <img src={img} alt="" className="w-full h-full object-contain" style={{ filter: 'sepia(0.7) saturate(0.3) brightness(0.45) contrast(0.85) grayscale(0.3) drop-shadow(0 4px 6px rgba(0,0,0,0.7))', opacity: 0.8 }} />
               </div>
             );
           })}
@@ -474,15 +483,24 @@ export const Top = () => {
           className="hidden md:block overflow-hidden w-full min-w-[1440px] h-screen relative"
           style={{ perspective: '2000px' }}
         >
-          {/* 宇宙空間3D背景 */}
+          {/* 背景画像 - PC版 */}
+          <div 
+            className="absolute top-0 left-0 w-full h-full min-h-[750px]"
+            style={{
+              backgroundImage: 'url(/img/hero-bg.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center 20%',
+              filter: 'blur(2.5px)',
+              transform: 'scale(1.03)',
+            }}
+          />
+          {/* ダークオーバーレイ - PC版 */}
           <div 
             className="absolute top-0 left-0 w-full h-full min-h-[750px]"
             style={{
               background: `
-                radial-gradient(ellipse 200% 150% at 50% -20%, rgba(0,255,150,0.12) 0%, transparent 50%),
-                radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,180,140,0.08) 0%, transparent 40%),
-                radial-gradient(ellipse 80% 60% at 85% 70%, rgba(0,200,160,0.06) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, #061515 0%, #030a0a 40%, #000 100%)
+                linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.7) 100%),
+                radial-gradient(ellipse 100% 80% at 50% 50%, transparent 0%, rgba(0,0,0,0.4) 100%)
               `,
             }}
           />
@@ -615,7 +633,7 @@ export const Top = () => {
             { left: 88, top: 12 }, { left: 50, top: 80 }, { left: 30, top: 5 },
             { left: 70, top: 90 }, { left: 95, top: 45 },
           ].map((pos, i) => {
-            const colors = ['#ff4466', '#44aaff', '#ffcc00', '#44ff88', '#ff44aa', '#8844ff', '#00ccff', '#ff8844'];
+            const colors = ['#aa3344', '#3377aa', '#aa8833', '#33aa66', '#aa3377', '#6633aa', '#0099aa', '#aa6633'];
             const color = colors[i % colors.length];
             const size = 25 + (i % 5) * 15;
             const duration = 5 + (i % 4) * 2;
@@ -630,7 +648,8 @@ export const Top = () => {
                   width: `${size}px`,
                   height: `${size}px`,
                   background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
-                  boxShadow: `0 0 15px ${color}`,
+                  boxShadow: `0 0 10px ${color}`,
+                  opacity: 0.8,
                   animation: `float-ball ${duration}s ease-in-out ${delay}s infinite`,
                   zIndex: 40,
                 }}
@@ -665,7 +684,7 @@ export const Top = () => {
                   zIndex: 35,
                 }}
               >
-                <img src={img} alt="" className="w-full h-full object-contain" style={{ filter: 'sepia(0.3) saturate(0.7) brightness(0.85) contrast(0.95) drop-shadow(0 4px 8px rgba(0,0,0,0.4))', opacity: 0.8 }} />
+                <img src={img} alt="" className="w-full h-full object-contain" style={{ filter: 'sepia(0.7) saturate(0.3) brightness(0.45) contrast(0.85) grayscale(0.3) drop-shadow(0 4px 8px rgba(0,0,0,0.7))', opacity: 0.8 }} />
               </div>
             );
           })}
