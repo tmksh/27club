@@ -295,6 +295,7 @@ export const Top = () => {
               backgroundSize: 'cover',
               backgroundPosition: 'center 30%',
               filter: 'blur(2px)',
+              animation: 'ken-burns 25s ease-in-out infinite alternate',
             }}
           />
           {/* ダークオーバーレイ */}
@@ -491,7 +492,7 @@ export const Top = () => {
               backgroundSize: 'cover',
               backgroundPosition: 'center 20%',
               filter: 'blur(2.5px)',
-              transform: 'scale(1.03)',
+              animation: 'ken-burns 25s ease-in-out infinite alternate',
             }}
           />
           {/* ダークオーバーレイ - PC版 */}
