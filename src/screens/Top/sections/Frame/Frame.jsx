@@ -120,6 +120,32 @@ export const Frame = () => {
     setCurrentWeekStart(new Date(newMonth.getFullYear(), newMonth.getMonth(), 1));
   };
 
+  // 特定の日付を含む週の開始日を取得（月曜始まり）
+  const getWeekStartForDate = (targetDate) => {
+    const date = new Date(targetDate);
+    const day = date.getDay();
+    // 月曜始まりに調整（日曜=0を6に、他は-1）
+    const diff = day === 0 ? 6 : day - 1;
+    const weekStart = new Date(date);
+    weekStart.setDate(date.getDate() - diff);
+    return weekStart;
+  };
+
+  // イベントカードにホバーした時の処理
+  const handleEventHover = (event) => {
+    const eventDate = new Date(event.date_time_start);
+    const eventDay = eventDate.getDate();
+    setHoveredDate(eventDay);
+    
+    // イベントの月に移動
+    if (eventDate.getMonth() !== currentMonth.getMonth() || eventDate.getFullYear() !== currentMonth.getFullYear()) {
+      setCurrentMonth(new Date(eventDate.getFullYear(), eventDate.getMonth(), 1));
+    }
+    
+    // イベントの日付を含む週に移動
+    setCurrentWeekStart(getWeekStartForDate(eventDate));
+  };
+
   const weekDates = getWeekDates(currentWeekStart);
 
   return (
@@ -289,7 +315,7 @@ export const Frame = () => {
                       hoverGradient={gradients[index % gradients.length]}
                       eventDate={eventDay}
                       eventData={event}
-                      onMouseEnter={() => setHoveredDate(eventDay)}
+                      onMouseEnter={() => handleEventHover(event)}
                       onMouseLeave={() => setHoveredDate(null)}
                     />
                   );
@@ -396,7 +422,7 @@ export const Frame = () => {
                         hoverGradient={gradients[index % gradients.length]}
                         eventDate={eventDay}
                         eventData={event}
-                        onMouseEnter={() => setHoveredDate(eventDay)}
+                        onMouseEnter={() => handleEventHover(event)}
                         onMouseLeave={() => setHoveredDate(null)}
                       />
                     );
