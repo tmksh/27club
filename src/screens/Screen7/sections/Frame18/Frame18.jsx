@@ -74,19 +74,19 @@ export const Frame18 = () => {
             <div className="text-white text-lg">キャスト情報がありません</div>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8 mb-12 md:mb-16">
-            {currentCards.map((card) => (
-              <div key={card.id} className="w-full">
-                <TalentPc
-                  s={card.s}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8 mb-12 md:mb-16">
+          {currentCards.map((card) => (
+            <div key={card.id} className="w-full">
+              <TalentPc
+                s={card.s}
                   name={card.name}
                   nameEn={card.nameEn}
                   description={card.description}
                   instagramUrl={card.instagramUrl}
-                />
-              </div>
-            ))}
-          </div>
+              />
+            </div>
+          ))}
+        </div>
         )}
 
         {/* ページネーション */}

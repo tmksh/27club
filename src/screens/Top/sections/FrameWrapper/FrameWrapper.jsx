@@ -212,7 +212,7 @@ export const FrameWrapper = () => {
           <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-left tracking-[0] leading-[normal] pointer-events-none z-0">
             {language === 'ja' ? 'パフォーマンス' : 'Performance'}
           </div>
-
+          
           {/* セクションタイトル */}
           <div className="pt-4 lg:pt-[116px] flex flex-col items-center gap-2 md:gap-3 relative z-10 px-4" data-scroll="fade-up">
             <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-2xl md:text-4xl lg:text-[64px] text-center tracking-[0] leading-[normal]">

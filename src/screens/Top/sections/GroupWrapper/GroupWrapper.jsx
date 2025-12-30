@@ -83,27 +83,27 @@ export const GroupWrapper = () => {
 
   return (
     <div className="relative self-stretch w-full min-h-0 lg:min-h-[1000px] flex flex-col items-center px-1 md:px-8 pb-4 md:pb-0">
-      {/* チップの模様（デスクトップのみ表示） */}
+        {/* チップの模様（デスクトップのみ表示） */}
       <div className="hidden lg:block absolute inset-0 overflow-hidden pointer-events-none">
-        {chipPositions.map((pos, i) => (
-          <div
+          {chipPositions.map((pos, i) => (
+            <div
             key={`chip-floormap-${i}`}
             className="absolute"
-            style={{
-              left: `${pos.left}px`,
-              top: `${pos.top}px`,
-              width: `${pos.chip.w * 0.6}px`,
-              height: `${pos.chip.h * 0.6}px`,
-              backgroundImage: `url(${pos.chip.img})`,
-              backgroundSize: 'cover',
-              backgroundPosition: '50% 50%',
-              opacity: 0.08,
-              transform: `rotate(${pos.rotation}deg)`,
-              zIndex: 0,
-            }}
-          />
-        ))}
-      </div>
+              style={{
+                left: `${pos.left}px`,
+                top: `${pos.top}px`,
+                width: `${pos.chip.w * 0.6}px`,
+                height: `${pos.chip.h * 0.6}px`,
+                backgroundImage: `url(${pos.chip.img})`,
+                backgroundSize: 'cover',
+                backgroundPosition: '50% 50%',
+                opacity: 0.08,
+                transform: `rotate(${pos.rotation}deg)`,
+                zIndex: 0,
+              }}
+            />
+          ))}
+        </div>
 
       <div className="relative w-full max-w-[1440px]">
         {/* セクションタイトル */}

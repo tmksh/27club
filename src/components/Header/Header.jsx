@@ -137,7 +137,7 @@ export const Header = ({ className = "" }) => {
                       setIsLanguageOpen(false);
                     }}
                   >
-                    日本語
+                      日本語
                   </button>
                   <button 
                     className="w-full px-3 py-2 text-left transition-colors hover:bg-[#00c9a7] hover:text-black"
@@ -153,7 +153,7 @@ export const Header = ({ className = "" }) => {
                       setIsLanguageOpen(false);
                     }}
                   >
-                    English
+                      English
                   </button>
                 </div>
               )}
