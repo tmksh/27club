@@ -94,19 +94,19 @@ export const Frame7 = () => {
   const plans = language === 'en' ? plansEn : plansJa;
 
   const optionsJa = [
-    { name: "バースデーケーキ（一段）", nameEn: "BIRTHDAY CAKE", price: "¥3,000" },
-    { name: "バルーン装飾", nameEn: "BALLOON DECORATION", price: "¥1,500" },
-    { name: "クラッカー（10個セット）", nameEn: "CRACKERS (10 PCS)", price: "¥800" },
-    { name: "シャンパン持ち込み料", nameEn: "CHAMPAGNE CORKAGE", price: "¥2,000" },
-    { name: "プロジェクター使用料", nameEn: "PROJECTOR RENTAL", price: "¥5,000" },
+    { name: "バースデーケーキ（1段）", nameEn: "BIRTHDAY CAKE", price: "¥3,000〜" },
+    { name: "バルーン装飾", nameEn: "BALLOON DECORATION", price: "¥10,000〜" },
+    { name: "クラッカー", nameEn: "CRACKERS", price: "¥10,000" },
+    { name: "シャンパン持ち込み料", nameEn: "CHAMPAGNE CORKAGE", price: "¥50,000" },
+    { name: "プロジェクター利用料", nameEn: "PROJECTOR RENTAL", price: "¥20,000" },
   ];
 
   const optionsEn = [
-    { name: "Birthday Cake (single tier)", nameEn: "BIRTHDAY CAKE", price: "¥3,000" },
-    { name: "Balloon Decoration", nameEn: "BALLOON DECORATION", price: "¥1,500" },
-    { name: "Crackers (10 pcs)", nameEn: "CRACKERS (10 PCS)", price: "¥800" },
-    { name: "Champagne Corkage", nameEn: "CHAMPAGNE CORKAGE", price: "¥2,000" },
-    { name: "Projector Rental", nameEn: "PROJECTOR RENTAL", price: "¥5,000" },
+    { name: "Birthday Cake (1 tier)", nameEn: "BIRTHDAY CAKE", price: "¥3,000〜" },
+    { name: "Balloon Decoration", nameEn: "BALLOON DECORATION", price: "¥10,000〜" },
+    { name: "Crackers", nameEn: "CRACKERS", price: "¥10,000" },
+    { name: "Champagne Corkage", nameEn: "CHAMPAGNE CORKAGE", price: "¥50,000" },
+    { name: "Projector Rental", nameEn: "PROJECTOR RENTAL", price: "¥20,000" },
   ];
 
   const options = language === 'en' ? optionsEn : optionsJa;
