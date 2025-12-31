@@ -22,13 +22,22 @@ export const FrameWrapper = () => {
         console.log('取得したキャスト数:', data?.length, data);
         if (data && data.length > 0) {
           const fallbackImages = ["/img/cast-1.png", "/img/cast-2.png", "/img/cast-3.png", "/img/cast-4.png", "/img/cast-5.png"];
-          setCastData(data.map((cast, index) => ({
+          const mappedData = data.map((cast, index) => ({
             id: cast.id,
             image: cast.profile_image_url || fallbackImages[index % fallbackImages.length],
             name: cast.name || "Cast",
             descriptionJa: `${cast.features || '特徴情報なし'}${cast.favorite_drink ? `・好きなお酒：${cast.favorite_drink}` : ''}`,
             descriptionEn: `${cast.features_en || 'No features available'}${cast.favorite_drink ? `・Favorite drink: ${cast.favorite_drink}` : ''}`,
-          })));
+          }));
+          setCastData(mappedData);
+          
+          // RIAをデフォルト表示に設定
+          const riaIndex = mappedData.findIndex(cast => 
+            cast.name.toUpperCase() === 'RIA' || cast.name.toUpperCase().includes('RIA')
+          );
+          if (riaIndex !== -1) {
+            setCurrentIndex(riaIndex);
+          }
         } else {
           setCastData([
             { id: 1, image: "/img/cast-1.png", name: "Cast 1", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：カクテル", descriptionEn: "Known for flexible movements. Favorite drink: Cocktail" },
