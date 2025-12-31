@@ -184,12 +184,12 @@ export const GroupWrapper = () => {
               <div 
                 className="absolute top-[22%] left-[14.1%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer hover:shadow-[0_0_25px_rgba(0,214,189,0.6)] transition-all border-2 border-[#00d6bd] shadow-[0_0_15px_rgba(0,214,189,0.3)] z-10"
                 style={{ background: 'linear-gradient(180deg, rgba(34,48,47,1) 35%, rgba(0,214,189,1) 100%)' }}
-                onMouseEnter={() => handleSeatEnter('v4')}
+                onMouseEnter={() => handleSeatEnter('v6')}
                 onMouseLeave={handleSeatLeave}
-                onTouchStart={() => handleSeatEnter('v4')}
+                onTouchStart={() => handleSeatEnter('v6')}
                 onTouchEnd={handleSeatLeave}
               >
-                <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V4</span>
+                <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V6</span>
               </div>
               <div 
                 className="absolute top-[36%] left-[14.1%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer hover:shadow-[0_0_25px_rgba(0,214,189,0.6)] transition-all border-2 border-[#00d6bd] shadow-[0_0_15px_rgba(0,214,189,0.3)] z-10"
@@ -204,12 +204,12 @@ export const GroupWrapper = () => {
               <div 
                 className="absolute top-[50%] left-[14.1%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer hover:shadow-[0_0_25px_rgba(0,214,189,0.6)] transition-all border-2 border-[#00d6bd] shadow-[0_0_15px_rgba(0,214,189,0.3)] z-10"
                 style={{ background: 'linear-gradient(180deg, rgba(34,48,47,1) 35%, rgba(0,214,189,1) 100%)' }}
-                onMouseEnter={() => handleSeatEnter('v6')}
+                onMouseEnter={() => handleSeatEnter('v4')}
                 onMouseLeave={handleSeatLeave}
-                onTouchStart={() => handleSeatEnter('v6')}
+                onTouchStart={() => handleSeatEnter('v4')}
                 onTouchEnd={handleSeatLeave}
               >
-                <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V6</span>
+                <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V4</span>
               </div>
 
               {/* V1-V3 座席（ティール円形） - 右側 */}
