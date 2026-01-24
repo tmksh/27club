@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS API連携ガイド - THE 27 CLUB</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 60px 40px;
+        }
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        .intro {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+        }
+        .intro p {
+            margin-bottom: 15px;
+        }
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+        .doc-link {
+            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 20px 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        .doc-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 SNS API連携ガイド</h1>
+        <p class="subtitle">ホームページにSNS投稿を自動表示するための完全ガイド</p>
+        
+        <div class="intro">
+            <p><strong>このガイドについて</strong></p>
+            <p>Instagram、YouTube、X（Twitter）、TikTokの各プラットフォームで、ホームページにSNS投稿を自動表示するためのAPI連携方法を詳しく解説しています。</p>
+            <p>各プラットフォームの要件、設定手順、費用、実務的な判断基準まで、Web制作者が知っておくべき情報を網羅しています。</p>
+        </div>
+
+        <a href="SNS_API_GUIDE.html" class="doc-link">
+            📖 完全ガイドを読む →
+        </a>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📸</div>
+                <h3>Instagram</h3>
+                <p>ビジネスアカウントで自動投稿表示</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📺</div>
+                <h3>YouTube</h3>
+                <p>最も簡単・安定した連携</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🐦</div>
+                <h3>X（Twitter）</h3>
+                <p>埋め込みとAPIの比較</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎵</div>
+                <h3>TikTok</h3>
+                <p>実務的な実装方法</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>THE 27 CLUB - SNS API連携ガイド</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                <a href="https://github.com/tmksh/27club" style="color: #667eea; text-decoration: none;">GitHubリポジトリ</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
