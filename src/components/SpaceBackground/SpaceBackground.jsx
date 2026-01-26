@@ -3,160 +3,105 @@ import React from "react";
 export const SpaceBackground = () => {
   return (
     <>
-      {/* ベース背景色 - 黒に近い緑 */}
+      {/* ベース背景色 - 深い黒 */}
       <div 
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: '#050a08',
+          background: '#030303',
           zIndex: -10,
         }}
       />
 
-      {/* シルク波 - 自然な曲線 */}
+      {/* シルク波 - GPU最適化版 */}
       <div 
         className="fixed inset-0 pointer-events-none overflow-hidden"
-        style={{ zIndex: -9 }}
+        style={{ 
+          zIndex: -9,
+          contain: 'strict',
+        }}
       >
-        {/* SVGフィルター定義 */}
-        <svg className="absolute w-0 h-0">
-          <defs>
-            <filter id="silk-wave">
-              <feTurbulence 
-                type="fractalNoise" 
-                baseFrequency="0.015" 
-                numOctaves="2" 
-                result="noise"
-              />
-              <feDisplacementMap 
-                in="SourceGraphic" 
-                in2="noise" 
-                scale="30" 
-                xChannelSelector="R" 
-                yChannelSelector="G"
-              />
-            </filter>
-          </defs>
-        </svg>
-
-        {/* メインのシルク折り線 1 - 曲線 */}
+        {/* メインのシルク波 1 */}
         <div 
-          className="absolute"
           style={{
-            width: '150%',
-            height: '150%',
-            top: '-25%',
-            left: '-25%',
+            position: 'absolute',
+            width: '180%',
+            height: '180%',
+            top: '-40%',
+            left: '-40%',
             background: `
-              linear-gradient(158deg, 
-                transparent 0%, 
-                transparent 34%, 
-                rgba(255, 255, 255, 0.06) 36%,
-                rgba(255, 255, 255, 0.35) 38%,
-                rgba(255, 255, 255, 0.65) 40%,
-                rgba(255, 255, 255, 0.35) 42%,
-                rgba(255, 255, 255, 0.06) 44%,
-                transparent 46%, 
+              radial-gradient(ellipse 70% 45% at 25% 50%, 
+                rgba(255, 255, 255, 0.06) 0%,
+                rgba(255, 255, 255, 0.2) 30%,
+                rgba(255, 255, 255, 0.45) 50%,
+                rgba(255, 255, 255, 0.2) 70%,
                 transparent 100%
               )
             `,
-            filter: 'url(#silk-wave)',
-            animation: 'silkFlow1 22s ease-in-out infinite',
+            transform: 'translateZ(0)',
             willChange: 'transform',
+            animation: 'silkWave1 20s ease-in-out infinite',
+            opacity: 0.6,
           }}
         />
 
-        {/* メインのシルク折り線 2 - 曲線 */}
+        {/* メインのシルク波 2 */}
         <div 
-          className="absolute"
           style={{
-            width: '150%',
-            height: '150%',
-            top: '-25%',
-            left: '-25%',
+            position: 'absolute',
+            width: '180%',
+            height: '180%',
+            top: '-40%',
+            left: '-40%',
             background: `
-              linear-gradient(172deg, 
-                transparent 0%, 
-                transparent 52%, 
-                rgba(255, 255, 255, 0.05) 54%,
-                rgba(255, 255, 255, 0.3) 56%,
-                rgba(255, 255, 255, 0.55) 58%,
-                rgba(255, 255, 255, 0.3) 60%,
-                rgba(255, 255, 255, 0.05) 62%,
-                transparent 64%, 
+              radial-gradient(ellipse 60% 40% at 75% 45%, 
+                rgba(255, 255, 255, 0.05) 0%,
+                rgba(255, 255, 255, 0.18) 30%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0.18) 70%,
                 transparent 100%
               )
             `,
-            filter: 'url(#silk-wave)',
-            animation: 'silkFlow2 28s ease-in-out infinite',
+            transform: 'translateZ(0)',
             willChange: 'transform',
+            animation: 'silkWave2 25s ease-in-out infinite',
+            opacity: 0.55,
           }}
         />
 
-        {/* サブ折り線 - 細め */}
+        {/* 光沢ライン */}
         <div 
-          className="absolute"
           style={{
-            width: '150%',
-            height: '150%',
-            top: '-25%',
-            left: '-25%',
+            position: 'absolute',
+            width: '140%',
+            height: '140%',
+            top: '-20%',
+            left: '-20%',
             background: `
-              linear-gradient(142deg, 
+              linear-gradient(155deg, 
                 transparent 0%, 
-                transparent 20%, 
-                rgba(255, 255, 255, 0.2) 22%,
-                rgba(255, 255, 255, 0.45) 23%,
-                rgba(255, 255, 255, 0.2) 24%,
-                transparent 26%, 
+                transparent 35%, 
+                rgba(255, 255, 255, 0.12) 42%,
+                rgba(255, 255, 255, 0.35) 45%,
+                rgba(255, 255, 255, 0.12) 48%,
+                transparent 55%, 
                 transparent 100%
               )
             `,
-            filter: 'url(#silk-wave)',
-            animation: 'silkFlow3 18s ease-in-out infinite',
+            transform: 'translateZ(0)',
             willChange: 'transform',
+            animation: 'silkLine1 18s ease-in-out infinite',
           }}
         />
 
-        {/* 追加の折り線 */}
+        {/* 影 */}
         <div 
-          className="absolute"
+          className="absolute inset-0"
           style={{
-            width: '150%',
-            height: '150%',
-            top: '-25%',
-            left: '-25%',
             background: `
-              linear-gradient(185deg, 
-                transparent 0%, 
-                transparent 70%, 
-                rgba(255, 255, 255, 0.15) 72%,
-                rgba(255, 255, 255, 0.4) 73%,
-                rgba(255, 255, 255, 0.15) 74%,
-                transparent 76%, 
-                transparent 100%
-              )
+              radial-gradient(ellipse 90% 55% at 5% 55%, rgba(0, 0, 0, 0.65) 0%, transparent 45%),
+              radial-gradient(ellipse 70% 60% at 95% 35%, rgba(0, 0, 0, 0.55) 0%, transparent 40%)
             `,
-            filter: 'url(#silk-wave)',
-            animation: 'silkFlow4 24s ease-in-out infinite',
-            willChange: 'transform',
-          }}
-        />
-
-        {/* 影 - 曲線 */}
-        <div 
-          className="absolute"
-          style={{
-            width: '150%',
-            height: '150%',
-            top: '-25%',
-            left: '-25%',
-            background: `
-              radial-gradient(ellipse 60% 45% at 8% 45%, rgba(0, 0, 0, 0.75) 0%, transparent 55%),
-              radial-gradient(ellipse 45% 55% at 92% 55%, rgba(0, 0, 0, 0.65) 0%, transparent 50%)
-            `,
-            filter: 'url(#silk-wave)',
-            animation: 'silkShadow 26s ease-in-out infinite',
-            willChange: 'transform',
+            pointerEvents: 'none',
           }}
         />
       </div>
@@ -165,34 +110,25 @@ export const SpaceBackground = () => {
       <div 
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 50%, transparent 20%, rgba(0, 0, 0, 0.6) 100%)',
+          background: 'radial-gradient(ellipse 75% 55% at 50% 50%, transparent 10%, rgba(0, 0, 0, 0.65) 100%)',
           zIndex: -8,
         }}
       />
 
       <style>{`
-        @keyframes silkFlow1 {
-          0%, 100% { transform: translate(0%, 0%) rotate(0deg); }
-          50% { transform: translate(4%, 3%) rotate(1deg); }
+        @keyframes silkWave1 {
+          0%, 100% { transform: translateZ(0) translate(0%, 0%) rotate(-1deg); }
+          50% { transform: translateZ(0) translate(5%, 2%) rotate(1deg); }
         }
-        @keyframes silkFlow2 {
-          0%, 100% { transform: translate(0%, 0%) rotate(0deg); }
-          50% { transform: translate(-3%, 4%) rotate(-0.5deg); }
+        @keyframes silkWave2 {
+          0%, 100% { transform: translateZ(0) translate(0%, 0%) rotate(1deg); }
+          50% { transform: translateZ(0) translate(-4%, 3%) rotate(-1deg); }
         }
-        @keyframes silkFlow3 {
-          0%, 100% { transform: translate(0%, 0%); }
-          50% { transform: translate(5%, -2%); }
-        }
-        @keyframes silkFlow4 {
-          0%, 100% { transform: translate(0%, 0%); }
-          50% { transform: translate(-4%, 3%); }
-        }
-        @keyframes silkShadow {
-          0%, 100% { transform: translate(0%, 0%); }
-          50% { transform: translate(-2%, 2%); }
+        @keyframes silkLine1 {
+          0%, 100% { transform: translateZ(0) translate(0%, 0%); opacity: 0.7; }
+          50% { transform: translateZ(0) translate(5%, 3%); opacity: 1; }
         }
       `}</style>
     </>
   );
 };
-

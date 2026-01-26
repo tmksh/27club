@@ -285,10 +285,10 @@ export const Frame = () => {
       </div>
 
       {/* タブレット・デスクトップ用レイアウト - 横並び */}
-      <div className="hidden md:flex mt-16 flex-row gap-8 max-w-[1440px] mx-auto relative z-10 justify-center" data-scroll="fade-up">
+      <div className="hidden md:flex mt-16 flex-row gap-8 max-w-[1440px] mx-auto relative z-10 justify-center items-stretch" data-scroll="fade-up">
         {/* カレンダー */}
         <div className="w-[525px] flex-shrink-0">
-          <div className="w-full bg-[#1a1a1a] rounded-lg shadow-xl overflow-hidden">
+          <div className="w-full h-full bg-[#1a1a1a] rounded-lg shadow-xl overflow-hidden">
             {/* ヘッダー部分 */}
             <div className="relative w-full pt-8 pb-4 px-8">
               <div className="flex items-baseline justify-between mb-8">
@@ -347,7 +347,7 @@ export const Frame = () => {
 
         {/* イベントリスト */}
         <div className="w-[600px] flex-shrink-0">
-          <div className="w-full h-full min-h-[629px] relative bg-[#1a2a2880] rounded-lg shadow-xl border border-[#00d6bd20] p-6 backdrop-blur-sm">
+          <div className="w-full h-full relative bg-[#1a2a2880] rounded-lg shadow-xl border border-[#00d6bd20] p-6 backdrop-blur-sm flex flex-col">
             {/* セクション見出し */}
             <div className="mb-4 pb-3 border-b border-[#00d6bd30]">
               <div className="[font-family:'Playfair_Display',Helvetica] text-white text-[24px] font-normal tracking-[2px] mb-1">
@@ -359,7 +359,7 @@ export const Frame = () => {
             </div>
             
             {/* イベントカード一覧 */}
-            <div className="flex w-full h-[calc(100%-80px)] relative flex-col items-start gap-[18px] overflow-y-auto overflow-x-hidden pr-2" style={{ maxHeight: '500px' }}>
+            <div className="flex w-full flex-1 relative flex-col items-start gap-[18px] overflow-y-auto overflow-x-hidden pr-2">
               {loading ? (
                 <div className="text-white text-center w-full py-10">{t('events.loading')}</div>
               ) : events.length > 0 ? (
