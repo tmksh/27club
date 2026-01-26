@@ -50,14 +50,9 @@ export const DivWrapper = () => {
           })}
         </div>
         
-        {/* カタカナテキスト（デスクトップのみ） */}
-        <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-right tracking-[0] leading-[normal]">
-          {t('access.backgroundText')}
-        </div>
-
         {/* セクションタイトル */}
-        <div className="pt-4 md:pt-[116px] flex flex-col items-center gap-2 md:gap-3 relative z-10" data-scroll="fade-up">
-          <div className="[text-shadow:0px_4px_15px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] text-white text-3xl md:text-5xl lg:text-[64px] text-center font-normal tracking-[0] leading-[normal]">
+        <div className="pt-4 md:pt-[116px] flex flex-col items-center gap-4 md:gap-6 relative z-10" data-scroll="fade-up">
+          <div className="[font-family:'Playfair_Display',Helvetica] text-white text-4xl md:text-6xl lg:text-[80px] text-center font-normal tracking-[0] leading-[normal] uppercase">
             {t('access.title')}
           </div>
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">

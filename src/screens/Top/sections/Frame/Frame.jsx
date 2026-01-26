@@ -178,15 +178,10 @@ export const Frame = () => {
         })}
       </div>
       
-      {/* カタカナテキスト（デスクトップのみ） */}
-      <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-left z-10">
-        {language === 'ja' ? 'イベントスケジュール' : 'Event Schedule'}
-      </div>
-
       {/* セクションタイトル - SP版 */}
-      <div className="md:hidden pt-4 flex flex-col items-center gap-2 relative z-10" data-scroll="fade-up">
-        <div className="[text-shadow:0px_4.28px_10.69px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-2xl tracking-[3.2px] leading-[1.2]">
-          Event Schedule
+      <div className="md:hidden pt-4 flex flex-col items-center gap-4 relative z-10" data-scroll="fade-up">
+        <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl tracking-[3.2px] leading-[1.2] uppercase">
+          EVENT SCHEDULE
         </div>
         <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs tracking-[0] leading-[20px] text-center opacity-90 max-w-[800px] px-2">
           {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}
@@ -194,9 +189,9 @@ export const Frame = () => {
       </div>
 
       {/* セクションタイトル - PC版 */}
-      <div className="hidden md:flex pt-[116px] flex-col items-center gap-3 relative z-10" data-scroll="fade-up">
-        <div className="[text-shadow:0px_4.28px_10.69px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffad4] text-[64px] tracking-[6.40px] leading-[1.2]">
-          Event Schedule
+      <div className="hidden md:flex pt-[116px] flex-col items-center gap-6 relative z-10" data-scroll="fade-up">
+        <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-[80px] tracking-[6.40px] leading-[1.2] uppercase">
+          EVENT SCHEDULE
         </div>
         <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
           {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}

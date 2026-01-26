@@ -217,14 +217,9 @@ export const FrameWrapper = () => {
       <div className="relative w-full flex flex-col gap-4 md:gap-[40px] z-10">
         <div className="w-full h-[520px] md:h-[750px] relative">
           
-          {/* カタカナテキスト（デスクトップのみ） */}
-          <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl text-left tracking-[0] leading-[normal] pointer-events-none z-0">
-            {language === 'ja' ? 'パフォーマンス' : 'Performance'}
-          </div>
-          
           {/* セクションタイトル */}
-          <div className="pt-4 lg:pt-[116px] flex flex-col items-center gap-2 md:gap-3 relative z-10 px-4" data-scroll="fade-up">
-            <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-2xl md:text-4xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
+          <div className="pt-4 lg:pt-[116px] flex flex-col items-center gap-4 md:gap-6 relative z-10 px-4" data-scroll="fade-up">
+            <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-5xl lg:text-[80px] text-center tracking-[0] leading-[normal] uppercase">
               EVENTS / PERFORMERS
             </div>
             <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px]">
@@ -341,7 +336,7 @@ export const FrameWrapper = () => {
 
           {/* 現在のキャスト情報 */}
           {castData.length > 0 && castData[currentIndex] && (
-            <div className="flex flex-col items-center mt-12 md:mt-16 px-4 text-center">
+            <div className="flex flex-col items-center mt-8 md:mt-12 px-4 text-center">
               <h3 className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-xl md:text-2xl tracking-wide">
                 {castData[currentIndex].name}
               </h3>
@@ -353,7 +348,7 @@ export const FrameWrapper = () => {
 
         </div>
 
-        <div className="flex justify-center w-full mt-10 md:mt-8 pb-8 px-4 md:px-0" data-scroll="fade-up">
+        <div className="flex justify-center w-full mt-16 md:mt-20 pb-8 px-4 md:px-0" data-scroll="fade-up">
           <Group153 
             className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"

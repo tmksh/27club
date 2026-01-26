@@ -80,15 +80,10 @@ export const Div = () => {
         ))}
       </div>
 
-      {/* カタカナテキスト（デスクトップのみ） */}
-      <div className="hidden lg:block absolute top-0 left-0 w-full [font-family:'Princess_Sofia',Helvetica] font-normal text-[#ffffff33] text-9xl tracking-[0] leading-[normal] text-left">
-        {language === 'ja' ? 'この空間について' : 'About This Space'}
-      </div>
-
       {/* セクションタイトル */}
-      <div className="flex pt-4 md:pt-[116px] flex-col items-center gap-2 z-10 relative px-4 md:px-0" data-scroll="fade-up">
-        <div className="[text-shadow:0px_4px_10px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-2xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-[normal]">
-          About This Venue
+      <div className="flex pt-4 md:pt-[116px] flex-col items-center gap-4 md:gap-6 z-10 relative px-4 md:px-0" data-scroll="fade-up">
+        <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-6xl lg:text-[80px] text-center tracking-[0] leading-[normal] uppercase">
+          ABOUT THIS VENUE
         </div>
         <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-[16px] tracking-[0] leading-[20px] md:leading-[24px] text-center opacity-90 max-w-[800px]">
           {language === 'ja' 
