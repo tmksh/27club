@@ -1,92 +1,126 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useRef } from "react";
 
 export const TalentPc = ({ 
   className, 
   s = "/img/s-16646146-0-2.png", 
   to,
-  name = "山田 太郎",
-  nameEn = "yamada tarou",
-  description = "ダンサー・シンガー・エンターテイナーとして活躍中。\n柔軟な体捌きと華麗なパフォーマンスが魅力。\n毎週金曜日・土曜日のステージでお会いしましょう！",
-  instagramUrl = "https://www.instagram.com/the27clubtokyo/"
+  name = "MARIA",
+  nameEn = "maria",
+  birthday = "",
+  description = "",
+  instagramUrl = ""
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // マウス位置から中心までの距離を計算（-1 ~ 1）
+    const percentX = (e.clientX - centerX) / (rect.width / 2);
+    const percentY = (e.clientY - centerY) / (rect.height / 2);
+    
+    // 傾きの最大角度（控えめに設定）
+    const maxRotate = 10;
+    
+    setRotateY(percentX * maxRotate);
+    setRotateX(-percentY * maxRotate);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotateX(0);
+    setRotateY(0);
+  };
+
   return (
     <div
-      className={`relative w-full aspect-[2/3] [perspective:1000px] group ${className}`}
+      ref={cardRef}
+      className={`relative w-full aspect-[3/4] cursor-pointer [perspective:800px] ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
+      {/* カード本体 - マウス追従3D傾きエフェクト */}
       <div
-        className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] cursor-pointer group-hover:[transform:rotateY(180deg)]"
+        className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl [transform-style:preserve-3d]"
+        style={{
+          transform: isHovered 
+            ? `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)` 
+            : 'rotateX(0deg) rotateY(0deg) scale(1)',
+          transition: isHovered ? 'transform 0.15s ease-out' : 'transform 0.4s ease-out',
+          boxShadow: isHovered 
+            ? `${-rotateY * 1.5}px ${rotateX * 1.5}px 30px rgba(0,0,0,0.4)` 
+            : '3px 3px 10px rgba(0,0,0,0.2)',
+        }}
       >
-        {/* 表面 */}
-        <div className="absolute inset-0 [backface-visibility:hidden] rounded-xl md:rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)] overflow-hidden">
-          {/* メイン画像 */}
-          <div className="absolute top-[2%] left-[2%] w-[96%] h-[72%]">
-            <img
-              className="w-full h-full object-cover object-top rounded-lg"
-              alt={name}
-              src={s}
-              loading="lazy"
-            />
-          </div>
+        {/* 写真 - 全面表示 */}
+        <img
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          alt={name}
+          src={s}
+          loading="lazy"
+        />
 
-          {/* Instagramアイコン */}
-          <a 
-            href={instagramUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="absolute bottom-[8%] right-[5%] w-[15%] max-w-[50px] aspect-square hover:opacity-80 transition-opacity z-10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              className="w-full h-full object-contain"
-              alt="Instagram"
-              src="/img/insta.svg"
-            />
-          </a>
-
-          {/* 名前 */}
-          <div className="absolute bottom-[6%] left-0 right-0 flex flex-col items-center gap-0.5">
-            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-lg lg:text-[21.3px] tracking-[0] leading-normal">
+        {/* ホバー時のオーバーレイ - 写真の上に重ねる */}
+        <div 
+          className="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-400"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            pointerEvents: isHovered ? 'auto' : 'none',
+          }}
+        >
+          {/* 白いぼかしグラデーションオーバーレイ - 控えめ */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to top, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.6) 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
+            }}
+          />
+          
+          {/* コンテンツ - 中央寄りに配置 */}
+          <div className="relative z-10 flex flex-col items-center justify-center h-full pt-[30%]">
+            {/* 名前 - 白テキスト＋影 */}
+            <h3 
+              className="[font-family:'Playfair_Display',Helvetica] font-medium text-white text-2xl md:text-3xl lg:text-4xl tracking-[0.12em] uppercase mb-4 md:mb-6"
+              style={{
+                textShadow: '0 2px 8px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4)',
+              }}
+            >
               {name}
-            </div>
-            <div className="[font-family:'Ubuntu',Helvetica] font-normal text-white text-xs md:text-sm lg:text-base tracking-[0] leading-normal whitespace-nowrap">
-              {nameEn}
-            </div>
-          </div>
-        </div>
+            </h3>
 
-        {/* 裏面 */}
-        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl md:rounded-[13.33px] bg-[linear-gradient(180deg,rgba(5,195,173,1)_0%,rgba(34,48,47,1)_100%)] flex flex-col items-center justify-center p-4 md:p-6 overflow-hidden">
-          <div className="text-center text-white space-y-2 md:space-y-4 w-full">
-            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-base md:text-xl lg:text-[24px] mb-2 md:mb-6">
-              {name}
-            </div>
-            
-            <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-xs md:text-sm lg:text-[16px] leading-relaxed md:leading-[28px] whitespace-pre-line line-clamp-4 md:line-clamp-none">
-              {description}
-            </div>
+            {/* 誕生日 */}
+            {birthday && (
+              <div className="text-center mb-5 md:mb-8">
+                <div 
+                  className="[font-family:'Playfair_Display',Helvetica] text-white text-sm md:text-base tracking-[0.2em] uppercase font-medium mb-1"
+                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}
+                >
+                  Birthday
+                </div>
+                <div 
+                  className="[font-family:'Playfair_Display',Helvetica] text-white text-xl md:text-2xl tracking-[0.05em] font-normal"
+                  style={{ textShadow: '0 2px 6px rgba(0,0,0,0.5)' }}
+                >
+                  {birthday}
+                </div>
+              </div>
+            )}
 
-            <div className="mt-2 md:mt-6 pt-2 md:pt-4 border-t border-white/30">
-              <a 
-                href={instagramUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 md:gap-2 text-xs md:text-[14px] hover:opacity-80 transition-opacity"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <img
-                  className="w-5 h-5 md:w-[30px] md:h-[30px] object-contain"
-                  alt="Instagram"
-                  src="/img/insta.svg"
-                />
-                <span className="[font-family:'Ubuntu',Helvetica]">Follow on Instagram</span>
-              </a>
-            </div>
+            {/* More Detailボタン */}
+            <button 
+              className="px-6 md:px-8 py-2.5 md:py-3 bg-white/80 hover:bg-white border border-gray-300 rounded-full text-gray-700 text-xs md:text-sm tracking-[0.12em] uppercase [font-family:'Playfair_Display',Helvetica] transition-all duration-300 shadow-sm hover:shadow-md"
+            >
+              More Detail
+            </button>
           </div>
         </div>
       </div>
@@ -99,6 +133,7 @@ TalentPc.propTypes = {
   to: PropTypes.string,
   name: PropTypes.string,
   nameEn: PropTypes.string,
+  birthday: PropTypes.string,
   description: PropTypes.string,
   instagramUrl: PropTypes.string,
 };

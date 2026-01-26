@@ -19,8 +19,9 @@ export const Frame18 = () => {
             s: cast.profile_image_url || "/img/s-16646146-0-2.png",
             name: cast.name || "Cast",
             nameEn: cast.name_en || cast.name || "Cast",
+            birthday: cast.birthday || "",
             description: cast.description || "情報準備中",
-            instagramUrl: cast.instagram_url || "https://www.instagram.com/the27clubtokyo/",
+            instagramUrl: cast.instagram_url || "",
           })));
         }
       } catch (error) {
@@ -79,10 +80,11 @@ export const Frame18 = () => {
             <div key={card.id} className="w-full">
               <TalentPc
                 s={card.s}
-                  name={card.name}
-                  nameEn={card.nameEn}
-                  description={card.description}
-                  instagramUrl={card.instagramUrl}
+                name={card.name}
+                nameEn={card.nameEn}
+                birthday={card.birthday}
+                description={card.description}
+                instagramUrl={card.instagramUrl}
               />
             </div>
           ))}

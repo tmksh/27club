@@ -32,6 +32,33 @@
   }
 }
 
+/* 座席選択時のパルスアニメーション */
+@keyframes seatPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 30px currentColor, 0 0 60px currentColor;
+  }
+}
+
+/* 座席詳細パネルのスライドインアニメーション */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 座席ボタンホバー時のグロウ効果 */
+.seat-button:hover {
+  filter: brightness(1.2);
+}
+
 
 
 

@@ -10,7 +10,7 @@ export const Frame17 = () => {
         <div className="flex flex-col items-start gap-4 md:gap-6 mb-8 md:mb-12">
           <h1 
             data-scroll="fade-right"
-            className="[text-shadow:0px_5.98px_14.95px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] md:[-webkit-text-stroke:1.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-5xl md:text-7xl lg:text-[109.8px] tracking-[0] leading-tight"
+            className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-5xl md:text-7xl lg:text-[109.8px] tracking-[0] leading-tight uppercase"
           >
             Cast
           </h1>

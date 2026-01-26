@@ -92,7 +92,7 @@ export const PrivacyPolicy = () => {
           <div className="mb-8 md:mb-12">
             <h1 
               data-scroll="fade-right"
-              className="[text-shadow:0px_5.98px_14.95px_#faffb5cc] [-webkit-text-stroke:1px_#d4af37c2] md:[-webkit-text-stroke:1.5px_#d4af37c2] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-4xl md:text-6xl lg:text-[80px] tracking-[0] leading-tight mb-4"
+              className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-4xl md:text-6xl lg:text-[80px] tracking-[0] leading-tight mb-4 uppercase"
             >
               Privacy Policy
             </h1>
