@@ -27,7 +27,7 @@ export const Footer5 = ({
   const { language, t } = useLanguage();
   
   return (
-    <div className={`min-h-[400px] md:min-h-[584px] w-full flex mt-16 md:mt-24 ${className}`}>
+    <div className={`w-full mt-16 md:mt-24 ${className}`}>
       <ConcreteComponentNode
         className={concreteComponentNodeFooterClassName}
         divClassName="![white-space:unset]"

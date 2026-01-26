@@ -31,19 +31,6 @@ export const Frame = () => {
     loadEvents();
   }, []);
 
-  // チップ装飾用のデータ
-  const chips = [
-    { img: '/img/3-1.png', w: 244, h: 142 },
-    { img: '/img/1.png', w: 303, h: 73 },
-    { img: '/img/1-2.png', w: 279, h: 95 },
-    { img: '/img/3-2.png', w: 220, h: 90 },
-    { img: '/img/5-1.png', w: 99, h: 171 },
-    { img: '/img/4-1.png', w: 118, h: 145 },
-    { img: '/img/4-2.png', w: 82, h: 142 },
-    { img: '/img/2.png', w: 220, h: 114 },
-    { img: '/img/2-2.png', w: 105, h: 106 },
-  ];
-
   // 現在の月のカレンダー生成
   const generateCalendarDates = () => {
     const dates = [];
@@ -150,34 +137,6 @@ export const Frame = () => {
 
   return (
     <div className="relative self-stretch w-full min-h-0 lg:min-h-[994px] overflow-hidden px-4 md:px-8 pb-4 md:pb-0">
-      {/* チップの模様（デスクトップのみ表示） */}
-      <div className="hidden lg:block">
-        {Array.from({ length: 20 }, (_, i) => {
-          const chip = chips[i % chips.length];
-          const left = (i * 72) % (1440 - chip.w * 0.6);
-          const top = (Math.floor(i / 8) * 200) + (i % 5) * 80;
-          
-          return (
-            <div
-              key={`chip-pattern-${i}`}
-              className="absolute pointer-events-none"
-              style={{
-                left: `${left}px`,
-                top: `${top}px`,
-                width: `${chip.w * 0.6}px`,
-                height: `${chip.h * 0.6}px`,
-                backgroundImage: `url(${chip.img})`,
-                backgroundSize: 'cover',
-                backgroundPosition: '50% 50%',
-                opacity: 0.08,
-                transform: `rotate(${(i % 3) * 15 - 15}deg)`,
-                zIndex: 0,
-              }}
-            />
-          );
-        })}
-      </div>
-      
       {/* セクションタイトル - SP版 */}
       <div className="md:hidden pt-4 flex flex-col items-center gap-4 relative z-10" data-scroll="fade-up">
         <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl tracking-[3.2px] leading-[1.2] uppercase">

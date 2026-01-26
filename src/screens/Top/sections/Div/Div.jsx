@@ -15,34 +15,6 @@ export const Div = () => {
     '/img/_UZR4684_Original.jpg',
   ];
 
-  // チップ装飾用のデータ
-  const chips = [
-    { img: '/img/3-1.png', w: 244, h: 142 },
-    { img: '/img/1.png', w: 303, h: 73 },
-    { img: '/img/1-2.png', w: 279, h: 95 },
-    { img: '/img/3-2.png', w: 220, h: 90 },
-    { img: '/img/5-1.png', w: 99, h: 171 },
-    { img: '/img/4-1.png', w: 118, h: 145 },
-    { img: '/img/4-2.png', w: 82, h: 142 },
-    { img: '/img/2.png', w: 220, h: 114 },
-    { img: '/img/2-2.png', w: 105, h: 106 },
-  ];
-
-  // チップの位置を固定（useMemoで一度だけ計算）
-  const chipPositions = React.useMemo(() => {
-    return Array.from({ length: 25 }, (_, i) => {
-      const chip = chips[i % chips.length];
-      const baseLeft = 0;
-      const fixedOffset = ((i * 137) % 500) + (i % 3) * 50;
-      return {
-        left: baseLeft + fixedOffset,
-        top: (Math.floor(i / 8) * 200) + (i % 6) * 100,
-        chip,
-        rotation: (i % 3) * 15 - 15,
-      };
-    });
-  }, [chips]);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => {
@@ -58,28 +30,6 @@ export const Div = () => {
 
   return (
     <div className="relative self-stretch w-full min-h-0 md:min-h-[1000px]">
-      {/* チップの模様（デスクトップのみ表示） */}
-      <div className="hidden lg:block">
-        {chipPositions.map((pos, i) => (
-          <div
-            key={`chip-pattern-${i}`}
-            className="absolute pointer-events-none"
-            style={{
-              left: `${pos.left}px`,
-              top: `${pos.top}px`,
-              width: `${pos.chip.w * 0.6}px`,
-              height: `${pos.chip.h * 0.6}px`,
-              backgroundImage: `url(${pos.chip.img})`,
-              backgroundSize: 'cover',
-              backgroundPosition: '50% 50%',
-              opacity: 0.08,
-              transform: `rotate(${pos.rotation}deg)`,
-              zIndex: 0,
-            }}
-          />
-        ))}
-      </div>
-
       {/* セクションタイトル */}
       <div className="flex pt-4 md:pt-[116px] flex-col items-center gap-4 md:gap-6 z-10 relative px-4 md:px-0" data-scroll="fade-up">
         <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-6xl lg:text-[80px] text-center tracking-[0] leading-[normal] uppercase">
