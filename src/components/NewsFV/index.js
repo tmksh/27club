@@ -1,0 +1,2 @@
+export { NewsFV } from "./NewsFV";
+
