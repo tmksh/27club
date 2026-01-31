@@ -82,19 +82,36 @@ export const NewsFV = () => {
   // 自動スライド用のstate
   const [isPaused, setIsPaused] = useState(false);
   const scrollPositionRef = useRef(0);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef(null);
 
-  // 自動スライド
+  // Intersection Observer でビューポート内にいる時だけアニメーション
   useEffect(() => {
-    if (!sliderRef.current || events.length === 0) return;
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  // 自動スライド - setInterval で負荷軽減（60fps → 30fps相当）
+  useEffect(() => {
+    if (!sliderRef.current || events.length === 0 || !isInView) return;
     
     const slider = sliderRef.current;
     const cardWidth = 320;
     const totalWidth = cardWidth * events.length;
-    let animationId;
     
-    const animate = () => {
+    const intervalId = setInterval(() => {
       if (!isPaused && slider) {
-        scrollPositionRef.current += 0.5;
+        scrollPositionRef.current += 1; // 間隔が長いので移動量を増やす
         
         // 最後まで行ったらリセット
         if (scrollPositionRef.current >= totalWidth - slider.clientWidth + 50) {
@@ -103,17 +120,10 @@ export const NewsFV = () => {
         
         slider.scrollLeft = scrollPositionRef.current;
       }
-      animationId = requestAnimationFrame(animate);
-    };
-    
-    animationId = requestAnimationFrame(animate);
+    }, 33); // 約30fps
 
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [events, isPaused]);
+    return () => clearInterval(intervalId);
+  }, [events, isPaused, isInView]);
 
   // マウス/タッチでのドラッグスクロール
   const handleMouseDown = (e) => {
@@ -171,6 +181,7 @@ export const NewsFV = () => {
 
   return (
     <div 
+      ref={containerRef}
       className="relative w-full h-screen min-h-[700px] max-h-[900px] overflow-hidden bg-transparent"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
@@ -318,24 +329,6 @@ export const NewsFV = () => {
           Welcome to Tonight's SHOWTIME
         </p>
         
-        {/* メインロゴ画像 - 3D 27ロゴ */}
-        <div 
-          className="relative mb-6"
-          style={{
-            animation: 'fadeInUp 1s ease-out 0.5s both',
-          }}
-        >
-          <img 
-            src="/img/27-3d-logo.png"
-            alt="THE 27 CLUB"
-            className="w-[320px] md:w-[450px] lg:w-[550px] h-auto object-contain"
-            style={{
-              filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.6))',
-              animation: 'floatLogo 4s ease-in-out infinite',
-            }}
-          />
-        </div>
-        
         {/* キャッチコピー */}
         <p 
           className="[font-family:'Cormorant_Garamond',serif] text-white/30 text-[10px] md:text-xs tracking-[0.3em] uppercase"
@@ -436,18 +429,30 @@ export const NewsFV = () => {
                 }}
               >
                 {/* カード */}
-                <div className="relative h-[140px] md:h-[160px] rounded-lg overflow-hidden mb-3">
-                  {/* 背景画像 */}
+                <div className="relative h-[140px] md:h-[160px] rounded-lg overflow-hidden mb-3 bg-[#1a1a2e]">
+                  {/* 背景画像 - imgで確実に表示 */}
+                  {event.image_url ? (
+                    <img
+                      src={event.image_url}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        const fallback = e.target.nextElementSibling;
+                        if (fallback) fallback.classList.remove('hidden');
+                      }}
+                    />
+                  ) : null}
+                  {/* 画像なし/読み込み失敗時のフォールバック */}
                   <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    style={{
-                      backgroundImage: event.image_url 
-                        ? `url(${event.image_url})` 
-                        : 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
-                    }}
+                    className={`absolute inset-0 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] ${event.image_url ? 'hidden' : ''}`}
+                    aria-hidden
                   />
                   {/* オーバーレイ */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
                   
                   {/* カテゴリータグ */}
                   <div className="absolute bottom-3 left-3">

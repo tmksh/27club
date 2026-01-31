@@ -4,20 +4,13 @@ import "./GroupWrapper.css";
 
 export const GroupWrapper = () => {
   const { language, t } = useLanguage();
-  const [selectedSeat, setSelectedSeat] = useState(null);
+  const [selectedSeat, setSelectedSeat] = useState("vipSeat");
   const [hoveredPinkSeat, setHoveredPinkSeat] = useState(false);
   const [hoveredBlueSeat, setHoveredBlueSeat] = useState(false);
   const [hoveredVipSeat, setHoveredVipSeat] = useState(false);
   const detailRef = useRef(null);
 
-  // 座席選択時に詳細パネルへスクロール
-  useEffect(() => {
-    if (selectedSeat && detailRef.current) {
-      setTimeout(() => {
-        detailRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
-    }
-  }, [selectedSeat]);
+  // 自動スクロールは削除（ユーザーが手動でスクロールする）
 
   // 座席と画像の紐づけ
   const seatImages = {
@@ -195,42 +188,42 @@ export const GroupWrapper = () => {
 
         {/* フロアマップセクション - 左：座席リスト、右：マップ */}
         <div className="mt-4 md:mt-16 flex flex-col lg:flex-row lg:items-stretch gap-0" data-scroll="scale-up">
-          {/* 左側：座席番号一覧 */}
-          <div className="w-full lg:w-[30%] bg-[#2d3748] p-4 md:p-6 flex flex-col">
-            <h3 className="text-white text-xl md:text-2xl font-bold [font-family:'Playfair_Display',Helvetica] mb-4 md:mb-6">
-              Table No.
+          {/* 左側：座席番号一覧 - サイトデザインに統一 */}
+          <div className="w-full lg:w-[30%] bg-black/40 backdrop-blur-sm border-r border-white/10 p-6 md:p-8 flex flex-col">
+            <h3 className="text-white text-2xl md:text-3xl font-semibold [font-family:'Playfair_Display',Helvetica] mb-6 md:mb-8 tracking-wide">
+              Select Table
             </h3>
 
-            <div className="space-y-4 md:space-y-5">
+            <div className="space-y-6 md:space-y-8">
               {seatGroups.map((group, groupIdx) => (
                 <div key={groupIdx}>
                   <h4
-                    className="text-base md:text-lg font-bold [font-family:'Playfair_Display',Helvetica] mb-2"
+                    className="text-xl md:text-2xl font-semibold [font-family:'Playfair_Display',Helvetica] mb-3 tracking-wide"
                     style={{ color: group.color }}
                   >
                     {group.category}
                   </h4>
                   {group.groups.map((subGroup, idx) => (
-                    <div key={idx} className="mb-3">
-                      <p className="text-white/60 text-[10px] md:text-xs mb-2">
+                    <div key={idx} className="mb-4">
+                      <p className="text-white/50 text-sm md:text-base mb-3 [font-family:'Noto_Serif_JP',Helvetica]">
                         {subGroup.label}
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-3">
                         {subGroup.seats.map((seatId) => (
                           <button
                             key={seatId}
                             onClick={() => handleSeatSelect(seatId)}
                             className={`
-                              px-3 md:px-4 py-1.5 md:py-2 border-2 transition-all duration-300
-                              text-xs md:text-sm font-medium [font-family:'Inter',Helvetica]
+                              px-5 md:px-6 py-2.5 md:py-3 rounded-md transition-all duration-300
+                              text-base md:text-lg font-semibold [font-family:'Inter',Helvetica] tracking-wide
                               ${selectedSeat === seatId
-                                ? "text-black"
-                                : "text-white hover:bg-white/10"
+                                ? "text-black shadow-lg"
+                                : "text-white border border-white/20 hover:border-white/40 hover:bg-white/5"
                               }
                             `}
                             style={{
-                              borderColor: group.color,
                               backgroundColor: selectedSeat === seatId ? group.color : "transparent",
+                              boxShadow: selectedSeat === seatId ? `0 0 20px ${group.color}40` : "none",
                             }}
                           >
                             {seatDisplayNames[seatId]}
@@ -476,17 +469,23 @@ export const GroupWrapper = () => {
                       e.target.src = "/img/vip-seat.jpg";
                     }}
                   />
-                  {/* オーバーレイテキスト */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6 md:p-8">
-                    <div>
+                  {/* オーバーレイテキスト - 中央下部に配置 */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end justify-center pb-8 md:pb-12">
+                    <div className="text-center">
                       <h3
-                        className="text-2xl md:text-4xl lg:text-5xl font-bold [font-family:'Playfair_Display',Helvetica] mb-2"
-                        style={{ color: selectedSeatData.color }}
+                        className="text-3xl md:text-4xl lg:text-5xl font-bold [font-family:'Playfair_Display',Helvetica] mb-2"
+                        style={{ 
+                          color: selectedSeatData.color,
+                          textShadow: `0 2px 10px rgba(0,0,0,0.9), 0 0 40px ${selectedSeatData.color}50`
+                        }}
                       >
                         {selectedSeatData.name}
                       </h3>
-                      <p className="text-white text-sm md:text-lg">
-                        (FOR {selectedSeatData.capacity} PEOPLE)
+                      <p 
+                        className="text-white/90 text-base md:text-lg font-medium tracking-wide"
+                        style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}
+                      >
+                        FOR {selectedSeatData.capacity} PEOPLE
                       </p>
                     </div>
                   </div>

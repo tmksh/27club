@@ -113,99 +113,88 @@ export const Frame628 = ({
           </div>
         </div>
 
-        {/* PC版レイアウト */}
-        <div className="hidden md:block h-[195px]">
-          <div className="inline-flex items-center gap-[15px] absolute top-[25px] left-[9px]">
-            <div className="relative w-[113.41px] h-[148.7px]">
-              <div className="w-[113px] h-[149px]">
-                <div className="relative h-[100.00%]">
-                  <img
-                    className="absolute w-full h-full top-0 left-0 object-cover"
-                    alt="Rectangle"
-                    src={eventData?.image_url || rectangle}
-                  />
-                </div>
-              </div>
-            </div>
+        {/* PC版レイアウト - モダンなフレックスデザイン */}
+        <div className="hidden md:flex p-5 gap-5 h-[195px]">
+          {/* サムネイル画像 */}
+          <div className="w-[120px] h-[155px] flex-shrink-0 rounded-md overflow-hidden">
+            <img
+              className="w-full h-full object-cover"
+              alt="Event"
+              src={eventData?.image_url || rectangle}
+            />
           </div>
 
-          <div className="flex flex-col w-[393px] items-start gap-5 absolute top-[21px] left-[137px]">
-            <img
-              className="relative self-stretch w-full h-[1.57px] mt-[-1.57px]"
-              alt="Line"
-              src="/img/line-14.svg"
-            />
+          {/* コンテンツエリア */}
+          <div className="flex-1 flex flex-col justify-between min-w-0">
+            {/* 上部: タイトル */}
+            <div>
+              <div className="w-full h-[1px] bg-gradient-to-r from-white/40 to-transparent mb-3" />
+              <h3 className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-2xl leading-tight truncate">
+                {eventData?.title_en || eventData?.title || 'Summer Neon Night'}
+              </h3>
+            </div>
 
-            <div className="relative w-72 h-[117px]">
-              <div className="absolute top-[42px] left-0 w-[284px] [font-family:'Playfair_Display',Helvetica] font-normal text-white text-[12.5px] tracking-[0] leading-[normal]">
-                {eventData ? (
-                  <>
-                    {language === 'ja' ? '日付・時間帯' : 'Date & Time'}：{new Date(eventData.date_time_start).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', { month: 'numeric', day: 'numeric', weekday: 'short' })} {new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}
-                    <br />
-                    {eventData.description && (
-                      <>
-                        {language === 'ja' ? 'タイトル' : 'Title'}：{eventData.description}
-                        <br />
-                      </>
-                    )}
-                    {eventData.catchphrase && (
-                      <>
-                        {language === 'ja' ? 'キャッチコピー' : 'Tagline'}：{eventData.catchphrase}
-                        <br />
-                      </>
-                    )}
-                    {eventData.price && (
-                      <>
-                        {language === 'ja' ? '参加料' : 'Fee'}：¥{eventData.price.toLocaleString()}{eventData.price_note && `／${language === 'ja' ? eventData.price_note : 'Reservation required'}`}
-                      </>
-                    )}
-                  </>
+            {/* 中部: 詳細情報 */}
+            <div className="[font-family:'Noto_Serif_JP',Helvetica] text-white/90 text-[15px] leading-relaxed space-y-1.5">
+              {eventData ? (
+                <>
+                  <div className="flex items-center gap-2">
+                    <span className="text-white/50 w-14 flex-shrink-0">{language === 'ja' ? '日時' : 'Date'}</span>
+                    <span>{new Date(eventData.date_time_start).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', { month: 'numeric', day: 'numeric', weekday: 'short' })} {new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}〜{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</span>
+                  </div>
+                  {eventData.description && (
+                    <div className="flex items-start gap-2">
+                      <span className="text-white/50 w-14 flex-shrink-0">{language === 'ja' ? '内容' : 'Info'}</span>
+                      <span className="line-clamp-2">{eventData.description}</span>
+                    </div>
+                  )}
+                  {eventData.price && (
+                    <div className="flex items-center gap-2">
+                      <span className="text-white/50 w-14 flex-shrink-0">{language === 'ja' ? '料金' : 'Fee'}</span>
+                      <span className="font-medium text-white">¥{eventData.price.toLocaleString()}{eventData.price_note && <span className="text-white/60 ml-1">/ {eventData.price_note}</span>}</span>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <>
+                  <div className="flex items-center gap-2">
+                    <span className="text-white/50 w-14 flex-shrink-0">{language === 'ja' ? '日時' : 'Date'}</span>
+                    <span>8/02（{language === 'ja' ? '土' : 'Sat'}） 19:00〜22:00</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-white/50 w-14 flex-shrink-0">{language === 'ja' ? '内容' : 'Info'}</span>
+                    <span>{language === 'ja' ? '70年代ミュージックで踊る夜' : 'Dance to 70s music'}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-white/50 w-14 flex-shrink-0">{language === 'ja' ? '料金' : 'Fee'}</span>
+                    <span className="font-medium text-white">¥2,500 <span className="text-white/60">/ {language === 'ja' ? '要予約' : 'RSVP'}</span></span>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* 下部: 区切り線とボタン */}
+            <div>
+              <div className="w-full h-[1px] bg-gradient-to-r from-white/40 to-transparent mb-3" />
+              <div className="flex justify-end">
+                {eventData?.reservation_url ? (
+                  <a
+                    href={eventData.reservation_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-2 bg-[#00d6bd] hover:bg-[#00e8cc] rounded text-[#0a1a1a] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#00d6bd40]"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {language === 'ja' ? '予約する' : 'Reserve'}
+                  </a>
                 ) : (
-                  <>
-                    {language === 'ja' ? '日付・時間帯' : 'Date & Time'}：8/02（{language === 'ja' ? '土' : 'Sat'}） 19:00～22:00
-                    <br />
-                    {language === 'ja' ? 'タイトル' : 'Title'}：{language === 'ja' ? 'レトロ・ヴァイナル・レイヴ' : 'Retro Vinyl Rave'}
-                    <br />
-                    {language === 'ja' ? 'キャッチコピー' : 'Tagline'}：{language === 'ja' ? '70年代ミュージックで踊る夜' : 'Dance to 70s music'}
-                    <br />
-                    {language === 'ja' ? '参加料' : 'Fee'}：¥2,500／{language === 'ja' ? '要予約' : 'Reservation required'}
-                  </>
+                  <div className="px-6 py-2 bg-[#00d6bd] hover:bg-[#00e8cc] rounded text-[#0a1a1a] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#00d6bd40] cursor-pointer">
+                    {language === 'ja' ? '予約する' : 'Reserve'}
+                  </div>
                 )}
               </div>
-
-              <div className="absolute top-0 left-1.5 w-[259px] [font-family:'Playfair_Display',Helvetica] font-normal text-[#fffbfb] text-[28.2px] tracking-[0] leading-[normal] whitespace-nowrap">
-                {eventData?.title_en || eventData?.title || 'Summer Neon Night'}
-              </div>
             </div>
-
-            <img
-              className="relative self-stretch w-full h-[1.57px]"
-              alt="Line"
-              src="/img/line-14.svg"
-            />
           </div>
-
-          {eventData?.reservation_url ? (
-            <a
-              href={eventData.reservation_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute top-[148px] left-[436px] w-24 h-[19px] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#00d6bd40]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd] transition-colors duration-200 hover:bg-[#00e8cc]" />
-              <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
-                {language === 'ja' ? '予約はこちら' : 'Reserve'}
-              </div>
-            </a>
-          ) : (
-            <div className="absolute top-[148px] left-[436px] w-24 h-[19px] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#00d6bd40] cursor-pointer">
-              <div className="absolute top-px left-0.5 w-[92px] h-[18px] bg-[#00d6bd]" />
-              <div className="absolute -top-px -left-px w-[93px] h-[18px] flex items-center justify-center [font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-[12.4px] text-center tracking-[0] leading-[normal]">
-                {language === 'ja' ? '予約はこちら' : 'Reserve'}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

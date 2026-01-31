@@ -37,34 +37,26 @@ export const HeroSection = () => {
         }}
       />
       
-      {/* 動くライトビーム */}
+      {/* 動くライトビーム - 1つに削減、アニメーション時間延長 */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
-          className="absolute w-[30%] h-[200%] -top-1/2 opacity-20"
-          style={{
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
-            transform: 'rotate(25deg)',
-            animation: 'beam-sweep 4s ease-in-out infinite',
-          }}
-        />
-        <div 
-          className="absolute w-[20%] h-[200%] -top-1/2 opacity-10"
+          className="absolute w-[30%] h-[200%] -top-1/2 opacity-15"
           style={{
             background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
             transform: 'rotate(25deg)',
-            animation: 'beam-sweep 4s ease-in-out infinite 1.5s',
+            animation: 'beam-sweep 8s ease-in-out infinite',
           }}
         />
       </div>
       
-      {/* ダイヤモンドキラキラ */}
+      {/* ダイヤモンドキラキラ - 10個に削減して負荷軽減 */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 25 }, (_, i) => {
+        {Array.from({ length: 10 }, (_, i) => {
           const size = 2 + (i % 3);
-          const left = (i * 4.2) % 100;
-          const top = (i * 7.3 + 10) % 90;
-          const delay = i * 0.15;
-          const duration = 2 + (i % 4) * 0.5;
+          const left = (i * 10.5) % 100;
+          const top = (i * 9.2 + 10) % 90;
+          const delay = i * 0.3;
+          const duration = 3 + (i % 3) * 0.5;
           
           return (
             <div
@@ -78,12 +70,12 @@ export const HeroSection = () => {
                 animation: `sparkle ${duration}s ease-in-out infinite ${delay}s`,
               }}
             >
-              {/* ダイヤモンド形状 */}
+              {/* ダイヤモンド形状 - box-shadow 軽量化 */}
               <div 
                 className="w-full h-full rotate-45"
                 style={{
                   background: 'linear-gradient(135deg, #fff 0%, #c0c0c0 50%, #fff 100%)',
-                  boxShadow: '0 0 4px #fff, 0 0 8px rgba(255,255,255,0.6), 0 0 12px rgba(200,200,200,0.4)',
+                  boxShadow: '0 0 4px #fff',
                 }}
               />
             </div>

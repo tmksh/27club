@@ -7,7 +7,7 @@ import { Frame } from "./sections/Frame";
 import { Frame650Wrapper } from "./sections/Frame650Wrapper";
 import { FrameWrapper } from "./sections/FrameWrapper";
 import { GroupWrapper } from "./sections/GroupWrapper";
-import { HeroSection } from "./sections/HeroSection";
+// HeroSection削除済み
 import { SectionComponentNode } from "./sections/SectionComponentNode";
 import { NewsFV } from "../../components/NewsFV";
 import { SpaceBackground } from "../../components/SpaceBackground";
@@ -214,9 +214,8 @@ export const Top = () => {
         <NewsFV />
       </div>
 
-      {/* 既存のセクション */}
-      <div className="flex flex-col items-center gap-2 md:gap-[40px] w-full relative z-10">
-        <HeroSection />
+      {/* 既存のセクション - FVからシームレスに繋がる */}
+      <div className="flex flex-col items-center gap-2 md:gap-[40px] w-full relative z-10 -mt-8 md:-mt-16">
         <Frame />
         <GroupWrapper />
         <FrameWrapper />

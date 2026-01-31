@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export const SpaceBackground = () => {
+  // prefers-reduced-motion を検知してアニメーションを制御
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReducedMotion(mediaQuery.matches);
+
+    const handler = (e) => setReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
   return (
     <>
       {/* ベース背景色 - 深い黒 */}
@@ -12,7 +24,7 @@ export const SpaceBackground = () => {
         }}
       />
 
-      {/* シルク波 - GPU最適化版 */}
+      {/* シルク波 - GPU最適化版（アニメーション軽量化） */}
       <div 
         className="fixed inset-0 pointer-events-none overflow-hidden"
         style={{ 
@@ -20,7 +32,7 @@ export const SpaceBackground = () => {
           contain: 'strict',
         }}
       >
-        {/* メインのシルク波 1 */}
+        {/* メインのシルク波 1 - アニメーション時間を長くして負荷軽減 */}
         <div 
           style={{
             position: 'absolute',
@@ -38,37 +50,14 @@ export const SpaceBackground = () => {
               )
             `,
             transform: 'translateZ(0)',
-            willChange: 'transform',
-            animation: 'silkWave1 20s ease-in-out infinite',
+            animation: reducedMotion ? 'none' : 'silkWave1 40s ease-in-out infinite',
             opacity: 0.6,
           }}
         />
 
-        {/* メインのシルク波 2 */}
-        <div 
-          style={{
-            position: 'absolute',
-            width: '180%',
-            height: '180%',
-            top: '-40%',
-            left: '-40%',
-            background: `
-              radial-gradient(ellipse 60% 40% at 75% 45%, 
-                rgba(255, 255, 255, 0.05) 0%,
-                rgba(255, 255, 255, 0.18) 30%,
-                rgba(255, 255, 255, 0.4) 50%,
-                rgba(255, 255, 255, 0.18) 70%,
-                transparent 100%
-              )
-            `,
-            transform: 'translateZ(0)',
-            willChange: 'transform',
-            animation: 'silkWave2 25s ease-in-out infinite',
-            opacity: 0.55,
-          }}
-        />
+        {/* メインのシルク波 2 - 削除して1つに統合（負荷軽減） */}
 
-        {/* 光沢ライン */}
+        {/* 光沢ライン - アニメーション時間を長くして負荷軽減 */}
         <div 
           style={{
             position: 'absolute',
@@ -88,8 +77,7 @@ export const SpaceBackground = () => {
               )
             `,
             transform: 'translateZ(0)',
-            willChange: 'transform',
-            animation: 'silkLine1 18s ease-in-out infinite',
+            animation: reducedMotion ? 'none' : 'silkLine1 36s ease-in-out infinite',
           }}
         />
 
@@ -119,10 +107,6 @@ export const SpaceBackground = () => {
         @keyframes silkWave1 {
           0%, 100% { transform: translateZ(0) translate(0%, 0%) rotate(-1deg); }
           50% { transform: translateZ(0) translate(5%, 2%) rotate(1deg); }
-        }
-        @keyframes silkWave2 {
-          0%, 100% { transform: translateZ(0) translate(0%, 0%) rotate(1deg); }
-          50% { transform: translateZ(0) translate(-4%, 3%) rotate(-1deg); }
         }
         @keyframes silkLine1 {
           0%, 100% { transform: translateZ(0) translate(0%, 0%); opacity: 0.7; }
