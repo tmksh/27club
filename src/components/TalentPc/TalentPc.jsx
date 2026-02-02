@@ -9,7 +9,8 @@ export const TalentPc = ({
   nameEn = "maria",
   birthday = "",
   description = "",
-  instagramUrl = ""
+  instagramUrl = "",
+  imagePositionY = 0  // 画像の縦位置（0-100, 0=上端, 50=中央, 100=下端）
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [rotateX, setRotateX] = useState(0);
@@ -63,10 +64,11 @@ export const TalentPc = ({
       >
         {/* 写真 - 全面表示 */}
         <img
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          className="absolute inset-0 w-full h-full object-cover"
           alt={name}
           src={s}
           loading="lazy"
+          style={{ objectPosition: `center ${imagePositionY}%` }}
         />
 
         {/* ホバー時のオーバーレイ - 写真の上に重ねる */}
@@ -136,4 +138,5 @@ TalentPc.propTypes = {
   birthday: PropTypes.string,
   description: PropTypes.string,
   instagramUrl: PropTypes.string,
+  imagePositionY: PropTypes.number,
 };

@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { eventsAPI } from "../../lib/supabase";
+import { fetchInstagramPosts, isInstagramEnabled } from "../../lib/instagram";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 export const NewsFV = () => {
   const { language, t } = useLanguage();
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [dataSource, setDataSource] = useState('mock'); // 'instagram' or 'mock'
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  // モックデータ
+  // モックデータ（Instagram連携がない場合のフォールバック）
   const mockEvents = [
     {
       id: 1,
@@ -73,10 +75,33 @@ export const NewsFV = () => {
     },
   ];
 
+  // Instagram投稿を取得、失敗時はモックデータにフォールバック
   useEffect(() => {
-    // モックデータを使用（デモ用）
-    setEvents(mockEvents);
-    setLoading(false);
+    const loadPosts = async () => {
+      setLoading(true);
+      
+      // Instagram連携が有効な場合
+      if (isInstagramEnabled()) {
+        try {
+          const instagramPosts = await fetchInstagramPosts(10);
+          if (instagramPosts && instagramPosts.length > 0) {
+            setEvents(instagramPosts);
+            setDataSource('instagram');
+            setLoading(false);
+            return;
+          }
+        } catch (error) {
+          console.error('Instagram取得エラー:', error);
+        }
+      }
+      
+      // フォールバック: モックデータを使用
+      setEvents(mockEvents);
+      setDataSource('mock');
+      setLoading(false);
+    };
+    
+    loadPosts();
   }, []);
 
   // 自動スライド用のstate
@@ -352,27 +377,53 @@ export const NewsFV = () => {
         <div className="w-[1px] h-5 bg-gradient-to-b from-white/25 to-transparent animate-pulse" />
       </div>
 
-      {/* ニュースセクション - 画面下部 */}
+      {/* ニュースセクション - 画面下部（Instagram連携対応） */}
       <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black via-black/90 to-transparent pt-12">
-        {/* NEWS ラベル */}
+        {/* ラベル - Instagram連携時はInstagramアイコン表示 */}
         <div className="flex items-center justify-between px-6 md:px-12 mb-5">
-          <h2 className="[font-family:'Inter',Helvetica] font-bold text-white text-base md:text-lg tracking-[0.15em]">
-            NEWS
-          </h2>
-          <Link 
-            to="/events"
-            className="flex items-center gap-2 text-white/50 text-xs md:text-sm hover:text-white transition-colors group"
-          >
-            <span className="tracking-wider">view all</span>
-            <svg 
-              className="w-3 h-3 md:w-4 md:h-4 transform group-hover:translate-x-1 transition-transform" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
+          <div className="flex items-center gap-3">
+            {dataSource === 'instagram' && (
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            )}
+            <h2 className="[font-family:'Inter',Helvetica] font-bold text-white text-base md:text-lg tracking-[0.15em]">
+              {dataSource === 'instagram' ? 'INSTAGRAM' : 'NEWS'}
+            </h2>
+          </div>
+          {dataSource === 'instagram' ? (
+            <a 
+              href="https://www.instagram.com/the27clubtokyo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-white/50 text-xs md:text-sm hover:text-white transition-colors group"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
+              <span className="tracking-wider">@the27clubtokyo</span>
+              <svg 
+                className="w-3 h-3 md:w-4 md:h-4 transform group-hover:translate-x-1 transition-transform" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          ) : (
+            <Link 
+              to="/events"
+              className="flex items-center gap-2 text-white/50 text-xs md:text-sm hover:text-white transition-colors group"
+            >
+              <span className="tracking-wider">view all</span>
+              <svg 
+                className="w-3 h-3 md:w-4 md:h-4 transform group-hover:translate-x-1 transition-transform" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          )}
         </div>
 
         {/* ニュースカードスライダー */}
@@ -419,65 +470,77 @@ export const NewsFV = () => {
               />
             ))
           ) : events.length > 0 ? (
-            events.map((event, index) => (
-              <Link
-                key={event.id}
-                to={`/events/${event.id}`}
-                className="flex-shrink-0 w-[260px] md:w-[300px] group"
-                style={{
-                  animation: `fadeInUp 0.6s ease-out ${0.1 * index}s both`,
-                }}
-              >
-                {/* カード */}
-                <div className="relative h-[140px] md:h-[160px] rounded-lg overflow-hidden mb-3 bg-[#1a1a2e]">
-                  {/* 背景画像 - imgで確実に表示 */}
-                  {event.image_url ? (
-                    <img
-                      src={event.image_url}
-                      alt=""
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        const fallback = e.target.nextElementSibling;
-                        if (fallback) fallback.classList.remove('hidden');
-                      }}
+            events.map((event, index) => {
+              // Instagram投稿の場合は外部リンク、それ以外は内部リンク
+              const CardWrapper = event.permalink ? 'a' : Link;
+              const linkProps = event.permalink 
+                ? { href: event.permalink, target: '_blank', rel: 'noopener noreferrer' }
+                : { to: `/events/${event.id}` };
+              
+              return (
+                <CardWrapper
+                  key={event.id}
+                  {...linkProps}
+                  className="flex-shrink-0 w-[260px] md:w-[300px] group"
+                  style={{
+                    animation: `fadeInUp 0.6s ease-out ${0.1 * index}s both`,
+                  }}
+                >
+                  {/* カード */}
+                  <div className="relative h-[140px] md:h-[160px] rounded-lg overflow-hidden mb-3 bg-[#1a1a2e]">
+                    {/* 背景画像 - imgで確実に表示 */}
+                    {event.image_url ? (
+                      <img
+                        src={event.image_url}
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          const fallback = e.target.nextElementSibling;
+                          if (fallback) fallback.classList.remove('hidden');
+                        }}
+                      />
+                    ) : null}
+                    {/* 画像なし/読み込み失敗時のフォールバック */}
+                    <div 
+                      className={`absolute inset-0 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] ${event.image_url ? 'hidden' : ''}`}
+                      aria-hidden
                     />
-                  ) : null}
-                  {/* 画像なし/読み込み失敗時のフォールバック */}
-                  <div 
-                    className={`absolute inset-0 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] ${event.image_url ? 'hidden' : ''}`}
-                    aria-hidden
-                  />
-                  {/* オーバーレイ */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
-                  
-                  {/* カテゴリータグ */}
-                  <div className="absolute bottom-3 left-3">
-                    <span className={`inline-block px-2.5 py-1 text-[10px] font-medium text-white rounded ${getCategoryColor(event.category || 'EVENT')}`}>
-                      {event.category || 'EVENT'}
-                    </span>
-                  </div>
-                </div>
-
-                {/* テキスト部分 */}
-                <div>
-                  <h3 className="[font-family:'Noto_Sans_JP',sans-serif] text-white/90 text-sm font-normal leading-relaxed mb-1.5 line-clamp-2 group-hover:text-white transition-colors">
-                    {language === 'ja' ? event.title : (event.title_en || event.title)}
-                    {event.description && (
-                      <span className="text-white/50">
-                        、{event.description}
+                    {/* オーバーレイ */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+                    
+                    {/* カテゴリータグ */}
+                    <div className="absolute bottom-3 left-3">
+                      <span className={`inline-block px-2.5 py-1 text-[10px] font-medium text-white rounded ${getCategoryColor(event.category || 'POST')}`}>
+                        {event.category || 'POST'}
                       </span>
+                    </div>
+
+                    {/* Instagram投稿の場合は外部リンクアイコン */}
+                    {event.permalink && (
+                      <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </div>
                     )}
-                  </h3>
-                  <time className="[font-family:'Inter',Helvetica] text-white/40 text-xs tracking-wider">
-                    {formatDate(event.date_time_start)}
-                  </time>
-                </div>
-              </Link>
-            ))
+                  </div>
+
+                  {/* テキスト部分 */}
+                  <div>
+                    <h3 className="[font-family:'Noto_Sans_JP',sans-serif] text-white/90 text-sm font-normal leading-relaxed mb-1.5 line-clamp-2 group-hover:text-white transition-colors">
+                      {event.title}
+                    </h3>
+                    <time className="[font-family:'Inter',Helvetica] text-white/40 text-xs tracking-wider">
+                      {formatDate(event.date_time_start)}
+                    </time>
+                  </div>
+                </CardWrapper>
+              );
+            })
           ) : (
             <div className="flex-shrink-0 w-full text-center text-white/50 py-8 text-sm">
               {language === 'ja' ? 'イベント情報はありません' : 'No events available'}

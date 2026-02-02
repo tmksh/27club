@@ -12,6 +12,7 @@ export const CastForm = ({ cast, onClose }) => {
     instagram_url: '',
     twitter_url: '',
     is_active: true,
+    image_position_y: 0,  // 画像の縦位置（0-100）
   });
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
@@ -30,6 +31,7 @@ export const CastForm = ({ cast, onClose }) => {
         instagram_url: cast.instagram_url || '',
         twitter_url: cast.twitter_url || '',
         is_active: cast.is_active ?? true,
+        image_position_y: cast.image_position_y ?? 0,
       });
       setImagePreview(cast.profile_image_url || '');
     }
@@ -37,9 +39,15 @@ export const CastForm = ({ cast, onClose }) => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    let newValue = value;
+    if (type === 'checkbox') {
+      newValue = checked;
+    } else if (type === 'range' || name === 'image_position_y') {
+      newValue = parseInt(value, 10);
+    }
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: newValue,
     }));
   };
 
@@ -138,8 +146,39 @@ export const CastForm = ({ cast, onClose }) => {
               プロフィール画像
             </label>
             {imagePreview && (
-              <div className="mb-2">
-                <img src={imagePreview} alt="プレビュー" className="w-48 h-48 object-cover rounded" />
+              <div className="mb-4">
+                <div className="relative w-48 aspect-[3/4] rounded overflow-hidden mb-3">
+                  <img 
+                    src={imagePreview} 
+                    alt="プレビュー" 
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: `center ${formData.image_position_y}%` }}
+                  />
+                  {/* 位置ガイドライン */}
+                  <div className="absolute inset-x-0 top-1/4 border-t border-dashed border-white/30 pointer-events-none" />
+                  <div className="absolute inset-x-0 top-1/3 border-t border-dashed border-[#00d6bd]/50 pointer-events-none">
+                    <span className="absolute right-1 -top-4 text-[10px] text-[#00d6bd]">頭の目安</span>
+                  </div>
+                </div>
+                <div className="w-48">
+                  <label className="block text-white/70 text-xs mb-1">
+                    画像の縦位置調整: {formData.image_position_y}%
+                  </label>
+                  <input
+                    type="range"
+                    name="image_position_y"
+                    min="0"
+                    max="100"
+                    value={formData.image_position_y}
+                    onChange={handleChange}
+                    className="w-full h-2 bg-[#0c1e1a] rounded-lg appearance-none cursor-pointer accent-[#00d6bd]"
+                  />
+                  <div className="flex justify-between text-[10px] text-white/50 mt-1">
+                    <span>上</span>
+                    <span>中央</span>
+                    <span>下</span>
+                  </div>
+                </div>
               </div>
             )}
             <input

@@ -78,15 +78,15 @@ export const Div = () => {
           <div className="w-full px-8 md:px-16 lg:px-24">
             <div className="max-w-[650px]">
               
-              {/* サブタイトル（緑色）+ 横線 */}
+              {/* サブタイトル + 横線 */}
               <div className="flex items-center gap-4 mb-4 md:mb-6" data-scroll="fade-right">
                 <span 
-                  className="[font-family:'Playfair_Display',Helvetica] font-bold text-[#00d6bd] text-lg md:text-2xl lg:text-3xl tracking-[0.05em] uppercase"
-                  style={{ textShadow: '0 0 20px rgba(0,214,189,0.5)' }}
+                  className="[font-family:'Playfair_Display',Helvetica] font-bold text-white text-lg md:text-2xl lg:text-3xl tracking-[0.05em] uppercase"
+                  style={{ textShadow: '0 0 20px rgba(255,255,255,0.3)' }}
                 >
                   Experience
                 </span>
-                <div className="flex-1 h-[2px] bg-gradient-to-r from-[#00d6bd] to-transparent max-w-[100px] md:max-w-[120px]" />
+                <div className="flex-1 h-[2px] bg-gradient-to-r from-white/80 to-transparent max-w-[100px] md:max-w-[120px]" />
               </div>
 
               {/* メインタイトル */}
@@ -117,7 +117,7 @@ export const Div = () => {
               >
                 {t('stage.features').map((feature, index) => (
                   <li key={index} className="flex items-center gap-2 md:gap-3">
-                    <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#00d6bd] flex-shrink-0" style={{ boxShadow: '0 0 8px rgba(0,214,189,0.6)' }} />
+                    <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white flex-shrink-0" style={{ boxShadow: '0 0 8px rgba(255,255,255,0.4)' }} />
                     <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-xs md:text-sm lg:text-base">
                       {feature}
                     </span>
@@ -127,19 +127,15 @@ export const Div = () => {
 
               {/* CTAボタン */}
               <Link
-                className="inline-flex items-center justify-center px-6 md:px-10 py-3 md:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                style={{
-                  background: 'linear-gradient(135deg, #00d6bd 0%, #00a896 100%)',
-                  boxShadow: '0 4px 20px rgba(0,214,189,0.4)',
-                }}
+                className="inline-flex items-center justify-center px-6 md:px-10 py-3 md:py-4 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gray-100"
                 to="/u12467u12531u12479u12463u12488"
                 data-scroll="fade-right"
                 data-scroll-delay="400"
               >
-                <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-sm md:text-base tracking-[0.05em]">
+                <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#1a1a2e] text-sm md:text-base tracking-[0.05em]">
                   {t('stage.contactButton')}
                 </span>
-                <svg className="w-4 h-4 md:w-5 md:h-5 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 md:w-5 md:h-5 ml-2 text-[#1a1a2e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>

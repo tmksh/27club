@@ -22,6 +22,7 @@ export const Frame18 = () => {
             birthday: cast.birthday || "",
             description: cast.description || "情報準備中",
             instagramUrl: cast.instagram_url || "",
+            imagePositionY: cast.image_position_y ?? 0,
           })));
         }
       } catch (error) {
@@ -85,6 +86,7 @@ export const Frame18 = () => {
                 birthday={card.birthday}
                 description={card.description}
                 instagramUrl={card.instagramUrl}
+                imagePositionY={card.imagePositionY}
               />
             </div>
           ))}

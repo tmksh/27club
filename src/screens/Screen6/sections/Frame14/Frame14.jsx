@@ -161,15 +161,10 @@ export const Frame14 = () => {
       {/* ドリンクメニューボタン */}
       <a
         href="/drink"
-        className="flex w-[130px] md:w-[150px] h-[45px] md:h-[50px] items-center justify-center gap-2 rounded-[25px] cursor-pointer transition-all duration-300 hover:scale-105"
-        style={{
-          background: 'linear-gradient(135deg, #00c9a7 0%, #00d4aa 50%, #02e8b0 100%)',
-          boxShadow: '0 4px 15px rgba(0,200,167,0.4)',
-          border: '1px solid rgba(255,255,255,0.2)',
-        }}
+        className="flex w-[130px] md:w-[150px] h-[40px] md:h-[44px] items-center justify-center gap-2 rounded-full cursor-pointer transition-all duration-300 hover:scale-105 bg-white hover:bg-gray-100"
       >
-        <span className="text-xl md:text-2xl">🍸</span>
-        <span className="[font-family:'Noto_Sans_JP',Helvetica] font-black text-white text-xs md:text-sm whitespace-nowrap">
+        <span className="text-base md:text-lg">🍸</span>
+        <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#1a1a2e] text-xs md:text-sm whitespace-nowrap">
           {language === 'ja' ? 'ドリンク' : 'Drinks'}
         </span>
       </a>
@@ -179,15 +174,10 @@ export const Frame14 = () => {
         href="https://www.instagram.com/stories/highlights/17906945853210365/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex w-[130px] md:w-[150px] h-[45px] md:h-[50px] items-center justify-center gap-2 rounded-[25px] cursor-pointer transition-all duration-300 hover:scale-105"
-        style={{
-          background: 'linear-gradient(135deg, #d4a574 0%, #c9956a 50%, #b8845f 100%)',
-          boxShadow: '0 4px 15px rgba(200,150,100,0.4)',
-          border: '1px solid rgba(255,255,255,0.2)',
-        }}
+        className="flex w-[130px] md:w-[150px] h-[40px] md:h-[44px] items-center justify-center gap-2 rounded-full cursor-pointer transition-all duration-300 hover:scale-105 border border-white/50 hover:bg-white/10"
       >
-        <span className="text-xl md:text-2xl">🍽️</span>
-        <span className="[font-family:'Noto_Sans_JP',Helvetica] font-black text-white text-xs md:text-sm whitespace-nowrap">
+        <span className="text-base md:text-lg">🍽️</span>
+        <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-xs md:text-sm whitespace-nowrap">
           {language === 'ja' ? 'フード' : 'Food'}
         </span>
       </a>
@@ -218,23 +208,23 @@ export const Frame14 = () => {
               className={`w-[90%] md:w-[50%] md:absolute ${step.imageFirst ? 'md:right-0 md:top-[30%]' : 'md:left-0 md:top-[30%]'} z-20 mt-[-40px] md:mt-0 mx-auto md:mx-0`}
             >
               <div 
-                className="flex flex-col gap-3 md:gap-4 p-5 md:p-8 lg:p-10 rounded-[10px] border border-[#d4af37]/20"
+                className="flex flex-col gap-3 md:gap-4 p-5 md:p-8 lg:p-10 rounded-[10px] border border-white/20"
                 style={{
-                  background: 'rgba(250, 248, 245, 0.98)',
-                  boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+                  background: 'rgba(15, 15, 15, 0.95)',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
                 }}
               >
                 {/* ステップ番号 - 上部に配置 */}
-                <div className="flex items-center gap-4 border-b border-[#d4af37]/30 pb-3 md:pb-4">
-                  <div className="[font-family:'Playfair_Display',serif] font-semibold text-[#d4af37] text-4xl md:text-5xl lg:text-[56px] leading-none">
+                <div className="flex items-center gap-4 border-b border-white/20 pb-3 md:pb-4">
+                  <div className="[font-family:'Playfair_Display',serif] font-semibold text-white/40 text-4xl md:text-5xl lg:text-[56px] leading-none">
                     {step.number}
                   </div>
-                  <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-lg md:text-xl lg:text-2xl">
+                  <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-xl lg:text-2xl">
                     {step.title}
                   </div>
                 </div>
 
-                <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#333] text-sm md:text-base lg:text-lg leading-relaxed md:leading-[30.6px]">
+                <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/80 text-sm md:text-base lg:text-lg leading-relaxed md:leading-[30.6px]">
                   {step.description}
                 </div>
 

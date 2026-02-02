@@ -28,6 +28,7 @@ export const FrameWrapper = () => {
             name: cast.name || "Cast",
             descriptionJa: `${cast.features || '特徴情報なし'}${cast.favorite_drink ? `・好きなお酒：${cast.favorite_drink}` : ''}`,
             descriptionEn: `${cast.features_en || 'No features available'}${cast.favorite_drink ? `・Favorite drink: ${cast.favorite_drink}` : ''}`,
+            imagePositionY: cast.image_position_y ?? 0,
           }));
           setCastData(mappedData);
           
@@ -40,21 +41,21 @@ export const FrameWrapper = () => {
           }
         } else {
           setCastData([
-            { id: 1, image: "/img/cast-1.png", name: "Cast 1", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：カクテル", descriptionEn: "Known for flexible movements. Favorite drink: Cocktail" },
-            { id: 2, image: "/img/cast-2.png", name: "Cast 2", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：ワイン", descriptionEn: "Known for flexible movements. Favorite drink: Wine" },
-            { id: 3, image: "/img/cast-3.png", name: "Aurora", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン", descriptionEn: "Known for flexible movements. Favorite drink: Champagne" },
-            { id: 4, image: "/img/cast-4.png", name: "Cast 4", descriptionJa: "エレガントなパフォーマンス・好きなお酒：モヒート", descriptionEn: "Elegant performance. Favorite drink: Mojito" },
-            { id: 5, image: "/img/cast-5.png", name: "Cast 5", descriptionJa: "エネルギッシュなステージング・好きなお酒：ウイスキー", descriptionEn: "Energetic staging. Favorite drink: Whiskey" },
+            { id: 1, image: "/img/cast-1.png", name: "Cast 1", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：カクテル", descriptionEn: "Known for flexible movements. Favorite drink: Cocktail", imagePositionY: 0 },
+            { id: 2, image: "/img/cast-2.png", name: "Cast 2", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：ワイン", descriptionEn: "Known for flexible movements. Favorite drink: Wine", imagePositionY: 0 },
+            { id: 3, image: "/img/cast-3.png", name: "Aurora", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン", descriptionEn: "Known for flexible movements. Favorite drink: Champagne", imagePositionY: 0 },
+            { id: 4, image: "/img/cast-4.png", name: "Cast 4", descriptionJa: "エレガントなパフォーマンス・好きなお酒：モヒート", descriptionEn: "Elegant performance. Favorite drink: Mojito", imagePositionY: 0 },
+            { id: 5, image: "/img/cast-5.png", name: "Cast 5", descriptionJa: "エネルギッシュなステージング・好きなお酒：ウイスキー", descriptionEn: "Energetic staging. Favorite drink: Whiskey", imagePositionY: 0 },
           ]);
         }
       } catch (error) {
         console.error('キャストの取得に失敗しました:', error);
         setCastData([
-          { id: 1, image: "/img/cast-1.png", name: "Cast 1", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：カクテル", descriptionEn: "Known for flexible movements. Favorite drink: Cocktail" },
-          { id: 2, image: "/img/cast-2.png", name: "Cast 2", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：ワイン", descriptionEn: "Known for flexible movements. Favorite drink: Wine" },
-          { id: 3, image: "/img/cast-3.png", name: "Aurora", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン", descriptionEn: "Known for flexible movements. Favorite drink: Champagne" },
-          { id: 4, image: "/img/cast-4.png", name: "Cast 4", descriptionJa: "エレガントなパフォーマンス・好きなお酒：モヒート", descriptionEn: "Elegant performance. Favorite drink: Mojito" },
-          { id: 5, image: "/img/cast-5.png", name: "Cast 5", descriptionJa: "エネルギッシュなステージング・好きなお酒：ウイスキー", descriptionEn: "Energetic staging. Favorite drink: Whiskey" },
+          { id: 1, image: "/img/cast-1.png", name: "Cast 1", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：カクテル", descriptionEn: "Known for flexible movements. Favorite drink: Cocktail", imagePositionY: 0 },
+          { id: 2, image: "/img/cast-2.png", name: "Cast 2", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：ワイン", descriptionEn: "Known for flexible movements. Favorite drink: Wine", imagePositionY: 0 },
+          { id: 3, image: "/img/cast-3.png", name: "Aurora", descriptionJa: "柔軟な体捌きが持ち味。・好きなお酒：シャンパン", descriptionEn: "Known for flexible movements. Favorite drink: Champagne", imagePositionY: 0 },
+          { id: 4, image: "/img/cast-4.png", name: "Cast 4", descriptionJa: "エレガントなパフォーマンス・好きなお酒：モヒート", descriptionEn: "Elegant performance. Favorite drink: Mojito", imagePositionY: 0 },
+          { id: 5, image: "/img/cast-5.png", name: "Cast 5", descriptionJa: "エネルギッシュなステージング・好きなお酒：ウイスキー", descriptionEn: "Energetic staging. Favorite drink: Whiskey", imagePositionY: 0 },
         ]);
       } finally {
         setLoading(false);
@@ -279,6 +280,7 @@ export const FrameWrapper = () => {
                       alt={cast.name}
                       src={cast.image}
                       draggable={false}
+                      style={{ objectPosition: `center ${cast.imagePositionY}%` }}
                     />
                     {/* 画像オーバーレイ（微妙なグラデーション） */}
                     <div 

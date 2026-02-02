@@ -102,6 +102,7 @@ const mockCasts = [
     twitter_url: '',
     display_order: 1,
     is_active: true,
+    image_position_y: 0,
   },
   {
     id: 'mock-cast-2',
@@ -116,6 +117,7 @@ const mockCasts = [
     twitter_url: '',
     display_order: 2,
     is_active: true,
+    image_position_y: 0,
   },
   {
     id: 'mock-cast-3',
@@ -130,6 +132,7 @@ const mockCasts = [
     twitter_url: '',
     display_order: 3,
     is_active: true,
+    image_position_y: 0,
   },
   {
     id: 'mock-cast-4',
@@ -144,6 +147,7 @@ const mockCasts = [
     twitter_url: '',
     display_order: 4,
     is_active: true,
+    image_position_y: 0,
   },
   {
     id: 'mock-cast-5',
@@ -158,6 +162,7 @@ const mockCasts = [
     twitter_url: '',
     display_order: 5,
     is_active: true,
+    image_position_y: 0,
   },
 ];
 

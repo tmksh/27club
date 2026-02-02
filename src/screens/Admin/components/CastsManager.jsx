@@ -128,7 +128,8 @@ export const CastsManager = () => {
                         <img
                           src={cast.profile_image_url}
                           alt={cast.name}
-                          className="w-full h-48 object-cover object-top rounded mb-4"
+                          className="w-full h-48 object-cover rounded mb-4"
+                          style={{ objectPosition: `center ${cast.image_position_y ?? 0}%` }}
                         />
                       )}
                       <h3 className="text-lg font-bold text-white mb-2">
