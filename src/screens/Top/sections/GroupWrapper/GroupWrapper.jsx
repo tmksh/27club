@@ -173,54 +173,63 @@ export const GroupWrapper = () => {
   console.log("Current selectedSeat:", selectedSeat, "selectedSeatData:", selectedSeatData);
 
   return (
-    <div className="relative self-stretch w-full min-h-0 lg:min-h-[900px] flex flex-col items-center px-1 md:px-8 pb-4 md:pb-0">
+    <div className="relative self-stretch w-full flex flex-col items-center px-1 md:px-8 pb-4 md:pb-0">
 
       <div className="relative w-full max-w-[1440px]">
-        {/* セクションタイトル */}
-        <div className="pt-4 md:pt-12 flex flex-col items-center gap-2 md:gap-3" data-scroll="fade-up">
-          <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-6xl lg:text-[80px] text-center tracking-[4px] md:tracking-[6.40px] leading-[1.2] uppercase">
-            FLOOR MAP
+        {/* セクションタイトル - 左寄せ */}
+        <div className="pt-4 md:pt-12 w-full" data-scroll="fade-up">
+          {/* 斜めタイトル - 左寄せ */}
+          <div 
+            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-6xl lg:text-8xl xl:text-[110px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+            style={{
+              transform: 'rotate(-5deg) skewX(-5deg)',
+            }}
+          >
+            Floor Map
           </div>
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-[16px] tracking-[0] leading-[1.6] md:leading-[24px] text-center opacity-90 max-w-[800px] px-2 md:px-4">
-            {t("floorMap.subtitle")}
+          {/* サブテキスト - 中央配置 */}
+          <div className="flex justify-center mt-16 lg:mt-20">
+            <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+              {t("floorMap.subtitle")}
+            </p>
           </div>
         </div>
 
         {/* フロアマップセクション - 左：座席リスト、右：マップ */}
-        <div className="mt-4 md:mt-10 flex flex-col lg:flex-row lg:items-stretch gap-0" data-scroll="scale-up">
+        <div className="mt-8 md:mt-16 lg:mt-20 flex flex-col lg:flex-row gap-0" data-scroll="scale-up">
           {/* 左側：座席番号一覧 - サイトデザインに統一 */}
           <div 
-            className="w-full lg:w-[30%] backdrop-blur-sm border-r border-white/10 p-6 md:p-8 flex flex-col"
+            className="w-full lg:w-[25%] backdrop-blur-sm border-r border-white/10 p-4 md:p-5 flex flex-col lg:min-h-[450px]"
             style={{
               background: 'rgba(255, 255, 255, 0.05)',
             }}
           >
-            <h3 className="text-white text-2xl md:text-3xl font-semibold [font-family:'Playfair_Display',Helvetica] mb-6 md:mb-8 tracking-wide">
+            <h3 className="text-white text-xl md:text-2xl font-semibold [font-family:'Playfair_Display',Helvetica] mb-4 tracking-wide">
               Select Table
             </h3>
 
-            <div className="space-y-6 md:space-y-8">
+            <div className="space-y-3 md:space-y-4">
               {seatGroups.map((group, groupIdx) => (
                 <div key={groupIdx}>
                   <h4
-                    className="text-xl md:text-2xl font-semibold [font-family:'Playfair_Display',Helvetica] mb-3 tracking-wide"
+                    className="text-base md:text-lg font-semibold [font-family:'Playfair_Display',Helvetica] mb-2 tracking-wide"
                     style={{ color: group.color }}
                   >
                     {group.category}
                   </h4>
                   {group.groups.map((subGroup, idx) => (
-                    <div key={idx} className="mb-4">
-                      <p className="text-white/50 text-sm md:text-base mb-3 [font-family:'Noto_Serif_JP',Helvetica]">
+                    <div key={idx} className="mb-2">
+                      <p className="text-white/50 text-xs md:text-sm mb-2 [font-family:'Noto_Serif_JP',Helvetica]">
                         {subGroup.label}
                       </p>
-                      <div className="flex flex-wrap gap-3">
+                      <div className="flex flex-wrap gap-2">
                         {subGroup.seats.map((seatId) => (
                           <button
                             key={seatId}
                             onClick={() => handleSeatSelect(seatId)}
                             className={`
-                              px-5 md:px-6 py-2.5 md:py-3 rounded-md transition-all duration-300
-                              text-base md:text-lg font-semibold [font-family:'Inter',Helvetica] tracking-wide
+                              px-3 md:px-4 py-1.5 md:py-2 rounded-md transition-all duration-300
+                              text-sm md:text-base font-semibold [font-family:'Inter',Helvetica] tracking-wide
                               ${selectedSeat === seatId
                                 ? "text-black shadow-lg"
                                 : "text-white border border-white/20 hover:border-white/40 hover:bg-white/5"
@@ -243,17 +252,17 @@ export const GroupWrapper = () => {
           </div>
 
           {/* 右側：フロアマップ */}
-          <div className="w-full lg:w-[70%] relative flex flex-col" style={{ zIndex: 10 }}>
-            <div className="w-full aspect-[850/500] lg:aspect-auto lg:h-full relative">
+          <div className="w-full lg:w-[75%] relative flex flex-col lg:min-h-[450px]" style={{ zIndex: 10 }}>
+            <div className="w-full aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[450px] relative">
               {/* 背景レイヤー */}
               <div
-                className="absolute inset-0 bg-gradient-to-br from-[#0a1612] via-[#0f1f1c] to-[#000000] border-2 border-[#d4af37] shadow-[0_0_30px_rgba(212,175,55,0.3)] pointer-events-none"
+                className="absolute inset-0 bg-gradient-to-br from-[#1a2a25] via-[#15231f] to-[#0d1815] border border-white/20 pointer-events-none"
                 style={{ transformOrigin: "top left" }}
               />
               {/* インタラクティブレイヤー */}
               <div className="absolute inset-0">
                 {/* 背景の黒エリア（右側） */}
-                <div className="absolute top-0 right-0 w-[41%] h-full bg-black opacity-80 pointer-events-none" style={{ clipPath: "polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 60%)" }}></div>
+                <div className="absolute top-0 right-0 w-[41%] h-full bg-[#0a0f0d] opacity-70 pointer-events-none" style={{ clipPath: "polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 60%)" }}></div>
 
                 {/* ゴールドのアクセントライン */}
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent opacity-50 pointer-events-none"></div>

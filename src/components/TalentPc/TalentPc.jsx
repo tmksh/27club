@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const TalentPc = ({ 
   className, 
   s = "/img/s-16646146-0-2.png", 
   to,
+  id,
   name = "MARIA",
   nameEn = "maria",
   birthday = "",
@@ -12,6 +14,7 @@ export const TalentPc = ({
   instagramUrl = "",
   imagePositionY = 0  // 画像の縦位置（0-100, 0=上端, 50=中央, 100=下端）
 }) => {
+  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
@@ -119,6 +122,12 @@ export const TalentPc = ({
 
             {/* More Detailボタン */}
             <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                if (id) {
+                  navigate(`/cast/${id}`);
+                }
+              }}
               className="px-6 md:px-8 py-2.5 md:py-3 bg-white/80 hover:bg-white border border-gray-300 rounded-full text-gray-700 text-xs md:text-sm tracking-[0.12em] uppercase [font-family:'Playfair_Display',Helvetica] transition-all duration-300 shadow-sm hover:shadow-md"
             >
               More Detail
@@ -133,6 +142,7 @@ export const TalentPc = ({
 TalentPc.propTypes = {
   s: PropTypes.string,
   to: PropTypes.string,
+  id: PropTypes.string,
   name: PropTypes.string,
   nameEn: PropTypes.string,
   birthday: PropTypes.string,

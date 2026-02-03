@@ -8,14 +8,23 @@ export const DivWrapper = () => {
   return (
     <div className="relative self-stretch w-full py-12 md:py-24 px-4 md:px-8">
       <div className="relative w-full max-w-[1200px] mx-auto">
-        {/* セクションタイトル */}
-        <div className="flex flex-col items-center gap-4 md:gap-6 mb-12 md:mb-20" data-scroll="fade-up">
-          <h2 className="[font-family:'Playfair_Display',Helvetica] text-white text-4xl md:text-6xl lg:text-[80px] text-center font-normal tracking-[0.02em] uppercase">
-            {t('access.title')}
+        {/* セクションタイトル - 左寄せ */}
+        <div className="w-full mb-12 md:mb-20" data-scroll="fade-up">
+          {/* 斜めタイトル - 左寄せ */}
+          <h2 
+            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-4xl md:text-6xl lg:text-8xl xl:text-[110px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+            style={{
+              transform: 'rotate(-5deg) skewX(-5deg)',
+            }}
+          >
+            Access
           </h2>
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-sm md:text-base tracking-wide text-center max-w-[600px]">
-            {t('access.subtitle')}
-          </p>
+          {/* サブテキスト - 中央配置 */}
+          <div className="flex justify-center mt-16 lg:mt-20">
+            <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+              {t('access.subtitle')}
+            </p>
+          </div>
         </div>
 
         {/* メインコンテンツ - 2カラムレイアウト */}

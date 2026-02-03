@@ -80,6 +80,7 @@ export const Frame18 = () => {
           {currentCards.map((card) => (
             <div key={card.id} className="w-full">
               <TalentPc
+                id={card.id}
                 s={card.s}
                 name={card.name}
                 nameEn={card.nameEn}

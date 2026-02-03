@@ -46,7 +46,7 @@ export const translations = {
     // Floor Map Section
     floorMap: {
       title: 'Floor map',
-      subtitle: 'お好みの席をお選びください',
+      subtitle: 'VIPからスタンディングまで、シーンに合わせてお好みの席をお選びください',
       standing: 'STANDING',
       sideSeat: 'SIDE SEAT',
       vipSeat: 'V.I.P. SEAT',
@@ -73,8 +73,8 @@ export const translations = {
     },
     // Stage Section
     stage: {
-      title: '歌舞伎町最大級の',
-      titleLine2: 'ショー空間',
+      title: '圧巻のステージ空間',
+      titleLine2: '',
       description: '映像美と臨場感を追求する、プロ仕様のステージ空間。MV・CMなど、数多くの撮影現場で実際に使用されているステージです。照明・音響・空間演出のすべてがプロフェッショナル仕様。',
       features: [
         '歌舞伎町最大級のステージ空間',
@@ -253,7 +253,7 @@ export const translations = {
     // Floor Map Section
     floorMap: {
       title: 'Floor map',
-      subtitle: 'Choose your preferred seat',
+      subtitle: 'From VIP to standing, choose your preferred seat for any occasion',
       standing: 'STANDING',
       sideSeat: 'SIDE SEAT',
       vipSeat: 'V.I.P. SEAT',
@@ -280,8 +280,8 @@ export const translations = {
     },
     // Stage Section
     stage: {
-      title: "Kabukicho's Largest",
-      titleLine2: 'Show Space',
+      title: 'Stunning Stage Space',
+      titleLine2: '',
       description: 'A professional-grade stage space pursuing visual beauty and immersion. This stage has been used in numerous MV and CM productions. All lighting, sound, and spatial effects are professional-grade.',
       features: [
         "Kabukicho's largest stage space",

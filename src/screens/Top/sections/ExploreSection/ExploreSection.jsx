@@ -47,14 +47,25 @@ export const ExploreSection = () => {
 
   return (
     <div className="relative self-stretch w-full py-12 md:py-20 overflow-hidden">
-      {/* セクションタイトル */}
-      <div className="flex flex-col items-center gap-4 md:gap-6 mb-10 md:mb-16 px-4" data-scroll="fade-up">
-        <h2 className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-4xl md:text-6xl lg:text-[80px] text-center tracking-[0.02em] uppercase">
-          EXPLORE
-        </h2>
-        <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-sm md:text-base tracking-[0.1em] text-center">
-          {language === 'ja' ? '27 CLUBを楽しむために' : 'Everything you need to enjoy 27 CLUB'}
-        </p>
+      {/* セクションタイトル - 右寄せ */}
+      <div className="w-full max-w-[1400px] mx-auto px-4 lg:px-16 mb-10 md:mb-16" data-scroll="fade-up">
+        {/* 斜めタイトル - 右寄せ */}
+        <div className="flex justify-end">
+          <h2 
+            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-4xl md:text-6xl lg:text-8xl xl:text-[110px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+            style={{
+              transform: 'rotate(5deg) skewX(5deg)',
+            }}
+          >
+            Explore
+          </h2>
+        </div>
+        {/* サブテキスト - 中央配置 */}
+        <div className="flex justify-center mt-16 lg:mt-20">
+          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+            {language === 'ja' ? '27 CLUBをより楽しむための情報をご案内します' : 'Everything you need to know to enjoy 27 CLUB'}
+          </p>
+        </div>
       </div>
 
       {/* カードグリッド - 2x2 */}

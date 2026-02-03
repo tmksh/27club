@@ -148,12 +148,22 @@ export const Frame = () => {
       </div>
 
       {/* セクションタイトル - PC版 */}
-      <div className="hidden md:flex pt-[116px] flex-col items-center gap-6 relative z-10" data-scroll="fade-up">
-        <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-[80px] tracking-[6.40px] leading-[1.2] uppercase">
-          EVENT SCHEDULE
+      <div className="hidden md:block pt-[140px] relative z-10 w-full max-w-[1400px] mx-auto px-8 lg:px-16" data-scroll="fade-up">
+        {/* 斜めタイトル - 左寄せ */}
+        <div 
+          className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-6xl lg:text-8xl xl:text-[110px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+          style={{
+            transform: 'rotate(-5deg) skewX(-5deg)',
+          }}
+        >
+          Event Schedule
         </div>
-        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
-          {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}
+        
+        {/* サブテキスト - 中央配置 */}
+        <div className="flex justify-center mt-16 lg:mt-20">
+          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center whitespace-nowrap">
+            {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}
+          </p>
         </div>
       </div>
 

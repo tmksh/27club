@@ -27,14 +27,22 @@ export const SectionComponentNode = () => {
   return (
     <div className="relative self-stretch w-full overflow-hidden py-8 md:py-24">
       <div className="relative w-full mx-auto">
-        {/* セクションタイトル */}
-        <div className="flex flex-col items-center gap-4 md:gap-6 mb-6 md:mb-16 relative z-10 px-4" data-scroll="fade-up">
-          <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-5xl md:text-7xl lg:text-[96px] text-center tracking-[0.02em] uppercase">
-            GALLERY
+        {/* セクションタイトル - 左寄せ */}
+        <div className="w-full max-w-[1400px] mx-auto px-4 lg:px-16 mb-6 md:mb-16 relative z-10" data-scroll="fade-up">
+          {/* 斜めタイトル - 左寄せ */}
+          <div 
+            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-4xl md:text-6xl lg:text-8xl xl:text-[110px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+            style={{
+              transform: 'rotate(-5deg) skewX(-5deg)',
+            }}
+          >
+            Gallery
           </div>
-          <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-light text-white/70 text-sm md:text-base tracking-[0.05em] text-center max-w-[600px]">
-            {t('gallery.subtitle')}
+          {/* サブテキスト - 中央配置 */}
+          <div className="flex justify-center mt-16 lg:mt-20">
+            <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+              {t('gallery.subtitle')}
+            </p>
           </div>
         </div>
 
