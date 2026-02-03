@@ -1,87 +1,74 @@
 import React from "react";
-import { Group153 } from "../../../../components/Group153";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const DivWrapper = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="relative self-stretch w-full min-h-0 lg:min-h-[1245.76px] px-4 md:px-8 pb-4 md:pb-0">
-      <div className="relative w-full max-w-[1444px] mx-auto">
+    <div className="relative self-stretch w-full py-12 md:py-24 px-4 md:px-8">
+      <div className="relative w-full max-w-[1200px] mx-auto">
         {/* セクションタイトル */}
-        <div className="pt-4 md:pt-[116px] flex flex-col items-center gap-4 md:gap-6 relative z-10" data-scroll="fade-up">
-          <div className="[font-family:'Playfair_Display',Helvetica] text-white text-4xl md:text-6xl lg:text-[80px] text-center font-normal tracking-[0] leading-[normal] uppercase">
+        <div className="flex flex-col items-center gap-4 md:gap-6 mb-12 md:mb-20" data-scroll="fade-up">
+          <h2 className="[font-family:'Playfair_Display',Helvetica] text-white text-4xl md:text-6xl lg:text-[80px] text-center font-normal tracking-[0.02em] uppercase">
             {t('access.title')}
-          </div>
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-[16px] tracking-[0] leading-[24px] text-center opacity-90 max-w-[800px] px-4">
+          </h2>
+          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-sm md:text-base tracking-wide text-center max-w-[600px]">
             {t('access.subtitle')}
+          </p>
+        </div>
+
+        {/* メインコンテンツ - 2カラムレイアウト */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8" data-scroll="fade-up">
+          
+          {/* 左側：マップ */}
+          <div className="relative rounded-2xl overflow-hidden h-[300px] md:h-[400px] lg:h-full lg:min-h-[500px]">
+            <iframe
+              className="w-full h-full border-0"
+              src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA2%E4%B8%81%E7%9B%AE36-3+%E6%96%B0%E5%AE%BFAcb%E4%BC%9A%E9%A4%A8&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="店舗へのアクセス"
+            />
           </div>
-        </div>
 
-        {/* マップコンテナ */}
-        <div className="mt-4 md:mt-16 relative z-10" data-scroll="scale-up">
-          <iframe
-            className="w-full aspect-[2.4/1] md:aspect-[1192/498] border-0 rounded-lg"
-            src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA2%E4%B8%81%E7%9B%AE36-3+%E6%96%B0%E5%AE%BFAcb%E4%BC%9A%E9%A4%A8&t=&z=17&ie=UTF8&iwloc=&output=embed"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="店舗へのアクセス"
-          />
-        </div>
-
-        {/* アクセス情報 */}
-        <div className="mt-4 md:mt-12 w-full flex flex-col items-center gap-4 md:gap-6 relative z-10" data-scroll="fade-up">
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full max-w-[1000px] px-4 md:px-8">
+          {/* 右側：アクセス情報カード */}
+          <div 
+            className="rounded-2xl p-6 md:p-10 flex flex-col justify-between"
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+            }}
+          >
             {/* 交通アクセス */}
-            <div className="flex-1 flex flex-col gap-4">
-              <div className="flex items-center gap-3 mb-2">
-                <svg className="w-5 md:w-6 h-5 md:h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                </svg>
-                <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-base md:text-lg tracking-[0.5px] uppercase">
-                  {t('access.transport')}
-                </h3>
-              </div>
-              <div className="flex flex-col gap-3 [font-family:'Noto_Serif_JP',Helvetica] text-white">
-                <div className="flex flex-col gap-1">
-                  <div className="font-semibold text-base md:text-lg">{t('access.shinjukuStation')}</div>
-                  <div className="text-xs md:text-sm opacity-80">{t('access.shinjukuStationEn')}</div>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <div className="font-semibold text-base md:text-lg whitespace-nowrap">{t('access.metroStation')}</div>
-                </div>
+            <div className="mb-8 md:mb-10">
+              <h3 className="[font-family:'Playfair_Display',Helvetica] text-white text-2xl md:text-3xl tracking-wide mb-5 md:mb-8">
+                Transport
+              </h3>
+              <div className="space-y-4 [font-family:'Noto_Serif_JP',Helvetica]">
+                <p className="text-white text-base md:text-xl">{t('access.shinjukuStation')}</p>
+                <p className="text-white text-base md:text-xl">{t('access.metroStation')}</p>
               </div>
             </div>
 
             {/* 住所 */}
-            <div className="flex-1 flex flex-col gap-4">
-              <div className="flex items-center gap-3 mb-2">
-                <svg className="w-5 md:w-6 h-5 md:h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-base md:text-lg tracking-[0.5px] uppercase">
-                  {t('access.address')}
-                </h3>
-              </div>
-              <div className="flex flex-col gap-2 [font-family:'Noto_Serif_JP',Helvetica] text-white">
-                <div className="text-xs md:text-sm opacity-80">{t('access.postalCode')}</div>
-                <div className="font-semibold text-base md:text-lg leading-relaxed">
-                  {t('access.addressLine1')}
-                </div>
-                <div className="text-sm md:text-base">{t('access.addressLine2')}</div>
+            <div className="mb-8 md:mb-10">
+              <h3 className="[font-family:'Playfair_Display',Helvetica] text-white text-2xl md:text-3xl tracking-wide mb-5 md:mb-8">
+                Address
+              </h3>
+              <div className="[font-family:'Noto_Serif_JP',Helvetica] text-white space-y-3">
+                <p className="text-white/50 text-sm md:text-base">{t('access.postalCode')}</p>
+                <p className="text-lg md:text-2xl leading-relaxed">{t('access.addressLine1')}</p>
+                <p className="text-base md:text-lg text-white/80">{t('access.addressLine2')}</p>
               </div>
             </div>
-          </div>
 
-          {/* 注意書き */}
-          <div className="w-full max-w-[1000px] px-4 md:px-8">
-            <div className="flex items-start gap-3 p-3 md:p-4 bg-[#00d6bd20] border border-[#00d6bd40] rounded-lg">
-              <svg className="w-4 md:w-5 h-4 md:h-5 text-[#00d6bd] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white text-sm md:text-base leading-relaxed">
+            {/* 注意書き */}
+            <div className="pt-6 md:pt-8 border-t border-white/10">
+              <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white/50 text-sm md:text-base leading-relaxed">
                 {t('access.notice')}
               </p>
             </div>
@@ -89,40 +76,39 @@ export const DivWrapper = () => {
         </div>
 
         {/* CTAボタン */}
-        <div className="mt-4 md:mt-12 flex flex-row gap-3 md:gap-4 justify-center items-center pb-2 md:pb-8 relative z-10 px-4 md:px-0" data-scroll="fade-up">
-          <div className="w-full max-w-[160px] md:max-w-[352px]">
-            <div className="relative w-full h-[56px] md:h-[97.76px] rounded-[40px] md:rounded-[60px] shadow-[0px_10px_35px_#00000035] bg-[linear-gradient(225deg,rgba(255,151,151,1)_0%,rgba(204,0,0,1)_100%)] cursor-pointer hover:scale-105 transition-transform flex items-center justify-center gap-3 md:gap-5 px-4 md:px-8">
-              {/* アイコン */}
-              <div className="relative w-[32px] md:w-[48px] h-[32px] md:h-[48px] flex-shrink-0">
-                <img
-                  className="absolute w-[83.33%] h-[83.33%] top-[4.17%] left-[4.17%]"
-                  alt="Vector"
-                  src="/img/vector-16.svg"
-                />
-                <img
-                  className="absolute w-[25.00%] h-[33.33%] top-[29.17%] left-[37.50%]"
-                  alt="Vector"
-                  src="/img/vector-17.svg"
-                />
-              </div>
-
-              {/* テキスト */}
-              <div className="flex flex-col items-start justify-center gap-0 md:gap-1">
-                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[12px] md:text-[20px] tracking-[0] leading-[1.3]">
-                  {t('access.videoCheck')}
-                </div>
-                <div className="opacity-90 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[9px] md:text-[14px] tracking-[0] leading-[1.3]">
-                  {t('access.checkAtmosphere')}
-                </div>
-              </div>
+        <div className="mt-10 md:mt-16 flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center" data-scroll="fade-up">
+          {/* YouTube CTA */}
+          <a
+            href="https://www.youtube.com/@the27clubtokyo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group w-full max-w-[280px] md:max-w-[352px] h-[56px] md:h-[98px] rounded-[40px] md:rounded-[60px] flex items-center justify-center gap-4 md:gap-5 transition-all duration-300 hover:scale-105 px-6 md:px-8"
+            style={{
+              background: 'linear-gradient(135deg, #ff4444 0%, #cc0000 100%)',
+            }}
+          >
+            <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <div className="flex flex-col items-start">
+              <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-base md:text-xl">
+                {t('access.videoCheck')}
+              </span>
+              <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/80 text-xs md:text-sm">
+                {t('access.checkAtmosphere')}
+              </span>
             </div>
-          </div>
+          </a>
 
-          <Group153
-            className="w-full max-w-[160px] md:max-w-[352px] h-[56px] md:h-[98px]"
-            text={t('access.contactButton')}
+          {/* お問い合わせ */}
+          <Link
             to="/u12467u12531u12479u12463u12488"
-          />
+            className="group w-full max-w-[280px] md:max-w-[352px] h-[56px] md:h-[98px] rounded-[40px] md:rounded-[60px] flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 bg-[#013d36]"
+          >
+            <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-base md:text-xl tracking-wider">
+              {t('access.contactButton')}
+            </span>
+          </Link>
         </div>
       </div>
     </div>

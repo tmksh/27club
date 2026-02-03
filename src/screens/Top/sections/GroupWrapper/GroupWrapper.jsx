@@ -173,11 +173,11 @@ export const GroupWrapper = () => {
   console.log("Current selectedSeat:", selectedSeat, "selectedSeatData:", selectedSeatData);
 
   return (
-    <div className="relative self-stretch w-full min-h-0 lg:min-h-[1200px] flex flex-col items-center px-1 md:px-8 pb-4 md:pb-0">
+    <div className="relative self-stretch w-full min-h-0 lg:min-h-[900px] flex flex-col items-center px-1 md:px-8 pb-4 md:pb-0">
 
       <div className="relative w-full max-w-[1440px]">
         {/* セクションタイトル */}
-        <div className="pt-4 md:pt-[82px] flex flex-col items-center gap-2 md:gap-3" data-scroll="fade-up">
+        <div className="pt-4 md:pt-12 flex flex-col items-center gap-2 md:gap-3" data-scroll="fade-up">
           <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-6xl lg:text-[80px] text-center tracking-[4px] md:tracking-[6.40px] leading-[1.2] uppercase">
             FLOOR MAP
           </div>
@@ -187,9 +187,14 @@ export const GroupWrapper = () => {
         </div>
 
         {/* フロアマップセクション - 左：座席リスト、右：マップ */}
-        <div className="mt-4 md:mt-16 flex flex-col lg:flex-row lg:items-stretch gap-0" data-scroll="scale-up">
+        <div className="mt-4 md:mt-10 flex flex-col lg:flex-row lg:items-stretch gap-0" data-scroll="scale-up">
           {/* 左側：座席番号一覧 - サイトデザインに統一 */}
-          <div className="w-full lg:w-[30%] bg-black/40 backdrop-blur-sm border-r border-white/10 p-6 md:p-8 flex flex-col">
+          <div 
+            className="w-full lg:w-[30%] backdrop-blur-sm border-r border-white/10 p-6 md:p-8 flex flex-col"
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+            }}
+          >
             <h3 className="text-white text-2xl md:text-3xl font-semibold [font-family:'Playfair_Display',Helvetica] mb-6 md:mb-8 tracking-wide">
               Select Table
             </h3>
@@ -455,12 +460,21 @@ export const GroupWrapper = () => {
         </div>
 
         {/* 選択された座席の詳細情報 */}
-        <div ref={detailRef} className="mt-6 md:mt-10 bg-[#1a1a1a] border border-[#333]">
+        <div 
+          ref={detailRef} 
+          className="mt-6 md:mt-10 rounded-2xl overflow-hidden"
+          style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+          }}
+        >
           {selectedSeat && selectedSeatData ? (
             <div className="flex flex-col lg:flex-row">
               {/* 左側：座席画像 */}
               <div className="w-full lg:w-[45%] relative">
-                <div className="aspect-video relative overflow-hidden bg-gray-800">
+                <div className="aspect-video lg:aspect-auto lg:h-full relative overflow-hidden">
                   <img
                     src={seatImages[selectedSeat] || "/img/vip-seat.jpg"}
                     alt={selectedSeat}
@@ -469,84 +483,77 @@ export const GroupWrapper = () => {
                       e.target.src = "/img/vip-seat.jpg";
                     }}
                   />
-                  {/* オーバーレイテキスト - 中央下部に配置 */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end justify-center pb-8 md:pb-12">
-                    <div className="text-center">
+                  {/* オーバーレイテキスト */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end justify-start p-6 md:p-8">
+                    <div>
+                      <p className="text-white/60 text-xs md:text-sm tracking-wider mb-2">
+                        FOR {selectedSeatData.capacity} PEOPLE
+                      </p>
                       <h3
-                        className="text-3xl md:text-4xl lg:text-5xl font-bold [font-family:'Playfair_Display',Helvetica] mb-2"
-                        style={{ 
-                          color: selectedSeatData.color,
-                          textShadow: `0 2px 10px rgba(0,0,0,0.9), 0 0 40px ${selectedSeatData.color}50`
-                        }}
+                        className="text-2xl md:text-3xl lg:text-4xl font-bold [font-family:'Playfair_Display',Helvetica]"
+                        style={{ color: selectedSeatData.color }}
                       >
                         {selectedSeatData.name}
                       </h3>
-                      <p 
-                        className="text-white/90 text-base md:text-lg font-medium tracking-wide"
-                        style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}
-                      >
-                        FOR {selectedSeatData.capacity} PEOPLE
-                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* 右側：料金表 */}
-              <div className="w-full lg:w-[55%] p-4 md:p-6 lg:p-8">
+              <div className="w-full lg:w-[55%] p-5 md:p-10">
                 {/* WEEKDAY / WEEKEND ヘッダー */}
-                <div className="flex mb-4">
+                <div className="flex mb-8">
                   <div className="w-[35%]"></div>
                   <div className="w-[32.5%] text-center">
-                    <div className="text-white text-lg md:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKDAY</div>
-                    <div className="text-white/60 text-xs md:text-sm">{language === "ja" ? "平日(日〜木)" : "Sun - Thu"}</div>
+                    <div className="text-white text-xl md:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKDAY</div>
+                    <div className="text-white/70 text-xs md:text-sm mt-1 font-medium">{language === "ja" ? "平日(日〜木)" : "Sun - Thu"}</div>
                   </div>
                   <div className="w-[32.5%] text-center">
-                    <div className="text-white text-lg md:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKEND</div>
-                    <div className="text-white/60 text-xs md:text-sm">{language === "ja" ? "週末(金・土・祝前日)" : "Fri - Sat / Holidays"}</div>
+                    <div className="text-white text-xl md:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKEND</div>
+                    <div className="text-white/70 text-xs md:text-sm mt-1 font-medium">{language === "ja" ? "週末(金・土・祝前日)" : "Fri - Sat / Holidays"}</div>
                   </div>
                 </div>
 
                 {/* 料金表 */}
-                <table className="w-full border-collapse">
-                  <tbody>
-                    <tr className="border-t border-b border-white/20">
-                      <td className="py-3 md:py-4 text-white/70 text-xs md:text-sm font-bold w-[35%]">PRICE</td>
-                      <td className="py-3 md:py-4 text-white text-sm md:text-xl text-center w-[32.5%]">{formatPrice(selectedSeatData.weekday.price)}</td>
-                      <td className="py-3 md:py-4 text-white text-sm md:text-xl text-center w-[32.5%]">{formatPrice(selectedSeatData.weekend.price)}</td>
-                    </tr>
-                    <tr className="border-b border-white/20">
-                      <td className="py-3 md:py-4 text-white/70 text-xs md:text-sm">TABLE CHARGE</td>
-                      <td className="py-3 md:py-4 text-white/80 text-xs md:text-base text-center">{formatPrice(selectedSeatData.weekday.tableCharge)}</td>
-                      <td className="py-3 md:py-4 text-white/80 text-xs md:text-base text-center">{formatPrice(selectedSeatData.weekend.tableCharge)}</td>
-                    </tr>
-                    <tr className="border-b border-white/20">
-                      <td className="py-3 md:py-4 text-white/70 text-xs md:text-sm">BOTTLE CHARGE</td>
-                      <td className="py-3 md:py-4 text-white/80 text-xs md:text-base text-center">{formatPrice(selectedSeatData.weekday.bottleCharge)}</td>
-                      <td className="py-3 md:py-4 text-white/80 text-xs md:text-base text-center">{formatPrice(selectedSeatData.weekend.bottleCharge)}</td>
-                    </tr>
-                    <tr className="border-b border-white/20">
-                      <td className="py-3 md:py-4 text-white/70 text-xs md:text-sm">SERVICE & TAX</td>
-                      <td className="py-3 md:py-4 text-white/80 text-xs md:text-base text-center">{selectedSeatData.weekday.tax}</td>
-                      <td className="py-3 md:py-4 text-white/80 text-xs md:text-base text-center">{selectedSeatData.weekend.tax}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div className="space-y-0">
+                  <div className="flex items-center py-5 border-t border-white/10">
+                    <div className="w-[35%] text-white text-sm md:text-base tracking-wider font-bold">PRICE</div>
+                    <div className="w-[32.5%] text-center text-white text-xl md:text-2xl font-bold">{formatPrice(selectedSeatData.weekday.price)}</div>
+                    <div className="w-[32.5%] text-center text-white text-xl md:text-2xl font-bold">{formatPrice(selectedSeatData.weekend.price)}</div>
+                  </div>
+                  <div className="flex items-center py-5 border-t border-white/10">
+                    <div className="w-[35%] text-white text-sm md:text-base tracking-wider font-bold">TABLE CHARGE</div>
+                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{formatPrice(selectedSeatData.weekday.tableCharge)}</div>
+                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{formatPrice(selectedSeatData.weekend.tableCharge)}</div>
+                  </div>
+                  <div className="flex items-center py-5 border-t border-white/10">
+                    <div className="w-[35%] text-white text-sm md:text-base tracking-wider font-bold">BOTTLE CHARGE</div>
+                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{formatPrice(selectedSeatData.weekday.bottleCharge)}</div>
+                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{formatPrice(selectedSeatData.weekend.bottleCharge)}</div>
+                  </div>
+                  <div className="flex items-center py-5 border-t border-b border-white/10">
+                    <div className="w-[35%] text-white text-sm md:text-base tracking-wider font-bold">SERVICE & TAX</div>
+                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{selectedSeatData.weekday.tax}</div>
+                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{selectedSeatData.weekend.tax}</div>
+                  </div>
+                </div>
 
                 {/* ボタン */}
                 <div className="flex gap-4 mt-6 md:mt-8">
                   <a
                     href="tel:03-6455-3727"
-                    className="flex-1 py-3 md:py-4 border border-white text-white text-center text-sm md:text-base font-medium hover:bg-white hover:text-black transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 py-3 md:py-4 rounded-full text-white text-center text-sm md:text-base font-medium transition-all duration-300 hover:bg-white/20 flex items-center justify-center gap-2"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                    }}
                   >
-                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-                    </svg>
                     CONTACT
                   </a>
                   <a
                     href="#reservation"
-                    className="flex-1 py-3 md:py-4 bg-white text-black text-center text-sm md:text-base font-medium hover:bg-gray-200 transition-colors"
+                    className="flex-1 py-3 md:py-4 rounded-full bg-[#013d36] text-white text-center text-sm md:text-base font-medium transition-all duration-300 hover:opacity-90"
                   >
                     RESERVE
                   </a>
@@ -555,7 +562,7 @@ export const GroupWrapper = () => {
             </div>
           ) : (
             <div className="text-center py-12 md:py-16">
-              <p className="text-white/60 text-sm md:text-lg [font-family:'Noto_Serif_JP',Helvetica]">
+              <p className="text-white/40 text-sm md:text-base [font-family:'Noto_Serif_JP',Helvetica]">
                 {language === "ja" ? "座席を選択すると詳細が表示されます" : "Select a seat to view details"}
               </p>
             </div>

@@ -25,7 +25,7 @@ export const Frame1 = () => {
         {/* オーバーレイコンテンツ */}
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-4 md:pb-16 px-4 md:px-8">
           {/* タイトル */}
-          <h1 className="[-webkit-text-stroke:0.5px_#d4af37] md:[-webkit-text-stroke:1px_#d4af37] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-3xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-tight whitespace-nowrap mb-3 md:mb-8">
+          <h1 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-3xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-tight whitespace-nowrap mb-3 md:mb-8">
             {t('tip.heroTitle')}
           </h1>
           

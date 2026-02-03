@@ -4,18 +4,20 @@ import { useLanguage } from "../../../../contexts/LanguageContext";
 export const FeelingSection = () => {
   const { t } = useLanguage();
   return (
-    <div className="w-full px-4 md:px-8 lg:px-16 py-8 md:py-12">
+    <div className="w-full px-4 md:px-8 lg:px-16 py-12 md:py-16">
       <div 
         data-scroll="scale-up"
-        className="max-w-[600px] mx-auto flex flex-col items-center gap-3 md:gap-5 p-6 md:p-8 bg-[#a1a1a1] rounded-xl md:rounded-2xl"
+        className="max-w-[700px] mx-auto text-center"
       >
-        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-sm md:text-xl text-center tracking-[0] leading-relaxed whitespace-nowrap">
+        {/* タイトル */}
+        <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-white text-lg md:text-2xl tracking-wide leading-relaxed mb-4">
           {t('tipFeeling.title')}
-        </div>
+        </h3>
 
-        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-sm text-center tracking-[0] leading-relaxed whitespace-nowrap">
+        {/* 説明文 */}
+        <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-sm md:text-base tracking-wide leading-relaxed">
           {t('tipFeeling.description')}
-        </div>
+        </p>
       </div>
     </div>
   );
