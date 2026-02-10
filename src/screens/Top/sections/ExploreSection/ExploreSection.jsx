@@ -63,7 +63,7 @@ export const ExploreSection = () => {
         {/* サブテキスト - 中央配置 */}
         <div className="flex justify-center mt-16 lg:mt-20">
           <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
-            {language === 'ja' ? '27 CLUBをより楽しむための情報をご案内します' : 'Everything you need to know to enjoy 27 CLUB'}
+            {language === 'ja' ? 'THE 27 CLUBをより楽しむための情報をご案内します' : 'Everything you need to know to enjoy THE 27 CLUB'}
           </p>
         </div>
       </div>

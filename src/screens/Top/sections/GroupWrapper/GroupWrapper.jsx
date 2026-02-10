@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../../../../contexts/LanguageContext";
 import "./GroupWrapper.css";
 
@@ -560,12 +561,12 @@ export const GroupWrapper = () => {
                   >
                     CONTACT
                   </a>
-                  <a
-                    href="#reservation"
+                  <Link
+                    to="/reserve"
                     className="flex-1 py-3 md:py-4 rounded-full bg-[#013d36] text-white text-center text-sm md:text-base font-medium transition-all duration-300 hover:opacity-90"
                   >
                     RESERVE
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

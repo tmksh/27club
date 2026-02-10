@@ -34,7 +34,7 @@ export const DivWrapper = () => {
           <div className="relative rounded-2xl overflow-hidden h-[300px] md:h-[400px] lg:h-full lg:min-h-[500px]">
             <iframe
               className="w-full h-full border-0"
-              src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA2%E4%B8%81%E7%9B%AE36-3+%E6%96%B0%E5%AE%BFAcb%E4%BC%9A%E9%A4%A8&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=%E3%80%92160-0021+%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA2%E4%B8%81%E7%9B%AE36-3+3%E9%9A%8E+ENTERTAINMENT+SHOW+LOUNGE+THE27CLUB+%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BA%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%91%E3%83%96&t=&z=17&ie=UTF8&iwloc=&output=embed"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
