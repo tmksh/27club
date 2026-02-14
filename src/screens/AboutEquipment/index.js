@@ -1,0 +1,1 @@
+export { AboutEquipment } from "./AboutEquipment";

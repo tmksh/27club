@@ -138,12 +138,19 @@ export const Frame = () => {
   return (
     <div className="relative self-stretch w-full min-h-0 lg:min-h-[994px] overflow-hidden px-4 md:px-8 pb-4 md:pb-0">
       {/* セクションタイトル - SP版 */}
-      <div className="md:hidden pt-4 flex flex-col items-center gap-4 relative z-10" data-scroll="fade-up">
-        <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl tracking-[3.2px] leading-[1.2] uppercase">
-          EVENT SCHEDULE
+      <div className="md:hidden pt-16 relative z-10 w-full px-4" data-scroll="fade-up">
+        <div 
+          className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+          style={{
+            transform: 'rotate(-5deg) skewX(-5deg)',
+          }}
+        >
+          Event Schedule
         </div>
-        <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs tracking-[0] leading-[20px] text-center opacity-90 max-w-[800px] px-2">
-          {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}
+        <div className="flex justify-center mt-8">
+          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs tracking-[0.02em] leading-[1.8] text-center">
+            {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}
+          </p>
         </div>
       </div>
 
@@ -151,7 +158,7 @@ export const Frame = () => {
       <div className="hidden md:block pt-[140px] relative z-10 w-full max-w-[1400px] mx-auto px-8 lg:px-16" data-scroll="fade-up">
         {/* 斜めタイトル - 左寄せ */}
         <div 
-          className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-6xl lg:text-8xl xl:text-[110px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+          className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-4xl lg:text-6xl xl:text-[80px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
           style={{
             transform: 'rotate(-5deg) skewX(-5deg)',
           }}

@@ -15,6 +15,10 @@ import { DrinkMenu } from "./screens/DrinkMenu";
 import { Reserve } from "./screens/Reserve";
 import { PrivacyPolicy } from "./screens/PrivacyPolicy";
 import { CastDetail } from "./screens/CastDetail";
+import { AboutEvents } from "./screens/AboutEvents";
+import { AboutMvCm } from "./screens/AboutMvCm";
+import { AboutEquipment } from "./screens/AboutEquipment";
+import { AboutStudioRental } from "./screens/AboutStudioRental";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +87,22 @@ const router = createBrowserRouter([
       {
         path: "/cast/:id",
         element: <CastDetail />,
+      },
+      {
+        path: "/about/events",
+        element: <AboutEvents />,
+      },
+      {
+        path: "/about/mv-cm",
+        element: <AboutMvCm />,
+      },
+      {
+        path: "/about/equipment",
+        element: <AboutEquipment />,
+      },
+      {
+        path: "/about/studio-rental",
+        element: <AboutStudioRental />,
       },
     ],
   },

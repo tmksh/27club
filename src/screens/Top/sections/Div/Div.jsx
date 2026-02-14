@@ -8,7 +8,7 @@ export const Div = () => {
   
   // 背景画像の配列（複数の画像を用意）
   const backgroundImages = [
-    '/img/venue-1.png',
+    '/img/venue-stage.png',
     '/img/venue-2.png',
     '/img/venue-3.png',
     '/img/venue-4.png',
@@ -37,7 +37,7 @@ export const Div = () => {
         {/* 斜めタイトル - 右寄せ */}
         <div className="flex justify-end">
           <div 
-            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-2xl md:text-4xl lg:text-6xl xl:text-[80px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
             style={{
               transform: 'rotate(5deg) skewX(5deg)',
             }}
@@ -47,7 +47,7 @@ export const Div = () => {
         </div>
         {/* サブテキスト - 中央配置 */}
         <div className="flex justify-center mt-16 lg:mt-20">
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center max-w-[800px]">
+          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center max-w-[800px]">
             {language === 'ja' 
               ? '歌舞伎町最大級のショー空間をご体験ください。'
               : "Experience Kabukicho's largest show space."}
@@ -55,94 +55,204 @@ export const Div = () => {
         </div>
       </div>
 
-      {/* 背景画像（フェードアニメーション付き） - 画面幅いっぱい */}
-      <div className="relative mt-4 md:mt-16 w-full min-h-[400px] md:min-h-[800px] overflow-hidden" style={{ zIndex: 1 }} data-scroll="zoom-in">
-        {backgroundImages.map((img, index) => {
-          const isActive = index === currentImageIndex;
-          return (
-            <img
-              key={`bg-img-${index}`}
-              className="absolute top-0 left-0 w-full h-full object-cover"
-              alt={`Background ${index + 1}`}
-              src={img}
-              style={{
-                opacity: isActive ? 1 : 0,
-                transition: 'opacity 1s ease-in-out',
-                zIndex: isActive ? 2 : 1,
-                pointerEvents: 'none',
-              }}
-            />
-          );
-        })}
+      {/* ===== SP版：縦並びレイアウト ===== */}
+      <div className="md:hidden mt-4 w-full" style={{ zIndex: 1 }} data-scroll="fade-up">
+        {/* SP: 画像スライドショー */}
+        <div className="relative w-full aspect-[16/10] overflow-hidden rounded-xl mx-auto">
+          {backgroundImages.map((img, index) => {
+            const isActive = index === currentImageIndex;
+            return (
+              <img
+                key={`sp-bg-${index}`}
+                className="absolute inset-0 w-full h-full object-cover"
+                alt={`Background ${index + 1}`}
+                src={img}
+                style={{
+                  opacity: isActive ? 1 : 0,
+                  transition: 'opacity 1.5s ease-in-out',
+                  zIndex: isActive ? 2 : 1,
+                  pointerEvents: 'none',
+                  objectPosition: 'center 70%',
+                }}
+              />
+            );
+          })}
+          {/* 下端グラデーション */}
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-[60px] z-10 pointer-events-none"
+            style={{ background: 'linear-gradient(to top, rgba(5,10,8,1) 0%, transparent 100%)' }}
+          />
+        </div>
+
+        {/* SP: テキストコンテンツ */}
+        <div className="px-5 pt-6 pb-2">
+          <h2 
+            className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl leading-[1.4] mb-4"
+            data-scroll="fade-up"
+          >
+            {t('stage.title')}
+          </h2>
+
+          <p 
+            className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/75 text-sm leading-[1.85] mb-6"
+            data-scroll="fade-up"
+          >
+            {t('stage.description')}
+          </p>
+
+          {/* 特徴リスト */}
+          <div 
+            className="grid grid-cols-1 gap-3 mb-8"
+            data-scroll="fade-up"
+          >
+            {t('stage.features').map((feature, index) => (
+              <Link
+                key={index}
+                to={feature.path}
+                className="flex items-center gap-3 group cursor-pointer no-underline"
+              >
+                <span
+                  className="w-px h-5 flex-shrink-0"
+                  style={{ background: 'linear-gradient(180deg, #00d6bd 0%, rgba(0,214,189,0.3) 100%)' }}
+                />
+                <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white/90 text-sm tracking-wide">
+                  {feature.label}
+                </span>
+                <svg className="w-3.5 h-3.5 text-white/30 flex-shrink-0 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            ))}
+          </div>
+
+          {/* CTAボタン */}
+          <Link
+            className="flex items-center justify-center w-full py-3.5 bg-[#013d36] rounded-full transition-all duration-300"
+            to="/u12467u12531u12479u12463u12488"
+            data-scroll="fade-up"
+          >
+            <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-sm tracking-wide">
+              {t('stage.contactButton')}
+            </span>
+            <svg className="w-4 h-4 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+
+      {/* ===== PC版：背景オーバーレイレイアウト ===== */}
+      <div className="hidden md:block relative mt-16 w-full min-h-[800px]" style={{ zIndex: 1 }} data-scroll="zoom-in">
+        {/* 画像コンテナ */}
+        <div className="absolute inset-0">
+          {backgroundImages.map((img, index) => {
+            const isActive = index === currentImageIndex;
+            return (
+              <img
+                key={`bg-img-${index}`}
+                className="absolute top-0 left-0 w-full h-full object-cover"
+                alt={`Background ${index + 1}`}
+                src={img}
+                style={{
+                  opacity: isActive ? 1 : 0,
+                  transition: 'opacity 1.5s ease-in-out',
+                  zIndex: isActive ? 2 : 1,
+                  pointerEvents: 'none',
+                  objectPosition: 'center 90%',
+                }}
+              />
+            );
+          })}
+        </div>
         
-        {/* グラデーションオーバーレイ - 左から右へ */}
+        {/* 上端ぼかし */}
+        <div 
+          className="absolute top-0 left-0 right-0 h-[120px] z-[5] pointer-events-none"
+          style={{
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+          }}
+        />
+        {/* 下端ぼかし */}
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-[120px] z-[5] pointer-events-none"
+          style={{
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            maskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
+          }}
+        />
+
+        {/* グラデーションオーバーレイ */}
         <div 
           className="absolute inset-0 z-10"
           style={{
             background: `
-              linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 65%, transparent 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.4) 100%)
+              linear-gradient(90deg, rgba(5,10,8,0.88) 0%, rgba(5,10,8,0.6) 35%, rgba(5,10,8,0.2) 60%, transparent 100%),
+              linear-gradient(180deg, rgba(5,10,8,0.6) 0%, transparent 12%, transparent 88%, rgba(5,10,8,0.6) 100%)
             `,
           }}
         />
 
-        {/* コンテンツ - 左寄せ・画面幅いっぱい */}
+        {/* コンテンツ */}
         <div className="absolute inset-0 z-20 flex items-center">
-          <div className="w-full px-6 md:px-16 lg:px-24">
+          <div className="w-full px-16 lg:px-24">
             <div className="max-w-[700px]">
 
-              {/* メインタイトル */}
               <h2 
-                className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-3xl md:text-5xl lg:text-6xl leading-[1.3] md:leading-[1.4] mb-6 md:mb-10"
+                className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-4xl lg:text-5xl leading-[1.3] lg:leading-[1.4] mb-10"
                 data-scroll="fade-right"
                 data-scroll-delay="100"
               >
                 {t('stage.title')}
               </h2>
 
-              {/* 説明文 */}
               <p 
-                className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/80 text-sm md:text-base lg:text-lg leading-[1.9] mb-8 md:mb-10"
+                className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/80 text-base lg:text-lg leading-[1.9] mb-10"
                 data-scroll="fade-right"
                 data-scroll-delay="200"
               >
                 {t('stage.description')}
               </p>
 
-              {/* 特徴リスト - グリッド形式 */}
               <div 
-                className="grid grid-cols-2 gap-3 md:gap-4 mb-10 md:mb-12"
+                className="grid grid-cols-2 gap-x-12 gap-y-6 mb-12"
                 data-scroll="fade-right"
                 data-scroll-delay="300"
               >
                 {t('stage.features').map((feature, index) => (
-                  <div 
-                    key={index} 
-                    className="flex items-center gap-3 md:gap-4 px-5 md:px-6 py-4 md:py-5 rounded-xl backdrop-blur-md"
-                    style={{
-                      background: 'rgba(0, 0, 0, 0.5)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                    }}
+                  <Link
+                    key={index}
+                    to={feature.path}
+                    className="flex items-center gap-4 group cursor-pointer no-underline"
                   >
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#00d6bd] flex-shrink-0 shadow-[0_0_8px_rgba(0,214,189,0.6)]" />
-                    <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-sm md:text-base lg:text-lg">
-                      {feature}
+                    <span
+                      className="w-px h-7 flex-shrink-0"
+                      style={{ background: 'linear-gradient(180deg, #00d6bd 0%, rgba(0,214,189,0.3) 100%)' }}
+                    />
+                    <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white/90 text-base tracking-wide group-hover:text-[#00d6bd] transition-colors duration-300">
+                      {feature.label}
                     </span>
-                  </div>
+                    <svg className="w-4 h-4 text-white/40 group-hover:text-[#00d6bd] transition-colors duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 ))}
               </div>
 
-              {/* CTAボタン */}
               <Link
-                className="inline-flex items-center justify-center px-10 md:px-12 py-4 md:py-5 bg-[#013d36] rounded-full transition-all duration-300 hover:opacity-90 hover:scale-105"
+                className="inline-flex items-center justify-center px-12 py-5 bg-[#013d36] rounded-full transition-all duration-300 hover:opacity-90 hover:scale-105"
                 to="/u12467u12531u12479u12463u12488"
                 data-scroll="fade-right"
                 data-scroll-delay="400"
               >
-                <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-base md:text-lg tracking-[0.05em]">
+                <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-lg tracking-[0.05em]">
                   {t('stage.contactButton')}
                 </span>
-                <svg className="w-5 h-5 md:w-6 md:h-6 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>

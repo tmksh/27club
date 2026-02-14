@@ -1,0 +1,1 @@
+export { AboutMvCm } from "./AboutMvCm";

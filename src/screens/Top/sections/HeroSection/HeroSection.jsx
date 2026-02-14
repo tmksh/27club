@@ -122,7 +122,7 @@ export const HeroSection = () => {
         
         {/* メインタイトル */}
         <h2 
-          className="[font-family:'Playfair_Display',Helvetica] font-semibold text-4xl md:text-6xl lg:text-7xl tracking-[0.08em] mb-2 md:mb-3 relative"
+          className="[font-family:'Playfair_Display',Helvetica] font-semibold text-3xl md:text-5xl lg:text-6xl tracking-[0.08em] mb-2 md:mb-3 relative"
           style={{
             background: 'linear-gradient(180deg, #ffffff 0%, #e8e8e8 30%, #b8b8b8 60%, #d8d8d8 100%)',
             WebkitBackgroundClip: 'text',

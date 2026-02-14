@@ -12,7 +12,18 @@ export const FrameWrapper = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
   const containerRef = useRef(null);
+
+  // ウィンドウリサイズでisMobileを更新
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize(); // 初回確定
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // キャストデータの読み込み
   useEffect(() => {
@@ -93,7 +104,6 @@ export const FrameWrapper = () => {
   // カードの位置とスタイルを計算（ループ対応）
   const getCardStyle = (index) => {
     const total = castData.length;
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     
     // 円形配置での最短距離を計算
     let diff = index - currentIndex;
@@ -114,9 +124,9 @@ export const FrameWrapper = () => {
     const absDiff = Math.abs(diff);
     const direction = diff > 0 ? 1 : -1;
     
-    // 基本サイズ（正方形に近い）
-    const baseWidth = isMobile ? 200 : 320;
-    const baseHeight = isMobile ? 240 : 380;
+    // 基本サイズ
+    const baseWidth = isMobile ? 180 : 320;
+    const baseHeight = isMobile ? 220 : 380;
     
     if (absDiff === 0) {
       // 中央のカード（最大サイズ）
@@ -182,7 +192,7 @@ export const FrameWrapper = () => {
             {/* 斜めタイトル - 右寄せ */}
             <div className="flex justify-end">
               <div 
-                className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-6xl lg:text-8xl xl:text-[110px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+                className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
                 style={{
                   transform: 'rotate(5deg) skewX(5deg)',
                 }}
@@ -192,7 +202,7 @@ export const FrameWrapper = () => {
             </div>
             {/* サブテキスト - 中央配置 */}
             <div className="flex justify-center mt-16 lg:mt-20">
-              <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+              <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
                 {language === 'ja' ? (
                   <>多彩なパフォーマンスとイベントをお楽しみいただけます。<br />毎週異なるテーマで、特別な夜をお届けします。</>
                 ) : (
@@ -324,7 +334,7 @@ export const FrameWrapper = () => {
 
         </div>
 
-        <div className="flex justify-center w-full mt-24 md:mt-32 pb-8 px-4 md:px-0" data-scroll="fade-up">
+        <div className="flex justify-center w-full mt-32 md:mt-40 pb-8 px-4 md:px-0" data-scroll="fade-up">
           <Group153 
             className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"

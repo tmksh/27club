@@ -18,12 +18,12 @@ export const ExploreSection = () => {
     },
     {
       id: 2,
-      path: "/u12481u12483u12501u12442u12395u12388u12356u12390",
+      path: "/reserve",
       image: "/img/tip-explore.jpg",
-      subtitleJa: "文化を知る",
-      subtitleEn: "Know the Culture",
-      titleJa: "チップ",
-      titleEn: "TIP",
+      subtitleJa: "ご予約は",
+      subtitleEn: "Reserve",
+      titleJa: "予約",
+      titleEn: "RESERVE",
     },
     {
       id: 3,
@@ -52,7 +52,7 @@ export const ExploreSection = () => {
         {/* 斜めタイトル - 右寄せ */}
         <div className="flex justify-end">
           <h2 
-            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-4xl md:text-6xl lg:text-8xl xl:text-[110px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
             style={{
               transform: 'rotate(5deg) skewX(5deg)',
             }}
@@ -62,7 +62,7 @@ export const ExploreSection = () => {
         </div>
         {/* サブテキスト - 中央配置 */}
         <div className="flex justify-center mt-16 lg:mt-20">
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
             {language === 'ja' ? 'THE 27 CLUBをより楽しむための情報をご案内します' : 'Everything you need to know to enjoy THE 27 CLUB'}
           </p>
         </div>

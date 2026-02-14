@@ -10,8 +10,18 @@ export const GroupWrapper = () => {
   const [hoveredBlueSeat, setHoveredBlueSeat] = useState(false);
   const [hoveredVipSeat, setHoveredVipSeat] = useState(false);
   const detailRef = useRef(null);
+  const isInitialMount = useRef(true);
 
-  // 自動スクロールは削除（ユーザーが手動でスクロールする）
+  // 座席選択時に下の画像・料金セクションへスクロール
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (selectedSeat && detailRef.current) {
+      detailRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [selectedSeat]);
 
   // 座席と画像の紐づけ
   const seatImages = {
@@ -181,7 +191,7 @@ export const GroupWrapper = () => {
         <div className="pt-4 md:pt-12 w-full" data-scroll="fade-up">
           {/* 斜めタイトル - 左寄せ */}
           <div 
-            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-6xl lg:text-8xl xl:text-[110px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
             style={{
               transform: 'rotate(-5deg) skewX(-5deg)',
             }}
@@ -190,7 +200,7 @@ export const GroupWrapper = () => {
           </div>
           {/* サブテキスト - 中央配置 */}
           <div className="flex justify-center mt-16 lg:mt-20">
-            <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+            <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
               {t("floorMap.subtitle")}
             </p>
           </div>
@@ -200,37 +210,37 @@ export const GroupWrapper = () => {
         <div className="mt-8 md:mt-16 lg:mt-20 flex flex-col lg:flex-row gap-0" data-scroll="scale-up">
           {/* 左側：座席番号一覧 - サイトデザインに統一 */}
           <div 
-            className="w-full lg:w-[25%] backdrop-blur-sm border-r border-white/10 p-4 md:p-5 flex flex-col lg:min-h-[450px]"
+            className="w-full lg:w-[25%] backdrop-blur-sm border-r border-white/10 p-3 lg:p-5 flex flex-col lg:min-h-[450px]"
             style={{
               background: 'rgba(255, 255, 255, 0.05)',
             }}
           >
-            <h3 className="text-white text-xl md:text-2xl font-semibold [font-family:'Playfair_Display',Helvetica] mb-4 tracking-wide">
+            <h3 className="text-white text-sm lg:text-2xl font-semibold [font-family:'Playfair_Display',Helvetica] mb-2 lg:mb-4 tracking-wide">
               Select Table
             </h3>
 
-            <div className="space-y-3 md:space-y-4">
+            <div className="flex flex-row flex-wrap gap-x-4 gap-y-2 lg:flex-col lg:flex-nowrap lg:space-y-4 lg:gap-0">
               {seatGroups.map((group, groupIdx) => (
-                <div key={groupIdx}>
+                <div key={groupIdx} className="flex flex-row items-center gap-2 lg:flex-col lg:items-start lg:gap-0">
                   <h4
-                    className="text-base md:text-lg font-semibold [font-family:'Playfair_Display',Helvetica] mb-2 tracking-wide"
+                    className="text-xs lg:text-lg font-semibold [font-family:'Playfair_Display',Helvetica] lg:mb-2 tracking-wide whitespace-nowrap"
                     style={{ color: group.color }}
                   >
                     {group.category}
                   </h4>
                   {group.groups.map((subGroup, idx) => (
-                    <div key={idx} className="mb-2">
-                      <p className="text-white/50 text-xs md:text-sm mb-2 [font-family:'Noto_Serif_JP',Helvetica]">
+                    <div key={idx} className="flex items-center gap-1.5 lg:flex-col lg:items-start lg:mb-2">
+                      <p className="hidden lg:block text-white/50 text-sm mb-2 [font-family:'Noto_Serif_JP',Helvetica]">
                         {subGroup.label}
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1 lg:gap-2">
                         {subGroup.seats.map((seatId) => (
                           <button
                             key={seatId}
                             onClick={() => handleSeatSelect(seatId)}
                             className={`
-                              px-3 md:px-4 py-1.5 md:py-2 rounded-md transition-all duration-300
-                              text-sm md:text-base font-semibold [font-family:'Inter',Helvetica] tracking-wide
+                              px-2 lg:px-4 py-1 lg:py-2 rounded-md transition-all duration-300
+                              text-[10px] lg:text-base font-semibold [font-family:'Inter',Helvetica] tracking-wide
                               ${selectedSeat === seatId
                                 ? "text-black shadow-lg"
                                 : "text-white border border-white/20 hover:border-white/40 hover:bg-white/5"
@@ -511,49 +521,49 @@ export const GroupWrapper = () => {
               </div>
 
               {/* 右側：料金表 */}
-              <div className="w-full lg:w-[55%] p-5 md:p-10">
+              <div className="w-full lg:w-[55%] p-3 lg:p-10">
                 {/* WEEKDAY / WEEKEND ヘッダー */}
-                <div className="flex mb-8">
-                  <div className="w-[35%]"></div>
-                  <div className="w-[32.5%] text-center">
-                    <div className="text-white text-xl md:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKDAY</div>
-                    <div className="text-white/70 text-xs md:text-sm mt-1 font-medium">{language === "ja" ? "平日(日〜木)" : "Sun - Thu"}</div>
+                <div className="flex mb-4 lg:mb-8">
+                  <div className="w-[30%] lg:w-[35%]"></div>
+                  <div className="w-[35%] lg:w-[32.5%] text-center">
+                    <div className="text-white text-xs lg:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKDAY</div>
+                    <div className="text-white/70 text-[10px] lg:text-sm mt-0.5 lg:mt-1 font-medium">{language === "ja" ? "平日(日〜木)" : "Sun - Thu"}</div>
                   </div>
-                  <div className="w-[32.5%] text-center">
-                    <div className="text-white text-xl md:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKEND</div>
-                    <div className="text-white/70 text-xs md:text-sm mt-1 font-medium">{language === "ja" ? "週末(金・土・祝前日)" : "Fri - Sat / Holidays"}</div>
+                  <div className="w-[35%] lg:w-[32.5%] text-center">
+                    <div className="text-white text-xs lg:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKEND</div>
+                    <div className="text-white/70 text-[10px] lg:text-sm mt-0.5 lg:mt-1 font-medium">{language === "ja" ? "週末(金・土・祝前日)" : "Fri - Sat / Holidays"}</div>
                   </div>
                 </div>
 
                 {/* 料金表 */}
                 <div className="space-y-0">
-                  <div className="flex items-center py-5 border-t border-white/10">
-                    <div className="w-[35%] text-white text-sm md:text-base tracking-wider font-bold">PRICE</div>
-                    <div className="w-[32.5%] text-center text-white text-xl md:text-2xl font-bold">{formatPrice(selectedSeatData.weekday.price)}</div>
-                    <div className="w-[32.5%] text-center text-white text-xl md:text-2xl font-bold">{formatPrice(selectedSeatData.weekend.price)}</div>
+                  <div className="flex items-center py-2.5 lg:py-5 border-t border-white/10">
+                    <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">PRICE</div>
+                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-sm lg:text-2xl font-bold">{formatPrice(selectedSeatData.weekday.price)}</div>
+                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-sm lg:text-2xl font-bold">{formatPrice(selectedSeatData.weekend.price)}</div>
                   </div>
-                  <div className="flex items-center py-5 border-t border-white/10">
-                    <div className="w-[35%] text-white text-sm md:text-base tracking-wider font-bold">TABLE CHARGE</div>
-                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{formatPrice(selectedSeatData.weekday.tableCharge)}</div>
-                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{formatPrice(selectedSeatData.weekend.tableCharge)}</div>
+                  <div className="flex items-center py-2.5 lg:py-5 border-t border-white/10">
+                    <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">TABLE CHARGE</div>
+                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekday.tableCharge)}</div>
+                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekend.tableCharge)}</div>
                   </div>
-                  <div className="flex items-center py-5 border-t border-white/10">
-                    <div className="w-[35%] text-white text-sm md:text-base tracking-wider font-bold">BOTTLE CHARGE</div>
-                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{formatPrice(selectedSeatData.weekday.bottleCharge)}</div>
-                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{formatPrice(selectedSeatData.weekend.bottleCharge)}</div>
+                  <div className="flex items-center py-2.5 lg:py-5 border-t border-white/10">
+                    <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">BOTTLE CHARGE</div>
+                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekday.bottleCharge)}</div>
+                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekend.bottleCharge)}</div>
                   </div>
-                  <div className="flex items-center py-5 border-t border-b border-white/10">
-                    <div className="w-[35%] text-white text-sm md:text-base tracking-wider font-bold">SERVICE & TAX</div>
-                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{selectedSeatData.weekday.tax}</div>
-                    <div className="w-[32.5%] text-center text-white text-base md:text-xl font-medium">{selectedSeatData.weekend.tax}</div>
+                  <div className="flex items-center py-2.5 lg:py-5 border-t border-b border-white/10">
+                    <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">SERVICE & TAX</div>
+                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{selectedSeatData.weekday.tax}</div>
+                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{selectedSeatData.weekend.tax}</div>
                   </div>
                 </div>
 
                 {/* ボタン */}
-                <div className="flex gap-4 mt-6 md:mt-8">
+                <div className="flex gap-2 lg:gap-4 mt-4 lg:mt-8">
                   <a
                     href="tel:03-6455-3727"
-                    className="flex-1 py-3 md:py-4 rounded-full text-white text-center text-sm md:text-base font-medium transition-all duration-300 hover:bg-white/20 flex items-center justify-center gap-2"
+                    className="flex-1 py-2.5 lg:py-4 rounded-full text-white text-center text-xs lg:text-base font-medium transition-all duration-300 hover:bg-white/20 flex items-center justify-center gap-2"
                     style={{
                       background: 'rgba(255, 255, 255, 0.1)',
                       border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -563,7 +573,7 @@ export const GroupWrapper = () => {
                   </a>
                   <Link
                     to="/reserve"
-                    className="flex-1 py-3 md:py-4 rounded-full bg-[#013d36] text-white text-center text-sm md:text-base font-medium transition-all duration-300 hover:opacity-90"
+                    className="flex-1 py-2.5 lg:py-4 rounded-full bg-[#013d36] text-white text-center text-xs lg:text-base font-medium transition-all duration-300 hover:opacity-90"
                   >
                     RESERVE
                   </Link>
