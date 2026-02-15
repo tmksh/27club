@@ -10,7 +10,7 @@ export const Screen5 = () => {
       className="flex flex-col items-center relative bg-transparent w-full min-h-screen"
       data-model-id="411:1117"
     >
-      <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
+      <Header className="sticky top-0 bg-transparent z-50 w-full" />
       <Frame10 />
       <Frame11 />
       <Footer2 />

@@ -6,7 +6,7 @@ export const Frame1 = () => {
   return (
     <div className="relative w-full" data-scroll="zoom-in">
       {/* 背景画像 */}
-      <div className="relative w-full aspect-[1440/700] md:aspect-[1440/700]">
+      <div className="relative w-full aspect-[1440/800] md:aspect-[1440/700]">
         <img
           className="w-full h-full object-cover"
           alt="チップについて"

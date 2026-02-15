@@ -36,7 +36,7 @@ export const CastDetail = () => {
   if (loading) {
     return (
       <div className="flex flex-col items-center relative overflow-hidden bg-transparent w-full min-h-screen">
-        <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
+        <Header className="sticky top-0 bg-transparent z-50 w-full" />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-white text-lg">読み込み中...</div>
         </div>
@@ -47,7 +47,7 @@ export const CastDetail = () => {
   if (error || !cast) {
     return (
       <div className="flex flex-col items-center relative overflow-hidden bg-transparent w-full min-h-screen">
-        <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
+        <Header className="sticky top-0 bg-transparent z-50 w-full" />
         <div className="flex-1 flex flex-col items-center justify-center gap-4">
           <div className="text-white text-lg">{error || "キャストが見つかりませんでした"}</div>
           <Link
@@ -85,7 +85,7 @@ export const CastDetail = () => {
 
   return (
     <div className="flex flex-col items-center relative overflow-hidden bg-transparent w-full min-h-screen">
-      <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
+      <Header className="sticky top-0 bg-transparent z-50 w-full" />
       
       {/* メインコンテンツ */}
       <div className="w-full px-4 md:px-8 lg:px-16 py-8 md:py-16">

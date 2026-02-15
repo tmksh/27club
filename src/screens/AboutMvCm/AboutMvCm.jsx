@@ -12,10 +12,11 @@ export const AboutMvCm = () => {
 
   return (
     <div className="flex flex-col items-center relative overflow-hidden bg-transparent w-full min-h-screen">
-      <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
-
-      {/* ヒーロー画像 */}
-      <div className="relative w-full h-[300px] md:h-[450px] overflow-hidden">
+      {/* ヒーロー画像 - ヘッダーの裏まで届く */}
+      <div className="relative w-full h-[360px] md:h-[500px] overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 z-50">
+          <Header className="bg-transparent w-full" />
+        </div>
         <img
           src="/img/venue-3.png"
           alt="MV & CM"
@@ -31,7 +32,7 @@ export const AboutMvCm = () => {
           <p className="[font-family:'Playfair_Display',Helvetica] text-white/60 text-sm md:text-base tracking-widest mb-2">
             {t('aboutMvCm.subtitle')}
           </p>
-          <h1 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-3xl md:text-5xl text-center px-4">
+          <h1 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-2xl md:text-4xl text-center px-4">
             {t('aboutMvCm.title')}
           </h1>
         </div>

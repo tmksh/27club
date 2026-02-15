@@ -201,7 +201,7 @@ export const FrameWrapper = () => {
               </div>
             </div>
             {/* サブテキスト - 中央配置 */}
-            <div className="flex justify-center mt-16 lg:mt-20">
+            <div className="flex justify-center mt-8 lg:mt-20">
               <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
                 {language === 'ja' ? (
                   <>多彩なパフォーマンスとイベントをお楽しみいただけます。<br />毎週異なるテーマで、特別な夜をお届けします。</>
@@ -334,7 +334,7 @@ export const FrameWrapper = () => {
 
         </div>
 
-        <div className="flex justify-center w-full mt-32 md:mt-40 pb-8 px-4 md:px-0" data-scroll="fade-up">
+        <div className="flex justify-center w-full mt-10 md:mt-40 pb-8 px-4 md:px-0" data-scroll="fade-up">
           <Group153 
             className="w-full max-w-[200px] md:max-w-[352px] h-[56px] md:h-[98px]" 
             to="/u12461u12515u12473u12488"

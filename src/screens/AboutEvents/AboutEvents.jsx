@@ -20,14 +20,17 @@ export const AboutEvents = () => {
 
   return (
     <div className="flex flex-col items-center relative overflow-hidden bg-transparent w-full min-h-screen">
-      <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
-
-      {/* ヒーロー画像 */}
-      <div className="relative w-full h-[300px] md:h-[450px] overflow-hidden">
+      {/* ヒーロー画像 - ヘッダーの裏まで届く */}
+      <div className="relative w-full h-[360px] md:h-[500px] overflow-hidden">
+        {/* ヘッダーを画像の上に重ねる */}
+        <div className="absolute top-0 left-0 right-0 z-50">
+          <Header className="bg-transparent w-full" />
+        </div>
         <img
-          src="/img/venue-1.png"
+          src="/img/event-hero.png"
           alt="Events"
           className="w-full h-full object-cover"
+          style={{ objectPosition: 'center 80%' }}
         />
         <div
           className="absolute inset-0"
@@ -39,7 +42,7 @@ export const AboutEvents = () => {
           <p className="[font-family:'Playfair_Display',Helvetica] text-white/60 text-sm md:text-base tracking-widest mb-2">
             {t('aboutEvents.subtitle')}
           </p>
-          <h1 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-3xl md:text-5xl">
+          <h1 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-2xl md:text-4xl">
             {t('aboutEvents.title')}
           </h1>
         </div>
@@ -52,12 +55,12 @@ export const AboutEvents = () => {
           {/* 戻るボタン */}
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#013d36] rounded-full text-white hover:opacity-80 transition-all duration-300 mb-8 border-none outline-none focus:outline-none"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#013d36] rounded-full text-white hover:opacity-80 transition-all duration-300 mb-6 border-none outline-none focus:outline-none"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            <span className="[font-family:'Noto_Sans_JP',Helvetica] text-sm font-medium">
+            <span className="[font-family:'Noto_Sans_JP',Helvetica] text-xs font-medium">
               {t('aboutEvents.back')}
             </span>
           </button>

@@ -13,10 +13,11 @@ export const AboutEquipment = () => {
 
   return (
     <div className="flex flex-col items-center relative overflow-hidden bg-transparent w-full min-h-screen">
-      <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
-
-      {/* ヒーロー画像 */}
-      <div className="relative w-full h-[300px] md:h-[450px] overflow-hidden">
+      {/* ヒーロー画像 - ヘッダーの裏まで届く */}
+      <div className="relative w-full h-[360px] md:h-[500px] overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 z-50">
+          <Header className="bg-transparent w-full" />
+        </div>
         <img
           src="/img/venue-5.png"
           alt="Equipment"
@@ -32,7 +33,7 @@ export const AboutEquipment = () => {
           <p className="[font-family:'Playfair_Display',Helvetica] text-white/60 text-sm md:text-base tracking-widest mb-2">
             {t('aboutEquipment.subtitle')}
           </p>
-          <h1 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-3xl md:text-5xl text-center px-4">
+          <h1 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-2xl md:text-4xl text-center px-4">
             {t('aboutEquipment.title')}
           </h1>
         </div>
@@ -62,10 +63,7 @@ export const AboutEquipment = () => {
 
           {/* 照明設備 */}
           <div className="mb-12">
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6 flex items-center gap-3">
-              <svg className="w-6 h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
+            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
               {t('aboutEquipment.lightingTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -92,10 +90,7 @@ export const AboutEquipment = () => {
 
           {/* 音響設備 */}
           <div className="mb-12">
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6 flex items-center gap-3">
-              <svg className="w-6 h-6 text-[#00d6bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-              </svg>
+            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
               {t('aboutEquipment.soundTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">

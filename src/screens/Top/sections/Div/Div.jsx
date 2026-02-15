@@ -37,7 +37,7 @@ export const Div = () => {
         {/* 斜めタイトル - 右寄せ */}
         <div className="flex justify-end">
           <div 
-            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-2xl md:text-4xl lg:text-6xl xl:text-[80px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
+            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
             style={{
               transform: 'rotate(5deg) skewX(5deg)',
             }}
@@ -46,7 +46,7 @@ export const Div = () => {
           </div>
         </div>
         {/* サブテキスト - 中央配置 */}
-        <div className="flex justify-center mt-16 lg:mt-20">
+        <div className="flex justify-center mt-8 lg:mt-20">
           <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center max-w-[800px]">
             {language === 'ja' 
               ? '歌舞伎町最大級のショー空間をご体験ください。'

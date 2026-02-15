@@ -216,6 +216,9 @@ export const NewsFV = () => {
         className="absolute inset-0 overflow-hidden transition-opacity duration-700 ease-out"
         style={{
           opacity: isHovering ? 0.12 : 0.03,
+          willChange: 'opacity',
+          WebkitFontSmoothing: 'antialiased',
+          MozOsxFontSmoothing: 'grayscale',
         }}
       >
         {/* 斜めに配置されたテキスト群 */}
@@ -346,13 +349,24 @@ export const NewsFV = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 pb-[180px] md:pb-[200px]">
         {/* サブタイトル */}
         <p 
-          className="[font-family:'Cormorant_Garamond',serif] text-white/40 text-[10px] md:text-xs tracking-[0.5em] uppercase mb-8"
+          className="[font-family:'Cormorant_Garamond',serif] text-white/40 text-[10px] md:text-xs tracking-[0.5em] uppercase mb-6 md:mb-8"
           style={{
             animation: 'fadeInUp 1s ease-out 0.3s both',
           }}
         >
           Welcome to Tonight's SHOWTIME
         </p>
+
+        {/* 中央ロゴ */}
+        <img
+          className="w-[220px] md:w-[320px] h-auto mb-6 md:mb-8"
+          alt="THE 27 CLUB"
+          src="/img/27logo-1-1.png"
+          style={{
+            animation: 'fadeInUp 1s ease-out 0.6s both',
+            filter: 'brightness(1.1)',
+          }}
+        />
         
         {/* キャッチコピー */}
         <p 
@@ -378,7 +392,7 @@ export const NewsFV = () => {
       </div>
 
       {/* ニュースセクション - 画面下部（Instagram連携対応） */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black via-black/90 to-transparent pt-12">
+      <div className="absolute bottom-8 md:bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black via-black/90 to-transparent pt-12">
         {/* ラベル - Instagram連携時はInstagramアイコン表示 */}
         <div className="flex items-center justify-between px-6 md:px-12 mb-5">
           <div className="flex items-center gap-3">

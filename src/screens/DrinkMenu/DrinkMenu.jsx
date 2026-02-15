@@ -6,7 +6,7 @@ export const DrinkMenu = () => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center min-h-screen bg-black">
-      <Header className="sticky top-0 bg-black/80 backdrop-blur-md z-50 w-full" />
+      <Header className="sticky top-0 bg-transparent z-50 w-full" />
 
       {/* タイトル */}
       <div className="text-center mb-10 pt-12">

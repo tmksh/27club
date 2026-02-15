@@ -10,12 +10,12 @@ export const FeelingSection = () => {
         className="max-w-[700px] mx-auto text-center"
       >
         {/* タイトル */}
-        <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-white text-lg md:text-2xl tracking-wide leading-relaxed mb-4">
+        <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-white text-sm md:text-2xl tracking-wide leading-relaxed mb-3 md:mb-4">
           {t('tipFeeling.title')}
         </h3>
 
         {/* 説明文 */}
-        <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-sm md:text-base tracking-wide leading-relaxed">
+        <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-xs md:text-base tracking-wide leading-relaxed">
           {t('tipFeeling.description')}
         </p>
       </div>

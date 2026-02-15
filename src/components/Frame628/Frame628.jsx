@@ -51,65 +51,66 @@ export const Frame628 = ({
         className={`w-full relative ${defaultGradient} ${hoverGradientClass} transition-all duration-300 rounded-lg shadow-lg overflow-hidden ${groupClassName}`}
       >
         {/* SP版レイアウト */}
-        <div className="md:hidden flex flex-col p-3">
-          {/* ヘッダー: タイトルと画像 */}
-          <div className="flex gap-3">
-            {/* サムネイル画像 */}
-            <div className="w-[90px] h-[110px] flex-shrink-0">
-              <img
-                className="w-full h-full object-cover rounded"
-                alt="Event"
-                src={eventData?.image_url || rectangle}
-              />
-            </div>
-            
-            {/* コンテンツ */}
-            <div className="flex-1 min-w-0">
-              <div className="[font-family:'Playfair_Display',Helvetica] font-semibold text-[#fffbfb] text-lg leading-tight">
+        <div className="md:hidden flex gap-3 p-2.5">
+          {/* サムネイル画像 */}
+          <div className="w-[70px] h-[70px] flex-shrink-0 overflow-hidden">
+            <img
+              className="w-full h-full object-cover rounded-lg"
+              alt="Event"
+              src={eventData?.image_url || rectangle}
+            />
+          </div>
+          
+          {/* コンテンツ */}
+          <div className="flex-1 min-w-0 flex flex-col justify-between">
+            <div>
+              <div className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-sm leading-tight truncate">
                 {eventData?.title_en || eventData?.title || 'Summer Neon Night'}
               </div>
               
-              <div className="mt-2 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm leading-[1.6] space-y-1">
+              <div className="mt-1 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-[10px] leading-[1.5] space-y-0.5">
                 {eventData ? (
                   <>
-                    <div>{language === 'ja' ? '日付' : 'Date'}：{new Date(eventData.date_time_start).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', { month: 'numeric', day: 'numeric', weekday: 'short' })}</div>
-                    <div>{language === 'ja' ? '時間' : 'Time'}：{new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</div>
+                    <div>{new Date(eventData.date_time_start).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', { month: 'numeric', day: 'numeric', weekday: 'short' })} {new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</div>
                     {eventData.price && (
-                      <div className="font-medium">{language === 'ja' ? '参加料' : 'Fee'}：¥{eventData.price.toLocaleString()}</div>
+                      <div className="font-medium text-white/80">¥{eventData.price.toLocaleString()}</div>
                     )}
                   </>
                 ) : (
                   <>
-                    <div>{language === 'ja' ? '日付' : 'Date'}：8/02（{language === 'ja' ? '土' : 'Sat'}）</div>
-                    <div>{language === 'ja' ? '時間' : 'Time'}：19:00～22:00</div>
-                    <div className="font-medium">{language === 'ja' ? '参加料' : 'Fee'}：¥2,500</div>
+                    <div>8/02（{language === 'ja' ? '土' : 'Sat'}） 19:00～22:00</div>
+                    <div className="font-medium text-white/80">¥2,500</div>
                   </>
                 )}
               </div>
             </div>
-          </div>
-          
-          {/* 予約ボタン */}
-          <div className="mt-3 flex justify-end">
-            {eventData?.reservation_url ? (
-              <a
-                href={eventData.reservation_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-1.5 bg-[#00d6bd] rounded transition-all duration-200 hover:-translate-y-1 hover:bg-[#00e8cc] hover:shadow-lg hover:shadow-[#00d6bd40]"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
-                  {language === 'ja' ? '予約はこちら' : 'Reserve'}
-                </span>
-              </a>
-            ) : (
-              <div className="px-4 py-1.5 bg-[#00d6bd] rounded transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#00d6bd40] cursor-pointer">
-                <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#0a1a1a] text-xs">
-                  {language === 'ja' ? '予約はこちら' : 'Reserve'}
-                </span>
-              </div>
-            )}
+
+            {/* 予約ボタン - 右下に */}
+            <div className="flex justify-end mt-1">
+              {eventData?.reservation_url ? (
+                <a
+                  href={eventData.reservation_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1 bg-[#013d36] rounded-md transition-all duration-200 active:scale-95"
+                  style={{ border: '1px solid rgba(77,214,192,0.3)' }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[10px]">
+                    {language === 'ja' ? '予約' : 'Reserve'}
+                  </span>
+                </a>
+              ) : (
+                <div 
+                  className="px-3 py-1 bg-[#013d36] rounded-md transition-all duration-200 active:scale-95 cursor-pointer"
+                  style={{ border: '1px solid rgba(77,214,192,0.3)' }}
+                >
+                  <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[10px]">
+                    {language === 'ja' ? '予約' : 'Reserve'}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

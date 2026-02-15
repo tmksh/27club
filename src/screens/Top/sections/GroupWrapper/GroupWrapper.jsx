@@ -66,7 +66,7 @@ export const GroupWrapper = () => {
     vipSeat: {
       name: "V.I.P. SEAT",
       category: "V.I.P.",
-      color: "#00d6bd",
+      color: "#013d36",
       capacity: "6-8",
       weekday: { price: 107520, tableCharge: 26000, bottleCharge: 58000, tax: "28%" },
       weekend: { price: 215040, tableCharge: 52000, bottleCharge: 116000, tax: "28%" },
@@ -74,7 +74,7 @@ export const GroupWrapper = () => {
     v1: {
       name: "V.I.P. V1",
       category: "V.I.P.",
-      color: "#00d6bd",
+      color: "#013d36",
       capacity: "4-6",
       weekday: { price: 83072, tableCharge: 20000, bottleCharge: 44000, tax: "28%" },
       weekend: { price: 166144, tableCharge: 40000, bottleCharge: 88000, tax: "28%" },
@@ -82,7 +82,7 @@ export const GroupWrapper = () => {
     v2: {
       name: "V.I.P. V2",
       category: "V.I.P.",
-      color: "#00d6bd",
+      color: "#013d36",
       capacity: "4-6",
       weekday: { price: 83072, tableCharge: 20000, bottleCharge: 44000, tax: "28%" },
       weekend: { price: 166144, tableCharge: 40000, bottleCharge: 88000, tax: "28%" },
@@ -90,7 +90,7 @@ export const GroupWrapper = () => {
     v3: {
       name: "V.I.P. V3",
       category: "V.I.P.",
-      color: "#00d6bd",
+      color: "#013d36",
       capacity: "4-6",
       weekday: { price: 83072, tableCharge: 20000, bottleCharge: 44000, tax: "28%" },
       weekend: { price: 166144, tableCharge: 40000, bottleCharge: 88000, tax: "28%" },
@@ -98,7 +98,7 @@ export const GroupWrapper = () => {
     v4: {
       name: "V.I.P. V4",
       category: "V.I.P.",
-      color: "#00d6bd",
+      color: "#013d36",
       capacity: "4-6",
       weekday: { price: 83072, tableCharge: 20000, bottleCharge: 44000, tax: "28%" },
       weekend: { price: 166144, tableCharge: 40000, bottleCharge: 88000, tax: "28%" },
@@ -106,7 +106,7 @@ export const GroupWrapper = () => {
     v5: {
       name: "V.I.P. V5",
       category: "V.I.P.",
-      color: "#00d6bd",
+      color: "#013d36",
       capacity: "4-6",
       weekday: { price: 83072, tableCharge: 20000, bottleCharge: 44000, tax: "28%" },
       weekend: { price: 166144, tableCharge: 40000, bottleCharge: 88000, tax: "28%" },
@@ -114,7 +114,7 @@ export const GroupWrapper = () => {
     v6: {
       name: "V.I.P. V6",
       category: "V.I.P.",
-      color: "#00d6bd",
+      color: "#013d36",
       capacity: "4-6",
       weekday: { price: 83072, tableCharge: 20000, bottleCharge: 44000, tax: "28%" },
       weekend: { price: 166144, tableCharge: 40000, bottleCharge: 88000, tax: "28%" },
@@ -125,7 +125,7 @@ export const GroupWrapper = () => {
   const seatGroups = [
     {
       category: "V.I.P.",
-      color: "#00d6bd",
+      color: "#013d36",
       groups: [
         { label: "(FOR 6-8 PEOPLE)", seats: ["vipSeat"] },
         { label: "(FOR 4-6 PEOPLE)", seats: ["v1", "v2", "v3", "v4", "v5", "v6"] },
@@ -199,9 +199,10 @@ export const GroupWrapper = () => {
             Floor Map
           </div>
           {/* サブテキスト - 中央配置 */}
-          <div className="flex justify-center mt-16 lg:mt-20">
+          <div className="flex justify-center mt-8 lg:mt-20">
             <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
-              {t("floorMap.subtitle")}
+              <span className="hidden md:inline">{t("floorMap.subtitle")}</span>
+              <span className="md:hidden">VIPからスタンディングまで、<br />シーンに合わせてお好みの席をお選びください</span>
             </p>
           </div>
         </div>
@@ -224,7 +225,7 @@ export const GroupWrapper = () => {
                 <div key={groupIdx} className="flex flex-row items-center gap-2 lg:flex-col lg:items-start lg:gap-0">
                   <h4
                     className="text-xs lg:text-lg font-semibold [font-family:'Playfair_Display',Helvetica] lg:mb-2 tracking-wide whitespace-nowrap"
-                    style={{ color: group.color }}
+                    style={{ color: group.color === '#013d36' ? '#4dd6c0' : group.color }}
                   >
                     {group.category}
                   </h4>
@@ -242,13 +243,14 @@ export const GroupWrapper = () => {
                               px-2 lg:px-4 py-1 lg:py-2 rounded-md transition-all duration-300
                               text-[10px] lg:text-base font-semibold [font-family:'Inter',Helvetica] tracking-wide
                               ${selectedSeat === seatId
-                                ? "text-black shadow-lg"
+                                ? (group.color === '#013d36' ? "text-white shadow-lg" : "text-black shadow-lg")
                                 : "text-white border border-white/20 hover:border-white/40 hover:bg-white/5"
                               }
                             `}
                             style={{
                               backgroundColor: selectedSeat === seatId ? group.color : "transparent",
                               boxShadow: selectedSeat === seatId ? `0 0 20px ${group.color}40` : "none",
+                              border: selectedSeat === seatId && group.color === '#013d36' ? '1px solid rgba(77,214,192,0.6)' : undefined,
                             }}
                           >
                             {seatDisplayNames[seatId]}
@@ -284,89 +286,89 @@ export const GroupWrapper = () => {
                   <span className="text-white text-lg md:text-2xl lg:text-[32px] font-bold [font-family:'Inter',Helvetica] tracking-[4px] [text-shadow:0_2px_10px_rgba(255,255,255,0.3)]">STAGE</span>
                 </div>
 
-                {/* V.I.P. SEAT エリア（中央ティール） */}
+                {/* V.I.P. SEAT エリア */}
                 <div
                   onClick={() => handleSeatSelect("vipSeat")}
-                  className={`absolute top-[22%] left-[28.2%] w-[11.8%] h-[32%] flex flex-col items-center justify-center cursor-pointer transition-all border-2 border-[#00d6bd] z-10 ${
-                    selectedSeat === "vipSeat" ? "shadow-[0_0_40px_rgba(0,214,189,0.8)]" : "shadow-[0_0_25px_rgba(0,214,189,0.3)] hover:shadow-[0_0_40px_rgba(0,214,189,0.5)]"
+                  className={`absolute top-[22%] left-[28.2%] w-[11.8%] h-[32%] flex flex-col items-center justify-center cursor-pointer transition-all border-2 border-[#013d36] z-10 ${
+                    selectedSeat === "vipSeat" ? "shadow-[0_0_40px_rgba(1,61,54,0.9)]" : "shadow-[0_0_25px_rgba(1,61,54,0.4)] hover:shadow-[0_0_40px_rgba(1,61,54,0.6)]"
                   }`}
                   style={{
                     background: selectedSeat === "vipSeat" || hoveredVipSeat
-                      ? "linear-gradient(180deg, rgba(42,74,74,1) 35%, rgba(0,214,189,1) 100%)"
-                      : "linear-gradient(180deg, rgba(34,48,47,1) 35%, rgba(0,214,189,1) 100%)",
+                      ? "linear-gradient(180deg, rgba(2,80,70,1) 35%, rgba(1,61,54,1) 100%)"
+                      : "linear-gradient(180deg, rgba(10,40,35,1) 35%, rgba(1,61,54,1) 100%)",
                   }}
                   onMouseEnter={() => setHoveredVipSeat(true)}
                   onMouseLeave={() => setHoveredVipSeat(false)}
                 >
-                  <span className="text-white text-xl md:text-2xl lg:text-[32px] font-bold [font-family:'Inter',Helvetica] leading-[1] [text-shadow:0_0_12px_rgba(0,214,189,0.6),0_2px_8px_rgba(255,255,255,0.2)]">V</span>
-                  <span className="text-white text-xl md:text-2xl lg:text-[32px] font-bold [font-family:'Inter',Helvetica] leading-[1] [text-shadow:0_0_12px_rgba(0,214,189,0.6),0_2px_8px_rgba(255,255,255,0.2)]">I</span>
-                  <span className="text-white text-xl md:text-2xl lg:text-[32px] font-bold [font-family:'Inter',Helvetica] leading-[1] [text-shadow:0_0_12px_rgba(0,214,189,0.6),0_2px_8px_rgba(255,255,255,0.2)]">P</span>
+                  <span className="text-white text-xl md:text-2xl lg:text-[32px] font-bold [font-family:'Inter',Helvetica] leading-[1] [text-shadow:0_0_12px_rgba(1,61,54,0.8),0_2px_8px_rgba(255,255,255,0.3)]">V</span>
+                  <span className="text-white text-xl md:text-2xl lg:text-[32px] font-bold [font-family:'Inter',Helvetica] leading-[1] [text-shadow:0_0_12px_rgba(1,61,54,0.8),0_2px_8px_rgba(255,255,255,0.3)]">I</span>
+                  <span className="text-white text-xl md:text-2xl lg:text-[32px] font-bold [font-family:'Inter',Helvetica] leading-[1] [text-shadow:0_0_12px_rgba(1,61,54,0.8),0_2px_8px_rgba(255,255,255,0.3)]">P</span>
                 </div>
 
                 {/* V6 */}
                 <div
                   onClick={() => handleSeatSelect("v6")}
-                  className={`absolute top-[22%] left-[14.1%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#00d6bd] z-10 ${
-                    selectedSeat === "v6" ? "shadow-[0_0_25px_rgba(0,214,189,0.8)]" : "shadow-[0_0_15px_rgba(0,214,189,0.3)] hover:shadow-[0_0_25px_rgba(0,214,189,0.6)]"
+                  className={`absolute top-[22%] left-[14.1%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#013d36] z-10 ${
+                    selectedSeat === "v6" ? "shadow-[0_0_25px_rgba(1,61,54,0.9)]" : "shadow-[0_0_15px_rgba(1,61,54,0.4)] hover:shadow-[0_0_25px_rgba(1,61,54,0.7)]"
                   }`}
-                  style={{ background: selectedSeat === "v6" ? "linear-gradient(180deg, rgba(0,214,189,0.8) 35%, rgba(0,214,189,1) 100%)" : "linear-gradient(180deg, rgba(34,48,47,1) 35%, rgba(0,214,189,1) 100%)" }}
+                  style={{ background: selectedSeat === "v6" ? "linear-gradient(180deg, rgba(2,80,70,1) 35%, rgba(1,61,54,1) 100%)" : "linear-gradient(180deg, rgba(10,40,35,1) 35%, rgba(1,61,54,1) 100%)" }}
                 >
-                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V6</span>
+                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(1,61,54,0.7),0_2px_8px_rgba(0,0,0,0.5)]">V6</span>
                 </div>
 
                 {/* V5 */}
                 <div
                   onClick={() => handleSeatSelect("v5")}
-                  className={`absolute top-[36%] left-[14.1%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#00d6bd] z-10 ${
-                    selectedSeat === "v5" ? "shadow-[0_0_25px_rgba(0,214,189,0.8)]" : "shadow-[0_0_15px_rgba(0,214,189,0.3)] hover:shadow-[0_0_25px_rgba(0,214,189,0.6)]"
+                  className={`absolute top-[36%] left-[14.1%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#013d36] z-10 ${
+                    selectedSeat === "v5" ? "shadow-[0_0_25px_rgba(1,61,54,0.9)]" : "shadow-[0_0_15px_rgba(1,61,54,0.4)] hover:shadow-[0_0_25px_rgba(1,61,54,0.7)]"
                   }`}
-                  style={{ background: selectedSeat === "v5" ? "linear-gradient(180deg, rgba(0,214,189,0.8) 35%, rgba(0,214,189,1) 100%)" : "linear-gradient(180deg, rgba(34,48,47,1) 35%, rgba(0,214,189,1) 100%)" }}
+                  style={{ background: selectedSeat === "v5" ? "linear-gradient(180deg, rgba(2,80,70,1) 35%, rgba(1,61,54,1) 100%)" : "linear-gradient(180deg, rgba(10,40,35,1) 35%, rgba(1,61,54,1) 100%)" }}
                 >
-                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V5</span>
+                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(1,61,54,0.7),0_2px_8px_rgba(0,0,0,0.5)]">V5</span>
                 </div>
 
                 {/* V4 */}
                 <div
                   onClick={() => handleSeatSelect("v4")}
-                  className={`absolute top-[50%] left-[14.1%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#00d6bd] z-10 ${
-                    selectedSeat === "v4" ? "shadow-[0_0_25px_rgba(0,214,189,0.8)]" : "shadow-[0_0_15px_rgba(0,214,189,0.3)] hover:shadow-[0_0_25px_rgba(0,214,189,0.6)]"
+                  className={`absolute top-[50%] left-[14.1%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#013d36] z-10 ${
+                    selectedSeat === "v4" ? "shadow-[0_0_25px_rgba(1,61,54,0.9)]" : "shadow-[0_0_15px_rgba(1,61,54,0.4)] hover:shadow-[0_0_25px_rgba(1,61,54,0.7)]"
                   }`}
-                  style={{ background: selectedSeat === "v4" ? "linear-gradient(180deg, rgba(0,214,189,0.8) 35%, rgba(0,214,189,1) 100%)" : "linear-gradient(180deg, rgba(34,48,47,1) 35%, rgba(0,214,189,1) 100%)" }}
+                  style={{ background: selectedSeat === "v4" ? "linear-gradient(180deg, rgba(2,80,70,1) 35%, rgba(1,61,54,1) 100%)" : "linear-gradient(180deg, rgba(10,40,35,1) 35%, rgba(1,61,54,1) 100%)" }}
                 >
-                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V4</span>
+                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(1,61,54,0.7),0_2px_8px_rgba(0,0,0,0.5)]">V4</span>
                 </div>
 
                 {/* V1 */}
                 <div
                   onClick={() => handleSeatSelect("v1")}
-                  className={`absolute top-[22%] right-[44.7%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#00d6bd] z-10 ${
-                    selectedSeat === "v1" ? "shadow-[0_0_25px_rgba(0,214,189,0.8)]" : "shadow-[0_0_15px_rgba(0,214,189,0.3)] hover:shadow-[0_0_25px_rgba(0,214,189,0.6)]"
+                  className={`absolute top-[22%] right-[44.7%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#013d36] z-10 ${
+                    selectedSeat === "v1" ? "shadow-[0_0_25px_rgba(1,61,54,0.9)]" : "shadow-[0_0_15px_rgba(1,61,54,0.4)] hover:shadow-[0_0_25px_rgba(1,61,54,0.7)]"
                   }`}
-                  style={{ background: selectedSeat === "v1" ? "linear-gradient(180deg, rgba(0,214,189,0.8) 35%, rgba(0,214,189,1) 100%)" : "linear-gradient(180deg, rgba(34,48,47,1) 35%, rgba(0,214,189,1) 100%)" }}
+                  style={{ background: selectedSeat === "v1" ? "linear-gradient(180deg, rgba(2,80,70,1) 35%, rgba(1,61,54,1) 100%)" : "linear-gradient(180deg, rgba(10,40,35,1) 35%, rgba(1,61,54,1) 100%)" }}
                 >
-                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V1</span>
+                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(1,61,54,0.7),0_2px_8px_rgba(0,0,0,0.5)]">V1</span>
                 </div>
 
                 {/* V2 */}
                 <div
                   onClick={() => handleSeatSelect("v2")}
-                  className={`absolute top-[36%] right-[44.7%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#00d6bd] z-10 ${
-                    selectedSeat === "v2" ? "shadow-[0_0_25px_rgba(0,214,189,0.8)]" : "shadow-[0_0_15px_rgba(0,214,189,0.3)] hover:shadow-[0_0_25px_rgba(0,214,189,0.6)]"
+                  className={`absolute top-[36%] right-[44.7%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#013d36] z-10 ${
+                    selectedSeat === "v2" ? "shadow-[0_0_25px_rgba(1,61,54,0.9)]" : "shadow-[0_0_15px_rgba(1,61,54,0.4)] hover:shadow-[0_0_25px_rgba(1,61,54,0.7)]"
                   }`}
-                  style={{ background: selectedSeat === "v2" ? "linear-gradient(180deg, rgba(0,214,189,0.8) 35%, rgba(0,214,189,1) 100%)" : "linear-gradient(180deg, rgba(34,48,47,1) 35%, rgba(0,214,189,1) 100%)" }}
+                  style={{ background: selectedSeat === "v2" ? "linear-gradient(180deg, rgba(2,80,70,1) 35%, rgba(1,61,54,1) 100%)" : "linear-gradient(180deg, rgba(10,40,35,1) 35%, rgba(1,61,54,1) 100%)" }}
                 >
-                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V2</span>
+                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(1,61,54,0.7),0_2px_8px_rgba(0,0,0,0.5)]">V2</span>
                 </div>
 
                 {/* V3 */}
                 <div
                   onClick={() => handleSeatSelect("v3")}
-                  className={`absolute top-[50%] right-[44.7%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#00d6bd] z-10 ${
-                    selectedSeat === "v3" ? "shadow-[0_0_25px_rgba(0,214,189,0.8)]" : "shadow-[0_0_15px_rgba(0,214,189,0.3)] hover:shadow-[0_0_25px_rgba(0,214,189,0.6)]"
+                  className={`absolute top-[50%] right-[44.7%] w-[8.2%] aspect-square rounded-full flex items-center justify-center cursor-pointer transition-all border-2 border-[#013d36] z-10 ${
+                    selectedSeat === "v3" ? "shadow-[0_0_25px_rgba(1,61,54,0.9)]" : "shadow-[0_0_15px_rgba(1,61,54,0.4)] hover:shadow-[0_0_25px_rgba(1,61,54,0.7)]"
                   }`}
-                  style={{ background: selectedSeat === "v3" ? "linear-gradient(180deg, rgba(0,214,189,0.8) 35%, rgba(0,214,189,1) 100%)" : "linear-gradient(180deg, rgba(34,48,47,1) 35%, rgba(0,214,189,1) 100%)" }}
+                  style={{ background: selectedSeat === "v3" ? "linear-gradient(180deg, rgba(2,80,70,1) 35%, rgba(1,61,54,1) 100%)" : "linear-gradient(180deg, rgba(10,40,35,1) 35%, rgba(1,61,54,1) 100%)" }}
                 >
-                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(0,214,189,0.5),0_2px_8px_rgba(0,0,0,0.5)]">V3</span>
+                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_10px_rgba(1,61,54,0.7),0_2px_8px_rgba(0,0,0,0.5)]">V3</span>
                 </div>
 
                 {/* PINK SEAT */}
@@ -504,14 +506,25 @@ export const GroupWrapper = () => {
                     }}
                   />
                   {/* オーバーレイテキスト */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end justify-start p-6 md:p-8">
-                    <div>
-                      <p className="text-white/60 text-xs md:text-sm tracking-wider mb-2">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-start p-4 md:p-6 lg:p-8">
+                    <div 
+                      className="px-5 py-3.5 rounded-xl"
+                      style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        backdropFilter: 'blur(16px)',
+                        WebkitBackdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                      }}
+                    >
+                      <p className="text-white/60 text-[10px] md:text-xs tracking-[0.15em] uppercase mb-1 font-medium">
                         FOR {selectedSeatData.capacity} PEOPLE
                       </p>
                       <h3
-                        className="text-2xl md:text-3xl lg:text-4xl font-bold [font-family:'Playfair_Display',Helvetica]"
-                        style={{ color: selectedSeatData.color }}
+                        className="text-xl md:text-2xl lg:text-3xl font-bold [font-family:'Playfair_Display',Helvetica] tracking-wide"
+                        style={{ 
+                          color: selectedSeatData.color === '#013d36' ? '#4dd6c0' : selectedSeatData.color,
+                        }}
                       >
                         {selectedSeatData.name}
                       </h3>

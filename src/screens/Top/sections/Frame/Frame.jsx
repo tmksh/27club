@@ -176,16 +176,27 @@ export const Frame = () => {
 
       {/* モバイル用週表示カレンダー */}
       <div className="md:hidden mt-6 relative z-10 px-2" data-scroll="fade-up">
-        <div className="bg-black rounded-lg overflow-hidden border border-white/10">
+        <div 
+          className="rounded-2xl overflow-hidden"
+          style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+          }}
+        >
           {/* 月表示ヘッダー */}
-          <div className="flex items-center justify-between px-2 py-2 border-b border-white/10">
+          <div className="flex items-center justify-between px-4 py-3">
             <button 
               onClick={goToPrevMonth}
-              className="px-3 py-1.5 bg-[#1a1a1a] rounded text-white/80 text-xs hover:bg-[#2a2a2a] hover:text-white transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full transition-colors active:scale-95"
+              style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
             >
-              {language === 'ja' ? '< 前月' : '< Prev'}
+              <svg className="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
             </button>
-            <div className="[font-family:'Playfair_Display',Helvetica] text-white text-base font-medium">
+            <div className="[font-family:'Playfair_Display',Helvetica] text-white text-sm font-medium tracking-wide">
               {language === 'ja' 
                 ? `${currentMonth.getFullYear()}年 ${currentMonth.getMonth() + 1}月`
                 : `${currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}`
@@ -193,20 +204,26 @@ export const Frame = () => {
             </div>
             <button 
               onClick={goToNextMonth}
-              className="px-3 py-1.5 bg-[#1a1a1a] rounded text-white/80 text-xs hover:bg-[#2a2a2a] hover:text-white transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full transition-colors active:scale-95"
+              style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
             >
-              {language === 'ja' ? '翌月 >' : 'Next >'}
+              <svg className="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
 
           {/* 週の日付 */}
-          <div className="flex items-center px-2 py-2">
+          <div className="flex items-center px-3 py-2 gap-1.5">
             {/* 左矢印 */}
             <button 
               onClick={goToPrevWeek}
-              className="w-7 h-10 flex items-center justify-center bg-[#1a1a1a] rounded text-white/80 hover:bg-[#2a2a2a] hover:text-white transition-colors"
+              className="w-7 h-7 flex items-center justify-center rounded-full transition-colors active:scale-95 flex-shrink-0"
+              style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
             >
-              <span className="text-xs">&lt;</span>
+              <svg className="w-3.5 h-3.5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
             </button>
 
             {/* 日付ボタン */}
@@ -221,20 +238,27 @@ export const Frame = () => {
                   <button
                     key={index}
                     onClick={() => setHoveredDate(date.getDate())}
-                    className={`h-10 flex flex-col items-center justify-center rounded transition-all ${
+                    className={`h-12 flex flex-col items-center justify-center rounded-xl transition-all ${
                       isSelected 
-                        ? 'bg-[#00d6bd] text-white'
-                        : isSaturday 
-                          ? 'bg-[#1a3a35] text-[#00d6bd]' 
-                          : isSunday 
-                            ? 'bg-[#1a3a35] text-[#00d6bd]' 
-                            : 'bg-[#1a1a1a] text-white/80'
+                        ? 'text-white'
+                        : isSaturday || isSunday
+                          ? 'text-white/70' 
+                          : 'text-white/50'
                     }`}
+                    style={{
+                      background: isSelected 
+                        ? 'linear-gradient(135deg, #013d36 0%, #025f54 100%)' 
+                        : 'rgba(255,255,255,0.03)',
+                      border: isSelected 
+                        ? '1px solid rgba(77,214,192,0.4)' 
+                        : '1px solid transparent',
+                      boxShadow: isSelected ? '0 4px 12px rgba(1,61,54,0.4)' : 'none',
+                    }}
                   >
-                    <span className="text-[10px] font-medium leading-tight">
+                    <span className={`text-[10px] font-semibold leading-tight ${isSelected ? 'text-white' : ''}`}>
                       {date.getDate()}
                     </span>
-                    <span className={`text-[8px] leading-tight ${isSaturday || isSunday ? 'text-white/90' : 'text-white/50'}`}>
+                    <span className={`text-[8px] leading-tight mt-0.5 ${isSelected ? 'text-white/80' : isSaturday || isSunday ? 'text-white/50' : 'text-white/30'}`}>
                       {getDayOfWeek(date)}
                     </span>
                   </button>
@@ -245,26 +269,40 @@ export const Frame = () => {
             {/* 右矢印 */}
             <button 
               onClick={goToNextWeek}
-              className="w-7 h-10 flex items-center justify-center bg-[#1a1a1a] rounded text-white/80 hover:bg-[#2a2a2a] hover:text-white transition-colors"
+              className="w-7 h-7 flex items-center justify-center rounded-full transition-colors active:scale-95 flex-shrink-0"
+              style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
             >
-              <span className="text-xs">&gt;</span>
+              <svg className="w-3.5 h-3.5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
         </div>
 
         {/* イベントリスト */}
-        <div className="mt-3 px-2">
-          <div className="bg-black rounded-lg shadow-xl border border-white/10 p-3">
-            <div className="mb-2 pb-2 border-b border-white/20 flex items-center justify-between">
+        <div className="mt-3">
+          <div 
+            className="rounded-2xl p-3"
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+            }}
+          >
+            <div className="mb-3 pb-2 border-b border-white/10 flex items-center justify-between">
               <div>
-                <div className="[font-family:'Playfair_Display',Helvetica] text-white text-sm font-normal tracking-[1px]">
-                  EVENTS
+                <div className="[font-family:'Playfair_Display',Helvetica] text-white text-sm font-medium tracking-wide">
+                  Events
                 </div>
-                <div className="[font-family:'Noto_Serif_JP',Helvetica] text-[#00d6bd] text-[9px] font-normal">
+                <div className="[font-family:'Noto_Serif_JP',Helvetica] text-white/40 text-[9px] font-normal">
                   {t('events.eventList')}
                 </div>
               </div>
-              <div className="text-white/70 text-[10px]">
+              <div 
+                className="text-white/60 text-[10px] px-2.5 py-1 rounded-full"
+                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }}
+              >
                 {events.length} {t('events.eventsCount')}
               </div>
             </div>

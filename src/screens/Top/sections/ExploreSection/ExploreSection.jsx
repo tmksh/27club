@@ -61,7 +61,7 @@ export const ExploreSection = () => {
           </h2>
         </div>
         {/* サブテキスト - 中央配置 */}
-        <div className="flex justify-center mt-16 lg:mt-20">
+        <div className="flex justify-center mt-8 lg:mt-20">
           <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
             {language === 'ja' ? 'THE 27 CLUBをより楽しむための情報をご案内します' : 'Everything you need to know to enjoy THE 27 CLUB'}
           </p>
@@ -133,14 +133,14 @@ export const ExploreSection = () => {
 
               {/* 上部アクセントライン */}
               <div 
-                className="absolute top-0 left-0 w-0 h-[3px] bg-[#00d6bd] transition-all duration-500 ease-out group-hover:w-full"
+                className="absolute top-0 left-0 w-0 h-[3px] bg-[#013d36] transition-all duration-500 ease-out group-hover:w-full"
               />
 
               {/* ホバー時のグロー */}
               <div 
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(0,214,189,0.1) 0%, transparent 40%)',
+                  background: 'linear-gradient(135deg, rgba(1,61,54,0.2) 0%, transparent 40%)',
                 }}
               />
             </div>
@@ -180,12 +180,12 @@ export const ExploreSection = () => {
         }
         
         .group:hover .arrow-btn {
-          background: #00d6bd;
-          border-color: #00d6bd;
+          background: #013d36;
+          border-color: #013d36;
         }
         
         .group:hover .arrow-btn svg {
-          color: #000;
+          color: #fff;
         }
       `}</style>
     </div>

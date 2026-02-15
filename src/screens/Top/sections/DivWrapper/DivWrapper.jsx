@@ -20,14 +20,19 @@ export const DivWrapper = () => {
             Access
           </h2>
           {/* サブテキスト - 中央配置 */}
-          <div className="flex justify-center mt-16 lg:mt-20">
+          <div className="flex justify-center mt-8 lg:mt-20">
             <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
-              {t('access.subtitle').split('\n').map((line, i, arr) => (
-                <React.Fragment key={i}>
-                  {line}
-                  {i < arr.length - 1 && <br />}
-                </React.Fragment>
-              ))}
+              <span className="hidden md:inline">
+                {t('access.subtitle').split('\n').map((line, i, arr) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    {i < arr.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+              </span>
+              <span className="md:hidden">
+                新宿駅・新宿三丁目駅から徒歩圏内。<br />大きな赤い階段が目印です。<br />お気軽にお越しください。
+              </span>
             </p>
           </div>
         </div>
