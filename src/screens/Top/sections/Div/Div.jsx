@@ -97,7 +97,9 @@ export const Div = () => {
             className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/75 text-sm leading-[1.85] mb-6"
             data-scroll="fade-up"
           >
-            {t('stage.description')}
+            {t('stage.description').split('\n').map((line, i, arr) => (
+              <React.Fragment key={i}>{line}{i < arr.length - 1 && <br />}</React.Fragment>
+            ))}
           </p>
 
           {/* 特徴リスト */}
@@ -109,16 +111,16 @@ export const Div = () => {
               <Link
                 key={index}
                 to={feature.path}
-                className="flex items-center gap-3 group cursor-pointer no-underline"
+                className="flex items-center gap-3 group cursor-pointer no-underline transition-all duration-300 hover:pl-2"
               >
                 <span
-                  className="w-px h-5 flex-shrink-0"
+                  className="w-px h-5 flex-shrink-0 transition-all duration-300 group-hover:h-6 group-hover:w-[2px]"
                   style={{ background: 'linear-gradient(180deg, #00d6bd 0%, rgba(0,214,189,0.3) 100%)' }}
                 />
-                <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white/90 text-sm tracking-wide">
+                <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white/90 text-sm tracking-wide transition-colors duration-300 group-hover:text-[#00d6bd]">
                   {feature.label}
                 </span>
-                <svg className="w-3.5 h-3.5 text-white/30 flex-shrink-0 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 text-white/30 flex-shrink-0 ml-auto transition-all duration-300 group-hover:text-[#00d6bd] group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
@@ -215,11 +217,13 @@ export const Div = () => {
                 data-scroll="fade-right"
                 data-scroll-delay="200"
               >
-                {t('stage.description')}
+                {t('stage.description').split('\n').map((line, i, arr) => (
+                  <React.Fragment key={i}>{line}{i < arr.length - 1 && <br />}</React.Fragment>
+                ))}
               </p>
 
               <div 
-                className="grid grid-cols-2 gap-x-12 gap-y-6 mb-12"
+                className="grid grid-cols-2 gap-x-4 gap-y-6 mb-12"
                 data-scroll="fade-right"
                 data-scroll-delay="300"
               >

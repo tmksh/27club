@@ -75,7 +75,7 @@ export const translations = {
     stage: {
       title: '圧巻のステージ空間',
       titleLine2: '',
-      description: '映像美と臨場感を追求する、プロ仕様のステージ空間。MV・CMなど、数多くの撮影現場で実際に使用されているステージです。照明・音響・空間演出のすべてがプロフェッショナル仕様。',
+      description: '映像美と臨場感を追求する、プロ仕様のステージ空間。\nMV・CMなど、数多くの撮影現場で実際に使用されているステージです。\n照明・音響・空間演出のすべてがプロフェッショナル仕様。',
       features: [
         { label: 'イベント実績', path: '/about/events' },
         { label: 'プロ仕様の照明・音響設備', path: '/about/equipment' },
