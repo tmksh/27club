@@ -31,7 +31,7 @@ export const Frame17 = () => {
             className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-lg md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
           >
             {language === 'ja' ? (
-              <>あなたを魅了するキャストたちを、<br />ご紹介します。</>
+              <>あなたを魅了するキャストたちを、<br className="md:hidden" />ご紹介します。</>
             ) : (
               t('castPage.headline')
             )}
@@ -43,7 +43,10 @@ export const Frame17 = () => {
             className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
             {language === 'ja' ? (
-              <>それぞれがこの空間を彩る表現者。ダンサー・シンガー・エンターテイナー──唯一無二のパフォーマンスで、今夜のステージを創り上げます。お気に入りのキャストや出演スケジュールなど、最新情報は<br />こちらからご覧ください。</>
+              <>
+                <span className="hidden md:inline">それぞれがこの空間を彩る表現者。<br />ダンサー・シンガー・エンターテイナー唯一無二のパフォーマンスで、<br />今夜のステージを創り上げます。<br />お気に入りのキャストや出演スケジュールなど、<br />最新情報はこちらからご覧ください。</span>
+                <span className="md:hidden">それぞれがこの空間を彩る表現者。<br />ダンサー・シンガー・エンターテイナー<br />唯一無二のパフォーマンスで、<br />今夜のステージを創り上げます。<br />お気に入りのキャストや出演スケジュールなど、<br />最新情報はこちらからご覧ください。</span>
+              </>
             ) : (
               t('castPage.description')
             )}

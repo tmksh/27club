@@ -31,7 +31,7 @@ export const Frame6 = () => {
             className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-lg md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
           >
             {language === 'ja' ? (
-              <>NEW PLAN 登場。<br />集まる理由が、もっと洗練される。</>
+              <>NEW PLAN 登場。<br className="md:hidden" />集まる理由が、もっと洗練される。</>
             ) : (
               t('partyPlansPage.headline')
             )}
@@ -43,7 +43,10 @@ export const Frame6 = () => {
             className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
             {language === 'ja' ? (
-              <>ベーシックからプレミアムまで、必要なものを過不足なくセット。予約も相談もスマートに完結。<br />歓送迎会・バースデー・企業貸切まで、<br />すべてこのページからはじめられます。</>
+              <>
+                <span className="hidden md:inline">ベーシックからプレミアムまで、必要なものを過不足なくセット。<br />予約も相談もスマートに完結。<br />歓送迎会・バースデー・企業貸切まで、すべてこのページからはじめられます。</span>
+                <span className="md:hidden">ベーシックからプレミアムまで、<br />必要なものを過不足なくセット。<br />予約も相談もスマートに完結。<br />歓送迎会・バースデー・企業貸切まで、<br />すべてこのページからはじめられます。</span>
+              </>
             ) : (
               t('partyPlansPage.description')
             )}
