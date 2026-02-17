@@ -13,15 +13,15 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', Helvetica, Arial, sans-serif;
             line-height: 1.7;
-            color: #e0e0e0;
-            background: #0a0a0f;
+            color: #24292f;
+            background: #ffffff;
             min-height: 100vh;
         }
 
         /* ヘッダー */
         .page-header {
-            background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: #f6f8fa;
+            border-bottom: 1px solid #d0d7de;
             padding: 40px 20px 50px;
             text-align: center;
         }
@@ -29,29 +29,28 @@
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 2.2em;
             font-weight: 700;
-            color: #ffffff;
+            color: #1f2328;
             margin-bottom: 8px;
             letter-spacing: 0.05em;
         }
         .page-header .subtitle {
-            color: #8b949e;
+            color: #656d76;
             font-size: 0.95em;
-            letter-spacing: 0.02em;
         }
         .page-header .badge {
             display: inline-block;
             margin-top: 16px;
             padding: 5px 16px;
-            background: rgba(0, 201, 167, 0.15);
-            color: #00c9a7;
-            border: 1px solid rgba(0, 201, 167, 0.3);
+            background: #dafbe1;
+            color: #1a7f37;
+            border: 1px solid #aceebb;
             border-radius: 20px;
             font-size: 0.8em;
             font-weight: 600;
             letter-spacing: 0.05em;
         }
 
-        /* ナビゲーション */
+        /* 目次 */
         .toc {
             max-width: 1100px;
             margin: -25px auto 0;
@@ -60,17 +59,18 @@
             z-index: 10;
         }
         .toc-inner {
-            background: #161b22;
-            border: 1px solid rgba(255,255,255,0.08);
+            background: #ffffff;
+            border: 1px solid #d0d7de;
             border-radius: 12px;
             padding: 24px 30px;
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
         .toc a {
-            color: #8b949e;
+            color: #656d76;
             text-decoration: none;
             font-size: 0.82em;
             padding: 6px 14px;
@@ -80,9 +80,9 @@
             white-space: nowrap;
         }
         .toc a:hover {
-            color: #00c9a7;
-            background: rgba(0, 201, 167, 0.08);
-            border-color: rgba(0, 201, 167, 0.2);
+            color: #1a7f37;
+            background: #dafbe1;
+            border-color: #aceebb;
         }
 
         /* メインコンテンツ */
@@ -94,7 +94,7 @@
 
         /* セクション */
         .section {
-            margin-bottom: 60px;
+            margin-bottom: 56px;
             scroll-margin-top: 30px;
         }
         .section-header {
@@ -103,7 +103,7 @@
             gap: 12px;
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid #d8dee4;
         }
         .section-number {
             display: inline-flex;
@@ -111,8 +111,8 @@
             justify-content: center;
             width: 32px;
             height: 32px;
-            background: rgba(0, 201, 167, 0.15);
-            color: #00c9a7;
+            background: #dafbe1;
+            color: #1a7f37;
             border-radius: 8px;
             font-size: 0.85em;
             font-weight: 700;
@@ -121,15 +121,22 @@
         .section h2 {
             font-size: 1.35em;
             font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 0.02em;
+            color: #1f2328;
         }
         .section-desc {
-            color: #8b949e;
+            color: #656d76;
             font-size: 0.92em;
             margin-bottom: 24px;
             line-height: 1.8;
             padding-left: 44px;
+        }
+        .section-desc code {
+            background: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #0550ae;
+            border: 1px solid #d0d7de;
         }
 
         /* スクリーンショット表示 */
@@ -141,20 +148,18 @@
         }
         .screenshot-grid.single {
             grid-template-columns: 1fr;
-        }
-        .screenshot-grid.triple {
-            grid-template-columns: 1fr 1fr 1fr;
+            max-width: 700px;
         }
         .screenshot-card {
-            background: #161b22;
-            border: 1px solid rgba(255,255,255,0.08);
+            background: #ffffff;
+            border: 1px solid #d0d7de;
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s;
         }
         .screenshot-card:hover {
-            border-color: rgba(0, 201, 167, 0.3);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-color: #1a7f37;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
         .screenshot-card img {
             width: 100%;
@@ -164,14 +169,14 @@
             transition: opacity 0.2s;
         }
         .screenshot-card img:hover {
-            opacity: 0.9;
+            opacity: 0.92;
         }
         .screenshot-label {
             padding: 12px 16px;
             display: flex;
             align-items: center;
             gap: 8px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid #eaeef2;
         }
         .screenshot-label .tag {
             padding: 2px 8px;
@@ -182,23 +187,27 @@
             text-transform: uppercase;
         }
         .tag-pc {
-            background: rgba(88, 166, 255, 0.15);
-            color: #58a6ff;
-        }
-        .tag-sp {
-            background: rgba(255, 131, 87, 0.15);
-            color: #ff8357;
+            background: #ddf4ff;
+            color: #0550ae;
         }
         .tag-page {
-            background: rgba(163, 113, 247, 0.15);
-            color: #a371f7;
+            background: #fbefff;
+            color: #8250df;
         }
         .screenshot-label span:last-child {
-            color: #8b949e;
+            color: #656d76;
             font-size: 0.82em;
         }
+        .screenshot-label code {
+            background: #f6f8fa;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            color: #0550ae;
+            border: 1px solid #d0d7de;
+        }
 
-        /* 変更ポイント説明 */
+        /* 変更ポイント */
         .change-points {
             padding-left: 44px;
         }
@@ -206,19 +215,73 @@
             display: flex;
             align-items: flex-start;
             gap: 10px;
-            padding: 10px 0;
-            color: #c9d1d9;
+            padding: 8px 0;
+            color: #24292f;
             font-size: 0.9em;
         }
         .change-point::before {
             content: '>';
-            color: #00c9a7;
+            color: #1a7f37;
             font-weight: 700;
             flex-shrink: 0;
             margin-top: 1px;
         }
+        .change-point code {
+            background: #f6f8fa;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 0.88em;
+            color: #0550ae;
+            border: 1px solid #d0d7de;
+        }
 
-        /* Aboutサブページセクション */
+        /* SP版テキスト説明ボックス */
+        .sp-note {
+            background: #fff8c5;
+            border: 1px solid #d4a72c;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            margin-left: 44px;
+        }
+        .sp-note-title {
+            font-weight: 700;
+            font-size: 0.85em;
+            color: #9a6700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sp-note-title::before {
+            content: 'SP';
+            background: #9a6700;
+            color: #fff;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            letter-spacing: 0.05em;
+        }
+        .sp-note ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sp-note li {
+            color: #6f5a00;
+            font-size: 0.85em;
+            padding: 3px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        .sp-note li::before {
+            content: '-';
+            position: absolute;
+            left: 0;
+            color: #9a6700;
+        }
+
+        /* Aboutサブページグリッド */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -233,7 +296,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.92);
+            background: rgba(0,0,0,0.85);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -258,7 +321,7 @@
             font-size: 28px;
             cursor: pointer;
             z-index: 1001;
-            background: rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.4);
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -269,31 +332,31 @@
             transition: background 0.2s;
         }
         .modal-close:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.6);
         }
 
         /* フッター */
         .page-footer {
             text-align: center;
             padding: 40px 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #484f58;
+            border-top: 1px solid #d8dee4;
+            color: #656d76;
             font-size: 0.85em;
         }
         .page-footer a {
-            color: #00c9a7;
+            color: #0550ae;
             text-decoration: none;
         }
         .page-footer a:hover {
             text-decoration: underline;
         }
 
-        /* Back link */
+        /* 戻るリンク */
         .back-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: #00c9a7;
+            color: #0550ae;
             text-decoration: none;
             font-size: 0.85em;
             margin-bottom: 30px;
@@ -302,7 +365,7 @@
             transition: background 0.2s;
         }
         .back-link:hover {
-            background: rgba(0, 201, 167, 0.08);
+            background: #ddf4ff;
         }
 
         /* レスポンシブ */
@@ -321,15 +384,14 @@
             .screenshot-grid {
                 grid-template-columns: 1fr;
             }
-            .screenshot-grid.triple {
-                grid-template-columns: 1fr;
-            }
             .about-grid {
                 grid-template-columns: 1fr;
             }
             .section-desc,
-            .change-points {
+            .change-points,
+            .sp-note {
                 padding-left: 0;
+                margin-left: 0;
             }
             .container {
                 padding: 24px 16px 60px;
@@ -375,41 +437,13 @@
                 スマートフォン表示の全体的なレイアウト・サイズ・余白を最適化しました。<br>
                 各セクションの文字サイズ、パディング、カード表示をモバイルに最適な形へ調整しています。
             </p>
-            <div class="screenshot-grid">
-                <div class="screenshot-card">
-                    <img src="screenshots/fv-logo-sp.png" alt="SP版 FV" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>FVセクション（モバイル表示）</span>
-                    </div>
-                </div>
-                <div class="screenshot-card">
-                    <img src="screenshots/explore-section-sp.png" alt="SP版 Explore" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>Exploreセクション（モバイル表示）</span>
-                    </div>
-                </div>
-                <div class="screenshot-card">
-                    <img src="screenshots/floormap-sp.png" alt="SP版 Floor Map" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>Floor Mapセクション（モバイル表示）</span>
-                    </div>
-                </div>
-                <div class="screenshot-card">
-                    <img src="screenshots/about-venue-sp.png" alt="SP版 About" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>About This Venueセクション（モバイル表示）</span>
-                    </div>
-                </div>
-            </div>
             <div class="change-points">
                 <div class="change-point">全セクションでSP版独自のレイアウト・フォントサイズを設定</div>
                 <div class="change-point">フロアマップのSP版表示を幅広に調整（padding削減、max-width拡大）</div>
                 <div class="change-point">料金カードのテキストサイズをSP向けに拡大</div>
                 <div class="change-point">SP版で追従する「予約」ボタンを画面右下に固定配置</div>
+                <div class="change-point">About This Venueセクションを縦並びレイアウトに変更（画像→テキスト→特徴リスト→CTA）</div>
+                <div class="change-point">ナビゲーションをハンバーガーメニューに切替（<code>lg:hidden</code>）</div>
             </div>
         </div>
 
@@ -424,21 +458,22 @@
                 背景にはタイポグラフィアニメーションを敷き、ホバー時に明るくなる演出を追加。<br>
                 サブタイトル「Welcome to Tonight's SHOWTIME」やキャッチコピーも配置しています。
             </p>
-            <div class="screenshot-grid">
+            <div class="screenshot-grid single">
                 <div class="screenshot-card">
-                    <img src="screenshots/fv-logo-pc.png" alt="PC版 FVロゴ" onclick="openModal(this)">
+                    <img src="screenshots/fv-logo-pc.png" alt="FVロゴ配置" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-pc">PC</span>
-                        <span>FV - 中央ロゴ配置（デスクトップ表示）</span>
+                        <span>FV - 中央ロゴ配置 + 背景タイポグラフィ + NEWSスライダー</span>
                     </div>
                 </div>
-                <div class="screenshot-card">
-                    <img src="screenshots/fv-logo-sp.png" alt="SP版 FVロゴ" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>FV - 中央ロゴ配置（モバイル表示）</span>
-                    </div>
-                </div>
+            </div>
+            <div class="sp-note">
+                <div class="sp-note-title">モバイル版の対応</div>
+                <ul>
+                    <li>ロゴサイズを <code>w-[220px]</code> に縮小（PCは <code>w-[320px]</code>）</li>
+                    <li>サブタイトルやキャッチコピーのフォントサイズを <code>text-[10px]</code> に調整</li>
+                    <li>スクロールインジケータの位置をSP用に調整（<code>bottom-[220px]</code>）</li>
+                </ul>
             </div>
             <div class="change-points">
                 <div class="change-point">NewsFVコンポーネントとして実装。ロゴ画像 <code>/img/27logo-1-1.png</code> を中央に配置</div>
@@ -456,29 +491,29 @@
             </div>
             <p class="section-desc">
                 SP版のFV下部にあるニュース（NEWS / Instagram連携）カードスライダーの位置を調整。<br>
-                画面下部の <code>bottom: 8px</code> にニュースセクションを配置し、PCとSPで異なるパディングを設定。<br>
-                自動スクロール、ドラッグ操作、タッチスワイプに対応しています。
+                PCとSPで異なるパディングを設定し、自動スクロール・ドラッグ操作・タッチスワイプに対応。
             </p>
-            <div class="screenshot-grid">
+            <div class="screenshot-grid single">
                 <div class="screenshot-card">
-                    <img src="screenshots/fv-logo-pc.png" alt="PC版 News位置" onclick="openModal(this)">
+                    <img src="screenshots/fv-logo-pc.png" alt="NEWS位置" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-pc">PC</span>
-                        <span>NEWS セクション位置（PC版：bottom:0）</span>
-                    </div>
-                </div>
-                <div class="screenshot-card">
-                    <img src="screenshots/fv-logo-sp.png" alt="SP版 News位置" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>NEWS セクション位置（SP版：bottom:8px）</span>
+                        <span>NEWSセクション位置（PC版：画面最下部に配置）</span>
                     </div>
                 </div>
             </div>
+            <div class="sp-note">
+                <div class="sp-note-title">モバイル版の対応</div>
+                <ul>
+                    <li>SP版は <code>bottom: 8px</code>（PCは <code>bottom: 0</code>）で位置を上に調整</li>
+                    <li>カード幅を <code>w-[260px]</code> に縮小（PCは <code>w-[300px]</code>）</li>
+                    <li>カード画像の高さを <code>h-[140px]</code> に縮小（PCは <code>h-[160px]</code>）</li>
+                </ul>
+            </div>
             <div class="change-points">
-                <div class="change-point">SP版: <code>bottom-8</code> / PC版: <code>bottom-0</code> で位置を差別化</div>
                 <div class="change-point">Instagram連携時はInstagramアイコンと @the27clubtokyo リンクを表示</div>
                 <div class="change-point">自動スクロールアニメーション（約30fps）を実装、ホバー/タッチで一時停止</div>
+                <div class="change-point">ドラッグスクロール対応（マウス・タッチ両方）</div>
             </div>
         </div>
 
@@ -490,24 +525,24 @@
             </div>
             <p class="section-desc">
                 各セクションタイトル（Explore、Floor Map、Access、About This Venue）のフォントサイズを<br>
-                レスポンシブに設定。SP版では <code>text-3xl</code>、タブレットでは <code>text-5xl</code>、PCでは最大 <code>90px</code> まで。<br>
-                Playfair Display フォントによるイタリック・斜め表示のデザインを採用しています。
+                レスポンシブに設定。Playfair Display フォントによるイタリック・斜め表示のデザインを採用。
             </p>
-            <div class="screenshot-grid">
+            <div class="screenshot-grid single">
                 <div class="screenshot-card">
-                    <img src="screenshots/explore-section-pc.png" alt="タイトル PC" onclick="openModal(this)">
+                    <img src="screenshots/explore-section-pc.png" alt="タイトル表示" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-pc">PC</span>
-                        <span>Exploreセクション タイトル表示</span>
+                        <span>Exploreセクション タイトル表示例</span>
                     </div>
                 </div>
-                <div class="screenshot-card">
-                    <img src="screenshots/explore-section-sp.png" alt="タイトル SP" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>Exploreセクション タイトル表示（縮小版）</span>
-                    </div>
-                </div>
+            </div>
+            <div class="sp-note">
+                <div class="sp-note-title">モバイル版の対応</div>
+                <ul>
+                    <li>SP: <code>text-3xl</code> → タブレット: <code>text-5xl</code> → PC: <code>text-7xl</code> → 大画面: <code>90px</code></li>
+                    <li>サブテキストも <code>text-xs</code>（SP）〜 <code>text-3xl</code>（大画面）で段階的に設定</li>
+                    <li>SP版では改行位置を専用テキストで調整</li>
+                </ul>
             </div>
             <div class="change-points">
                 <div class="change-point">レスポンシブクラス: <code>text-3xl md:text-5xl lg:text-7xl xl:text-[90px]</code></div>
@@ -526,19 +561,12 @@
                 Exploreセクションの2番目のカードを「TIP（チップについて）」から「予約（RESERVE）」に変更。<br>
                 リンク先を <code>/reserve</code> に変更し、タイトル・サブタイトルも予約向けに更新しました。
             </p>
-            <div class="screenshot-grid">
+            <div class="screenshot-grid single">
                 <div class="screenshot-card">
-                    <img src="screenshots/explore-section-pc.png" alt="Exploreセクション PC" onclick="openModal(this)">
+                    <img src="screenshots/explore-section-pc.png" alt="Exploreセクション" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-pc">PC</span>
                         <span>Exploreセクション 4カード（予約に変更後）</span>
-                    </div>
-                </div>
-                <div class="screenshot-card">
-                    <img src="screenshots/explore-section-sp.png" alt="Exploreセクション SP" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>Exploreセクション（モバイル表示）</span>
                     </div>
                 </div>
             </div>
@@ -560,19 +588,12 @@
                 フロアマップ上の座席エリアをクリックすると、下部の座席詳細情報（画像 + 料金表）部分へ<br>
                 スムーズスクロールで移動するように実装。<code>useRef</code> と <code>scrollIntoView</code> を使用。
             </p>
-            <div class="screenshot-grid">
+            <div class="screenshot-grid single">
                 <div class="screenshot-card">
-                    <img src="screenshots/floormap-pc.png" alt="フロアマップ PC" onclick="openModal(this)">
+                    <img src="screenshots/floormap-pc.png" alt="フロアマップ" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-pc">PC</span>
-                        <span>インタラクティブフロアマップ</span>
-                    </div>
-                </div>
-                <div class="screenshot-card">
-                    <img src="screenshots/floormap-sp.png" alt="フロアマップ SP" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>フロアマップ（モバイル表示）</span>
+                        <span>インタラクティブフロアマップ（座席クリックで詳細へスクロール）</span>
                     </div>
                 </div>
             </div>
@@ -596,10 +617,10 @@
             </p>
             <div class="screenshot-grid single">
                 <div class="screenshot-card">
-                    <img src="screenshots/access-section-pc.png" alt="Accessセクション" onclick="openModal(this)">
+                    <img src="screenshots/access-map.png" alt="AccessセクションのGoogle Maps表示" onclick="openModal(this)">
                     <div class="screenshot-label">
-                        <span class="tag tag-pc">PC</span>
-                        <span>Accessセクション（マップ + 情報 + CTAボタン）</span>
+                        <span class="tag tag-pc">MAP</span>
+                        <span>Google Maps埋め込み - ENTERTAINMENT SHOW LOUNGE THE 27 CLUB</span>
                     </div>
                 </div>
             </div>
@@ -623,25 +644,27 @@
             </p>
 
             <!-- メインセクションスクリーンショット -->
-            <div class="screenshot-grid" style="margin-bottom: 30px;">
+            <div class="screenshot-grid single" style="margin-bottom: 30px;">
                 <div class="screenshot-card">
-                    <img src="screenshots/about-venue-pc.png" alt="About This Venue PC" onclick="openModal(this)">
+                    <img src="screenshots/about-venue-pc.png" alt="About This Venue" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-pc">PC</span>
                         <span>About This Venue メインセクション</span>
                     </div>
                 </div>
-                <div class="screenshot-card">
-                    <img src="screenshots/about-venue-sp.png" alt="About This Venue SP" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-sp">SP</span>
-                        <span>About This Venue（モバイル表示）</span>
-                    </div>
-                </div>
+            </div>
+
+            <div class="sp-note">
+                <div class="sp-note-title">モバイル版の対応</div>
+                <ul>
+                    <li>PC版の背景オーバーレイレイアウトから、SP版は縦並びレイアウトに変更</li>
+                    <li>画像スライドショー → テキスト → 特徴リスト → CTAボタンの順序で表示</li>
+                    <li>画像のアスペクト比を <code>16/10</code> に調整し、下端にグラデーションを適用</li>
+                </ul>
             </div>
 
             <!-- サブページ一覧 -->
-            <h3 style="color: #c9d1d9; font-size: 1.05em; margin: 30px 0 16px 44px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+            <h3 style="color: #1f2328; font-size: 1.05em; margin: 30px 0 16px 44px; padding-bottom: 8px; border-bottom: 1px solid #d8dee4;">
                 作成したサブページ一覧
             </h3>
 
@@ -651,7 +674,7 @@
                     <img src="screenshots/about-events.png" alt="イベント実績ページ" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-page">PAGE</span>
-                        <span>イベント実績 <code style="color:#58a6ff; font-size:0.85em;">/about/events</code></span>
+                        <span>イベント実績 <code>/about/events</code></span>
                     </div>
                 </div>
 
@@ -660,7 +683,7 @@
                     <img src="screenshots/about-equipment.png" alt="プロ仕様設備ページ" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-page">PAGE</span>
-                        <span>プロ仕様の照明・音響設備 <code style="color:#58a6ff; font-size:0.85em;">/about/equipment</code></span>
+                        <span>プロ仕様の照明・音響設備 <code>/about/equipment</code></span>
                     </div>
                 </div>
 
@@ -669,7 +692,7 @@
                     <img src="screenshots/about-mv-cm.png" alt="MV・CM撮影ページ" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-page">PAGE</span>
-                        <span>MV・CM撮影の実績多数 <code style="color:#58a6ff; font-size:0.85em;">/about/mv-cm</code></span>
+                        <span>MV・CM撮影の実績多数 <code>/about/mv-cm</code></span>
                     </div>
                 </div>
 
@@ -678,7 +701,7 @@
                     <img src="screenshots/about-studio-rental.png" alt="スタジオ貸し出しページ" onclick="openModal(this)">
                     <div class="screenshot-label">
                         <span class="tag tag-page">PAGE</span>
-                        <span>スタジオ貸し出し <code style="color:#58a6ff; font-size:0.85em;">/about/studio-rental</code></span>
+                        <span>スタジオ貸し出し <code>/about/studio-rental</code></span>
                     </div>
                 </div>
             </div>
