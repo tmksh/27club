@@ -5,751 +5,287 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>調整・修正・追加一覧 - THE 27 CLUB</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            color: #24292f;
-            background: #ffffff;
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fff;
         }
-
-        /* ヘッダー */
-        .page-header {
-            background: #f6f8fa;
-            border-bottom: 1px solid #d0d7de;
-            padding: 40px 20px 50px;
+        .header {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 32px 20px;
             text-align: center;
         }
-        .page-header h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #1f2328;
-            margin-bottom: 8px;
-            letter-spacing: 0.05em;
-        }
-        .page-header .subtitle {
-            color: #656d76;
-            font-size: 0.95em;
-        }
-        .page-header .badge {
-            display: inline-block;
-            margin-top: 16px;
-            padding: 5px 16px;
-            background: #dafbe1;
-            color: #1a7f37;
-            border: 1px solid #aceebb;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
+        .header h1 { font-size: 1.5em; font-weight: 700; margin-bottom: 4px; }
+        .header p { color: #888; font-size: 0.85em; }
+        .container { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+        .back { color: #333; text-decoration: none; font-size: 0.85em; display: inline-block; margin-bottom: 32px; }
+        .back:hover { text-decoration: underline; }
 
-        /* 目次 */
-        .toc {
-            max-width: 1100px;
-            margin: -25px auto 0;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-        .toc-inner {
-            background: #ffffff;
-            border: 1px solid #d0d7de;
-            border-radius: 12px;
-            padding: 24px 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-        .toc a {
-            color: #656d76;
-            text-decoration: none;
-            font-size: 0.82em;
-            padding: 6px 14px;
-            border-radius: 8px;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-            white-space: nowrap;
-        }
-        .toc a:hover {
-            color: #1a7f37;
-            background: #dafbe1;
-            border-color: #aceebb;
-        }
-
-        /* メインコンテンツ */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px 80px;
-        }
-
-        /* セクション */
-        .section {
-            margin-bottom: 56px;
-            scroll-margin-top: 30px;
-        }
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #d8dee4;
-        }
-        .section-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: #dafbe1;
-            color: #1a7f37;
-            border-radius: 8px;
-            font-size: 0.85em;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
+        .section { margin-bottom: 48px; }
         .section h2 {
-            font-size: 1.35em;
+            font-size: 1.1em;
             font-weight: 700;
-            color: #1f2328;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 12px;
         }
-        .section-desc {
-            color: #656d76;
-            font-size: 0.92em;
-            margin-bottom: 24px;
-            line-height: 1.8;
-            padding-left: 44px;
+        .section p.desc {
+            color: #666;
+            font-size: 0.88em;
+            margin-bottom: 16px;
         }
-        .section-desc code {
-            background: #f6f8fa;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            color: #0550ae;
-            border: 1px solid #d0d7de;
+        .section ul {
+            list-style: disc;
+            padding-left: 1.5em;
+            margin-bottom: 16px;
         }
-
-        /* スクリーンショット表示 */
-        .screenshot-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
+        .section li {
+            font-size: 0.88em;
+            color: #444;
+            margin-bottom: 4px;
         }
-        .screenshot-grid.single {
-            grid-template-columns: 1fr;
-            max-width: 700px;
+        .img-wrap {
+            margin-bottom: 16px;
+            max-width: 640px;
         }
-        .screenshot-card {
-            background: #ffffff;
-            border: 1px solid #d0d7de;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        .screenshot-card:hover {
-            border-color: #1a7f37;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-        }
-        .screenshot-card img {
+        .img-wrap img {
             width: 100%;
             height: auto;
             display: block;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .screenshot-card img:hover {
-            opacity: 0.92;
-        }
-        .screenshot-label {
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-top: 1px solid #eaeef2;
-        }
-        .screenshot-label .tag {
-            padding: 2px 8px;
+            border: 1px solid #e0e0e0;
             border-radius: 4px;
-            font-size: 0.7em;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            cursor: pointer;
         }
-        .tag-pc {
-            background: #ddf4ff;
-            color: #0550ae;
-        }
-        .tag-page {
-            background: #fbefff;
-            color: #8250df;
-        }
-        .screenshot-label span:last-child {
-            color: #656d76;
-            font-size: 0.82em;
-        }
-        .screenshot-label code {
-            background: #f6f8fa;
-            padding: 1px 5px;
-            border-radius: 3px;
-            font-size: 0.85em;
-            color: #0550ae;
-            border: 1px solid #d0d7de;
+        .img-wrap img:hover { opacity: 0.9; }
+        .img-caption {
+            font-size: 0.78em;
+            color: #999;
+            margin-top: 4px;
         }
 
-        /* 変更ポイント */
-        .change-points {
-            padding-left: 44px;
-        }
-        .change-point {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 8px 0;
-            color: #24292f;
-            font-size: 0.9em;
-        }
-        .change-point::before {
-            content: '>';
-            color: #1a7f37;
+        .sub-heading {
+            font-size: 0.95em;
             font-weight: 700;
-            flex-shrink: 0;
-            margin-top: 1px;
+            margin: 24px 0 12px;
         }
-        .change-point code {
-            background: #f6f8fa;
-            padding: 1px 5px;
-            border-radius: 3px;
-            font-size: 0.88em;
-            color: #0550ae;
-            border: 1px solid #d0d7de;
-        }
-
-        /* SP版テキスト説明ボックス */
-        .sp-note {
-            background: #fff8c5;
-            border: 1px solid #d4a72c;
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin-bottom: 20px;
-            margin-left: 44px;
-        }
-        .sp-note-title {
-            font-weight: 700;
-            font-size: 0.85em;
-            color: #9a6700;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .sp-note-title::before {
-            content: 'SP';
-            background: #9a6700;
-            color: #fff;
-            padding: 1px 6px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            letter-spacing: 0.05em;
-        }
-        .sp-note ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sp-note li {
-            color: #6f5a00;
-            font-size: 0.85em;
-            padding: 3px 0;
-            padding-left: 16px;
-            position: relative;
-        }
-        .sp-note li::before {
-            content: '-';
-            position: absolute;
-            left: 0;
-            color: #9a6700;
-        }
-
-        /* Aboutサブページグリッド */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 16px;
+            margin-bottom: 16px;
         }
-
-        /* モーダル */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.85);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            cursor: zoom-out;
-        }
-        .modal-overlay.active {
-            display: flex;
-        }
-        .modal-overlay img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-        }
-        .modal-close {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 28px;
+        .about-grid img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
             cursor: pointer;
-            z-index: 1001;
-            background: rgba(0,0,0,0.4);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            transition: background 0.2s;
         }
-        .modal-close:hover {
-            background: rgba(0,0,0,0.6);
+        .about-grid img:hover { opacity: 0.9; }
+        .about-grid .caption {
+            font-size: 0.78em;
+            color: #999;
+            margin-top: 4px;
         }
 
-        /* フッター */
-        .page-footer {
+        .footer {
             text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid #d8dee4;
-            color: #656d76;
-            font-size: 0.85em;
+            padding: 32px 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #999;
+            font-size: 0.8em;
         }
-        .page-footer a {
-            color: #0550ae;
-            text-decoration: none;
+        .footer a { color: #333; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.85); z-index: 1000;
+            align-items: center; justify-content: center;
+            padding: 24px; cursor: zoom-out;
         }
-        .page-footer a:hover {
-            text-decoration: underline;
+        .modal-overlay.active { display: flex; }
+        .modal-overlay img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+        .modal-close {
+            position: fixed; top: 16px; right: 16px;
+            color: #fff; font-size: 24px; cursor: pointer; z-index: 1001;
+            background: rgba(0,0,0,0.4); width: 36px; height: 36px;
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; border: none;
         }
 
-        /* 戻るリンク */
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #0550ae;
-            text-decoration: none;
-            font-size: 0.85em;
-            margin-bottom: 30px;
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: background 0.2s;
-        }
-        .back-link:hover {
-            background: #ddf4ff;
-        }
-
-        /* レスポンシブ */
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 1.6em;
-            }
-            .toc-inner {
-                padding: 16px 20px;
-                gap: 6px;
-            }
-            .toc a {
-                font-size: 0.75em;
-                padding: 5px 10px;
-            }
-            .screenshot-grid {
-                grid-template-columns: 1fr;
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            .section-desc,
-            .change-points,
-            .sp-note {
-                padding-left: 0;
-                margin-left: 0;
-            }
-            .container {
-                padding: 24px 16px 60px;
-            }
+        @media (max-width: 640px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .container { padding: 20px 16px 48px; }
         }
     </style>
 </head>
 <body>
-    <!-- ヘッダー -->
-    <div class="page-header">
+    <div class="header">
         <h1>THE 27 CLUB - 調整・修正・追加一覧</h1>
-        <p class="subtitle">実施した改善内容をスクリーンショット付きでまとめています</p>
-        <span class="badge">2025-2026 UPDATE LOG</span>
+        <p>実施した改善内容のまとめ</p>
     </div>
-
-    <!-- 目次 -->
-    <nav class="toc">
-        <div class="toc-inner">
-            <a href="#sp-adjust">SP版調整</a>
-            <a href="#fv-logo">FVにロゴ配置</a>
-            <a href="#sp-fv-news">SP版FV news位置調整</a>
-            <a href="#top-title">TOPタイトル縮小</a>
-            <a href="#explore-reserve">Explore → 予約変更</a>
-            <a href="#floormap-link">フロアマップリンク</a>
-            <a href="#access-url">Access URL変更</a>
-            <a href="#about-venue">About This Venue</a>
-        </div>
-    </nav>
 
     <div class="container">
-        <a href="index.html" class="back-link">
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            ドキュメントTOPへ戻る
-        </a>
+        <a href="index.html" class="back">&larr; ドキュメントTOPへ戻る</a>
 
-        <!-- 1. SP版調整 -->
+        <!-- 1 -->
         <div class="section" id="sp-adjust">
-            <div class="section-header">
-                <span class="section-number">1</span>
-                <h2>SP版調整</h2>
-            </div>
-            <p class="section-desc">
-                スマートフォン表示の全体的なレイアウト・サイズ・余白を最適化しました。<br>
-                各セクションの文字サイズ、パディング、カード表示をモバイルに最適な形へ調整しています。
-            </p>
-            <div class="change-points">
-                <div class="change-point">全セクションでSP版独自のレイアウト・フォントサイズを設定</div>
-                <div class="change-point">フロアマップのSP版表示を幅広に調整（padding削減、max-width拡大）</div>
-                <div class="change-point">料金カードのテキストサイズをSP向けに拡大</div>
-                <div class="change-point">SP版で追従する「予約」ボタンを画面右下に固定配置</div>
-                <div class="change-point">About This Venueセクションを縦並びレイアウトに変更（画像→テキスト→特徴リスト→CTA）</div>
-                <div class="change-point">ナビゲーションをハンバーガーメニューに切替（<code>lg:hidden</code>）</div>
-            </div>
+            <h2>1. SP版調整</h2>
+            <p class="desc">スマートフォン表示の全体的なレイアウト・サイズ・余白を最適化。</p>
+            <ul>
+                <li>全セクションでSP版独自のレイアウト・フォントサイズを設定</li>
+                <li>フロアマップのSP版表示を幅広に調整</li>
+                <li>料金カードのテキストサイズをSP向けに拡大</li>
+                <li>SP版で追従する「予約」ボタンを画面右下に固定配置</li>
+                <li>About This Venueセクションを縦並びレイアウトに変更</li>
+                <li>ナビゲーションをハンバーガーメニューに切替</li>
+            </ul>
         </div>
 
-        <!-- 2. FVにロゴ配置 -->
+        <!-- 2 -->
         <div class="section" id="fv-logo">
-            <div class="section-header">
-                <span class="section-number">2</span>
-                <h2>FVにロゴ配置</h2>
+            <h2>2. FVにロゴ配置</h2>
+            <p class="desc">ファーストビュー中央にTHE 27 CLUBのロゴを大きく配置。背景タイポグラフィとNEWSスライダーを追加。</p>
+            <div class="img-wrap">
+                <img src="screenshots/fv-logo-pc.png" alt="FVロゴ配置" onclick="openModal(this)">
             </div>
-            <p class="section-desc">
-                ファーストビュー（FV）の中央にTHE 27 CLUBのロゴを大きく配置。<br>
-                背景にはタイポグラフィアニメーションを敷き、ホバー時に明るくなる演出を追加。<br>
-                サブタイトル「Welcome to Tonight's SHOWTIME」やキャッチコピーも配置しています。
-            </p>
-            <div class="screenshot-grid single">
-                <div class="screenshot-card">
-                    <img src="screenshots/fv-logo-pc.png" alt="FVロゴ配置" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-pc">PC</span>
-                        <span>FV - 中央ロゴ配置 + 背景タイポグラフィ + NEWSスライダー</span>
-                    </div>
-                </div>
-            </div>
-            <div class="sp-note">
-                <div class="sp-note-title">モバイル版の対応</div>
-                <ul>
-                    <li>ロゴサイズを <code>w-[220px]</code> に縮小（PCは <code>w-[320px]</code>）</li>
-                    <li>サブタイトルやキャッチコピーのフォントサイズを <code>text-[10px]</code> に調整</li>
-                    <li>スクロールインジケータの位置をSP用に調整（<code>bottom-[220px]</code>）</li>
-                </ul>
-            </div>
-            <div class="change-points">
-                <div class="change-point">NewsFVコンポーネントとして実装。ロゴ画像 <code>/img/27logo-1-1.png</code> を中央に配置</div>
-                <div class="change-point">背景に斜めタイポグラフィ「THE 27 CLUB TOKYO KABUKICHO...」を配置し奥行きを演出</div>
-                <div class="change-point">Ken Burnsズームアニメーションを背景画像に追加</div>
-                <div class="change-point">「Welcome to Tonight's SHOWTIME」サブタイトルとスクロールインジケータを追加</div>
-            </div>
+            <ul>
+                <li>ロゴ画像を中央に配置</li>
+                <li>背景に斜めタイポグラフィを配置し奥行きを演出</li>
+                <li>「Welcome to Tonight's SHOWTIME」サブタイトルを追加</li>
+                <li>スクロールインジケータを追加</li>
+            </ul>
         </div>
 
-        <!-- 3. SP版FVのnewsの位置調整 -->
+        <!-- 3 -->
         <div class="section" id="sp-fv-news">
-            <div class="section-header">
-                <span class="section-number">3</span>
-                <h2>SP版FVの news の位置調整</h2>
-            </div>
-            <p class="section-desc">
-                SP版のFV下部にあるニュース（NEWS / Instagram連携）カードスライダーの位置を調整。<br>
-                PCとSPで異なるパディングを設定し、自動スクロール・ドラッグ操作・タッチスワイプに対応。
-            </p>
-            <div class="screenshot-grid single">
-                <div class="screenshot-card">
-                    <img src="screenshots/fv-logo-pc.png" alt="NEWS位置" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-pc">PC</span>
-                        <span>NEWSセクション位置（PC版：画面最下部に配置）</span>
-                    </div>
-                </div>
-            </div>
-            <div class="sp-note">
-                <div class="sp-note-title">モバイル版の対応</div>
-                <ul>
-                    <li>SP版は <code>bottom: 8px</code>（PCは <code>bottom: 0</code>）で位置を上に調整</li>
-                    <li>カード幅を <code>w-[260px]</code> に縮小（PCは <code>w-[300px]</code>）</li>
-                    <li>カード画像の高さを <code>h-[140px]</code> に縮小（PCは <code>h-[160px]</code>）</li>
-                </ul>
-            </div>
-            <div class="change-points">
-                <div class="change-point">Instagram連携時はInstagramアイコンと @the27clubtokyo リンクを表示</div>
-                <div class="change-point">自動スクロールアニメーション（約30fps）を実装、ホバー/タッチで一時停止</div>
-                <div class="change-point">ドラッグスクロール対応（マウス・タッチ両方）</div>
-            </div>
+            <h2>3. SP版FVの news の位置調整</h2>
+            <p class="desc">FV下部のニュースカードスライダーの位置をSP/PCで調整。自動スクロール・ドラッグ操作・タッチスワイプに対応。</p>
+            <ul>
+                <li>SP版とPC版で配置位置を差別化</li>
+                <li>Instagram連携時はInstagramアイコンとリンクを表示</li>
+                <li>自動スクロールアニメーションを実装、ホバー/タッチで一時停止</li>
+                <li>ドラッグスクロール対応（マウス・タッチ両方）</li>
+            </ul>
         </div>
 
-        <!-- 4. TOPページタイトル縮小 -->
+        <!-- 4 -->
         <div class="section" id="top-title">
-            <div class="section-header">
-                <span class="section-number">4</span>
-                <h2>TOPページタイトル縮小</h2>
-            </div>
-            <p class="section-desc">
-                各セクションタイトル（Explore、Floor Map、Access、About This Venue）のフォントサイズを<br>
-                レスポンシブに設定。Playfair Display フォントによるイタリック・斜め表示のデザインを採用。
-            </p>
-            <div class="screenshot-grid single">
-                <div class="screenshot-card">
-                    <img src="screenshots/explore-section-pc.png" alt="タイトル表示" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-pc">PC</span>
-                        <span>Exploreセクション タイトル表示例</span>
-                    </div>
-                </div>
-            </div>
-            <div class="sp-note">
-                <div class="sp-note-title">モバイル版の対応</div>
-                <ul>
-                    <li>SP: <code>text-3xl</code> → タブレット: <code>text-5xl</code> → PC: <code>text-7xl</code> → 大画面: <code>90px</code></li>
-                    <li>サブテキストも <code>text-xs</code>（SP）〜 <code>text-3xl</code>（大画面）で段階的に設定</li>
-                    <li>SP版では改行位置を専用テキストで調整</li>
-                </ul>
-            </div>
-            <div class="change-points">
-                <div class="change-point">レスポンシブクラス: <code>text-3xl md:text-5xl lg:text-7xl xl:text-[90px]</code></div>
-                <div class="change-point">斜めタイトル: <code>rotate(±5deg) skewX(±5deg)</code> の変形を適用</div>
-                <div class="change-point">サブテキストもSP/PC間でサイズを差別化 <code>text-xs md:text-xl lg:text-2xl</code></div>
-            </div>
+            <h2>4. TOPページタイトル縮小</h2>
+            <p class="desc">各セクションタイトルのフォントサイズをレスポンシブに設定。イタリック・斜め表示のデザインを採用。</p>
+            <ul>
+                <li>SP〜大画面まで段階的にサイズを設定</li>
+                <li>斜め変形を適用したデザイン</li>
+                <li>サブテキストもSP/PC間でサイズを差別化</li>
+            </ul>
         </div>
 
-        <!-- 5. Exploreセクションを TIP から予約に変更 -->
+        <!-- 5 -->
         <div class="section" id="explore-reserve">
-            <div class="section-header">
-                <span class="section-number">5</span>
-                <h2>Exploreセクションを TIP から予約に変更</h2>
+            <h2>5. Exploreセクションを TIP から予約に変更</h2>
+            <p class="desc">Exploreセクションの2番目のカードを「TIP」から「予約（RESERVE）」に変更。</p>
+            <div class="img-wrap">
+                <img src="screenshots/explore-section-pc.png" alt="Exploreセクション" onclick="openModal(this)">
+                <p class="img-caption">Exploreセクション 4カード（変更後）</p>
             </div>
-            <p class="section-desc">
-                Exploreセクションの2番目のカードを「TIP（チップについて）」から「予約（RESERVE）」に変更。<br>
-                リンク先を <code>/reserve</code> に変更し、タイトル・サブタイトルも予約向けに更新しました。
-            </p>
-            <div class="screenshot-grid single">
-                <div class="screenshot-card">
-                    <img src="screenshots/explore-section-pc.png" alt="Exploreセクション" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-pc">PC</span>
-                        <span>Exploreセクション 4カード（予約に変更後）</span>
-                    </div>
-                </div>
-            </div>
-            <div class="change-points">
-                <div class="change-point">変更前: パス <code>/チップについて</code> → 変更後: <code>/reserve</code></div>
-                <div class="change-point">タイトル: 「TIP」→「予約 / RESERVE」</div>
-                <div class="change-point">サブタイトル: 「ご予約は / Reserve」</div>
-                <div class="change-point">4カード構成: ゲストフロー、予約、パーティープラン、リクルート</div>
-            </div>
+            <ul>
+                <li>リンク先を /reserve に変更</li>
+                <li>タイトル：「TIP」→「予約 / RESERVE」</li>
+                <li>4カード構成：ゲストフロー、予約、パーティープラン、リクルート</li>
+            </ul>
         </div>
 
-        <!-- 6. フロアマップをクリックしたら画像部分に飛ぶ -->
+        <!-- 6 -->
         <div class="section" id="floormap-link">
-            <div class="section-header">
-                <span class="section-number">6</span>
-                <h2>フロアマップをクリックしたら画像部分に飛ぶようにする</h2>
+            <h2>6. フロアマップをクリックしたら画像部分に飛ぶようにする</h2>
+            <p class="desc">フロアマップ上の座席エリアをクリックすると、座席詳細情報へスムーズスクロールで移動。</p>
+            <div class="img-wrap">
+                <img src="screenshots/floormap-pc.png" alt="フロアマップ" onclick="openModal(this)">
             </div>
-            <p class="section-desc">
-                フロアマップ上の座席エリアをクリックすると、下部の座席詳細情報（画像 + 料金表）部分へ<br>
-                スムーズスクロールで移動するように実装。<code>useRef</code> と <code>scrollIntoView</code> を使用。
-            </p>
-            <div class="screenshot-grid single">
-                <div class="screenshot-card">
-                    <img src="screenshots/floormap-pc.png" alt="フロアマップ" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-pc">PC</span>
-                        <span>インタラクティブフロアマップ（座席クリックで詳細へスクロール）</span>
-                    </div>
-                </div>
-            </div>
-            <div class="change-points">
-                <div class="change-point"><code>detailRef</code> を座席詳細エリアに設定し、<code>scrollIntoView({ behavior: "smooth", block: "start" })</code> で遷移</div>
-                <div class="change-point">座席クリック → 座席画像 + 料金表（WEEKDAY/WEEKEND）が表示</div>
-                <div class="change-point">初回マウント時はスクロールを抑制（<code>isInitialMount</code> ref使用）</div>
-                <div class="change-point">各座席エリア（VIP, V1-V6, PINK, BLUE, STANDING）がクリック可能</div>
-            </div>
+            <ul>
+                <li>座席クリックで座席画像 + 料金表が表示</li>
+                <li>各座席エリア（VIP, V1-V6, PINK, BLUE, STANDING）がクリック可能</li>
+                <li>初回表示時はスクロールを抑制</li>
+            </ul>
         </div>
 
-        <!-- 7. AccessセクションのURL変更 -->
+        <!-- 7 -->
         <div class="section" id="access-url">
-            <div class="section-header">
-                <span class="section-number">7</span>
-                <h2>AccessセクションのURL変更</h2>
+            <h2>7. AccessセクションのURL変更</h2>
+            <p class="desc">Google Maps埋め込みURLとYouTubeリンクを最新のものに更新。</p>
+            <div class="img-wrap">
+                <img src="screenshots/access-map.png" alt="Access Google Maps" onclick="openModal(this)">
+                <p class="img-caption">Google Maps埋め込み表示</p>
             </div>
-            <p class="section-desc">
-                Accessセクション内のGoogle Maps埋め込みURLとYouTubeリンクを最新のものに更新。<br>
-                YouTube CTAは <code>@the27clubtokyo</code> チャンネルへのリンクに変更しました。
-            </p>
-            <div class="screenshot-grid single">
-                <div class="screenshot-card">
-                    <img src="screenshots/access-map.png" alt="AccessセクションのGoogle Maps表示" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-pc">MAP</span>
-                        <span>Google Maps埋め込み - ENTERTAINMENT SHOW LOUNGE THE 27 CLUB</span>
-                    </div>
-                </div>
-            </div>
-            <div class="change-points">
-                <div class="change-point">Google Maps: 正確な住所「東京都新宿区歌舞伎町2丁目36-3 3階」で埋め込み</div>
-                <div class="change-point">YouTube CTA: <code>https://www.youtube.com/@the27clubtokyo</code> へリンク</div>
-                <div class="change-point">お問い合わせCTA: CONTACTページへの内部リンク</div>
-                <div class="change-point">交通アクセス情報（新宿駅・新宿三丁目駅）を多言語対応で表示</div>
-            </div>
+            <ul>
+                <li>正確な住所「東京都新宿区歌舞伎町2丁目36-3 3階」で埋め込み</li>
+                <li>YouTube CTAを @the27clubtokyo チャンネルへ変更</li>
+                <li>お問い合わせCTAをCONTACTページへ接続</li>
+            </ul>
         </div>
 
-        <!-- 8. About This Venueセクション -->
+        <!-- 8 -->
         <div class="section" id="about-venue">
-            <div class="section-header">
-                <span class="section-number">8</span>
-                <h2>About This Venueセクション - サブページ作成</h2>
-            </div>
-            <p class="section-desc">
-                About This Venueセクションから遷移する4つの詳細ページを新規作成しました。<br>
-                各ページにはヒーロー画像、説明文、ギャラリー、CTAボタンが含まれています。
-            </p>
-
-            <!-- メインセクションスクリーンショット -->
-            <div class="screenshot-grid single" style="margin-bottom: 30px;">
-                <div class="screenshot-card">
-                    <img src="screenshots/about-venue-pc.png" alt="About This Venue" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-pc">PC</span>
-                        <span>About This Venue メインセクション</span>
-                    </div>
-                </div>
+            <h2>8. About This Venueセクション - サブページ作成</h2>
+            <p class="desc">About This Venueセクションから遷移する4つの詳細ページを新規作成。</p>
+            <div class="img-wrap">
+                <img src="screenshots/about-venue-pc.png" alt="About This Venue" onclick="openModal(this)">
+                <p class="img-caption">About This Venue メインセクション</p>
             </div>
 
-            <div class="sp-note">
-                <div class="sp-note-title">モバイル版の対応</div>
-                <ul>
-                    <li>PC版の背景オーバーレイレイアウトから、SP版は縦並びレイアウトに変更</li>
-                    <li>画像スライドショー → テキスト → 特徴リスト → CTAボタンの順序で表示</li>
-                    <li>画像のアスペクト比を <code>16/10</code> に調整し、下端にグラデーションを適用</li>
-                </ul>
-            </div>
-
-            <!-- サブページ一覧 -->
-            <h3 style="color: #1f2328; font-size: 1.05em; margin: 30px 0 16px 44px; padding-bottom: 8px; border-bottom: 1px solid #d8dee4;">
-                作成したサブページ一覧
-            </h3>
-
-            <div class="about-grid" style="margin-left: 44px;">
-                <!-- イベント実績 -->
-                <div class="screenshot-card">
-                    <img src="screenshots/about-events.png" alt="イベント実績ページ" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-page">PAGE</span>
-                        <span>イベント実績 <code>/about/events</code></span>
-                    </div>
+            <p class="sub-heading">作成したサブページ</p>
+            <div class="about-grid">
+                <div>
+                    <img src="screenshots/about-events.png" alt="イベント実績" onclick="openModal(this)">
+                    <p class="caption">イベント実績（/about/events）</p>
                 </div>
-
-                <!-- プロ仕様の照明・音響設備 -->
-                <div class="screenshot-card">
-                    <img src="screenshots/about-equipment.png" alt="プロ仕様設備ページ" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-page">PAGE</span>
-                        <span>プロ仕様の照明・音響設備 <code>/about/equipment</code></span>
-                    </div>
+                <div>
+                    <img src="screenshots/about-equipment.png" alt="照明・音響設備" onclick="openModal(this)">
+                    <p class="caption">プロ仕様の照明・音響設備（/about/equipment）</p>
                 </div>
-
-                <!-- MV・CM撮影の実績多数 -->
-                <div class="screenshot-card">
-                    <img src="screenshots/about-mv-cm.png" alt="MV・CM撮影ページ" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-page">PAGE</span>
-                        <span>MV・CM撮影の実績多数 <code>/about/mv-cm</code></span>
-                    </div>
+                <div>
+                    <img src="screenshots/about-mv-cm.png" alt="MV・CM撮影" onclick="openModal(this)">
+                    <p class="caption">MV・CM撮影の実績多数（/about/mv-cm）</p>
                 </div>
-
-                <!-- スタジオ貸し出し -->
-                <div class="screenshot-card">
-                    <img src="screenshots/about-studio-rental.png" alt="スタジオ貸し出しページ" onclick="openModal(this)">
-                    <div class="screenshot-label">
-                        <span class="tag tag-page">PAGE</span>
-                        <span>スタジオ貸し出し <code>/about/studio-rental</code></span>
-                    </div>
+                <div>
+                    <img src="screenshots/about-studio-rental.png" alt="スタジオ貸し出し" onclick="openModal(this)">
+                    <p class="caption">スタジオ貸し出し（/about/studio-rental）</p>
                 </div>
             </div>
-
-            <div class="change-points" style="margin-top: 20px;">
-                <div class="change-point"><code>/about/events</code> - イベント実績ページ: 過去のイベント一覧、ギャラリー、お問い合わせCTA</div>
-                <div class="change-point"><code>/about/equipment</code> - プロ仕様の照明・音響設備ページ: 設備詳細、仕様情報</div>
-                <div class="change-point"><code>/about/mv-cm</code> - MV・CM撮影の実績多数ページ: 撮影実績、利用事例</div>
-                <div class="change-point"><code>/about/studio-rental</code> - スタジオ貸し出しページ: レンタル情報、料金、予約</div>
-                <div class="change-point">全ページに共通ヘッダー・フッター、戻るボタン、多言語対応を実装</div>
-                <div class="change-point">About This Venueセクションの特徴リストから各ページへリンク遷移可能</div>
-            </div>
+            <ul>
+                <li>全ページに共通ヘッダー・フッター、戻るボタン、多言語対応を実装</li>
+                <li>About This Venueセクションの特徴リストから各ページへリンク遷移可能</li>
+            </ul>
         </div>
     </div>
 
-    <!-- フッター -->
-    <div class="page-footer">
-        <p>THE 27 CLUB - 調整・修正・追加一覧</p>
-        <p style="margin-top: 8px;">
-            <a href="https://github.com/tmksh/27club">GitHub リポジトリ</a>
-            &nbsp;|&nbsp;
-            <a href="index.html">ドキュメントTOP</a>
+    <div class="footer">
+        <p>THE 27 CLUB</p>
+        <p style="margin-top: 4px;">
+            <a href="https://github.com/tmksh/27club">GitHub</a> | <a href="index.html">ドキュメントTOP</a>
         </p>
     </div>
 
-    <!-- 画像モーダル -->
     <div class="modal-overlay" id="modal" onclick="closeModal()">
         <button class="modal-close" onclick="closeModal()">&times;</button>
-        <img id="modal-img" src="" alt="拡大表示">
+        <img id="modal-img" src="" alt="">
     </div>
 
     <script>
-        function openModal(imgEl) {
-            const modal = document.getElementById('modal');
-            const modalImg = document.getElementById('modal-img');
-            modalImg.src = imgEl.src;
-            modalImg.alt = imgEl.alt;
-            modal.classList.add('active');
+        function openModal(el) {
+            document.getElementById('modal-img').src = el.src;
+            document.getElementById('modal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
         function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.remove('active');
+            document.getElementById('modal').classList.remove('active');
             document.body.style.overflow = '';
         }
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
     </script>
 </body>
 </html>

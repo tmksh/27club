@@ -5,195 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ドキュメント - THE 27 CLUB</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #24292f;
-            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #fff;
             min-height: 100vh;
             padding: 40px 20px;
         }
         .container {
-            max-width: 900px;
+            max-width: 640px;
             margin: 0 auto;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid #d0d7de;
-            padding: 60px 40px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
-        h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            color: #1f2328;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .subtitle {
-            text-align: center;
-            color: #656d76;
-            margin-bottom: 40px;
-            font-size: 1.1em;
-        }
-        .intro {
-            background: #f6f8fa;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            border-left: 4px solid #1a7f37;
-        }
-        .intro p {
-            margin-bottom: 15px;
-            color: #24292f;
-        }
-        .intro p:last-child {
-            margin-bottom: 0;
-        }
-        .doc-link {
+        h1 { font-size: 1.5em; font-weight: 700; margin-bottom: 8px; }
+        .subtitle { color: #888; font-size: 0.85em; margin-bottom: 32px; }
+        .desc { color: #666; font-size: 0.88em; margin-bottom: 32px; line-height: 1.8; }
+        .link {
             display: block;
-            background: #f6f8fa;
-            color: #24292f;
+            color: #333;
             text-decoration: none;
-            padding: 20px 30px;
-            border-radius: 8px;
-            margin: 16px 0;
-            transition: all 0.2s;
-            text-align: center;
-            font-size: 1.15em;
-            font-weight: 600;
-            border: 1px solid #d0d7de;
+            padding: 16px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.95em;
         }
-        .doc-link:hover {
-            border-color: #1a7f37;
-            background: #dafbe1;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        }
-        .doc-link .desc {
-            display: block;
-            font-size: 0.75em;
-            font-weight: 400;
-            color: #656d76;
-            margin-top: 6px;
-        }
-        .doc-link-primary {
-            background: #1a7f37;
-            color: #ffffff;
-            border-color: #1a7f37;
-        }
-        .doc-link-primary:hover {
-            background: #1a6c2e;
-            border-color: #1a6c2e;
-            color: #ffffff;
-        }
-        .doc-link-primary .desc {
-            color: rgba(255,255,255,0.8);
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-        .feature {
-            background: #f6f8fa;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #d0d7de;
-        }
-        .feature-icon {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        .feature h3 {
-            color: #1a7f37;
-            margin-bottom: 10px;
-        }
-        .feature p {
-            color: #656d76;
-            font-size: 0.9em;
-        }
+        .link:first-of-type { border-top: 1px solid #e0e0e0; }
+        .link:hover { color: #000; }
+        .link span { display: block; color: #999; font-size: 0.8em; margin-top: 2px; }
         .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #d8dee4;
-            color: #656d76;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #e0e0e0;
+            color: #999;
+            font-size: 0.8em;
         }
-        .footer a {
-            color: #0550ae;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 40px 20px;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
+        .footer a { color: #333; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>THE 27 CLUB</h1>
         <p class="subtitle">プロジェクトドキュメント</p>
-        
-        <div class="intro">
-            <p><strong>THE 27 CLUBについて</strong></p>
-            <p>歌舞伎町最大級のエンターテインメントショーラウンジ「THE 27 CLUB」のウェブサイトプロジェクトに関するドキュメントです。</p>
-            <p>技術仕様、実装ガイド、変更履歴などの資料をご覧いただけます。</p>
-        </div>
+        <p class="desc">歌舞伎町のエンターテインメントショーラウンジ「THE 27 CLUB」のウェブサイトに関するドキュメントです。</p>
 
-        <a href="changelog.html" class="doc-link doc-link-primary">
-            調整・修正・追加一覧を見る
-            <span class="desc">SP版調整、FVロゴ配置、Exploreセクション変更など - スクリーンショット付き</span>
+        <a href="changelog.html" class="link">
+            調整・修正・追加一覧
+            <span>SP版調整、FVロゴ配置、Exploreセクション変更など</span>
         </a>
-
-        <a href="SNS_API_GUIDE.html" class="doc-link">
-            SNS API連携ガイドを読む
-            <span class="desc">Instagram、YouTube、X、TikTokのAPI連携方法</span>
+        <a href="SNS_API_GUIDE.html" class="link">
+            SNS API連携ガイド
+            <span>Instagram、YouTube、X、TikTokのAPI連携方法</span>
         </a>
-
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🎨</div>
-                <h3>フロントエンド</h3>
-                <p>React + Vite + Tailwind CSS</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🗄️</div>
-                <h3>バックエンド</h3>
-                <p>Supabase（DB・認証・API）</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🌐</div>
-                <h3>多言語対応</h3>
-                <p>日本語・English 切替</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📱</div>
-                <h3>レスポンシブ</h3>
-                <p>SP / タブレット / PC対応</p>
-            </div>
-        </div>
 
         <div class="footer">
-            <p>THE 27 CLUB - プロジェクトドキュメント</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">
-                <a href="https://github.com/tmksh/27club">GitHub リポジトリ</a>
-            </p>
+            <p>THE 27 CLUB</p>
+            <p style="margin-top: 4px;"><a href="https://github.com/tmksh/27club">GitHub</a></p>
         </div>
     </div>
 </body>
