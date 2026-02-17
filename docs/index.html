@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNS API連携ガイド - THE 27 CLUB</title>
+    <title>ドキュメント - THE 27 CLUB</title>
     <style>
         * {
             margin: 0;
@@ -13,60 +13,77 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #e0e0e0;
+            background: #0a0a0f;
             min-height: 100vh;
             padding: 40px 20px;
         }
         .container {
             max-width: 900px;
             margin: 0 auto;
-            background: white;
+            background: #161b22;
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.08);
             padding: 60px 40px;
         }
         h1 {
-            color: #667eea;
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #ffffff;
             font-size: 2.5em;
             margin-bottom: 10px;
             text-align: center;
         }
         .subtitle {
             text-align: center;
-            color: #666;
+            color: #8b949e;
             margin-bottom: 40px;
             font-size: 1.1em;
         }
         .intro {
-            background: #f8f9fa;
+            background: rgba(255,255,255,0.03);
             padding: 30px;
             border-radius: 8px;
             margin-bottom: 40px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #00c9a7;
         }
         .intro p {
             margin-bottom: 15px;
+            color: #c9d1d9;
         }
         .intro p:last-child {
             margin-bottom: 0;
         }
         .doc-link {
             display: block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #013d36 0%, #015a50 100%);
             color: white;
             text-decoration: none;
             padding: 20px 30px;
             border-radius: 8px;
-            margin: 20px 0;
+            margin: 16px 0;
             transition: transform 0.2s, box-shadow 0.2s;
             text-align: center;
-            font-size: 1.2em;
+            font-size: 1.15em;
             font-weight: 600;
+            border: 1px solid rgba(0,201,167,0.2);
         }
         .doc-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(0, 201, 167, 0.3);
+        }
+        .doc-link .desc {
+            display: block;
+            font-size: 0.75em;
+            font-weight: 400;
+            color: rgba(255,255,255,0.7);
+            margin-top: 6px;
+        }
+        .doc-link-secondary {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.1);
+        }
+        .doc-link-secondary:hover {
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
         }
         .features {
             display: grid;
@@ -75,25 +92,37 @@
             margin: 40px 0;
         }
         .feature {
-            background: #f8f9fa;
+            background: rgba(255,255,255,0.03);
             padding: 20px;
             border-radius: 8px;
             text-align: center;
+            border: 1px solid rgba(255,255,255,0.06);
         }
         .feature-icon {
             font-size: 2.5em;
             margin-bottom: 10px;
         }
         .feature h3 {
-            color: #667eea;
+            color: #00c9a7;
             margin-bottom: 10px;
+        }
+        .feature p {
+            color: #8b949e;
+            font-size: 0.9em;
         }
         .footer {
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: #484f58;
+        }
+        .footer a {
+            color: #00c9a7;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
         }
         @media (max-width: 768px) {
             .container {
@@ -110,49 +139,54 @@
 </head>
 <body>
     <div class="container">
-        <h1>📚 SNS API連携ガイド</h1>
-        <p class="subtitle">ホームページにSNS投稿を自動表示するための完全ガイド</p>
+        <h1>THE 27 CLUB</h1>
+        <p class="subtitle">プロジェクトドキュメント</p>
         
         <div class="intro">
-            <p><strong>このガイドについて</strong></p>
-            <p>Instagram、YouTube、X（Twitter）、TikTokの各プラットフォームで、ホームページにSNS投稿を自動表示するためのAPI連携方法を詳しく解説しています。</p>
-            <p>各プラットフォームの要件、設定手順、費用、実務的な判断基準まで、Web制作者が知っておくべき情報を網羅しています。</p>
+            <p><strong>THE 27 CLUBについて</strong></p>
+            <p>歌舞伎町最大級のエンターテインメントショーラウンジ「THE 27 CLUB」のウェブサイトプロジェクトに関するドキュメントです。</p>
+            <p>技術仕様、実装ガイド、変更履歴などの資料をご覧いただけます。</p>
         </div>
 
-        <a href="SNS_API_GUIDE.html" class="doc-link">
-            📖 完全ガイドを読む →
+        <a href="changelog.html" class="doc-link">
+            調整・修正・追加一覧を見る
+            <span class="desc">SP版調整、FVロゴ配置、Exploreセクション変更など - スクリーンショット付き</span>
+        </a>
+
+        <a href="SNS_API_GUIDE.html" class="doc-link doc-link-secondary">
+            SNS API連携ガイドを読む
+            <span class="desc">Instagram、YouTube、X、TikTokのAPI連携方法</span>
         </a>
 
         <div class="features">
             <div class="feature">
-                <div class="feature-icon">📸</div>
-                <h3>Instagram</h3>
-                <p>ビジネスアカウントで自動投稿表示</p>
+                <div class="feature-icon">🎨</div>
+                <h3>フロントエンド</h3>
+                <p>React + Vite + Tailwind CSS</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">📺</div>
-                <h3>YouTube</h3>
-                <p>最も簡単・安定した連携</p>
+                <div class="feature-icon">🗄️</div>
+                <h3>バックエンド</h3>
+                <p>Supabase（DB・認証・API）</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">🐦</div>
-                <h3>X（Twitter）</h3>
-                <p>埋め込みとAPIの比較</p>
+                <div class="feature-icon">🌐</div>
+                <h3>多言語対応</h3>
+                <p>日本語・English 切替</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">🎵</div>
-                <h3>TikTok</h3>
-                <p>実務的な実装方法</p>
+                <div class="feature-icon">📱</div>
+                <h3>レスポンシブ</h3>
+                <p>SP / タブレット / PC対応</p>
             </div>
         </div>
 
         <div class="footer">
-            <p>THE 27 CLUB - SNS API連携ガイド</p>
+            <p>THE 27 CLUB - プロジェクトドキュメント</p>
             <p style="margin-top: 10px; font-size: 0.9em;">
-                <a href="https://github.com/tmksh/27club" style="color: #667eea; text-decoration: none;">GitHubリポジトリ</a>
+                <a href="https://github.com/tmksh/27club">GitHub リポジトリ</a>
             </p>
         </div>
     </div>
 </body>
 </html>
-
