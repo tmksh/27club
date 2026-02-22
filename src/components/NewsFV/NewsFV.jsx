@@ -221,44 +221,65 @@ export const NewsFV = () => {
         }}
       />
 
-      {/* 中央のメインロゴと文字 */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 pb-[180px] md:pb-[200px]">
-        {/* サブタイトル */}
-        <p 
-          className="[font-family:'Cormorant_Garamond',serif] text-white/40 text-[10px] md:text-xs tracking-[0.5em] uppercase mb-6 md:mb-8"
+      {/* 背景の大きなテキスト（DONUTSスタイル） */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1] pb-[260px] sm:pb-[240px] md:pb-[160px] select-none overflow-hidden">
+        <span
+          className="[font-family:'Bebas_Neue',sans-serif] leading-[0.85] tracking-[0.02em] whitespace-nowrap"
           style={{
-            animation: 'fadeInUp 1s ease-out 0.3s both',
+            fontSize: 'clamp(120px, 28vw, 320px)',
+            background: 'linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(255,255,255,0.06) 30%, rgba(6,182,212,0.08) 60%, rgba(255,255,255,0.04) 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'fadeInUp 1.5s ease-out 0.2s both',
           }}
         >
-          Welcome to Tonight's SHOWTIME
-        </p>
+          THE 27 CLUB
+        </span>
+      </div>
 
-        {/* 中央ロゴ */}
-        <img
-          className="w-[220px] md:w-[320px] h-auto mb-6 md:mb-8"
-          alt="THE 27 CLUB"
-          src="/img/27logo-1-1.png"
-          style={{
-            animation: 'fadeInUp 1s ease-out 0.6s both',
-            filter: 'brightness(1.1)',
-          }}
-        />
-        
-        {/* キャッチコピー */}
-        <p 
-          className="[font-family:'Cormorant_Garamond',serif] text-white/30 text-[10px] md:text-xs tracking-[0.3em] uppercase"
-          style={{
-            animation: 'fadeInUp 1s ease-out 0.9s both',
-          }}
+      {/* 中央のメインテキスト - 一文字ずつアニメーション */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 pb-[260px] sm:pb-[240px] md:pb-[160px] px-6">
+        <h1 className="[font-family:'Cormorant_Garamond',serif] text-white font-light tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] uppercase mb-3 md:mb-6 flex flex-wrap justify-center gap-x-[0.25em] overflow-hidden w-full"
+          style={{ fontSize: 'clamp(20px, 5.5vw, 52px)' }}
         >
-          THE FES STARTS HERE
-        </p>
+          {['WELCOME', 'TO', 'SHOWTIME'].map((word, wi) => (
+            <span key={wi} className="flex overflow-hidden">
+              {word.split('').map((char, ci) => {
+                const globalIndex = ['WELCOME', 'TO', 'SHOWTIME'].slice(0, wi).join('').length + ci;
+                return (
+                  <span
+                    key={ci}
+                    className="inline-block"
+                    style={{
+                      animation: `charReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${0.4 + globalIndex * 0.04}s both`,
+                    }}
+                  >
+                    {char}
+                  </span>
+                );
+              })}
+            </span>
+          ))}
+        </h1>
 
+        <p className="[font-family:'Noto_Sans_JP',sans-serif] text-white/50 tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] font-light text-center overflow-hidden"
+          style={{ fontSize: 'clamp(10px, 2vw, 18px)' }}
+          >
+          <span
+            style={{
+              display: 'inline-block',
+              animation: 'fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.4s both',
+            }}
+          >
+            最高の夜を届けるナイトクラブ -THE 27 CLUB-
+          </span>
+        </p>
       </div>
       
       {/* Scroll indicator - ニュースセクションの上 */}
       <div 
-        className="absolute left-1/2 -translate-x-1/2 bottom-[220px] md:bottom-[260px] flex flex-col items-center gap-1.5 z-15 pointer-events-none"
+        className="absolute left-1/2 -translate-x-1/2 bottom-[200px] sm:bottom-[220px] md:bottom-[280px] flex flex-col items-center gap-1.5 z-15 pointer-events-none"
         style={{
           animation: 'fadeInUp 1s ease-out 1s both',
         }}
@@ -356,7 +377,7 @@ export const NewsFV = () => {
             Array.from({ length: 5 }).map((_, i) => (
               <div 
                 key={i}
-                className="flex-shrink-0 w-[260px] md:w-[300px] h-[180px] md:h-[200px] bg-white/5 rounded-lg animate-pulse"
+                className="flex-shrink-0 w-[140px] sm:w-[180px] md:w-[220px] aspect-square bg-white/5 rounded-lg animate-pulse"
               />
             ))
           ) : events.length > 0 ? (
@@ -371,13 +392,13 @@ export const NewsFV = () => {
                 <CardWrapper
                   key={event.id}
                   {...linkProps}
-                  className="flex-shrink-0 w-[260px] md:w-[300px] group"
+                  className="flex-shrink-0 w-[140px] sm:w-[180px] md:w-[220px] group"
                   style={{
                     animation: `fadeInUp 0.6s ease-out ${0.1 * index}s both`,
                   }}
                 >
                   {/* カード */}
-                  <div className="relative h-[140px] md:h-[160px] rounded-lg overflow-hidden mb-3 bg-[#1a1a2e]">
+                  <div className="relative aspect-square rounded-lg overflow-hidden mb-2 md:mb-3 bg-[#1a1a2e]">
                     {/* 背景画像 - imgで確実に表示 */}
                     {event.image_url ? (
                       <img
@@ -421,10 +442,10 @@ export const NewsFV = () => {
 
                   {/* テキスト部分 */}
                   <div>
-                    <h3 className="[font-family:'Noto_Sans_JP',sans-serif] text-white/90 text-sm font-normal leading-relaxed mb-1.5 line-clamp-2 group-hover:text-white transition-colors">
+                    <h3 className="[font-family:'Noto_Sans_JP',sans-serif] text-white/90 text-[11px] sm:text-xs md:text-sm font-normal leading-relaxed mb-1 md:mb-1.5 line-clamp-2 group-hover:text-white transition-colors">
                       {event.title}
                     </h3>
-                    <time className="[font-family:'Inter',Helvetica] text-white/40 text-xs tracking-wider">
+                    <time className="[font-family:'Inter',Helvetica] text-white/40 text-[10px] sm:text-xs tracking-wider">
                       {formatDate(event.date_time_start)}
                     </time>
                   </div>
@@ -448,6 +469,17 @@ export const NewsFV = () => {
           from {
             opacity: 0;
             transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes charReveal {
+          from {
+            opacity: 0;
+            transform: translateY(100%);
           }
           to {
             opacity: 1;

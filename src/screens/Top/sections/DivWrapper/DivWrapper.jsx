@@ -10,13 +10,7 @@ export const DivWrapper = () => {
       <div className="relative w-full max-w-[1200px] mx-auto">
         {/* セクションタイトル - 左寄せ */}
         <div className="w-full mb-12 md:mb-20" data-scroll="fade-up">
-          {/* 斜めタイトル - 左寄せ */}
-          <h2 
-            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
-            style={{
-              transform: 'rotate(-5deg) skewX(-5deg)',
-            }}
-          >
+          <h2 className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap text-center">
             Access
           </h2>
           {/* サブテキスト - 中央配置 */}

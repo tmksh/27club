@@ -10,6 +10,8 @@ export const AboutEquipment = () => {
 
   const lightingList = t('aboutEquipment.lightingList') || [];
   const soundList = t('aboutEquipment.soundList') || [];
+  const djEquipment = t('aboutEquipment.djEquipment') || [];
+  const micEquipment = t('aboutEquipment.micEquipment') || [];
 
   return (
     <div className="flex flex-col items-center relative overflow-hidden bg-transparent w-full min-h-screen">
@@ -70,16 +72,12 @@ export const AboutEquipment = () => {
               {Array.isArray(lightingList) && lightingList.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-4 p-4 rounded-lg"
+                  className="flex items-center p-4 rounded-lg"
                   style={{
                     background: 'rgba(255, 255, 255, 0.05)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                   }}
                 >
-                  <span
-                    className="w-px h-6 flex-shrink-0"
-                    style={{ background: 'linear-gradient(180deg, #00d6bd 0%, rgba(0,214,189,0.3) 100%)' }}
-                  />
                   <span className="[font-family:'Noto_Sans_JP',Helvetica] text-white/90 text-sm md:text-base">
                     {item}
                   </span>
@@ -97,22 +95,71 @@ export const AboutEquipment = () => {
               {Array.isArray(soundList) && soundList.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-4 p-4 rounded-lg"
+                  className="flex items-center p-4 rounded-lg"
                   style={{
                     background: 'rgba(255, 255, 255, 0.05)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                   }}
                 >
-                  <span
-                    className="w-px h-6 flex-shrink-0"
-                    style={{ background: 'linear-gradient(180deg, #00d6bd 0%, rgba(0,214,189,0.3) 100%)' }}
-                  />
                   <span className="[font-family:'Noto_Sans_JP',Helvetica] text-white/90 text-sm md:text-base">
                     {item}
                   </span>
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* DJ設備 */}
+          <div className="mb-12">
+            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+              {t('aboutEquipment.djTitle')}
+            </h2>
+            <div className="flex flex-col gap-3">
+              {Array.isArray(djEquipment) && djEquipment.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-5 rounded-lg"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div>
+                    <span className="[font-family:'Inter',Helvetica] text-white/40 text-[10px] tracking-[0.15em] uppercase block mb-1">{item.label}</span>
+                    <span className="[font-family:'Inter',Helvetica] text-white font-medium text-sm md:text-base tracking-wider">{item.name}</span>
+                  </div>
+                  <span className="[font-family:'Inter',Helvetica] text-white/50 text-sm md:text-base">{item.note}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* マイク設備 */}
+          <div className="mb-12">
+            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+              {t('aboutEquipment.micTitle')}
+            </h2>
+            <div className="flex flex-col gap-3 mb-4">
+              {Array.isArray(micEquipment) && micEquipment.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-5 rounded-lg"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div>
+                    <span className="[font-family:'Inter',Helvetica] text-white/40 text-[10px] tracking-[0.15em] uppercase block mb-1">{item.label}</span>
+                    <span className="[font-family:'Inter',Helvetica] text-white font-medium text-sm md:text-base tracking-wider">{item.name}</span>
+                  </div>
+                  <span className="[font-family:'Inter',Helvetica] text-white/50 text-sm md:text-base">{item.note}</span>
+                </div>
+              ))}
+            </div>
+            <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white/40 text-xs md:text-sm leading-relaxed">
+              {t('aboutEquipment.micNote')}
+            </p>
           </div>
 
           {/* CTA */}

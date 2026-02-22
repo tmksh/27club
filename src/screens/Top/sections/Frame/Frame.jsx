@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Component2401 } from "../../../../components/Component2401";
 import { Frame628 } from "../../../../components/Frame628";
 import { eventsAPI } from "../../../../lib/supabase";
@@ -138,13 +139,8 @@ export const Frame = () => {
   return (
     <div className="relative self-stretch w-full min-h-0 lg:min-h-[994px] overflow-hidden px-4 md:px-8 pb-4 md:pb-0">
       {/* セクションタイトル - SP版 */}
-      <div className="md:hidden pt-16 relative z-10 w-full px-4" data-scroll="fade-up">
-        <div 
-          className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl tracking-[0.05em] leading-[1.2] whitespace-nowrap"
-          style={{
-            transform: 'rotate(-5deg) skewX(-5deg)',
-          }}
-        >
+      <div className="md:hidden pt-16 relative z-10 w-full px-4 text-center" data-scroll="fade-up">
+        <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl tracking-[0.05em] leading-[1.2]">
           Event Schedule
         </div>
         <div className="flex justify-center mt-8">
@@ -155,14 +151,8 @@ export const Frame = () => {
       </div>
 
       {/* セクションタイトル - PC版 */}
-      <div className="hidden md:block pt-[140px] relative z-10 w-full max-w-[1400px] mx-auto px-8 lg:px-16" data-scroll="fade-up">
-        {/* 斜めタイトル - 左寄せ */}
-        <div 
-          className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-4xl lg:text-6xl xl:text-[80px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
-          style={{
-            transform: 'rotate(-5deg) skewX(-5deg)',
-          }}
-        >
+      <div className="hidden md:block pt-[140px] relative z-10 w-full max-w-[1400px] mx-auto px-8 lg:px-16 text-center" data-scroll="fade-up">
+        <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-4xl lg:text-6xl xl:text-[80px] tracking-[0.05em] leading-[1.2] whitespace-nowrap">
           Event Schedule
         </div>
         
@@ -444,6 +434,47 @@ export const Frame = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* イベント実績ページへのボタン（PC） */}
+      <div className="hidden md:flex justify-center mt-10 mb-4" data-scroll="fade-up">
+        <Link
+          to="/about/events"
+          className="group flex items-center gap-3 px-10 py-4 rounded-full text-white text-sm tracking-[0.2em] uppercase font-medium transition-all duration-300 hover:gap-4"
+          style={{
+            background: 'rgba(255,255,255,0.06)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+          }}
+        >
+          <span>{language === 'ja' ? 'イベント実績を見る' : 'View Past Events'}</span>
+          <svg
+            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
+      </div>
+
+      {/* イベント実績ページへのボタン（SP） */}
+      <div className="md:hidden flex justify-center mt-6 mb-2 px-4">
+        <Link
+          to="/about/events"
+          className="group flex items-center justify-center gap-2 w-full max-w-[320px] py-3.5 rounded-full text-white text-xs tracking-[0.2em] uppercase font-medium transition-all duration-300"
+          style={{
+            background: 'rgba(255,255,255,0.06)',
+            border: '1px solid rgba(255,255,255,0.18)',
+          }}
+        >
+          <span>{language === 'ja' ? 'イベント実績を見る' : 'View Past Events'}</span>
+          <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
       </div>
     </div>
   );

@@ -71,25 +71,23 @@ export const AboutEvents = () => {
           </p>
 
           {/* 過去のイベント実績 */}
-          <div className="mb-12">
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
-              {t('aboutEvents.pastEvents')}
-            </h2>
-            <div className="space-y-4">
+          <div className="mb-16">
+            <div className="flex items-baseline gap-4 mb-10">
+              <h2 className="[font-family:'Playfair_Display',Helvetica] italic text-white text-3xl md:text-4xl font-light">
+                {t('aboutEvents.pastEvents')}
+              </h2>
+              <span className="hidden md:block flex-1 h-px bg-gradient-to-r from-white/20 to-transparent" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
               {Array.isArray(eventList) && eventList.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-4 p-4 rounded-lg"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                  }}
+                  className="flex items-start gap-5 py-5 border-b border-white/8 group"
                 >
-                  <span
-                    className="w-px h-6 flex-shrink-0"
-                    style={{ background: 'linear-gradient(180deg, #00d6bd 0%, rgba(0,214,189,0.3) 100%)' }}
-                  />
-                  <span className="[font-family:'Noto_Sans_JP',Helvetica] text-white/90 text-sm md:text-base">
+                  <span className="[font-family:'Inter',Helvetica] text-white/20 text-lg font-light leading-none flex-shrink-0 mt-3.5 select-none w-6 text-right">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="[font-family:'Noto_Sans_JP',Helvetica] text-white/70 text-base md:text-lg leading-relaxed pt-3 group-hover:text-white/90 transition-colors duration-200">
                     {item}
                   </span>
                 </div>

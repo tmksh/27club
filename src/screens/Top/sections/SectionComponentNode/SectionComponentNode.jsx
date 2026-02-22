@@ -29,13 +29,7 @@ export const SectionComponentNode = () => {
       <div className="relative w-full mx-auto">
         {/* セクションタイトル - 左寄せ */}
         <div className="w-full max-w-[1400px] mx-auto px-4 lg:px-16 mb-6 md:mb-16 relative z-10" data-scroll="fade-up">
-          {/* 斜めタイトル - 左寄せ */}
-          <div 
-            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
-            style={{
-              transform: 'rotate(-5deg) skewX(-5deg)',
-            }}
-          >
+          <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap text-center">
             Gallery
           </div>
           {/* サブテキスト - 中央配置 */}

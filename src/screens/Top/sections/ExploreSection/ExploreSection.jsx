@@ -49,14 +49,8 @@ export const ExploreSection = () => {
     <div className="relative self-stretch w-full py-12 md:py-20 overflow-hidden">
       {/* セクションタイトル - 右寄せ */}
       <div className="w-full max-w-[1400px] mx-auto px-4 lg:px-16 mb-10 md:mb-16" data-scroll="fade-up">
-        {/* 斜めタイトル - 右寄せ */}
-        <div className="flex justify-end">
-          <h2 
-            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
-            style={{
-              transform: 'rotate(5deg) skewX(5deg)',
-            }}
-          >
+        <div className="text-center">
+          <h2 className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap">
             Explore
           </h2>
         </div>

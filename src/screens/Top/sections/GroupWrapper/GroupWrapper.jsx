@@ -35,6 +35,7 @@ export const GroupWrapper = () => {
     v4: "/img/vip-seat.jpg",
     v5: "/img/vip-seat.jpg",
     v6: "/img/vip-seat.jpg",
+    backbar: "/img/backbar.jpg",
   };
 
   // 座席データ（料金情報付き）
@@ -119,6 +120,13 @@ export const GroupWrapper = () => {
       weekday: { price: 83072, tableCharge: 20000, bottleCharge: 44000, tax: "28%" },
       weekend: { price: 166144, tableCharge: 40000, bottleCharge: 88000, tax: "28%" },
     },
+    backbar: {
+      name: "BACKBAR",
+      category: "FACILITY",
+      color: "#b8960c",
+      capacity: "-",
+      type: "info",
+    },
   };
 
   // 座席グループ（左側パネル用）
@@ -187,15 +195,9 @@ export const GroupWrapper = () => {
     <div className="relative self-stretch w-full flex flex-col items-center px-1 md:px-8 pb-4 md:pb-0">
 
       <div className="relative w-full max-w-[1440px]">
-        {/* セクションタイトル - 左寄せ */}
-        <div className="pt-4 md:pt-12 w-full" data-scroll="fade-up">
-          {/* 斜めタイトル - 左寄せ */}
-          <div 
-            className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap"
-            style={{
-              transform: 'rotate(-5deg) skewX(-5deg)',
-            }}
-          >
+        {/* セクションタイトル */}
+        <div className="pt-4 md:pt-12 w-full text-center" data-scroll="fade-up">
+          <div className="[font-family:'Playfair_Display',Helvetica] font-normal text-white text-3xl md:text-5xl lg:text-7xl xl:text-[90px] tracking-[0.05em] leading-[1.2] whitespace-nowrap">
             Floor Map
           </div>
           {/* サブテキスト - 中央配置 */}
@@ -453,8 +455,12 @@ export const GroupWrapper = () => {
                 </div>
 
                 {/* BACKBAR */}
-                <div className="absolute top-[64%] right-[2.1%] w-[7.1%] h-[28%] bg-black flex items-center justify-center pointer-events-none">
-                  <span className="text-white text-[10px] md:text-xs lg:text-[14px] font-bold [font-family:'Inter',Helvetica] [writing-mode:vertical-rl] tracking-[3px]">BACKBAR</span>
+                <div
+                  className="absolute top-[64%] right-[2.1%] w-[7.1%] h-[28%] bg-black flex items-center justify-center cursor-pointer group transition-all duration-200 hover:bg-white/10"
+                  onClick={() => handleSeatSelect('backbar')}
+                >
+                  <span className="text-white text-[10px] md:text-xs lg:text-[14px] font-bold [font-family:'Inter',Helvetica] [writing-mode:vertical-rl] tracking-[3px] group-hover:text-amber-300 transition-colors">BACKBAR</span>
+                  <div className="absolute inset-0 border border-white/0 group-hover:border-white/30 transition-all duration-200" />
                 </div>
 
                 {/* DJブース */}
@@ -533,64 +539,128 @@ export const GroupWrapper = () => {
                 </div>
               </div>
 
-              {/* 右側：料金表 */}
-              <div className="w-full lg:w-[55%] p-3 lg:p-10">
-                {/* WEEKDAY / WEEKEND ヘッダー */}
-                <div className="flex mb-4 lg:mb-8">
-                  <div className="w-[30%] lg:w-[35%]"></div>
-                  <div className="w-[35%] lg:w-[32.5%] text-center">
-                    <div className="text-white text-xs lg:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKDAY</div>
-                    <div className="text-white/70 text-[10px] lg:text-sm mt-0.5 lg:mt-1 font-medium">{language === "ja" ? "平日(日〜木)" : "Sun - Thu"}</div>
+              {/* 右側：料金表 or カスタムテキスト */}
+              <div className="w-full lg:w-[55%] p-3 lg:p-10 flex flex-col justify-center">
+                {selectedSeatData.type === 'info' ? (
+                  /* BACKBAR などinfo系：カスタムテキスト */
+                  <div className="space-y-4 lg:space-y-6">
+                    <div>
+                      <p className="text-white/40 text-[10px] lg:text-xs tracking-[0.2em] uppercase mb-1 font-medium">{selectedSeatData.category}</p>
+                      <h3 className="text-xl lg:text-3xl font-bold [font-family:'Playfair_Display',Helvetica] text-amber-300 tracking-wide">{selectedSeatData.name}</h3>
+                    </div>
+                    <div className="space-y-3 border-t border-white/10 pt-4 lg:pt-6">
+                      <p className="text-white text-sm lg:text-base [font-family:'Noto_Sans_JP',sans-serif] leading-relaxed">
+                        {language === 'ja'
+                          ? 'バーカウンター裏のバックバーエリアです。スタジオ貸出しも可能です。お気軽にお問い合わせください。'
+                          : 'The back bar area behind the bar counter. Studio rental is also available. Please feel free to contact us.'}
+                      </p>
+                    </div>
+                    <div className="flex gap-2 lg:gap-4 pt-2">
+                      <Link
+                        to="/u12467u12531u12479u12463u12488"
+                        className="flex-1 py-2.5 lg:py-4 rounded-full text-white text-center text-xs lg:text-base font-medium transition-all duration-300 hover:bg-white/20"
+                        style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}
+                      >
+                        CONTACT
+                      </Link>
+                    </div>
                   </div>
-                  <div className="w-[35%] lg:w-[32.5%] text-center">
-                    <div className="text-white text-xs lg:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKEND</div>
-                    <div className="text-white/70 text-[10px] lg:text-sm mt-0.5 lg:mt-1 font-medium">{language === "ja" ? "週末(金・土・祝前日)" : "Fri - Sat / Holidays"}</div>
+                ) : selectedSeat === 'standing' ? (
+                  /* STANDING AREA：料金なし・スタジオ貸出しテキスト */
+                  <div className="space-y-4 lg:space-y-6">
+                    <div>
+                      <p className="text-white/40 text-[10px] lg:text-xs tracking-[0.2em] uppercase mb-1 font-medium">{selectedSeatData.category}</p>
+                      <h3 className="text-xl lg:text-3xl font-bold [font-family:'Playfair_Display',Helvetica] text-white tracking-wide">{selectedSeatData.name}</h3>
+                    </div>
+                    <div className="space-y-3 border-t border-white/10 pt-4 lg:pt-6">
+                      <div className="flex items-start gap-3">
+                        <span className="text-white/40 text-xs lg:text-sm mt-0.5">—</span>
+                        <p className="text-white/80 text-sm lg:text-base [font-family:'Noto_Sans_JP',sans-serif] leading-relaxed">
+                          {language === 'ja' ? 'スタジオ貸出し可能エリア' : 'Studio rental available'}
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-white/40 text-xs lg:text-sm mt-0.5">—</span>
+                        <p className="text-white/80 text-sm lg:text-base [font-family:'Noto_Sans_JP',sans-serif] leading-relaxed">
+                          {language === 'ja' ? 'フロア入場料のみ（テーブルチャージなし）' : 'Floor charge only — no table charge'}
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-white/40 text-xs lg:text-sm mt-0.5">—</span>
+                        <p className="text-white/80 text-sm lg:text-base [font-family:'Noto_Sans_JP',sans-serif] leading-relaxed">
+                          {language === 'ja' ? 'ご利用詳細はお問い合わせください' : 'Contact us for rental details'}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex gap-2 lg:gap-4 pt-2">
+                      <Link
+                        to="/u12467u12531u12479u12463u12488"
+                        className="flex-1 py-2.5 lg:py-4 rounded-full text-white text-center text-xs lg:text-base font-medium transition-all duration-300 hover:bg-white/20"
+                        style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}
+                      >
+                        CONTACT
+                      </Link>
+                      <Link
+                        to="/reserve"
+                        className="flex-1 py-2.5 lg:py-4 rounded-full bg-[#013d36] text-white text-center text-xs lg:text-base font-medium transition-all duration-300 hover:opacity-90"
+                      >
+                        RESERVE
+                      </Link>
+                    </div>
                   </div>
-                </div>
-
-                {/* 料金表 */}
-                <div className="space-y-0">
-                  <div className="flex items-center py-2.5 lg:py-5 border-t border-white/10">
-                    <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">PRICE</div>
-                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-sm lg:text-2xl font-bold">{formatPrice(selectedSeatData.weekday.price)}</div>
-                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-sm lg:text-2xl font-bold">{formatPrice(selectedSeatData.weekend.price)}</div>
-                  </div>
-                  <div className="flex items-center py-2.5 lg:py-5 border-t border-white/10">
-                    <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">TABLE CHARGE</div>
-                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekday.tableCharge)}</div>
-                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekend.tableCharge)}</div>
-                  </div>
-                  <div className="flex items-center py-2.5 lg:py-5 border-t border-white/10">
-                    <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">BOTTLE CHARGE</div>
-                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekday.bottleCharge)}</div>
-                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekend.bottleCharge)}</div>
-                  </div>
-                  <div className="flex items-center py-2.5 lg:py-5 border-t border-b border-white/10">
-                    <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">SERVICE & TAX</div>
-                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{selectedSeatData.weekday.tax}</div>
-                    <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{selectedSeatData.weekend.tax}</div>
-                  </div>
-                </div>
-
-                {/* ボタン */}
-                <div className="flex gap-2 lg:gap-4 mt-4 lg:mt-8">
-                  <a
-                    href="tel:03-6455-3727"
-                    className="flex-1 py-2.5 lg:py-4 rounded-full text-white text-center text-xs lg:text-base font-medium transition-all duration-300 hover:bg-white/20 flex items-center justify-center gap-2"
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                    }}
-                  >
-                    CONTACT
-                  </a>
-                  <Link
-                    to="/reserve"
-                    className="flex-1 py-2.5 lg:py-4 rounded-full bg-[#013d36] text-white text-center text-xs lg:text-base font-medium transition-all duration-300 hover:opacity-90"
-                  >
-                    RESERVE
-                  </Link>
-                </div>
+                ) : (
+                  /* 通常座席：料金表 */
+                  <>
+                    <div className="flex mb-4 lg:mb-8">
+                      <div className="w-[30%] lg:w-[35%]"></div>
+                      <div className="w-[35%] lg:w-[32.5%] text-center">
+                        <div className="text-white text-xs lg:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKDAY</div>
+                        <div className="text-white/70 text-[10px] lg:text-sm mt-0.5 lg:mt-1 font-medium">{language === "ja" ? "平日(日〜木)" : "Sun - Thu"}</div>
+                      </div>
+                      <div className="w-[35%] lg:w-[32.5%] text-center">
+                        <div className="text-white text-xs lg:text-2xl font-bold [font-family:'Playfair_Display',Helvetica]">WEEKEND</div>
+                        <div className="text-white/70 text-[10px] lg:text-sm mt-0.5 lg:mt-1 font-medium">{language === "ja" ? "週末(金・土・祝前日)" : "Fri - Sat / Holidays"}</div>
+                      </div>
+                    </div>
+                    <div className="space-y-0">
+                      <div className="flex items-center py-2.5 lg:py-5 border-t border-white/10">
+                        <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">PRICE</div>
+                        <div className="w-[35%] lg:w-[32.5%] text-center text-white text-sm lg:text-2xl font-bold">{formatPrice(selectedSeatData.weekday.price)}</div>
+                        <div className="w-[35%] lg:w-[32.5%] text-center text-white text-sm lg:text-2xl font-bold">{formatPrice(selectedSeatData.weekend.price)}</div>
+                      </div>
+                      <div className="flex items-center py-2.5 lg:py-5 border-t border-white/10">
+                        <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">TABLE CHARGE</div>
+                        <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekday.tableCharge)}</div>
+                        <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekend.tableCharge)}</div>
+                      </div>
+                      <div className="flex items-center py-2.5 lg:py-5 border-t border-white/10">
+                        <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">BOTTLE CHARGE</div>
+                        <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekday.bottleCharge)}</div>
+                        <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{formatPrice(selectedSeatData.weekend.bottleCharge)}</div>
+                      </div>
+                      <div className="flex items-center py-2.5 lg:py-5 border-t border-b border-white/10">
+                        <div className="w-[30%] lg:w-[35%] text-white text-[10px] lg:text-base tracking-wider font-bold">SERVICE & TAX</div>
+                        <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{selectedSeatData.weekday.tax}</div>
+                        <div className="w-[35%] lg:w-[32.5%] text-center text-white text-xs lg:text-xl font-medium">{selectedSeatData.weekend.tax}</div>
+                      </div>
+                    </div>
+                    <div className="flex gap-2 lg:gap-4 mt-4 lg:mt-8">
+                      <Link
+                        to="/u12467u12531u12479u12463u12488"
+                        className="flex-1 py-2.5 lg:py-4 rounded-full text-white text-center text-xs lg:text-base font-medium transition-all duration-300 hover:bg-white/20 flex items-center justify-center gap-2"
+                        style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
+                      >
+                        CONTACT
+                      </Link>
+                      <Link
+                        to="/reserve"
+                        className="flex-1 py-2.5 lg:py-4 rounded-full bg-[#013d36] text-white text-center text-xs lg:text-base font-medium transition-all duration-300 hover:opacity-90"
+                      >
+                        RESERVE
+                      </Link>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           ) : (
@@ -602,6 +672,7 @@ export const GroupWrapper = () => {
           )}
         </div>
       </div>
+
     </div>
   );
 };
