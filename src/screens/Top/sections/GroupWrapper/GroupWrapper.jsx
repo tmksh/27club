@@ -19,7 +19,7 @@ export const GroupWrapper = () => {
       return;
     }
     if (selectedSeat && detailRef.current) {
-      detailRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      detailRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [selectedSeat]);
 

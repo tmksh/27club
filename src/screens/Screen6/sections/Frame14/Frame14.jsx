@@ -12,7 +12,7 @@ export const Frame14 = () => {
         <>
           ご来店後、お席へご案内します。
           <br />
-          まずはドリンクやフードをオーダーして、ゆったりとお過ごしください。当店ならではのオリジナルメニューもございます🍸
+          まずはドリンクやフードをオーダーして、ゆったりとお過ごしください。当店ならではのオリジナルメニューもございます。
         </>
       ),
       image: "/img/guest-flow-0.jpg",
@@ -40,9 +40,13 @@ export const Frame14 = () => {
       title: "盛り上がり方",
       description: (
         <>
-          拍手・声援→感動したら素直に！チップ→「もっと応援したい！」と思ったらキャストへ。10枚（1,200円）から購入できます。
+          拍手・声援 → 感動したら素直に！<br />
+          チップ → 「もっと応援したい！」と思ったらキャストへ。<br />
+          10枚（1,200円）から購入できます。
           <br /><br />
-          3,000円・5,000円の「チップレイ」、10,000円〜の「マネーガン演出」もおすすめ。盛り上がれば盛り上がるほど、会場全体が熱くなります🔥
+          3,000円・5,000円の「チップレイ」、<br />
+          10,000円〜の「マネーガン演出」もおすすめ。<br />
+          盛り上がれば盛り上がるほど、会場全体が熱くなります。
         </>
       ),
       image: "/img/guest-flow-image-2.jpg",
@@ -54,9 +58,10 @@ export const Frame14 = () => {
       title: "ショー中の撮影",
       description: (
         <>
-          THE27CLUBでは、写真・動画撮影がOK📷SNS映えするシーンもたくさん。
-          <br />
-          ぜひ思い出を残してください。他のお客様へのご配慮だけお願いします。
+          THE27CLUBでは、写真・動画撮影がOK。<br />
+          SNS映えするシーンもたくさん。<br />
+          ぜひ思い出を残してください。<br />
+          他のお客様へのご配慮だけお願いします。
         </>
       ),
       image: "/img/guest-flow-image-4.jpg",
@@ -68,9 +73,10 @@ export const Frame14 = () => {
       title: "ショー後の楽しみ",
       description: (
         <>
-          終演後はキャストとお話したり、一緒に写真を撮ったりできます。
-          <br />
-          フードやドリンクを追加オーダーして、余韻を楽しむのもおすすめです。
+          ショーが終わっても、夜はまだ続く。<br />
+          キャストと言葉を交わしたり、<br />
+          一緒に写真を撮ったり——<br />
+          ドリンクを片手に、この余韻をもう少し。
         </>
       ),
       image: "/img/guest-flow-image-3.webp",
@@ -87,7 +93,7 @@ export const Frame14 = () => {
         <>
           After arrival, we'll guide you to your seat.
           <br />
-          Start by ordering drinks or food and relax. We have original menu items unique to our venue 🍸
+          Start by ordering drinks or food and relax. We have original menu items unique to our venue.
         </>
       ),
       image: "/img/guest-flow-0.jpg",
@@ -117,7 +123,7 @@ export const Frame14 = () => {
         <>
           Applause & cheers → Express your excitement! Tips → Give to cast members when you want to show more support. Available from 10 chips (¥1,200).
           <br /><br />
-          We also recommend "Chip Lei" (¥3,000/¥5,000) and "Money Gun" (¥10,000+). The more excited everyone gets, the hotter the venue becomes 🔥
+          We also recommend "Chip Lei" (¥3,000/¥5,000) and "Money Gun" (¥10,000+). The more excited everyone gets, the hotter the venue becomes.
         </>
       ),
       image: "/img/guest-flow-image-2.jpg",
@@ -129,7 +135,7 @@ export const Frame14 = () => {
       title: "Photography During Show",
       description: (
         <>
-          At THE27CLUB, photos and videos are welcome 📷 Plenty of Instagram-worthy moments.
+          At THE27CLUB, photos and videos are welcome. Plenty of Instagram-worthy moments.
           <br />
           Please capture your memories. Just be considerate of other guests.
         </>
@@ -143,9 +149,9 @@ export const Frame14 = () => {
       title: "After the Show",
       description: (
         <>
-          After the show, you can chat with cast members and take photos together.
-          <br />
-          We recommend ordering more food and drinks to savor the afterglow.
+          The show ends, but the night goes on.<br />
+          Chat with the cast, take photos together——<br />
+          linger a little longer with a drink in hand.
         </>
       ),
       image: "/img/guest-flow-image-3.webp",
@@ -216,7 +222,7 @@ export const Frame14 = () => {
               >
                 {/* ステップ番号 - 上部に配置 */}
                 <div className="flex items-center gap-4 border-b border-white/20 pb-3 md:pb-4">
-                  <div className="[font-family:'Playfair_Display',serif] font-semibold text-white/40 text-4xl md:text-5xl lg:text-[56px] leading-none">
+                  <div className="[font-family:'Inter',Helvetica] font-light text-white/25 text-2xl md:text-3xl leading-none tracking-wider self-center">
                     {step.number}
                   </div>
                   <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-xl lg:text-2xl">
@@ -267,10 +273,6 @@ export const Frame14 = () => {
         </div>
 
         <div className="flex flex-col items-center gap-2 text-center">
-          <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#b8860b] text-lg md:text-xl">
-            ✨
-          </div>
-
           <div className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-white text-sm md:text-base leading-relaxed">
             {language === 'ja' ? (
               <>

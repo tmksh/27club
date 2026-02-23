@@ -241,9 +241,10 @@ export const NewsFV = () => {
       </div>
 
       {/* 中央のメインテキスト - 一文字ずつアニメーション */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 pb-[320px] sm:pb-[300px] md:pb-[220px] px-6">
-        <h1 className="[font-family:'Cormorant_Garamond',serif] text-white font-light tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] uppercase mb-3 md:mb-6 flex flex-wrap justify-center gap-x-[0.25em] overflow-hidden w-full"
-          style={{ fontSize: 'clamp(20px, 5.5vw, 52px)' }}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 pb-[240px] sm:pb-[260px] md:pb-[220px] px-6">
+        {/* SP版: 縦3行 */}
+        <h1 className="md:hidden [font-family:'Cormorant_Garamond',serif] text-white font-light tracking-[0.2em] uppercase mb-3 flex flex-col items-center overflow-hidden"
+          style={{ fontSize: 'clamp(26px, 8vw, 44px)' }}
         >
           {['WELCOME', 'TO', 'SHOWTIME'].map((word, wi) => (
             <span key={wi} className="flex overflow-hidden">
@@ -265,9 +266,33 @@ export const NewsFV = () => {
           ))}
         </h1>
 
-        <p className="[font-family:'Noto_Sans_JP',sans-serif] text-white/50 tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] font-light text-center overflow-hidden"
-          style={{ fontSize: 'clamp(10px, 2vw, 18px)' }}
-          >
+        {/* PC版: 横1行 */}
+        <h1 className="hidden md:flex [font-family:'Cormorant_Garamond',serif] text-white font-light tracking-[0.25em] uppercase mb-6 flex-wrap justify-center gap-x-[0.25em] overflow-hidden w-full"
+          style={{ fontSize: 'clamp(32px, 5.5vw, 52px)' }}
+        >
+          {['WELCOME', 'TO', 'SHOWTIME'].map((word, wi) => (
+            <span key={wi} className="flex overflow-hidden">
+              {word.split('').map((char, ci) => {
+                const globalIndex = ['WELCOME', 'TO', 'SHOWTIME'].slice(0, wi).join('').length + ci;
+                return (
+                  <span
+                    key={ci}
+                    className="inline-block"
+                    style={{
+                      animation: `charReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${0.4 + globalIndex * 0.04}s both`,
+                    }}
+                  >
+                    {char}
+                  </span>
+                );
+              })}
+            </span>
+          ))}
+        </h1>
+
+        <p className="[font-family:'Noto_Sans_JP',sans-serif] text-white tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] font-light text-center overflow-hidden"
+          style={{ fontSize: 'clamp(11px, 2vw, 18px)' }}
+        >
           <span
             style={{
               display: 'inline-block',

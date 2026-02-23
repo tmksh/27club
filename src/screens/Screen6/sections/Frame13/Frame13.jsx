@@ -37,21 +37,18 @@ export const Frame13 = () => {
           <p 
             data-scroll="fade-up"
             data-scroll-delay="200"
-            className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-base lg:text-lg tracking-[0] leading-relaxed md:leading-[32px] max-w-[1000px]"
+            className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
             {language === 'ja' ? (
               <>
-                入店からショー後の余韻まで、<br />
-                迷わず楽しめる5つのステップをご用意しました。<br />
-                まずは一杯、心をほどき、光と音の世界へ。<br />
-                最後の一瞬まで、美しい体験をナビゲートします。
+                入店からショー後の余韻まで、<br className="md:hidden" />
+                迷わず楽しめる5つのステップ。<br />
+                まずは一杯、心をほどいて、光と音の世界へ。
               </>
             ) : (
               <>
-                From entry to the afterglow of the show,<br />
-                we've prepared 5 easy steps for you to enjoy.<br />
-                Start with a drink, relax, and enter the world of light and sound.<br />
-                We'll guide you through a beautiful experience until the very last moment.
+                5 steps to enjoy from entry to the afterglow of the show.<br />
+                Start with a drink, relax, and step into the world of light and sound.
               </>
             )}
           </p>
