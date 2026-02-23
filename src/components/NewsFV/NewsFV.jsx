@@ -221,25 +221,27 @@ export const NewsFV = () => {
         }}
       />
 
-      {/* 背景の大きなテキスト（DONUTSスタイル） */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1] pb-[260px] sm:pb-[240px] md:pb-[160px] select-none overflow-hidden">
-        <span
-          className="[font-family:'Bebas_Neue',sans-serif] leading-[0.85] tracking-[0.02em] whitespace-nowrap"
+      {/* 背景の大きなロゴ */}
+      <div className="absolute top-0 left-0 right-0 flex items-center justify-center pointer-events-none z-[1] select-none overflow-hidden"
+        style={{ height: '60%' }}
+      >
+        <img
+          src="/img/27logo-1.png"
+          alt=""
+          draggable={false}
           style={{
-            fontSize: 'clamp(120px, 28vw, 320px)',
-            background: 'linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(255,255,255,0.06) 30%, rgba(6,182,212,0.08) 60%, rgba(255,255,255,0.04) 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            width: 'clamp(280px, 55vw, 780px)',
+            height: 'auto',
+            opacity: 0.015,
+            mixBlendMode: 'luminosity',
+            filter: 'brightness(0.5)',
             animation: 'fadeInUp 1.5s ease-out 0.2s both',
           }}
-        >
-          THE 27 CLUB
-        </span>
+        />
       </div>
 
       {/* 中央のメインテキスト - 一文字ずつアニメーション */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 pb-[260px] sm:pb-[240px] md:pb-[160px] px-6">
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 pb-[320px] sm:pb-[300px] md:pb-[220px] px-6">
         <h1 className="[font-family:'Cormorant_Garamond',serif] text-white font-light tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] uppercase mb-3 md:mb-6 flex flex-wrap justify-center gap-x-[0.25em] overflow-hidden w-full"
           style={{ fontSize: 'clamp(20px, 5.5vw, 52px)' }}
         >
