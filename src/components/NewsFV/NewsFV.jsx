@@ -223,18 +223,20 @@ export const NewsFV = () => {
 
       {/* 背景の大きなロゴ */}
       <div className="absolute top-0 left-0 right-0 flex items-center justify-center pointer-events-none z-[1] select-none overflow-hidden"
-        style={{ height: '60%' }}
+        style={{ height: '75%' }}
       >
         <img
           src="/img/27logo-1.png"
           alt=""
           draggable={false}
           style={{
-            width: 'clamp(280px, 55vw, 780px)',
+            width: 'clamp(300px, 58vw, 820px)',
             height: 'auto',
-            opacity: 0.015,
-            mixBlendMode: 'luminosity',
-            filter: 'brightness(0.5)',
+            opacity: 0.15,
+            filter: 'invert(1)',
+            mixBlendMode: 'soft-light',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 70%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 70%, transparent 100%)',
             animation: 'fadeInUp 1.5s ease-out 0.2s both',
           }}
         />
@@ -290,7 +292,7 @@ export const NewsFV = () => {
           ))}
         </h1>
 
-        <p className="[font-family:'Noto_Sans_JP',sans-serif] text-white tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] font-light text-center overflow-hidden"
+        <p className="[font-family:'Noto_Serif_JP',serif] text-white tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] font-light text-center overflow-hidden"
           style={{ fontSize: 'clamp(11px, 2vw, 18px)' }}
         >
           <span

@@ -42,16 +42,16 @@ export const SpaceBackground = () => {
             left: '-40%',
             background: `
               radial-gradient(ellipse 70% 45% at 25% 50%, 
-                rgba(255, 255, 255, 0.06) 0%,
-                rgba(255, 255, 255, 0.2) 30%,
-                rgba(255, 255, 255, 0.45) 50%,
-                rgba(255, 255, 255, 0.2) 70%,
+                rgba(255, 255, 255, 0.02) 0%,
+                rgba(255, 255, 255, 0.07) 30%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.07) 70%,
                 transparent 100%
               )
             `,
             transform: 'translateZ(0)',
             animation: reducedMotion ? 'none' : 'silkWave1 40s ease-in-out infinite',
-            opacity: 0.6,
+            opacity: 0.5,
           }}
         />
 
@@ -69,9 +69,9 @@ export const SpaceBackground = () => {
               linear-gradient(155deg, 
                 transparent 0%, 
                 transparent 35%, 
-                rgba(255, 255, 255, 0.12) 42%,
-                rgba(255, 255, 255, 0.35) 45%,
-                rgba(255, 255, 255, 0.12) 48%,
+                rgba(255, 255, 255, 0.04) 42%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.04) 48%,
                 transparent 55%, 
                 transparent 100%
               )
@@ -98,7 +98,7 @@ export const SpaceBackground = () => {
       <div 
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 75% 55% at 50% 50%, transparent 10%, rgba(0, 0, 0, 0.65) 100%)',
+          background: 'radial-gradient(ellipse 75% 55% at 50% 50%, transparent 10%, rgba(0, 0, 0, 0.85) 100%)',
           zIndex: -8,
         }}
       />

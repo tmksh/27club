@@ -84,13 +84,16 @@ export const AboutMvCm = () => {
               </h2>
               <span className="hidden md:block flex-1 h-px bg-gradient-to-r from-white/20 to-transparent" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
               {Array.isArray(creditsList) && creditsList.map((item, index) => (
-                <div key={index} className="flex items-start gap-5 py-5 border-b border-white/8 group">
-                  <span className="[font-family:'Inter',Helvetica] text-white/20 text-lg font-light leading-none flex-shrink-0 mt-3.5 select-none w-6 text-right">
+                <div key={index} className="group flex items-center gap-4 px-2 py-4 transition-all duration-300 cursor-default border-b border-white/10">
+                  <span
+                    className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
+                    style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,1)', fontFamily: 'Inter, Helvetica' }}
+                  >
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <span className="[font-family:'Noto_Sans_JP',Helvetica] text-white/70 text-base md:text-lg leading-relaxed pt-3 group-hover:text-white/90 transition-colors duration-200">
+                  <span className="[font-family:'Noto_Sans_JP',Helvetica] text-white/80 text-lg md:text-xl font-medium leading-snug group-hover:text-white transition-colors duration-200">
                     {item}
                   </span>
                 </div>

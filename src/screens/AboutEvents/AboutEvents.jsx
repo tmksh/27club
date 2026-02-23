@@ -88,7 +88,7 @@ export const AboutEvents = () => {
                     className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
                     style={{
                       background: 'rgba(255,255,255,0.08)',
-                      color: 'rgba(255,255,255,0.5)',
+                      color: 'rgba(255,255,255,1)',
                       fontFamily: 'Inter, Helvetica',
                     }}
                   >
