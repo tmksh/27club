@@ -261,110 +261,104 @@
 
         <!-- 9 -->
         <div class="section" id="instagram-graph-api">
-            <h2>9. Instagram Graph API 連携対応</h2>
-            <p class="desc">FVニュースのInstagram連携をBasic Display APIからGraph API（v25.0）に刷新。</p>
+            <h2>9. Instagram 連携方式の更新</h2>
+            <p class="desc">トップページのニュースエリアをInstagramのビジネスアカウントと連携できるよう、連携方式を最新のものに更新。</p>
             <ul>
-                <li><code>src/lib/instagram.js</code> をFacebook Graph API v25.0ベースに書き換え</li>
-                <li>ビジネスアカウント・FB連携済みアカウント向けにエンドポイント変更</li>
-                <li><code>VITE_INSTAGRAM_BUSINESS_ACCOUNT_ID</code> を新たに追加</li>
-                <li>セットアップヘルパー関数を追加（<code>discoverBusinessAccountId</code>、<code>exchangeToken</code>、<code>getPageAccessToken</code>）</li>
-                <li>ページトークン（無期限）取得フローをコメントで明記</li>
+                <li>Instagramプロアカウント・Facebook連携済みアカウントに対応した方式に変更</li>
+                <li>アクセストークンは無期限のページトークンを使用する形式に統一</li>
+                <li>トークン取得・設定の手順をコード内に整備</li>
             </ul>
         </div>
 
         <!-- 10 -->
         <div class="section" id="fv-redesign">
-            <h2>10. FV デザインリニューアル</h2>
-            <p class="desc">ファーストビューのロゴ・テキストレイアウトをDONUTSサイト参考にリデザイン。</p>
+            <h2>10. トップページ ファーストビュー デザインリニューアル</h2>
+            <p class="desc">ファーストビューのロゴ・テキストレイアウトを全面リデザイン。</p>
             <ul>
-                <li>背景に「THE 27 CLUB」大型テキストをうっすら表示（グラデーション透過）</li>
-                <li>メインテキストを「WELCOME TO SHOWTIME」に変更、一文字ずつ下から出現するアニメーション実装</li>
+                <li>背景にロゴをうっすら大きく表示（透過グラデーション）</li>
+                <li>メインテキストを「WELCOME TO SHOWTIME」に変更</li>
+                <li>一文字ずつ下から出現するアニメーションを実装</li>
                 <li>サブコピー「最高の夜を届けるナイトクラブ -THE 27 CLUB-」を追加</li>
-                <li>フォントサイズを <code>clamp()</code> で全画面幅に対応するレスポンシブ設定に変更</li>
-                <li>単語単位でグループ化し、モバイルで変な折り返しが起きないよう修正</li>
-                <li>ニュースカードを1:1（aspect-square）に変更し、Instagramの正方形投稿に対応</li>
-                <li>ニュースカードサイズ・間隔・pbをレスポンシブ調整し、テキストとの重なりを解消</li>
-                <li>暗めオーバーレイ追加でテキスト視認性向上</li>
+                <li>スマホ・タブレット・PCの画面幅に合わせてテキストサイズが自動調整されるよう対応</li>
+                <li>スマホ版はテキストが3行（WELCOME / TO / SHOWTIME）縦並びに変更</li>
+                <li>ニュースカードを正方形（1:1）に変更し、Instagram投稿のアスペクト比に対応</li>
+                <li>ニュースカードとメインテキストが重ならないよう間隔を調整</li>
+                <li>背景を少し暗くしてテキストの視認性を向上</li>
             </ul>
         </div>
 
         <!-- 11 -->
         <div class="section" id="floormap-backbar">
-            <h2>11. フロアマップ - BACKBAR クリック対応</h2>
-            <p class="desc">フロアマップのBACKBARエリアをクリッカブルにし、下部詳細パネルに写真・説明を表示。</p>
+            <h2>11. フロアマップ - バックバーのクリック対応</h2>
+            <p class="desc">フロアマップのバックバーエリアをクリックできるようにし、写真と説明を表示。</p>
             <ul>
-                <li>BACKBARエリアの <code>pointer-events-none</code> を削除しクリック可能に</li>
-                <li>クリックで座席詳細パネルに写真（<code>/img/backbar.jpg</code>）と説明文を表示</li>
-                <li>「スタジオ貸出し可能」テキストをバックバー・スタンディングエリアの説明に追加</li>
-                <li>STANDINGエリア詳細パネルの右側を料金表からカスタムテキスト表示に変更</li>
-                <li>全CONTACTボタンを <code>tel:</code> リンクから <code>/コンタクト</code> ページ遷移に変更</li>
-                <li>ホバー時のハイライト・トランジション追加</li>
+                <li>バックバーエリアをクリックすると写真と説明文が下部パネルに表示されるよう対応</li>
+                <li>説明文に「スタジオ貸出し可能」の案内を追加</li>
+                <li>スタンディングエリアの詳細パネルも料金表から案内テキストに変更</li>
+                <li>CONTACTボタンをクリックするとお問い合わせページに遷移するよう変更</li>
+                <li>バックバーエリアのホバー時にハイライト表示を追加</li>
             </ul>
         </div>
 
         <!-- 12 -->
         <div class="section" id="event-schedule-button">
-            <h2>12. イベントスケジュール - イベント実績ページへのボタン追加</h2>
-            <p class="desc">TOPページのイベントスケジュールセクション下部に「イベント実績を見る」ボタンを追加。</p>
+            <h2>12. イベントスケジュール - 「イベント実績を見る」ボタン追加</h2>
+            <p class="desc">トップページのイベントスケジュールセクション下部に、イベント実績ページへのボタンを追加。</p>
             <ul>
-                <li>PC版・SP版それぞれにボタンを実装</li>
-                <li>リンク先：<code>/about/events</code></li>
-                <li>グラスモーフィズム風デザイン、ホバーで矢印スライドアニメーション</li>
+                <li>PC版・スマホ版それぞれにボタンを設置</li>
+                <li>ボタンをクリックするとイベント実績ページに遷移</li>
+                <li>ホバー時に矢印がスライドするアニメーション付き</li>
             </ul>
         </div>
 
         <!-- 13 -->
         <div class="section" id="about-pages-ui">
-            <h2>13. About系サブページ UI改善</h2>
-            <p class="desc">イベント実績・MV/CM・機材設備 各ページのリストデザインを刷新。</p>
+            <h2>13. イベント実績・MV/CM・機材設備 各ページのデザイン改善</h2>
+            <p class="desc">各詳細ページのリスト表示デザインをボタン風から読みやすいリスト形式に刷新。</p>
             <ul>
-                <li><strong>/about/events</strong>：ボタンに見えるカード形式 → 番号付きエディトリアルスタイルに変更（2カラムグリッド、Playfair Displayイタリックタイトル）</li>
-                <li><strong>/about/mv-cm</strong>：同様にリデザイン</li>
-                <li><strong>/about/equipment</strong>：縦線（teal グラデーション）を削除し、シンプルな枠のみに</li>
-                <li><strong>/about/equipment</strong>：DJ設備・マイク設備セクションを新規追加（Pioneer CDJ-2000NXS2 ×2、DJM-900NXS2 ×1、Shure ワイヤレスマイク ×2、有線マイク ×2、SLXD1ヘッドセット ×2）</li>
-                <li>各ページのテキストサイズを <code>text-base md:text-lg</code> に拡大</li>
+                <li>イベント実績ページ：ボタンに見えるカード形式を廃止し、番号付きリスト形式に変更</li>
+                <li>MV・CM撮影ページ：同様にリスト形式に変更</li>
+                <li>照明・音響設備ページ：リスト左の装飾ラインを削除し、シンプルなカード枠のみに</li>
+                <li>各ページのテキストサイズを拡大し、読みやすく改善</li>
             </ul>
         </div>
 
         <!-- 14 -->
         <div class="section" id="section-titles">
-            <h2>14. TOPページ 全セクションタイトル スタイル変更</h2>
-            <p class="desc">全セクションタイトルの斜体・傾き変形を廃止し、中央揃えのシンプルなデザインに統一。</p>
+            <h2>14. トップページ 全セクションタイトルのデザイン統一</h2>
+            <p class="desc">全セクションタイトルの斜体・傾き表示を廃止し、中央揃えのシンプルなデザインに統一。</p>
             <ul>
-                <li>対象：Event Schedule / Floor Map / About This Venue / Gallery / Performers / Explore / Access</li>
-                <li><code>italic</code> 削除</li>
-                <li><code>transform: rotate / skewX</code> 削除</li>
-                <li>左寄せ・右寄せ → <code>text-center</code> に統一</li>
+                <li>対象：イベントスケジュール・フロアマップ・About This Venue・ギャラリー・パフォーマー・Explore・アクセス</li>
+                <li>斜体・傾き表示を廃止</li>
+                <li>左寄せ・右寄せだったタイトルをすべて中央揃えに変更</li>
             </ul>
         </div>
 
         <!-- 15 -->
         <div class="section" id="equipment-dj-mic">
-            <h2>15. 機材設備ページ - DJ設備・マイク設備を追加（/about/equipment）</h2>
+            <h2>15. 機材設備ページ - DJ設備・マイク設備の情報追加</h2>
             <p class="desc">照明・音響設備に加え、DJ設備とマイク設備の詳細情報を新規セクションとして追加。</p>
             <ul>
-                <li><strong>DJ設備</strong>：Pioneer CDJ-2000NXS2 × 2台 / Pioneer DJM-900NXS2 × 1台</li>
-                <li><strong>ワイヤレスマイク</strong>：Shure ワイヤレスマイク（SM58系）× 2本</li>
-                <li><strong>有線マイク</strong>：× 2本（事前連絡で増設可）</li>
-                <li><strong>ヘッドセット</strong>：Shure SLXD1 × 2本</li>
-                <li>機器名・台数・カテゴリラベルを表示するカードUIを実装</li>
-                <li>「有線マイクは事前ご連絡で増設可能」注記を追加</li>
-                <li>日本語・英語両方の言語データ（<code>LanguageContext.jsx</code>）に追記</li>
+                <li>DJ設備：Pioneer CDJ-2000NXS2 × 2台 / Pioneer DJM-900NXS2 × 1台</li>
+                <li>ワイヤレスマイク：Shure（SM58系）× 2本</li>
+                <li>有線マイク：× 2本（事前連絡で増設可）</li>
+                <li>ヘッドセット：Shure SLXD1 × 2本</li>
+                <li>機器名・台数をカード形式で表示</li>
+                <li>「有線マイクは事前ご連絡で増設可能」の注記を追加</li>
             </ul>
         </div>
 
         <!-- 16 -->
         <div class="section" id="studio-rental-pricing">
-            <h2>15. スタジオ貸出し 料金更新（/about/studio-rental）</h2>
-            <p class="desc">スタジオ貸出しページの料金を「お問い合わせください」から実際の料金に更新。</p>
+            <h2>16. スタジオ貸出しページ - 料金を更新</h2>
+            <p class="desc">スタジオ貸出しページの料金を「お問い合わせください」から実際の金額に更新。</p>
             <ul>
                 <li>平日（1時間〜）：¥55,000</li>
                 <li>土日祝（1時間〜）：¥66,000</li>
                 <li>営業時間外（1時間〜）：¥33,000</li>
-                <li>管理人件費（1Day）：¥16,500</li>
-                <li>PAオペレート費（1Day）：¥16,500</li>
+                <li>管理人件費（1日）：¥16,500</li>
+                <li>PAオペレート費（1日）：¥16,500</li>
                 <li>注記を「※ 表示価格はすべて税込です。」に変更</li>
-                <li>日本語・英語両方の言語データを更新</li>
             </ul>
         </div>
     </div>
