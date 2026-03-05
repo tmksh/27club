@@ -24,7 +24,7 @@ export const Group81 = ({
       <div className="inline-flex items-center gap-[18px] absolute top-[calc(50.00%_-_40px)] left-[calc(50.00%_-_530px)]">
         <div className="flex w-[186px] items-center gap-[18px] relative">
           <div className="flex w-[186px] items-center gap-[18px] relative">
-            <div className="relative w-fit mt-[-1.00px] text-white leading-10 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap">
+            <div className="relative w-fit mt-[-1.00px] text-white leading-10 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap">
               {text}
             </div>
 
@@ -33,7 +33,7 @@ export const Group81 = ({
             >
               <div className="absolute w-[96.77%] h-[87.50%] top-[5.00%] left-0 bg-[#06baa5] rounded-[3px]" />
 
-              <div className="absolute w-[58.06%] h-full top-0 left-[19.35%] text-black leading-10 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap">
+              <div className="absolute w-[58.06%] h-full top-0 left-[19.35%] text-black leading-10 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap">
                 必須
               </div>
             </div>
@@ -61,7 +61,7 @@ export const Group81 = ({
             }}
             className="absolute w-full h-full top-0 left-0 opacity-0 cursor-pointer z-10"
           />
-          <div className="absolute w-[92.21%] h-[100.00%] top-0 left-[7.38%] text-white leading-[65.4px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap pointer-events-none">
+          <div className="absolute w-[92.21%] h-[100.00%] top-0 left-[7.38%] text-white leading-[65.4px] [font-family:'Noto_Sans_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap pointer-events-none">
             {options[0].label}
           </div>
           <div
@@ -93,7 +93,7 @@ export const Group81 = ({
             }}
             className="absolute w-full h-full top-0 left-0 opacity-0 cursor-pointer z-10"
           />
-          <div className="absolute w-[89.06%] h-[100.00%] top-0 left-[10.37%] text-white leading-[65.4px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap pointer-events-none">
+          <div className="absolute w-[89.06%] h-[100.00%] top-0 left-[10.37%] text-white leading-[65.4px] [font-family:'Noto_Sans_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap pointer-events-none">
             {options[1].label}
           </div>
           <div
@@ -122,7 +122,7 @@ export const Group81 = ({
             }}
             className="absolute w-full h-full top-0 left-0 opacity-0 cursor-pointer z-10"
           />
-          <div className="absolute w-[82.70%] h-[100.00%] top-0 left-[16.39%] text-white leading-[65.4px] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap pointer-events-none">
+          <div className="absolute w-[82.70%] h-[100.00%] top-0 left-[16.39%] text-white leading-[65.4px] [font-family:'Noto_Sans_JP',Helvetica] font-normal text-lg tracking-[0] whitespace-nowrap pointer-events-none">
             {options[2].label}
           </div>
           <div

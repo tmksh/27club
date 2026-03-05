@@ -144,8 +144,8 @@ export const Frame = () => {
           Event Schedule
         </div>
         <div className="flex justify-center mt-8">
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs tracking-[0.02em] leading-[1.8] text-center">
-            {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}
+          <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-xs tracking-[0.02em] leading-[1.8] text-center">
+            {language === 'ja' ? '毎週開催されるイベントをご確認いただけます。' : 'Check out our weekly events.'}
           </p>
         </div>
       </div>
@@ -158,8 +158,8 @@ export const Frame = () => {
         
         {/* サブテキスト - 中央配置 */}
         <div className="flex justify-center mt-16 lg:mt-20">
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center whitespace-nowrap">
-            {language === 'ja' ? '毎週開催される多彩なイベントをご確認いただけます。' : 'Check out our weekly events.'}
+          <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center whitespace-nowrap">
+            {language === 'ja' ? '毎週開催されるイベントをご確認いただけます。' : 'Check out our weekly events.'}
           </p>
         </div>
       </div>
@@ -285,7 +285,7 @@ export const Frame = () => {
                 <div className="[font-family:'Playfair_Display',Helvetica] text-white text-sm font-medium tracking-wide">
                   Events
                 </div>
-                <div className="[font-family:'Noto_Serif_JP',Helvetica] text-white/40 text-[9px] font-normal">
+                <div className="[font-family:'Noto_Sans_JP',Helvetica] text-white/40 text-[9px] font-normal">
                   {t('events.eventList')}
                 </div>
               </div>
@@ -398,7 +398,7 @@ export const Frame = () => {
               <div className="[font-family:'Playfair_Display',Helvetica] text-white text-[24px] font-normal tracking-[2px] mb-1">
                 EVENTS
               </div>
-              <div className="[font-family:'Noto_Serif_JP',Helvetica] text-[#00d6bd] text-[12px] font-normal opacity-80">
+              <div className="[font-family:'Noto_Sans_JP',Helvetica] text-[#00d6bd] text-[12px] font-normal opacity-80">
                 {t('events.eventList')}
               </div>
             </div>

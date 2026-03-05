@@ -40,7 +40,7 @@ export const Frame17 = () => {
           <p 
             data-scroll="fade-up"
             data-scroll-delay="200"
-            className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
+            className="[font-family:'Noto_Sans_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
             {language === 'ja' ? (
               <>

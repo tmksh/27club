@@ -222,7 +222,7 @@ export const Frame14 = () => {
               >
                 {/* ステップ番号 - 上部に配置 */}
                 <div className="flex items-center gap-4 border-b border-white/20 pb-3 md:pb-4">
-                  <div className="[font-family:'Inter',Helvetica] font-light text-white/25 text-2xl md:text-3xl leading-none tracking-wider self-center">
+                  <div className="[font-family:'Inter',Helvetica] font-light text-white text-2xl md:text-3xl leading-none tracking-wider self-center">
                     {step.number}
                   </div>
                   <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-xl lg:text-2xl">
@@ -230,7 +230,7 @@ export const Frame14 = () => {
                   </div>
                 </div>
 
-                <div className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/80 text-sm md:text-base lg:text-lg leading-relaxed md:leading-[30.6px]">
+                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/80 text-sm md:text-base lg:text-lg leading-relaxed md:leading-[30.6px]">
                   {step.description}
                 </div>
 
@@ -253,7 +253,7 @@ export const Frame14 = () => {
         </div>
 
         <div className="flex flex-col gap-2 w-full items-center">
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#cccccc] text-xs md:text-base text-center leading-relaxed">
+          <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#cccccc] text-xs md:text-base text-center leading-relaxed">
             {language === 'ja' ? (
               <>
                 THE27CLUBのショーは、<br />
@@ -273,7 +273,7 @@ export const Frame14 = () => {
         </div>
 
         <div className="flex flex-col items-center gap-2 text-center">
-          <div className="[font-family:'Noto_Serif_JP',Helvetica] font-medium text-white text-sm md:text-base leading-relaxed">
+          <div className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base leading-relaxed">
             {language === 'ja' ? (
               <>
                 初めての方も、どうぞ肩の力を抜いて<br />

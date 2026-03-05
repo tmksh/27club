@@ -196,9 +196,9 @@ export const FrameWrapper = () => {
             </div>
             {/* サブテキスト - 中央配置 */}
             <div className="flex justify-center mt-8 lg:mt-20">
-              <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+              <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
                 {language === 'ja' ? (
-                  <>多彩なパフォーマンスとイベントをお楽しみいただけます。<br />毎週異なるテーマで、特別な夜をお届けします。</>
+                  <>パフォーマンスとイベントをお楽しみいただけます。<br />毎週異なるテーマで、特別な夜をお届けします。</>
                 ) : (
                   <>Enjoy a variety of performances and events.<br />Each week brings a different theme and a special night.</>
                 )}
@@ -320,7 +320,7 @@ export const FrameWrapper = () => {
               <h3 className="[font-family:'Playfair_Display',Helvetica] font-semibold text-white text-xl md:text-2xl tracking-wide">
                 {castData[currentIndex].name}
               </h3>
-              <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white/70 text-xs md:text-sm mt-2 max-w-[400px]">
+              <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white/70 text-xs md:text-sm mt-2 max-w-[400px]">
                 {language === 'en' ? castData[currentIndex].descriptionEn : castData[currentIndex].descriptionJa}
               </p>
             </div>

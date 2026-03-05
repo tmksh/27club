@@ -112,7 +112,9 @@ export const AboutStudioRental = () => {
                     </svg>
                   </span>
                   <span className="[font-family:'Noto_Sans_JP',Helvetica] text-white/80 text-sm md:text-base leading-relaxed">
-                    {item}
+                    {item.split('\n').map((line, i, arr) => (
+                      <React.Fragment key={i}>{line}{i < arr.length - 1 && <br />}</React.Fragment>
+                    ))}
                   </span>
                 </div>
               ))}

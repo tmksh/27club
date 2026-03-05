@@ -15,7 +15,7 @@ export const FeelingSection = () => {
         </h3>
 
         {/* 説明文 */}
-        <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-xs md:text-base tracking-wide leading-relaxed">
+        <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/60 text-xs md:text-base tracking-wide leading-relaxed">
           {t('tipFeeling.description')}
         </p>
       </div>

@@ -28,14 +28,14 @@ export const Group68 = ({
         >
           <div className={`relative w-[132px] h-10 ${groupClassName}`}>
             <div className="inline-flex items-center gap-[18px] relative">
-              <div className="relative w-fit mt-[-1.00px] text-white [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] leading-10 whitespace-nowrap">
+              <div className="relative w-fit mt-[-1.00px] text-white [font-family:'Noto_Sans_JP',Helvetica] font-normal text-lg tracking-[0] leading-10 whitespace-nowrap">
                 {text}
               </div>
 
               <div className="relative w-[62px] h-10 mr-[-2.00px]">
                 <div className="w-[96.77%] h-[87.50%] top-[5.00%] bg-[#06baa5] absolute left-0 rounded-[3px]" />
 
-                <div className="absolute w-[58.06%] h-full top-0 left-[19.35%] text-black [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] leading-10 whitespace-nowrap">
+                <div className="absolute w-[58.06%] h-full top-0 left-[19.35%] text-black [font-family:'Noto_Sans_JP',Helvetica] font-normal text-lg tracking-[0] leading-10 whitespace-nowrap">
                   必須
                 </div>
               </div>
@@ -52,7 +52,7 @@ export const Group68 = ({
               value={value !== undefined ? value : text1}
               onChange={onChange}
               placeholder={placeholder}
-              className={`absolute w-[99.81%] h-[80.00%] top-[10.00%] left-[1.00%] [font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#727272] text-lg tracking-[0] leading-10 bg-transparent border-0 outline-none px-2 ${divClassName}`}
+              className={`absolute w-[99.81%] h-[80.00%] top-[10.00%] left-[1.00%] [font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#727272] text-lg tracking-[0] leading-10 bg-transparent border-0 outline-none px-2 ${divClassName}`}
             />
           </div>
         </div>

@@ -255,7 +255,7 @@ export const Frame7 = () => {
                       <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-lg md:text-2xl">
                         {option.name}
                       </span>
-                      <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#555] text-xs md:text-base tracking-wider">
+                      <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#555] text-xs md:text-base tracking-wider">
                         {option.nameEn}
                       </span>
                     </div>
@@ -279,7 +279,7 @@ export const Frame7 = () => {
             )}
           </h3>
 
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-base text-center">
+          <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-base text-center">
             {language === 'ja' ? (
               <>詳細なお見積もりや空き状況の確認など、<br />お気軽にお問い合わせください</>
             ) : (
@@ -310,10 +310,10 @@ export const Frame7 = () => {
           </div>
 
           <div className="flex flex-col items-center gap-2 md:gap-3 text-center">
-            <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-xs md:text-sm">
+            <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs md:text-sm">
               {t('pricingSection.phone')}
             </span>
-            <span className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[10px] md:text-xs">
+            <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[10px] md:text-xs">
               {language === 'ja' ? (
                 <>営業時間：19:00-02:00（月-木）<br />19:00-03:00（金・土）19:00-01:00（日）</>
               ) : (

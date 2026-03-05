@@ -202,7 +202,7 @@ export const GroupWrapper = () => {
           </div>
           {/* サブテキスト - 中央配置 */}
           <div className="flex justify-center mt-8 lg:mt-20">
-            <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+            <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
               <span className="hidden md:inline">{t("floorMap.subtitle")}</span>
               <span className="md:hidden">VIPからスタンディングまで、<br />シーンに合わせてお好みの席をお選びください</span>
             </p>
@@ -233,7 +233,7 @@ export const GroupWrapper = () => {
                   </h4>
                   {group.groups.map((subGroup, idx) => (
                     <div key={idx} className="flex items-center gap-1.5 lg:flex-col lg:items-start lg:mb-2">
-                      <p className="hidden lg:block text-white/50 text-sm mb-2 [font-family:'Noto_Serif_JP',Helvetica]">
+                      <p className="hidden lg:block text-white/50 text-sm mb-2 [font-family:'Noto_Sans_JP',Helvetica]">
                         {subGroup.label}
                       </p>
                       <div className="flex flex-wrap gap-1 lg:gap-2">
@@ -388,8 +388,8 @@ export const GroupWrapper = () => {
                   onMouseLeave={() => setHoveredPinkSeat(false)}
                 >
                   <div className="text-center">
-                    <div className="text-white text-xs md:text-sm lg:text-[18px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_15px_rgba(255,4,196,0.8),0_2px_10px_rgba(0,0,0,0.5)]">PINK</div>
-                    <div className="text-white text-xs md:text-sm lg:text-[18px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_15px_rgba(255,4,196,0.8),0_2px_10px_rgba(0,0,0,0.5)]">SEAT</div>
+                    <div className="text-white text-[8px] md:text-sm lg:text-[18px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_15px_rgba(255,4,196,0.8),0_2px_10px_rgba(0,0,0,0.5)]">PINK</div>
+                    <div className="text-white text-[8px] md:text-sm lg:text-[18px] font-bold [font-family:'Inter',Helvetica] [text-shadow:0_0_15px_rgba(255,4,196,0.8),0_2px_10px_rgba(0,0,0,0.5)]">SEAT</div>
                   </div>
                 </div>
 
@@ -420,17 +420,17 @@ export const GroupWrapper = () => {
                 {/* staff only */}
                 <div className="absolute top-[11%] right-[18.8%] w-[12.9%] h-[14%] bg-black flex items-center justify-center pointer-events-none">
                   <div className="text-center">
-                    <div className="text-white text-xs md:text-sm lg:text-[18px] font-bold [font-family:'Inter',Helvetica]">staff</div>
-                    <div className="text-white text-xs md:text-sm lg:text-[18px] font-bold [font-family:'Inter',Helvetica]">only</div>
+                    <div className="text-white text-[8px] md:text-sm lg:text-[18px] font-bold [font-family:'Inter',Helvetica]">staff</div>
+                    <div className="text-white text-[8px] md:text-sm lg:text-[18px] font-bold [font-family:'Inter',Helvetica]">only</div>
                   </div>
                 </div>
 
                 {/* トイレアイコン */}
                 <div className="absolute top-[26%] right-[10.6%] w-[3.5%] aspect-[30/38] bg-white flex items-center justify-center shadow-lg rounded-md pointer-events-none">
-                  <span className="text-blue-600 text-sm md:text-lg lg:text-[24px]">🚹</span>
+                  <span className="text-blue-600 text-[8px] md:text-lg lg:text-[24px]">🚹</span>
                 </div>
                 <div className="absolute top-[48%] right-[10.6%] w-[3.5%] aspect-[30/38] bg-white flex items-center justify-center shadow-lg rounded-md pointer-events-none">
-                  <span className="text-pink-600 text-sm md:text-lg lg:text-[24px]">🚺</span>
+                  <span className="text-pink-600 text-[8px] md:text-lg lg:text-[24px]">🚺</span>
                 </div>
 
                 {/* STANDING AREA */}
@@ -441,17 +441,17 @@ export const GroupWrapper = () => {
                   }`}
                   style={{ background: "linear-gradient(180deg, rgba(48,48,48,1) 35%, rgba(128,128,128,1) 100%)" }}
                 >
-                  <span className="text-white text-sm md:text-lg lg:text-[22px] font-bold [font-family:'Inter',Helvetica] tracking-[3px] [text-shadow:0_0_10px_rgba(0,0,0,0.5),0_2px_4px_rgba(0,0,0,0.8)]">STANDING AREA</span>
+                  <span className="text-white text-[10px] md:text-lg lg:text-[22px] font-bold [font-family:'Inter',Helvetica] tracking-[2px] md:tracking-[3px] [text-shadow:0_0_10px_rgba(0,0,0,0.5),0_2px_4px_rgba(0,0,0,0.8)]">STANDING AREA</span>
                 </div>
 
                 {/* BAR COUNTER */}
                 <div className="absolute bottom-[16%] left-[30.6%] w-[32.9%] h-[6%] flex items-center justify-center pointer-events-none">
-                  <span className="text-[#ffd700] text-sm md:text-lg lg:text-[24px] font-bold [font-family:'Inter',Helvetica] tracking-[2px] [text-shadow:0_0_20px_rgba(255,215,0,0.6),0_2px_4px_rgba(0,0,0,0.8)]">BAR COUNTER</span>
+                  <span className="text-[#ffd700] text-[9px] md:text-lg lg:text-[24px] font-bold [font-family:'Inter',Helvetica] tracking-[1px] md:tracking-[2px] [text-shadow:0_0_20px_rgba(255,215,0,0.6),0_2px_4px_rgba(0,0,0,0.8)]">BAR COUNTER</span>
                 </div>
 
                 {/* kitchen */}
                 <div className="absolute bottom-[16%] right-[11.8%] w-[10.6%] h-[13%] bg-black rounded-full flex items-center justify-center pointer-events-none">
-                  <span className="text-white text-xs md:text-sm lg:text-[18px] font-normal [font-family:'Inter',Helvetica] italic">kitchen</span>
+                  <span className="text-white text-[8px] md:text-sm lg:text-[18px] font-normal [font-family:'Inter',Helvetica] italic">kitchen</span>
                 </div>
 
                 {/* BACKBAR */}
@@ -459,21 +459,21 @@ export const GroupWrapper = () => {
                   className="absolute top-[64%] right-[2.1%] w-[7.1%] h-[28%] bg-black flex items-center justify-center cursor-pointer group transition-all duration-200 hover:bg-white/10"
                   onClick={() => handleSeatSelect('backbar')}
                 >
-                  <span className="text-white text-[10px] md:text-xs lg:text-[14px] font-bold [font-family:'Inter',Helvetica] [writing-mode:vertical-rl] tracking-[3px] group-hover:text-amber-300 transition-colors">BACKBAR</span>
+                  <span className="text-white text-[8px] md:text-xs lg:text-[14px] font-bold [font-family:'Inter',Helvetica] [writing-mode:vertical-rl] tracking-[2px] md:tracking-[3px] group-hover:text-amber-300 transition-colors">BACKBAR</span>
                   <div className="absolute inset-0 border border-white/0 group-hover:border-white/30 transition-all duration-200" />
                 </div>
 
                 {/* DJブース */}
                 <div className="absolute bottom-[4%] left-[2.4%] w-[10.6%] h-[15%] bg-[#4a4a4a] flex flex-col items-center justify-center pointer-events-none">
-                  <span className="text-white text-[8px] md:text-[10px] lg:text-[12px] font-normal [font-family:'Noto_Serif_JP',Helvetica] mb-1">{language === "ja" ? "DJブース" : "DJ Booth"}</span>
+                  <span className="text-white text-[6px] md:text-[10px] lg:text-[12px] font-normal [font-family:'Noto_Sans_JP',Helvetica] mb-1">{language === "ja" ? "DJブース" : "DJ Booth"}</span>
                   <div className="w-[40%] aspect-square bg-gray-200 rounded-full flex items-center justify-center">
                     <div className="w-[75%] aspect-square bg-gray-400 rounded-full"></div>
                   </div>
                 </div>
 
                 {/* entrance */}
-                <div className="absolute bottom-[4%] left-[32.9%] w-[28.2%] h-[10%] bg-black flex items-center justify-center border-t-4 border-l-4 border-r-4 border-white pointer-events-none">
-                  <span className="text-white text-sm md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica]">entrance</span>
+                <div className="absolute bottom-[4%] left-[32.9%] w-[28.2%] h-[10%] bg-black flex items-center justify-center border-t-2 border-l-2 border-r-2 md:border-t-4 md:border-l-4 md:border-r-4 border-white pointer-events-none">
+                  <span className="text-white text-[10px] md:text-base lg:text-[20px] font-bold [font-family:'Inter',Helvetica]">entrance</span>
                 </div>
 
                 {/* entrance グリッド */}
@@ -665,7 +665,7 @@ export const GroupWrapper = () => {
             </div>
           ) : (
             <div className="text-center py-12 md:py-16">
-              <p className="text-white/40 text-sm md:text-base [font-family:'Noto_Serif_JP',Helvetica]">
+              <p className="text-white/40 text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica]">
                 {language === "ja" ? "座席を選択すると詳細が表示されます" : "Select a seat to view details"}
               </p>
             </div>

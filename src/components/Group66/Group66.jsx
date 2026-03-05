@@ -29,7 +29,7 @@ export const Group66 = ({
         )}
 
         <div
-          className={`w-[99.65%] h-[49.82%] top-[50.18%] left-0 font-semibold text-[26.6px] leading-[40.6px] absolute [font-family:'Noto_Serif_JP',Helvetica] text-white text-center tracking-[0] ${elementClassName}`}
+          className={`w-[99.65%] h-[49.82%] top-[50.18%] left-0 font-semibold text-[26.6px] leading-[40.6px] absolute [font-family:'Noto_Sans_JP',sans-serif] text-white text-center tracking-[0] ${elementClassName}`}
         >
           {text1}
         </div>

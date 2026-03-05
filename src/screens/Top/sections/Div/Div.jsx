@@ -41,7 +41,7 @@ export const Div = () => {
         </div>
         {/* サブテキスト - 中央配置 */}
         <div className="flex justify-center mt-8 lg:mt-20">
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center max-w-[800px]">
+          <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center max-w-[800px]">
             {language === 'ja' 
               ? '歌舞伎町最大級のショー空間をご体験ください。'
               : "Experience Kabukicho's largest show space."}

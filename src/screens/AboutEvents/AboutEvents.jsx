@@ -95,7 +95,13 @@ export const AboutEvents = () => {
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   <span className="[font-family:'Noto_Sans_JP',Helvetica] text-white/80 text-lg md:text-xl font-medium leading-snug group-hover:text-white transition-colors duration-200">
-                    {item}
+                    {item.includes('（') ? (
+                      <>
+                        {item.substring(0, item.indexOf('（'))}
+                        <br />
+                        <span className="text-white/50 text-sm md:text-base font-normal">{item.substring(item.indexOf('（'))}</span>
+                      </>
+                    ) : item}
                   </span>
                 </div>
               ))}
@@ -128,7 +134,7 @@ export const AboutEvents = () => {
               border: '1px solid rgba(255, 255, 255, 0.1)',
             }}
           >
-            <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white/80 text-base md:text-lg mb-6">
+            <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white/80 text-sm md:text-base mb-6">
               {t('aboutEvents.ctaText')}
             </p>
             <Link

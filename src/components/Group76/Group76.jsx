@@ -19,7 +19,7 @@ export const Group76 = ({
     >
       <div className="inline-flex items-center gap-[18px] absolute top-[calc(50.00%_-_174px)] left-[calc(50.00%_-_530px)]">
         <div className="flex w-[186px] items-center gap-[18px] relative">
-          <div className="relative w-fit mt-[-1.00px] text-white [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] leading-10 whitespace-nowrap">
+          <div className="relative w-fit mt-[-1.00px] text-white [font-family:'Noto_Sans_JP',Helvetica] font-normal text-lg tracking-[0] leading-10 whitespace-nowrap">
             {text}
           </div>
 
@@ -28,7 +28,7 @@ export const Group76 = ({
           >
             <div className="absolute w-[96.77%] h-[87.50%] top-[5.00%] left-0 bg-[#06baa5] rounded-[3px]" />
 
-            <div className="absolute w-[58.06%] h-full top-0 left-[19.35%] text-black [font-family:'Noto_Serif_JP',Helvetica] font-normal text-lg tracking-[0] leading-10 whitespace-nowrap">
+            <div className="absolute w-[58.06%] h-full top-0 left-[19.35%] text-black [font-family:'Noto_Sans_JP',Helvetica] font-normal text-lg tracking-[0] leading-10 whitespace-nowrap">
               必須
             </div>
           </div>
@@ -40,7 +40,7 @@ export const Group76 = ({
           value={value || ""}
           onChange={onChange}
           placeholder="お問い合わせ内容をご記入ください"
-          className="w-full h-full p-4 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#727272] text-lg tracking-[0] bg-transparent border-0 outline-none resize-none"
+          className="w-full h-full p-4 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#727272] text-lg tracking-[0] bg-transparent border-0 outline-none resize-none"
         />
       </div>
     </div>

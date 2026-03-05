@@ -30,7 +30,7 @@ export const Frame1 = () => {
           </h1>
           
           {/* 説明テキスト */}
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-[10px] md:text-lg lg:text-[22px] text-center tracking-[0] leading-relaxed md:leading-[36px] max-w-[1000px]">
+          <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[10px] md:text-lg lg:text-[22px] text-center tracking-[0] leading-relaxed md:leading-[36px] max-w-[1000px]">
             {t('tip.heroDescription')}
           </p>
         </div>

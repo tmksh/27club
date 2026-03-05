@@ -143,7 +143,7 @@ export const HeroSection = () => {
         
         {/* 日本語サブテキスト */}
         <div 
-          className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-xs md:text-base tracking-[0.15em] mb-4 md:mb-6"
+          className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/60 text-xs md:text-base tracking-[0.15em] mb-4 md:mb-6"
         >
           {t('partyPlans.description')}
         </div>

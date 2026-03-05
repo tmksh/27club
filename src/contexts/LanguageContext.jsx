@@ -40,7 +40,7 @@ export const translations = {
     // Cast Section
     cast: {
       title: 'Cast',
-      subtitle: '多彩なパフォーマンスとイベントをお楽しみいただけます。毎週異なるテーマで、特別な夜をお届けします。',
+      subtitle: 'パフォーマンスとイベントをお楽しみいただけます。毎週異なるテーマで、特別な夜をお届けします。',
       viewAll: 'キャスト一覧はこちら',
     },
     // Floor Map Section
@@ -55,7 +55,7 @@ export const translations = {
     // Event Section
     event: {
       title: 'Event Schedule',
-      subtitle: '毎週開催される多彩なイベントをご確認いただけます。',
+      subtitle: '毎週開催されるイベントをご確認いただけます。',
       reserveButton: '予約はこちら',
     },
     // Events List
@@ -154,7 +154,7 @@ export const translations = {
       micEquipment: [
         { name: 'Shure ワイヤレスマイク（SM58系）', note: '× 2本', label: 'ワイヤレス' },
         { name: '有線マイク', note: '× 2本（増設可）', label: '有線' },
-        { name: 'Shure SLXD1 ヘッドセット', note: '× 2本', label: 'ヘッドセット' },
+        { name: 'Shure SLXD1\nヘッドセット', note: '× 2本', label: 'ヘッドセット' },
       ],
       micNote: '※ 有線マイクは事前にご連絡いただければ増設可能です。',
       ctaText: '設備に関するお問い合わせ',
@@ -165,7 +165,7 @@ export const translations = {
     aboutStudioRental: {
       title: 'スタジオ貸出し',
       subtitle: 'Studio Rental',
-      description: 'THE 27 CLUBのステージ空間をスタジオとして貸出しています。撮影、リハーサル、イベント準備など、さまざまな用途でご利用いただけます。',
+      description: 'ステージ空間をスタジオとして貸出しています。撮影・リハーサル・イベント準備など幅広くご利用いただけます。',
       pricingTitle: '料金体系',
       pricingNote: '※ 表示価格はすべて税込です。',
       pricingItems: [
@@ -180,7 +180,7 @@ export const translations = {
         '事前予約制（お電話またはお問い合わせフォームより）',
         '営業時間外のご利用も応相談',
         '機材持ち込み可',
-        '照明・音響オペレーター手配可（別途料金）',
+        '照明・音響オペレーター手配可\n（別途料金）',
         'ケータリング手配可（別途料金）',
       ],
       ctaText: 'スタジオ貸出しのご相談',

@@ -56,7 +56,7 @@ export const ExploreSection = () => {
         </div>
         {/* サブテキスト - 中央配置 */}
         <div className="flex justify-center mt-8 lg:mt-20">
-          <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
+          <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
             {language === 'ja' ? 'THE 27 CLUBをより楽しむための情報をご案内します' : 'Everything you need to know to enjoy THE 27 CLUB'}
           </p>
         </div>
@@ -83,7 +83,7 @@ export const ExploreSection = () => {
               {/* 左側：テキストコンテンツ */}
               <div className="absolute left-0 top-0 bottom-0 w-[50%] md:w-[40%] p-5 md:p-6 lg:p-8 flex flex-col justify-center z-10">
                 {/* サブタイトル */}
-                <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white text-sm md:text-base tracking-[0.1em] mb-2 md:mb-3">
+                <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white text-sm md:text-base tracking-[0.1em] mb-2 md:mb-3">
                   {language === 'ja' ? card.subtitleJa : card.subtitleEn}
                 </p>
                 

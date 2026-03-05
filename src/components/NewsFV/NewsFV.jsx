@@ -292,8 +292,8 @@ export const NewsFV = () => {
           ))}
         </h1>
 
-        <p className="[font-family:'Noto_Serif_JP',serif] text-white tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] font-light text-center overflow-hidden"
-          style={{ fontSize: 'clamp(11px, 2vw, 18px)' }}
+        <p className="[font-family:'Noto_Serif_JP',serif] text-white tracking-[0.05em] sm:tracking-[0.15em] md:tracking-[0.2em] lg:tracking-[0.3em] font-light text-center overflow-hidden whitespace-nowrap"
+          style={{ fontSize: 'clamp(9px, 2.8vw, 18px)' }}
         >
           <span
             style={{

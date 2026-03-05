@@ -68,7 +68,7 @@ export const Frame628 = ({
                 {eventData?.title_en || eventData?.title || 'Summer Neon Night'}
               </div>
               
-              <div className="mt-1 [font-family:'Noto_Serif_JP',Helvetica] font-normal text-white/60 text-[10px] leading-[1.5] space-y-0.5">
+              <div className="mt-1 [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/60 text-[10px] leading-[1.5] space-y-0.5">
                 {eventData ? (
                   <>
                     <div>{new Date(eventData.date_time_start).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US', { month: 'numeric', day: 'numeric', weekday: 'short' })} {new Date(eventData.date_time_start).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}～{new Date(eventData.date_time_end).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</div>
@@ -136,7 +136,7 @@ export const Frame628 = ({
             </div>
 
             {/* 中部: 詳細情報 */}
-            <div className="[font-family:'Noto_Serif_JP',Helvetica] text-white/90 text-[15px] leading-relaxed space-y-1.5">
+            <div className="[font-family:'Noto_Sans_JP',Helvetica] text-white/90 text-[15px] leading-relaxed space-y-1.5">
               {eventData ? (
                 <>
                   <div className="flex items-center gap-2">
@@ -183,13 +183,13 @@ export const Frame628 = ({
                     href={eventData.reservation_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-2 bg-[#00d6bd] hover:bg-[#00e8cc] rounded text-[#0a1a1a] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#00d6bd40]"
+                    className="px-6 py-2 bg-[#00d6bd] hover:bg-[#00e8cc] rounded text-[#0a1a1a] [font-family:'Noto_Sans_JP',Helvetica] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#00d6bd40]"
                     onClick={(e) => e.stopPropagation()}
                   >
                     {language === 'ja' ? '予約する' : 'Reserve'}
                   </a>
                 ) : (
-                  <div className="px-6 py-2 bg-[#00d6bd] hover:bg-[#00e8cc] rounded text-[#0a1a1a] [font-family:'Noto_Serif_JP',Helvetica] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#00d6bd40] cursor-pointer">
+                  <div className="px-6 py-2 bg-[#00d6bd] hover:bg-[#00e8cc] rounded text-[#0a1a1a] [font-family:'Noto_Sans_JP',Helvetica] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#00d6bd40] cursor-pointer">
                     {language === 'ja' ? '予約する' : 'Reserve'}
                   </div>
                 )}

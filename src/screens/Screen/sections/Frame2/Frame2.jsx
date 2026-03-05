@@ -124,7 +124,7 @@ export const Frame2 = () => {
                     {section.items.map((item, i) => (
                       <div key={i} className="flex items-start gap-2 md:gap-3">
                         <span className="text-white text-sm md:text-lg lg:text-xl">◽</span>
-                        <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-lg lg:text-xl tracking-[0] leading-relaxed">
+                        <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-lg lg:text-xl tracking-[0] leading-relaxed">
                           {item}
                         </p>
                       </div>
@@ -132,7 +132,7 @@ export const Frame2 = () => {
                     {section.highlightItem && (
                       <div className="flex items-start gap-2 md:gap-3">
                         <span className="text-white text-sm md:text-lg lg:text-xl">◽</span>
-                        <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-[#f1fda2] text-sm md:text-lg lg:text-xl tracking-[0] leading-relaxed">
+                        <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#f1fda2] text-sm md:text-lg lg:text-xl tracking-[0] leading-relaxed">
                           {section.highlightItem}
                         </p>
                       </div>
@@ -155,7 +155,7 @@ export const Frame2 = () => {
                           {sub.items.map((item, i) => (
                             <div key={i} className="flex items-start gap-2 md:gap-3">
                               <span className="text-white text-sm md:text-base lg:text-lg">◽</span>
-                              <p className="[font-family:'Noto_Serif_JP',Helvetica] font-normal text-white text-sm md:text-base lg:text-lg tracking-[0] leading-relaxed">
+                              <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-base lg:text-lg tracking-[0] leading-relaxed">
                                 {item}
                               </p>
                             </div>

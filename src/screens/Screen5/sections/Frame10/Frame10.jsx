@@ -115,7 +115,7 @@ export const Frame10 = () => {
           <p 
             data-scroll="fade-up"
             data-scroll-delay="200"
-            className="[font-family:'Noto_Serif_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
+            className="[font-family:'Noto_Sans_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
             {language === 'ja' ? (
               <>
@@ -139,7 +139,7 @@ export const Frame10 = () => {
             {/* メインカード */}
             <div className="flex flex-col lg:flex-row gap-0 overflow-hidden rounded-2xl bg-black">
               {/* 左: 画像 */}
-              <div className="relative w-full lg:w-1/2 aspect-[4/3] lg:aspect-auto lg:min-h-[500px] overflow-hidden">
+              <div className="relative w-full lg:w-1/2 aspect-[4/3] lg:aspect-[4/3] lg:min-h-[500px] overflow-hidden">
                 <img
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   alt={job.titleJp}
@@ -150,7 +150,7 @@ export const Frame10 = () => {
                 
                 {/* タイトル - モバイル */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 lg:hidden">
-                  <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white/60 text-sm mb-1">
+                  <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white/60 text-sm mb-1">
                     {job.titleJp}
                   </p>
                   <h3 className="[font-family:'Playfair_Display',Helvetica] font-bold text-white text-4xl tracking-wider">
@@ -163,7 +163,7 @@ export const Frame10 = () => {
               <div className="w-full lg:w-1/2 p-6 md:p-10 flex flex-col justify-center">
                 {/* タイトル - デスクトップ */}
                 <div className="hidden lg:block mb-8">
-                  <p className="[font-family:'Noto_Serif_JP',Helvetica] text-white/60 text-base mb-2">
+                  <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white/60 text-base mb-2">
                     {job.titleJp}
                   </p>
                   <h3 className="[font-family:'Playfair_Display',Helvetica] font-bold text-white text-5xl xl:text-6xl tracking-wider">

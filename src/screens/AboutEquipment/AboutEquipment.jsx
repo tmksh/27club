@@ -107,37 +107,46 @@ export const AboutEquipment = () => {
             </div>
           </div>
 
-          {/* DJ設備 */}
-          <div className="mb-12">
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
-              {t('aboutEquipment.djTitle')}
-            </h2>
-            <div className="flex flex-col gap-0">
-              {Array.isArray(djEquipment) && djEquipment.map((item, index) => (
-                <div key={index} className="group flex items-center justify-between px-2 py-4 border-b border-white/10 transition-all duration-300">
-                  <span className="[font-family:'Inter',Helvetica] text-white font-medium text-lg md:text-xl tracking-wide group-hover:text-white/80 transition-colors">{item.name}</span>
-                  <span className="[font-family:'Inter',Helvetica] text-white text-sm md:text-base flex-shrink-0 ml-4">{item.note}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* DJ設備 + マイク設備 横並び */}
+          <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
 
-          {/* マイク設備 */}
-          <div className="mb-12">
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
-              {t('aboutEquipment.micTitle')}
-            </h2>
-            <div className="flex flex-col gap-0 mb-4">
-              {Array.isArray(micEquipment) && micEquipment.map((item, index) => (
-                <div key={index} className="group flex items-center justify-between px-2 py-4 border-b border-white/10 transition-all duration-300">
-                  <span className="[font-family:'Inter',Helvetica] text-white font-medium text-lg md:text-xl tracking-wide group-hover:text-white/80 transition-colors">{item.name}</span>
-                  <span className="[font-family:'Inter',Helvetica] text-white text-sm md:text-base flex-shrink-0 ml-4">{item.note}</span>
-                </div>
-              ))}
+            {/* DJ設備 */}
+            <div>
+              <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+                {t('aboutEquipment.djTitle')}
+              </h2>
+              <div className="flex flex-col gap-0">
+                {Array.isArray(djEquipment) && djEquipment.map((item, index) => (
+                  <div key={index} className="group flex items-center justify-between px-2 py-4 border-b border-white/10 transition-all duration-300">
+                    <span className="[font-family:'Inter',Helvetica] text-white font-medium text-lg md:text-xl tracking-wide group-hover:text-white/80 transition-colors">{item.name}</span>
+                    <span className="[font-family:'Inter',Helvetica] text-white text-sm md:text-base flex-shrink-0 ml-4">{item.note}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white/40 text-xs md:text-sm leading-relaxed px-2">
-              {t('aboutEquipment.micNote')}
-            </p>
+
+            {/* マイク設備 */}
+            <div>
+              <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+                {t('aboutEquipment.micTitle')}
+              </h2>
+              <div className="flex flex-col gap-0 mb-4">
+                {Array.isArray(micEquipment) && micEquipment.map((item, index) => (
+                  <div key={index} className="group flex items-center justify-between px-2 py-4 border-b border-white/10 transition-all duration-300">
+                    <span className="[font-family:'Inter',Helvetica] text-white font-medium text-lg md:text-xl tracking-wide group-hover:text-white/80 transition-colors">
+                      {item.name.split('\n').map((line, i, arr) => (
+                        <React.Fragment key={i}>{line}{i < arr.length - 1 && <br />}</React.Fragment>
+                      ))}
+                    </span>
+                    <span className="[font-family:'Inter',Helvetica] text-white text-sm md:text-base flex-shrink-0 ml-4">{item.note}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white/40 text-[10px] md:text-sm leading-relaxed px-2">
+                {t('aboutEquipment.micNote')}
+              </p>
+            </div>
+
           </div>
 
           {/* CTA */}
