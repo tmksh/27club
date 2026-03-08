@@ -17,7 +17,7 @@ export const PrivacyPolicy = () => {
     },
     {
       title: "3. 個人情報の利用目的",
-      content: "取得した個人情報は、以下の目的で利用いたします。\n・ご予約の確認およびご連絡\n・お問い合わせへの回答\n・当店のサービスに関するご案内\n・イベント情報のお知らせ（ご同意いただいた場合のみ）"
+      content: "取得した個人情報は、以下の目的で利用いたします。\n・ご予約の確認およびご連絡\n・お問い合わせへの回答\n・当店のサービスに関するご案内"
     },
     {
       title: "4. 個人情報の第三者提供",
@@ -33,7 +33,7 @@ export const PrivacyPolicy = () => {
     },
     {
       title: "7. Cookieの使用について",
-      content: "当サイトでは、利便性向上のためCookieを使用しています。Cookieはブラウザの設定により無効にすることができますが、一部機能がご利用いただけなくなる場合があります。"
+      content: "当サイトでは、利便性向上のためCookieを使用しています。Cookieはブラウザの設定により無効にすることができますが、一部機能がご利用いただけない場合があります。"
     },
     {
       title: "8. プライバシーポリシーの変更",
@@ -54,7 +54,7 @@ export const PrivacyPolicy = () => {
     },
     {
       title: "3. Purpose of Use",
-      content: "We use the collected personal information for the following purposes:\n・Confirming and contacting regarding reservations\n・Responding to inquiries\n・Providing information about our services\n・Sending event information (only with your consent)"
+      content: "We use the collected personal information for the following purposes:\n・Confirming and contacting regarding reservations\n・Responding to inquiries\n・Providing information about our services"
     },
     {
       title: "4. Disclosure to Third Parties",

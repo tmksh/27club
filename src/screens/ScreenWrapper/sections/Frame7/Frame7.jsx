@@ -259,8 +259,9 @@ export const Frame7 = () => {
                         {option.nameEn}
                       </span>
                     </div>
-                    <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-xl md:text-3xl">
-                      {option.price}
+                    <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-xl md:text-3xl tabular-nums shrink-0 flex items-baseline">
+                      <span className="w-[1em]">¥</span>
+                      <span className="w-[5em] text-left">{option.price.replace('¥', '')}</span>
                     </span>
                   </div>
                 ))}
