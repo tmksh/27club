@@ -68,7 +68,7 @@ export const AboutMvCm = () => {
               border: '1px solid rgba(255, 255, 255, 0.1)',
             }}
           >
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-4">
+            <h2 className="[font-family:'Noto_Sans_JP',sans-serif] font-medium text-white text-xl md:text-2xl mb-4">
               {t('aboutMvCm.commercialUse')}
             </h2>
             <p className="[font-family:'Noto_Sans_JP',Helvetica] text-white/80 text-sm md:text-base leading-[1.9]">
@@ -79,7 +79,7 @@ export const AboutMvCm = () => {
           {/* 撮影実績 */}
           <div className="mb-16">
             <div className="flex items-baseline gap-4 mb-10">
-              <h2 className="[font-family:'Playfair_Display',Helvetica] italic text-white text-3xl md:text-4xl font-light">
+              <h2 className="[font-family:'Noto_Sans_JP',sans-serif] font-medium text-white text-2xl md:text-3xl">
                 {t('aboutMvCm.creditsTitle')}
               </h2>
               <span className="hidden md:block flex-1 h-px bg-gradient-to-r from-white/20 to-transparent" />

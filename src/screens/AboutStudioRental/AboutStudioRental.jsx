@@ -63,7 +63,7 @@ export const AboutStudioRental = () => {
 
           {/* 料金体系 */}
           <div className="mb-12">
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+            <h2 className="[font-family:'Noto_Sans_JP',sans-serif] font-medium text-white text-xl md:text-2xl mb-6">
               {t('aboutStudioRental.pricingTitle')}
             </h2>
             <div
@@ -97,7 +97,7 @@ export const AboutStudioRental = () => {
 
           {/* 利用条件 */}
           <div className="mb-12">
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+            <h2 className="[font-family:'Noto_Sans_JP',sans-serif] font-medium text-white text-xl md:text-2xl mb-6">
               {t('aboutStudioRental.conditionsTitle')}
             </h2>
             <div className="space-y-3">

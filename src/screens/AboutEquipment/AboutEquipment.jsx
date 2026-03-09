@@ -65,7 +65,7 @@ export const AboutEquipment = () => {
 
           {/* 照明設備 */}
           <div className="mb-12">
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+            <h2 className="[font-family:'Noto_Sans_JP',sans-serif] font-medium text-white text-xl md:text-2xl mb-6">
               {t('aboutEquipment.lightingTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
@@ -87,7 +87,7 @@ export const AboutEquipment = () => {
 
           {/* 音響設備 */}
           <div className="mb-12">
-            <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+            <h2 className="[font-family:'Noto_Sans_JP',sans-serif] font-medium text-white text-xl md:text-2xl mb-6">
               {t('aboutEquipment.soundTitle')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
@@ -112,7 +112,7 @@ export const AboutEquipment = () => {
 
             {/* DJ設備 */}
             <div>
-              <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+              <h2 className="[font-family:'Noto_Sans_JP',sans-serif] font-medium text-white text-xl md:text-2xl mb-6">
                 {t('aboutEquipment.djTitle')}
               </h2>
               <div className="flex flex-col gap-0">
@@ -127,7 +127,7 @@ export const AboutEquipment = () => {
 
             {/* マイク設備 */}
             <div>
-              <h2 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-xl md:text-2xl mb-6">
+              <h2 className="[font-family:'Noto_Sans_JP',sans-serif] font-medium text-white text-xl md:text-2xl mb-6">
                 {t('aboutEquipment.micTitle')}
               </h2>
               <div className="flex flex-col gap-0 mb-4">
