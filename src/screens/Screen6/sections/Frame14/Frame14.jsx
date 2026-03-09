@@ -10,8 +10,7 @@ export const Frame14 = () => {
       title: "ご入店〜ショー開始まで",
       description: (
         <>
-          ご来店後、お席へご案内します。
-          <br />
+          ご来店後、お席へご案内します。<span className="hidden md:inline"><br /></span>
           まずはドリンクやフードをオーダーして、ゆったりとお過ごしください。当店ならではのオリジナルメニューもございます。
         </>
       ),
@@ -24,11 +23,7 @@ export const Frame14 = () => {
       title: "ショーを見る",
       description: (
         <>
-          照明と音楽が始まれば、非日常のステージへ。
-          <br />
-          最初は見るだけでOK!
-          <br />
-          ドリンクを片手に、ショーの世界に浸ってください。
+          照明と音楽が始まれば、非日常のステージへ。最初は見るだけでOK! ドリンクを片手に、ショーの世界に浸ってください。
         </>
       ),
       image: "/img/guest-flow-image.jpg",
@@ -40,13 +35,9 @@ export const Frame14 = () => {
       title: "盛り上がり方",
       description: (
         <>
-          拍手・声援 → 感動したら素直に！<br />
-          チップ → 「もっと応援したい！」と思ったらキャストへ。<br />
-          10枚（1,200円）から購入できます。
+          拍手・声援 → 感動したら素直に！チップ → 「もっと応援したい！」と思ったらキャストへ。10枚（1,200円）から購入できます。
           <br /><br />
-          3,000円・5,000円の「チップレイ」、<br />
-          10,000円〜の「マネーガン演出」もおすすめ。<br />
-          盛り上がれば盛り上がるほど、会場全体が熱くなります。
+          3,000円・5,000円の「チップレイ」、10,000円〜の「マネーガン演出」もおすすめ。盛り上がれば盛り上がるほど、会場全体が熱くなります。
         </>
       ),
       image: "/img/guest-flow-image-2.jpg",
@@ -58,10 +49,7 @@ export const Frame14 = () => {
       title: "ショー中の撮影",
       description: (
         <>
-          THE27CLUBでは、写真・動画撮影がOK。<br />
-          SNS映えするシーンもたくさん。<br />
-          ぜひ思い出を残してください。<br />
-          他のお客様へのご配慮だけお願いします。
+          THE27CLUBでは、写真・動画撮影がOK。SNS映えするシーンもたくさん。ぜひ思い出を残してください。他のお客様へのご配慮だけお願いします。
         </>
       ),
       image: "/img/guest-flow-image-4.jpg",
@@ -73,10 +61,7 @@ export const Frame14 = () => {
       title: "ショー後の楽しみ",
       description: (
         <>
-          ショーが終わっても、夜はまだ続く。<br />
-          キャストと言葉を交わしたり、<br />
-          一緒に写真を撮ったり——<br />
-          ドリンクを片手に、この余韻をもう少し。
+          ショーが終わっても、夜はまだ続く。キャストと言葉を交わしたり、一緒に写真を撮ったり——ドリンクを片手に、この余韻をもう少し。
         </>
       ),
       image: "/img/guest-flow-image-3.webp",
@@ -225,7 +210,7 @@ export const Frame14 = () => {
                   <div className="[font-family:'Inter',Helvetica] font-light text-white text-2xl md:text-3xl leading-none tracking-wider self-center">
                     {step.number}
                   </div>
-                  <div className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-xl lg:text-2xl">
+                  <div className="[font-family:'Noto_Sans_JP',sans-serif] font-bold text-white text-lg md:text-xl lg:text-2xl">
                     {step.title}
                   </div>
                 </div>
@@ -256,17 +241,11 @@ export const Frame14 = () => {
           <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#cccccc] text-xs md:text-base text-center leading-relaxed">
             {language === 'ja' ? (
               <>
-                THE27CLUBのショーは、<br />
-                キャストとお客様が一体となって作り上げるもの。<br />
-                拍手も、声援も、チップも、撮影も、そしてフードや<br />
-                ドリンクも——そのすべてがショーの一部です。
+                THE27CLUBのショーは、キャストとお客様が一体となって作り上げるもの。拍手も、声援も、チップも、撮影も、そしてフードやドリンクも——そのすべてがショーの一部です。
               </>
             ) : (
               <>
-                THE27CLUB's shows are created<br />
-                together by the cast and guests.<br />
-                Applause, cheers, tips, photos, food and<br />
-                drinks — everything is part of the show.
+                THE27CLUB's shows are created together by the cast and guests. Applause, cheers, tips, photos, food and drinks — everything is part of the show.
               </>
             )}
           </div>
@@ -276,13 +255,11 @@ export const Frame14 = () => {
           <div className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-sm md:text-base leading-relaxed">
             {language === 'ja' ? (
               <>
-                初めての方も、どうぞ肩の力を抜いて<br />
-                「自分なりの楽しみ方」でご参加ください。
+                初めての方も、どうぞ肩の力を抜いて「自分なりの楽しみ方」でご参加ください。
               </>
             ) : (
               <>
-                Even first-timers, please relax and<br />
-                enjoy in your own way.
+                Even first-timers, please relax and enjoy in your own way.
               </>
             )}
           </div>

@@ -198,9 +198,9 @@ export const FrameWrapper = () => {
             <div className="flex justify-center mt-8 lg:mt-20">
               <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-xs md:text-xl lg:text-2xl xl:text-3xl tracking-[0.02em] leading-[1.8] text-center">
                 {language === 'ja' ? (
-                  <>パフォーマンスとイベントをお楽しみいただけます。<br />毎週異なるテーマで、特別な夜をお届けします。</>
+                  <>キャスト紹介 — 今夜のステージを彩る顔ぶれ。</>
                 ) : (
-                  <>Enjoy a variety of performances and events.<br />Each week brings a different theme and a special night.</>
+                  <>Meet the cast who light up tonight's stage.</>
                 )}
               </p>
             </div>

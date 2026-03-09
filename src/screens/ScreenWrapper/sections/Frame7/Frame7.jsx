@@ -247,21 +247,18 @@ export const Frame7 = () => {
               {/* メニューアイテム */}
               <div className="flex flex-col gap-6 md:gap-8 mt-4 max-w-[700px] mx-auto w-full">
                 {options.map((option, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between"
-                  >
-                    <div className="flex flex-col gap-1">
-                      <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-lg md:text-2xl">
+                  <div key={index} className="flex items-baseline gap-2 md:gap-3">
+                    <div className="flex flex-col gap-0.5 shrink-0">
+                      <span className="[font-family:'Noto_Sans_JP',sans-serif] font-bold text-[#1a1a1a] text-sm md:text-2xl whitespace-nowrap">
                         {option.name}
                       </span>
-                      <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#555] text-xs md:text-base tracking-wider">
+                      <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#888] text-[9px] md:text-sm tracking-wider whitespace-nowrap">
                         {option.nameEn}
                       </span>
                     </div>
-                    <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-xl md:text-3xl tabular-nums shrink-0 flex items-baseline">
-                      <span className="w-[1em]">¥</span>
-                      <span className="w-[5em] text-left">{option.price.replace('¥', '')}</span>
+                    <span className="flex-1 border-b border-dotted border-[#1a1a1a]/25 mb-[0.3em]" />
+                    <span className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-[#1a1a1a] text-sm md:text-3xl tabular-nums shrink-0">
+                      {option.price}
                     </span>
                   </div>
                 ))}
@@ -280,7 +277,7 @@ export const Frame7 = () => {
             )}
           </h3>
 
-          <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-base text-center">
+          <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs md:text-sm text-center">
             {language === 'ja' ? (
               <>詳細なお見積もりや空き状況の確認など、<br />お気軽にお問い合わせください</>
             ) : (
@@ -289,16 +286,6 @@ export const Frame7 = () => {
           </p>
 
           <div className="flex flex-row gap-3 md:gap-5 items-center justify-center flex-wrap">
-            <a
-              href="tel:03-6205-5567"
-              className="flex w-[140px] md:w-[200px] h-10 md:h-14 items-center justify-center gap-2 md:gap-3 bg-white rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
-            >
-              <span className="text-base md:text-lg">📞</span>
-              <span className="[font-family:'Inter',Helvetica] font-bold text-[#182321] text-xs md:text-base">
-                {t('pricingSection.callButton')}
-              </span>
-            </a>
-
             <Link
               to="/u12467u12531u12479u12463u12488"
               className="flex w-[140px] md:w-[200px] h-10 md:h-14 items-center justify-center gap-2 md:gap-3 bg-[#333333] rounded-full border border-white hover:bg-[#444444] transition-colors cursor-pointer"
@@ -313,13 +300,6 @@ export const Frame7 = () => {
           <div className="flex flex-col items-center gap-2 md:gap-3 text-center">
             <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs md:text-sm">
               {t('pricingSection.phone')}
-            </span>
-            <span className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[10px] md:text-xs">
-              {language === 'ja' ? (
-                <>営業時間：19:00-02:00（月-木）<br />19:00-03:00（金・土）19:00-01:00（日）</>
-              ) : (
-                t('pricingSection.hours')
-              )}
             </span>
           </div>
         </div>

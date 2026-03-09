@@ -121,7 +121,7 @@ export const Frame3 = () => {
           <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
             <h2 
               data-scroll="fade-up"
-              className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-xl md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
+              className="[font-family:'Noto_Sans_JP',sans-serif] font-black text-white text-xl md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
             >
               {t('contact.catchphrase')}
             </h2>
@@ -131,7 +131,10 @@ export const Frame3 = () => {
               className="[font-family:'Noto_Sans_JP',Helvetica] font-semibold text-white text-[10px] md:text-base lg:text-lg tracking-[0] leading-relaxed md:leading-[32px]"
             >
               {language === 'ja' ? (
-                <>ご予約・撮影・コラボのご相談など、<br />どんな内容でもお気軽にお問い合わせください。<br />{t('contact.responseTime')}</>
+                <>
+                  どんな内容でもお気軽にお問い合わせください。<br />
+                  2〜3営業日以内に、担当者よりメールにて<br className="md:hidden" />ご返信させていただきます。
+                </>
               ) : (
                 <>{t('contact.description')}<br />{t('contact.responseTime')}</>
               )}
@@ -150,7 +153,7 @@ export const Frame3 = () => {
               type="text"
               value={formData.name}
               onChange={(e) => handleInputChange("name", e.target.value)}
-              className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
+              className="w-full px-4 py-3 md:py-4 bg-white/5 border border-white/20 rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-white/60 focus:ring-1 focus:ring-white/20 transition-colors"
               placeholder={language === 'ja' ? "山田 太郎" : "John Smith"}
               required
             />
@@ -165,7 +168,7 @@ export const Frame3 = () => {
               type="email"
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
-              className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
+              className="w-full px-4 py-3 md:py-4 bg-white/5 border border-white/20 rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-white/60 focus:ring-1 focus:ring-white/20 transition-colors"
               placeholder="example@example.com"
               required
             />
@@ -180,7 +183,7 @@ export const Frame3 = () => {
               type="tel"
               value={formData.phone}
               onChange={(e) => handleInputChange("phone", e.target.value)}
-              className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
+              className="w-full px-4 py-3 md:py-4 bg-white/5 border border-white/20 rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-white/60 focus:ring-1 focus:ring-white/20 transition-colors"
               placeholder="000-0000-0000"
               required
             />
@@ -200,12 +203,12 @@ export const Frame3 = () => {
                   <div
                     className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
                       formData.inquiryType === type.value
-                        ? 'border-[#06baa5] bg-[#06baa5]'
-                        : 'border-[#06baa5] bg-transparent group-hover:bg-[#06baa520]'
+                        ? 'border-white/20 bg-white'
+                        : 'border-white/20 bg-transparent group-hover:bg-white/10'
                     }`}
                   >
                     <div className={`w-2 h-2 rounded-full transition-colors ${
-                      formData.inquiryType === type.value ? 'bg-white' : 'bg-[#06baa5]'
+                      formData.inquiryType === type.value ? 'bg-white' : 'bg-white'
                     }`} />
                   </div>
                   <input
@@ -233,7 +236,7 @@ export const Frame3 = () => {
               value={formData.content}
               onChange={(e) => handleInputChange("content", e.target.value)}
               rows={6}
-              className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors resize-none"
+              className="w-full px-4 py-3 md:py-4 bg-white/5 border border-white/20 rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-white/60 focus:ring-1 focus:ring-white/20 transition-colors resize-none"
               placeholder={t('contact.form.contentPlaceholder')}
               required
             />
@@ -245,8 +248,8 @@ export const Frame3 = () => {
               <div
                 className={`w-5 h-5 border rounded flex items-center justify-center transition-colors ${
                   formData.privacyAgreed
-                    ? 'border-[#06baa5] bg-[#06baa5]'
-                    : 'border-[#06baa5] bg-[#081e15] group-hover:bg-[#06baa520]'
+                    ? 'border-white/20 bg-white'
+                    : 'border-white/20 bg-white/5 group-hover:bg-white/10'
                 }`}
               >
                 {formData.privacyAgreed && (
@@ -268,7 +271,7 @@ export const Frame3 = () => {
 
             <a
               href="/privacy"
-              className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#06baa5] text-xs md:text-sm underline hover:text-[#00d6bd] transition-colors"
+              className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/50 text-xs md:text-sm underline hover:text-white transition-colors"
             >
               {t('contact.form.privacyLink')}
             </a>
@@ -282,7 +285,7 @@ export const Frame3 = () => {
               className={`px-8 md:px-12 py-3 md:py-4 rounded-md text-base md:text-lg [font-family:'Noto_Sans_JP',Helvetica] font-bold transition-all ${
                 isSubmitting
                   ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  : 'bg-white text-[#081e15] hover:bg-[#00d6bd] hover:text-white cursor-pointer'
+                  : 'bg-white text-black hover:bg-white/80 cursor-pointer'
               }`}
             >
               {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}

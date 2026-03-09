@@ -63,7 +63,9 @@ export const DivWrapper = () => {
               </h3>
               <div className="space-y-2 lg:space-y-4 [font-family:'Noto_Sans_JP',Helvetica]">
                 <p className="text-white text-xs lg:text-xl">{t('access.shinjukuStation')}</p>
-                <p className="text-white text-xs lg:text-xl">{t('access.metroStation')}</p>
+                <p className="text-white text-xs lg:text-xl">
+                  東京メトロ丸ノ内線・副都心線<br className="lg:hidden" />「新宿三丁目駅」
+                </p>
               </div>
             </div>
 

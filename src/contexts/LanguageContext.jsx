@@ -75,7 +75,7 @@ export const translations = {
     stage: {
       title: '圧巻のステージ空間',
       titleLine2: '',
-      description: '映像美と臨場感を追求する、プロ仕様のステージ空間。\nMV・CMなど、数多くの撮影現場で実際に使用されているステージです。\n照明・音響・空間演出のすべてがプロフェッショナル仕様。',
+      description: '映像美と臨場感を追求する、プロ仕様のステージ空間。MV・CMなど、数多くの撮影現場で実際に使用されているステージです。照明・音響・空間演出のすべてがプロフェッショナル仕様。',
       features: [
         { label: 'イベント実績', path: '/about/events' },
         { label: 'プロ仕様の照明・音響設備', path: '/about/equipment' },
@@ -169,9 +169,9 @@ export const translations = {
       pricingTitle: '料金体系',
       pricingNote: '※ 表示価格はすべて税込です。',
       pricingItems: [
-        { label: '平日（1時間〜）', price: '¥55,000' },
-        { label: '土日祝（1時間〜）', price: '¥66,000' },
-        { label: '営業時間外（1時間〜）', price: '¥33,000' },
+        { label: '平日（1時間）', price: '¥55,000' },
+        { label: '土日祝（1時間）', price: '¥66,000' },
+        { label: '営業時間外（1時間）', price: '¥33,000' },
         { label: '管理人件費（1Day）', price: '¥16,500' },
         { label: 'PAオペレート費（1Day）', price: '¥16,500' },
       ],
@@ -222,7 +222,7 @@ export const translations = {
       title: 'Contact',
       subtitle: 'お問い合わせ',
       catchphrase: 'あなたの声を、私たちに。',
-      description: 'ご予約・撮影・コラボのご相談など、どんな内容でもお気軽にお問い合わせください。',
+      description: 'どんな内容でもお気軽にお問い合わせください。',
       responseTime: '2〜3営業日以内に、担当者よりメールにてご返信させていただきます。',
       form: {
         name: 'お名前',
@@ -281,8 +281,8 @@ export const translations = {
     // Recruit Page
     recruitPage: {
       subtitle: 'スタッフ採用募集',
-      headline: '光と音の中で、あなたの才能が輝く。',
-      description: '非日常のステージで、人を魅了し、自分を解き放つ。ホールスタッフもパフォーマーも、ここではひとつのショーの一員です。刺激と洗練が交差する空間で、あなたの"SHOWTIME"をはじめませんか？',
+      headline: '光と音に包まれる、非日常の舞台へ。',
+      description: 'あなたの才能と情熱を、このステージで解き放て。',
       lineApply: 'LINE応募',
     },
     // Pricing Section (Party Plans Page)
@@ -591,8 +591,8 @@ export const translations = {
     // Recruit Page
     recruitPage: {
       subtitle: 'Staff Recruitment',
-      headline: 'Your talent shines in light and sound.',
-      description: 'Captivate people and express yourself on an extraordinary stage. Hall staff and performers alike are all part of one show here. Why not start your "SHOWTIME" in this space where excitement and refinement intersect?',
+      headline: 'Your stage. Your spotlight.',
+      description: 'Where excitement meets refinement. Start your SHOWTIME tonight.',
       lineApply: 'Apply via LINE',
     },
     // Pricing Section (Party Plans Page)

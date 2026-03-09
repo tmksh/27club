@@ -143,14 +143,14 @@ export const Reserve = () => {
             <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
               <h2 
                 data-scroll="fade-up"
-                className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-xl md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
+                className="[font-family:'Noto_Sans_JP',sans-serif] font-black text-white text-xl md:text-2xl lg:text-[31px] tracking-[0] leading-tight"
               >
                 {language === 'ja' ? '特別な夜を、ご予約ください。' : 'Reserve your special night.'}
               </h2>
               <p 
                 data-scroll="fade-up"
                 data-scroll-delay="200"
-                className="[font-family:'Noto_Sans_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px]"
+                className="[font-family:'Noto_Sans_JP',Helvetica] font-semibold text-white text-[10px] md:text-base lg:text-lg tracking-[0] leading-relaxed md:leading-[32px]"
               >
                 {language === 'ja' ? (
                   <>THE 27 CLUBで過ごす忘れられないひとときを。<br />下記フォームよりご予約をお願いいたします。</>
@@ -172,7 +172,7 @@ export const Reserve = () => {
                 type="text"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
-                className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
+                className="w-full px-4 py-3 md:py-4 bg-white/5 border border-white/20 rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-white/60 focus:ring-1 focus:ring-white/20 transition-colors"
                 placeholder={language === 'ja' ? "山田 太郎" : "John Smith"}
                 required
               />
@@ -186,16 +186,16 @@ export const Reserve = () => {
               <select
                 value={formData.numberOfPeople}
                 onChange={(e) => handleInputChange("numberOfPeople", e.target.value)}
-                className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors cursor-pointer"
+                className="w-full px-4 py-3 md:py-4 bg-white/5 border border-white/20 rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-white/60 focus:ring-1 focus:ring-white/20 transition-colors cursor-pointer"
                 required
               >
-                <option value="" disabled className="bg-[#081e15]">{t('reserve.form.selectPeople')}</option>
+                <option value="" disabled className="bg-white/5">{t('reserve.form.selectPeople')}</option>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                  <option key={num} value={num} className="bg-[#081e15]">
+                  <option key={num} value={num} className="bg-white/5">
                     {num}{language === 'ja' ? '名' : ' guests'}
                   </option>
                 ))}
-                <option value="10+" className="bg-[#081e15]">{language === 'ja' ? '10名以上' : '10+ guests'}</option>
+                <option value="10+" className="bg-white/5">{language === 'ja' ? '10名以上' : '10+ guests'}</option>
               </select>
             </div>
 
@@ -207,12 +207,12 @@ export const Reserve = () => {
               <select
                 value={formData.time}
                 onChange={(e) => handleInputChange("time", e.target.value)}
-                className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors cursor-pointer"
+                className="w-full px-4 py-3 md:py-4 bg-white/5 border border-white/20 rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-white/60 focus:ring-1 focus:ring-white/20 transition-colors cursor-pointer"
                 required
               >
-                <option value="" disabled className="bg-[#081e15]">{t('reserve.form.selectTime')}</option>
+                <option value="" disabled className="bg-white/5">{t('reserve.form.selectTime')}</option>
                 {timeSlots.map((time) => (
-                  <option key={time} value={time} className="bg-[#081e15]">
+                  <option key={time} value={time} className="bg-white/5">
                     {time}
                   </option>
                 ))}
@@ -233,12 +233,12 @@ export const Reserve = () => {
                     <div
                       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
                         formData.seatType === type.value
-                          ? 'border-[#06baa5] bg-[#06baa5]'
-                          : 'border-[#06baa5] bg-transparent group-hover:bg-[#06baa520]'
+                          ? 'border-white/20 bg-white'
+                          : 'border-white/20 bg-transparent group-hover:bg-white/10'
                       }`}
                     >
                       <div className={`w-2 h-2 rounded-full transition-colors ${
-                        formData.seatType === type.value ? 'bg-white' : 'bg-[#06baa5]'
+                        formData.seatType === type.value ? 'bg-white' : 'bg-white'
                       }`} />
                     </div>
                     <input
@@ -266,7 +266,7 @@ export const Reserve = () => {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
+                className="w-full px-4 py-3 md:py-4 bg-white/5 border border-white/20 rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-white/60 focus:ring-1 focus:ring-white/20 transition-colors"
                 placeholder="000-0000-0000"
                 required
               />
@@ -281,7 +281,7 @@ export const Reserve = () => {
                 type="email"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
-                className="w-full px-4 py-3 md:py-4 bg-[#081e15] border border-[#06baa5] rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-[#00d6bd] focus:ring-1 focus:ring-[#00d6bd] transition-colors"
+                className="w-full px-4 py-3 md:py-4 bg-white/5 border border-white/20 rounded-md text-white text-sm md:text-base [font-family:'Noto_Sans_JP',Helvetica] focus:outline-none focus:border-white/60 focus:ring-1 focus:ring-white/20 transition-colors"
                 placeholder="example@example.com"
                 required
               />
@@ -293,8 +293,8 @@ export const Reserve = () => {
                 <div
                   className={`w-5 h-5 border rounded flex items-center justify-center transition-colors ${
                     formData.privacyAgreed
-                      ? 'border-[#06baa5] bg-[#06baa5]'
-                      : 'border-[#06baa5] bg-[#081e15] group-hover:bg-[#06baa520]'
+                      ? 'border-white/20 bg-white'
+                      : 'border-white/20 bg-white/5 group-hover:bg-white/10'
                   }`}
                 >
                   {formData.privacyAgreed && (
@@ -316,7 +316,7 @@ export const Reserve = () => {
 
               <a
                 href="/privacy"
-                className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#06baa5] text-xs md:text-sm underline hover:text-[#00d6bd] transition-colors"
+                className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/50 text-xs md:text-sm underline hover:text-white transition-colors"
               >
                 {t('reserve.form.privacyLink')}
               </a>
@@ -330,7 +330,7 @@ export const Reserve = () => {
                 className={`px-8 md:px-12 py-3 md:py-4 rounded-md text-base md:text-lg [font-family:'Noto_Sans_JP',Helvetica] font-bold transition-all ${
                   isSubmitting
                     ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                    : 'bg-white text-[#081e15] hover:bg-[#00d6bd] hover:text-white cursor-pointer'
+                    : 'bg-white text-black hover:bg-white/80 cursor-pointer'
                 }`}
               >
                 {isSubmitting ? t('reserve.form.submitting') : (language === 'ja' ? '予約リクエストを送信' : 'Send Reservation Request')}
@@ -339,8 +339,8 @@ export const Reserve = () => {
           </form>
 
           {/* 注意事項 */}
-          <div data-scroll="fade-up" className="mt-8 md:mt-12 p-4 md:p-6 bg-[#081e15] border border-[#06baa5] rounded-md">
-            <h3 className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#06baa5] text-sm md:text-base mb-3">
+          <div data-scroll="fade-up" className="mt-8 md:mt-12 p-4 md:p-6 bg-white/5 border border-white/20 rounded-md">
+            <h3 className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white/50 text-sm md:text-base mb-3">
               {language === 'ja' ? 'ご予約について' : 'About Reservations'}
             </h3>
             <ul className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#cccccc] text-xs md:text-sm space-y-2 list-disc list-inside">

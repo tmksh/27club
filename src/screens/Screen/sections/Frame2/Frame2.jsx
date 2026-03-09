@@ -46,7 +46,7 @@ export const Frame2 = () => {
         "チップは 強制ではありません",
         "あくまで「応援したい」「もっと楽しみたい」というお気持ちで、自由にご利用ください",
       ],
-      highlightItem: "初めての方は、まずはこちら✨から気軽に",
+      highlightItem: "初めての方は、まずはこちらから気軽に",
     },
   ];
 
@@ -110,8 +110,7 @@ export const Frame2 = () => {
             <div className="flex flex-col md:flex-row gap-4 md:gap-8 lg:gap-16 py-6 md:py-8">
               {/* タイトル部分 */}
               <div className="flex items-center gap-2 md:gap-3 md:w-64 lg:w-72 flex-shrink-0 pb-2 md:pb-0 border-b border-white/20 md:border-none">
-                <span className="text-xl md:text-2xl">{section.icon}</span>
-                <h3 className="[font-family:'Noto_Serif_JP',Helvetica] font-bold text-white text-lg md:text-2xl lg:text-[28px] tracking-[0] leading-tight whitespace-nowrap">
+                <h3 className="[font-family:'Noto_Sans_JP',sans-serif] font-bold text-white text-lg md:text-2xl lg:text-[28px] tracking-[0] leading-tight whitespace-nowrap">
                   {section.title}
                 </h3>
               </div>
@@ -123,16 +122,16 @@ export const Frame2 = () => {
                   <div className="flex flex-col gap-3 md:gap-4">
                     {section.items.map((item, i) => (
                       <div key={i} className="flex items-start gap-2 md:gap-3">
-                        <span className="text-white text-sm md:text-lg lg:text-xl">◽</span>
-                        <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-lg lg:text-xl tracking-[0] leading-relaxed">
+                        <span className="text-white text-xs md:text-base lg:text-lg">◽</span>
+                        <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs md:text-base lg:text-lg tracking-[0] leading-relaxed">
                           {item}
                         </p>
                       </div>
                     ))}
                     {section.highlightItem && (
                       <div className="flex items-start gap-2 md:gap-3">
-                        <span className="text-white text-sm md:text-lg lg:text-xl">◽</span>
-                        <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#f1fda2] text-sm md:text-lg lg:text-xl tracking-[0] leading-relaxed">
+                        <span className="text-white text-xs md:text-base lg:text-lg">◽</span>
+                        <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[#f1fda2] text-xs md:text-base lg:text-lg tracking-[0] leading-relaxed">
                           {section.highlightItem}
                         </p>
                       </div>
@@ -146,16 +145,15 @@ export const Frame2 = () => {
                     {section.subsections.map((sub, subIndex) => (
                       <div key={subIndex} className="flex flex-col gap-3 md:gap-4">
                         <div className="flex items-center gap-2 md:gap-3">
-                          <span className={`[font-family:'Noto_Serif_JP',Helvetica] font-black text-lg md:text-xl lg:text-[26px] tracking-[0] leading-tight ${sub.highlight ? 'text-[#f0fca2]' : 'text-white'}`}>
+                          <span className={`[font-family:'Noto_Sans_JP',sans-serif] font-black text-lg md:text-xl lg:text-[26px] tracking-[0] leading-tight ${sub.highlight ? 'text-[#f0fca2]' : 'text-white'}`}>
                             {sub.name}
                           </span>
-                          <span className="text-lg md:text-xl lg:text-[26px]">{sub.emoji}</span>
                         </div>
                         <div className="flex flex-col gap-2 md:gap-3 ml-0 md:ml-2">
                           {sub.items.map((item, i) => (
                             <div key={i} className="flex items-start gap-2 md:gap-3">
-                              <span className="text-white text-sm md:text-base lg:text-lg">◽</span>
-                              <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-base lg:text-lg tracking-[0] leading-relaxed">
+                              <span className="text-white text-xs md:text-sm lg:text-base">◽</span>
+                              <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs md:text-sm lg:text-base tracking-[0] leading-relaxed">
                                 {item}
                               </p>
                             </div>

@@ -108,18 +108,18 @@ export const Frame10 = () => {
         <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
           <h2 
             data-scroll="fade-up"
-            className="[font-family:'Noto_Serif_JP',Helvetica] font-black text-white text-xl md:text-2xl lg:text-[31px] tracking-[0] leading-tight whitespace-nowrap"
+            className="[font-family:'Noto_Sans_JP',sans-serif] font-black text-white text-lg md:text-2xl lg:text-[31px] tracking-[0] leading-tight whitespace-nowrap"
           >
             {t('recruitPage.headline')}
           </h2>
           <p 
             data-scroll="fade-up"
             data-scroll-delay="200"
-            className="[font-family:'Noto_Sans_JP',Helvetica] font-semibold text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
+            className="[font-family:'Noto_Sans_JP',Helvetica] font-light text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px] max-w-[1000px]"
           >
             {language === 'ja' ? (
               <>
-                非日常のステージで、人を魅了し、自分を解き放つ。ホールスタッフもパフォーマ<span className="hidden md:inline"><br /></span>ーも、ここではひとつのショーの一員です。刺激と洗練が交差する空間で、<span className="hidden md:inline"><br /></span>あなたの&ldquo;SHOWTIME&rdquo;をはじめませんか？
+                あなたの才能を解き放て。光と音が交差する、今夜のステージへ。
               </>
             ) : (
               t('recruitPage.description')
