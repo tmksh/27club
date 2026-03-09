@@ -102,7 +102,7 @@ export const Frame628 = ({
                 </a>
               ) : (
                 <div 
-                  className="px-3 py-1 bg-[#013d36] rounded-md transition-all duration-200 active:scale-95 cursor-pointer"
+                  className="px-3 py-1 bg-[#013d36] rounded-md transition-all duration-200 active:scale-95 cursor-pointer flex items-center justify-center"
                   style={{ border: '1px solid rgba(77,214,192,0.3)' }}
                 >
                   <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-white text-[10px]">

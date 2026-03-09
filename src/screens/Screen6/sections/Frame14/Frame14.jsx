@@ -61,7 +61,7 @@ export const Frame14 = () => {
       title: "ショー後の楽しみ",
       description: (
         <>
-          ショーが終わっても、夜はまだ続く。キャストと言葉を交わしたり、一緒に写真を撮ったり——ドリンクを片手に、この余韻をもう少し。
+          ショーが終わっても、夜はまだ続く。キャストと言葉を交わしたり、一緒に写真を撮ったりドリンクを片手に、この余韻をもう少し。
         </>
       ),
       image: "/img/guest-flow-image-3.webp",
@@ -241,7 +241,7 @@ export const Frame14 = () => {
           <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#cccccc] text-xs md:text-base text-center leading-relaxed">
             {language === 'ja' ? (
               <>
-                THE27CLUBのショーは、キャストとお客様が一体となって作り上げるもの。拍手も、声援も、チップも、撮影も、そしてフードやドリンクも——そのすべてがショーの一部です。
+                THE27CLUBのショーは、キャストとお客様が一体となって作り上げるもの。拍手も、声援も、チップも、撮影も、そしてフードやドリンクもそのすべてがショーの一部です。
               </>
             ) : (
               <>

@@ -349,20 +349,7 @@ export const NewsFV = () => {
               </svg>
             </a>
           ) : (
-            <Link 
-              to="/events"
-              className="flex items-center gap-2 text-white/50 text-xs md:text-sm hover:text-white transition-colors group"
-            >
-              <span className="tracking-wider">view all</span>
-              <svg 
-                className="w-3 h-3 md:w-4 md:h-4 transform group-hover:translate-x-1 transition-transform" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+            <span />
           )}
         </div>
 

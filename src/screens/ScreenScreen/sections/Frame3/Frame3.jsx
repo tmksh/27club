@@ -128,7 +128,7 @@ export const Frame3 = () => {
             <p 
               data-scroll="fade-up"
               data-scroll-delay="200"
-              className="[font-family:'Noto_Sans_JP',Helvetica] font-semibold text-white text-[10px] md:text-base lg:text-lg tracking-[0] leading-relaxed md:leading-[32px]"
+              className="[font-family:'Noto_Sans_JP',Helvetica] font-light text-white text-sm md:text-xl lg:text-[26.6px] tracking-[0] leading-relaxed md:leading-[40.6px]"
             >
               {language === 'ja' ? (
                 <>
