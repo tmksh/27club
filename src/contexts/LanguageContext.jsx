@@ -258,7 +258,7 @@ export const translations = {
       addressLine2: '新宿Acb会館 3階',
       notice: '※入り口は大きな赤い階段が目印',
       videoCheck: '動画で確認',
-      checkAtmosphere: '雰囲気をチェック',
+      checkAtmosphere: '道のりをチェック',
       contactButton: 'お問い合わせ',
     },
     // Tip Page

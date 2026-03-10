@@ -12,7 +12,7 @@ export const Frame2 = () => {
         "1枚 100円（税込110円）",
         "10枚からご購入いただけます（1,200円〜）",
         "お好きな時に",
-        "金額や回数は自由。無理のない範囲で、気軽にお楽しみいただけます",
+        "金額や回数は自由。無理のない範囲で、気軽にお楽しみいただけます。",
       ],
     },
     {
@@ -24,8 +24,8 @@ export const Frame2 = () => {
           emoji: "🌸",
           highlight: true,
           items: [
-            "3,000円・5,000円のセットで、首にかけられるレイスタイル",
-            "華やかで分かりやすく、初めての方にも人気です",
+            "3,000円・5,000円のセットで、首にかけられるレイスタイル。",
+            "華やかで分かりやすく、初めての方にも人気です。",
           ],
         },
         {
@@ -33,8 +33,8 @@ export const Frame2 = () => {
           emoji: "🎉",
           highlight: true,
           items: [
-            "10,000円からご利用可能",
-            "マネーガンでチップをまき、会場全体を一気に盛り上げる迫力の演出です",
+            "10,000円からご利用可能。",
+            "マネーガンでチップをまき、会場全体を一気に盛り上げる迫力の演出です。",
           ],
         },
       ],
@@ -43,8 +43,8 @@ export const Frame2 = () => {
       icon: "🛡️",
       title: "安心して楽しめます",
       items: [
-        "チップは 強制ではありません",
-        "あくまで「応援したい」「もっと楽しみたい」というお気持ちで、自由にご利用ください",
+        "チップは 強制ではありません。",
+        "あくまで「応援したい」「もっと楽しみたい」というお気持ちで、自由にご利用ください。",
       ],
       highlightItem: "初めての方は、まずはこちらから気軽に",
     },
@@ -153,7 +153,7 @@ export const Frame2 = () => {
                           {sub.items.map((item, i) => (
                             <div key={i} className="flex items-start gap-2 md:gap-3">
                               <span className="text-white text-xs md:text-sm lg:text-base">◽</span>
-                              <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs md:text-sm lg:text-base tracking-[0] leading-relaxed">
+                              <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs md:text-base lg:text-lg tracking-[0] leading-relaxed">
                                 {item}
                               </p>
                             </div>

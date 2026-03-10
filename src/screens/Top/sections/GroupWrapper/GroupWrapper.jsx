@@ -160,6 +160,13 @@ export const GroupWrapper = () => {
         { label: "(FREE AREA)", seats: ["standing"] },
       ],
     },
+    {
+      category: "FACILITY",
+      color: "#b8960c",
+      groups: [
+        { label: "BACK BAR", seats: ["backbar"] },
+      ],
+    },
   ];
 
   // 座席表示名
@@ -174,6 +181,7 @@ export const GroupWrapper = () => {
     v4: "V4",
     v5: "V5",
     v6: "V6",
+    backbar: "BACKBAR",
   };
 
   // 座席選択ハンドラ

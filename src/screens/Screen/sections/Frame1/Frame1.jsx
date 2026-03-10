@@ -2,7 +2,7 @@ import React from "react";
 import { useLanguage } from "../../../../contexts/LanguageContext";
 
 export const Frame1 = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <div className="relative w-full" data-scroll="zoom-in">
       {/* 背景画像 */}
@@ -31,7 +31,13 @@ export const Frame1 = () => {
           
           {/* 説明テキスト */}
           <p className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-[10px] md:text-lg lg:text-[22px] text-center tracking-[0] leading-relaxed md:leading-[36px] max-w-[1000px]">
-            {t('tip.heroDescription')}
+            {language === 'ja' ? (
+              <>
+                THE27CLUBでは、ショーやキャストとの時間をもっと楽しんでいただけるように、<span className="hidden md:inline"><br /></span>「チップ」という応援のカタチをご用意しています。
+              </>
+            ) : (
+              t('tip.heroDescription')
+            )}
           </p>
         </div>
       </div>

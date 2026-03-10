@@ -13,7 +13,7 @@ export const Frame10 = () => {
         { label: "給料", value: "日給＋チップ制・高収入可能" },
         { label: "資格", value: "18歳以上（高校生不可）・未経験OK、経験者優遇" },
         { label: "仕事内容", value: "◽ショークラブでのダンス、歌、パフォーマンス出演\n◽お客様とのグリーティング、イベント参加", multiline: true },
-        { label: "待遇", value: "◽衣装貸出あり◽まかないあり◽個人レッスン可◽シフト自由・自己申告制" },
+        { label: "待遇", value: "◽衣装貸出あり\n◽まかないあり\n◽個人レッスン可\n◽シフト自由・自己申告制" },
         { label: "PR", value: "個性と魅力を最大限に発揮できる自由な環境で、あなたのパフォーマンスを通じて観客を魅了してください。", multiline: true },
       ],
     },
@@ -23,8 +23,8 @@ export const Frame10 = () => {
       image: "/img/rectangle-190.png",
       details: [
         { label: "給料", value: "時給制／日給制／社員登用実績あり" },
-        { label: "資格", value: "◽18歳以上（高校生不可）◽未経験OK、経験者優遇◽英語を話せる方歓迎・接客や事務スキル歓迎" },
-        { label: "仕事内容", value: "◽ホール業務全般◽受付、事務、清掃などクラブ運営に関わる業務\n◽お客様が快適に過ごせる空間づくり", multiline: true },
+        { label: "資格", value: "◽18歳以上（高校生不可）\n◽未経験OK、経験者優遇\n◽英語を話せる方歓迎・接客や事務スキル歓迎" },
+        { label: "仕事内容", value: "◽ホール業務全般\n◽受付、事務、清掃などクラブ運営に関わる業務\n◽お客様が快適に過ごせる空間づくり", multiline: true },
         { label: "待遇", value: "◽衣装貸出あり（制服など必要に応じて）\n◽まかないあり\n◽シフト自由◽髪色・ネイル・ピアス自由", multiline: true },
         { label: "PR", value: "明るく楽しい職場環境で、個性やスキルを活かしながら働ける自由度の高い環境です。\n歌舞伎町で人気のクラブで働けるチャンス。", multiline: true },
       ],
@@ -180,12 +180,11 @@ export const Frame10 = () => {
                   {job.details.map((detail, i) => (
                     <div key={i} className="flex flex-col gap-1">
                       <div 
-                        className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-xs tracking-widest uppercase"
-                        style={{ color: '#00c9a7' }}
+                        className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-xs md:text-sm tracking-widest uppercase text-white/50"
                       >
                         {detail.label}
                       </div>
-                      <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white/70 text-xs leading-relaxed whitespace-pre-line">
+                      <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm md:text-base leading-relaxed whitespace-pre-line">
                         {detail.value}
                       </div>
                     </div>

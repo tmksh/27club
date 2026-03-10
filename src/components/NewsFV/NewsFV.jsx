@@ -318,7 +318,7 @@ export const NewsFV = () => {
       </div>
 
       {/* ニュースセクション - 画面下部（Instagram連携対応） */}
-      <div className="absolute bottom-8 md:bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black via-black/90 to-transparent pt-12">
+      <div className="absolute bottom-16 md:bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black via-black/90 to-transparent pt-12">
         {/* ラベル - Instagram連携時はInstagramアイコン表示 */}
         <div className="flex items-center justify-between px-6 md:px-12 mb-5">
           <div className="flex items-center gap-3">
