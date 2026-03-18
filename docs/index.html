@@ -1,67 +1,936 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ドキュメント - THE 27 CLUB</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
-            line-height: 1.7;
-            color: #333;
-            background: #fff;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-        }
-        h1 { font-size: 1.5em; font-weight: 700; margin-bottom: 8px; }
-        .subtitle { color: #888; font-size: 0.85em; margin-bottom: 32px; }
-        .desc { color: #666; font-size: 0.88em; margin-bottom: 32px; line-height: 1.8; }
-        .link {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            padding: 16px 0;
-            border-bottom: 1px solid #e0e0e0;
-            font-size: 0.95em;
-        }
-        .link:first-of-type { border-top: 1px solid #e0e0e0; }
-        .link:hover { color: #000; }
-        .link span { display: block; color: #999; font-size: 0.8em; margin-top: 2px; }
-        .footer {
-            margin-top: 48px;
-            padding-top: 24px;
-            border-top: 1px solid #e0e0e0;
-            color: #999;
-            font-size: 0.8em;
-        }
-        .footer a { color: #333; text-decoration: none; }
-        .footer a:hover { text-decoration: underline; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE 27 CLUB — 機能一覧仕様書</title>
+  <style>
+    :root {
+      --bg: #080f0e;
+      --bg-card: #0e1c1a;
+      --bg-card2: #132220;
+      --accent: #00d6bd;
+      --accent2: #00a897;
+      --gold: #c9a86c;
+      --text: #e8e8e8;
+      --text-muted: #8a9e9c;
+      --border: rgba(0,214,189,0.15);
+      --border-strong: rgba(0,214,189,0.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+
+    /* ヘッダー */
+    .site-header {
+      background: linear-gradient(135deg, #0c1e1a 0%, #0a1a18 100%);
+      border-bottom: 1px solid var(--border-strong);
+      padding: 36px 40px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(0,214,189,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .site-header .label {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .site-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.08em;
+    }
+    .site-header .sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+    .site-header .meta {
+      position: absolute;
+      top: 36px;
+      right: 40px;
+      text-align: right;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+    .meta span { color: var(--accent); font-weight: 500; }
+
+    /* ナビゲーション */
+    .toc-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .toc-bar::-webkit-scrollbar { display: none; }
+    .toc-bar a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      padding: 14px 20px;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .toc-bar a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* メインレイアウト */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+    }
+
+    /* セクション */
+    .section {
+      margin-bottom: 56px;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-strong);
+    }
+    .section-title .icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(0,214,189,0.12);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .section-title h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+    }
+    .section-title .count {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2px 12px;
+    }
+
+    /* カードグリッド */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: var(--border-strong); }
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .card-icon.green  { background: rgba(0,214,189,0.12); }
+    .card-icon.blue   { background: rgba(68,100,200,0.18); }
+    .card-icon.gold   { background: rgba(201,168,108,0.15); }
+    .card-icon.pink   { background: rgba(200,80,150,0.15); }
+    .card-icon.purple { background: rgba(150,80,200,0.15); }
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+    }
+    .card-url {
+      font-size: 11px;
+      color: var(--accent);
+      margin-top: 2px;
+      font-family: 'Courier New', monospace;
+      opacity: 0.85;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .card ul li {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .card ul li::before {
+      content: '─';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+      font-size: 10px;
+      top: 1px;
+    }
+    .card ul li strong { color: var(--text); }
+
+    /* テーブル */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .spec-table th {
+      background: var(--bg-card2);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-align: left;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border-strong);
+      font-weight: 500;
+    }
+    .spec-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+    .spec-table td:first-child { color: var(--text); font-weight: 500; }
+    .spec-table tr:last-child td { border-bottom: none; }
+    .spec-table tr:hover td { background: rgba(0,214,189,0.03); }
+
+    /* バッジ */
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+    .badge-green  { background: rgba(0,214,189,0.15); color: var(--accent); border: 1px solid rgba(0,214,189,0.3); }
+    .badge-gold   { background: rgba(201,168,108,0.15); color: var(--gold); border: 1px solid rgba(201,168,108,0.3); }
+    .badge-blue   { background: rgba(68,100,200,0.18); color: #7090ee; border: 1px solid rgba(68,100,200,0.35); }
+    .badge-pink   { background: rgba(200,80,150,0.15); color: #e070b8; border: 1px solid rgba(200,80,150,0.3); }
+
+    /* インフォボックス */
+    .info-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .info-box strong { color: var(--text); display: block; margin-bottom: 4px; font-size: 13px; }
+
+    /* フッター */
+    .site-footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 24px 40px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .site-footer span { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .site-header { padding: 24px 20px; }
+      .site-header .meta { display: none; }
+      .toc-bar { padding: 0 20px; }
+      .container { padding: 28px 20px 60px; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>THE 27 CLUB</h1>
-        <p class="subtitle">プロジェクトドキュメント</p>
-        <p class="desc">歌舞伎町のエンターテインメントショーラウンジ「THE 27 CLUB」のウェブサイトに関するドキュメントです。</p>
 
-        <a href="changelog.html" class="link">
-            調整・修正・追加一覧
-            <span>SP版調整、FVロゴ配置、Exploreセクション変更など</span>
-        </a>
-        <a href="SNS_API_GUIDE.html" class="link">
-            SNS API連携ガイド
-            <span>Instagram、YouTube、X、TikTokのAPI連携方法</span>
-        </a>
+<header class="site-header">
+  <div class="label">Feature Specification Document</div>
+  <h1>THE 27 CLUB — 機能一覧仕様書</h1>
+  <p class="sub">フロントエンド・管理画面・データベース・インフラ 全機能リファレンス</p>
+  <div class="meta">
+    <div>作成日 <span>2026年3月18日</span></div>
+    <div>バージョン <span>1.0.0</span></div>
+    <div>フレームワーク <span>React + Vite</span></div>
+    <div>バックエンド <span>Supabase</span></div>
+    <div>ホスティング <span>Netlify</span></div>
+  </div>
+</header>
 
-        <div class="footer">
-            <p>THE 27 CLUB</p>
-            <p style="margin-top: 4px;"><a href="https://github.com/tmksh/27club">GitHub</a></p>
-        </div>
+<nav class="toc-bar">
+  <a href="#overview">概要</a>
+  <a href="#pages-user">一般ページ</a>
+  <a href="#pages-about">Aboutページ</a>
+  <a href="#admin">管理画面</a>
+  <a href="#database">データベース</a>
+  <a href="#infra">インフラ</a>
+  <a href="#tech">技術スタック</a>
+</nav>
+
+<main class="container">
+
+  <!-- 概要 -->
+  <section class="section" id="overview">
+    <div class="section-title">
+      <div class="icon">📋</div>
+      <h2>プロジェクト概要</h2>
     </div>
+    <div class="info-box">
+      <strong>THE 27 CLUB — エンターテインメントクラブ ウェブサイト</strong>
+      ライブパフォーマンス・イベント・キャスト紹介・WEB予約を提供するクラブ施設のウェブサイト。
+      React + Vite によるSPAで構築し、Supabaseでイベント・キャスト情報を動的管理。
+      管理者はログイン不要のデモモード、またはSupabase認証によりコンテンツをCMS的に編集可能。
+    </div>
+    <table class="spec-table" style="background:var(--bg-card);border-radius:10px;overflow:hidden;border:1px solid var(--border)">
+      <thead><tr>
+        <th>項目</th><th>内容</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>サービス名</td><td>THE 27 CLUB</td></tr>
+        <tr><td>種別</td><td>クラブ施設 コーポレートサイト + CMS管理画面</td></tr>
+        <tr><td>対応言語</td><td>日本語 / 英語（LanguageContextによるトグル切替）</td></tr>
+        <tr><td>対応デバイス</td><td>PC / スマートフォン（レスポンシブ対応）</td></tr>
+        <tr><td>総ページ数</td><td>15ページ（一般：13、管理：2）</td></tr>
+        <tr><td>フォーム機能</td><td>WEB予約フォーム、お問い合わせフォーム（Netlify Forms）</td></tr>
+        <tr><td>動的コンテンツ</td><td>イベント一覧、キャスト一覧（Supabase連携）</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 一般ページ -->
+  <section class="section" id="pages-user">
+    <div class="section-title">
+      <div class="icon">🌐</div>
+      <h2>一般ユーザー向けページ</h2>
+      <span class="count">11ページ</span>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">🏠</div>
+          <div>
+            <div class="card-title">TOPページ</div>
+            <div class="card-url">/ または /top</div>
+          </div>
+        </div>
+        <ul>
+          <li>ファーストビュー（FV）— SpaceBackground アニメーション</li>
+          <li>NewsFV — 最新情報バナーエリア</li>
+          <li>パーティープランセクション</li>
+          <li>キャスト紹介セクション（Supabase連携）</li>
+          <li>ゲストの流れ・チップ・求人 各セクション</li>
+          <li>ナビゲーション — 日英切替ドロップダウン付き</li>
+          <li>モバイルハンバーガーメニュー（スクロールロック付き）</li>
+          <li>スクロールアニメーション（GSAP / Framer Motion）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">👥</div>
+          <div>
+            <div class="card-title">キャスト一覧</div>
+            <div class="card-url">/キャスト（URLエンコード）</div>
+          </div>
+        </div>
+        <ul>
+          <li>Supabaseから動的取得（公開中のみ表示）</li>
+          <li>表示順（display_order）に並び替え</li>
+          <li>プロフィール画像・名前・SNSアイコン表示</li>
+          <li>キャスト詳細ページへのリンク</li>
+          <li>デモモード時はモックデータ（5名）で表示</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">👤</div>
+          <div>
+            <div class="card-title">キャスト詳細</div>
+            <div class="card-url">/cast/:id</div>
+          </div>
+        </div>
+        <ul>
+          <li>動的ルーティング（UUID または mock-cast-N）</li>
+          <li>プロフィール全文・誕生日・出身地・趣味・特技</li>
+          <li>SNS（Instagram / Twitter / TikTok）フォロワー数表示</li>
+          <li>好きなドリンク・ショー紹介文</li>
+          <li>ローディング・エラー状態の処理あり</li>
+          <li>日英切替対応</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon gold">🎟️</div>
+          <div>
+            <div class="card-title">WEB予約</div>
+            <div class="card-url">/reserve</div>
+          </div>
+        </div>
+        <ul>
+          <li>Netlify Forms によるフォーム送信</li>
+          <li><strong>座席タイプ選択：</strong></li>
+          <li>　STANDING ¥3,600</li>
+          <li>　SIDE SEAT BLUE ¥4,800</li>
+          <li>　SIDE SEAT PINK ¥6,000</li>
+          <li>　V.I.P. SEAT ¥8,400</li>
+          <li>入力項目：お名前・人数・希望時間・電話番号・メール</li>
+          <li>プライバシーポリシー同意チェック（必須）</li>
+          <li>バリデーション + 送信完了アラート</li>
+          <li>日英切替対応</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">📩</div>
+          <div>
+            <div class="card-title">お問い合わせ</div>
+            <div class="card-url">/コンタクト（URLエンコード）</div>
+          </div>
+        </div>
+        <ul>
+          <li>Netlify Forms によるフォーム送信</li>
+          <li>日英切替対応</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">🍹</div>
+          <div>
+            <div class="card-title">ドリンクメニュー</div>
+            <div class="card-url">/drink</div>
+          </div>
+        </div>
+        <ul>
+          <li>メニュー画像を2枚表示（PC横並び / SPタテ並び）</li>
+          <li>ホバーで拡大エフェクト</li>
+          <li>画像: /img/S__21356584.jpg など</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">🎭</div>
+          <div>
+            <div class="card-title">ゲストの流れ</div>
+            <div class="card-url">/ゲスト流れ（URLエンコード）</div>
+          </div>
+        </div>
+        <ul>
+          <li>来店フロー説明ページ</li>
+          <li>日英切替対応</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">💴</div>
+          <div>
+            <div class="card-title">チップについて</div>
+            <div class="card-url">/チップについて（URLエンコード）</div>
+          </div>
+        </div>
+        <ul>
+          <li>チップ文化の説明ページ</li>
+          <li>日英切替対応</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">💼</div>
+          <div>
+            <div class="card-title">求人</div>
+            <div class="card-url">/求人（URLエンコード）</div>
+          </div>
+        </div>
+        <ul>
+          <li>求人情報ページ</li>
+          <li>日英切替対応</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">🎉</div>
+          <div>
+            <div class="card-title">パーティープラン</div>
+            <div class="card-url">/パーティープラン（URLエンコード）</div>
+          </div>
+        </div>
+        <ul>
+          <li>パーティープラン一覧</li>
+          <li>日英切替対応</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">📄</div>
+          <div>
+            <div class="card-title">プライバシーポリシー</div>
+            <div class="card-url">/privacy</div>
+          </div>
+        </div>
+        <ul>
+          <li>プライバシーポリシー文書ページ</li>
+          <li>予約フォームからリンク</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Aboutページ群 -->
+  <section class="section" id="pages-about">
+    <div class="section-title">
+      <div class="icon">🏢</div>
+      <h2>施設紹介 About ページ群</h2>
+      <span class="count">4ページ</span>
+    </div>
+    <div class="info-box">
+      全ページ共通：ヒーロー画像（ヘッダーの裏に重なるフルブリード）、日英テキスト切替、戻るボタン、フッター、お問い合わせCTA
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue">🎪</div>
+          <div>
+            <div class="card-title">イベント実績</div>
+            <div class="card-url">/about/events</div>
+          </div>
+        </div>
+        <ul>
+          <li>ヒーロー画像: /img/event-hero.png</li>
+          <li>過去イベント実績リスト（6種類）</li>
+          <li>　音楽ライブ・ファッションショー・企業パーティー</li>
+          <li>　YouTuber/インフルエンサー・DJイベント・プライベート貸切</li>
+          <li>会場ギャラリー（6枚：venue-1〜6.png）</li>
+          <li>お問い合わせCTAボタン</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue">🎬</div>
+          <div>
+            <div class="card-title">MV・CM撮影実績</div>
+            <div class="card-url">/about/mv-cm</div>
+          </div>
+        </div>
+        <ul>
+          <li>ヒーロー画像: /img/venue-3.png</li>
+          <li>商用利用説明（MV・CM・映画・ドラマ対応）</li>
+          <li>撮影実績リスト（5種類）</li>
+          <li>　アーティストMV・TV-CM・映画ロケ・グラビア・SNSコンテンツ</li>
+          <li>お問い合わせCTAボタン</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue">🔊</div>
+          <div>
+            <div class="card-title">照明・音響設備</div>
+            <div class="card-url">/about/equipment</div>
+          </div>
+        </div>
+        <ul>
+          <li>ヒーロー画像: /img/venue-5.png</li>
+          <li><strong>照明設備 6種：</strong>ムービングヘッド / LED / ストロボ / レーザー / ミラーボール / DMX</li>
+          <li><strong>音響設備 6種：</strong>メインSP / サブウーファー / モニター / デジタルミキサー / ワイヤレスマイク / DJブース</li>
+          <li><strong>DJ機材：</strong>Pioneer CDJ-2000NXS2 ×2、DJM-900NXS2 ×1</li>
+          <li><strong>マイク：</strong>Shure ワイヤレス ×2、有線 ×2（増設可）、ヘッドセット ×2</li>
+          <li>お問い合わせCTAボタン</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue">🏗️</div>
+          <div>
+            <div class="card-title">スタジオ貸出し</div>
+            <div class="card-url">/about/studio-rental</div>
+          </div>
+        </div>
+        <ul>
+          <li>ヒーロー画像: /img/venue-7.png</li>
+          <li><strong>料金体系（税込）：</strong></li>
+          <li>　平日 1時間 ¥55,000</li>
+          <li>　土日祝 1時間 ¥66,000</li>
+          <li>　営業時間外 1時間 ¥33,000</li>
+          <li>　管理人件費（1Day） ¥16,500</li>
+          <li>　PAオペレート費（1Day） ¥16,500</li>
+          <li><strong>利用条件 5項目：</strong>事前予約制、機材持込可、オペレーター手配可など</li>
+          <li>お問い合わせCTAボタン</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 管理画面 -->
+  <section class="section" id="admin">
+    <div class="section-title">
+      <div class="icon">⚙️</div>
+      <h2>管理画面（スタッフ向け）</h2>
+      <span class="count">2ページ</span>
+    </div>
+    <div class="info-box">
+      <strong>アクセス方法</strong>
+      Supabase設定済みの場合：Supabase Auth（メール+パスワード）でログイン。
+      未設定のデモモード：admin@27club.com / admin123 でログイン（localStorage保存）。
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon gold">🔐</div>
+          <div>
+            <div class="card-title">管理ログイン</div>
+            <div class="card-url">/admin/login</div>
+          </div>
+        </div>
+        <ul>
+          <li>メール + パスワード入力フォーム</li>
+          <li>Supabase Auth 連携ログイン</li>
+          <li>デモモード：admin@27club.com / admin123</li>
+          <li>ログイン失敗時エラーメッセージ表示</li>
+          <li>ログイン成功後 /admin/dashboard にリダイレクト</li>
+          <li>/admin → /admin/login に自動リダイレクト</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon gold">🗂️</div>
+          <div>
+            <div class="card-title">管理ダッシュボード</div>
+            <div class="card-url">/admin/dashboard</div>
+          </div>
+        </div>
+        <ul>
+          <li>認証セッション確認（未ログインは自動リダイレクト）</li>
+          <li>タブ切替：「イベント管理」「キャスト管理」</li>
+          <li>ログアウト機能（Supabase / localStorage 両対応）</li>
+          <li>ログインユーザーメール表示</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon gold">📅</div>
+          <div>
+            <div class="card-title">イベント管理</div>
+            <div class="card-url">ダッシュボード内タブ</div>
+          </div>
+        </div>
+        <ul>
+          <li><strong>一覧表示：</strong>表示順（display_order）でソート</li>
+          <li><strong>新規作成：</strong>フォームをモーダル表示</li>
+          <li><strong>編集：</strong>既存データをフォームに反映して編集</li>
+          <li><strong>削除：</strong>確認ダイアログ付き</li>
+          <li><strong>並び替え：</strong>ドラッグ＆ドロップ（react-beautiful-dnd）</li>
+          <li><strong>公開/非公開切替：</strong>is_published トグル</li>
+          <li><strong>フォーム入力項目：</strong></li>
+          <li>　タイトル（日本語 / 英語）</li>
+          <li>　開始・終了日時</li>
+          <li>　キャッチコピー・説明文</li>
+          <li>　料金・料金備考</li>
+          <li>　予約URL</li>
+          <li>　メイン画像アップロード（Supabase Storage）</li>
+          <li>　公開フラグ</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon gold">🌟</div>
+          <div>
+            <div class="card-title">キャスト管理</div>
+            <div class="card-url">ダッシュボード内タブ</div>
+          </div>
+        </div>
+        <ul>
+          <li><strong>一覧表示：</strong>表示順でソート</li>
+          <li><strong>新規作成 / 編集 / 削除</strong></li>
+          <li><strong>並び替え：</strong>ドラッグ＆ドロップ</li>
+          <li><strong>フォーム入力項目：</strong></li>
+          <li>　名前（日本語 / 英語）</li>
+          <li>　プロフィール画像アップロード（Supabase Storage）</li>
+          <li>　画像縦位置調整スライダー（image_position_y: 0〜100）</li>
+          <li>　プロフィール文・特徴・好きなドリンク・ショー紹介</li>
+          <li>　誕生日・出身地・趣味・特技</li>
+          <li>　Instagram / Twitter / TikTok URL</li>
+          <li>　公開フラグ（is_active）</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- データベース -->
+  <section class="section" id="database">
+    <div class="section-title">
+      <div class="icon">🗄️</div>
+      <h2>データベース（Supabase / PostgreSQL）</h2>
+    </div>
+
+    <div style="margin-bottom:28px">
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:0.04em">
+        📁 events テーブル
+        <span class="badge badge-green">PostgreSQL</span>
+      </div>
+      <table class="spec-table" style="background:var(--bg-card);border-radius:10px;overflow:hidden;border:1px solid var(--border)">
+        <thead><tr>
+          <th>カラム名</th><th>型</th><th>説明</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>id</td><td>UUID</td><td>主キー（gen_random_uuid() で自動生成）</td></tr>
+          <tr><td>title</td><td>VARCHAR(255)</td><td>イベント名（日本語）— NOT NULL</td></tr>
+          <tr><td>title_en</td><td>VARCHAR(255)</td><td>イベント名（英語）</td></tr>
+          <tr><td>date_time_start</td><td>TIMESTAMPTZ</td><td>開始日時 — NOT NULL</td></tr>
+          <tr><td>date_time_end</td><td>TIMESTAMPTZ</td><td>終了日時 — NOT NULL</td></tr>
+          <tr><td>description</td><td>TEXT</td><td>説明文</td></tr>
+          <tr><td>catchphrase</td><td>VARCHAR(500)</td><td>キャッチコピー</td></tr>
+          <tr><td>price</td><td>INTEGER</td><td>料金（円）</td></tr>
+          <tr><td>price_note</td><td>VARCHAR(100)</td><td>料金備考（例：要予約）</td></tr>
+          <tr><td>reservation_url</td><td>TEXT</td><td>外部予約URL</td></tr>
+          <tr><td>image_url</td><td>TEXT</td><td>メイン画像URL（Supabase Storage）</td></tr>
+          <tr><td>display_order</td><td>INTEGER</td><td>表示順（デフォルト: 0）</td></tr>
+          <tr><td>is_published</td><td>BOOLEAN</td><td>公開フラグ（デフォルト: true）</td></tr>
+          <tr><td>created_at</td><td>TIMESTAMPTZ</td><td>作成日時（自動）</td></tr>
+          <tr><td>updated_at</td><td>TIMESTAMPTZ</td><td>更新日時（トリガーで自動更新）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-bottom:28px">
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:0.04em">
+        📁 casts テーブル
+        <span class="badge badge-green">PostgreSQL</span>
+      </div>
+      <table class="spec-table" style="background:var(--bg-card);border-radius:10px;overflow:hidden;border:1px solid var(--border)">
+        <thead><tr>
+          <th>カラム名</th><th>型</th><th>説明</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>id</td><td>UUID</td><td>主キー（gen_random_uuid() で自動生成）</td></tr>
+          <tr><td>name</td><td>VARCHAR(255)</td><td>キャスト名（日本語）— NOT NULL</td></tr>
+          <tr><td>name_en</td><td>VARCHAR(255)</td><td>キャスト名（英語）</td></tr>
+          <tr><td>profile_image_url</td><td>TEXT</td><td>プロフィール画像URL（Supabase Storage）</td></tr>
+          <tr><td>description</td><td>TEXT</td><td>プロフィール本文</td></tr>
+          <tr><td>features</td><td>TEXT</td><td>特徴・売り</td></tr>
+          <tr><td>favorite_drink</td><td>VARCHAR(255)</td><td>好きなドリンク</td></tr>
+          <tr><td>show_description</td><td>TEXT</td><td>ショー紹介文</td></tr>
+          <tr><td>birthday</td><td>VARCHAR(20)</td><td>誕生日（例：2003/11/5）</td></tr>
+          <tr><td>birthplace</td><td>VARCHAR(100)</td><td>出身地</td></tr>
+          <tr><td>hobby</td><td>TEXT</td><td>趣味</td></tr>
+          <tr><td>special_skill</td><td>TEXT</td><td>特技</td></tr>
+          <tr><td>instagram_url</td><td>VARCHAR(500)</td><td>Instagram プロフィールURL</td></tr>
+          <tr><td>twitter_url</td><td>VARCHAR(500)</td><td>Twitter/X プロフィールURL</td></tr>
+          <tr><td>tiktok_url</td><td>VARCHAR(500)</td><td>TikTok プロフィールURL</td></tr>
+          <tr><td>instagram_followers</td><td>INTEGER</td><td>Instagramフォロワー数</td></tr>
+          <tr><td>twitter_followers</td><td>INTEGER</td><td>Twitter/Xフォロワー数</td></tr>
+          <tr><td>tiktok_followers</td><td>INTEGER</td><td>TikTokフォロワー数</td></tr>
+          <tr><td>image_position_y</td><td>INTEGER</td><td>画像縦位置（0〜100、デフォルト: 0）</td></tr>
+          <tr><td>display_order</td><td>INTEGER</td><td>表示順（デフォルト: 0）</td></tr>
+          <tr><td>is_active</td><td>BOOLEAN</td><td>公開フラグ（デフォルト: true）</td></tr>
+          <tr><td>created_at</td><td>TIMESTAMPTZ</td><td>作成日時（自動）</td></tr>
+          <tr><td>updated_at</td><td>TIMESTAMPTZ</td><td>更新日時（トリガーで自動更新）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:0.04em">
+        🗂️ Supabase Storage バケット / インデックス
+      </div>
+      <table class="spec-table" style="background:var(--bg-card);border-radius:10px;overflow:hidden;border:1px solid var(--border)">
+        <thead><tr><th>種別</th><th>名称</th><th>備考</th></tr></thead>
+        <tbody>
+          <tr><td>Storage バケット</td><td>images</td><td>イベント・キャスト画像格納（公開アクセス）</td></tr>
+          <tr><td>インデックス</td><td>idx_events_date</td><td>events.date_time_start</td></tr>
+          <tr><td>インデックス</td><td>idx_events_display_order</td><td>events.display_order</td></tr>
+          <tr><td>インデックス</td><td>idx_events_published</td><td>events.is_published</td></tr>
+          <tr><td>インデックス</td><td>idx_casts_display_order</td><td>casts.display_order</td></tr>
+          <tr><td>インデックス</td><td>idx_casts_active</td><td>casts.is_active</td></tr>
+          <tr><td>トリガー</td><td>update_updated_at_column</td><td>events/casts の updated_at を自動更新</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- インフラ -->
+  <section class="section" id="infra">
+    <div class="section-title">
+      <div class="icon">☁️</div>
+      <h2>インフラ・環境設定</h2>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon purple">🚀</div>
+          <div>
+            <div class="card-title">Netlify（ホスティング）</div>
+          </div>
+        </div>
+        <ul>
+          <li>ビルドコマンド: <strong>npm run build</strong></li>
+          <li>公開ディレクトリ: <strong>dist/</strong></li>
+          <li>SPA対応（全パスを index.html にリダイレクト）</li>
+          <li>Netlify Forms — 予約フォーム・お問い合わせフォーム受信</li>
+          <li>フォーム通知先メール: Netlifyダッシュボードで設定</li>
+          <li>プラグイン: @netlify/plugin-emails</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon purple">🛢️</div>
+          <div>
+            <div class="card-title">Supabase（BaaS）</div>
+          </div>
+        </div>
+        <ul>
+          <li>認証: Supabase Auth（メール+パスワード）</li>
+          <li>データベース: PostgreSQL</li>
+          <li>ストレージ: images バケット（画像アップロード）</li>
+          <li>環境変数（.env）：</li>
+          <li>　VITE_SUPABASE_URL</li>
+          <li>　VITE_SUPABASE_ANON_KEY</li>
+          <li>未設定の場合: デモモード（モックデータ）で動作</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon purple">📁</div>
+          <div>
+            <div class="card-title">マイグレーション</div>
+          </div>
+        </div>
+        <ul>
+          <li>ファイル: supabase/migrations/20241114000000_initial_schema.sql</li>
+          <li>events テーブル定義</li>
+          <li>casts テーブル定義</li>
+          <li>インデックス作成</li>
+          <li>updated_at 自動更新トリガー</li>
+          <li>新環境への適用: Supabase SQL Editor でファイルを実行</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon purple">📦</div>
+          <div>
+            <div class="card-title">開発環境セットアップ</div>
+          </div>
+        </div>
+        <ul>
+          <li>Node.js 必須</li>
+          <li><strong>npm install</strong> — 依存パッケージインストール</li>
+          <li><strong>npm run dev</strong> — 開発サーバー起動（localhost:5173）</li>
+          <li><strong>npm run build</strong> — 本番ビルド</li>
+          <li><strong>npm run storybook</strong> — Storybook（localhost:6006）</li>
+          <li>.env.local に Supabase 環境変数を設定して起動</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 技術スタック -->
+  <section class="section" id="tech">
+    <div class="section-title">
+      <div class="icon">🛠️</div>
+      <h2>技術スタック</h2>
+    </div>
+    <table class="spec-table" style="background:var(--bg-card);border-radius:10px;overflow:hidden;border:1px solid var(--border)">
+      <thead><tr>
+        <th>カテゴリ</th><th>ライブラリ / ツール</th><th>バージョン</th><th>用途</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>UIフレームワーク</td><td>React</td><td>^18.2.0</td><td>コンポーネントベースUI</td></tr>
+        <tr><td>ビルドツール</td><td>Vite</td><td>—</td><td>開発サーバー・本番ビルド</td></tr>
+        <tr><td>ルーティング</td><td>react-router-dom</td><td>^6.8.1</td><td>SPA ページ遷移</td></tr>
+        <tr><td>スタイリング</td><td>Tailwind CSS</td><td>—</td><td>ユーティリティCSSクラス</td></tr>
+        <tr><td>アニメーション</td><td>Framer Motion</td><td>^12.23.24</td><td>スクロールアニメーション</td></tr>
+        <tr><td>アニメーション</td><td>GSAP</td><td>^3.13.0</td><td>高度なアニメーション</td></tr>
+        <tr><td>ドラッグ&ドロップ</td><td>react-beautiful-dnd</td><td>^13.1.1</td><td>管理画面並び替え</td></tr>
+        <tr><td>スライダー</td><td>Swiper</td><td>^12.0.3</td><td>カルーセル表示</td></tr>
+        <tr><td>BaaS</td><td>Supabase JS</td><td>^2.81.1</td><td>DB / 認証 / ストレージ</td></tr>
+        <tr><td>ホスティング</td><td>Netlify</td><td>—</td><td>デプロイ・フォーム受信</td></tr>
+        <tr><td>コンポーネント管理</td><td>Storybook</td><td>^8.4.6</td><td>UIコンポーネントカタログ</td></tr>
+        <tr><td>型チェック</td><td>Prop Types</td><td>^15.8.1</td><td>Propsの型定義</td></tr>
+        <tr><td>フォント</td><td>Playfair Display / Noto Serif JP / Noto Sans JP</td><td>—</td><td>Google Fonts</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  THE 27 CLUB 機能一覧仕様書 — 作成日: <span>2026年3月18日</span> &nbsp;|&nbsp; Version <span>1.0.0</span>
+</footer>
+
 </body>
 </html>
